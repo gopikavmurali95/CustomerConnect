@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
 import 'package:flutter/material.dart';
 import 'feature/view/HomeScreen/homscreen.dart';
+import 'feature/view/LoadInDetail/load_in_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoadCompleted(),
+      home: const LoadDetailPending(),
     );
   }
 }
