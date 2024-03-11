@@ -3,24 +3,29 @@ import 'package:google_fonts/google_fonts.dart';
 
 TextStyle boxHeading() {
   return GoogleFonts.inter(
-      fontSize: 12,fontWeight: FontWeight.w400,
-      color:const Color(0xff413434));
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: const Color(0xff413434));
 }
 
 TextStyle blueTextStyle() {
   return GoogleFonts.inter(
-      fontSize: 14,fontWeight: FontWeight.w500,
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
       color: const Color(0xff2C6B9E));
 }
+
 TextStyle appHeading() {
   return GoogleFonts.inter(
-      fontSize: 18,fontWeight: FontWeight.w400,
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
       color: const Color(0xff413434));
 }
 
 TextStyle countHeading() {
   return GoogleFonts.inter(
-      fontSize: 13,fontWeight: FontWeight.w500,
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
 
@@ -30,8 +35,6 @@ TextStyle statusTextStyle() {
       //fontWeight: FontWeight.w500,
       color: Colors.grey);
 }
-
-
 
 TextStyle subTextStyle() {
   return GoogleFonts.inter(
@@ -45,10 +48,11 @@ TextStyle subTitleTextStyle() {
       color: const Color(0xff413434));
 }
 
-
 TextStyle headTextStyle() {
   return GoogleFonts.inter(
-      fontSize: 10, fontWeight: FontWeight.w500,
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
-
 }
+
+const kfontstyle = GoogleFonts.inter;

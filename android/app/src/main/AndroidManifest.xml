@@ -1,4 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.example.customer_connect"
+>
     <application
         android:label="customer_connect"
         android:name="${applicationName}"

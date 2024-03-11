@@ -1,33 +1,31 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
-
+import 'package:customer_connect/feature/view/invoices/widgets/invoiceheaderlist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoadCompleted extends StatefulWidget {
-  const LoadCompleted({super.key});
+class InvoiceHeaderScreen extends StatelessWidget {
+  const InvoiceHeaderScreen({super.key});
 
-  @override
-  State<LoadCompleted> createState() => _LoadCompletedState();
-}
-
-class _LoadCompletedState extends State<LoadCompleted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 20,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+            size: 20,
+          ),
         ),
-        // leading: SizedBox(
-        //   height: 05,
-        //   width: 04,
-        //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
-        // ),
         title: Text(
-          "Load In Completed",
+          "Invoices ",
           style: appHeading(),
         ),
         actions: [
@@ -62,7 +60,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search invoices",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -83,34 +81,60 @@ class _LoadCompletedState extends State<LoadCompleted> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Completed",
-                    style: countHeading(),
-                  ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "All invoices",
+                  style: countHeading(),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "80",
+                  style: countHeading(),
                 ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            ListWidget(),
-          ],
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          const Expanded(child: InvoiceHeaderListWidget())
+        ],
+      ),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(boxShadow: [
+          BoxShadow(
+              blurRadius: 3,
+              color: Colors.black12,
+              blurStyle: BlurStyle.outer,
+              offset: Offset(3, 3))
+        ]),
+        height: 40.h,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total Invoice Amount',
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+              ),
+              Text(
+                '1200.00',
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+              )
+            ],
+          ),
         ),
       ),
     );
