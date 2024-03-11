@@ -1,0 +1,14 @@
+<svg id="homemenu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <g id="Rectangle_6421" data-name="Rectangle 6421" fill="none" stroke="#413434" stroke-width="1.5">
+    <rect width="11" height="12" rx="3" stroke="none"/>
+    <rect x="0.75" y="0.75" width="9.5" height="10.5" rx="2.25" fill="none"/>
+  </g>
+  <g id="Rectangle_6422" data-name="Rectangle 6422" transform="translate(12)" fill="none" stroke="#413434" stroke-width="1.5">
+    <rect width="10" height="9" rx="3" stroke="none"/>
+    <rect x="0.75" y="0.75" width="8.5" height="7.5" rx="2.25" fill="none"/>
+  </g>
+  <g id="Rectangle_6423" data-name="Rectangle 6423" transform="translate(0 13)" fill="none" stroke="#413434" stroke-width="1.5">
+    <rect width="11" height="9" rx="3" stroke="none"/>
+    <rect x="0.75" y="0.75" width="9.5" height="7.5" rx="2.25" fill="none"/>
+  </g>
+</svg>
