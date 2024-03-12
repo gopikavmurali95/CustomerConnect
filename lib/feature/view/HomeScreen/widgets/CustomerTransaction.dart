@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -97,42 +98,52 @@ class CustomerTransaction extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    Container(
-                      height: 60,
-                      width: 160,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 12.0, top: 5, bottom: 5),
-                        child: Row(
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/svg/ar.svg",
-                                  height: 18,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("10", style: countHeading()),
-                                Text("AED 0.00", style: subTextStyle()),
-                                Text(
-                                  "Ar Collection ",
-                                  style: statusTextStyle(),
-                                )
-                              ],
-                            ),
-                          ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ArCollectionScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 12.0, top: 5, bottom: 5),
+                          child: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/svg/ar.svg",
+                                    height: 18,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("10", style: countHeading()),
+                                  Text("AED 0.00", style: subTextStyle()),
+                                  Text(
+                                    "Ar Collection ",
+                                    style: statusTextStyle(),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
