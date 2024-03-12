@@ -37,7 +37,7 @@ class ListWidget extends StatelessWidget {
                 title: Text("M086765",style: blueTextStyle(),),
                 subtitle:  Padding(
                   padding: const EdgeInsets.only(
-                      bottom: 10.0
+                      bottom: 10.0,
                   ),
                   child: RichText(
                       text: TextSpan(text: "Route  101 |",
