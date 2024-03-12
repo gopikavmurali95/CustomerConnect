@@ -52,3 +52,10 @@ TextStyle headTextStyle() {
       color: const Color(0xff413434));
 
 }
+
+TextStyle loadTextStyle() {
+  return GoogleFonts.inter(
+      fontSize: 12, fontWeight: FontWeight.w500,
+      color: const Color(0xff6E62A4));
+
+}
