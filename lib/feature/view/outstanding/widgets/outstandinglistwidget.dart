@@ -1,5 +1,4 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,118 +10,108 @@ class OutstandingListWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView.separated(
-          itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ARDetailScreen(),
+          itemBuilder: (context, index) => Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: const Color(0xffDB95B5),
+                    child: Image.asset(
+                      'assets/images/ar_li.png',
+                      height: 20.h,
+                      width: 20.w,
                     ),
-                  );
-                },
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundColor: const Color(0xffDB95B5),
-                      child: Image.asset(
-                        'assets/images/ar_li.png',
-                        height: 20.h,
-                        width: 20.w,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'IV076876',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'A025206 - ',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '199525 - ',
-                                style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'Carrefour Hypermarket',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 12.sp),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            'CR | Route 101 | 16 May 2023 | 10:35',
-                            style:
-                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                          ),
-                          Text(
-                            '120.00',
-                            style:
-                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '120.00',
-                          style: kfontstyle(fontSize: 13.sp),
+                          'IV076876',
+                          style: kfontstyle(
+                            fontSize: 12.sp,
+                            color: const Color(0xff2C6B9E),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                        Container(
-                          height: 14.h,
-                          width: 50.w,
-                          decoration: BoxDecoration(
-                              color: index % 2 == 0
-                                  ? const Color(0xffe3f7e2)
-                                  : const Color(0xfff7f4e2),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              index % 2 == 0 ? 'Due' : 'Overdue',
+                        Row(
+                          children: [
+                            Text(
+                              'A025206 - ',
                               style: kfontstyle(
-                                  fontSize: 10.sp,
+                                fontSize: 11.sp,
+                                color: const Color(0xff2C6B9E),
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                overflow: TextOverflow.ellipsis,
+                                'Tromp, Muller and Mitchell',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '199525 - ',
+                              style: kfontstyle(
+                                  fontSize: 11.sp,
                                   color: const Color(0xff413434)),
                             ),
-                          ),
-                        )
+                            Expanded(
+                              child: Text(
+                                'Carrefour Hypermarket',
+                                overflow: TextOverflow.ellipsis,
+                                style: kfontstyle(fontSize: 12.sp),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'CR | Route 101 | 16 May 2023 | 10:35',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
+                        Text(
+                          '120.00',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        '120.00',
+                        style: kfontstyle(fontSize: 13.sp),
+                      ),
+                      Container(
+                        height: 14.h,
+                        width: 50.w,
+                        decoration: BoxDecoration(
+                            color: index % 2 == 0
+                                ? const Color(0xffe3f7e2)
+                                : const Color(0xfff7f4e2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Text(
+                            index % 2 == 0 ? 'Due' : 'Overdue',
+                            style: kfontstyle(
+                                fontSize: 10.sp,
+                                color: const Color(0xff413434)),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
               ),
           separatorBuilder: (context, index) => Divider(
                 color: Colors.grey[300],

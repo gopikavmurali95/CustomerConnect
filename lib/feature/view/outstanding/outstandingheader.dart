@@ -64,7 +64,7 @@ class OutstandingHeaderScreen extends StatelessWidget {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search AR Collections",
+                          hintText: "Search Invoices",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
