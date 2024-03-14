@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle boxHeading() {
-  return GoogleFonts.inter(
+  return GoogleFonts.interTight(
       fontSize: 12,fontWeight: FontWeight.w400,
       color:const Color(0xff413434));
 }
