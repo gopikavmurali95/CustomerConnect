@@ -1,22 +1,11 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
-// import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
-//import 'package:flutter/cupertino.dart';
-
+import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverylist.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter_svg/svg.dart';
 
-class TotalOrders extends StatefulWidget {
-  const TotalOrders({super.key});
+class TodaysDelivery extends StatelessWidget {
+  const TodaysDelivery({super.key});
 
-  @override
-  State<TotalOrders> createState() => _TotalOrdersState();
-}
-
-class _TotalOrdersState extends State<TotalOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +26,7 @@ class _TotalOrdersState extends State<TotalOrders> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Total Orders",
+          "Todays Delivery",
           style: appHeading(),
         ),
         actions: [
@@ -106,20 +95,20 @@ class _TotalOrdersState extends State<TotalOrders> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'All',
+                        'Todays Delivery',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        '80',
+                        '20',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: TotalOrderList(),
+                    padding: EdgeInsets.only(top: 20),
+                    child: TodaysDeliveryList(),
                   ),
                 ],
               ),

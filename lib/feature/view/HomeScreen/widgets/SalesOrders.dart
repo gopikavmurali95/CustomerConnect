@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -93,42 +94,50 @@ class SalesOrders extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    Container(
-                      height: 60,
-                      width: 160,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 12.0, top: 5, bottom: 5),
-                        child: Row(
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/svg/tdel.svg",
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("0/0", style: countHeading()),
-                                Text("AED 0.00", style: subTextStyle()),
-                                Text(
-                                  "Today's Deliveries",
-                                  style: statusTextStyle(),
-                                )
-                              ],
-                            ),
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TodaysDelivery()));
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 12.0, top: 5, bottom: 5),
+                          child: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/svg/tdel.svg",
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("0/0", style: countHeading()),
+                                  Text("AED 0.00", style: subTextStyle()),
+                                  Text(
+                                    "Today's Deliveries",
+                                    style: statusTextStyle(),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
