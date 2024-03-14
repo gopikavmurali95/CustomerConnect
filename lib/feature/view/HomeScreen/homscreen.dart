@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
+import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsscreen.dart';
 import 'package:flutter/material.dart';
@@ -60,39 +61,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width / 2,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade300,
-                                spreadRadius: 1,
-                                blurRadius: 1)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10.0, top: 10, bottom: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "assets/images/customer.png",
-                              height: 20,
-                            ),
-                            // SvgPicture.asset("assets/images/os.png",height: 20,
-                            //   fit: BoxFit.scaleDown,),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Customer Insights",
-                              style: headTextStyle(),
-                            )
-                          ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CustomersScren(),
+                            ));
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/customer.png",
+                                height: 20,
+                              ),
+                              // SvgPicture.asset("assets/images/os.png",height: 20,
+                              //   fit: BoxFit.scaleDown,),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Customer Insights",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

@@ -1,9 +1,11 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class PromotionsScreen extends StatelessWidget {
-  const PromotionsScreen({super.key});
+class CustomersScren extends StatelessWidget {
+  const CustomersScren({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PromotionsScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Promotions ",
+          "Customers ",
           style: appHeading(),
         ),
         actions: [
@@ -58,7 +60,7 @@ class PromotionsScreen extends StatelessWidget {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search Promotions",
+                      hintText: "Search Customers",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -78,6 +80,35 @@ class PromotionsScreen extends StatelessWidget {
                 )),
           ),
         ),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "Customers",
+                  style: countHeading(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "130",
+                  style: countHeading(),
+                ),
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          const Expanded(child: CustomersListingWidget())
+        ],
       ),
     );
   }
