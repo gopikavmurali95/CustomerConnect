@@ -20,7 +20,10 @@ class _TotalOrdersState extends State<TotalOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: GestureDetector(
           onTap: () {
@@ -93,13 +96,13 @@ class _TotalOrdersState extends State<TotalOrders> {
           ),
         ),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
                   Row(
@@ -107,17 +110,15 @@ class _TotalOrdersState extends State<TotalOrders> {
                     children: [
                       Text(
                         'All',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w600),
+                        style: countHeading(),
                       ),
                       Text(
                         '80',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w600),
+                        style: countHeading(),
                       ),
                     ],
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 15),
                     child: TotalOrderList(),
                   ),

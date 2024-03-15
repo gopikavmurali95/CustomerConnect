@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
+import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -146,37 +147,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width / 2,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade300,
-                                spreadRadius: 1,
-                                blurRadius: 1)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10.0, top: 10, bottom: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "assets/images/pro.png",
-                              height: 20,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Promotions",
-                              style: headTextStyle(),
-                            )
-                          ],
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PromotionHeader()));
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/pro.png",
+                                height: 20,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Promotions",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
