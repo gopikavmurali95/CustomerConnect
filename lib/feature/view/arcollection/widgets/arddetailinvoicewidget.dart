@@ -1,5 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ARDetailInvoiceWidget extends StatelessWidget {
@@ -14,25 +16,25 @@ class ARDetailInvoiceWidget extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(color: Color(0xfff5f5f5)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.values[4],
               children: [
                 Text(
                   'Invoice No.',
-                  style: kfontstyle(fontSize: 12.sp, color: Colors.grey),
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black),
                 ),
                 Text(
                   'Date',
-                  style: kfontstyle(fontSize: 12.sp, color: Colors.grey),
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black),
                 ),
                 Text(
                   'Inv Amt',
-                  style: kfontstyle(fontSize: 12.sp, color: Colors.grey),
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black),
                 ),
                 Text(
                   'Alct Amt',
-                  style: kfontstyle(fontSize: 12.sp, color: Colors.grey),
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black),
                 ),
               ],
             ),
@@ -43,41 +45,63 @@ class ARDetailInvoiceWidget extends StatelessWidget {
         ),
         ListView.separated(
             shrinkWrap: true,
-            itemBuilder: (context, index) => Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            itemBuilder: (context, index) => Column(
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 10),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            '1234$index',
-                            style: kfontstyle(
-                                fontSize: 12.sp, color: Colors.black),
+                          Flexible(
+                            flex: 6,
+                            fit: FlexFit.tight,
+                            child: Text(
+                              '1234$index',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.black),
+                            ),
                           ),
-                          Text(
-                            '1 jan 21',
-                            style: kfontstyle(
-                                fontSize: 12.sp, color: Colors.black),
+                          Flexible(
+                            flex: 6,
+                            fit: FlexFit.tight,
+                            child: Text(
+                              '1 jan 21',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.black),
+                            ),
                           ),
-                          Text(
-                            '120',
-                            style: kfontstyle(
-                                fontSize: 12.sp, color: Colors.black),
+                          Flexible(
+                            flex: 5,
+                            fit: FlexFit.tight,
+                            child: Text(
+                              '120',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.black),
+                            ),
                           ),
-                          Text(
-                            '15',
-                            style: kfontstyle(
-                                fontSize: 12.sp, color: Colors.black),
+                          Flexible(
+                            flex: 2,
+                            fit: FlexFit.tight,
+                            child: Text(
+                              '15',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.black),
+                            ),
                           ),
                         ],
                       ),
-                      Divider(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: Divider(
                         color: Colors.grey[300],
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
             separatorBuilder: (context, index) => const SizedBox(),
             itemCount: 3)

@@ -25,7 +25,7 @@ class InvoiceDetailScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Invoices ",
+          "Invoice Detail",
           style: appHeading(),
         ),
         actions: [
