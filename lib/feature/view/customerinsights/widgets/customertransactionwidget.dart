@@ -1,4 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
+import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -151,25 +153,48 @@ class CustomerTraansactionWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Flexible(
+                  Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: CusTransNavWIdget(
-                      title: 'Invoices',
-                      imagepath: 'assets/images/invoice.png',
-                      count: '4',
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InvoiceHeaderScreen(
+                              isfromUser: true,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const CusTransNavWIdget(
+                        title: 'Invoices',
+                        imagepath: 'assets/images/invoice.png',
+                        count: '4',
+                      ),
                     ),
                   ),
                   SizedBox(
                     width: 10.w,
                   ),
-                  const Flexible(
+                  Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: CusTransNavWIdget(
-                      title: 'AR Collections',
-                      imagepath: 'assets/images/ar.png',
-                      count: '6',
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ArCollectionScreen(
+                                isFromUser: true,
+                              ),
+                            ));
+                      },
+                      child: const CusTransNavWIdget(
+                        title: 'AR Collections',
+                        imagepath: 'assets/images/ar.png',
+                        count: '6',
+                      ),
                     ),
                   )
                 ],

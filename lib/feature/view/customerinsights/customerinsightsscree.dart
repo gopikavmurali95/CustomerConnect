@@ -43,7 +43,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                 children: [
                   Container(
                     height: 50,
-                    width: 20,
+                    width: 10,
                     decoration: BoxDecoration(
                         color: const Color(0xfffee8e0),
                         borderRadius: BorderRadius.circular(20)),

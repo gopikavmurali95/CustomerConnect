@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InvoiceHeaderListWidget extends StatelessWidget {
-  const InvoiceHeaderListWidget({super.key});
+  final bool isfromUser;
+  const InvoiceHeaderListWidget({super.key, required this.isfromUser});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,9 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const InvoiceDetailScreen(),
+                      builder: (context) => InvoiceDetailScreen(
+                        isfromUser: isfromUser,
+                      ),
                     ),
                   );
                 },

@@ -1,4 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
+import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
+import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,24 +10,48 @@ class OtherOptionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Row(
           children: [
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/outs.png',
-                title: 'Outstanding',
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OutstandingHeaderScreen(
+                        isfromUser: true,
+                      ),
+                    ),
+                  );
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/outs.png',
+                  title: 'Outstanding',
+                ),
               ),
             ),
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/spec.png',
-                title: 'Special pricing',
+              child: InkWell(
+                onTap: () {
+                  /*     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InvoiceHeaderScreen(
+                              isfromUser: false,
+                            ),
+                          ),
+                        ); */
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/spec.png',
+                  title: 'Special pricing',
+                ),
               ),
             )
           ],
@@ -34,17 +61,41 @@ class OtherOptionsWidget extends StatelessWidget {
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/promo.png',
-                title: 'Promotions',
+              child: InkWell(
+                onTap: () {
+                  /*     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InvoiceHeaderScreen(
+                              isfromUser: false,
+                            ),
+                          ),
+                        ); */
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/promo.png',
+                  title: 'Promotions',
+                ),
               ),
             ),
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/itemlist.png',
-                title: 'Customer Item list',
+              child: InkWell(
+                onTap: () {
+                  /*     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InvoiceHeaderScreen(
+                              isfromUser: false,
+                            ),
+                          ),
+                        ); */
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/itemlist.png',
+                  title: 'Customer Item list',
+                ),
               ),
             )
           ],
@@ -54,17 +105,37 @@ class OtherOptionsWidget extends StatelessWidget {
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/document.png',
-                title: 'Documents',
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CustomerDocumentScreen(),
+                    ),
+                  );
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/document.png',
+                  title: 'Documents',
+                ),
               ),
             ),
             Flexible(
               flex: 2,
               fit: FlexFit.tight,
-              child: OtherOptionsTilesWideget(
-                imgpath: 'assets/images/location.png',
-                title: 'Geolocation',
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GeoLocationScreen(),
+                    ),
+                  );
+                },
+                child: const OtherOptionsTilesWideget(
+                  imgpath: 'assets/images/location.png',
+                  title: 'Geolocation',
+                ),
               ),
             )
           ],
@@ -93,7 +164,7 @@ class OtherOptionsTilesWideget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: SizedBox(
-        height: 50.h,
+        height: 38.h,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Row(

@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
+import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsscreen.dart';
@@ -21,11 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         titleSpacing: 1,
-        leading: SvgPicture.asset(
+        leading: /* SvgPicture.asset(
           "assets/svg/homemenu.svg",
           fit: BoxFit.scaleDown,
           height: 20,
-        ),
+        ) */
+            const HomePopUPMenuButton(),
         title: SvgPicture.asset(
           "assets/svg/logo_ccsfa.svg",
           height: 30,
@@ -210,11 +212,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const OutstandingHeaderScreen(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OutstandingHeaderScreen(
+                              isfromUser: false,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         height: 50,
