@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/LoadInDetail/load_detail_completed.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
@@ -21,6 +22,14 @@ class ListWidget extends StatelessWidget {
             SizedBox(
               height: 50,
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoadDetailCompleted(),
+                    ),
+                  );
+                },
                 //titleAlignment: ListTileTitleAlignment.center,
                 //minVerticalPadding:5,
                 //minLeadingWidth: 50,

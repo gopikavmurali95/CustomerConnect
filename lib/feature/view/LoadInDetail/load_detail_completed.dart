@@ -61,7 +61,8 @@ class LoadDetailCompleted extends StatelessWidget {
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
-                        ]),
+                        ]
+                    ),
                     child: TextField(
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
