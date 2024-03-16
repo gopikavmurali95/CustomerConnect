@@ -1,5 +1,7 @@
 
 import 'package:customer_connect/constants/fonts.dart';
+//import 'package:customer_connect/feature/PickingHeader/widgets/ongoing.dart';
+import 'package:customer_connect/feature/view/PickingHeader/widgets/ongoing.dart';
 import 'package:customer_connect/feature/view/load/widgets/PendingList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -95,7 +97,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
               ],
             ),
 
-            const  PendingList(),
+            const OnGoing(),
           ],
         ),
       ),

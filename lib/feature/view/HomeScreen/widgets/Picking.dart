@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
@@ -5,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../constants/fonts.dart';
+import '../../PickingHeader/pick_completed.dart';
+import '../../PickingHeader/pick_ongoing.dart';
+import '../../PickingHeader/pick_pending.dart';
 
 class PickingWidget extends StatelessWidget {
   const PickingWidget({super.key});
@@ -44,87 +49,117 @@ class PickingWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: 60,
-                      width: 102,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("10", style: countHeading()),
-                            Text("(6 Routes)", style: subTextStyle()),
-                            Row(
-                              children: [
-                                SvgPicture.asset("assets/svg/pending.svg"),
-                                const SizedBox(
-                                  width: 2,
-                                ),
-                                //Icon(Icons.note_add_outlined,size: 12,),
-                                Text("Not Started", style: statusTextStyle()),
-                              ],
-                            )
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PickHeaderNotStarted(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 102,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("10", style: countHeading()),
+                              Text("(6 Routes)", style: subTextStyle()),
+                              Row(
+                                children: [
+                                  SvgPicture.asset("assets/svg/pending.svg"),
+                                  const SizedBox(
+                                    width: 2,
+                                  ),
+                                  //Icon(Icons.note_add_outlined,size: 12,),
+                                  Text("Not Started", style: statusTextStyle()),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      height: 60,
-                      width: 102,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("10", style: countHeading()),
-                            Text("(6 Routes)", style: subTextStyle()),
-                            Row(
-                              children: [
-                                SvgPicture.asset("assets/svg/ongoing.svg"),
-                                Text("Pending", style: statusTextStyle()),
-                              ],
-                            )
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PickHeaderOngoing(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 102,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("10", style: countHeading()),
+                              Text("(6 Routes)", style: subTextStyle()),
+                              Row(
+                                children: [
+                                  SvgPicture.asset("assets/svg/ongoing.svg"),
+                                  Text("Ongoing", style: statusTextStyle()),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      height: 60,
-                      width: 102,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("10", style: countHeading()),
-                            Text("(8 Routes)", style: subTextStyle()),
-                            Row(
-                              children: [
-                                SvgPicture.asset("assets/svg/completed.svg"),
-                                const SizedBox(
-                                  width: 2,
-                                ),
-                                //Icon(Icons.note_add_outlined,size: 12,),
-                                Text("Completed", style: statusTextStyle()),
-                              ],
-                            )
-                          ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PickHeaderCompleted(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 102,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("10", style: countHeading()),
+                              Text("(8 Routes)", style: subTextStyle()),
+                              Row(
+                                children: [
+                                  SvgPicture.asset("assets/svg/completed.svg"),
+                                  const SizedBox(
+                                    width: 2,
+                                  ),
+                                  //Icon(Icons.note_add_outlined,size: 12,),
+                                  Text("Completed", style: statusTextStyle()),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     )
@@ -262,7 +297,7 @@ class PickingWidget extends StatelessWidget {
                                     width: 2,
                                   ),
                                   //Icon(Icons.note_add_outlined,size: 12,),
-                                  Text("Completed", style: statusTextStyle()),
+                                  Text("Rejected", style: statusTextStyle()),
                                 ],
                               )
                             ],

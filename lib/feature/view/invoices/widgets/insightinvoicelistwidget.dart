@@ -3,9 +3,8 @@ import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InvoiceHeaderListWidget extends StatelessWidget {
-  final bool isfromUser;
-  const InvoiceHeaderListWidget({super.key, required this.isfromUser});
+class InsightInvoiceListWidget extends StatelessWidget {
+  const InsightInvoiceListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +16,8 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => InvoiceDetailScreen(
-                        isfromUser: isfromUser,
+                      builder: (context) => const InvoiceDetailScreen(
+                        isfromUser: true,
                       ),
                     ),
                   );
@@ -49,45 +48,11 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                'A025206 - ',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '199525 - ',
-                                style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'Carrefour Hypermarket',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 12.sp),
-                                ),
-                              ),
-                            ],
+                          SizedBox(
+                            height: 6.h,
                           ),
                           Text(
-                            'CR | Route 101 | 16 May 2023 | 10:35',
+                            '16 May 2023 | 10:35',
                             style:
                                 kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
@@ -98,7 +63,10 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                       children: [
                         Text(
                           '120.00',
-                          style: kfontstyle(fontSize: 13.sp),
+                          style: kfontstyle(fontSize: 10.sp),
+                        ),
+                        SizedBox(
+                          height: 5.h,
                         ),
                         Container(
                           height: 14.h,

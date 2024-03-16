@@ -1,22 +1,22 @@
-import 'package:customer_connect/feature/view/LoadInDetail/load_detail_pending.dart';
+import 'package:customer_connect/feature/view/PickingDetail/picking_completed.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
 
-class PendingList extends StatelessWidget {
-  const PendingList({super.key});
+class Completed extends StatelessWidget {
+  const Completed({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.only(
-        left: 05, right: 05,
+      padding: const EdgeInsets.only(left: 05,right: 05,
         top: 10,
         //  bottom: 10
       ),
       shrinkWrap: true,
       itemCount: 6,
-      itemBuilder: (BuildContext context, int index) {
+      itemBuilder: (BuildContext context,int index)
+      {
         return Column(
           children: [
             SizedBox(
@@ -26,44 +26,44 @@ class PendingList extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LoadDetailPending(),
+                      builder: (context) => const PickingCompleted(),
                     ),
                   );
                 },
+
                 //titleAlignment: ListTileTitleAlignment.center,
                 //minVerticalPadding:5,
                 //minLeadingWidth: 50,
                 //titleAlignment:ListTileTitleAlignment.center,
-                horizontalTitleGap: 10,
+                horizontalTitleGap:10,
                 leading: Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xffA4C8E9),
-                    child: Image.asset(
-                      "assets/images/listicon.png",
-                      height: 20,
-                    ),
+                    child: Image.asset("assets/images/listicon.png",height: 20,),
+                    backgroundColor: const Color(0xff9AD694),
                   ),
                 ),
-                title: Text(
-                  "M086765",
-                  style: blueTextStyle(),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
+                title: Text("M086765",style: blueTextStyle(),),
+                subtitle:  Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 10.0,
+                  ),
                   child: RichText(
-                      text: TextSpan(
-                    text: "Route  101 ",
-                    style: subTitleTextStyle(),
-                  )),
+                      text: TextSpan(text: "Route  101 |",
+                          style: subTitleTextStyle(),
+                          children: [
+                            TextSpan(text: "16 June 2023 |",style: subTitleTextStyle()),
+                            TextSpan(text: "10.30",style: subTitleTextStyle())
+                          ]
+                      )),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 05
-                  // top: 10,bottom: 10
-                  ),
+              padding:const EdgeInsets.only(left: 10,right: 10,top: 05
+                // top: 10,bottom: 10
+              ),
               child: Divider(
                 color: Colors.grey.shade300,
               ),

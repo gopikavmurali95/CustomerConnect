@@ -1,14 +1,15 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arheaderlistwidget.dart';
+import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ssun_chart/pie_chart.dart';
 
-class ArCollectionScreen extends StatelessWidget {
-  final bool isFromUser;
-  const ArCollectionScreen({super.key, required this.isFromUser});
+class InsightsArCollection extends StatelessWidget {
+  const InsightsArCollection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class ArCollectionScreen extends StatelessWidget {
       body: Column(
         children: [
           Visibility(
-            visible: isFromUser,
+            visible: true,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
@@ -290,7 +291,7 @@ class ArCollectionScreen extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          const Expanded(child: ARHeaderListWidget()),
+          const Expanded(child: InsightArListWidget()),
           SizedBox(
             height: 10.sp,
           )
@@ -299,25 +300,3 @@ class ArCollectionScreen extends StatelessWidget {
     );
   }
 }
-
-List<Color> colorslist = [
-  const Color(0xffdf936e),
-  const Color(0xff9ce2f5),
-  const Color(0xffe6dd94),
-  const Color(0xff93e1b2)
-];
-/* final List<PieData> pies = [
-  PieData(value: 3, color: const Color(0xffdf936e)),
-  PieData(
-    value: 4,
-    color: const Color(0xff9ce2f5),
-  ),
-  PieData(
-    value: 3,
-    color: const Color(0xffe6dd94),
-  ),
-  PieData(
-    value: 2,
-    color: const Color(0xff93e1b2),
-  ),
-]; */

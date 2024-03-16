@@ -1,17 +1,18 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/SpecialPricing/Widgets/spheaderlist.dart';
 import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoadCompleted extends StatefulWidget {
-  const LoadCompleted({super.key});
+class SpecialPricingHeader extends StatefulWidget {
+  const SpecialPricingHeader({super.key});
 
   @override
-  State<LoadCompleted> createState() => _LoadCompletedState();
+  State<SpecialPricingHeader> createState() => _SpecialPricingHeaderState();
 }
 
-class _LoadCompletedState extends State<LoadCompleted> {
+class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Load In Completed",
+          "Special Pricing",
           style: appHeading(),
         ),
         actions: [
@@ -52,7 +53,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color:Color(0xff00000050),
                           blurRadius: 0.4,
                           spreadRadius: 0.2)
                     ]),
@@ -62,7 +63,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search promotions",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -92,15 +93,15 @@ class _LoadCompletedState extends State<LoadCompleted> {
                 //SizedBox(width: 05,),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  const EdgeInsets.only(left: 25.0, right: 20, top: 10),
                   child: Text(
-                    "Completed",
+                    "All",
                     style: countHeading(),
                   ),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                   child: Text(
                     "10",
                     style: countHeading(),
@@ -109,7 +110,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                 // SizedBox(width: ,),
               ],
             ),
-            const ListWidget(),
+            const SpPrHeaderList(),
           ],
         ),
       ),
