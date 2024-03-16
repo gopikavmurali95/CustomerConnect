@@ -1,20 +1,21 @@
-import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/PickingHeader/widgets/Ccompleted.dart';
-import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
+import 'package:customer_connect/constants/fonts.dart';
+//import 'package:customer_connect/feature/PickingHeader/widgets/ongoing.dart';
+import 'package:customer_connect/feature/view/PickingHeader/widgets/ongoing.dart';
+import 'package:customer_connect/feature/view/load/widgets/PendingList.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class PickHeaderCompleted extends StatefulWidget {
 
-  const PickHeaderCompleted({super.key});
+class PickHeaderOngoing extends StatefulWidget {
+
+  const PickHeaderOngoing({super.key});
 
   @override
-  State<PickHeaderCompleted> createState() => _PickHeaderCompletedState();
+  State<PickHeaderOngoing> createState() => _PickHeaderOngoingState();
 }
 
-class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
+class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
         //   width: 04,
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
-        title: Text("Picking Completed",style: appHeading(),
+        title: Text("Picking Ongoing",style: appHeading(),
         ),
         actions: [
           Padding(
@@ -85,19 +86,26 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                 //SizedBox(width: 05,),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0,right: 20,top: 10),
-                  child: Text("Completed",style: countHeading(),),
+                  child: Text("Ongoing",style: countHeading(),),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0,right: 20,top: 10),
                   child: Text("10",style: countHeading(),),
                 ),
                 // SizedBox(width: ,),
+
               ],
             ),
-            Completed(),
+
+            const OnGoing(),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+
