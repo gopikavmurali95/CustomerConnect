@@ -144,7 +144,7 @@ class CustomerItemList extends StatelessWidget {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(left: 20, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -154,6 +154,9 @@ class CustomerItemList extends StatelessWidget {
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.black54),
+                  ),
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Row(
                     children: [
@@ -165,7 +168,7 @@ class CustomerItemList extends StatelessWidget {
                             color: Colors.black54),
                       ),
                       SizedBox(
-                        width: 50.w,
+                        width: 40.w,
                       ),
                       Text(
                         'Price',
