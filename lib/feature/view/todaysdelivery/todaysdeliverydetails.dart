@@ -30,7 +30,7 @@ class TodaysDeliveryDetails extends StatelessWidget {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Order Details",
+          "Todays Delivery Details",
           style: appHeading(),
         ),
       ),

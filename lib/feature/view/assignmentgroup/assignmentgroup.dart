@@ -1,34 +1,34 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
+import 'package:customer_connect/feature/view/assignmentgroup/widgets/assignmentgrouplist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PromotionCustomer extends StatelessWidget {
-  const PromotionCustomer({super.key});
+class AssignmentGroup extends StatelessWidget {
+  const AssignmentGroup({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
+        leading: GestureDetector(
+          onTap: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
+          child: const Icon(
             Icons.arrow_back_ios_rounded,
             size: 20,
           ),
         ),
         title: Text(
-          "Promotion Customers",
+          "Special Pricing",
           style: appHeading(),
         ),
         bottom: PreferredSize(
-          preferredSize: Size(100, 120.h),
+          preferredSize: Size(100, 135.h),
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(
@@ -78,23 +78,21 @@ class PromotionCustomer extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            'Details',
-                            style: TextStyle(fontSize: 10.sp),
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          const Icon(
-                            Icons.keyboard_arrow_right,
-                            size: 18,
-                          )
-                        ],
-                      )
                     ],
                   ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Assignment Group: ',
+                      style: kfontstyle(fontSize: 12.sp),
+                    ),
+                    Text(
+                      ' 10025',
+                      style: kfontstyle(
+                          fontSize: 13.sp, fontWeight: FontWeight.w500),
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: 15.h,
@@ -117,7 +115,7 @@ class PromotionCustomer extends StatelessWidget {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search AR Collections",
+                          hintText: "Search Items",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -143,32 +141,28 @@ class PromotionCustomer extends StatelessWidget {
           ),
         ),
       ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Assigned Customers',
-                      style: countHeading(),
-                    ),
-                    Text(
-                      '13',
-                      style: countHeading(),
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Items',
+                    style: countHeading(),
+                  ),
+                  Text(
+                    '7',
+                    style: countHeading(),
+                  )
+                ],
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: 12.h,
               ),
-              const PromotionCustomerList(),
+              const AssignmentGroupList()
             ],
           ),
         ),

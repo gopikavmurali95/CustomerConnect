@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverylist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TodaysDelivery extends StatelessWidget {
@@ -85,37 +86,34 @@ class TodaysDelivery extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Todays Delivery',
-                        style: countHeading(),
-                      ),
-                      Text(
-                        '20',
-                        style: countHeading(),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: TodaysDeliveryList(),
-                  ),
-                ],
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "All invoices",
+                  style: countHeading(),
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "80",
+                  style: countHeading(),
+                ),
+              ),
+              // SizedBox(width: ,),
+            ],
           ),
-        ),
+          SizedBox(
+            height: 10.h,
+          ),
+          const Expanded(child: TodaysDeliveryList())
+        ],
       ),
     );
   }

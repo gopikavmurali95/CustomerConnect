@@ -5,7 +5,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dar
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
-import 'package:customer_connect/feature/view/promotions/promotionsscreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
