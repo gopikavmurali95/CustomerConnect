@@ -51,8 +51,8 @@ class GeoLocationListWidget extends StatelessWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30.w, vertical: 6),
                           child: InkWell(
                             onTap: () {},
                             child: Row(
@@ -81,8 +81,8 @@ class GeoLocationListWidget extends StatelessWidget {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30.w, vertical: 6),
                           child: InkWell(
                             onTap: () {},
                             child: Row(

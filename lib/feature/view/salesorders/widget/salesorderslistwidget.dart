@@ -14,9 +14,9 @@ class SalesOrdersListingWidget extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xffDB95B5),
+                    backgroundColor: const Color(0xffbadb95),
                     child: Image.asset(
-                      'assets/images/ar_li.png',
+                      'assets/images/delivery.png',
                       height: 20.h,
                       width: 20.w,
                     ),

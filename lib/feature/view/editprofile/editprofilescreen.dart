@@ -50,6 +50,7 @@ class EditProfileScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Card(
+        margin: const EdgeInsets.all(0),
         color: Colors.white,
         surfaceTintColor: Colors.white,
         elevation: 10,
@@ -57,7 +58,14 @@ class EditProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(0),
         ),
         shadowColor: Colors.grey,
-        child: SizedBox(
+        child: Container(
+          decoration: const BoxDecoration(boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                blurStyle: BlurStyle.outer,
+                blurRadius: 1,
+                offset: Offset(-5, 0))
+          ]),
           height: 50.h,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -67,6 +75,7 @@ class EditProfileScreen extends StatelessWidget {
                   flex: 2,
                   fit: FlexFit.tight,
                   child: MaterialButton(
+                    // height: 25.h,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                         side: const BorderSide(color: Colors.grey)),
@@ -91,6 +100,7 @@ class EditProfileScreen extends StatelessWidget {
                   flex: 2,
                   fit: FlexFit.tight,
                   child: MaterialButton(
+                    // height: 25.h,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

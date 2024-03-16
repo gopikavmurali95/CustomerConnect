@@ -1,6 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
-import 'package:customer_connect/feature/view/arcollection/widgets/arheaderlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:flutter/material.dart';
