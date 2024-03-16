@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/LoadInDetail/load_detail_rejected.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
@@ -21,6 +22,14 @@ class RejectedList extends StatelessWidget {
             SizedBox(
               height: 50,
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoadDetailRejected(),
+                    ),
+                  );
+                },
                 horizontalTitleGap:10,
                 leading: Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),

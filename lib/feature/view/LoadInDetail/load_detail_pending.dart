@@ -36,7 +36,7 @@ class LoadDetailPending extends StatelessWidget {
                       width: 60,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: Color(0xffECEFBE)),
+                          color: const Color(0xffECEFBE)),
                       child: const Center(
                           child: Text(
                         "Pending",
@@ -97,21 +97,21 @@ class LoadDetailPending extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(right: 160),
+                    padding: const EdgeInsets.only(right: 160),
                     child: Text(
                       "Items",
                       style: boxHeading(),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 50),
+                    padding: const EdgeInsets.only(left: 50),
                     child: Text(
                       "UOM",
                       style: boxHeading(),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: Text(
                       "Qty",
                       style: boxHeading(),
@@ -120,7 +120,7 @@ class LoadDetailPending extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ListView.separated(
@@ -163,7 +163,7 @@ class LoadDetailPending extends StatelessWidget {
                               "Cs",
                               style: subTitleTextStyle(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -181,7 +181,7 @@ class LoadDetailPending extends StatelessWidget {
                                 "2",
                                 style: subTitleTextStyle(),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -199,8 +199,8 @@ class LoadDetailPending extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 10),
+                return const Padding(
+                  padding: EdgeInsets.only(left: 15.0, right: 10),
                   child: Divider(),
                 );
               },

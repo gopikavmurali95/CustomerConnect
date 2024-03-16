@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/PickingHeader/widgets/not_started.dart';
 import 'package:customer_connect/feature/view/load/widgets/RejectedList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -95,7 +96,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
               ],
             ),
 
-            const  RejectedList(),
+            const  NotStarted(),
           ],
         ),
       ),

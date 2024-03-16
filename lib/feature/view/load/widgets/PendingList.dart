@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/LoadInDetail/load_detail_pending.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
@@ -21,6 +22,14 @@ class PendingList extends StatelessWidget {
             SizedBox(
               height: 50,
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoadDetailPending(),
+                    ),
+                  );
+                },
                 //titleAlignment: ListTileTitleAlignment.center,
                 //minVerticalPadding:5,
                 //minLeadingWidth: 50,

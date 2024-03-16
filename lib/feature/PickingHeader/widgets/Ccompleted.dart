@@ -1,10 +1,10 @@
-import 'package:customer_connect/feature/view/LoadInDetail/load_detail_completed.dart';
+import 'package:customer_connect/feature/view/PickingDetail/picking_completed.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
 
-class ListWidget extends StatelessWidget {
-  const ListWidget({super.key});
+class Completed extends StatelessWidget {
+  const Completed({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,11 @@ class ListWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LoadDetailCompleted(),
+                      builder: (context) => const PickingCompleted(),
                     ),
                   );
                 },
+
                 //titleAlignment: ListTileTitleAlignment.center,
                 //minVerticalPadding:5,
                 //minLeadingWidth: 50,
@@ -46,7 +47,7 @@ class ListWidget extends StatelessWidget {
                 title: Text("M086765",style: blueTextStyle(),),
                 subtitle:  Padding(
                   padding: const EdgeInsets.only(
-                      bottom: 10.0,
+                    bottom: 10.0,
                   ),
                   child: RichText(
                       text: TextSpan(text: "Route  101 |",

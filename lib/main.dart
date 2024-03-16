@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'feature/view/HomeScreen/homscreen.dart';
+import 'feature/SpecialPricing/Widgets/specialpricing.dart';
+import 'feature/SpecialPricing/Widgets/spheaderlist.dart';
+import 'feature/SpecialPricing/specialpricingheader.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: const SpecialPricing(),
       ),
     );
   }
