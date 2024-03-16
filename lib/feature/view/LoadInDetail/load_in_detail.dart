@@ -37,7 +37,7 @@ class LoadDetailPending extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.yellow.shade100),
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         "Pending",
                         style: TextStyle(fontSize: 10),
@@ -90,7 +90,7 @@ class LoadDetailPending extends StatelessWidget {
             itemCount: 5,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
-              return Row(
+              return const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(

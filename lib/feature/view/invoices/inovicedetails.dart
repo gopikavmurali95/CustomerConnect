@@ -46,7 +46,7 @@ class InvoiceDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Visibility(
+          /* Visibility(
             visible: isfromUser,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -115,7 +115,7 @@ class InvoiceDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ),
+          ), */
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(

@@ -3,9 +3,9 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransac
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
+import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
-import 'package:customer_connect/feature/view/promotions/promotionsscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PickingWidget(),
-            CustomerTransaction(),
-            SalesOrders(),
+            const PickingWidget(),
+            const CustomerTransaction(),
+            const SalesOrders(),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, bottom: 10),
               child: Row(
@@ -160,14 +160,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PromotionsScreen(),
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PromotionHeader()));
                       },
                       child: Container(
                         height: 50,

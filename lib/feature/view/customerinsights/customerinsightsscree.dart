@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customertransactionwidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/otheroptionswidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/profileinfowidget.dart';
+import 'package:customer_connect/feature/view/editprofile/editprofilescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -140,7 +141,13 @@ class CustomerInsightsScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 8),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const EditProfileScreen(),
+                              ));
+                        },
                         child: Row(
                           children: [
                             SvgPicture.asset(

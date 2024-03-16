@@ -1,7 +1,8 @@
+import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/totalorders/totalorderdetails.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TotalOrderList extends StatelessWidget {
   const TotalOrderList({super.key});
@@ -31,7 +32,7 @@ class TotalOrderList extends StatelessWidget {
                         height: 100,
                         width: 315,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CircleAvatar(
                               child: Image.asset(
@@ -39,7 +40,10 @@ class TotalOrderList extends StatelessWidget {
                                 height: 20,
                               ),
                             ),
-                            const Column(
+                            SizedBox(
+                              width: 15.w,
+                            ),
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -47,30 +51,21 @@ class TotalOrderList extends StatelessWidget {
                                   children: [
                                     Text(
                                       'AD025206',
-                                      style: TextStyle(
-                                          color: Color(0xff2C6B9E),
-                                          fontSize: 11),
+                                      style: blueTextStyle(),
                                     ),
                                     Text(
                                       '- Tromp, Muller and Mitchell',
-                                      style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500),
+                                      style: subTitleTextStyle(),
                                     ),
                                   ],
                                 ),
                                 Text(
                                   '199521 - Carrefour Hypermarket',
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w500),
+                                  style: subTitleTextStyle(),
                                 ),
                                 Text(
                                   'Route 101 | Salesman 101 | 16 May 2023 1 | 10:35',
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
+                                  style: statusTextStyle(),
                                 )
                               ],
                             ),

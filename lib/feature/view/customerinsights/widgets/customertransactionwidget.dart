@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
-import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
+import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
+import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
+import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -161,9 +162,7 @@ class CustomerTraansactionWidget extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const InvoiceHeaderScreen(
-                              isfromUser: true,
-                            ),
+                            builder: (context) => const InsightsInvoiceScreen(),
                           ),
                         );
                       },
@@ -185,9 +184,8 @@ class CustomerTraansactionWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const ArCollectionScreen(
-                                isFromUser: true,
-                              ),
+                              builder: (context) =>
+                                  const InsightsArCollection(),
                             ));
                       },
                       child: const CusTransNavWIdget(
@@ -204,13 +202,22 @@ class CustomerTraansactionWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Flexible(
+                  Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: CusTransNavWIdget(
-                      title: 'Sales Orders',
-                      imagepath: 'assets/images/order.png',
-                      count: '4',
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SalesrdersScreen(),
+                            ));
+                      },
+                      child: const CusTransNavWIdget(
+                        title: 'Sales Orders',
+                        imagepath: 'assets/images/order.png',
+                        count: '4',
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -219,10 +226,13 @@ class CustomerTraansactionWidget extends StatelessWidget {
                   const Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: CusTransNavWIdget(
-                      title: 'Service Jobs',
-                      imagepath: 'assets/images/sj.png',
-                      count: '6',
+                    child: Visibility(
+                      visible: false,
+                      child: CusTransNavWIdget(
+                        title: 'Service Jobs',
+                        imagepath: 'assets/images/sj.png',
+                        count: '6',
+                      ),
                     ),
                   )
                 ],

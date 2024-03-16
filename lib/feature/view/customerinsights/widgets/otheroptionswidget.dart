@@ -1,7 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.dart';
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
-import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
+import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
+import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,9 +24,7 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const OutstandingHeaderScreen(
-                        isfromUser: true,
-                      ),
+                      builder: (context) => const InsghtsOutStandingScreen(),
                     ),
                   );
                 },
@@ -63,14 +63,14 @@ class OtherOptionsWidget extends StatelessWidget {
               fit: FlexFit.tight,
               child: InkWell(
                 onTap: () {
-                  /*     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const InvoiceHeaderScreen(
-                              isfromUser: false,
-                            ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PromotionHeader(
+                          // isfromUser: false,
                           ),
-                        ); */
+                    ),
+                  );
                 },
                 child: const OtherOptionsTilesWideget(
                   imgpath: 'assets/images/promo.png',
@@ -83,14 +83,14 @@ class OtherOptionsWidget extends StatelessWidget {
               fit: FlexFit.tight,
               child: InkWell(
                 onTap: () {
-                  /*     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const InvoiceHeaderScreen(
-                              isfromUser: false,
-                            ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CustomerItemList(
+                          // isfromUser: false,
                           ),
-                        ); */
+                    ),
+                  );
                 },
                 child: const OtherOptionsTilesWideget(
                   imgpath: 'assets/images/itemlist.png',

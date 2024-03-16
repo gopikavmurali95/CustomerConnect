@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverdetaillist.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TodaysDeliveryDetails extends StatelessWidget {
   const TodaysDeliveryDetails({super.key});
@@ -9,7 +10,10 @@ class TodaysDeliveryDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: GestureDetector(
           onTap: () {
@@ -40,11 +44,11 @@ class TodaysDeliveryDetails extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 70,
+                  height: 80,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
@@ -54,22 +58,20 @@ class TodaysDeliveryDetails extends StatelessWidget {
                               Text(
                                 'MO86764',
                                 style: TextStyle(
-                                    color: Color(0xff2C6B9E),
-                                    fontSize: 12,
+                                    color: const Color(0xff2C6B9E),
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w500),
                               ),
                               Row(
                                 children: [
                                   Text(
                                     'AD025206',
-                                    style: TextStyle(
-                                        color: Color(0xff2C6B9E),
-                                        fontSize: 11.5),
+                                    style: blueTextStyle(),
                                   ),
                                   Text(
                                     '- Tromp, Muller and Mitchell',
                                     style: TextStyle(
-                                        fontSize: 11,
+                                        fontSize: 12.sp,
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ],
@@ -77,12 +79,13 @@ class TodaysDeliveryDetails extends StatelessWidget {
                               Text(
                                 '199521 - Carrefour Hypermarket',
                                 style: TextStyle(
-                                    fontSize: 11, fontWeight: FontWeight.w500),
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 'Route 101 | Salesman 101 | 16 May 2023 1 | 10:35',
                                 style: TextStyle(
-                                    fontSize: 11,
+                                    fontSize: 9.sp,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.grey),
                               )

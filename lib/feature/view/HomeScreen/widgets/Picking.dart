@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
