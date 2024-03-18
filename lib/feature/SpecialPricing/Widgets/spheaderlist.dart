@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
+import '../../view/LoadInDetail/load_detail_pending.dart';
 
 class SpPrHeaderList extends StatelessWidget {
   const SpPrHeaderList({super.key});
@@ -26,12 +27,12 @@ class SpPrHeaderList extends StatelessWidget {
               child: ListTile(
 
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const LoadDetailPending(),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoadDetailPending(),
+                    ),
+                  );
                 },
                 titleAlignment: ListTileTitleAlignment.center,
                 minVerticalPadding:5,
