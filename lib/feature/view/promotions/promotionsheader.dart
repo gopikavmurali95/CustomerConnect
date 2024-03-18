@@ -1,8 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
+import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -92,7 +92,7 @@ class PromotionHeader extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 15.h,
+                  height: 25.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,17 +108,18 @@ class PromotionHeader extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 10.h,
                 ),
                 ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 13,
+                    itemCount: 7,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
                           SizedBox(
-                            height: 75,
+                            //color: Colors.red,
+                            height: 60,
                             width: double.infinity,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,20 +175,29 @@ class PromotionHeader extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Details',
-                                      style: TextStyle(fontSize: 10.sp),
-                                    ),
-                                    SizedBox(
-                                      width: 5.w,
-                                    ),
-                                    const Icon(
-                                      Icons.keyboard_arrow_right,
-                                      size: 18,
-                                    )
-                                  ],
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const PromotionDetails()));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Details',
+                                        style: TextStyle(fontSize: 10.sp),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      const Icon(
+                                        Icons.keyboard_arrow_right,
+                                        size: 18,
+                                      )
+                                    ],
+                                  ),
                                 )
                               ],
                             ),

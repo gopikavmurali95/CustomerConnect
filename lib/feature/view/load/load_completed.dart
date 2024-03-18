@@ -109,7 +109,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                 // SizedBox(width: ,),
               ],
             ),
-            ListWidget(),
+            const ListWidget(),
           ],
         ),
       ),

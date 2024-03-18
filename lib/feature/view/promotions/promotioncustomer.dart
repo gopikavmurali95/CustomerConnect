@@ -147,11 +147,11 @@ class PromotionCustomer extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Row(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -164,12 +164,12 @@ class PromotionCustomer extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const PromotionCustomerList(),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const PromotionCustomerList(),
+            ],
           ),
         ),
       ),

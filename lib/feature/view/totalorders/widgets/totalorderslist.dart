@@ -35,8 +35,9 @@ class TotalOrderList extends StatelessWidget {
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CircleAvatar(
+                              backgroundColor: const Color(0xffbadb95),
                               child: Image.asset(
-                                "assets/images/listicon.png",
+                                "assets/images/delivery.png",
                                 height: 20,
                               ),
                             ),

@@ -9,107 +9,113 @@ class TodaysDeliveryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const TodaysDeliveryDetails()));
-      },
-      child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const TodaysDeliveryDetails()));
-                  },
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          width: 315,
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView.separated(
+          itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TodaysDeliveryDetails(),
+                    ),
+                  );
+                },
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: const Color(0xffbadb95),
+                      child: Image.asset(
+                        "assets/images/delivery.png",
+                        height: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'M076876',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              color: const Color(0xff2C6B9E),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Row(
                             children: [
-                              CircleAvatar(
-                                child: Image.asset(
-                                  "assets/images/listicon.png",
-                                  height: 20,
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  'Tromp, Muller and Mitchell',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 15.w,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'MO86764',
-                                    style: TextStyle(
-                                        color: const Color(0xff2C6B9E),
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'AD025206',
-                                        style: blueTextStyle(),
-                                      ),
-                                      Text(
-                                        '- Tromp, Muller and Mitchell',
-                                        style: subTitleTextStyle(),
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    '199521 - Carrefour Hypermarket',
-                                    style: subTitleTextStyle(),
-                                  ),
-                                  Text(
-                                    'Route 101 | Salesman 101 | 16 May 2023 1 | 10:35',
-                                    style: subTextStyle(),
-                                  )
-                                ],
                               ),
                             ],
                           ),
-                        ),
-                        Container(
-                          height: 20,
-                          width: 25,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffBDF1B7),
-                            borderRadius: BorderRadius.circular(8.0),
+                          Row(
+                            children: [
+                              Text(
+                                '199525 - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'Carrefour Hypermarket',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kfontstyle(fontSize: 12.sp),
+                                ),
+                              ),
+                            ],
                           ),
-                          child: const Center(
-                              child: Text(
-                            'DE',
-                            style: TextStyle(fontSize: 11),
-                          )),
-                        ),
-                      ],
+                          Text(
+                            'Route 101 | Salesman 101 | 16 May 2023 | 10:35',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    Column(
+                      children: [
+                        Container(
+                          height: 14.h,
+                          width: 30.w,
+                          decoration: BoxDecoration(
+                              color: index % 2 == 0
+                                  ? const Color(0xffe3f7e2)
+                                  : const Color(0xfff7f4e2),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              index % 2 == 0 ? 'DE' : 'PE',
+                              style: kfontstyle(
+                                  fontSize: 10.sp,
+                                  color: const Color(0xff413434)),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
-                const Divider()
-              ],
-            );
-          },
-          //separatorBuilder: (context, index) => Divider(),
-          itemCount: 3),
+              ),
+          separatorBuilder: (context,
+                  index) => /* const SizedBox(
+                height: 10,
+              ) */
+              Divider(
+                color: Colors.grey[300],
+              ),
+          itemCount: 10),
     );
   }
 }

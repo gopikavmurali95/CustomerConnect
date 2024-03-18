@@ -51,7 +51,10 @@ class PromotionCustomerList extends StatelessWidget {
                   ],
                 ),
               ),
-              const Divider()
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Divider(),
+              )
             ],
           );
         });

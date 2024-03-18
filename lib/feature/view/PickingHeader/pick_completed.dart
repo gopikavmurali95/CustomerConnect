@@ -1,5 +1,4 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/PickingHeader/widgets/Ccompleted.dart';
 import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
 import 'package:flutter/material.dart';
@@ -110,7 +109,7 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                 // SizedBox(width: ,),
               ],
             ),
-            Completed(),
+            const ListWidget(),
           ],
         ),
       ),

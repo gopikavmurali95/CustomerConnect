@@ -51,7 +51,9 @@ class CustomerTransaction extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const InvoiceHeaderScreen(),
+                            builder: (context) => const InvoiceHeaderScreen(
+                              isfromUser: false,
+                            ),
                           ),
                         );
                       },
@@ -103,7 +105,9 @@ class CustomerTransaction extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ArCollectionScreen(),
+                            builder: (context) => const ArCollectionScreen(
+                              isFromUser: false,
+                            ),
                           ),
                         );
                       },

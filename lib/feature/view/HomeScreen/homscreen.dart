@@ -1,12 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/SpecialPricing/specialpricingheader.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
+import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
-import 'package:customer_connect/feature/view/promotions/promotionsscreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -23,16 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         titleSpacing: 1,
-        leading: InkWell(
-          onTap: (){
-            Navigator.pop(context);
-          },
-          child: SvgPicture.asset(
-            "assets/svg/homemenu.svg",
-            fit: BoxFit.scaleDown,
-            height: 20,
-          ),
-        ),
+        leading: /* SvgPicture.asset(
+          "assets/svg/homemenu.svg",
+          fit: BoxFit.scaleDown,
+          height: 20,
+        ) */
+            const HomePopUPMenuButton(),
         title: SvgPicture.asset(
           "assets/svg/logo_ccsfa.svg",
           height: 30,
@@ -47,9 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PickingWidget(),
-            CustomerTransaction(),
-            SalesOrders(),
+            const PickingWidget(),
+            const CustomerTransaction(),
+            const SalesOrders(),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, bottom: 10),
               child: Row(
@@ -118,46 +114,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 12,
                   ),
                   Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SpecialPricingHeader(),
-                            ));
-                      },
-                      child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/file.png",
-                                height: 20,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Special Pricing",
-                                style: headTextStyle(),
-                              )
-                            ],
-                          ),
+                    child: Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width / 2,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade300,
+                                spreadRadius: 1,
+                                blurRadius: 1)
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10.0, top: 10, bottom: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/file.png",
+                              height: 20,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Special Pricing",
+                              style: headTextStyle(),
+                            )
+                          ],
                         ),
                       ),
                     ),
@@ -224,11 +211,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const OutstandingHeaderScreen(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OutstandingHeaderScreen(
+                              isfromUser: false,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         height: 50,

@@ -1,10 +1,9 @@
+// ignore_for_file: file_names
 
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../constants/fonts.dart';
@@ -66,8 +65,8 @@ class PickingWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,8 +105,8 @@ class PickingWidget extends StatelessWidget {
                           color: Colors.white,
                         ),
                         child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,8 +140,8 @@ class PickingWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
+                          padding: const EdgeInsets.only(
+                              left: 8.0, top: 3, bottom: 3),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,

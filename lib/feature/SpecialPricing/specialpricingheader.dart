@@ -1,6 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/SpecialPricing/Widgets/spheaderlist.dart';
-import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -53,7 +52,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color:Color(0xff00000050),
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
                           spreadRadius: 0.2)
                     ]),
@@ -93,7 +92,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                 //SizedBox(width: 05,),
                 Padding(
                   padding:
-                  const EdgeInsets.only(left: 25.0, right: 20, top: 10),
+                      const EdgeInsets.only(left: 25.0, right: 20, top: 10),
                   child: Text(
                     "All",
                     style: countHeading(),
@@ -101,7 +100,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                   child: Text(
                     "10",
                     style: countHeading(),

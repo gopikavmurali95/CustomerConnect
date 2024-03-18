@@ -7,7 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ssun_chart/pie_chart.dart';
 
 class OutstandingHeaderScreen extends StatelessWidget {
-  const OutstandingHeaderScreen({super.key});
+  final bool isfromUser;
+
+  const OutstandingHeaderScreen({super.key, required this.isfromUser});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,81 @@ class OutstandingHeaderScreen extends StatelessWidget {
             ),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: Size(100, 170.h),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+      ),
+      body: Column(
+        children: [
+          Visibility(
+            visible: isfromUser,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        color: const Color(0xfffee8e0),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'A025206 - ',
+                              style: kfontstyle(
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                overflow: TextOverflow.ellipsis,
+                                'Tromp, Muller and Mitchell',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '199525 - ',
+                              style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff413434)),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Carrefour Hypermarket',
+                                overflow: TextOverflow.ellipsis,
+                                style: kfontstyle(fontSize: 12.sp),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Virtual | Supermarket | Dubai ',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
                 Container(
@@ -173,10 +246,6 @@ class OutstandingHeaderScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-      body: Column(
-        children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
