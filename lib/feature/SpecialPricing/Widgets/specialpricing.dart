@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants/fonts.dart';
+import '../specialpricingcustomer.dart';
 
 class SpecialPricing extends StatefulWidget {
   const SpecialPricing({super.key});
@@ -15,44 +17,117 @@ class _SpecialPricingState extends State<SpecialPricing> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.2,
-        leading: const Icon(Icons.arrow_back_ios_rounded,size: 20,),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+           icon: Icon(Icons.arrow_back_ios_rounded),
+
+        ),
         title: Text("Special Pricing",style: appHeading(),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size(100, 100),
+          preferredSize: const Size(200, 110),
           child: Column(
+
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left:20,bottom:5.0,right: 10),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Color(0xffA4C8E9),
-                      child: Text("RG",style: TextStyle(color: Colors.white),),
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+              Padding(
+                padding: const EdgeInsets.only(left: 15,right: 10),
+                child: SizedBox(
+                  //color: Colors.red,
+                  height: 60,
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                               "Special Pricing 0${1}",
-                               style: blueTextStyle(),
-                             ),
-                      Text("21 Feb 2021 to 24 Feb 2024 ",style:subTitleTextStyle(),),
-                      Text("PR12001",style: subTitleTextStyle(),)
+                      SizedBox(
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor:
+                              const Color(0xffB3DAF7),
+                              child: Center(
+                                child: Text(
+                                  'AL',
+                                  style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15.w,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const SpecialPricing()));
+                              },
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Special Pricing 01',
+                                    style: blueTextStyle(),
+                                  ),
+                                  Text(
+                                    '21 Feb 2021 to 24 Feb 2021',
+                                    style: subTextStyle(),
+                                  ),
+                                  Text(
+                                    'PR10021',
+                                    style: subTextStyle(),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        // onTap: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) =>
+                        //           const PromotionDetails()));
+                        // },
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const SpecialPricingCustomer()));
+                              },
+                              child: Text(
+                                'Customer',
+                                style: TextStyle(fontSize: 10.sp),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 18,
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                  const SizedBox(width: 70,),
-                  const Row(
-                    children: [
-                      Text("Customer",style: TextStyle(fontSize: 12),),
-                      Icon(Icons.keyboard_arrow_right),
-                    ],
-                  )
-                ],
+                ),
               ),
               // Container(
               //   padding: EdgeInsets.only(bottom: 10),
@@ -155,7 +230,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left:40,right: 110),
+                    padding: const EdgeInsets.only(left:10,right: 110),
                     child: Text("Items",style: boxHeading(),),
                   ),
                   Padding(
@@ -164,11 +239,11 @@ class _SpecialPricingState extends State<SpecialPricing> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Sys Qty",style: boxHeading(),),
+                    child: Text("Std Price",style: boxHeading(),),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Pkd Qty",style: boxHeading(),),
+                    child: Text("Spcl Price",style: boxHeading(),),
                   ),
                 ],
               ),
@@ -188,22 +263,20 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           padding: const EdgeInsets.only(left: 15.0,top:2),
                           child: Container(
                             height: 55,
-                            width: 200,
+                            width: 180,
                             color: Colors.white,
                             child:  Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("400478754",style: loadTextStyle()),
-                                Text("How are you Pasta 500g",style: subTitleTextStyle(),),
+                                Text("Divella forfalle pasta 500g",style: subTitleTextStyle(),),
                                 Text("Offer Pack",style: subTitleTextStyle(),),
                               ],
                             ),
                           ),
                         ),
                         Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Cs",style: subTitleTextStyle(),),
                             const SizedBox(height: 5,),

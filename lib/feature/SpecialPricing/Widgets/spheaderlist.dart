@@ -1,7 +1,11 @@
 
+import 'package:customer_connect/feature/SpecialPricing/Widgets/specialpricing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
+import '../../view/LoadInDetail/load_detail_pending.dart';
+import '../specialpricingcustomer.dart';
 
 class SpPrHeaderList extends StatelessWidget {
   const SpPrHeaderList({super.key});
@@ -10,7 +14,7 @@ class SpPrHeaderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.only(
-        left: 05, right: 05,
+        left: 20, right: 10,
         //top: 10,
         //  bottom: 10
       ),
@@ -19,54 +23,98 @@ class SpPrHeaderList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return Column(
           children: [
-            Container(
-              padding: const EdgeInsets.only(bottom: 10),
+            SizedBox(
+              //color: Colors.red,
               height: 60,
-              color: Colors.white,
-              child: ListTile(
-
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const LoadDetailPending(),
-                  //   ),
-                  // );
-                },
-                titleAlignment: ListTileTitleAlignment.center,
-                minVerticalPadding:5,
-                minLeadingWidth: 50,
-                //titleAlignment:ListTileTitleAlignment.center,
-                horizontalTitleGap: 10,
-                leading: Padding(
-                  padding: const EdgeInsets.only(bottom:5.0,),
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundColor: const Color(0xffA4C8E9),
-                    child: Image.asset(
-                      "assets/images/listicon.png",
-                      height: 20,
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor:
+                          const Color(0xffB3DAF7),
+                          child: Center(
+                            child: Text(
+                              'AL',
+                              style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15.w,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const SpecialPricing()));
+                          },
+                          child: Column(
+                            mainAxisAlignment:
+                            MainAxisAlignment.center,
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Special Pricing 0${index+1}',
+                                style: blueTextStyle(),
+                              ),
+                              Text(
+                                '21 Feb 2021 to 24 Feb 2021',
+                                style: subTextStyle(),
+                              ),
+                              Text(
+                                'PR10021',
+                                style: subTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                title: Text(
-                  "Special Pricing 0${index+1}",
-                  style: blueTextStyle(),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0,),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("21 Feb 2021 to 24 Feb 2024 ",style:subTitleTextStyle(),),
-                      Text("PR12001",style: subTitleTextStyle(),)
-                    ],
+                  GestureDetector(
+                    // onTap: () {
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //           builder: (context) =>
+                    //           const PromotionDetails()));
+                    // },
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const SpecialPricing()));
+                          },
+                          child: Text(
+                            'Details',
+                            style: TextStyle(fontSize: 10.sp),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        const Icon(
+                          Icons.keyboard_arrow_right,
+                          size: 18,
+                        )
+                      ],
+                    ),
                   )
-                ),
-                trailing: const Text("Details   >",style: TextStyle(
-                  fontSize: 10,color: Colors.grey
-                ),),
+                ],
               ),
             ),
             Padding(

@@ -15,9 +15,11 @@ class _PickingOgoingState extends State<PickingOgoing> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.2,
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 20,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_rounded),
         ),
         title: Text(
           "Picking Detail",
@@ -150,7 +152,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                               children: [
                                 Text("400478754", style: loadTextStyle()),
                                 Text(
-                                  "How are you Pasta 500g",
+                                  "How are the Pasta 500g",
                                   style: subTitleTextStyle(),
                                 ),
                                 Text(

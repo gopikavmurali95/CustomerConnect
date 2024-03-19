@@ -8,6 +8,8 @@ import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../custinsightpromotion/custinsightpromotion.dart';
+
 class OtherOptionsWidget extends StatelessWidget {
   const OtherOptionsWidget({super.key});
 
@@ -67,7 +69,7 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PromotionHeader(
+                      builder: (context) => const CustomerInsightPromotion(
                           // isfromUser: false,
                           ),
                     ),

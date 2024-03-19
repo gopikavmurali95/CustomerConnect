@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/fonts.dart';
 
-class PickingNotStarted extends StatefulWidget {
-  const PickingNotStarted({super.key});
+class PickingDetailNotStarted extends StatefulWidget {
+  const PickingDetailNotStarted({super.key});
 
   @override
-  State<PickingNotStarted> createState() => _PickingNotStartedState();
+  State<PickingDetailNotStarted> createState() => _PickingDetailNotStartedState();
 }
 
-class _PickingNotStartedState extends State<PickingNotStarted> {
+class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.2,
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 20,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         title: Text(
           "Picking Detail",

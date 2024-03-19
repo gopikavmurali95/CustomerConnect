@@ -10,9 +10,12 @@ class LoadDetailCompleted extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.2,
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 20,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         title: Text(
           "Load In Detail",
@@ -22,6 +25,7 @@ class LoadDetailCompleted extends StatelessWidget {
           preferredSize: const Size(100, 100),
           child: Column(
             children: [
+
               ListTile(
                   title: Text(
                     "M086765",
@@ -38,7 +42,7 @@ class LoadDetailCompleted extends StatelessWidget {
                       ])),
                   trailing: Container(
                       height: 25,
-                      width: 65,
+                      width: 60,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: const Color(0xffBDF1B7)),
@@ -103,7 +107,7 @@ class LoadDetailCompleted extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 160),
+                    padding: const EdgeInsets.only(right: 140),
                     child: Text(
                       "Items",
                       style: boxHeading(),
@@ -178,8 +182,44 @@ class LoadDetailCompleted extends StatelessWidget {
                             ),
                           ],
                         ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "2",
+                              style: subTitleTextStyle(),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "1",
+                              style: subTitleTextStyle(),
+                            ),
+                          ],
+                        ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 5, right: 20.0),
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Cs",
+                                style: subTitleTextStyle(),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "Cs",
+                                style: subTitleTextStyle(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0, right: 10.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -197,6 +237,7 @@ class LoadDetailCompleted extends StatelessWidget {
                             ],
                           ),
                         ),
+
                         //  SizedBox(width: 0,)
                       ],
                     ),

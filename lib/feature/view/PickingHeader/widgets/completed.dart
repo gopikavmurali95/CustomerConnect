@@ -1,10 +1,11 @@
-import 'package:customer_connect/feature/view/PickingDetail/picking_ongoing.dart';
+import 'package:customer_connect/feature/view/LoadInDetail/load_detail_completed.dart';
+import 'package:customer_connect/feature/view/PickingDetail/picking_completed.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/fonts.dart';
+import '../../../../constants/fonts.dart';
 
-class OnGoing extends StatelessWidget {
-  const OnGoing({super.key});
+class Completed extends StatelessWidget {
+  const Completed({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class OnGoing extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PickingOgoing(),
+                      builder: (context) => const PickingCompleted(),
                     ),
                   );
                 },
@@ -39,7 +40,7 @@ class OnGoing extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xffECEFBE),
+                    backgroundColor: const Color(0xff9AD694),
                     child: Image.asset(
                       "assets/images/listicon.png",
                       height: 20,
@@ -47,27 +48,29 @@ class OnGoing extends StatelessWidget {
                   ),
                 ),
                 title: Text(
-                  "M086765",
+                  "M0867658",
                   style: blueTextStyle(),
                 ),
                 subtitle: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
+                  padding: const EdgeInsets.only(
+                    bottom: 10.0,
+                  ),
                   child: RichText(
-                      text: TextSpan(text: "Route 101 |",
+                      text: TextSpan(
+                          text: "Route  101 |",
                           style: subTitleTextStyle(),
                           children: [
-                            TextSpan(text: "16 July 2023 |",style: subTitleTextStyle()),
-
-                            TextSpan(text: "10.30",style: subTitleTextStyle())
-                          ]
-                      )),
+                            TextSpan(
+                                text: "16 June 2024 |", style: subTitleTextStyle()),
+                            TextSpan(text: "10.30", style: subTitleTextStyle())
+                          ])),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, top: 05
-                  // top: 10,bottom: 10
-                  ),
+                // top: 10,bottom: 10
+              ),
               child: Divider(
                 color: Colors.grey.shade300,
               ),
