@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransac
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
+import 'package:customer_connect/feature/view/notification/notification.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
@@ -34,7 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 30,
         ),
         actions: [
-          SvgPicture.asset("assets/svg/notification.svg"),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
+              },
+              child: SvgPicture.asset("assets/svg/notification.svg")),
           const SizedBox(
             width: 10,
           ),

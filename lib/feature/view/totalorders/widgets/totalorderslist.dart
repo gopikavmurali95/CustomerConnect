@@ -90,7 +90,9 @@ class TotalOrderList extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider()
+              Divider(
+                color: Colors.grey.shade300,
+              )
             ],
           );
         },

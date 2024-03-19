@@ -10,16 +10,18 @@ class PromotionDetailsList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return const Column(
+          return Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Text('1'), Text('10'), Text('3')],
                 ),
               ),
-              Divider()
+              Divider(
+                color: Colors.grey.shade300,
+              )
             ],
           );
         });

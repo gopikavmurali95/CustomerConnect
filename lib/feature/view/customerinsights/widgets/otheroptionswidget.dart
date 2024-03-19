@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/customerinsightspecialpricing/customerinsightspecialpricing.dart';
 import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.dart';
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
@@ -39,14 +40,14 @@ class OtherOptionsWidget extends StatelessWidget {
               fit: FlexFit.tight,
               child: InkWell(
                 onTap: () {
-                  /*     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const InvoiceHeaderScreen(
-                              isfromUser: false,
-                            ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CustomerInsightSpecialPricing(
+                          //isfromUser: false,
                           ),
-                        ); */
+                    ),
+                  );
                 },
                 child: const OtherOptionsTilesWideget(
                   imgpath: 'assets/images/spec.png',

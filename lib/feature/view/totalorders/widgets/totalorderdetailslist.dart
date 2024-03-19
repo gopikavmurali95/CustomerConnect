@@ -111,9 +111,11 @@ class TotalOrderDetailsList extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return const Padding(
-          padding: EdgeInsets.only(left: 15.0, right: 10),
-          child: Divider(),
+        return Padding(
+          padding: const EdgeInsets.only(left: 15.0, right: 10),
+          child: Divider(
+            color: Colors.grey.shade300,
+          ),
         );
       },
     );
