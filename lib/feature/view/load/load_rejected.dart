@@ -16,9 +16,12 @@ class _LoadRejectedState extends State<LoadRejected> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.5,
-        leading: const Icon(
-          Icons.arrow_back_ios_rounded,
-          size: 20,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         // leading: SizedBox(
         //   height: 05,

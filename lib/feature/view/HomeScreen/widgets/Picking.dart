@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../constants/fonts.dart';
 import '../../PickingHeader/pick_completed.dart';
 import '../../PickingHeader/pick_ongoing.dart';
-import '../../PickingHeader/pick_pending.dart';
+import '../../PickingHeader/pick_not_started_header.dart';
 
 class PickingWidget extends StatelessWidget {
   const PickingWidget({super.key});

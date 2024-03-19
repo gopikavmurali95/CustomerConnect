@@ -87,9 +87,19 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                       ),
                       Row(
                         children: [
-                          Text(
-                            'Details',
-                            style: TextStyle(fontSize: 10.sp),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SpecialPricing(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Details',
+                              style: TextStyle(fontSize: 10.sp),
+                            ),
                           ),
                           SizedBox(
                             width: 5.w,

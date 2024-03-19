@@ -2,6 +2,8 @@ import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'feature/view/customerinsights/customerinsightsscree.dart';
+
 void main() {
   runApp(const MyApp());
 }

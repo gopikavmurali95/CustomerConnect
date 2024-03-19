@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants/fonts.dart';
 
-class ListWidget extends StatelessWidget {
-  const ListWidget({super.key});
+class CompletedList extends StatelessWidget {
+  const CompletedList({super.key});
 
   @override
   Widget build(BuildContext context) {

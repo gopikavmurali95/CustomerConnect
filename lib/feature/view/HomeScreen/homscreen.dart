@@ -10,6 +10,8 @@ import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../SpecialPricing/specialpricingheader.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -114,37 +116,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 12,
                   ),
                   Expanded(
-                    child: Container(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width / 2,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade300,
-                                spreadRadius: 1,
-                                blurRadius: 1)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10.0, top: 10, bottom: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "assets/images/file.png",
-                              height: 20,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Special Pricing",
-                              style: headTextStyle(),
-                            )
-                          ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SpecialPricingHeader()));
+                      },
+
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/file.png",
+                                height: 20,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Special Pricing",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

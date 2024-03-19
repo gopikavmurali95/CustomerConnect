@@ -10,7 +10,7 @@ class SPCustomerList extends StatelessWidget {
     return ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 8,
         itemBuilder: (context, index) {
           return Column(
             children: [
