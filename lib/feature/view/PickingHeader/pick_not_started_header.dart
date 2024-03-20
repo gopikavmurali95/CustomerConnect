@@ -1,7 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/not_started.dart';
-import 'package:customer_connect/feature/view/load/widgets/RejectedList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,8 +21,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_rounded,),
-
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+          ),
         ),
         // leading: SizedBox(
         //   height: 05,

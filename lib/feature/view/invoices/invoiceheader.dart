@@ -198,11 +198,11 @@ class InvoiceHeaderScreen extends StatelessWidget {
             children: [
               Text(
                 'Total Invoice Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
               ),
               Text(
                 '1200.00',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
               )
             ],
           ),
