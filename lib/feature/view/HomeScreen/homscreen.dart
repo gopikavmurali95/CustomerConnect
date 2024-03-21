@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/customerinsights/customersscreen.d
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../SpecialPricing/specialpricingheader.dart';
@@ -73,96 +74,104 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CustomersScren(),
-                            ));
-                      },
-                      child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/customer.png",
-                                height: 20,
-                              ),
-                              // SvgPicture.asset("assets/images/os.png",height: 20,
-                              //   fit: BoxFit.scaleDown,),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Customer Insights",
-                                style: headTextStyle(),
-                              )
-                            ],
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CustomersScren(),
+                              ));
+                        },
+                        child: Container(
+                          height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10.0, top: 10, bottom: 10, right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/customer.png",
+                                  height: 15.h,
+                                ),
+                                // SvgPicture.asset("assets/images/os.png",height: 20,
+                                //   fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Customer Insights",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 10.w,
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SpecialPricingHeader()));
-                      },
-                      child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/file.png",
-                                height: 20,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Special Pricing",
-                                style: headTextStyle(),
-                              )
-                            ],
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SpecialPricingHeader()));
+                        },
+                        child: Container(
+                          height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 10.0, top: 10, bottom: 10, right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/file.png",
+                                  height: 15.h,
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Special Pricing",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -189,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       child: Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -208,10 +217,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Image.asset(
                                 "assets/images/pro.png",
-                                height: 20,
+                                height: 15.h,
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Promotions",
@@ -223,8 +232,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Expanded(
                     child: InkWell(
@@ -240,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       child: Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -259,11 +268,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Image.asset(
                                 "assets/images/os.png",
-                                height: 20,
+                                height: 15.h,
                               ),
                               // fit: BoxFit.scaleDown,),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Outstanding",
@@ -285,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: Container(
                       height: 50,
-                      width: 150,
+                      // width: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(10),

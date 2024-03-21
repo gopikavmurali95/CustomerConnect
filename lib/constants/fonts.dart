@@ -32,7 +32,7 @@ TextStyle countHeading() {
 
 TextStyle statusTextStyle() {
   return GoogleFonts.poppins(
-    fontSize: 10.sp,
+    fontSize: 9.sp,
     //fontWeight: FontWeight.w500,
     color: Colors.grey,
   );
@@ -52,7 +52,7 @@ TextStyle subTitleTextStyle() {
 
 TextStyle headTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 10,
+      fontSize: 9.sp,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
