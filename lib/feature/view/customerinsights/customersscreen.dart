@@ -39,9 +39,10 @@ class CustomersScren extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -50,7 +51,7 @@ class CustomersScren extends StatelessWidget {
                         size: 20,
                       ),
                       hintText: "Search Customers",
-                      hintStyle: const TextStyle(
+                      hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,
                           fontWeight: FontWeight.normal),

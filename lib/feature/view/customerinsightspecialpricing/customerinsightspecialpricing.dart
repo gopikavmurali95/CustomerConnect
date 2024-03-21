@@ -1,11 +1,11 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/invoices/widgets/insightinvoicelistwidget.dart';
+import 'package:customer_connect/feature/view/customerinsightspecialpricing/widgets/insightspecialpricelist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class InsightsInvoiceScreen extends StatelessWidget {
-  const InsightsInvoiceScreen({super.key});
+class CustomerInsightSpecialPricing extends StatelessWidget {
+  const CustomerInsightSpecialPricing({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class InsightsInvoiceScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Invoices ",
+          "Special Pricing ",
           style: appHeading(),
         ),
         actions: [
@@ -62,10 +62,10 @@ class InsightsInvoiceScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'A025206 - ',
+                            'A025206 ',
                             style: kfontstyle(
                               fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
+                              color: const Color(0xff413434),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -75,6 +75,7 @@ class InsightsInvoiceScreen extends StatelessWidget {
                               'Tromp, Muller and Mitchell',
                               style: kfontstyle(
                                   fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
                                   color: const Color(0xff413434)),
                             ),
                           ),
@@ -109,59 +110,62 @@ class InsightsInvoiceScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
-                child: TextField(
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 20,
-                      ),
-                      hintText: "Search Invoices",
-                      hintStyle: kfontstyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal),
-                      isDense: true,
-                      counterText: "",
-                      contentPadding: const EdgeInsets.all(15.0),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none)),
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  maxLength: 20,
-                  // controller: _locationNameTextController,
-                )),
+            child: Column(
+              children: [
+                Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade200),
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color(0xff00000050),
+                              blurRadius: 0.4,
+                              spreadRadius: 0.4)
+                        ]),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            size: 20,
+                          ),
+                          hintText: "Search special pricing ",
+                          hintStyle: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal),
+                          isDense: true,
+                          counterText: "",
+                          contentPadding: const EdgeInsets.all(15.0),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none)),
+                      textAlign: TextAlign.start,
+                      maxLines: 1,
+                      maxLength: 20,
+                      // controller: _locationNameTextController,
+                    )),
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //SizedBox(width: 05,),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
                 child: Text(
-                  "All invoices",
+                  "All ",
                   style: countHeading(),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
                 child: Text(
-                  "80",
+                  "7",
                   style: countHeading(),
                 ),
               ),
@@ -169,37 +173,13 @@ class InsightsInvoiceScreen extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 8.h,
           ),
-          const Expanded(child: InsightInvoiceListWidget())
+          const Expanded(child: InsightSpecialPriceList()),
+          SizedBox(
+            height: 8.h,
+          )
         ],
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(boxShadow: [
-          BoxShadow(
-              blurRadius: 3,
-              color: Colors.black12,
-              blurStyle: BlurStyle.outer,
-              offset: Offset(3, 3))
-        ]),
-        height: 40.h,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Total Invoice Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
-              ),
-              Text(
-                '1200.00',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-        ),
       ),
     );
   }

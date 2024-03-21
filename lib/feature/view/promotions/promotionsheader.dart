@@ -1,7 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,9 +52,9 @@ class PromotionHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -91,7 +91,6 @@ class PromotionHeader extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-
                 SizedBox(
                   height: 25.h,
                 ),
@@ -203,7 +202,9 @@ class PromotionHeader extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Divider()
+                          Divider(
+                            color: Colors.grey.shade300,
+                          )
                         ],
                       );
                     })

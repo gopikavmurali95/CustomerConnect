@@ -2,7 +2,9 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
 import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -50,7 +52,7 @@ class CustomerTraansactionWidget extends StatelessWidget {
                     flex: 2,
                     fit: FlexFit.tight,
                     child: Container(
-                      height: 30.h,
+                      height: 25.h,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -58,6 +60,7 @@ class CustomerTraansactionWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'From ',
@@ -68,19 +71,21 @@ class CustomerTraansactionWidget extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '|',
+                              '| ',
                               style: kfontstyle(
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.grey[300],
                               ),
                             ),
-                            Text(
-                              '2 may 2023',
-                              style: kfontstyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
+                            Expanded(
+                              child: Text(
+                                '2 may 2023',
+                                style: kfontstyle(
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             IconButton(
@@ -102,7 +107,7 @@ class CustomerTraansactionWidget extends StatelessWidget {
                     flex: 2,
                     fit: FlexFit.tight,
                     child: Container(
-                      height: 30.h,
+                      height: 25.h,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -110,6 +115,7 @@ class CustomerTraansactionWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'To  ',
@@ -127,12 +133,14 @@ class CustomerTraansactionWidget extends StatelessWidget {
                                 color: Colors.grey[300],
                               ),
                             ),
-                            Text(
-                              '2 may 2023',
-                              style: kfontstyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
+                            Expanded(
+                              child: Text(
+                                '2 may 2023',
+                                style: kfontstyle(
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             IconButton(
@@ -259,43 +267,43 @@ class CusTransNavWIdget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.h,
+      // height: 50.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
                   imagepath,
-                  height: 22.h,
-                ),
-                SizedBox(
-                  height: 8.h,
+                  height: 13.h,
                 ),
                 Text(
-                  title,
+                  count,
                   style: kfontstyle(
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87,
                   ),
-                )
+                ),
               ],
             ),
+            SizedBox(
+              height: 2.h,
+            ),
             Text(
-              count,
+              title,
               style: kfontstyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
+                fontSize: 11.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
               ),
             )
           ],

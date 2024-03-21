@@ -215,9 +215,10 @@ class InvoiceDetailScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
-                              color: Colors.grey,
+                              // ignore: use_full_hex_values_for_flutter_colors
+                              color: Color(0xff00000050),
                               blurRadius: 0.4,
-                              spreadRadius: 0.2)
+                              spreadRadius: 0.4)
                         ]),
                     child: TextField(
                       decoration: InputDecoration(
@@ -225,8 +226,8 @@ class InvoiceDetailScreen extends StatelessWidget {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search invoices",
-                          hintStyle: const TextStyle(
+                          hintText: "Search Invoices",
+                          hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
                               fontWeight: FontWeight.normal),
@@ -258,19 +259,31 @@ class InvoiceDetailScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('items'),
+                  Text(
+                    'items',
+                    style: boxHeading(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text('Type'),
+                      Text(
+                        'Type',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Uom'),
+                      Text(
+                        'Uom',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Qty'),
+                      Text(
+                        'Qty',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 15.h,
                       ),
@@ -287,157 +300,14 @@ class InvoiceDetailScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).size.width / 1.8,
+        height: /* MediaQuery.of(context).size.width / 1.8 */ 30.h,
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 30.h,
-              width: double.infinity,
-              color: const Color(0xfff5f5f5),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Type',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'value',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15.h,
-                        ),
-                        Text(
-                          'Discount',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15.h,
-                        ),
-                        Text(
-                          'Vat',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15.h,
-                        ),
-                        Text(
-                          'Subtotal',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Sales'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text('108.00'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('2.40'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('5.28'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('100.32'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Sales'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text('108.00'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('2.40'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('5.28'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('100.32'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Sales'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text('108.00'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('2.40'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('5.28'),
-                      SizedBox(
-                        width: 20.h,
-                      ),
-                      const Text('100.32'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Divider(
+            /*  Divider(
               color: Colors.grey[300],
-            ),
+            ), */
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -446,12 +316,12 @@ class InvoiceDetailScreen extends StatelessWidget {
                   Text(
                     'Total Amount',
                     style:
-                        TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'AED 47.80',
                     style:
-                        TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),

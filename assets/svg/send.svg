@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="33.708" viewBox="0 0 40 33.708">
+  <defs>
+    <filter id="Path_784" x="3.001" y="0" width="33.979" height="33.708" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="send" transform="translate(0 4.296)">
+    <g id="Group_1036" data-name="Group 1036" transform="translate(0.001 -0.244)">
+      <rect id="Rectangle_203" data-name="Rectangle 203" width="40" height="20" rx="10" transform="translate(-0.001 0.244)" fill="#7ab8cf"/>
+    </g>
+    <g id="right-arrow" transform="matrix(0.848, -0.53, 0.53, 0.848, 12.001, 8.023)">
+      <g id="Group_1027" data-name="Group 1027" transform="translate(0 0)">
+        <g transform="matrix(0.85, 0.53, -0.53, 0.85, -3.65, -16.81)" filter="url(#Path_784)">
+          <path id="Path_784-2" data-name="Path 784" d="M11.677,5.149.605.038A.428.428,0,0,0,.1.158a.423.423,0,0,0-.01.523L3.727,5.535.085,10.39a.426.426,0,0,0,.519.642l11.072-5.11a.426.426,0,0,0,0-.773Z" transform="matrix(0.85, -0.53, 0.53, 0.85, 12, 12.32)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <text id="Replied" transform="translate(6.001 12.877)" fill="#7ab8cf" font-size="10" font-family="SegoeUI, Segoe UI" opacity="0"><tspan x="0" y="0">Replied</tspan></text>
+  </g>
+</svg>

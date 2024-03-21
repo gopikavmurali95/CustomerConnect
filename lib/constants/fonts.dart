@@ -55,7 +55,7 @@ TextStyle headTextStyle() {
       color: const Color(0xff413434));
 }
 
-const kfontstyle = GoogleFonts.inter;
+const kfontstyle = GoogleFonts.poppins;
 TextStyle loadTextStyle() {
   return GoogleFonts.poppins(
       fontSize: 12,

@@ -14,9 +14,9 @@ class ARDetailInvoiceWidget extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(color: Color(0xfff5f5f5)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.values[4],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Invoice No.',
@@ -48,12 +48,12 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 10),
+                          horizontal: 20, vertical: 10),
                       child: Row(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Flexible(
-                            flex: 6,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '1234$index',
@@ -62,7 +62,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 6,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '1 jan 21',
@@ -71,7 +71,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 5,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '120',
@@ -80,7 +80,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             fit: FlexFit.tight,
                             child: Text(
                               '15',
@@ -93,7 +93,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
+                        horizontal: 0,
                       ),
                       child: Divider(
                         color: Colors.grey[300],

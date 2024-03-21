@@ -11,6 +11,8 @@ class InsightArListWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   Navigator.push(
@@ -61,7 +63,8 @@ class InsightArListWidget extends StatelessWidget {
                       children: [
                         Text(
                           '120.00',
-                          style: kfontstyle(fontSize: 13.sp),
+                          style: kfontstyle(
+                              fontSize: 12.sp, fontWeight: FontWeight.w500),
                         ),
                         SizedBox(
                           height: 5.h,

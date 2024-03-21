@@ -104,40 +104,42 @@ class CustomerItemList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey.shade200),
-                  borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.grey, blurRadius: 0.4, spreadRadius: 0.2)
-                  ]),
-              child: TextField(
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      size: 20,
-                    ),
-                    hintText: "Search items",
-                    hintStyle: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal),
-                    isDense: true,
-                    counterText: "",
-                    contentPadding: const EdgeInsets.all(15.0),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide.none)),
-                textAlign: TextAlign.start,
-                maxLines: 1,
-                maxLength: 20,
-                // controller: _locationNameTextController,
-              ),
-            ),
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey.shade200),
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: const [
+                      BoxShadow(
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
+                          blurRadius: 0.4,
+                          spreadRadius: 0.4)
+                    ]),
+                child: TextField(
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        size: 20,
+                      ),
+                      hintText: "Search Items",
+                      hintStyle: kfontstyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
+                      isDense: true,
+                      counterText: "",
+                      contentPadding: const EdgeInsets.all(15.0),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide.none)),
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  maxLength: 20,
+                  // controller: _locationNameTextController,
+                )),
           ),
           Container(
             height: 30.h,

@@ -122,9 +122,10 @@ class InvoiceHeaderScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -132,8 +133,8 @@ class InvoiceHeaderScreen extends StatelessWidget {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search invoices",
-                      hintStyle: const TextStyle(
+                      hintText: "Search Invoices",
+                      hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,
                           fontWeight: FontWeight.normal),
@@ -198,11 +199,11 @@ class InvoiceHeaderScreen extends StatelessWidget {
             children: [
               Text(
                 'Total Invoice Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
               ),
               Text(
                 '1200.00',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
               )
             ],
           ),
