@@ -26,15 +26,13 @@ class PickingWidget extends StatelessWidget {
               gradient: const LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [
-                  Color(0xffB3DAF7),
-                  Color(0xffD9EDFB)],
+                colors: [Color(0xffB3DAF7), Color(0xffD9EDFB)],
               )),
           child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 10.0, right: 20, top:10, bottom: 0),
+                    left: 10.0, right: 20, top: 10, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -47,7 +45,7 @@ class PickingWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 0.0, right: 0,top: 5),
+                padding: const EdgeInsets.only(left: 0.0, right: 0, top: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -75,7 +73,9 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("10", style: countHeading()),
                               Text("(6 Routes)", style: subTextStyle()),
-                              const SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/pending.svg"),
@@ -116,11 +116,15 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("10", style: countHeading()),
                               Text("(6 Routes)", style: subTextStyle()),
-                             const  SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/ongoing.svg"),
-                                  const  SizedBox(width: 10,),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Text("Ongoing", style: statusTextStyle()),
                                 ],
                               )
@@ -153,7 +157,9 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("10", style: countHeading()),
                               Text("(8 Routes)", style: subTextStyle()),
-                              const  SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/completed.svg"),
@@ -190,7 +196,7 @@ class PickingWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 0.0, right: 0,top: 5),
+                padding: const EdgeInsets.only(left: 0.0, right: 0, top: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -218,7 +224,9 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("15", style: countHeading()),
                               Text("(6 Routes)", style: subTextStyle()),
-                              const  SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/pending.svg"),
@@ -258,7 +266,9 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("10", style: countHeading()),
                               Text("(6 Routes)", style: subTextStyle()),
-                              const  SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/completed.svg"),
@@ -298,7 +308,9 @@ class PickingWidget extends StatelessWidget {
                             children: [
                               Text("10", style: countHeading()),
                               Text("(6 Routes)", style: subTextStyle()),
-                              const  SizedBox(height: 2,),
+                              const SizedBox(
+                                height: 2,
+                              ),
                               Row(
                                 children: [
                                   SvgPicture.asset("assets/svg/rejected.svg"),

@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const CustomerTransaction(),
             const SalesOrders(),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 10,top: 10),
+              padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -129,9 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SpecialPricingHeader()));
+                                builder: (context) =>
+                                    const SpecialPricingHeader()));
                       },
-
                       child: Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width / 2,
