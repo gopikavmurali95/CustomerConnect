@@ -22,7 +22,7 @@ class ProfileInfoWidget extends StatelessWidget {
             Text(
               'Ahmed Kabeer',
               style: kfontstyle(
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
@@ -30,7 +30,7 @@ class ProfileInfoWidget extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 5.h,
+          height: 7.h,
         ),
         const ProfileTileRowWidget(
           fimg: 'assets/svg/mail.svg',
@@ -73,7 +73,7 @@ class ProfileTileRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 7.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

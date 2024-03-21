@@ -117,9 +117,10 @@ class InsightsInvoiceScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -127,8 +128,8 @@ class InsightsInvoiceScreen extends StatelessWidget {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search invoices",
-                      hintStyle: const TextStyle(
+                      hintText: "Search Invoices",
+                      hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,
                           fontWeight: FontWeight.normal),

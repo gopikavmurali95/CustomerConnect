@@ -9,8 +9,11 @@ class ArScrollCtrlCubit extends Cubit<ArScrollCtrlState> {
   ArScrollCtrlCubit() : super(ArScrollCtrlState.initial());
 
   void onscrollchnage(ScrollController controller) {
-    if (controller.position.pixels >= 1.5) {
+    if (controller.position.pixels >= 3) {
       emit(const ScrollPositionState(isOnTop: false));
+    } else if (controller.position.pixels ==
+        controller.position.maxScrollExtent) {
+      emit(const ScrollPositionState(isOnTop: true));
     } else {
       emit(const ScrollPositionState(isOnTop: true));
     }

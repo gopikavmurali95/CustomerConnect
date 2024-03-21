@@ -97,7 +97,11 @@ class ARHeaderListWidget extends StatelessWidget {
                       children: [
                         Text(
                           '120.00',
-                          style: kfontstyle(fontSize: 13.sp),
+                          style: kfontstyle(
+                              fontSize: 12.sp, fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(
+                          height: 5.h,
                         ),
                         Container(
                           height: 14.h,

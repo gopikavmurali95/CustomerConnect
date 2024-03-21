@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/view/documents/customerdocumentscreen.d
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../custinsightpromotion/custinsightpromotion.dart';
@@ -158,30 +159,37 @@ class OtherOptionsTilesWideget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      surfaceTintColor: Colors.white,
-      color: Colors.white,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: SizedBox(
-        height: 38.h,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade200,
+                offset: const Offset(0, 0),
+                blurRadius: 2,
+                spreadRadius: 2)
+          ],
+        ),
+        // height: 38.h,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp),
           child: Row(
             children: [
               Image.asset(
                 imgpath,
-                height: 20.h,
+                height: 16.h,
               ),
               SizedBox(
-                width: 10.w,
+                width: 10.sp,
               ),
               Text(
                 title,
                 style: kfontstyle(
-                  fontSize: 11.sp,
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.black,
                 ),

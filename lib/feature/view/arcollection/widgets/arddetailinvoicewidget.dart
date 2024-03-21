@@ -53,7 +53,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Flexible(
-                            flex: 6,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '1234$index',
@@ -62,7 +62,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 6,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '1 jan 21',
@@ -71,7 +71,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 5,
+                            flex: 3,
                             fit: FlexFit.tight,
                             child: Text(
                               '120',
@@ -80,7 +80,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             fit: FlexFit.tight,
                             child: Text(
                               '15',

@@ -45,76 +45,6 @@ class OutstandingHeaderScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Visibility(
-            visible: isfromUser,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        color: const Color(0xfffee8e0),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'A025206 - ',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff2C6B9E),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '199525 - ',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Carrefour Hypermarket',
-                                overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Virtual | Supermarket | Dubai ',
-                          style:
-                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
@@ -127,9 +57,10 @@ class OutstandingHeaderScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
-                              color: Colors.grey,
+                              // ignore: use_full_hex_values_for_flutter_colors
+                              color: Color(0xff00000050),
                               blurRadius: 0.4,
-                              spreadRadius: 0.2)
+                              spreadRadius: 0.4)
                         ]),
                     child: TextField(
                       decoration: InputDecoration(
@@ -137,7 +68,7 @@ class OutstandingHeaderScreen extends StatelessWidget {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Invoices",
+                          hintText: "Search Inovices",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -155,125 +86,138 @@ class OutstandingHeaderScreen extends StatelessWidget {
                       maxLength: 20,
                       // controller: _locationNameTextController,
                     )),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 110.w,
-                      height: 110.h,
-                      child: PieChart(
-                        bgColor: Colors.transparent,
-                        usePercentValues: false,
-                        centerTextColor: Colors.blue,
-                        centerTextSize: 11,
-                        drawCenterText: true,
-                        drawHoleEnabled: true,
-                        holeRadius: 20,
-                        entryLabelTextSize: 10,
-                        transparentCircleRadius: 27,
-                        entryLabelColor: Colors.white,
-                        data: PieData(
-                          List.of(
-                            [
-                              PieDataSet(
-                                colors: outstandingcolorslist,
-                                entries: List.of(
-                                  [
-                                    PieEntry('8', 8),
-                                    PieEntry('4', 4),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Total Outstanding',
-                                style: kfontstyle(fontSize: 10.sp),
-                              ),
-                              SizedBox(
-                                width: 20.w,
-                              ),
-                              Text(
-                                '12/15,000.00',
-                                style: kfontstyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
-                          const ArChartItemWidget(
-                            amount: '8/700.00',
-                            color: Color(0xff9ce895),
-                            title: 'Due',
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          const ArChartItemWidget(
-                            amount: '4/500.00',
-                            color: Color(0xffe18484),
-                            title: 'Overdue',
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //SizedBox(width: 05,),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
-                child: Text(
-                  "Outstanding invoices",
-                  style: countHeading(),
-                ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 110.w,
+                          height: 110.h,
+                          child: PieChart(
+                            bgColor: Colors.transparent,
+                            usePercentValues: false,
+                            centerTextColor: Colors.blue,
+                            centerTextSize: 11,
+                            drawCenterText: true,
+                            drawHoleEnabled: true,
+                            holeRadius: 20,
+                            entryLabelTextSize: 10,
+                            transparentCircleRadius: 27,
+                            entryLabelColor: Colors.white,
+                            data: PieData(
+                              List.of(
+                                [
+                                  PieDataSet(
+                                    colors: outstandingcolorslist,
+                                    entries: List.of(
+                                      [
+                                        PieEntry('8', 8),
+                                        PieEntry('4', 4),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20.w,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Total Outstanding',
+                                    style: kfontstyle(fontSize: 10.sp),
+                                  ),
+                                  SizedBox(
+                                    width: 20.w,
+                                  ),
+                                  Text(
+                                    '12/15,000.00',
+                                    style: kfontstyle(
+                                        fontSize: 13.sp,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              const ArChartItemWidget(
+                                amount: '8/700.00',
+                                color: Color(0xff9ce895),
+                                title: 'Due',
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              const ArChartItemWidget(
+                                amount: '4/500.00',
+                                color: Color(0xffe18484),
+                                title: 'Overdue',
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //SizedBox(width: 05,),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, top: 0),
+                        child: Text(
+                          "Outstanding invoices",
+                          style: countHeading(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, top: 0),
+                        child: Text(
+                          "6",
+                          style: countHeading(),
+                        ),
+                      ),
+                      // SizedBox(width: ,),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  const OutstandingListWidget(),
+                  SizedBox(
+                    height: 8.h,
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
-                child: Text(
-                  "6",
-                  style: countHeading(),
-                ),
-              ),
-              // SizedBox(width: ,),
-            ],
+            ),
           ),
-          SizedBox(
-            height: 8.h,
-          ),
-          const Expanded(child: OutstandingListWidget()),
-          SizedBox(
-            height: 8.h,
-          )
         ],
       ),
     );

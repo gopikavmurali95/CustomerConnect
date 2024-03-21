@@ -53,7 +53,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   style: kfontstyle(
                     fontSize: 12.sp,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 subtitle: Text(
@@ -82,7 +82,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                     style: kfontstyle(
                       fontSize: 14.sp,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   )
                 ],
@@ -104,7 +104,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                     style: kfontstyle(
                       fontSize: 14.sp,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   )
                 ],
@@ -126,7 +126,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                     style: kfontstyle(
                       fontSize: 14.sp,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   )
                 ],
@@ -148,7 +148,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                     style: kfontstyle(
                       fontSize: 14.sp,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                     ),
                   )
                 ],
