@@ -64,6 +64,7 @@ class CustomersListingWidget extends StatelessWidget {
                             ],
                           ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 '199525 - ',
@@ -75,7 +76,7 @@ class CustomersListingWidget extends StatelessWidget {
                                 child: Text(
                                   'Carrefour Hypermarket',
                                   overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 12.sp),
+                                  style: kfontstyle(fontSize: 11.sp),
                                 ),
                               ),
                             ],

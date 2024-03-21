@@ -70,7 +70,7 @@ class OutstandingListWidget extends StatelessWidget {
                               child: Text(
                                 'Carrefour Hypermarket',
                                 overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
+                                style: kfontstyle(fontSize: 11.sp),
                               ),
                             ),
                           ],
