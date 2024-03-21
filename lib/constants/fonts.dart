@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle boxHeading() {
@@ -24,21 +25,22 @@ TextStyle appHeading() {
 
 TextStyle countHeading() {
   return GoogleFonts.poppins(
-      fontSize: 13,
+      fontSize: 13.sp,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
 
 TextStyle statusTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 10,
-      //fontWeight: FontWeight.w500,
-      color: Colors.grey);
+    fontSize: 10.sp,
+    //fontWeight: FontWeight.w500,
+    color: Colors.grey,
+  );
 }
 
 TextStyle subTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 9, //fontWeight: FontWeight.w500,
+      fontSize: 8.sp, //fontWeight: FontWeight.w500,
       color: Colors.grey);
 }
 
