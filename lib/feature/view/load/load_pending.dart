@@ -42,42 +42,44 @@ class _LoadPendingState extends State<LoadPending> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0,right: 15),
+            padding:
+            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.grey.shade200),
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
-                      BoxShadow(color: Colors.grey,
+                      BoxShadow(
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search,size: 20,),
-                      hintText: "Search deliveries",
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        size: 20,
+                      ),
+                      hintText: "Search Deliveries",
                       hintStyle: const TextStyle(
                           fontSize: 14,
-                          color: Colors.grey,fontWeight: FontWeight.normal),
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
                       isDense: true,
                       counterText: "",
                       contentPadding: const EdgeInsets.all(15.0),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
-
-                          borderRadius:
-                          BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none
-                      )),
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide.none)),
                   textAlign: TextAlign.start,
                   maxLines: 1,
                   maxLength: 20,
                   // controller: _locationNameTextController,
-                )
-            ),
+                )),
           ),
         ),
       ),

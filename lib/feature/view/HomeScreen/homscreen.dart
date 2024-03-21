@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const CustomerTransaction(),
             const SalesOrders(),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(left: 10.0, bottom: 10,top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(
-                    width: 12,
+                    width: 15,
                   ),
                   Expanded(
                     child: InkWell(
@@ -194,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ]),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                              left: 10.0, top: 10, bottom: 10, right: 05),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -216,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(
-                    width: 12,
+                    width: 15,
                   ),
                   Expanded(
                     child: InkWell(

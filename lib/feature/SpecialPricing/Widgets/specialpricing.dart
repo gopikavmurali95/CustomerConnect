@@ -21,13 +21,13 @@ class _SpecialPricingState extends State<SpecialPricing> {
           onPressed: (){
             Navigator.pop(context);
           },
-           icon: Icon(Icons.arrow_back_ios_rounded),
+           icon: const Icon(Icons.arrow_back_ios_rounded),
 
         ),
         title: Text("Special Pricing",style: appHeading(),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size(200, 110),
+          preferredSize: const Size(200, 100),
           child: Column(
 
             children: [
@@ -36,7 +36,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                 padding: const EdgeInsets.only(left: 15,right: 10),
                 child: SizedBox(
                   //color: Colors.red,
-                  height: 60,
+                  height:60,
                   width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,7 +179,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
               //   ),
               // ),
               Padding(
-                padding: const EdgeInsets.only(top:10,left: 15.0,right: 15,bottom: 10),
+                padding: const EdgeInsets.only(top:5,left: 15.0,right: 15,bottom: 10),
                 child: Container(
                     height: 40,
                     decoration:  BoxDecoration(
@@ -234,7 +234,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                     child: Text("Items",style: boxHeading(),),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30),
+                    padding: const EdgeInsets.only(left: 42),
                     child: Text("UOM",style: boxHeading(),),
                   ),
                   Padding(
@@ -316,7 +316,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
               separatorBuilder: (BuildContext context, int index)
               {
                 return const Padding(
-                  padding: EdgeInsets.only(left: 15.0,right: 10),
+                  padding: EdgeInsets.only(left: 0.0,right: 0),
                   child: Divider(),
                 );
               },

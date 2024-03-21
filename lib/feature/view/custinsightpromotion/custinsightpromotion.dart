@@ -30,12 +30,12 @@ class CustomerInsightPromotion extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Promotions ",
+          "Promotions",
           style: appHeading(),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: SvgPicture.asset(
               "assets/svg/filter.svg",
               height: 20,
@@ -48,12 +48,12 @@ class CustomerInsightPromotion extends StatelessWidget {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
                   children: [
                     Container(
                       height: 50,
@@ -117,51 +117,54 @@ class CustomerInsightPromotion extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 0, right: 0,top: 20),
-                  child: Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.grey.shade200),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 0.4,
-                                spreadRadius: 0.2)
-                          ]),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              size: 20,
-                            ),
-                            hintText: "Search promotions",
-                            hintStyle: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.normal),
-                            isDense: true,
-                            counterText: "",
-                            contentPadding: const EdgeInsets.all(15.0),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none)),
-                        textAlign: TextAlign.start,
-                        maxLines: 1,
-                        maxLength: 20,
-                        // controller: _locationNameTextController,
-                      )),
-                ),
+              ),
+              Padding(
+                padding:
+                const EdgeInsets.only(left: 20.0, right: 20, bottom: 0,top: 10),
+                child: Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade200),
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color(0xff00000050),
+                              blurRadius: 0.4,
+                              spreadRadius: 0.4)
+                        ]),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            size: 20,
+                          ),
+                          hintText: "Search Promotions",
+                          hintStyle: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal),
+                          isDense: true,
+                          counterText: "",
+                          contentPadding: const EdgeInsets.all(15.0),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none)),
+                      textAlign: TextAlign.start,
+                      maxLines: 1,
+                      maxLength: 20,
+                      // controller: _locationNameTextController,
+                    )),
+              ),
 
-                SizedBox(
-                  height: 25.h,
-                ),
-                Row(
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0,right: 25),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -174,20 +177,23 @@ class CustomerInsightPromotion extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 7,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          SizedBox(
-                            //color: Colors.red,
-                            height: 60,
-                            width: double.infinity,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 7,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        SizedBox(
+                          //color: Colors.red,
+                          height: 50,
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left:15.0,right: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -278,12 +284,12 @@ class CustomerInsightPromotion extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Divider()
-                        ],
-                      );
-                    })
-              ],
-            ),
+                        ),
+                        const Divider()
+                      ],
+                    );
+                  })
+            ],
           ),
         ),
       ),

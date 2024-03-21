@@ -46,7 +46,8 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding:
+            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -55,9 +56,9 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -65,7 +66,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search Deliveries",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

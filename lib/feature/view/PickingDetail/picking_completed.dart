@@ -179,7 +179,7 @@ class _PickingCompletedState extends State<PickingCompleted> {
               separatorBuilder: (BuildContext context, int index)
               {
                 return const Padding(
-                  padding: EdgeInsets.only(left: 15.0,right: 10),
+                  padding: EdgeInsets.only(left: 0.0,right: 0),
                   child: Divider(),
                 );
               },

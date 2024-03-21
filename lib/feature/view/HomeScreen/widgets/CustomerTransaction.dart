@@ -24,12 +24,13 @@ class CustomerTransaction extends StatelessWidget {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [Color(0xffC6E1E5), Color(0xffE6F4F6)],
-              )),
+              )
+            ),
           child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20.0, right: 20, top: 10, bottom: 10),
+                    left: 10.0, right: 20, top: 10, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -37,12 +38,11 @@ class CustomerTransaction extends StatelessWidget {
                       "Customer Transactions",
                       style: boxHeading(),
                     ),
-                    // Text("33"),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 05.0, right: 05),
+                padding: const EdgeInsets.only(left: 5.0, right: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -58,14 +58,14 @@ class CustomerTransaction extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        height: 60,
-                        width: 160,
+                        height: 70,
+                        width: 170,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 12.0, top: 5, bottom: 5),
+                              left: 15.0, top: 10, bottom: 5),
                           child: Row(
                             children: [
                               Column(
@@ -78,7 +78,7 @@ class CustomerTransaction extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                width: 10,
+                                width: 15,
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -97,9 +97,8 @@ class CustomerTransaction extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 5,
-                    ),
+                    SizedBox(width: 1,),
+
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -112,14 +111,14 @@ class CustomerTransaction extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        height: 60,
-                        width: 160,
+                        height: 70,
+                        width: 170,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 12.0, top: 5, bottom: 5),
+                              left: 15.0, top: 10, bottom: 5),
                           child: Row(
                             children: [
                               Column(
@@ -132,7 +131,7 @@ class CustomerTransaction extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                width: 10,
+                                width: 15,
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -155,7 +154,8 @@ class CustomerTransaction extends StatelessWidget {
                 ),
               ),
             ],
-          )),
+          )
+      ),
     );
   }
 }

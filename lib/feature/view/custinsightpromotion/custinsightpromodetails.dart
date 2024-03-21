@@ -37,12 +37,12 @@ class CustInsightPromotionDetails extends StatelessWidget {
           style: appHeading(),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size(100, 310),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Column(
-              children: [
-                Row(
+          preferredSize: const Size(100, 300),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
                   children: [
                     Container(
                       height: 50,
@@ -106,9 +106,12 @@ class CustInsightPromotionDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10,),
-                Divider(),
-                SizedBox(
+              ),
+              const SizedBox(height: 5,),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: SizedBox(
                   height: 60,
                   width: double.infinity,
                   child: Row(
@@ -130,7 +133,7 @@ class CustInsightPromotionDetails extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 15.w,
+                              width: 10.w,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -157,126 +160,126 @@ class CustInsightPromotionDetails extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CustInsightQualificationGroup ()));
-                  },
-                  child: Container(
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 1,
-                          offset: const Offset(0, 0),
-                          blurStyle: BlurStyle.normal,
-                          spreadRadius: 0.4,
-                        ),
-                      ],
-                      // border: Border.all(
-                      //     color: Colors.grey.withOpacity(0.1))),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Qualification Group',
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                              Text(
-                                '10023',
-                                style: kfontstyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
-                            ],
-                          )
-                        ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CustInsightQualificationGroup ()));
+                },
+                child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 1,
+                        offset: const Offset(0, 0),
+                        blurStyle: BlurStyle.normal,
+                        spreadRadius: 0.4,
                       ),
-                    ),
+                    ],
+                    // border: Border.all(
+                    //     color: Colors.grey.withOpacity(0.1))),
                   ),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CustInsightQualificationGroup ()));
-                  },
-                  child: Container(
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 1,
-                          offset: const Offset(0, 0),
-                          blurStyle: BlurStyle.normal,
-                          spreadRadius: 0.4,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Qualification Group',
+                              style: kfontstyle(fontSize: 12.sp),
+                            ),
+                            Text(
+                              '10023',
+                              style: kfontstyle(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Text('View Items'),
+                            Icon(Icons.keyboard_arrow_right)
+                          ],
                         )
                       ],
-                      // border: Border.all(
-                      //     color: Colors.grey.withOpacity(0.1))),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Assignment Group',
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                              Text(
-                                '10025',
-                                style: kfontstyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
-                            ],
-                          )
-                        ],
-                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CustInsightQualificationGroup ()));
+                },
+                child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 1,
+                        offset: const Offset(0, 0),
+                        blurStyle: BlurStyle.normal,
+                        spreadRadius: 0.4,
+                      )
+                    ],
+                    // border: Border.all(
+                    //     color: Colors.grey.withOpacity(0.1))),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Assignment Group',
+                              style: kfontstyle(fontSize: 12.sp),
+                            ),
+                            Text(
+                              '10025',
+                              style: kfontstyle(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Text('View Items'),
+                            Icon(Icons.keyboard_arrow_right)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

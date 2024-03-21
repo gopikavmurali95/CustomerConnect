@@ -13,11 +13,11 @@ class SpPrHeaderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.only(
-        left: 20, right: 10,
-        //top: 10,
-        //  bottom: 10
-      ),
+      // padding: const EdgeInsets.only(
+      //   left: 20, right: 10,
+      //   //top: 10,
+      //   //  bottom: 10
+      // ),
       shrinkWrap: true,
       itemCount: 6,
       itemBuilder: (BuildContext context, int index) {
@@ -25,100 +25,103 @@ class SpPrHeaderList extends StatelessWidget {
           children: [
             SizedBox(
               //color: Colors.red,
-              height: 60,
+              height: 50,
               width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor:
-                          const Color(0xffB3DAF7),
-                          child: Center(
-                            child: Text(
-                              'AL',
-                              style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0,right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor:
+                            const Color(0xffB3DAF7),
+                            child: Center(
+                              child: Text(
+                                'AL',
+                                style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                    const SpecialPricing()));
-                          },
-                          child: Column(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Special Pricing 0${index+1}',
-                                style: blueTextStyle(),
-                              ),
-                              Text(
-                                '21 Feb 2021 to 24 Feb 2021',
-                                style: subTextStyle(),
-                              ),
-                              Text(
-                                'PR10021',
-                                style: subTextStyle(),
-                              )
-                            ],
+                          SizedBox(
+                            width: 15.w,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //           builder: (context) =>
-                    //           const PromotionDetails()));
-                    // },
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                    const SpecialPricing()));
-                          },
-                          child: Text(
-                            'Details',
-                            style: TextStyle(fontSize: 10.sp),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const SpecialPricing()));
+                            },
+                            child: Column(
+                              mainAxisAlignment:
+                              MainAxisAlignment.center,
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Special Pricing 0${index+1}',
+                                  style: blueTextStyle(),
+                                ),
+                                Text(
+                                  '21 Feb 2021 to 24 Feb 2021',
+                                  style: subTextStyle(),
+                                ),
+                                Text(
+                                  'PR10021',
+                                  style: subTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        const Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 18,
-                        )
-                      ],
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                    GestureDetector(
+                      // onTap: () {
+                      //   Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //           builder: (context) =>
+                      //           const PromotionDetails()));
+                      // },
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const SpecialPricing()));
+                            },
+                            child: Text(
+                              'Details',
+                              style: TextStyle(fontSize: 10.sp),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          const Icon(
+                            Icons.keyboard_arrow_right,
+                            size: 18,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 05
+              padding: const EdgeInsets.only(left: 0, right: 0, top: 0
                 // top: 10,bottom: 10
               ),
               child: Divider(

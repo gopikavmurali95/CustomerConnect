@@ -37,11 +37,11 @@ class NotStartedHead extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xffEC9696),
+                    backgroundColor: const Color(0xffA4C8E9),
                     child: Image.asset("assets/images/listicon.png",height: 20,),
                   ),
                 ),
-                title: Text("M086765",style: blueTextStyle(),),
+                title: Text("M086766",style: blueTextStyle(),),
                 subtitle:  Padding(
                   padding: const EdgeInsets.only(
                       bottom: 10.0
@@ -55,7 +55,7 @@ class NotStartedHead extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:const EdgeInsets.only(left: 10,right: 10,top: 05
+              padding:const EdgeInsets.only(left: 15,right: 15,top: 05
                 // top: 10,bottom: 10
               ),
               child: Divider(

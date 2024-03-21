@@ -1,7 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/not_started.dart';
-import 'package:customer_connect/feature/view/load/widgets/RejectedList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -47,7 +46,8 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding:
+            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -56,9 +56,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -66,7 +66,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search Deliveries",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
