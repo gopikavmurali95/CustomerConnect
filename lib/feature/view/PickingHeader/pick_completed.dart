@@ -16,7 +16,10 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
@@ -57,9 +60,9 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(

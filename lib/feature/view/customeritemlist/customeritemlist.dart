@@ -123,7 +123,7 @@ class CustomerItemList extends StatelessWidget {
                         size: 20,
                       ),
                       hintText: "Search Items",
-                      hintStyle: const TextStyle(
+                      hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,
                           fontWeight: FontWeight.normal),

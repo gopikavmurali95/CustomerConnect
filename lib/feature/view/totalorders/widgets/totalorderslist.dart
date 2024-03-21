@@ -9,94 +9,115 @@ class TotalOrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              GestureDetector(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView.separated(
+          itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TotalOrderDetails()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TotalOrderDetails(),
+                    ),
+                  );
                 },
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 70,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 100,
-                        width: 315,
-                        child: Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: const Color(0xffbadb95),
-                              child: Image.asset(
-                                "assets/images/delivery.png",
-                                height: 20,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15.w,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'AD025206',
-                                      style: blueTextStyle(),
-                                    ),
-                                    Text(
-                                      '- Tromp, Muller and Mitchell',
-                                      style: subTitleTextStyle(),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  '199521 - Carrefour Hypermarket',
-                                  style: subTitleTextStyle(),
-                                ),
-                                Text(
-                                  'Route 101 | Salesman 101 | 16 May 2023 1 | 10:35',
-                                  style: statusTextStyle(),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: const Color(0xffbadb95),
+                      child: Image.asset(
+                        "assets/images/delivery.png",
                         height: 20,
-                        width: 25,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffECEFBE),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const Center(
-                            child: Text(
-                          'QN',
-                          style: TextStyle(fontSize: 11),
-                        )),
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'M076876',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              color: const Color(0xff2C6B9E),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'A025206 - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  'Tromp, Muller and Mitchell',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '199525 - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'Carrefour Hypermarket',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kfontstyle(fontSize: 12.sp),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'CR | Route 101 | 16 May 2023 | 10:35',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 14.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                          color: index % 2 == 0
+                              ? const Color(0xffe3f7e2)
+                              : const Color(0xfff7f4e2),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          index % 2 == 0 ? 'SO' : 'QN',
+                          style: kfontstyle(
+                              fontSize: 10.sp, color: const Color(0xff413434)),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
+          separatorBuilder: (context,
+                  index) => /* const SizedBox(
+                height: 10,
+              ) */
               Divider(
-                color: Colors.grey.shade300,
-              )
-            ],
-          );
-        },
-        //separatorBuilder: (context, index) => Divider(),
-        itemCount: 3);
+                color: Colors.grey[300],
+              ),
+          itemCount: 10),
+    );
   }
 }

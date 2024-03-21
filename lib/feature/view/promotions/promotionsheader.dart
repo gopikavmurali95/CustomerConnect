@@ -52,9 +52,9 @@ class PromotionHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(
@@ -91,7 +91,6 @@ class PromotionHeader extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-
                 SizedBox(
                   height: 25.h,
                 ),

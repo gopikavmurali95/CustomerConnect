@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdeliverydetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:flutter/widgets.dart';
 
 class TodaysDeliveryList extends StatelessWidget {
   const TodaysDeliveryList({super.key});
@@ -39,7 +38,7 @@ class TodaysDeliveryList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'M076876',
+                            'MO86764',
                             style: kfontstyle(
                               fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
@@ -48,6 +47,13 @@ class TodaysDeliveryList extends StatelessWidget {
                           ),
                           Row(
                             children: [
+                              Text(
+                                'A025206 - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
@@ -77,33 +83,28 @@ class TodaysDeliveryList extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'Route 101 | Salesman 101 | 16 May 2023 | 10:35',
+                            'CR | Route 101 | 16 May 2023 | 10:35',
                             style:
                                 kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          height: 14.h,
-                          width: 30.w,
-                          decoration: BoxDecoration(
-                              color: index % 2 == 0
-                                  ? const Color(0xffe3f7e2)
-                                  : const Color(0xfff7f4e2),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              index % 2 == 0 ? 'DE' : 'PE',
-                              style: kfontstyle(
-                                  fontSize: 10.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                          ),
-                        )
-                      ],
+                    Container(
+                      height: 14.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                          color: index % 2 == 0
+                              ? const Color(0xffe3f7e2)
+                              : const Color(0xfff7f4e2),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          index % 2 == 0 ? 'DE' : 'PE',
+                          style: kfontstyle(
+                              fontSize: 10.sp, color: const Color(0xff413434)),
+                        ),
+                      ),
                     )
                   ],
                 ),

@@ -14,7 +14,7 @@ class ProfileInfoWidget extends StatelessWidget {
           children: [
             SvgPicture.asset(
               'assets/svg/profile.svg',
-              height: 13.h,
+              height: 10.h,
             ),
             SizedBox(
               width: 20.w,
@@ -32,10 +32,47 @@ class ProfileInfoWidget extends StatelessWidget {
         SizedBox(
           height: 7.h,
         ),
-        const ProfileTileRowWidget(
+        /*  const ProfileTileRowWidget(
           fimg: 'assets/svg/mail.svg',
           limg: 'assets/svg/sendmail.svg',
           title: 'support@danat.ae',
+        ), */
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 7.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/svg/mail.svg",
+                      height: 8.h,
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    Flexible(
+                      child: Text(
+                        "support@danat.ae",
+                        style: kfontstyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SvgPicture.asset(
+                "assets/svg/sendmail.svg",
+                height: 15.h,
+              )
+            ],
+          ),
         ),
         const ProfileTileRowWidget(
           fimg: 'assets/svg/phone.svg',
@@ -84,7 +121,7 @@ class ProfileTileRowWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   fimg,
-                  height: 11.h,
+                  height: 10.h,
                 ),
                 SizedBox(
                   width: 20.w,

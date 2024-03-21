@@ -1,9 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -43,7 +43,6 @@ class CustomerInsightPromotion extends StatelessWidget {
             ),
           ),
         ],
-
       ),
       body: SizedBox(
         height: double.infinity,
@@ -110,7 +109,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                           Text(
                             'Virtual | Supermarket | Dubai ',
                             style:
-                            kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -118,19 +117,18 @@ class CustomerInsightPromotion extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0, right: 0,top: 20),
+                  padding: const EdgeInsets.only(left: 0, right: 0, top: 20),
                   child: Container(
                       height: 40,
-                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),
                           borderRadius: BorderRadius.circular(10.0),
                           boxShadow: const [
                             BoxShadow(
-                                color: Colors.grey,
+                                color: Color(0xff00000050),
                                 blurRadius: 0.4,
-                                spreadRadius: 0.2)
+                                spreadRadius: 0.4)
                           ]),
                       child: TextField(
                         decoration: InputDecoration(
@@ -138,7 +136,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                               Icons.search,
                               size: 20,
                             ),
-                            hintText: "Search promotions",
+                            hintText: "Search Promotions",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -157,7 +155,6 @@ class CustomerInsightPromotion extends StatelessWidget {
                         // controller: _locationNameTextController,
                       )),
                 ),
-
                 SizedBox(
                   height: 25.h,
                 ),
@@ -196,7 +193,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                     children: [
                                       CircleAvatar(
                                         backgroundColor:
-                                        const Color(0xffB3DAF7),
+                                            const Color(0xffB3DAF7),
                                         child: Center(
                                           child: Text(
                                             'AL',
@@ -216,13 +213,13 @@ class CustomerInsightPromotion extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                  const PromotionCustomer()));
+                                                      const PromotionCustomer()));
                                         },
                                         child: Column(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Free Good Promotions',
@@ -248,7 +245,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                            const PromotionDetails()));
+                                                const PromotionDetails()));
                                   },
                                   child: Row(
                                     children: [
@@ -258,7 +255,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                  const CustInsightPromotionDetails()));
+                                                      const CustInsightPromotionDetails()));
                                         },
                                         child: Text(
                                           'Details',

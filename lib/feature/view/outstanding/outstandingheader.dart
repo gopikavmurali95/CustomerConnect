@@ -69,7 +69,7 @@ class OutstandingHeaderScreen extends StatelessWidget {
                             size: 20,
                           ),
                           hintText: "Search Inovices",
-                          hintStyle: const TextStyle(
+                          hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
                               fontWeight: FontWeight.normal),

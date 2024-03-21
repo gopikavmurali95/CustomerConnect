@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class PromotionDetailsList extends StatelessWidget {
-  const PromotionDetailsList({super.key});
+class CusInsightPromotionDetaoilsList extends StatelessWidget {
+  const CusInsightPromotionDetaoilsList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         // physics: const NeverScrollableScrollPhysics(),
         // shrinkWrap: true,
-        itemCount: 25,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return Column(
             children: [

@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/not_started.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,7 +16,10 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
@@ -56,9 +60,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
-                          color: Colors.grey,
+                          color: Color(0xff00000050),
                           blurRadius: 0.4,
-                          spreadRadius: 0.2)
+                          spreadRadius: 0.4)
                     ]),
                 child: TextField(
                   decoration: InputDecoration(

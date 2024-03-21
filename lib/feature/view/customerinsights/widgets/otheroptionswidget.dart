@@ -168,7 +168,7 @@ class OtherOptionsTilesWideget extends StatelessWidget {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
                 offset: const Offset(0, 0),
                 blurRadius: 2,
                 spreadRadius: 2)
