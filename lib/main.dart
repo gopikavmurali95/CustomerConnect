@@ -1,5 +1,5 @@
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
-import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
+import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                   backgroundColor: Colors.white,
                   surfaceTintColor: Colors.white)),
-          home: const HomeScreen(),
+          home: const LoginScreen(),
         ),
       ),
     );

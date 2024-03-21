@@ -1,11 +1,8 @@
-
 import 'package:customer_connect/feature/SpecialPricing/Widgets/specialpricing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
-import '../../view/LoadInDetail/load_detail_pending.dart';
-import '../specialpricingcustomer.dart';
 
 class SpPrHeaderList extends StatelessWidget {
   const SpPrHeaderList({super.key});
@@ -28,7 +25,7 @@ class SpPrHeaderList extends StatelessWidget {
               height: 50,
               width: double.infinity,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 10),
+                padding: const EdgeInsets.only(left: 20.0, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -36,8 +33,7 @@ class SpPrHeaderList extends StatelessWidget {
                       child: Row(
                         children: [
                           CircleAvatar(
-                            backgroundColor:
-                            const Color(0xffB3DAF7),
+                            backgroundColor: const Color(0xffB3DAF7),
                             child: Center(
                               child: Text(
                                 'AL',
@@ -57,16 +53,14 @@ class SpPrHeaderList extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const SpecialPricing()));
+                                          const SpecialPricing()));
                             },
                             child: Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Special Pricing 0${index+1}',
+                                  'Special Pricing 0${index + 1}',
                                   style: blueTextStyle(),
                                 ),
                                 Text(
@@ -99,7 +93,7 @@ class SpPrHeaderList extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const SpecialPricing()));
+                                          const SpecialPricing()));
                             },
                             child: Text(
                               'Details',
@@ -122,8 +116,8 @@ class SpPrHeaderList extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 0, right: 0, top: 0
-                // top: 10,bottom: 10
-              ),
+                  // top: 10,bottom: 10
+                  ),
               child: Divider(
                 color: Colors.grey.shade300,
               ),

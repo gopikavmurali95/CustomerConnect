@@ -1,13 +1,7 @@
-import 'dart:ui';
-
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
-import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../custinsightQualification/custinsightqualification.dart';
@@ -99,7 +93,7 @@ class CustInsightPromotionDetails extends StatelessWidget {
                           Text(
                             'Virtual | Supermarket | Dubai ',
                             style:
-                            kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -107,7 +101,9 @@ class CustInsightPromotionDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               const Divider(),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
@@ -156,7 +152,6 @@ class CustInsightPromotionDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -169,7 +164,8 @@ class CustInsightPromotionDetails extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CustInsightQualificationGroup ()));
+                          builder: (context) =>
+                              const CustInsightQualificationGroup()));
                 },
                 child: Container(
                   height: 70,
@@ -204,8 +200,7 @@ class CustInsightPromotionDetails extends StatelessWidget {
                             Text(
                               '10023',
                               style: kfontstyle(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500),
+                                  fontSize: 13.sp, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -228,7 +223,8 @@ class CustInsightPromotionDetails extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CustInsightQualificationGroup ()));
+                          builder: (context) =>
+                              const CustInsightQualificationGroup()));
                 },
                 child: Container(
                   height: 70,
@@ -263,8 +259,7 @@ class CustInsightPromotionDetails extends StatelessWidget {
                             Text(
                               '10025',
                               style: kfontstyle(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500),
+                                  fontSize: 13.sp, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),

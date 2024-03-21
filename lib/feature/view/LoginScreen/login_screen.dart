@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -116,6 +117,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ));
+                      },
                       child: Container(
                         height: 62,
                         width: 500,
