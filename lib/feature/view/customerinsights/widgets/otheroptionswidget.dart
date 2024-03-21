@@ -4,7 +4,6 @@ import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
-import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

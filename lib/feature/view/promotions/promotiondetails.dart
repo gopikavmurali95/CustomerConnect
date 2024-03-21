@@ -1,14 +1,10 @@
-import 'dart:ui';
-
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PromotionDetails extends StatelessWidget {
