@@ -1,9 +1,12 @@
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/load/widgets/PendingList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+
 class LoadPending extends StatefulWidget {
+
   const LoadPending({super.key});
 
   @override
@@ -14,42 +17,33 @@ class _LoadPendingState extends State<LoadPending> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         // leading: SizedBox(
         //   height: 05,
         //   width: 04,
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
-        title: Text(
-          "Load In Pending",
-          style: appHeading(),
+        title: Text("Load In Pending",style: appHeading(),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset(
-              "assets/svg/filter.svg",
-              height: 20,
-              fit: BoxFit.scaleDown,
-            ),
+            child: SvgPicture.asset("assets/svg/filter.svg",height: 20,fit: BoxFit.scaleDown,),
           ),
         ],
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding:
+            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -68,7 +62,7 @@ class _LoadPendingState extends State<LoadPending> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search Deliveries",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -97,28 +91,24 @@ class _LoadPendingState extends State<LoadPending> {
               children: [
                 //SizedBox(width: 05,),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Pending",
-                    style: countHeading(),
-                  ),
+                  padding: const EdgeInsets.only(left: 20.0,right: 20,top: 10),
+                  child: Text("Pending",style: countHeading(),),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
-                  ),
+                  padding: const EdgeInsets.only(left: 20.0,right: 20,top: 10),
+                  child: Text("10",style: countHeading(),),
                 ),
                 // SizedBox(width: ,),
+
               ],
             ),
-            const PendingList(),
+
+          const  PendingList(),
           ],
         ),
       ),
     );
   }
 }
+
+

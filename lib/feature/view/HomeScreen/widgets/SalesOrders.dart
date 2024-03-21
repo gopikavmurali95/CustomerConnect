@@ -29,7 +29,7 @@ class SalesOrders extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20.0, right: 20, top: 10, bottom: 10),
+                    left: 10.0, right: 20, top: 10, bottom: 5),
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -54,14 +54,14 @@ class SalesOrders extends StatelessWidget {
                                 builder: (context) => const TotalOrders()));
                       },
                       child: Container(
-                        height: 60,
-                        width: 160,
+                        height: 70,
+                        width: 170,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 12.0, top: 5, bottom: 5),
+                              left: 15.0, top: 10, bottom: 5),
                           child: Row(
                             children: [
                               Column(
@@ -74,7 +74,7 @@ class SalesOrders extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                width: 10,
+                                width: 15,
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +94,7 @@ class SalesOrders extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 1,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -104,14 +104,14 @@ class SalesOrders extends StatelessWidget {
                                 builder: (context) => const TodaysDelivery()));
                       },
                       child: Container(
-                        height: 60,
-                        width: 160,
+                        height: 70,
+                        width: 170,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.white),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              left: 12.0, top: 5, bottom: 5),
+                              left: 15.0, top: 10, bottom: 5),
                           child: Row(
                             children: [
                               Column(
@@ -124,7 +124,7 @@ class SalesOrders extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                width: 10,
+                                width: 15,
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,

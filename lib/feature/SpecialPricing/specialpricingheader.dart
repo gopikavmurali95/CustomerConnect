@@ -28,7 +28,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
         ),
 
         title: Text(
-          "Special Pricing",
+          "Special Pricingg",
           style: appHeading(),
         ),
         actions: [
@@ -42,7 +42,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           ),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size(100, 50),
+          preferredSize: const Size(100,40),
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Container(
@@ -93,7 +93,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                 //SizedBox(width: 05,),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 25.0, right: 20, top: 10),
+                      const EdgeInsets.only(left: 25.0, right: 20, top: 10,bottom: 10),
                   child: Text(
                     "All",
                     style: countHeading(),
@@ -101,7 +101,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      const EdgeInsets.only(left: 20.0, right: 20, top: 10,bottom: 10),
                   child: Text(
                     "10",
                     style: countHeading(),

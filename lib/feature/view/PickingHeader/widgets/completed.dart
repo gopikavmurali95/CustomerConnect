@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/view/LoadInDetail/load_detail_completed.dart';
 import 'package:customer_connect/feature/view/PickingDetail/picking_completed.dart';
 import 'package:flutter/material.dart';
 
@@ -59,17 +60,17 @@ class Completed extends StatelessWidget {
                           text: "Route  101 |",
                           style: subTitleTextStyle(),
                           children: [
-                        TextSpan(
-                            text: "16 June 2024 |", style: subTitleTextStyle()),
-                        TextSpan(text: "10.30", style: subTitleTextStyle())
-                      ])),
+                            TextSpan(
+                                text: "16 June 2024 |", style: subTitleTextStyle()),
+                            TextSpan(text: "10.30", style: subTitleTextStyle())
+                          ])),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 05
-                  // top: 10,bottom: 10
-                  ),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 05
+                // top: 10,bottom: 10
+              ),
               child: Divider(
                 color: Colors.grey.shade300,
               ),

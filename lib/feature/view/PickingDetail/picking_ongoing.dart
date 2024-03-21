@@ -13,13 +13,10 @@ class _PickingOgoingState extends State<PickingOgoing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
         titleSpacing: 0.2,
         leading: IconButton(
-          onPressed: () {
+          onPressed: (){
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back_ios_rounded),
@@ -210,7 +207,10 @@ class _PickingOgoingState extends State<PickingOgoing> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const Divider();
+                return const Padding(
+                  padding: EdgeInsets.only(left: 0, right: 0),
+                  child: Divider(),
+                );
               },
             ),
           ],

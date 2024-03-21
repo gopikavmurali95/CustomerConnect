@@ -8,18 +8,14 @@ class LoadDetailPending extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
         titleSpacing: 0.2,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         title: Text(
           "Load In Detail",
@@ -206,7 +202,10 @@ class LoadDetailPending extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const Divider();
+                return const Padding(
+                  padding: EdgeInsets.only(left: 0.0, right: 0),
+                  child: Divider(),
+                );
               },
             ),
           ],

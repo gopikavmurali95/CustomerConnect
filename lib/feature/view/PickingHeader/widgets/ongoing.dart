@@ -39,7 +39,7 @@ class OnGoing extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: const Color(0xffECEFBE),
+                    backgroundColor: const Color(0xffBEC363),
                     child: Image.asset(
                       "assets/images/listicon.png",
                       height: 20,
@@ -65,7 +65,7 @@ class OnGoing extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 05
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 05
                   // top: 10,bottom: 10
                   ),
               child: Divider(

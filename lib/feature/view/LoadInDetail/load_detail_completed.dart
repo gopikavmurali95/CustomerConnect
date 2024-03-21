@@ -8,18 +8,14 @@ class LoadDetailCompleted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
         titleSpacing: 0.2,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded,),
+
         ),
         title: Text(
           "Load In Detail",
@@ -29,6 +25,7 @@ class LoadDetailCompleted extends StatelessWidget {
           preferredSize: const Size(100, 100),
           child: Column(
             children: [
+
               ListTile(
                   title: Text(
                     "M086765",
@@ -68,7 +65,8 @@ class LoadDetailCompleted extends StatelessWidget {
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
-                        ]),
+                        ]
+                    ),
                     child: TextField(
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
@@ -248,7 +246,10 @@ class LoadDetailCompleted extends StatelessWidget {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const Divider();
+                return const Padding(
+                  padding: EdgeInsets.only(left: 0.0, right: 0),
+                  child: Divider(),
+                );
               },
             ),
           ],

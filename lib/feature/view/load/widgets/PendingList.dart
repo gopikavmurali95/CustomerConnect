@@ -61,7 +61,7 @@ class PendingList extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 05
+              padding: const EdgeInsets.only(left: 0, right: 0, top: 05
                   // top: 10,bottom: 10
                   ),
               child: Divider(

@@ -49,7 +49,8 @@ class _LoadRejectedState extends State<LoadRejected> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding:
+            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -68,7 +69,7 @@ class _LoadRejectedState extends State<LoadRejected> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search Deliveries",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
