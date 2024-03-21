@@ -2,7 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverylist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TodaysDelivery extends StatelessWidget {
   const TodaysDelivery({super.key});
@@ -15,22 +15,17 @@ class TodaysDelivery extends StatelessWidget {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: GestureDetector(
-          onTap: () {
+        leading: IconButton(
+          onPressed: () {
             Navigator.pop(context);
           },
-          child: const Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_rounded,
             size: 20,
           ),
         ),
-        // leading: SizedBox(
-        //   height: 05,
-        //   width: 04,
-        //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
-        // ),
         title: Text(
-          "Todays Delivery",
+          "Todays Delivery ",
           style: appHeading(),
         ),
         actions: [
@@ -43,10 +38,11 @@ class TodaysDelivery extends StatelessWidget {
             ),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size(100, 50),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -84,10 +80,6 @@ class TodaysDelivery extends StatelessWidget {
                   // controller: _locationNameTextController,
                 )),
           ),
-        ),
-      ),
-      body: Column(
-        children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -95,14 +87,14 @@ class TodaysDelivery extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                 child: Text(
-                  "All invoices",
+                  "Today's Deliveries ",
                   style: countHeading(),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                 child: Text(
-                  "80",
+                  "20",
                   style: countHeading(),
                 ),
               ),

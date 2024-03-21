@@ -1,22 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
-// import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
-//import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:flutter_svg/svg.dart';
-
-class TotalOrders extends StatefulWidget {
+class TotalOrders extends StatelessWidget {
   const TotalOrders({super.key});
 
-  @override
-  State<TotalOrders> createState() => _TotalOrdersState();
-}
-
-class _TotalOrdersState extends State<TotalOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,22 +15,17 @@ class _TotalOrdersState extends State<TotalOrders> {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: GestureDetector(
-          onTap: () {
+        leading: IconButton(
+          onPressed: () {
             Navigator.pop(context);
           },
-          child: const Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_rounded,
             size: 20,
           ),
         ),
-        // leading: SizedBox(
-        //   height: 05,
-        //   width: 04,
-        //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
-        // ),
         title: Text(
-          "Total Orders",
+          "Total Orders ",
           style: appHeading(),
         ),
         actions: [
@@ -53,10 +38,11 @@ class _TotalOrdersState extends State<TotalOrders> {
             ),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size(100, 50),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -75,7 +61,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries",
+                      hintText: "Search invoices",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -94,39 +80,32 @@ class _TotalOrdersState extends State<TotalOrders> {
                   // controller: _locationNameTextController,
                 )),
           ),
-        ),
-      ),
-      body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'All',
-                        style: countHeading(),
-                      ),
-                      Text(
-                        '80',
-                        style: countHeading(),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: TotalOrderList(),
-                  ),
-                ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "All ",
+                  style: countHeading(),
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "80",
+                  style: countHeading(),
+                ),
+              ),
+              // SizedBox(width: ,),
+            ],
           ),
-        ),
+          SizedBox(
+            height: 10.h,
+          ),
+          const Expanded(child: TotalOrderList())
+        ],
       ),
     );
   }

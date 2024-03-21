@@ -91,13 +91,8 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: Divider(
-                        color: Colors.grey[300],
-                      ),
+                    Divider(
+                      color: Colors.grey[300],
                     )
                   ],
                 ),

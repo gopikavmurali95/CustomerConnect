@@ -7,36 +7,33 @@ class CustomerItemListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      child: ListView.separated(
-        shrinkWrap: true,
-        itemBuilder: (context, index) => Row(
+    return ListView.separated(
+      shrinkWrap: true,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '123456',
-                      style: kfontstyle(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '123456',
+                    style: kfontstyle(
+                      fontSize: 12.sp,
+                      color: const Color(0xff7b70ac),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    'Divella Farfalle Farfalle Pasta 500g Offer Pack',
+                    style: kfontstyle(
                         fontSize: 12.sp,
-                        color: const Color(0xff7b70ac),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      'Divella Farfalle Farfalle Pasta 500g Offer Pack',
-                      style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black54),
-                    ),
-                  ],
-                ),
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black54),
+                  ),
+                ],
               ),
             ),
             Row(
@@ -90,11 +87,11 @@ class CustomerItemListWidget extends StatelessWidget {
             )
           ],
         ),
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.grey[300],
-        ),
-        itemCount: 20,
       ),
+      separatorBuilder: (context, index) => Divider(
+        color: Colors.grey[300],
+      ),
+      itemCount: 20,
     );
   }
 }

@@ -6,21 +6,26 @@ class PickingDetailNotStarted extends StatefulWidget {
   const PickingDetailNotStarted({super.key});
 
   @override
-  State<PickingDetailNotStarted> createState() => _PickingDetailNotStartedState();
+  State<PickingDetailNotStarted> createState() =>
+      _PickingDetailNotStartedState();
 }
 
 class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         titleSpacing: 0.2,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios_rounded,),
-
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+          ),
         ),
         title: Text(
           "Picking Detail",
@@ -208,10 +213,7 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 10),
-                  child: Divider(),
-                );
+                return const Divider();
               },
             ),
           ],

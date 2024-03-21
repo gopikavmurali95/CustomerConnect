@@ -7,14 +7,14 @@ class InvoiceDetailListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.separated(
-          itemBuilder: (context, index) => Column(
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
+    return ListView.separated(
+        itemBuilder: (context, index) => Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: SizedBox(
                         // color: Colors.teal,
                         width: MediaQuery.of(context).size.width / 2,
                         child: Column(
@@ -39,37 +39,40 @@ class InvoiceDetailListWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                      const Text('SL'),
-                      SizedBox(
-                        width: 30.h,
-                      ),
-                      Column(
-                        children: [
-                          const Text('CS'),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          const Text('CS'),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 30.h,
-                      ),
-                      Column(
-                        children: [
-                          const Text('1'),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          const Text('1'),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
+                    ),
+                    SizedBox(
+                      width: 15.h,
+                    ),
+                    const Text('SL'),
+                    SizedBox(
+                      width: 30.h,
+                    ),
+                    Column(
+                      children: [
+                        const Text('CS'),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        const Text('CS'),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 30.h,
+                    ),
+                    Column(
+                      children: [
+                        const Text('1'),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        const Text('1'),
+                      ],
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
@@ -94,13 +97,13 @@ class InvoiceDetailListWidget extends StatelessWidget {
                         ),
                       )
                     ],
-                  )
-                ],
-              ),
-          separatorBuilder: (context, index) => Divider(
-                color: Colors.grey[300],
-              ),
-          itemCount: 10),
-    );
+                  ),
+                )
+              ],
+            ),
+        separatorBuilder: (context, index) => Divider(
+              color: Colors.grey[300],
+            ),
+        itemCount: 10);
   }
 }

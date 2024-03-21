@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/view/promotions/widget/promotiondetails
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,20 +35,27 @@ class PromotionDetails extends StatelessWidget {
           "Promotion Detail ",
           style: appHeading(),
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size(100, 245),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
+        // bottom: PreferredSize(
+        //   preferredSize: const Size(100, 230),
+        //   child:
+        // ),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(
               children: [
                 SizedBox(
-                  height: 75,
+                  //color: Colors.red,
+                  height: 55,
                   width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         child: Row(
+                          //crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CircleAvatar(
                               backgroundColor: const Color(0xffB3DAF7),
@@ -65,7 +73,7 @@ class PromotionDetails extends StatelessWidget {
                               width: 15.w,
                             ),
                             Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              //mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -114,7 +122,7 @@ class PromotionDetails extends StatelessWidget {
                             builder: (context) => const QualificationGroup()));
                   },
                   child: Container(
-                    height: 70,
+                    height: 62,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
@@ -163,7 +171,7 @@ class PromotionDetails extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 10.h,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -173,7 +181,7 @@ class PromotionDetails extends StatelessWidget {
                             builder: (context) => const AssignmentGroup()));
                   },
                   child: Container(
-                    height: 70,
+                    height: 62,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
@@ -224,48 +232,36 @@ class PromotionDetails extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            width: double.infinity,
+            height: 30,
+            color: Colors.grey.shade200,
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                width: double.infinity,
-                height: 30,
-                color: Colors.grey.shade200,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Min Qua. Qty",
-                        style: boxHeading(),
-                      ),
-                      Text(
-                        "Max Qua. Qty",
-                        style: boxHeading(),
-                      ),
-                      Text(
-                        "Ass. Qty",
-                        style: boxHeading(),
-                      ),
-                    ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Min Qua. Qty",
+                    style: boxHeading(),
                   ),
-                ),
+                  Text(
+                    "Max Qua. Qty",
+                    style: boxHeading(),
+                  ),
+                  Text(
+                    "Ass. Qty",
+                    style: boxHeading(),
+                  ),
+                ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: PromotionDetailsList(),
-            )
-          ],
-        ),
+          ),
+          const Expanded(child: PromotionDetailsList())
+        ],
       ),
     );
   }
