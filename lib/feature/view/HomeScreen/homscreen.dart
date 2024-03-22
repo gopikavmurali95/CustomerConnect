@@ -77,49 +77,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const CustomersScren(),
-                              ));
-                        },
-                        child: Container(
-                          height: 50,
-                          // width: MediaQuery.of(context).size.width / 2,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.shade300,
-                                    spreadRadius: 1,
-                                    blurRadius: 1)
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10.0, top: 10, bottom: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  "assets/images/customer.png",
-                                  height: 15.h,
-                                ),
-                                // SvgPicture.asset("assets/images/os.png",height: 20,
-                                //   fit: BoxFit.scaleDown,),
-                                SizedBox(
-                                  width: 8.w,
-                                ),
-                                Text(
-                                  "Customer Insights",
-                                  style: headTextStyle(),
-                                )
-                              ],
-                            ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CustomersScren(),
+                            ));
+                      },
+                      child: Container(
+                        height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/customer.png",
+                                height: 15.h,
+                              ),
+                              // SvgPicture.asset("assets/images/os.png",height: 20,
+                              //   fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Customer Insights",
+                                style: headTextStyle(),
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -131,47 +129,45 @@ class _HomeScreenState extends State<HomeScreen> {
                   Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SpecialPricingHeader()));
-                        },
-                        child: Container(
-                          height: 50,
-                          // width: MediaQuery.of(context).size.width / 2,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.shade300,
-                                    spreadRadius: 1,
-                                    blurRadius: 1)
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10.0, top: 10, bottom: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  "assets/images/file.png",
-                                  height: 15.h,
-                                ),
-                                SizedBox(
-                                  width: 8.w,
-                                ),
-                                Text(
-                                  "Special Pricing",
-                                  style: headTextStyle(),
-                                )
-                              ],
-                            ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const SpecialPricingHeader()));
+                      },
+                      child: Container(
+                        height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/file.png",
+                                height: 15.h,
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Special Pricing",
+                                style: headTextStyle(),
+                              )
+                            ],
                           ),
                         ),
                       ),
