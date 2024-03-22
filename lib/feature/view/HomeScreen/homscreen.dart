@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const HomePopUPMenuButton(),
         title: SvgPicture.asset(
           "assets/svg/logo_ccsfa.svg",
-          height: 30,
+          height: 22.sp,
         ),
         actions: [
           InkWell(
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ));
                       },
                       child: Container(
-                        height: 50,
+                        //height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -99,8 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -138,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const SpecialPricingHeader()));
                       },
                       child: Container(
-                        height: 50,
+                       // height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -151,8 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -176,11 +174,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -193,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) => const PromotionHeader()));
                       },
                       child: Container(
-                        height: 50,
+                       // height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -206,8 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 05),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -244,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: Container(
-                        height: 50,
+                        //height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -257,8 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -284,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
               child: Row(
                 children: [
                   Expanded(

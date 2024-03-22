@@ -27,7 +27,7 @@ class SalesOrders extends StatelessWidget {
                 colors: [Color(0xffCEE5C6), Color(0xffEAF6E6)],
               )),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Column(
               children: [
                 Padding(
@@ -44,14 +44,14 @@ class SalesOrders extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 05.0, right: 05),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0,top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(
                         flex: 2,
                         fit: FlexFit.tight,
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -59,8 +59,8 @@ class SalesOrders extends StatelessWidget {
                                     builder: (context) => const TotalOrders()));
                           },
                           child: Container(
-                            height: 70,
-                            width: 170,
+                            /*  height: 70,
+                            width: 170, */
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white),
@@ -74,25 +74,21 @@ class SalesOrders extends StatelessWidget {
                                     children: [
                                       SvgPicture.asset(
                                         "assets/svg/orders.svg",
-                                        height: 25,
+                                        height: 20,
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
+                                  SizedBox(width: 12.w),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text("10", style: countHeading()),
                                       Text("AED 0.00", style: subTextStyle()),
-                                      Expanded(
-                                        child: Text(
-                                          "Total Order",
-                                          style: statusTextStyle(),
-                                        ),
+                                      Text(
+                                        "Total Orders",
+                                        style: statusTextStyle(),
                                       )
                                     ],
                                   ),
@@ -102,23 +98,23 @@ class SalesOrders extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 5,
+                      SizedBox(
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 2,
                         fit: FlexFit.tight,
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const TodaysDelivery()));
+                                    const TodaysDelivery()));
                           },
                           child: Container(
-                            height: 70,
-                            width: 170,
+                            /* height: 70,
+                            width: 170, */
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white),
@@ -137,17 +133,17 @@ class SalesOrders extends StatelessWidget {
                                     ],
                                   ),
                                   SizedBox(
-                                    width: 10.w,
+                                    width: 12.w,
                                   ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text("0/0", style: countHeading()),
                                       Text("AED 0.00", style: subTextStyle()),
                                       Text(
-                                        "Today's Deliveries",
+                                        "Total Deliveries",
                                         style: statusTextStyle(),
                                       )
                                     ],
@@ -161,6 +157,8 @@ class SalesOrders extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 5.h,)
+
               ],
             ),
           )),

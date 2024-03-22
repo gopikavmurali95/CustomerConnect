@@ -27,7 +27,7 @@ class CustomerTransaction extends StatelessWidget {
                 colors: [Color(0xffC6E1E5), Color(0xffE6F4F6)],
               )),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Column(
               children: [
                 Padding(
@@ -43,7 +43,7 @@ class CustomerTransaction extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0,top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -81,9 +81,7 @@ class CustomerTransaction extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
+                                  SizedBox(width: 12.w),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -104,7 +102,7 @@ class CustomerTransaction extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 5.w,
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 2,
@@ -140,8 +138,8 @@ class CustomerTransaction extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(
-                                    width: 15,
+                                  SizedBox(
+                                    width: 12.w,
                                   ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -165,6 +163,7 @@ class CustomerTransaction extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 3.h,)
               ],
             ),
           )),

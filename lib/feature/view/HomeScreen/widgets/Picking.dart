@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
@@ -31,12 +30,12 @@ class PickingWidget extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
             child: Column(
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -49,7 +48,7 @@ class PickingWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 5),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -68,13 +67,13 @@ class PickingWidget extends StatelessWidget {
                           },
                           child: Container(
                             // height: 70,
-                            width: 110,
+                            width: 110.w,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.white),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +90,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       //Icon(Icons.note_add_outlined,size: 12,),
                                       Text("Not Started",
@@ -105,7 +104,7 @@ class PickingWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 6.w,
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 3,
@@ -128,7 +127,7 @@ class PickingWidget extends StatelessWidget {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +144,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       Text("Ongoing", style: statusTextStyle()),
                                     ],
@@ -157,7 +156,7 @@ class PickingWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 6.w,
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 3,
@@ -180,7 +179,7 @@ class PickingWidget extends StatelessWidget {
                                 color: Colors.white),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +196,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       //Icon(Icons.note_add_outlined,size: 12,),
                                       Text("Completed",
@@ -213,9 +212,9 @@ class PickingWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 8.h,),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      left: 10.0, right: 20, top: 10, bottom: 0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -231,7 +230,7 @@ class PickingWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 5),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -255,7 +254,7 @@ class PickingWidget extends StatelessWidget {
                                 color: Colors.white),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,7 +271,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       //Icon(Icons.note_add_outlined,size: 12,),
                                       Text("Pending", style: statusTextStyle()),
@@ -285,7 +284,7 @@ class PickingWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 6.w,
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 3,
@@ -307,7 +306,7 @@ class PickingWidget extends StatelessWidget {
                                 color: Colors.white),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -324,7 +323,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       //Icon(Icons.note_add_outlined,size: 12,),
                                       Text("Completed",
@@ -338,7 +337,7 @@ class PickingWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 6.w,
+                        width: 8.w,
                       ),
                       Flexible(
                         flex: 3,
@@ -360,7 +359,7 @@ class PickingWidget extends StatelessWidget {
                                 color: Colors.white),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
+                                  horizontal: 12, vertical: 8),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -377,7 +376,7 @@ class PickingWidget extends StatelessWidget {
                                         height: 8.h,
                                       ),
                                       SizedBox(
-                                        width: 5.w,
+                                        width: 8.w,
                                       ),
                                       //Icon(Icons.note_add_outlined,size: 12,),
                                       Text("Rejected",
@@ -393,9 +392,13 @@ class PickingWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 5.h,)
               ],
             ),
-          )),
+          ),
+
+      )
+      ,
     );
   }
 }
