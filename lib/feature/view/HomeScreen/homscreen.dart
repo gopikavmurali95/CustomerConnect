@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
@@ -15,7 +16,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../SpecialPricing/specialpricingheader.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final LoginUserModel user;
+  const HomeScreen({super.key, required this.user});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

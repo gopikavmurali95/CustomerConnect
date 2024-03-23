@@ -62,7 +62,11 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                   backgroundColor: Colors.white,
                   surfaceTintColor: Colors.white)),
-          home: user == null ? const LoginScreen() : const HomeScreen(),
+          home: user == null
+              ? const LoginScreen()
+              : HomeScreen(
+                  user: user!,
+                ),
         ),
       ),
     );
