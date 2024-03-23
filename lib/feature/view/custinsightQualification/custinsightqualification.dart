@@ -90,14 +90,16 @@ class CustInsightQualificationGroup extends StatelessWidget {
                           Text(
                             'Virtual | Supermarket | Dubai ',
                             style:
-                            kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Divider(),
                 SizedBox(
                   height: 65,

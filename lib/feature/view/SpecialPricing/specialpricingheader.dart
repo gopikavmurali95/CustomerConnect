@@ -1,5 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/SpecialPricing/Widgets/spheaderlist.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

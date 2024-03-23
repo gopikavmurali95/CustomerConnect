@@ -1,7 +1,7 @@
 import 'package:customer_connect/feature/view/PickingDetail/picking_ongoing.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../constants/fonts.dart';
+import '../../../../constants/fonts.dart';
 
 class OnGoing extends StatelessWidget {
   const OnGoing({super.key});
