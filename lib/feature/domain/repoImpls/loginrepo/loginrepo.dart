@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:customer_connect/constants/fonts.dart';
+// import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -9,11 +9,14 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
+import 'package:logger/logger.dart';
+
 @LazySingleton(as: ILoginRepo)
 class UserLoginRepo implements ILoginRepo {
   @override
   Future<Either<MainFailures, LoginUserModel>> userLogin(
       String username, String password) async {
+    var logger = Logger();
     try {
       final response = await http.post(Uri.parse(baseUrl + loginUrl),
           body: {"username": username, "password": password});
