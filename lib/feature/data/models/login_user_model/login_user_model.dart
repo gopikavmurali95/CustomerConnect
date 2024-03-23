@@ -17,7 +17,7 @@ class LoginUserModel {
   @JsonKey(name: 'UserName')
   String? userName;
   @JsonKey(name: 'NewUser')
-  bool? newUser;
+  String? newUser;
   @JsonKey(name: 'Title')
   String? title;
   @JsonKey(name: 'Descr')

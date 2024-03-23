@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 // import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
@@ -31,6 +32,7 @@ class UserLoginRepo implements ILoginRepo {
         );
       }
     } catch (e) {
+      log('login error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

@@ -1,19 +1,44 @@
+import 'dart:convert';
+
 import 'package:customer_connect/feature/data/di/injectable.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
+import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureinjection();
-  runApp(const MyApp());
+
+  LoginUserModel? user = await getuserdata();
+
+  runApp(MyApp(
+    user: user,
+  ));
+}
+
+Future<LoginUserModel?> getuserdata() async {
+  final SharedPreferences sharedprefs = await SharedPreferences.getInstance();
+
+  String userString = sharedprefs.getString('user') ?? '';
+
+  if (userString.isEmpty) {
+    return null;
+  }
+
+  final LoginUserModel user = LoginUserModel.fromJson(jsonDecode(userString));
+
+  return user;
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final LoginUserModel? user;
+  const MyApp({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +62,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                   backgroundColor: Colors.white,
                   surfaceTintColor: Colors.white)),
-          home: const LoginScreen(),
+          home: user == null ? const LoginScreen() : const HomeScreen(),
         ),
       ),
     );
