@@ -1,5 +1,5 @@
-import 'package:customer_connect/feature/SpecialPricing/Widgets/spcustomerlist.dart';
-import 'package:customer_connect/feature/SpecialPricing/Widgets/specialpricing.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerlist.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

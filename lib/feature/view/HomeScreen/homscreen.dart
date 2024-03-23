@@ -11,7 +11,7 @@ import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../SpecialPricing/specialpricingheader.dart';
+import '../SpecialPricing/specialpricingheader.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
