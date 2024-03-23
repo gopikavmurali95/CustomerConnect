@@ -3,6 +3,6 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:dartz/dartz.dart';
 
 abstract class ILoginRepo {
-  Either<MainFailures, LoginUserModel> userLogin(
+  Future<Either<MainFailures, LoginUserModel>> userLogin(
       String username, String password);
 }
