@@ -14,7 +14,7 @@ LoginUserModel _$LoginUserModelFromJson(Map<String, dynamic> json) =>
       contacInfo: json['ContacInfo'] as String?,
       usrId: json['usrID'] as String?,
       userName: json['UserName'] as String?,
-      newUser: json['NewUser'] as bool?,
+      newUser: json['NewUser'] as String?,
       title: json['Title'] as String?,
       descr: json['Descr'] as String?,
       versionDate: json['VersionDate'] as String?,
