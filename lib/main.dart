@@ -1,10 +1,14 @@
+import 'package:customer_connect/feature/data/di/injectable.dart';
+import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureinjection();
   runApp(const MyApp());
 }
 
@@ -17,6 +21,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ArScrollCtrlCubit>(
           create: (context) => ArScrollCtrlCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<UserLoginBloc>(),
         ),
       ],
       child: ScreenUtilInit(

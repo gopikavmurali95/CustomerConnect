@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/web.dart';
 
 TextStyle boxHeading() {
   return GoogleFonts.poppins(
@@ -62,3 +63,5 @@ TextStyle loadTextStyle() {
       fontWeight: FontWeight.w500,
       color: const Color(0xff6E62A4));
 }
+
+Logger logger = Logger();
