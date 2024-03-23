@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/customerinsights/customersscreen.d
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../SpecialPricing/specialpricingheader.dart';
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const HomePopUPMenuButton(),
         title: SvgPicture.asset(
           "assets/svg/logo_ccsfa.svg",
-          height: 30,
+          height: 22.sp,
         ),
         actions: [
           InkWell(
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const CustomerTransaction(),
             const SalesOrders(),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 10,top: 10),
+              padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -69,11 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -83,8 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ));
                       },
                       child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -96,19 +99,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset(
                                 "assets/images/customer.png",
-                                height: 20,
+                                height: 15.h,
                               ),
                               // SvgPicture.asset("assets/images/os.png",height: 20,
                               //   fit: BoxFit.scaleDown,),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Customer Insights",
@@ -120,21 +122,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 10.w,
                   ),
-                  Expanded(
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SpecialPricingHeader()));
+                                builder: (context) =>
+                                    const SpecialPricingHeader()));
                       },
-
                       child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                       // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -146,17 +150,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset(
                                 "assets/images/file.png",
-                                height: 20,
+                                height: 15.h,
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Special Pricing",
@@ -171,11 +174,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -188,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) => const PromotionHeader()));
                       },
                       child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                       // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -201,17 +204,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 05),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset(
                                 "assets/images/pro.png",
-                                height: 20,
+                                height: 15.h,
                               ),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Promotions",
@@ -223,8 +225,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Expanded(
                     child: InkWell(
@@ -239,8 +241,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width / 2,
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(10),
@@ -252,18 +254,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 10, bottom: 10, right: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset(
                                 "assets/images/os.png",
-                                height: 20,
+                                height: 15.h,
                               ),
                               // fit: BoxFit.scaleDown,),
-                              const SizedBox(
-                                width: 10,
+                              SizedBox(
+                                width: 8.w,
                               ),
                               Text(
                                 "Outstanding",
@@ -279,13 +280,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
               child: Row(
                 children: [
                   Expanded(
                     child: Container(
                       height: 50,
-                      width: 150,
+                      // width: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(10),

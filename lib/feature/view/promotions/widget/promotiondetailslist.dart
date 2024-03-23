@@ -6,9 +6,9 @@ class PromotionDetailsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        // physics: const NeverScrollableScrollPhysics(),
-        // shrinkWrap: true,
-        itemCount: 25,
+         //physics: const NeverScrollableScrollPhysics(),
+         shrinkWrap: true,
+        itemCount: 5,
         itemBuilder: (context, index) {
           return Column(
             children: [

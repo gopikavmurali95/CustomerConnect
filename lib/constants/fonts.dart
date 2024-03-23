@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 TextStyle boxHeading() {
   return GoogleFonts.poppins(
       fontSize: 12,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
 
@@ -33,7 +33,7 @@ TextStyle statusTextStyle() {
   return GoogleFonts.poppins(
       fontSize: 10,
       //fontWeight: FontWeight.w500,
-      color: Colors.grey);
+      color: const Color(0xff5D5D5D));
 }
 
 TextStyle subTextStyle() {
