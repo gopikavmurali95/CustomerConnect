@@ -43,7 +43,7 @@ class CustomerTransaction extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0,top: 3),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -163,7 +163,9 @@ class CustomerTransaction extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 3.h,)
+                SizedBox(
+                  height: 3.h,
+                )
               ],
             ),
           )),

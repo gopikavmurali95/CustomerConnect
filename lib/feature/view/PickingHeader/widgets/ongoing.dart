@@ -53,14 +53,14 @@ class OnGoing extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: RichText(
-                      text: TextSpan(text: "Route 101 |",
+                      text: TextSpan(
+                          text: "Route 101 |",
                           style: subTitleTextStyle(),
                           children: [
-                            TextSpan(text: "16 July 2023 |",style: subTitleTextStyle()),
-
-                            TextSpan(text: "10.30",style: subTitleTextStyle())
-                          ]
-                      )),
+                        TextSpan(
+                            text: "16 July 2023 |", style: subTitleTextStyle()),
+                        TextSpan(text: "10.30", style: subTitleTextStyle())
+                      ])),
                 ),
               ),
             ),

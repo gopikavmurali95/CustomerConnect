@@ -16,7 +16,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
       appBar: AppBar(
         titleSpacing: 0.2,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back_ios_rounded),

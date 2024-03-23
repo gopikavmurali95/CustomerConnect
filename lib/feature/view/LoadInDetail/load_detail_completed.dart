@@ -14,8 +14,9 @@ class LoadDetailCompleted extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_rounded,),
-
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+          ),
         ),
         title: Text(
           "Load In Detail",
@@ -25,7 +26,6 @@ class LoadDetailCompleted extends StatelessWidget {
           preferredSize: const Size(100, 100),
           child: Column(
             children: [
-
               ListTile(
                   title: Text(
                     "M086765",
@@ -65,8 +65,7 @@ class LoadDetailCompleted extends StatelessWidget {
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
-                        ]
-                    ),
+                        ]),
                     child: TextField(
                       decoration: InputDecoration(
                           prefixIcon: const Icon(

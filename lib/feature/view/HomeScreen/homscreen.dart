@@ -99,7 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -137,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const SpecialPricingHeader()));
                       },
                       child: Container(
-                       // height: 50,
+                        // height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -150,7 +151,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -191,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) => const PromotionHeader()));
                       },
                       child: Container(
-                       // height: 50,
+                        // height: 50,
                         // width: MediaQuery.of(context).size.width / 2,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
@@ -204,7 +206,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -254,7 +257,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   blurRadius: 1)
                             ]),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -280,7 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
               child: Row(
                 children: [
                   Expanded(

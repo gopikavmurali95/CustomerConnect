@@ -43,7 +43,6 @@ class CustomerInsightPromotion extends StatelessWidget {
             ),
           ),
         ],
-
       ),
       body: SizedBox(
         height: double.infinity,
@@ -110,7 +109,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                           Text(
                             'Virtual | Supermarket | Dubai ',
                             style:
-                            kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -119,8 +118,8 @@ class CustomerInsightPromotion extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                const EdgeInsets.only(left: 20.0, right: 20, bottom: 0,top: 10),
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, bottom: 0, top: 10),
                 child: Container(
                     height: 40,
                     decoration: BoxDecoration(
@@ -158,12 +157,11 @@ class CustomerInsightPromotion extends StatelessWidget {
                       // controller: _locationNameTextController,
                     )),
               ),
-
               SizedBox(
                 height: 10.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0,right: 25),
+                padding: const EdgeInsets.only(left: 15.0, right: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -193,7 +191,8 @@ class CustomerInsightPromotion extends StatelessWidget {
                           height: 50,
                           width: double.infinity,
                           child: Padding(
-                            padding: const EdgeInsets.only(left:15.0,right: 20),
+                            padding:
+                                const EdgeInsets.only(left: 15.0, right: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -202,7 +201,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                     children: [
                                       CircleAvatar(
                                         backgroundColor:
-                                        const Color(0xffB3DAF7),
+                                            const Color(0xffB3DAF7),
                                         child: Center(
                                           child: Text(
                                             'AL',
@@ -222,13 +221,13 @@ class CustomerInsightPromotion extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                  const PromotionCustomer()));
+                                                      const PromotionCustomer()));
                                         },
                                         child: Column(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Free Good Promotions',
@@ -254,7 +253,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                            const PromotionDetails()));
+                                                const PromotionDetails()));
                                   },
                                   child: Row(
                                     children: [
@@ -264,7 +263,7 @@ class CustomerInsightPromotion extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                  const CustInsightPromotionDetails()));
+                                                      const CustInsightPromotionDetails()));
                                         },
                                         child: Text(
                                           'Details',

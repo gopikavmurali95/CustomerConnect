@@ -44,7 +44,7 @@ class SalesOrders extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0, right: 0,top: 3),
+                  padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -82,7 +82,7 @@ class SalesOrders extends StatelessWidget {
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text("10", style: countHeading()),
                                       Text("AED 0.00", style: subTextStyle()),
@@ -110,7 +110,7 @@ class SalesOrders extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                    const TodaysDelivery()));
+                                        const TodaysDelivery()));
                           },
                           child: Container(
                             /* height: 70,
@@ -138,7 +138,7 @@ class SalesOrders extends StatelessWidget {
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text("0/0", style: countHeading()),
                                       Text("AED 0.00", style: subTextStyle()),
@@ -157,8 +157,9 @@ class SalesOrders extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 5.h,)
-
+                SizedBox(
+                  height: 5.h,
+                )
               ],
             ),
           )),

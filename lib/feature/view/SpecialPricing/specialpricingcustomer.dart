@@ -37,7 +37,10 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         bottom: PreferredSize(
           preferredSize: Size(100, 100.h),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 15,),
+            padding: const EdgeInsets.only(
+              left: 20.0,
+              right: 15,
+            ),
             child: Column(
               children: [
                 SizedBox(
@@ -123,43 +126,45 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                     ],
                   ),
                 ),
-
                 Padding(
-                  padding: const EdgeInsets.only(left: 0.0,right: 0,bottom: 0),
+                  padding:
+                      const EdgeInsets.only(left: 0.0, right: 0, bottom: 0),
                   child: Container(
                       height: 40,
-                      decoration:  BoxDecoration(
+                      decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),
                           borderRadius: BorderRadius.circular(10.0),
                           boxShadow: const [
-                            BoxShadow(color: Color(0xff00000050),
+                            BoxShadow(
+                                color: Color(0xff00000050),
                                 blurRadius: 0.4,
                                 spreadRadius: 0.4)
                           ]),
                       child: TextField(
                         decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.search,size: 20,),
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              size: 20,
+                            ),
                             hintText: "Search Customers",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
-                                color: Colors.grey,fontWeight: FontWeight.normal),
+                                color: Colors.grey,
+                                fontWeight: FontWeight.normal),
                             isDense: true,
                             counterText: "",
                             contentPadding: const EdgeInsets.all(15.0),
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                                borderRadius:
-                                BorderRadius.circular(10.0),
-                                borderSide: BorderSide.none
-                            )),
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide.none)),
                         textAlign: TextAlign.start,
                         maxLines: 1,
                         maxLength: 20,
                         // controller: _locationNameTextController,
-                      )
-                  ),
+                      )),
                 ),
                 SizedBox(
                   height: 15.h,
@@ -176,7 +181,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 15.0,right: 15),
+                padding: const EdgeInsets.only(left: 15.0, right: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

@@ -18,25 +18,24 @@ class _SpecialPricingState extends State<SpecialPricing> {
       appBar: AppBar(
         titleSpacing: 0.2,
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
-           icon: const Icon(Icons.arrow_back_ios_rounded),
-
+          icon: const Icon(Icons.arrow_back_ios_rounded),
         ),
-        title: Text("Special Pricing",style: appHeading(),
+        title: Text(
+          "Special Pricing",
+          style: appHeading(),
         ),
         bottom: PreferredSize(
           preferredSize: const Size(200, 100),
           child: Column(
-
             children: [
-
               Padding(
-                padding: const EdgeInsets.only(left: 15,right: 10),
+                padding: const EdgeInsets.only(left: 15, right: 10),
                 child: SizedBox(
                   //color: Colors.red,
-                  height:60,
+                  height: 60,
                   width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,8 +44,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         child: Row(
                           children: [
                             CircleAvatar(
-                              backgroundColor:
-                              const Color(0xffB3DAF7),
+                              backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
                                   'AL',
@@ -66,13 +64,11 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        const SpecialPricing()));
+                                            const SpecialPricing()));
                               },
                               child: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Special Pricing 01',
@@ -108,7 +104,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        const SpecialPricingCustomer()));
+                                            const SpecialPricingCustomer()));
                               },
                               child: Text(
                                 'Customer',
@@ -179,41 +175,44 @@ class _SpecialPricingState extends State<SpecialPricing> {
               //   ),
               // ),
               Padding(
-                padding: const EdgeInsets.only(top:5,left: 15.0,right: 15,bottom: 10),
+                padding: const EdgeInsets.only(
+                    top: 5, left: 15.0, right: 15, bottom: 10),
                 child: Container(
                     height: 40,
-                    decoration:  BoxDecoration(
+                    decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.grey.shade200),
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
-                          BoxShadow(color: Color(0xff00000050),
+                          BoxShadow(
+                              color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
                     child: TextField(
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.search,size: 20,),
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            size: 20,
+                          ),
                           hintText: "Search Items",
                           hintStyle: const TextStyle(
                               fontSize: 14,
-                              color: Colors.grey,fontWeight: FontWeight.normal),
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal),
                           isDense: true,
                           counterText: "",
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
-                              borderRadius:
-                              BorderRadius.circular(10.0),
-                              borderSide: BorderSide.none
-                          )),
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none)),
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       maxLength: 20,
                       // controller: _locationNameTextController,
-                    )
-                ),
+                    )),
               ),
             ],
           ),
@@ -230,57 +229,84 @@ class _SpecialPricingState extends State<SpecialPricing> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left:10,right: 110),
-                    child: Text("Items",style: boxHeading(),),
+                    padding: const EdgeInsets.only(left: 10, right: 110),
+                    child: Text(
+                      "Items",
+                      style: boxHeading(),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 42),
-                    child: Text("UOM",style: boxHeading(),),
+                    child: Text(
+                      "UOM",
+                      style: boxHeading(),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Std Price",style: boxHeading(),),
+                    child: Text(
+                      "Std Price",
+                      style: boxHeading(),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Text("Spcl Price",style: boxHeading(),),
+                    child: Text(
+                      "Spcl Price",
+                      style: boxHeading(),
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             ListView.separated(
               itemCount: 4,
               shrinkWrap: true,
-              itemBuilder:(BuildContext context,int index)
-              {
+              itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15.0,top:2),
+                          padding: const EdgeInsets.only(left: 15.0, top: 2),
                           child: Container(
                             height: 55,
                             width: 180,
                             color: Colors.white,
-                            child:  Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("400478754",style: loadTextStyle()),
-                                Text("Divella forfalle pasta 500g",style: subTitleTextStyle(),),
-                                Text("Offer Pack",style: subTitleTextStyle(),),
+                                Text("400478754", style: loadTextStyle()),
+                                Text(
+                                  "Divella forfalle pasta 500g",
+                                  style: subTitleTextStyle(),
+                                ),
+                                Text(
+                                  "Offer Pack",
+                                  style: subTitleTextStyle(),
+                                ),
                               ],
                             ),
                           ),
                         ),
                         Column(
                           children: [
-                            Text("Cs",style: subTitleTextStyle(),),
-                            const SizedBox(height: 5,),
-                            Text("Cs",style: subTitleTextStyle(),),
+                            Text(
+                              "Cs",
+                              style: subTitleTextStyle(),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Cs",
+                              style: subTitleTextStyle(),
+                            ),
                           ],
                         ),
                         Padding(
@@ -289,20 +315,36 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("2.50",style: subTitleTextStyle(),),
-                              const SizedBox(height: 5,),
-                              Text("12.00",style: subTitleTextStyle(),),
+                              Text(
+                                "2.50",
+                                style: subTitleTextStyle(),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "12.00",
+                                style: subTitleTextStyle(),
+                              ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left:5,right: 20.0),
+                          padding: const EdgeInsets.only(left: 5, right: 20.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("10.00",style: subTitleTextStyle(),),
-                              const SizedBox(height: 5,),
-                              Text("10.45",style: subTitleTextStyle(),),
+                              Text(
+                                "10.00",
+                                style: subTitleTextStyle(),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "10.45",
+                                style: subTitleTextStyle(),
+                              ),
                             ],
                           ),
                         ),
@@ -313,10 +355,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                   ],
                 );
               },
-              separatorBuilder: (BuildContext context, int index)
-              {
+              separatorBuilder: (BuildContext context, int index) {
                 return const Padding(
-                  padding: EdgeInsets.only(left: 0.0,right: 0),
+                  padding: EdgeInsets.only(left: 0.0, right: 0),
                   child: Divider(),
                 );
               },

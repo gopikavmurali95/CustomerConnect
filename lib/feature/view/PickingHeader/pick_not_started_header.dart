@@ -21,8 +21,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_rounded,),
-
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+          ),
         ),
         // leading: SizedBox(
         //   height: 05,
@@ -46,8 +47,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding:
-            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(

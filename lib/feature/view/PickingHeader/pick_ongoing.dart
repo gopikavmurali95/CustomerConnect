@@ -50,8 +50,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding:
-            const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
