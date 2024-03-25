@@ -1,38 +1,35 @@
 import 'dart:convert';
-import 'dart:developer';
 
-// import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
-import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-
 import 'package:logger/logger.dart';
+import 'package:http/http.dart' as http;
 
-@LazySingleton(as: ILoginRepo)
-class UserLoginRepo implements ILoginRepo {
+@LazySingleton(as: ISalesOrderRepo)
+class SalesOrderCountRepo implements ISalesOrderRepo {
   @override
-  Future<Either<MainFailures, LoginUserModel>> userLogin(
-      String username, String password) async {
+  Future<Either<MainFailures, SalesOderCountModel>> soCount(
+      String userID) async {
     var logger = Logger();
     try {
-      final response = await http.post(Uri.parse(baseUrl + loginUrl),
-          body: {"Username": username, "Password": password});
+      final response = await http.post(
+          Uri.parse(baseUrl + salesorderscountsurl),
+          body: {"UserID": userID});
       if (response.statusCode == 200) {
         logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
-        final userModel = LoginUserModel.fromJson(json["result"][0]);
-        return right(userModel);
+        final salescount = SalesOderCountModel.fromJson(json["result"][0]);
+        return right(salescount);
       } else {
         return left(
           const MainFailures.networkerror(error: 'Something went Wrong'),
         );
       }
     } catch (e) {
-      log('login error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

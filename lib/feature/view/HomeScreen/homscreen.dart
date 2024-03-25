@@ -1,5 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
@@ -10,6 +13,7 @@ import 'package:customer_connect/feature/view/customerinsights/customersscreen.d
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -23,6 +27,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    context
+        .read<PickingAndLoadingCountBloc>()
+        .add(PlCountSuccessEvent(userID: widget.user.usrId!));
+    context
+        .read<CustomerTransactionBloc>()
+        .add(CusTransactionSuccessEvent(userID: widget.user.usrId!));
+    context
+        .read<SalesOrderCountBloc>()
+        .add(SalesOrderCountSuccessEvent(userID: widget.user.usrId!));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
