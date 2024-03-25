@@ -367,8 +367,9 @@ class PickingWidget extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoadCompleted(),
+                                        builder: (context) => LoadCompleted(
+                                          user: user,
+                                        ),
                                       ),
                                     );
                                   },
@@ -434,8 +435,9 @@ class PickingWidget extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoadRejected(),
+                                        builder: (context) => LoadRejected(
+                                          user: user,
+                                        ),
                                       ),
                                     );
                                   },
