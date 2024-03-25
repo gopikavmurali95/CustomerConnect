@@ -1,16 +1,37 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/view/load/widgets/PendingList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoadPending extends StatefulWidget {
-  const LoadPending({super.key});
+  final LoginUserModel user;
+  const LoadPending({super.key, required this.user});
 
   @override
   State<LoadPending> createState() => _LoadPendingState();
 }
 
 class _LoadPendingState extends State<LoadPending> {
+  @override
+  void initState() {
+    context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
+    context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+        loadingin: LoadingHeaderInModel(
+            userId: widget.user.usrId,
+            fromDate: '01-01-2023',
+            toDate: '23-03-2024',
+            mode: 'DD',
+            area: '',
+            route: '',
+            subArea: '')));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,35 +107,31 @@ class _LoadPendingState extends State<LoadPending> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Pending",
-                    style: countHeading(),
-                  ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "Pending",
+                  style: countHeading(),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "10",
+                  style: countHeading(),
                 ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            const PendingList(),
-          ],
-        ),
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          const Expanded(child: PendingList()),
+        ],
       ),
     );
   }

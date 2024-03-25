@@ -1,9 +1,29 @@
+import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
+import 'package:customer_connect/feature/state/bloc/bloc/loading_detail_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants/fonts.dart';
 
-class LoadDetailPending extends StatelessWidget {
-  const LoadDetailPending({super.key});
+class LoadDetailPending extends StatefulWidget {
+  final LoadingHeadermodel loadingheader;
+  const LoadDetailPending({super.key, required this.loadingheader});
+
+  @override
+  State<LoadDetailPending> createState() => _LoadDetailPendingState();
+}
+
+class _LoadDetailPendingState extends State<LoadDetailPending> {
+  @override
+  void initState() {
+    context.read<LoadingDetailBloc>().add(const ClearLoadingDetailEvent());
+    context
+        .read<LoadingDetailBloc>()
+        .add(GetloadingDetailEvent(iD: widget.loadingheader.id ?? ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +48,11 @@ class LoadDetailPending extends StatelessWidget {
             children: [
               ListTile(
                   title: Text(
-                    "M086765",
+                    widget.loadingheader.transactionCode ?? "",
                     style: blueTextStyle(),
                   ),
                   subtitle: Text(
-                    "Route 101",
+                    widget.loadingheader.rotName ?? '',
                     style: subTitleTextStyle(),
                   ),
                   trailing: Container(
@@ -41,10 +61,10 @@ class LoadDetailPending extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: const Color(0xffECEFBE)),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "Pending",
-                        style: TextStyle(fontSize: 10),
+                        widget.loadingheader.status ?? '',
+                        style: const TextStyle(fontSize: 10),
                       )))),
               Padding(
                 padding:
@@ -57,6 +77,7 @@ class LoadDetailPending extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
@@ -90,127 +111,208 @@ class LoadDetailPending extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 30,
-              color: Colors.grey.shade200,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 160),
-                    child: Text(
-                      "Items",
-                      style: boxHeading(),
+      body: BlocBuilder<LoadingDetailBloc, LoadingDetailState>(
+        builder: (context, state) {
+          return state.when(
+            getloadingDetail: (detail) => detail == null
+                ? const Center(
+                    child: CupertinoActivityIndicator(
+                      animating: true,
+                      color: Colors.red,
+                      radius: 30,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 50),
-                    child: Text(
-                      "UOM",
-                      style: boxHeading(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Text(
-                      "Qty",
-                      style: boxHeading(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ListView.separated(
-              itemCount: 4,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  )
+                : SingleChildScrollView(
+                    child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15.0, top: 2),
-                          child: Container(
-                            height: 55,
-                            width: 200,
-                            color: Colors.white,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("400478754", style: loadTextStyle()),
-                                Text(
-                                  "How are you Pasta 500g",
-                                  style: subTitleTextStyle(),
-                                ),
-                                Text(
-                                  "Offer Pack",
-                                  style: subTitleTextStyle(),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Cs",
-                              style: subTitleTextStyle(),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Cs",
-                              style: subTitleTextStyle(),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5, right: 20.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 30,
+                          color: Colors.grey.shade200,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                "2",
-                                style: subTitleTextStyle(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 160),
+                                child: Text(
+                                  "Items",
+                                  style: boxHeading(),
+                                ),
                               ),
-                              const SizedBox(
-                                height: 5,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 50),
+                                child: Text(
+                                  "UOM",
+                                  style: boxHeading(),
+                                ),
                               ),
-                              Text(
-                                "1",
-                                style: subTitleTextStyle(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 30),
+                                child: Text(
+                                  "Qty",
+                                  style: boxHeading(),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        //  SizedBox(width: 0,)
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ListView.separated(
+                          itemCount: detail.length,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, top: 2),
+                                      child: Container(
+                                        // height: 55,
+                                        width: 200,
+                                        color: Colors.white,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(detail[index].prdCode ?? '',
+                                                style: loadTextStyle()),
+                                            Text(
+                                              detail[index].prdName ?? "",
+                                              style: subTitleTextStyle(),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      // crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Visibility(
+                                          visible:
+                                              detail[index].higherUom == null ||
+                                                      detail[index]
+                                                          .higherUom!
+                                                          .isEmpty ||
+                                                      detail[index].higherQty ==
+                                                          null ||
+                                                      detail[index]
+                                                          .higherQty!
+                                                          .isEmpty
+                                                  ? false
+                                                  : true,
+                                          child: Text(
+                                            detail[index].higherUom ?? '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Visibility(
+                                          visible:
+                                              detail[index].lowerUom == null ||
+                                                      detail[index]
+                                                          .lowerUom!
+                                                          .isEmpty ||
+                                                      detail[index].lowerQty ==
+                                                          null ||
+                                                      detail[index]
+                                                          .lowerQty!
+                                                          .isEmpty
+                                                  ? false
+                                                  : true,
+                                          child: Text(
+                                            detail[index].lowerUom ?? "",
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 20.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Visibility(
+                                            visible: detail[index]
+                                                            .higherUom ==
+                                                        null ||
+                                                    detail[index]
+                                                        .higherUom!
+                                                        .isEmpty ||
+                                                    detail[index].higherQty ==
+                                                        null ||
+                                                    detail[index]
+                                                        .higherQty!
+                                                        .isEmpty
+                                                ? false
+                                                : true,
+                                            child: Text(
+                                              detail[index].higherQty ?? '',
+                                              style: subTitleTextStyle(),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Visibility(
+                                            visible: detail[index]
+                                                            .lowerUom ==
+                                                        null ||
+                                                    detail[index]
+                                                        .lowerUom!
+                                                        .isEmpty ||
+                                                    detail[index].lowerQty ==
+                                                        null ||
+                                                    detail[index]
+                                                        .lowerQty!
+                                                        .isEmpty
+                                                ? false
+                                                : true,
+                                            child: Text(
+                                              detail[index].lowerQty ?? '',
+                                              style: subTitleTextStyle(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    //  SizedBox(width: 0,)
+                                  ],
+                                ),
+                                //  Divider(),
+                              ],
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const Padding(
+                              padding: EdgeInsets.only(left: 0.0, right: 0),
+                              child: Divider(),
+                            );
+                          },
+                        ),
                       ],
                     ),
-                    //  Divider(),
-                  ],
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.only(left: 0.0, right: 0),
-                  child: Divider(),
-                );
-              },
+                  ),
+            loadingDetailFailedState: () => Center(
+              child: Text(
+                'No Data Available',
+                style: kfontstyle(),
+              ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
