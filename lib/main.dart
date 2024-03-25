@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/bloc/loading_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -49,6 +51,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<UserLoginBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadingHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadingDetailBloc>(),
         ),
       ],
       child: ScreenUtilInit(

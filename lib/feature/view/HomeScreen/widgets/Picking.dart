@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
@@ -12,7 +13,8 @@ import '../../PickingHeader/pick_ongoing.dart';
 import '../../PickingHeader/pick_not_started_header.dart';
 
 class PickingWidget extends StatelessWidget {
-  const PickingWidget({super.key});
+  final LoginUserModel user;
+  const PickingWidget({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +243,9 @@ class PickingWidget extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LoadPending(),
+                              builder: (context) => LoadPending(
+                                user: user,
+                              ),
                             ),
                           );
                         },

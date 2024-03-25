@@ -56,7 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const PickingWidget(),
+            PickingWidget(
+              user: widget.user,
+            ),
             const CustomerTransaction(),
             const SalesOrders(),
             Padding(
