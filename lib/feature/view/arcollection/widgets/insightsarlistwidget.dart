@@ -1,5 +1,4 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,12 +14,12 @@ class InsightArListWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Navigator.push(
+                  /* Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const ARDetailScreen(),
                     ),
-                  );
+                  ); */
                 },
                 child: Row(
                   children: [

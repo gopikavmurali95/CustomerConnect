@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../constants/fonts.dart';
 
 class CustomerTransaction extends StatelessWidget {
-  const CustomerTransaction({super.key});
+  final LoginUserModel user;
+  const CustomerTransaction({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +114,9 @@ class CustomerTransaction extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ArCollectionScreen(
+                                builder: (context) => ArCollectionScreen(
                                   isFromUser: false,
+                                  user: user,
                                 ),
                               ),
                             );

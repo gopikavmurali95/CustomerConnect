@@ -59,7 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
             PickingWidget(
               user: widget.user,
             ),
-            const CustomerTransaction(),
+            CustomerTransaction(
+              user: widget.user,
+            ),
             const SalesOrders(),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),

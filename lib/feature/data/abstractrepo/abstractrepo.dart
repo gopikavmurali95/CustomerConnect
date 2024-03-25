@@ -1,4 +1,8 @@
 import 'package:customer_connect/core/failures/failures.dart';
+import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_model.dart';
+import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
+import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
+import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_detail_model/loading_detail_model.dart';
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
@@ -16,4 +20,13 @@ abstract class ILoadingRepo {
 
   Future<Either<MainFailures, List<LoadingDetailModel>>> getLoadingDetail(
       String iD);
+}
+
+abstract class IArCollectionRepo {
+  Future<Either<MainFailures, ArTotalCollectionModel>> getArTotal(
+      ArTotalInModel totalIn);
+
+  Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
+      ArTotalInModel loadingIn);
+  Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
 }
