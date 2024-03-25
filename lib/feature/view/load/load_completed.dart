@@ -1,17 +1,38 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoadCompleted extends StatefulWidget {
-  const LoadCompleted({super.key});
+  final LoginUserModel user;
+  const LoadCompleted({super.key, required this.user});
 
   @override
   State<LoadCompleted> createState() => _LoadCompletedState();
 }
 
 class _LoadCompletedState extends State<LoadCompleted> {
+  @override
+  void initState() {
+    context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
+    context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+        loadingin: LoadingHeaderInModel(
+            userId: widget.user.usrId,
+            fromDate: '01-01-2023',
+            toDate: '25-03-2024',
+            mode: 'LD',
+            area: '',
+            route: '',
+            subArea: '')));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,35 +111,31 @@ class _LoadCompletedState extends State<LoadCompleted> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Completed",
-                    style: countHeading(),
-                  ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "Completed",
+                  style: countHeading(),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "10",
+                  style: countHeading(),
                 ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            const CompletedList(),
-          ],
-        ),
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          const Expanded(child: CompletedList()),
+        ],
       ),
     );
   }
