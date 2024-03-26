@@ -107,7 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CustomersScren(),
+                              builder: (context) => CustomersScren(
+                                user: widget.user,
+                              ),
                             ));
                       },
                       child: Container(

@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customertransactionwidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/otheroptionswidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/profileinfowidget.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomerInsightsScreen extends StatelessWidget {
-  const CustomerInsightsScreen({super.key});
+  final CusInsCustomersModel customer;
+  const CustomerInsightsScreen({super.key, required this.customer});
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_m
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/loading_detail_model/loading_detail_model.dart';
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
@@ -45,4 +46,9 @@ abstract class IArCollectionRepo {
   Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
       ArTotalInModel loadingIn);
   Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
+}
+
+abstract class ICusInsightsCustomersRepo {
+  Future<Either<MainFailures, List<CusInsCustomersModel>>> getCustomers(
+      String userId, String area, String subarea, String route);
 }

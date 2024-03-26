@@ -1,10 +1,27 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomersScren extends StatelessWidget {
-  const CustomersScren({super.key});
+class CustomersScren extends StatefulWidget {
+  final LoginUserModel user;
+  const CustomersScren({super.key, required this.user});
+
+  @override
+  State<CustomersScren> createState() => _CustomersScrenState();
+}
+
+class _CustomersScrenState extends State<CustomersScren> {
+  @override
+  void initState() {
+    context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
+    context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
+        userId: widget.user.usrId ?? '', area: '', subarea: '', route: ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,12 +101,36 @@ class CustomersScren extends StatelessWidget {
                   style: countHeading(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "130",
-                  style: countHeading(),
-                ),
+              BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
+                builder: (context, state) {
+                  return state.when(
+                    getCustomersSstate: (customers) => customers == null
+                        ? Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, right: 20, top: 10),
+                            child: Text(
+                              "0",
+                              style: countHeading(),
+                            ),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, right: 20, top: 10),
+                            child: Text(
+                              "${customers.length}",
+                              style: countHeading(),
+                            ),
+                          ),
+                    getcustomersFailedState: () => Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child: Text(
+                        "130",
+                        style: countHeading(),
+                      ),
+                    ),
+                  );
+                },
               ),
               // SizedBox(width: ,),
             ],

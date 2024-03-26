@@ -8,3 +8,4 @@ const loadingDetailUrl = 'LoadIn/SelectLoadInDetail';
 const arTotalCollectionUrl = 'AR/SelectARTotalCollection';
 const arHeaderUrl = 'AR/SelectARHeader';
 const arDeatilUrl = 'AR/SelectARDetail';
+const customerInsightsCustomersUrl = "CusInsightshome/SelectAllCustomerInsight";
