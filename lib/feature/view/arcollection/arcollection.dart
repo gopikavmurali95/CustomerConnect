@@ -429,13 +429,37 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                           style: countHeading(),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20.0, right: 20, top: 0),
-                        child: Text(
-                          "12",
-                          style: countHeading(),
-                        ),
+                      BlocBuilder<ArHeaderBloc, ArHeaderState>(
+                        builder: (context, state) {
+                          return state.when(
+                            arHeaderSuccessState: (artotal, arHeaders) =>
+                                arHeaders == null
+                                    ? Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, right: 20, top: 0),
+                                        child: Text(
+                                          "0",
+                                          style: countHeading(),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, right: 20, top: 0),
+                                        child: Text(
+                                          "${arHeaders.length}",
+                                          style: countHeading(),
+                                        ),
+                                      ),
+                            arHeaderFailedState: () => Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20.0, right: 20, top: 0),
+                              child: Text(
+                                "0",
+                                style: countHeading(),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                       // SizedBox(width: ,),
                     ],
