@@ -6,9 +6,7 @@ import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubi
 import 'package:customer_connect/feature/view/arcollection/widgets/arheaderlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,7 +38,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                 fromDate: '01-01-2023',
                 toDate: '25-03-2024',
                 area: '',
-                customer: '',
+                customer: '327',
                 outlet: '',
                 route: '',
                 subArea: ''),

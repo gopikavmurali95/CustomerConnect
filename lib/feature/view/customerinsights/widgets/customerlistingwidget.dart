@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsights/customerinsightsscree.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomersListingWidget extends StatelessWidget {
-  const CustomersListingWidget({super.key});
+  final LoginUserModel user;
+  const CustomersListingWidget({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomersListingWidget extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => CustomerInsightsScreen(
                                   customer: customers[index],
+                                  user: user,
                                 ),
                               ),
                             );

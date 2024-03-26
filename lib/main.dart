@@ -4,6 +4,8 @@ import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
@@ -81,6 +83,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CustomersListBlocBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusInsTrnCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusInsArHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

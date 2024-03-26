@@ -138,7 +138,10 @@ class _CustomersScrenState extends State<CustomersScren> {
           SizedBox(
             height: 10.h,
           ),
-          const Expanded(child: CustomersListingWidget())
+          Expanded(
+              child: CustomersListingWidget(
+            user: widget.user,
+          ))
         ],
       ),
     );
