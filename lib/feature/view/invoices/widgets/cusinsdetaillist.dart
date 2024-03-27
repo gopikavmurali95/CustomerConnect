@@ -281,9 +281,6 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             fit: FlexFit.tight,
                                             child:
                                                 Text(types[index].type ?? '')),
-                                        SizedBox(
-                                          width: 0.h,
-                                        ),
                                         Flexible(
                                             flex: 1,
                                             fit: FlexFit.tight,
@@ -317,7 +314,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                     ),
                                   ),
                               separatorBuilder: (context, index) => SizedBox(
-                                    height: 8.h,
+                                    height: 0.h,
                                   ),
                               itemCount: types.length)
                         ],

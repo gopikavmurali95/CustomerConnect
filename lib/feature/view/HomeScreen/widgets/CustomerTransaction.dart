@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
@@ -69,8 +67,9 @@ class CustomerTransaction extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const InvoiceHeaderScreen(
+                                                InvoiceHeaderScreen(
                                               isfromUser: false,
+                                              user: user,
                                             ),
                                           ),
                                         );

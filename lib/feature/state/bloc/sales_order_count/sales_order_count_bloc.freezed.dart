@@ -20,18 +20,21 @@ mixin _$SalesOrderCountEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) salesOrderCountSuccessEvent,
     required TResult Function() salesOrderCountFailedEvent,
+    required TResult Function() clearSalesOrderCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? salesOrderCountSuccessEvent,
     TResult? Function()? salesOrderCountFailedEvent,
+    TResult? Function()? clearSalesOrderCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? salesOrderCountSuccessEvent,
     TResult Function()? salesOrderCountFailedEvent,
+    TResult Function()? clearSalesOrderCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,6 +44,7 @@ mixin _$SalesOrderCountEvent {
         salesOrderCountSuccessEvent,
     required TResult Function(SalesOrderCountFailedEvent value)
         salesOrderCountFailedEvent,
+    required TResult Function(ClearSalesOrderCount value) clearSalesOrderCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +53,7 @@ mixin _$SalesOrderCountEvent {
         salesOrderCountSuccessEvent,
     TResult? Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult? Function(ClearSalesOrderCount value)? clearSalesOrderCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$SalesOrderCountEvent {
         salesOrderCountSuccessEvent,
     TResult Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult Function(ClearSalesOrderCount value)? clearSalesOrderCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,6 +157,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) salesOrderCountSuccessEvent,
     required TResult Function() salesOrderCountFailedEvent,
+    required TResult Function() clearSalesOrderCount,
   }) {
     return salesOrderCountSuccessEvent(userID);
   }
@@ -160,6 +167,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? salesOrderCountSuccessEvent,
     TResult? Function()? salesOrderCountFailedEvent,
+    TResult? Function()? clearSalesOrderCount,
   }) {
     return salesOrderCountSuccessEvent?.call(userID);
   }
@@ -169,6 +177,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? salesOrderCountSuccessEvent,
     TResult Function()? salesOrderCountFailedEvent,
+    TResult Function()? clearSalesOrderCount,
     required TResult orElse(),
   }) {
     if (salesOrderCountSuccessEvent != null) {
@@ -184,6 +193,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
         salesOrderCountSuccessEvent,
     required TResult Function(SalesOrderCountFailedEvent value)
         salesOrderCountFailedEvent,
+    required TResult Function(ClearSalesOrderCount value) clearSalesOrderCount,
   }) {
     return salesOrderCountSuccessEvent(this);
   }
@@ -195,6 +205,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
         salesOrderCountSuccessEvent,
     TResult? Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult? Function(ClearSalesOrderCount value)? clearSalesOrderCount,
   }) {
     return salesOrderCountSuccessEvent?.call(this);
   }
@@ -206,6 +217,7 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
         salesOrderCountSuccessEvent,
     TResult Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult Function(ClearSalesOrderCount value)? clearSalesOrderCount,
     required TResult orElse(),
   }) {
     if (salesOrderCountSuccessEvent != null) {
@@ -269,6 +281,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) salesOrderCountSuccessEvent,
     required TResult Function() salesOrderCountFailedEvent,
+    required TResult Function() clearSalesOrderCount,
   }) {
     return salesOrderCountFailedEvent();
   }
@@ -278,6 +291,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? salesOrderCountSuccessEvent,
     TResult? Function()? salesOrderCountFailedEvent,
+    TResult? Function()? clearSalesOrderCount,
   }) {
     return salesOrderCountFailedEvent?.call();
   }
@@ -287,6 +301,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? salesOrderCountSuccessEvent,
     TResult Function()? salesOrderCountFailedEvent,
+    TResult Function()? clearSalesOrderCount,
     required TResult orElse(),
   }) {
     if (salesOrderCountFailedEvent != null) {
@@ -302,6 +317,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
         salesOrderCountSuccessEvent,
     required TResult Function(SalesOrderCountFailedEvent value)
         salesOrderCountFailedEvent,
+    required TResult Function(ClearSalesOrderCount value) clearSalesOrderCount,
   }) {
     return salesOrderCountFailedEvent(this);
   }
@@ -313,6 +329,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
         salesOrderCountSuccessEvent,
     TResult? Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult? Function(ClearSalesOrderCount value)? clearSalesOrderCount,
   }) {
     return salesOrderCountFailedEvent?.call(this);
   }
@@ -324,6 +341,7 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
         salesOrderCountSuccessEvent,
     TResult Function(SalesOrderCountFailedEvent value)?
         salesOrderCountFailedEvent,
+    TResult Function(ClearSalesOrderCount value)? clearSalesOrderCount,
     required TResult orElse(),
   }) {
     if (salesOrderCountFailedEvent != null) {
@@ -335,6 +353,121 @@ class _$SalesOrderCountFailedEventImpl implements SalesOrderCountFailedEvent {
 
 abstract class SalesOrderCountFailedEvent implements SalesOrderCountEvent {
   const factory SalesOrderCountFailedEvent() = _$SalesOrderCountFailedEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearSalesOrderCountImplCopyWith<$Res> {
+  factory _$$ClearSalesOrderCountImplCopyWith(_$ClearSalesOrderCountImpl value,
+          $Res Function(_$ClearSalesOrderCountImpl) then) =
+      __$$ClearSalesOrderCountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSalesOrderCountImplCopyWithImpl<$Res>
+    extends _$SalesOrderCountEventCopyWithImpl<$Res, _$ClearSalesOrderCountImpl>
+    implements _$$ClearSalesOrderCountImplCopyWith<$Res> {
+  __$$ClearSalesOrderCountImplCopyWithImpl(_$ClearSalesOrderCountImpl _value,
+      $Res Function(_$ClearSalesOrderCountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearSalesOrderCountImpl implements ClearSalesOrderCount {
+  const _$ClearSalesOrderCountImpl();
+
+  @override
+  String toString() {
+    return 'SalesOrderCountEvent.clearSalesOrderCount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearSalesOrderCountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userID) salesOrderCountSuccessEvent,
+    required TResult Function() salesOrderCountFailedEvent,
+    required TResult Function() clearSalesOrderCount,
+  }) {
+    return clearSalesOrderCount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userID)? salesOrderCountSuccessEvent,
+    TResult? Function()? salesOrderCountFailedEvent,
+    TResult? Function()? clearSalesOrderCount,
+  }) {
+    return clearSalesOrderCount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userID)? salesOrderCountSuccessEvent,
+    TResult Function()? salesOrderCountFailedEvent,
+    TResult Function()? clearSalesOrderCount,
+    required TResult orElse(),
+  }) {
+    if (clearSalesOrderCount != null) {
+      return clearSalesOrderCount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SalesOrderCountSuccessEvent value)
+        salesOrderCountSuccessEvent,
+    required TResult Function(SalesOrderCountFailedEvent value)
+        salesOrderCountFailedEvent,
+    required TResult Function(ClearSalesOrderCount value) clearSalesOrderCount,
+  }) {
+    return clearSalesOrderCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SalesOrderCountSuccessEvent value)?
+        salesOrderCountSuccessEvent,
+    TResult? Function(SalesOrderCountFailedEvent value)?
+        salesOrderCountFailedEvent,
+    TResult? Function(ClearSalesOrderCount value)? clearSalesOrderCount,
+  }) {
+    return clearSalesOrderCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SalesOrderCountSuccessEvent value)?
+        salesOrderCountSuccessEvent,
+    TResult Function(SalesOrderCountFailedEvent value)?
+        salesOrderCountFailedEvent,
+    TResult Function(ClearSalesOrderCount value)? clearSalesOrderCount,
+    required TResult orElse(),
+  }) {
+    if (clearSalesOrderCount != null) {
+      return clearSalesOrderCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearSalesOrderCount implements SalesOrderCountEvent {
+  const factory ClearSalesOrderCount() = _$ClearSalesOrderCountImpl;
 }
 
 /// @nodoc

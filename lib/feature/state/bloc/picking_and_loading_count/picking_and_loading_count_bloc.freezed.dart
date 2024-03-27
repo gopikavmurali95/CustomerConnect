@@ -20,18 +20,21 @@ mixin _$PickingAndLoadingCountEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) plCountSuccessEvent,
     required TResult Function() plCountFailureEvent,
+    required TResult Function() clearPichingAndLoadingCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? plCountSuccessEvent,
     TResult? Function()? plCountFailureEvent,
+    TResult? Function()? clearPichingAndLoadingCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? plCountSuccessEvent,
     TResult Function()? plCountFailureEvent,
+    TResult Function()? clearPichingAndLoadingCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,24 @@ mixin _$PickingAndLoadingCountEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(PlCountSuccessEvent value) plCountSuccessEvent,
     required TResult Function(PlCountFailureEvent value) plCountFailureEvent,
+    required TResult Function(ClearPichingAndLoadingCount value)
+        clearPichingAndLoadingCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult? Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult? Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +154,7 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) plCountSuccessEvent,
     required TResult Function() plCountFailureEvent,
+    required TResult Function() clearPichingAndLoadingCount,
   }) {
     return plCountSuccessEvent(userID);
   }
@@ -154,6 +164,7 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? plCountSuccessEvent,
     TResult? Function()? plCountFailureEvent,
+    TResult? Function()? clearPichingAndLoadingCount,
   }) {
     return plCountSuccessEvent?.call(userID);
   }
@@ -163,6 +174,7 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? plCountSuccessEvent,
     TResult Function()? plCountFailureEvent,
+    TResult Function()? clearPichingAndLoadingCount,
     required TResult orElse(),
   }) {
     if (plCountSuccessEvent != null) {
@@ -176,6 +188,8 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(PlCountSuccessEvent value) plCountSuccessEvent,
     required TResult Function(PlCountFailureEvent value) plCountFailureEvent,
+    required TResult Function(ClearPichingAndLoadingCount value)
+        clearPichingAndLoadingCount,
   }) {
     return plCountSuccessEvent(this);
   }
@@ -185,6 +199,8 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult? Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult? Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
   }) {
     return plCountSuccessEvent?.call(this);
   }
@@ -194,6 +210,8 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
     required TResult orElse(),
   }) {
     if (plCountSuccessEvent != null) {
@@ -255,6 +273,7 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) plCountSuccessEvent,
     required TResult Function() plCountFailureEvent,
+    required TResult Function() clearPichingAndLoadingCount,
   }) {
     return plCountFailureEvent();
   }
@@ -264,6 +283,7 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? plCountSuccessEvent,
     TResult? Function()? plCountFailureEvent,
+    TResult? Function()? clearPichingAndLoadingCount,
   }) {
     return plCountFailureEvent?.call();
   }
@@ -273,6 +293,7 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? plCountSuccessEvent,
     TResult Function()? plCountFailureEvent,
+    TResult Function()? clearPichingAndLoadingCount,
     required TResult orElse(),
   }) {
     if (plCountFailureEvent != null) {
@@ -286,6 +307,8 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(PlCountSuccessEvent value) plCountSuccessEvent,
     required TResult Function(PlCountFailureEvent value) plCountFailureEvent,
+    required TResult Function(ClearPichingAndLoadingCount value)
+        clearPichingAndLoadingCount,
   }) {
     return plCountFailureEvent(this);
   }
@@ -295,6 +318,8 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult? Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult? Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
   }) {
     return plCountFailureEvent?.call(this);
   }
@@ -304,6 +329,8 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlCountSuccessEvent value)? plCountSuccessEvent,
     TResult Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
     required TResult orElse(),
   }) {
     if (plCountFailureEvent != null) {
@@ -315,6 +342,123 @@ class _$PlCountFailureEventImpl implements PlCountFailureEvent {
 
 abstract class PlCountFailureEvent implements PickingAndLoadingCountEvent {
   const factory PlCountFailureEvent() = _$PlCountFailureEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearPichingAndLoadingCountImplCopyWith<$Res> {
+  factory _$$ClearPichingAndLoadingCountImplCopyWith(
+          _$ClearPichingAndLoadingCountImpl value,
+          $Res Function(_$ClearPichingAndLoadingCountImpl) then) =
+      __$$ClearPichingAndLoadingCountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearPichingAndLoadingCountImplCopyWithImpl<$Res>
+    extends _$PickingAndLoadingCountEventCopyWithImpl<$Res,
+        _$ClearPichingAndLoadingCountImpl>
+    implements _$$ClearPichingAndLoadingCountImplCopyWith<$Res> {
+  __$$ClearPichingAndLoadingCountImplCopyWithImpl(
+      _$ClearPichingAndLoadingCountImpl _value,
+      $Res Function(_$ClearPichingAndLoadingCountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearPichingAndLoadingCountImpl implements ClearPichingAndLoadingCount {
+  const _$ClearPichingAndLoadingCountImpl();
+
+  @override
+  String toString() {
+    return 'PickingAndLoadingCountEvent.clearPichingAndLoadingCount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearPichingAndLoadingCountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userID) plCountSuccessEvent,
+    required TResult Function() plCountFailureEvent,
+    required TResult Function() clearPichingAndLoadingCount,
+  }) {
+    return clearPichingAndLoadingCount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userID)? plCountSuccessEvent,
+    TResult? Function()? plCountFailureEvent,
+    TResult? Function()? clearPichingAndLoadingCount,
+  }) {
+    return clearPichingAndLoadingCount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userID)? plCountSuccessEvent,
+    TResult Function()? plCountFailureEvent,
+    TResult Function()? clearPichingAndLoadingCount,
+    required TResult orElse(),
+  }) {
+    if (clearPichingAndLoadingCount != null) {
+      return clearPichingAndLoadingCount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PlCountSuccessEvent value) plCountSuccessEvent,
+    required TResult Function(PlCountFailureEvent value) plCountFailureEvent,
+    required TResult Function(ClearPichingAndLoadingCount value)
+        clearPichingAndLoadingCount,
+  }) {
+    return clearPichingAndLoadingCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PlCountSuccessEvent value)? plCountSuccessEvent,
+    TResult? Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult? Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
+  }) {
+    return clearPichingAndLoadingCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PlCountSuccessEvent value)? plCountSuccessEvent,
+    TResult Function(PlCountFailureEvent value)? plCountFailureEvent,
+    TResult Function(ClearPichingAndLoadingCount value)?
+        clearPichingAndLoadingCount,
+    required TResult orElse(),
+  }) {
+    if (clearPichingAndLoadingCount != null) {
+      return clearPichingAndLoadingCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearPichingAndLoadingCount
+    implements PickingAndLoadingCountEvent {
+  const factory ClearPichingAndLoadingCount() =
+      _$ClearPichingAndLoadingCountImpl;
 }
 
 /// @nodoc

@@ -22,7 +22,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
         "SubArea": subarea,
         "Route": route,
       });
-
+      log('in repo');
       if (response.statusCode == 200) {
         // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
