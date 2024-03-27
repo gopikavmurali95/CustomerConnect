@@ -1,12 +1,38 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
+import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class InvoiceDetailScreen extends StatelessWidget {
+class InvoiceDetailScreen extends StatefulWidget {
   final bool isfromUser;
-  const InvoiceDetailScreen({super.key, required this.isfromUser});
+  final InvoiceHeaderModel invoiceheader;
+  const InvoiceDetailScreen(
+      {super.key, required this.isfromUser, required this.invoiceheader});
+
+  @override
+  State<InvoiceDetailScreen> createState() => _InvoiceDetailScreenState();
+}
+
+class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
+  @override
+  void initState() {
+    context.read<InvoiceDetailsBloc>().add(const ClearInvoiceDetails());
+    context
+        .read<InvoiceDetailsBloc>()
+        .add(GetInvoiceDetailsEvent(id: widget.invoiceheader.id!));
+    super.initState();
+    context
+        .read<InvoiceDetailsFooterBloc>()
+        .add(const ClearInvoiceDetailsFooter());
+    context
+        .read<InvoiceDetailsFooterBloc>()
+        .add(GetInvoiceDetailsFooterEvent(iD: widget.invoiceheader.id!));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,15 +147,19 @@ class InvoiceDetailScreen extends StatelessWidget {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(
+                      width: 10.w,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'M076876',
-                            style: TextStyle(
-                              fontSize: 13.sp,
+                            widget.invoiceheader.invoiceNo ?? '',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
                               fontWeight: FontWeight.w600,
                             ),
@@ -137,18 +167,25 @@ class InvoiceDetailScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
+                                widget.invoiceheader.cusCode ?? '',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              Text(
+                                ' - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
+                                  widget.invoiceheader.cusName ?? '',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
                                       color: const Color(0xff413434)),
                                 ),
                               ),
@@ -157,44 +194,88 @@ class InvoiceDetailScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
-                                style: TextStyle(
-                                    fontSize: 12.sp,
+                                widget.invoiceheader.cusOutCode ?? '',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                              Text(
+                                ' - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  widget.invoiceheader.cusOutName ?? '',
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 13.sp),
+                                  style: kfontstyle(fontSize: 11.sp),
                                 ),
                               ),
                             ],
                           ),
-                          Text(
-                            'CR | Route 101 | 16 May 2023 | 10:35',
-                            style:
-                                TextStyle(fontSize: 10.sp, color: Colors.grey),
+                          Row(
+                            children: [
+                              // Text(
+                              //   'CR | Route 101 | 16 May 2023 | 10:35',
+                              //   style: kfontstyle(
+                              //       fontSize: 10.sp,
+                              //       color: Colors.grey),
+                              // ),
+                              Text(
+                                widget.invoiceheader.payType ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                widget.invoiceheader.rotName ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                widget.invoiceheader.date ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                widget.invoiceheader.time ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                     Column(
                       children: [
-                        /* Text(
-                          '120.00',
-                          style: TextStyle(fontSize: 13.sp),
-                        ), */
                         Container(
                           height: 14.h,
                           width: 30.w,
                           decoration: BoxDecoration(
-                              color: const Color(0xffe4f7e2),
+                              color: widget.invoiceheader.invoiceType == 'DI'
+                                  ? const Color(0xffe3f7e2)
+                                  : const Color(0xfff7f4e2),
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Text(
-                              'DI',
-                              style: TextStyle(
+                              widget.invoiceheader.invoiceType ?? '',
+                              style: kfontstyle(
                                   fontSize: 10.sp,
                                   color: const Color(0xff413434)),
                             ),
@@ -319,7 +400,7 @@ class InvoiceDetailScreen extends StatelessWidget {
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    'AED 47.80',
+                    widget.invoiceheader.grandTotal ?? '',
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   )

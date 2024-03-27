@@ -2,12 +2,17 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/bloc/loading_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
@@ -69,6 +74,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<LoadingDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InvoiceHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InvoiceDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InvoiceDetailsFooterBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TotalOrdersHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TotalOrdersDetailsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

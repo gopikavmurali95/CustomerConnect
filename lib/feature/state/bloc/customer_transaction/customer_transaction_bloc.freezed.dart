@@ -20,18 +20,21 @@ mixin _$CustomerTransactionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) cusTransactionSuccessEvent,
     required TResult Function() cusTransactionFailedEvent,
+    required TResult Function() clearCustomerTransactionCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? cusTransactionSuccessEvent,
     TResult? Function()? cusTransactionFailedEvent,
+    TResult? Function()? clearCustomerTransactionCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? cusTransactionSuccessEvent,
     TResult Function()? cusTransactionFailedEvent,
+    TResult Function()? clearCustomerTransactionCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,6 +44,8 @@ mixin _$CustomerTransactionEvent {
         cusTransactionSuccessEvent,
     required TResult Function(CusTransactionFailedEvent value)
         cusTransactionFailedEvent,
+    required TResult Function(ClearCustomerTransactionCount value)
+        clearCustomerTransactionCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +54,8 @@ mixin _$CustomerTransactionEvent {
         cusTransactionSuccessEvent,
     TResult? Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult? Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +64,8 @@ mixin _$CustomerTransactionEvent {
         cusTransactionSuccessEvent,
     TResult Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,6 +160,7 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) cusTransactionSuccessEvent,
     required TResult Function() cusTransactionFailedEvent,
+    required TResult Function() clearCustomerTransactionCount,
   }) {
     return cusTransactionSuccessEvent(userID);
   }
@@ -160,6 +170,7 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? cusTransactionSuccessEvent,
     TResult? Function()? cusTransactionFailedEvent,
+    TResult? Function()? clearCustomerTransactionCount,
   }) {
     return cusTransactionSuccessEvent?.call(userID);
   }
@@ -169,6 +180,7 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? cusTransactionSuccessEvent,
     TResult Function()? cusTransactionFailedEvent,
+    TResult Function()? clearCustomerTransactionCount,
     required TResult orElse(),
   }) {
     if (cusTransactionSuccessEvent != null) {
@@ -184,6 +196,8 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
         cusTransactionSuccessEvent,
     required TResult Function(CusTransactionFailedEvent value)
         cusTransactionFailedEvent,
+    required TResult Function(ClearCustomerTransactionCount value)
+        clearCustomerTransactionCount,
   }) {
     return cusTransactionSuccessEvent(this);
   }
@@ -195,6 +209,8 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
         cusTransactionSuccessEvent,
     TResult? Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult? Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
   }) {
     return cusTransactionSuccessEvent?.call(this);
   }
@@ -206,6 +222,8 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
         cusTransactionSuccessEvent,
     TResult Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
     required TResult orElse(),
   }) {
     if (cusTransactionSuccessEvent != null) {
@@ -269,6 +287,7 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String userID) cusTransactionSuccessEvent,
     required TResult Function() cusTransactionFailedEvent,
+    required TResult Function() clearCustomerTransactionCount,
   }) {
     return cusTransactionFailedEvent();
   }
@@ -278,6 +297,7 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userID)? cusTransactionSuccessEvent,
     TResult? Function()? cusTransactionFailedEvent,
+    TResult? Function()? clearCustomerTransactionCount,
   }) {
     return cusTransactionFailedEvent?.call();
   }
@@ -287,6 +307,7 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userID)? cusTransactionSuccessEvent,
     TResult Function()? cusTransactionFailedEvent,
+    TResult Function()? clearCustomerTransactionCount,
     required TResult orElse(),
   }) {
     if (cusTransactionFailedEvent != null) {
@@ -302,6 +323,8 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
         cusTransactionSuccessEvent,
     required TResult Function(CusTransactionFailedEvent value)
         cusTransactionFailedEvent,
+    required TResult Function(ClearCustomerTransactionCount value)
+        clearCustomerTransactionCount,
   }) {
     return cusTransactionFailedEvent(this);
   }
@@ -313,6 +336,8 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
         cusTransactionSuccessEvent,
     TResult? Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult? Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
   }) {
     return cusTransactionFailedEvent?.call(this);
   }
@@ -324,6 +349,8 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
         cusTransactionSuccessEvent,
     TResult Function(CusTransactionFailedEvent value)?
         cusTransactionFailedEvent,
+    TResult Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
     required TResult orElse(),
   }) {
     if (cusTransactionFailedEvent != null) {
@@ -335,6 +362,130 @@ class _$CusTransactionFailedEventImpl implements CusTransactionFailedEvent {
 
 abstract class CusTransactionFailedEvent implements CustomerTransactionEvent {
   const factory CusTransactionFailedEvent() = _$CusTransactionFailedEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearCustomerTransactionCountImplCopyWith<$Res> {
+  factory _$$ClearCustomerTransactionCountImplCopyWith(
+          _$ClearCustomerTransactionCountImpl value,
+          $Res Function(_$ClearCustomerTransactionCountImpl) then) =
+      __$$ClearCustomerTransactionCountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearCustomerTransactionCountImplCopyWithImpl<$Res>
+    extends _$CustomerTransactionEventCopyWithImpl<$Res,
+        _$ClearCustomerTransactionCountImpl>
+    implements _$$ClearCustomerTransactionCountImplCopyWith<$Res> {
+  __$$ClearCustomerTransactionCountImplCopyWithImpl(
+      _$ClearCustomerTransactionCountImpl _value,
+      $Res Function(_$ClearCustomerTransactionCountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearCustomerTransactionCountImpl
+    implements ClearCustomerTransactionCount {
+  const _$ClearCustomerTransactionCountImpl();
+
+  @override
+  String toString() {
+    return 'CustomerTransactionEvent.clearCustomerTransactionCount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearCustomerTransactionCountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userID) cusTransactionSuccessEvent,
+    required TResult Function() cusTransactionFailedEvent,
+    required TResult Function() clearCustomerTransactionCount,
+  }) {
+    return clearCustomerTransactionCount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userID)? cusTransactionSuccessEvent,
+    TResult? Function()? cusTransactionFailedEvent,
+    TResult? Function()? clearCustomerTransactionCount,
+  }) {
+    return clearCustomerTransactionCount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userID)? cusTransactionSuccessEvent,
+    TResult Function()? cusTransactionFailedEvent,
+    TResult Function()? clearCustomerTransactionCount,
+    required TResult orElse(),
+  }) {
+    if (clearCustomerTransactionCount != null) {
+      return clearCustomerTransactionCount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CusTransactionSuccessEvent value)
+        cusTransactionSuccessEvent,
+    required TResult Function(CusTransactionFailedEvent value)
+        cusTransactionFailedEvent,
+    required TResult Function(ClearCustomerTransactionCount value)
+        clearCustomerTransactionCount,
+  }) {
+    return clearCustomerTransactionCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CusTransactionSuccessEvent value)?
+        cusTransactionSuccessEvent,
+    TResult? Function(CusTransactionFailedEvent value)?
+        cusTransactionFailedEvent,
+    TResult? Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
+  }) {
+    return clearCustomerTransactionCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CusTransactionSuccessEvent value)?
+        cusTransactionSuccessEvent,
+    TResult Function(CusTransactionFailedEvent value)?
+        cusTransactionFailedEvent,
+    TResult Function(ClearCustomerTransactionCount value)?
+        clearCustomerTransactionCount,
+    required TResult orElse(),
+  }) {
+    if (clearCustomerTransactionCount != null) {
+      return clearCustomerTransactionCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearCustomerTransactionCount
+    implements CustomerTransactionEvent {
+  const factory ClearCustomerTransactionCount() =
+      _$ClearCustomerTransactionCountImpl;
 }
 
 /// @nodoc

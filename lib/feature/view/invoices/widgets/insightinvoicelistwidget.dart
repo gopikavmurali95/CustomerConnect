@@ -13,14 +13,14 @@ class InsightInvoiceListWidget extends StatelessWidget {
       child: ListView.separated(
           itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const InvoiceDetailScreen(
-                        isfromUser: true,
-                      ),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const InvoiceDetailScreen(
+                  //       isfromUser: true,
+                  //     ),
+                  //   ),
+                  // );
                 },
                 child: Row(
                   children: [

@@ -30,13 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
+    context
+        .read<PickingAndLoadingCountBloc>()
+        .add(const ClearPichingAndLoadingCount());
     context
         .read<PickingAndLoadingCountBloc>()
         .add(PlCountSuccessEvent(userID: widget.user.usrId!));
     context
         .read<CustomerTransactionBloc>()
+        .add(const ClearCustomerTransactionCount());
+    context
+        .read<CustomerTransactionBloc>()
         .add(CusTransactionSuccessEvent(userID: widget.user.usrId!));
+    context.read<SalesOrderCountBloc>().add(const ClearSalesOrderCount());
     context
         .read<SalesOrderCountBloc>()
         .add(SalesOrderCountSuccessEvent(userID: widget.user.usrId!));
@@ -78,8 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
             PickingWidget(
               user: widget.user,
             ),
-            const CustomerTransaction(),
-            const SalesOrders(),
+            CustomerTransaction(
+              user: widget.user,
+            ),
+            SalesOrders(
+              user: widget.user,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
               child: Row(

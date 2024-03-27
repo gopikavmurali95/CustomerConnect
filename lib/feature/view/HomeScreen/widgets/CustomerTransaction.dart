@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../constants/fonts.dart';
 
 class CustomerTransaction extends StatelessWidget {
-  const CustomerTransaction({super.key});
+  final LoginUserModel user;
+  const CustomerTransaction({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +67,9 @@ class CustomerTransaction extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const InvoiceHeaderScreen(
+                                                InvoiceHeaderScreen(
                                               isfromUser: false,
+                                              user: user,
                                             ),
                                           ),
                                         );

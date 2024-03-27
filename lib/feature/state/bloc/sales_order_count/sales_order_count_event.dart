@@ -6,4 +6,7 @@ class SalesOrderCountEvent with _$SalesOrderCountEvent {
       {required String userID}) = SalesOrderCountSuccessEvent;
   const factory SalesOrderCountEvent.salesOrderCountFailedEvent() =
       SalesOrderCountFailedEvent;
+
+  const factory SalesOrderCountEvent.clearSalesOrderCount() =
+      ClearSalesOrderCount;
 }
