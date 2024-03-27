@@ -145,8 +145,9 @@ class CustomerTransaction extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const ArCollectionScreen(
+                                                ArCollectionScreen(
                                               isFromUser: false,
+                                              user: user,
                                             ),
                                           ),
                                         );

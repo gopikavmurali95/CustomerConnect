@@ -1,4 +1,12 @@
 import 'package:customer_connect/core/failures/failures.dart';
+import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_model.dart';
+import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
+import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
+import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
@@ -58,4 +66,28 @@ abstract class ITotalOrdersRepo {
 
   Future<Either<MainFailures, List<TotalOrdersDetailsModel>>> getOrderDetail(
       String ordID);
+}
+
+abstract class IArCollectionRepo {
+  Future<Either<MainFailures, ArTotalCollectionModel>> getArTotal(
+      ArTotalInModel totalIn);
+
+  Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
+      ArTotalInModel loadingIn);
+  Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
+}
+
+abstract class ICusInsightsCustomersRepo {
+  Future<Either<MainFailures, List<CusInsCustomersModel>>> getCustomers(
+      String userId, String area, String subarea, String route);
+}
+
+abstract class IcusInsCountsRepo {
+  Future<Either<MainFailures, CusInsTrNCounts>> getCusInsCounts(
+      String userId, String cusId, String fDate, String toDate);
+}
+
+abstract class ICusInsArRepo {
+  Future<Either<MainFailures, List<CusInsArHEaderModel>>> getARHeaders(
+      CusInsArHeaderInModel arin);
 }

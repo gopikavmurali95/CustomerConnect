@@ -1,4 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customertransactionwidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/otheroptionswidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/profileinfowidget.dart';
@@ -8,7 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomerInsightsScreen extends StatelessWidget {
-  const CustomerInsightsScreen({super.key});
+  final CusInsCustomersModel customer;
+  final LoginUserModel user;
+  const CustomerInsightsScreen(
+      {super.key, required this.customer, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +64,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'A025206 - ',
+                              '${customer.cusCode} - ',
                               style: kfontstyle(
                                 fontSize: 12.sp,
                                 color: const Color(0xff2C6B9E),
@@ -69,7 +74,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
+                                customer.cusName ?? "",
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     color: const Color(0xff413434)),
@@ -80,14 +85,14 @@ class CustomerInsightsScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '199525 - ',
+                              '${customer.headerCode} - ',
                               style: kfontstyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff413434)),
                             ),
                             Expanded(
                               child: Text(
-                                'Carrefour Hypermarket',
+                                customer.headerName ?? "",
                                 overflow: TextOverflow.ellipsis,
                                 style: kfontstyle(fontSize: 12.sp),
                               ),
@@ -95,7 +100,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          'Virtual | Supermarket | Dubai ',
+                          '${customer.cusType} | ${customer.className} | ${customer.areaName} ',
                           style:
                               kfontstyle(fontSize: 10.sp, color: Colors.grey),
                         ),
@@ -107,7 +112,10 @@ class CustomerInsightsScreen extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              const CustomerTraansactionWidget(),
+              CustomerTraansactionWidget(
+                user: user,
+                customer: customer,
+              ),
               SizedBox(
                 height: 10.h,
               ),

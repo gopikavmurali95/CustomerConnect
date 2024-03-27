@@ -6,7 +6,13 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
@@ -89,6 +95,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<TotalOrdersDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ArHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ArDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomersListBlocBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusInsTrnCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusInsArHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

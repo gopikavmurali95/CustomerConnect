@@ -124,12 +124,37 @@ class _LoadRejectedState extends State<LoadRejected> {
                   style: countHeading(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "10",
-                  style: countHeading(),
-                ),
+              BlocBuilder<LoadingHeaderBloc, LoadingHeaderState>(
+                builder: (context, state) {
+                  return state.when(
+                    getloadingHeaderState: (loadingheaders) =>
+                        loadingheaders != null
+                            ? Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20, top: 10),
+                                child: Text(
+                                  "${loadingheaders.length}",
+                                  style: countHeading(),
+                                ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20, top: 10),
+                                child: Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
+                              ),
+                    loadingHeaderFailedState: () => Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child: Text(
+                        "0",
+                        style: countHeading(),
+                      ),
+                    ),
+                  );
+                },
               ),
               // SizedBox(width: ,),
             ],
