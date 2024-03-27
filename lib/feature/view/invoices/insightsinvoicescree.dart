@@ -1,11 +1,52 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/insightinvoicelistwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class InsightsInvoiceScreen extends StatelessWidget {
-  const InsightsInvoiceScreen({super.key});
+class InsightsInvoiceScreen extends StatefulWidget {
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const InsightsInvoiceScreen(
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
+
+  @override
+  State<InsightsInvoiceScreen> createState() => _InsightsInvoiceScreenState();
+}
+
+class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
+  @override
+  void initState() {
+    context.read<CusInsInvoiceHeaderBloc>().add(const ClearinvEvent());
+    context.read<CusInsInvoiceHeaderBloc>().add(
+          GetCusInvEvent(
+            invIn: CusInsInvoiceHeaderInModel(
+                cusId: /* widget.customer.cusId */ '1',
+                userId: widget.user.usrId,
+                area: '',
+                fromDate: /* widget.fromdatectrl.text */ '01-01-2023',
+                toDate: '27-03-2024',
+                invoiceType: '',
+                invoiceWith: '',
+                paymentType: '',
+                route: '',
+                subArea: ''),
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,167 +80,227 @@ class InsightsInvoiceScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                Container(
-                  height: 50,
-                  width: 10,
-                  decoration: BoxDecoration(
-                      color: const Color(0xfffee8e0),
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'A025206 - ',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              overflow: TextOverflow.ellipsis,
-                              'Tromp, Muller and Mitchell',
+      body: BlocListener<CusInsInvoiceHeaderBloc, CusInsInvoiceHeaderState>(
+        listener: (context, state) {
+          state.when(
+            getCusInvoiceHeaderState: (headers) {
+              if (headers != null) {
+                context.read<CusInvTotalCounterCubit>().getTotal(headers);
+              }
+            },
+            getcusInvFailedState: () {},
+          );
+        },
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        color: const Color(0xfffee8e0),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              '${widget.customer.cusCode} - ',
                               style: kfontstyle(
-                                  fontSize: 12.sp,
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                overflow: TextOverflow.ellipsis,
+                                widget.customer.cusName ?? "",
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '${widget.customer.headerCode} - ',
+                              style: kfontstyle(
+                                  fontSize: 11.sp,
                                   color: const Color(0xff413434)),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '199525 - ',
-                            style: kfontstyle(
-                                fontSize: 11.sp,
-                                color: const Color(0xff413434)),
-                          ),
-                          Expanded(
-                            child: Text(
-                              'Carrefour Hypermarket',
-                              overflow: TextOverflow.ellipsis,
-                              style: kfontstyle(fontSize: 12.sp),
+                            Expanded(
+                              child: Text(
+                                widget.customer.headerName ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                style: kfontstyle(fontSize: 12.sp),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Virtual | Supermarket | Dubai ',
-                        style: kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                      ),
-                    ],
+                          ],
+                        ),
+                        Text(
+                          '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade200),
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: const [
+                        BoxShadow(
+                            // ignore: use_full_hex_values_for_flutter_colors
+                            color: Color(0xff00000050),
+                            blurRadius: 0.4,
+                            spreadRadius: 0.4)
+                      ]),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 20,
+                        ),
+                        hintText: "Search Invoices",
+                        hintStyle: kfontstyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal),
+                        isDense: true,
+                        counterText: "",
+                        contentPadding: const EdgeInsets.all(15.0),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none)),
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    maxLength: 20,
+                    // controller: _locationNameTextController,
+                  )),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //SizedBox(width: 05,),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  child: Text(
+                    "All invoices",
+                    style: countHeading(),
                   ),
                 ),
+                BlocBuilder<CusInsInvoiceHeaderBloc, CusInsInvoiceHeaderState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getCusInvoiceHeaderState: (headers) => headers == null
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20.0, right: 20, top: 10),
+                              child: Text(
+                                "0",
+                                style: countHeading(),
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20.0, right: 20, top: 10),
+                              child: Text(
+                                "${headers.length}",
+                                style: countHeading(),
+                              ),
+                            ),
+                      getcusInvFailedState: () => Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, top: 10),
+                        child: Text(
+                          "0",
+                          style: countHeading(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                // SizedBox(width: ,),
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
-                child: TextField(
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 20,
-                      ),
-                      hintText: "Search Invoices",
-                      hintStyle: kfontstyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal),
-                      isDense: true,
-                      counterText: "",
-                      contentPadding: const EdgeInsets.all(15.0),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none)),
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  maxLength: 20,
-                  // controller: _locationNameTextController,
-                )),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //SizedBox(width: 05,),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "All invoices",
-                  style: countHeading(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "80",
-                  style: countHeading(),
-                ),
-              ),
-              // SizedBox(width: ,),
-            ],
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          const Expanded(child: InsightInvoiceListWidget())
-        ],
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(boxShadow: [
-          BoxShadow(
-              blurRadius: 3,
-              color: Colors.black12,
-              blurStyle: BlurStyle.outer,
-              offset: Offset(3, 3))
-        ]),
-        height: 40.h,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Total Invoice Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
-              ),
-              Text(
-                '1200.00',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Expanded(
+                child: InsightInvoiceListWidget(
+              customer: widget.customer,
+              user: widget.user,
+            ))
+          ],
         ),
+      ),
+      bottomNavigationBar:
+          BlocBuilder<CusInsInvoiceHeaderBloc, CusInsInvoiceHeaderState>(
+        builder: (context, state) {
+          return state.when(
+            getCusInvoiceHeaderState: (headers) => headers == null
+                ? const SizedBox()
+                : Container(
+                    decoration: const BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          blurRadius: 3,
+                          color: Colors.black12,
+                          blurStyle: BlurStyle.outer,
+                          offset: Offset(3, 3))
+                    ]),
+                    height: 40.h,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total Invoice Amount',
+                            style: TextStyle(
+                                fontSize: 15.sp, fontWeight: FontWeight.w400),
+                          ),
+                          BlocBuilder<CusInvTotalCounterCubit,
+                              CusInvTotalCounterState>(
+                            builder: (context, state) {
+                              return Text(
+                                state.amount,
+                                style: TextStyle(
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w600),
+                              );
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+            getcusInvFailedState: () => const SizedBox(),
+          );
+        },
       ),
     );
   }

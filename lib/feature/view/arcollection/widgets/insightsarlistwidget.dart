@@ -15,7 +15,7 @@ class InsightArListWidget extends StatelessWidget {
       child: BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
         builder: (context, state) {
           return state.when(
-            getArHeadersState: (headers) => headers == null
+            getArHeadersState: (headers, totals) => headers == null
                 ? ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,

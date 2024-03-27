@@ -3,9 +3,14 @@ import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_m
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_ins_inv_type_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_ins_invoice_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_onv_detail_model/cus_ins_onv_detail_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/loading_detail_model/loading_detail_model.dart';
@@ -62,6 +67,22 @@ abstract class IcusInsCountsRepo {
 }
 
 abstract class ICusInsArRepo {
+  Future<Either<MainFailures, ArTotalCollectionModel>> getArTotal(
+      CusInsArHeaderInModel totalIn);
   Future<Either<MainFailures, List<CusInsArHEaderModel>>> getARHeaders(
       CusInsArHeaderInModel arin);
+}
+
+abstract class ICusInsInvoiceRepo {
+  Future<Either<MainFailures, List<CusInsInvoiceModel>>> getInvoiceHeaders(
+      CusInsInvoiceHeaderInModel invIn);
+  Future<Either<MainFailures, List<CusInsOnvDetailModel>>> getInvoiceDetails(
+      String iD);
+  Future<Either<MainFailures, List<CusInsInvTypeModel>>> getInvoicetypes(
+      String iD);
+}
+
+abstract class ICusProfileRepo {
+  Future<Either<MainFailures, CuSProfileModel>> getCusProfile(
+      String userId, String cusId);
 }
