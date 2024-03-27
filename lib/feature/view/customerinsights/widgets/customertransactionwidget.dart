@@ -362,8 +362,12 @@ class _CustomerTraansactionWidgetState
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SalesrdersScreen(),
+                                  builder: (context) => SalesrdersScreen(
+                                    customer: widget.customer,
+                                    fromdatecontroller: widget.fromdatectrl,
+                                    todatecontroller: widget.todatectrl,
+                                    user: widget.user,
+                                  ),
                                 ));
                           },
                           child: CusTransNavWIdget(

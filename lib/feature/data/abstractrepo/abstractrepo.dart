@@ -23,6 +23,8 @@ import 'package:customer_connect/feature/data/models/loading_headermodel/loading
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/sales_orders_in_model/sales_orders_in_model.dart';
+import 'package:customer_connect/feature/data/models/sales_orders_model/sales_orders_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_details_model/total_orders_details_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
@@ -111,4 +113,9 @@ abstract class ICusInsInvoiceRepo {
 abstract class ICusProfileRepo {
   Future<Either<MainFailures, CuSProfileModel>> getCusProfile(
       String userId, String cusId);
+}
+
+abstract class ISalesOrdersRepo {
+  Future<Either<MainFailures, List<SalesOrdersModel>>> getSalesOrders(
+      SalesOrdersInModel salesIn);
 }
