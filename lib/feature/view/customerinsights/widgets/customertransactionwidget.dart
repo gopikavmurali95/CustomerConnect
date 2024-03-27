@@ -333,6 +333,8 @@ class _CustomerTraansactionWidgetState
                                   builder: (context) => InsightsArCollection(
                                     customer: widget.customer,
                                     user: widget.user,
+                                    fromdatectrl: widget.fromdatectrl,
+                                    todatectrl: widget.todatectrl,
                                   ),
                                 ));
                           },

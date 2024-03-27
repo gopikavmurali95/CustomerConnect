@@ -1,5 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
+import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,12 +32,37 @@ class InsightArListWidget extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {
-                            /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ARDetailScreen(),
-                          ),
-                        ); */
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ARDetailScreen(
+                                  arheader: ArHeaderModel(
+                                      arhBalanceAmount:
+                                          headers[index].balanceAmount,
+                                      arhCollectedAmount:
+                                          headers[index].collectedAmount,
+                                      arhPayMode: headers[index].payMode,
+                                      arhPayType: headers[index].payType,
+                                      arpChequeDate: headers[index].chequeDate,
+                                      arpChequeNo: headers[index].chequeNo,
+                                      bankName: headers[index].bankName,
+                                      cshCode: headers[index].cshCode,
+                                      cshId: headers[index].cshId,
+                                      cshName: headers[index].cshName,
+                                      cusCode: headers[index].cusCode,
+                                      cusId: headers[index].cusId,
+                                      cusName: headers[index].cusName,
+                                      date: headers[index].date,
+                                      image: headers[index].arpImage1,
+                                      rotCode: headers[index].rotCode,
+                                      rotId: headers[index].rotId,
+                                      rotName: headers[index].rotName,
+                                      time: headers[index].time,
+                                      arhArNumber: headers[index].arhArNumber,
+                                      arhId: headers[index].arhId),
+                                ),
+                              ),
+                            );
                           },
                           child: Row(
                             children: [
@@ -56,7 +83,7 @@ class InsightArListWidget extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'IV076876',
+                                      headers[index].arhArNumber ?? '',
                                       style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff2C6B9E),
@@ -67,7 +94,7 @@ class InsightArListWidget extends StatelessWidget {
                                       height: 5.h,
                                     ),
                                     Text(
-                                      '16 May 2023 | 10:35',
+                                      '${headers[index].date} | ${headers[index].time}',
                                       style: kfontstyle(
                                           fontSize: 10.sp, color: Colors.grey),
                                     ),
@@ -77,7 +104,7 @@ class InsightArListWidget extends StatelessWidget {
                               Column(
                                 children: [
                                   Text(
-                                    '120.00',
+                                    headers[index].collectedAmount ?? '',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w500),
@@ -89,14 +116,16 @@ class InsightArListWidget extends StatelessWidget {
                                     height: 14.h,
                                     width: 30.w,
                                     decoration: BoxDecoration(
-                                        color: index % 2 == 0
-                                            ? const Color(0xffe3f7e2)
-                                            : const Color(0xfff7f4e2),
+                                        color: /* index % 2 == 0
+                                            ? */
+                                            const Color(
+                                                0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     child: Center(
                                       child: Text(
-                                        index % 2 == 0 ? 'HC' : 'OP',
+                                        textAlign: TextAlign.center,
+                                        headers[index].payType ?? '',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color(0xff413434)),

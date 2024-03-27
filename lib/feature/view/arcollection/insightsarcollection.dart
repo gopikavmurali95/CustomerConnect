@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
@@ -18,8 +17,14 @@ import 'package:ssun_chart/pie_chart.dart';
 class InsightsArCollection extends StatefulWidget {
   final LoginUserModel user;
   final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
   const InsightsArCollection(
-      {super.key, required this.user, required this.customer});
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
 
   @override
   State<InsightsArCollection> createState() => _InsightsArCollectionState();
@@ -55,9 +60,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
           GetCusInsArHeaderEvent(
             arIn: CusInsArHeaderInModel(
               userId: widget.user.usrId,
-              cusId: widget.customer.cusId /* '1' */,
-              fromDate: '01-01-2023',
-              toDate: '25-03-2024',
+              cusId: /* widget.customer.cusId */ '2',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
               area: '',
               route: '',
               subArea: '',
@@ -190,10 +195,10 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15),
-                child: BlocListener<ArHeaderBloc, ArHeaderState>(
+                child: BlocListener<CusInsArHeaderBloc, CusInsArHeaderState>(
                   listener: (context, state) {
                     state.when(
-                      arHeaderSuccessState: (artotal, arHeaders) {
+                      getArHeadersState: (arHeaders, artotal) {
                         if (artotal != null) {
                           if (int.parse(artotal.hcCount ?? '') > 0) {
                             pievalues.add(int.parse(artotal.hcCount ?? ''));
@@ -209,7 +214,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                           }
                         }
                       },
-                      arHeaderFailedState: () {},
+                      getArHeadersFailedState: () {},
                     );
                   },
                   child: BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
