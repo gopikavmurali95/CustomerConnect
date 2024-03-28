@@ -11,7 +11,10 @@ import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_ins_invoice_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_onv_detail_model/cus_ins_onv_detail_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_outstanding_header_model/cus_ins_outstanding_header_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
+import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
@@ -118,4 +121,11 @@ abstract class ICusProfileRepo {
 abstract class ISalesOrdersRepo {
   Future<Either<MainFailures, List<SalesOrdersModel>>> getSalesOrders(
       SalesOrdersInModel salesIn);
+}
+
+abstract class ICusOutstandingRepo {
+  Future<Either<MainFailures, CusOutstandingCountModel>> getOutStandingCounts(
+      CusOutStandingInModel outIn);
+  Future<Either<MainFailures, List<CusInsOutstandingHeaderModel>>>
+      getCusOutstanding(CusOutStandingInModel outIn);
 }

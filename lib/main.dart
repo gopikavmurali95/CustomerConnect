@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
@@ -130,6 +131,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusSalesOrdersBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusOutStandingBloc>(),
         ),
       ],
       child: ScreenUtilInit(

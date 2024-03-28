@@ -151,7 +151,12 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                   ),
                 ],
               ),
-              const OtherOptionsWidget(),
+              OtherOptionsWidget(
+                user: widget.user,
+                customer: widget.customer,
+                fromdatectrl: _fromdatectrl,
+                todatectrl: _todatectrl,
+              ),
               SizedBox(
                 height: 10.h,
               ),
