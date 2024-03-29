@@ -326,20 +326,25 @@ abstract class ClearCusInsArHeader implements CusInsArHeaderEvent {
 mixin _$CusInsArHeaderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsArHEaderModel>? headers)
+    required TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)
         getArHeadersState,
     required TResult Function() getArHeadersFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult? Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult? Function()? getArHeadersFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult Function()? getArHeadersFailedState,
     required TResult orElse(),
   }) =>
@@ -390,7 +395,8 @@ abstract class _$$GetArHeadersStateImplCopyWith<$Res> {
           $Res Function(_$GetArHeadersStateImpl) then) =
       __$$GetArHeadersStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CusInsArHEaderModel>? headers});
+  $Res call(
+      {List<CusInsArHEaderModel>? headers, ArTotalCollectionModel? artotals});
 }
 
 /// @nodoc
@@ -405,12 +411,17 @@ class __$$GetArHeadersStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? headers = freezed,
+    Object? artotals = freezed,
   }) {
     return _then(_$GetArHeadersStateImpl(
       headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<CusInsArHEaderModel>?,
+      artotals: freezed == artotals
+          ? _value.artotals
+          : artotals // ignore: cast_nullable_to_non_nullable
+              as ArTotalCollectionModel?,
     ));
   }
 }
@@ -419,7 +430,8 @@ class __$$GetArHeadersStateImplCopyWithImpl<$Res>
 
 class _$GetArHeadersStateImpl implements GetArHeadersState {
   const _$GetArHeadersStateImpl(
-      {required final List<CusInsArHEaderModel>? headers})
+      {required final List<CusInsArHEaderModel>? headers,
+      required this.artotals})
       : _headers = headers;
 
   final List<CusInsArHEaderModel>? _headers;
@@ -433,8 +445,11 @@ class _$GetArHeadersStateImpl implements GetArHeadersState {
   }
 
   @override
+  final ArTotalCollectionModel? artotals;
+
+  @override
   String toString() {
-    return 'CusInsArHeaderState.getArHeadersState(headers: $headers)';
+    return 'CusInsArHeaderState.getArHeadersState(headers: $headers, artotals: $artotals)';
   }
 
   @override
@@ -442,12 +457,14 @@ class _$GetArHeadersStateImpl implements GetArHeadersState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetArHeadersStateImpl &&
-            const DeepCollectionEquality().equals(other._headers, _headers));
+            const DeepCollectionEquality().equals(other._headers, _headers) &&
+            (identical(other.artotals, artotals) ||
+                other.artotals == artotals));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_headers), artotals);
 
   @JsonKey(ignore: true)
   @override
@@ -459,31 +476,36 @@ class _$GetArHeadersStateImpl implements GetArHeadersState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsArHEaderModel>? headers)
+    required TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)
         getArHeadersState,
     required TResult Function() getArHeadersFailedState,
   }) {
-    return getArHeadersState(headers);
+    return getArHeadersState(headers, artotals);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult? Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult? Function()? getArHeadersFailedState,
   }) {
-    return getArHeadersState?.call(headers);
+    return getArHeadersState?.call(headers, artotals);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult Function()? getArHeadersFailedState,
     required TResult orElse(),
   }) {
     if (getArHeadersState != null) {
-      return getArHeadersState(headers);
+      return getArHeadersState(headers, artotals);
     }
     return orElse();
   }
@@ -523,10 +545,12 @@ class _$GetArHeadersStateImpl implements GetArHeadersState {
 
 abstract class GetArHeadersState implements CusInsArHeaderState {
   const factory GetArHeadersState(
-          {required final List<CusInsArHEaderModel>? headers}) =
+          {required final List<CusInsArHEaderModel>? headers,
+          required final ArTotalCollectionModel? artotals}) =
       _$GetArHeadersStateImpl;
 
   List<CusInsArHEaderModel>? get headers;
+  ArTotalCollectionModel? get artotals;
   @JsonKey(ignore: true)
   _$$GetArHeadersStateImplCopyWith<_$GetArHeadersStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -574,7 +598,8 @@ class _$GetArHeadersFailedStateImpl implements GetArHeadersFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsArHEaderModel>? headers)
+    required TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)
         getArHeadersState,
     required TResult Function() getArHeadersFailedState,
   }) {
@@ -584,7 +609,9 @@ class _$GetArHeadersFailedStateImpl implements GetArHeadersFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult? Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult? Function()? getArHeadersFailedState,
   }) {
     return getArHeadersFailedState?.call();
@@ -593,7 +620,9 @@ class _$GetArHeadersFailedStateImpl implements GetArHeadersFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsArHEaderModel>? headers)? getArHeadersState,
+    TResult Function(List<CusInsArHEaderModel>? headers,
+            ArTotalCollectionModel? artotals)?
+        getArHeadersState,
     TResult Function()? getArHeadersFailedState,
     required TResult orElse(),
   }) {

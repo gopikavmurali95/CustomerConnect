@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_
 import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
 import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +14,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomerTraansactionWidget extends StatefulWidget {
   final LoginUserModel user;
   final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
   const CustomerTraansactionWidget(
-      {super.key, required this.user, required this.customer});
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
 
   @override
   State<CustomerTraansactionWidget> createState() =>
@@ -83,43 +90,92 @@ class _CustomerTraansactionWidgetState
                           ),
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'From ',
-                                  style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  '| ',
-                                  style: kfontstyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey[300],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    '2 may 2023',
+                            child: InkWell(
+                              onTap: () {
+                                showCupertinoModalPopup(
+                                  context: context,
+                                  builder: (context) {
+                                    return Container(
+                                      color: Colors.white,
+                                      height: 250,
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text(
+                                                  'Done',
+                                                  style: TextStyle(
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          Expanded(
+                                            child: CupertinoDatePicker(
+                                              initialDateTime: DateTime.now(),
+                                              maximumDate: DateTime.now(),
+                                              onDateTimeChanged: (value) {
+                                                widget.fromdatectrl.text =
+                                                    "${value.day}-${value.month}-${value.year}";
+                                                setState(() {});
+                                              },
+                                              use24hFormat: true,
+                                              mode:
+                                                  CupertinoDatePickerMode.date,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'From ',
                                     style: kfontstyle(
-                                      fontSize: 8.sp,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.black,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: SvgPicture.asset(
-                                    'assets/svg/calendar.svg',
-                                    height: 15.sp,
+                                  Text(
+                                    '| ',
+                                    style: kfontstyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.grey[300],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    child: Text(
+                                      widget.fromdatectrl.text,
+                                      style: kfontstyle(
+                                        fontSize: 8.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: null,
+                                    icon: SvgPicture.asset(
+                                      'assets/svg/calendar.svg',
+                                      height: 15.sp,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -138,43 +194,92 @@ class _CustomerTraansactionWidgetState
                           ),
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'To  ',
-                                  style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  '| ',
-                                  style: kfontstyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey[300],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    '2 may 2023',
+                            child: InkWell(
+                              onTap: () {
+                                showCupertinoModalPopup(
+                                  context: context,
+                                  builder: (context) {
+                                    return Container(
+                                      color: Colors.white,
+                                      height: 250,
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text(
+                                                  'Done',
+                                                  style: TextStyle(
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          Expanded(
+                                            child: CupertinoDatePicker(
+                                              initialDateTime: DateTime.now(),
+                                              maximumDate: DateTime.now(),
+                                              onDateTimeChanged: (value) {
+                                                widget.todatectrl.text =
+                                                    "${value.day}-${value.month}-${value.year}";
+                                                setState(() {});
+                                              },
+                                              use24hFormat: true,
+                                              mode:
+                                                  CupertinoDatePickerMode.date,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'To  ',
                                     style: kfontstyle(
-                                      fontSize: 8.sp,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.black,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: SvgPicture.asset(
-                                    'assets/svg/calendar.svg',
-                                    height: 15.sp,
+                                  Text(
+                                    '| ',
+                                    style: kfontstyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.grey[300],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    child: Text(
+                                      widget.todatectrl.text,
+                                      style: kfontstyle(
+                                        fontSize: 8.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: null,
+                                    icon: SvgPicture.asset(
+                                      'assets/svg/calendar.svg',
+                                      height: 15.sp,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -194,8 +299,12 @@ class _CustomerTraansactionWidgetState
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const InsightsInvoiceScreen(),
+                                builder: (context) => InsightsInvoiceScreen(
+                                  customer: widget.customer,
+                                  user: widget.user,
+                                  fromdatectrl: widget.fromdatectrl,
+                                  todatectrl: widget.todatectrl,
+                                ),
                               ),
                             );
                           },
@@ -224,6 +333,8 @@ class _CustomerTraansactionWidgetState
                                   builder: (context) => InsightsArCollection(
                                     customer: widget.customer,
                                     user: widget.user,
+                                    fromdatectrl: widget.fromdatectrl,
+                                    todatectrl: widget.todatectrl,
                                   ),
                                 ));
                           },
@@ -253,8 +364,12 @@ class _CustomerTraansactionWidgetState
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SalesrdersScreen(),
+                                  builder: (context) => SalesrdersScreen(
+                                    customer: widget.customer,
+                                    fromdatecontroller: widget.fromdatectrl,
+                                    todatecontroller: widget.todatectrl,
+                                    user: widget.user,
+                                  ),
                                 ));
                           },
                           child: CusTransNavWIdget(
