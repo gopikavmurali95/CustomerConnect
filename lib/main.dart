@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
@@ -20,6 +21,8 @@ import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
@@ -142,6 +145,11 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusSalesOrdersBloc>(),
+        ),
+        BlocProvider(
+            create: (context)=> getit<PickingdetailBloc>()),
+        BlocProvider(
+          create: (context) => getit<PickingHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(
