@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
 import 'package:flutter/material.dart';
@@ -135,6 +137,23 @@ class SalesOrders extends StatelessWidget {
                                   fit: FlexFit.tight,
                                   child: InkWell(
                                     onTap: () {
+                                      context
+                                          .read<TodaysDeliveryHeaderBloc>()
+                                          .add(const ClearTodaysDelivery());
+                                      context
+                                          .read<TodaysDeliveryHeaderBloc>()
+                                          .add(GetTodaysDeliveryEvent(
+                                              todaysdelivery:
+                                                  TodaysDeliveryInParas(
+                                                      area: '',
+                                                      customer: '',
+                                                      customerOutlet: '',
+                                                      fromDate: '01-01-2023',
+                                                      mode: '',
+                                                      route: '',
+                                                      subArea: '',
+                                                      toDate: '31-03-2024',
+                                                      userId: user.usrId)));
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(

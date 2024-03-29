@@ -1,12 +1,29 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
+import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverdetaillist.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TodaysDeliveryDetails extends StatelessWidget {
-  const TodaysDeliveryDetails({super.key});
+class TodaysDeliveryDetails extends StatefulWidget {
+  final TodaysDeliveryHeaderModel todaysdelivery;
+  const TodaysDeliveryDetails({super.key, required this.todaysdelivery});
+
+  @override
+  State<TodaysDeliveryDetails> createState() => _TodaysDeliveryDetailsState();
+}
+
+class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
+  @override
+  void initState() {
+    context
+        .read<TodaysDeliveryDetailsBloc>()
+        .add(GetTodaysDeliveryDetailsEvent(id: widget.todaysdelivery.id!));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
