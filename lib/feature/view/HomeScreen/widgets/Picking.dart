@@ -73,7 +73,8 @@ class PickingWidget extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const PickHeaderNotStarted(),
+                                             PickHeaderNotStarted(user: user),
+
                                       ),
                                     );
                                   },
@@ -140,7 +141,7 @@ class PickingWidget extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const PickHeaderOngoing(),
+                                            PickHeaderOngoing(user: user,),
                                       ),
                                     );
                                   },
@@ -207,7 +208,7 @@ class PickingWidget extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const PickHeaderCompleted(),
+                                             PickHeaderCompleted(user: user,),
                                       ),
                                     );
                                   },

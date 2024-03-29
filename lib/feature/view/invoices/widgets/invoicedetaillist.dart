@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -160,58 +161,64 @@ class InvoiceDetailListWidget extends StatelessWidget {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(
-                    'Type',
-                    style: kfontstyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
+                  Flexible(
+                    flex: 3,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'Type',
+                      style: kfontstyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'value',
-                        style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'value',
+                      style: kfontstyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
                       ),
-                      SizedBox(
-                        width: 15.h,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'Discount',
+                      style: kfontstyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
                       ),
-                      Text(
-                        'Discount',
-                        style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'Vat',
+                      style: kfontstyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
                       ),
-                      SizedBox(
-                        width: 15.h,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'Subtotal',
+                      style: kfontstyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
                       ),
-                      Text(
-                        'Vat',
-                        style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                      Text(
-                        'Subtotal',
-                        style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -229,34 +236,60 @@ class InvoiceDetailListWidget extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
+                                horizontal: 10, vertical: 10),
                             child: Row(
-                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SizedBox(
-                                  width: 115.w,
-                                  child:
-                                      Text(typewiseinvoice[index].type ?? ''),
+                                Flexible(
+                                  flex: 3,
+                                  fit: FlexFit.tight,
+                                  // width: 115.w,
+                                  child: Text(
+                                    typewiseinvoice[index].type ?? '',
+                                    style: kfontstyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w400),
+                                  ),
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(typewiseinvoice[index].value ?? ''),
-                                    SizedBox(
-                                      width: 20.h,
-                                    ),
-                                    Text(typewiseinvoice[index].discount ?? ''),
-                                    SizedBox(
-                                      width: 30.h,
-                                    ),
-                                    Text(typewiseinvoice[index].vat ?? ''),
-                                    SizedBox(
-                                      width: 15.h,
-                                    ),
-                                    Text(typewiseinvoice[index].subTotal ?? ''),
-                                  ],
-                                ),
+                                Flexible(
+                                    flex: 2,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      typewiseinvoice[index].value ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w400),
+                                    )),
+                                /* SizedBox(
+                                  width: 20.h,
+                                ), */
+                                Flexible(
+                                    flex: 2,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      typewiseinvoice[index].discount ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w400),
+                                    )),
+                                Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      typewiseinvoice[index].vat ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w400),
+                                    )),
+                                Flexible(
+                                    flex: 2,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      typewiseinvoice[index].subTotal ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w400),
+                                    )),
                               ],
                             ),
                           );

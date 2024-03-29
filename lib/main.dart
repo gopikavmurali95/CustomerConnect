@@ -9,7 +9,6 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
-// import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
@@ -22,7 +21,12 @@ import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
@@ -119,6 +123,15 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<CusInsArHeaderBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<TodaysDeliveryHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TodaysDeliveryDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SpecialPriceHeaderBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<CusInsInvoiceHeaderBloc>(),
         ),
         BlocProvider(
@@ -138,6 +151,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusItemsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PickingdetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PickingHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

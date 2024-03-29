@@ -4,7 +4,7 @@ import 'package:logger/web.dart';
 
 TextStyle boxHeading() {
   return GoogleFonts.poppins(
-      fontSize: 12,
+      fontSize: 11,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }

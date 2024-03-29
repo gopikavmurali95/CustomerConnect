@@ -21,6 +21,7 @@ class InvoiceDetailsBloc
       emit(invoicedetails.fold((l) => const GetInvoiceDetailsFailedState(),
           (r) => GetInvoiceDetailsState(invdetails: r)));
     });
-    on((event, emit) => emit(const GetInvoiceDetailsState(invdetails: null)));
+    on<ClearInvoiceDetails>(
+        (event, emit) => emit(const GetInvoiceDetailsState(invdetails: null)));
   }
 }

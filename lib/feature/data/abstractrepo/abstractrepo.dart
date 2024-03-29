@@ -26,7 +26,15 @@ import 'package:customer_connect/feature/data/models/loading_header_in_model/loa
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
+import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_details_model/todays_delivery_details_model.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
 import 'package:customer_connect/feature/data/models/sales_orders_in_model/sales_orders_in_model.dart';
 import 'package:customer_connect/feature/data/models/sales_orders_model/sales_orders_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_details_model/total_orders_details_model.dart';
@@ -105,6 +113,21 @@ abstract class ICusInsArRepo {
       CusInsArHeaderInModel arin);
 }
 
+abstract class ITodaysDeliveryRepo {
+  Future<Either<MainFailures, List<TodaysDeliveryHeaderModel>>>
+      getTodaysDelivery(TodaysDeliveryInParas deliveryIn);
+
+  Future<Either<MainFailures, List<TodaysDeliveryDetailsModel>>>
+      getDeliveryDetail(String id);
+}
+
+abstract class ISpecialPriceRepo {
+  Future<Either<MainFailures, List<SpecialPriceHeaderOutparas>>>
+      getSpecialPrice(SpecialPriceHeaderModel specialPriceIn);
+}
+
+// Future<Either<MainFailures, List<TotalOrdersDetailsModel>>> getOrderDetail(
+//     String ordID);
 abstract class ICusInsInvoiceRepo {
   Future<Either<MainFailures, List<CusInsInvoiceModel>>> getInvoiceHeaders(
       CusInsInvoiceHeaderInModel invIn);
@@ -133,4 +156,11 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(String route);
+}
+
+abstract class IPickingHeaderRepo {
+  Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
+      PickingInModel pickingInModel);
+  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
+      String iD);
 }
