@@ -14,13 +14,13 @@ class CustomerTransactionRepo implements ICustomerTransactionRepo {
   @override
   Future<Either<MainFailures, CustomerTransactionModel>> ctCount(
       String userID) async {
-    var logger = Logger();
+   // var logger = Logger();
     try {
       final response = await http.post(
           Uri.parse(baseUrl + customertransactioncountsurl),
           body: {"UserID": userID});
       if (response.statusCode == 200) {
-        logger.w('Response: ${response.body}');
+       // logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final custcount = CustomerTransactionModel.fromJson(json["result"][0]);
         return right(custcount);

@@ -1,18 +1,39 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/completed.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../state/bloc/picking_header/picking_header_bloc.dart';
+
 class PickHeaderCompleted extends StatefulWidget {
-  const PickHeaderCompleted({super.key});
+  final LoginUserModel user;
+  const PickHeaderCompleted({super.key, required this.user});
 
   @override
   State<PickHeaderCompleted> createState() => _PickHeaderCompletedState();
 }
 
 class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
+  @override
+  void initState() {
+    context.read<PickingHeaderBloc>().add(const ClearPickingevent());
+    context.read<PickingHeaderBloc>().add(
+        GetpickingHeaderEvent(pickingHeadIn:PickingInModel(
+            userID: widget.user.usrId,
+        area: '',
+          customer: '',fromDate: '01/01/2023',mode: 'PC',outlet: '',route: '',subArea: '',
+            toDate: '26/03/2024'
+        )  ));
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

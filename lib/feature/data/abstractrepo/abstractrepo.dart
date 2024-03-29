@@ -5,8 +5,12 @@ import 'package:customer_connect/feature/data/models/loading_header_in_model/loa
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
+import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
+import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:dartz/dartz.dart';
+
+import '../models/picking_header_model/PickingOutModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
@@ -31,5 +35,13 @@ abstract class ILoadingRepo {
       LoadingHeaderInModel loadingIn);
 
   Future<Either<MainFailures, List<LoadingDetailModel>>> getLoadingDetail(
+      String iD);
+}
+
+abstract class IPickingHeaderRepo
+{
+  Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
+      PickingInModel pickingIn);
+  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
       String iD);
 }

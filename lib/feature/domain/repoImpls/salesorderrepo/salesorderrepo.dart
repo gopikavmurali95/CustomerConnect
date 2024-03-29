@@ -14,13 +14,13 @@ class SalesOrderCountRepo implements ISalesOrderRepo {
   @override
   Future<Either<MainFailures, SalesOderCountModel>> soCount(
       String userID) async {
-    var logger = Logger();
+   // var logger = Logger();
     try {
       final response = await http.post(
           Uri.parse(baseUrl + salesorderscountsurl),
           body: {"UserID": userID});
       if (response.statusCode == 200) {
-        logger.w('Response: ${response.body}');
+       // logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final salescount = SalesOderCountModel.fromJson(json["result"][0]);
         return right(salescount);

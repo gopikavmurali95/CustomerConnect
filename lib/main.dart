@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
@@ -7,6 +6,7 @@ import 'package:customer_connect/feature/state/bloc/bloc/loading_detail_bloc.dar
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +71,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<LoadingDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PickingHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PickingdetailBloc>(),
         ),
       ],
       child: ScreenUtilInit(

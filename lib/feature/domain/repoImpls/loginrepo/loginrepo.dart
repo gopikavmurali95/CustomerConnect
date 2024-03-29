@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 // import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -9,7 +8,6 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-
 import 'package:logger/logger.dart';
 
 @LazySingleton(as: ILoginRepo)

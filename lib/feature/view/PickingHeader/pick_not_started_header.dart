@@ -1,17 +1,37 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/not_started.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../data/models/picking_header_model/PickingInModel.dart';
+import '../../state/bloc/picking_header/picking_header_bloc.dart';
+
 class PickHeaderNotStarted extends StatefulWidget {
-  const PickHeaderNotStarted({super.key});
+  final LoginUserModel user;
+  const PickHeaderNotStarted({super.key, required this.user});
 
   @override
   State<PickHeaderNotStarted> createState() => _PickHeaderNotStartedState();
 }
 
 class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
+
+  void initState() {
+    context.read<PickingHeaderBloc>().add(const ClearPickingevent());
+    context.read<PickingHeaderBloc>().add(
+        GetpickingHeaderEvent(pickingHeadIn:PickingInModel(
+            userID: widget.user.usrId,
+            area: '',
+            customer: '',fromDate: '01-01-2023',mode: 'N',outlet: '',route: '',subArea: '',
+            toDate: '26-03-2024'
+        )  ));
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
