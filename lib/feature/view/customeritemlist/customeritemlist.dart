@@ -1,7 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/state/bloc/bloc/cus_items_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -17,6 +17,8 @@ import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_m
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -163,4 +165,9 @@ abstract class IPickingHeaderRepo {
       PickingInModel pickingInModel);
   Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
       String iD);
+}
+
+abstract class IProfileEditRepo {
+  Future<Either<MainFailures, EditProfileRespModel>> editProfile(
+      EditProfileInModel outIn);
 }

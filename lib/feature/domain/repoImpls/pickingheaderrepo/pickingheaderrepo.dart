@@ -11,58 +11,47 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPickingHeaderRepo)
-class PickingHeaderRepo implements IPickingHeaderRepo
-{
+class PickingHeaderRepo implements IPickingHeaderRepo {
   @override
   Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
-      PickingInModel pickingIn) async{
-    try
-    {
+      PickingInModel pickingIn) async {
+    try {
       final response = await http.post(Uri.parse(baseUrl + pickingHeaderUrl),
-        body: pickingIn.toJson());
-      if (response.statusCode == 200)
+          body: pickingIn.toJson());
+      if (response.statusCode == 200) {
+        //log(response.body);
+        Map<String, dynamic> json = jsonDecode(response.body);
 
-        {
-          //log(response.body);
-          Map<String, dynamic> json = jsonDecode(response.body);
+        final List<dynamic> loadingdetaildata = json['result'];
+        List<PickingOutModel> detaillist = loadingdetaildata
+            .map<PickingOutModel>((json) => PickingOutModel.fromJson(json))
+            .toList();
 
-          final List<dynamic> loadingdetaildata = json['result'];
-          List<PickingOutModel> detaillist = loadingdetaildata
-              .map<PickingOutModel>(
-                  (json) => PickingOutModel.fromJson(json))
-              .toList();
+        // Map<String,dynamic> json = jsonDecode(response.body);
+        // final List<dynamic> pickingheaderlist = json['result'];
+        // List<PickingOutModel> pickinglist = pickingheaderlist.map<PickingOutModel>((json) =>
+        // PickingOutModel.fromJson(json['result'][0])).toList();
 
-          // Map<String,dynamic> json = jsonDecode(response.body);
-          // final List<dynamic> pickingheaderlist = json['result'];
-          // List<PickingOutModel> pickinglist = pickingheaderlist.map<PickingOutModel>((json) =>
-          // PickingOutModel.fromJson(json['result'][0])).toList();
-
-          return right(detaillist);
-        }
-      else
-        {
-          return left(const MainFailures.networkerror(error: "something went wrong"),
-          );
-        }
-
-    }
-    catch(e)
-    {
+        return right(detaillist);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: "something went wrong"),
+        );
+      }
+    } catch (e) {
       log("error message:${e}");
       return left(const MainFailures.serverfailure());
     }
   }
 
-
   @override
-  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(String iD) async {
-    try
-    {
-      final response = await http.post(Uri.parse(baseUrl+pickingDetailUrl),
-          body: {'PickingID': iD});
+  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
+      String iD) async {
+    try {
+      final response = await http
+          .post(Uri.parse(baseUrl + pickingDetailUrl), body: {'PickingID': iD});
 
-      if(response.statusCode == 200)
-      {
+      if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -72,18 +61,12 @@ class PickingHeaderRepo implements IPickingHeaderRepo
                 (json) => PickingDetailModel.fromJson(json))
             .toList();
         return right(pickdetaillist);
-
-      }
-      else
-      {
+      } else {
         return left(const MainFailures.networkerror(error: "wrong"));
       }
-    }
-    catch (e)
-    {
+    } catch (e) {
       log("detail error:$e");
       return left(const MainFailures.serverfailure());
     }
-
   }
 }

@@ -33,3 +33,4 @@ const cusInsOutStandingHeaderUrl =
 const cusOutsandingCOuntUrl =
     'CusInsightOutStanging/CusInsightOutStandingCount';
 const cusItemsUrl = 'CusInsightCusItems/SelectCusItems';
+const cusProfileEditUrl = 'CusInsightCusItems/CusEditProfile';
