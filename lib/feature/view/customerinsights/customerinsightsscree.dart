@@ -1,14 +1,41 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customertransactionwidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/otheroptionswidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/profileinfowidget.dart';
 import 'package:customer_connect/feature/view/editprofile/editprofilescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomerInsightsScreen extends StatelessWidget {
-  const CustomerInsightsScreen({super.key});
+class CustomerInsightsScreen extends StatefulWidget {
+  final CusInsCustomersModel customer;
+  final LoginUserModel user;
+  const CustomerInsightsScreen(
+      {super.key, required this.customer, required this.user});
+
+  @override
+  State<CustomerInsightsScreen> createState() => _CustomerInsightsScreenState();
+}
+
+final _fromdatectrl = TextEditingController();
+final _todatectrl = TextEditingController();
+
+class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
+  @override
+  void initState() {
+    _fromdatectrl.text = '01-01-2023';
+    _todatectrl.text =
+        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+
+    context.read<CusProfileBloc>().add(const ClearProfileEvent());
+    context.read<CusProfileBloc>().add(GetCusProfileEvent(
+        userID: widget.user.usrId ?? '', cusID: widget.customer.cusId ?? ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +86,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'A025206 - ',
+                              '${widget.customer.cusCode} - ',
                               style: kfontstyle(
                                 fontSize: 12.sp,
                                 color: const Color(0xff2C6B9E),
@@ -69,7 +96,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
+                                widget.customer.cusName ?? "",
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     color: const Color(0xff413434)),
@@ -80,14 +107,14 @@ class CustomerInsightsScreen extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '199525 - ',
+                              '${widget.customer.headerCode} - ',
                               style: kfontstyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff413434)),
                             ),
                             Expanded(
                               child: Text(
-                                'Carrefour Hypermarket',
+                                widget.customer.headerName ?? "",
                                 overflow: TextOverflow.ellipsis,
                                 style: kfontstyle(fontSize: 12.sp),
                               ),
@@ -95,7 +122,7 @@ class CustomerInsightsScreen extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          'Virtual | Supermarket | Dubai ',
+                          '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                           style:
                               kfontstyle(fontSize: 10.sp, color: Colors.grey),
                         ),
@@ -107,7 +134,12 @@ class CustomerInsightsScreen extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              const CustomerTraansactionWidget(),
+              CustomerTraansactionWidget(
+                user: widget.user,
+                customer: widget.customer,
+                fromdatectrl: _fromdatectrl,
+                todatectrl: _todatectrl,
+              ),
               SizedBox(
                 height: 10.h,
               ),

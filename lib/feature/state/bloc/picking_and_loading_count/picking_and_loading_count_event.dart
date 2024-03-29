@@ -7,4 +7,7 @@ class PickingAndLoadingCountEvent with _$PickingAndLoadingCountEvent {
 
   const factory PickingAndLoadingCountEvent.plCountFailureEvent() =
       PlCountFailureEvent;
+
+  const factory PickingAndLoadingCountEvent.clearPichingAndLoadingCount() =
+      ClearPichingAndLoadingCount;
 }

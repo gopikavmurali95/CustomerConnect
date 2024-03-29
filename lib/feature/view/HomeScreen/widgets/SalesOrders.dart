@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
@@ -11,7 +12,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../constants/fonts.dart';
 
 class SalesOrders extends StatelessWidget {
-  const SalesOrders({super.key});
+  final LoginUserModel user;
+  const SalesOrders({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +67,9 @@ class SalesOrders extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const TotalOrders()));
+                                              builder: (context) => TotalOrders(
+                                                    user: user,
+                                                  )));
                                     },
                                     child: Container(
                                       /*  height: 70,

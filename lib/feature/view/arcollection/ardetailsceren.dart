@@ -1,11 +1,29 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
+import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ARDetailScreen extends StatelessWidget {
-  const ARDetailScreen({super.key});
+class ARDetailScreen extends StatefulWidget {
+  final ArHeaderModel arheader;
+  const ARDetailScreen({super.key, required this.arheader});
+
+  @override
+  State<ARDetailScreen> createState() => _ARDetailScreenState();
+}
+
+class _ARDetailScreenState extends State<ARDetailScreen> {
+  @override
+  void initState() {
+    context.read<ArDetailsBloc>().add(const ClearArDetailEvent());
+    context
+        .read<ArDetailsBloc>()
+        .add(GetArDetailsEvent(arhID: widget.arheader.arhId ?? ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +68,7 @@ class ARDetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'IV076876',
+                        widget.arheader.arhArNumber ?? '',
                         style: TextStyle(
                           fontSize: 13.sp,
                           color: const Color(0xff2C6B9E),
@@ -60,7 +78,7 @@ class ARDetailScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'A025206 - ',
+                            '${widget.arheader.cshCode} - ',
                             style: TextStyle(
                               fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
@@ -69,7 +87,7 @@ class ARDetailScreen extends StatelessWidget {
                           Expanded(
                             child: Text(
                               overflow: TextOverflow.ellipsis,
-                              'Tromp, Muller and Mitchell',
+                              widget.arheader.cshName ?? '',
                               style: TextStyle(
                                   fontSize: 13.sp,
                                   color: const Color(0xff413434)),
@@ -80,14 +98,14 @@ class ARDetailScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '199525 - ',
+                            '${widget.arheader.cusCode} - ',
                             style: TextStyle(
                                 fontSize: 12.sp,
                                 color: const Color(0xff413434)),
                           ),
                           Expanded(
                             child: Text(
-                              'Carrefour Hypermarket',
+                              widget.arheader.cusName ?? '',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(fontSize: 13.sp),
                             ),
@@ -95,7 +113,7 @@ class ARDetailScreen extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'CR | Route 101 | 16 May 2023 | 10:35',
+                        '${widget.arheader.arhPayType?.trim()} | Route ${widget.arheader.rotName} | ${widget.arheader.date} | ${widget.arheader.time}',
                         style: TextStyle(fontSize: 10.sp, color: Colors.grey),
                       ),
                     ],
@@ -122,7 +140,7 @@ class ARDetailScreen extends StatelessWidget {
                       width: 3.w,
                     ),
                     Text(
-                      '120.00',
+                      widget.arheader.arhCollectedAmount ?? '',
                       style: kfontstyle(
                           fontSize: 12.sp, fontWeight: FontWeight.w500),
                     )
@@ -136,7 +154,7 @@ class ARDetailScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Text(
-                      'DI',
+                      widget.arheader.arhPayMode ?? '',
                       style: TextStyle(
                           fontSize: 10.sp, color: const Color(0xff413434)),
                     ),
@@ -176,7 +194,7 @@ class ARDetailScreen extends StatelessWidget {
                               width: 3.w,
                             ),
                             Text(
-                              'Cheque',
+                              widget.arheader.arhPayMode ?? "",
                               style: kfontstyle(
                                 fontSize: 12.sp,
                               ),
@@ -196,7 +214,7 @@ class ARDetailScreen extends StatelessWidget {
                               width: 3.w,
                             ),
                             Text(
-                              '123456',
+                              widget.arheader.arpChequeNo ?? "",
                               style: kfontstyle(
                                 fontSize: 12.sp,
                               ),
@@ -219,7 +237,7 @@ class ARDetailScreen extends StatelessWidget {
                               width: 3.w,
                             ),
                             Text(
-                              'NBD',
+                              widget.arheader.bankName ?? "",
                               style: kfontstyle(
                                 fontSize: 12.sp,
                               ),
@@ -239,7 +257,7 @@ class ARDetailScreen extends StatelessWidget {
                               width: 3.w,
                             ),
                             Text(
-                              '12 jan 21',
+                              widget.arheader.arpChequeDate ?? '',
                               style: kfontstyle(
                                 fontSize: 12.sp,
                               ),

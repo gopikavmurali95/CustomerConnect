@@ -23,5 +23,6 @@ class PickingAndLoadingCountBloc
           (l) => const PickingAndLoadingCountState.plCountFailedState(),
           (r) => PickingAndLoadingCountState.plCountSuccessState(plCount: r)));
     });
+    on((event, emit) => emit(const PlCountSuccessState(plCount: null)));
   }
 }

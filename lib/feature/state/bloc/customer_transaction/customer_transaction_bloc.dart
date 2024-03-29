@@ -22,5 +22,7 @@ class CustomerTransactionBloc
       emit(cus.fold((l) => const CusTransactionFailedState(),
           (r) => CusTransactionSuccessState(customertrans: r)));
     });
+    on((event, emit) =>
+        emit(const CusTransactionSuccessState(customertrans: null)));
   }
 }

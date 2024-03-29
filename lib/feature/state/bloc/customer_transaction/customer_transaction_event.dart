@@ -6,4 +6,7 @@ class CustomerTransactionEvent with _$CustomerTransactionEvent {
       {required String userID}) = CusTransactionSuccessEvent;
   const factory CustomerTransactionEvent.cusTransactionFailedEvent() =
       CusTransactionFailedEvent;
+
+  const factory CustomerTransactionEvent.clearCustomerTransactionCount() =
+      ClearCustomerTransactionCount;
 }

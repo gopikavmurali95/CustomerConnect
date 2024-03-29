@@ -1,11 +1,13 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderdetailslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TotalOrderDetails extends StatelessWidget {
-  const TotalOrderDetails({super.key});
+  final TotalOrdersModel totalorders;
+  const TotalOrderDetails({super.key, required this.totalorders});
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +48,19 @@ class TotalOrderDetails extends StatelessWidget {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(
+                      width: 10.w,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'MO86764',
-                            style: TextStyle(
-                              fontSize: 13.sp,
+                            totalorders.orderId ?? '',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
                               fontWeight: FontWeight.w600,
                             ),
@@ -62,18 +68,25 @@ class TotalOrderDetails extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
+                                totalorders.cusCode ?? '',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              Text(
+                                ' - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
+                                  totalorders.cusName ?? '',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
                                       color: const Color(0xff413434)),
                                 ),
                               ),
@@ -82,46 +95,88 @@ class TotalOrderDetails extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
-                                style: TextStyle(
-                                    fontSize: 12.sp,
+                                totalorders.cshCode ?? '',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff413434)),
+                              ),
+                              Text(
+                                ' - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  totalorders.cshName ?? '',
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 13.sp),
+                                  style: kfontstyle(fontSize: 12.sp),
                                 ),
                               ),
                             ],
                           ),
-                          Text(
-                            'CR | Route 101 | 16 May 2023 | 10:35',
-                            style:
-                                TextStyle(fontSize: 10.sp, color: Colors.grey),
+                          Row(
+                            children: [
+                              // Text(
+                              //   'CR | Route 101 | 16 May 2023 | 10:35',
+                              //   style: kfontstyle(
+                              //       fontSize: 10.sp, color: Colors.grey),
+                              // ),
+                              Text(
+                                totalorders.status ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                totalorders.rotName ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                totalorders.date ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                ' | ',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                              Text(
+                                totalorders.time ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Container(
-                          height: 14.h,
-                          width: 30.w,
-                          decoration: BoxDecoration(
-                              color: const Color(0xffe4f7e2),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              'CO',
-                              style: TextStyle(
-                                  fontSize: 10.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                          ),
-                        )
-                      ],
+                    Container(
+                      height: 14.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                          color: totalorders.ordType == 'O'
+                              ? const Color(0xffe3f7e2)
+                              : const Color(0xfff7f4e2),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          totalorders.ordType ?? '',
+                          style: kfontstyle(
+                              fontSize: 10.sp, color: const Color(0xff413434)),
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -203,7 +258,10 @@ class TotalOrderDetails extends StatelessWidget {
           SizedBox(
             width: 15.h,
           ),
-          const Expanded(child: TotalOrderDetailsList()),
+          Expanded(
+              child: TotalOrderDetailsList(
+            totalorders: totalorders,
+          )),
         ],
       ),
       bottomNavigationBar: SizedBox(
@@ -220,7 +278,7 @@ class TotalOrderDetails extends StatelessWidget {
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
               ),
               Text(
-                'AED 1890.00',
+                totalorders.grandTotal ?? '',
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
               )
             ],

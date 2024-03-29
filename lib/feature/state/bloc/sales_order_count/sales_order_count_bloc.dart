@@ -21,5 +21,7 @@ class SalesOrderCountBloc
       emit(count.fold((l) => const SalesOrderCountFailedState(),
           (r) => SalesOrderCountSuccessState(salesord: r)));
     });
+    on((event, emit) =>
+        emit(const SalesOrderCountSuccessState(salesord: null)));
   }
 }
