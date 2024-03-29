@@ -129,7 +129,10 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerDocumentScreen(),
+                      builder: (context) => CustomerDocumentScreen(
+                        customer: customer,
+                        user: user,
+                      ),
                     ),
                   );
                 },

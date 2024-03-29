@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
 import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
+import 'package:customer_connect/feature/data/models/cus_documents_model/cus_documents_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -170,4 +171,9 @@ abstract class IPickingHeaderRepo {
 abstract class IProfileEditRepo {
   Future<Either<MainFailures, EditProfileRespModel>> editProfile(
       EditProfileInModel outIn);
+}
+
+abstract class IcusDocumentsModel {
+  Future<Either<MainFailures, List<CusDocumentsModel>>> getCusDocuments(
+      String cusID);
 }
