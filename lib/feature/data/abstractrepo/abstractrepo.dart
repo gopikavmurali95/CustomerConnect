@@ -13,6 +13,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_i
 import 'package:customer_connect/feature/data/models/cus_ins_onv_detail_model/cus_ins_onv_detail_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_outstanding_header_model/cus_ins_outstanding_header_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
+import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_model.dart';
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
@@ -128,4 +129,8 @@ abstract class ICusOutstandingRepo {
       CusOutStandingInModel outIn);
   Future<Either<MainFailures, List<CusInsOutstandingHeaderModel>>>
       getCusOutstanding(CusOutStandingInModel outIn);
+}
+
+abstract class ICusItemsRepo {
+  Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(String route);
 }

@@ -47,7 +47,7 @@ class InsightsOutstandingList extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'IV076876',
+                                  headers[index].invoiceId ?? '',
                                   style: kfontstyle(
                                     fontSize: 12.sp,
                                     color: const Color(0xff2C6B9E),
@@ -55,12 +55,12 @@ class InsightsOutstandingList extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '16 May 2023 | 10:35',
+                                  headers[index].invoicedOn ?? '',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),
                                 Text(
-                                  '120.00',
+                                  headers[index].invoiceAmount ?? '',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),
@@ -70,7 +70,7 @@ class InsightsOutstandingList extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                '120.00',
+                                headers[index].amountPaid ?? "",
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
@@ -82,13 +82,14 @@ class InsightsOutstandingList extends StatelessWidget {
                                 height: 14.h,
                                 width: 50.w,
                                 decoration: BoxDecoration(
-                                    color: index % 2 == 0
-                                        ? const Color(0xffe3f7e2)
-                                        : const Color(0xfff7f4e2),
+                                    color: /* index % 2 == 0
+                                        ? */
+                                        const Color(
+                                            0xffe3f7e2) /* : const Color(0xfff7f4e2), */,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                   child: Text(
-                                    index % 2 == 0 ? 'Due' : 'Overdue',
+                                    headers[index].status ?? '',
                                     style: kfontstyle(
                                         fontSize: 10.sp,
                                         color: const Color(0xff413434)),

@@ -104,9 +104,10 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerItemList(
-                          // isfromUser: false,
-                          ),
+                      builder: (context) => CustomerItemList(
+                        customer: customer,
+                        user: user,
+                      ),
                     ),
                   );
                 },

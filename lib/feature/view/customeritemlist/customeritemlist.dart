@@ -1,10 +1,31 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/bloc/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomerItemList extends StatelessWidget {
-  const CustomerItemList({super.key});
+class CustomerItemList extends StatefulWidget {
+  final CusInsCustomersModel customer;
+  final LoginUserModel user;
+  const CustomerItemList(
+      {super.key, required this.customer, required this.user});
+
+  @override
+  State<CustomerItemList> createState() => _CustomerItemListState();
+}
+
+class _CustomerItemListState extends State<CustomerItemList> {
+  @override
+  void initState() {
+    context.read<CusItemsBloc>().add(const ClearItemsEvent());
+    context
+        .read<CusItemsBloc>()
+        .add(GetItemsEvent(route: widget.customer.rotId ?? ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +45,7 @@ class CustomerItemList extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Customer Item List  ",
+          "Customer Item List",
           style: appHeading(),
         ),
       ),
@@ -53,7 +74,7 @@ class CustomerItemList extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
+                                '${widget.customer.cusCode} - ',
                                 style: kfontstyle(
                                   fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),
@@ -63,7 +84,7 @@ class CustomerItemList extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
+                                  widget.customer.cusName ?? "",
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff413434)),
@@ -74,14 +95,14 @@ class CustomerItemList extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
+                                '${widget.customer.headerCode} - ',
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  widget.customer.headerName ?? "",
                                   overflow: TextOverflow.ellipsis,
                                   style: kfontstyle(fontSize: 12.sp),
                                 ),
@@ -89,7 +110,7 @@ class CustomerItemList extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'Virtual | Supermarket | Dubai ',
+                            '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                             style:
                                 kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),

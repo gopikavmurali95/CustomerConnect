@@ -17,73 +17,77 @@ import 'package:customer_connect/feature/domain/repoImpls/cusinsights/cusinsarre
 import 'package:customer_connect/feature/domain/repoImpls/cusinsights/customersrepo.dart'
     as _i7;
 import 'package:customer_connect/feature/domain/repoImpls/cusinsights/transactioncunts.dart'
-    as _i18;
+    as _i19;
 import 'package:customer_connect/feature/domain/repoImpls/cusinsinvoice/cusinsightsinvoicerepo.dart'
     as _i6;
-import 'package:customer_connect/feature/domain/repoImpls/cusoustanding/cusoutstandingrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/cusitemsrepo/cusitemsrepo.dart'
     as _i8;
-import 'package:customer_connect/feature/domain/repoImpls/cusprofile/cusprofilerepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/cusoustanding/cusoutstandingrepo.dart'
     as _i9;
-import 'package:customer_connect/feature/domain/repoImpls/customertransactionrepo/customertransactionrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/cusprofile/cusprofilerepo.dart'
     as _i10;
-import 'package:customer_connect/feature/domain/repoImpls/invoicerepo/invoicerepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/customertransactionrepo/customertransactionrepo.dart'
     as _i11;
-import 'package:customer_connect/feature/domain/repoImpls/Loading/loadingrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/invoicerepo/invoicerepo.dart'
     as _i12;
-import 'package:customer_connect/feature/domain/repoImpls/loginrepo/loginrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/Loading/loadingrepo.dart'
     as _i13;
-import 'package:customer_connect/feature/domain/repoImpls/pickingandloadingrepo/pickingandloadincountrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/loginrepo/loginrepo.dart'
     as _i14;
-import 'package:customer_connect/feature/domain/repoImpls/salesorderrepo/salesorderrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/pickingandloadingrepo/pickingandloadincountrepo.dart'
     as _i15;
-import 'package:customer_connect/feature/domain/repoImpls/salesorderrs/salesordersrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/salesorderrepo/salesorderrepo.dart'
     as _i16;
-import 'package:customer_connect/feature/domain/repoImpls/totalordersrepo/totalorderrepo.dart'
+import 'package:customer_connect/feature/domain/repoImpls/salesorderrs/salesordersrepo.dart'
     as _i17;
+import 'package:customer_connect/feature/domain/repoImpls/totalordersrepo/totalorderrepo.dart'
+    as _i18;
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart'
-    as _i30;
-import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart'
     as _i31;
-import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart'
     as _i32;
-import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart'
-    as _i33;
-import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart'
-    as _i34;
-import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart'
-    as _i35;
-import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart'
-    as _i36;
-import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/bloc/cus_items_bloc.dart'
     as _i37;
-import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart'
+    as _i33;
+import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart'
+    as _i34;
+import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart'
+    as _i35;
+import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart'
+    as _i36;
+import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart'
     as _i38;
-import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
     as _i39;
-import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
     as _i40;
+import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
+    as _i41;
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+    as _i42;
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart'
-    as _i19;
-import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart'
     as _i20;
-import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart'
     as _i21;
+import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart'
+    as _i22;
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart'
     as _i23;
 import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
-    as _i22;
-import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i24;
-import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart'
-    as _i29;
-import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i25;
-import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart'
+    as _i30;
+import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart'
     as _i26;
-import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart'
     as _i27;
-import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart'
     as _i28;
+import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart'
+    as _i29;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -103,63 +107,66 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i3.ICusInsInvoiceRepo>(() => _i6.CusInsInvoiceRepo());
     gh.lazySingleton<_i3.ICusInsightsCustomersRepo>(
         () => _i7.CusInsCustomersRepo());
-    gh.lazySingleton<_i3.ICusOutstandingRepo>(() => _i8.CusOutStandingRepo());
-    gh.lazySingleton<_i3.ICusProfileRepo>(() => _i9.CusProfileRepo());
+    gh.lazySingleton<_i3.ICusItemsRepo>(() => _i8.CusItemsRepo());
+    gh.lazySingleton<_i3.ICusOutstandingRepo>(() => _i9.CusOutStandingRepo());
+    gh.lazySingleton<_i3.ICusProfileRepo>(() => _i10.CusProfileRepo());
     gh.lazySingleton<_i3.ICustomerTransactionRepo>(
-        () => _i10.CustomerTransactionRepo());
-    gh.lazySingleton<_i3.IInvoiceRepo>(() => _i11.InvoiceRepo());
-    gh.lazySingleton<_i3.ILoadingRepo>(() => _i12.LoadinRepo());
-    gh.lazySingleton<_i3.ILoginRepo>(() => _i13.UserLoginRepo());
+        () => _i11.CustomerTransactionRepo());
+    gh.lazySingleton<_i3.IInvoiceRepo>(() => _i12.InvoiceRepo());
+    gh.lazySingleton<_i3.ILoadingRepo>(() => _i13.LoadinRepo());
+    gh.lazySingleton<_i3.ILoginRepo>(() => _i14.UserLoginRepo());
     gh.lazySingleton<_i3.IPickingAndLoadinCountRepo>(
-        () => _i14.PickingAndLoadinCountRepo());
-    gh.lazySingleton<_i3.ISalesOrderRepo>(() => _i15.SalesOrderCountRepo());
-    gh.lazySingleton<_i3.ISalesOrdersRepo>(() => _i16.SalesOrdersRepo());
-    gh.lazySingleton<_i3.ITotalOrdersRepo>(() => _i17.TotalOrderRepo());
-    gh.lazySingleton<_i3.IcusInsCountsRepo>(() => _i18.CusTrnCOuntsRepo());
-    gh.factory<_i19.InvoiceDetailsBloc>(
-        () => _i19.InvoiceDetailsBloc(gh<_i3.IInvoiceRepo>()));
-    gh.factory<_i20.InvoiceDetailsFooterBloc>(
-        () => _i20.InvoiceDetailsFooterBloc(gh<_i3.IInvoiceRepo>()));
-    gh.factory<_i21.InvoiceHeaderBloc>(
-        () => _i21.InvoiceHeaderBloc(gh<_i3.IInvoiceRepo>()));
-    gh.factory<_i22.LoadingDetailBloc>(
-        () => _i22.LoadingDetailBloc(gh<_i3.ILoadingRepo>()));
+        () => _i15.PickingAndLoadinCountRepo());
+    gh.lazySingleton<_i3.ISalesOrderRepo>(() => _i16.SalesOrderCountRepo());
+    gh.lazySingleton<_i3.ISalesOrdersRepo>(() => _i17.SalesOrdersRepo());
+    gh.lazySingleton<_i3.ITotalOrdersRepo>(() => _i18.TotalOrderRepo());
+    gh.lazySingleton<_i3.IcusInsCountsRepo>(() => _i19.CusTrnCOuntsRepo());
+    gh.factory<_i20.InvoiceDetailsBloc>(
+        () => _i20.InvoiceDetailsBloc(gh<_i3.IInvoiceRepo>()));
+    gh.factory<_i21.InvoiceDetailsFooterBloc>(
+        () => _i21.InvoiceDetailsFooterBloc(gh<_i3.IInvoiceRepo>()));
+    gh.factory<_i22.InvoiceHeaderBloc>(
+        () => _i22.InvoiceHeaderBloc(gh<_i3.IInvoiceRepo>()));
     gh.factory<_i23.LoadingDetailBloc>(
         () => _i23.LoadingDetailBloc(gh<_i3.ILoadingRepo>()));
-    gh.factory<_i24.LoadingHeaderBloc>(
-        () => _i24.LoadingHeaderBloc(gh<_i3.ILoadingRepo>()));
-    gh.factory<_i25.PickingAndLoadingCountBloc>(() =>
-        _i25.PickingAndLoadingCountBloc(gh<_i3.IPickingAndLoadinCountRepo>()));
-    gh.factory<_i26.SalesOrderCountBloc>(
-        () => _i26.SalesOrderCountBloc(gh<_i3.ISalesOrderRepo>()));
-    gh.factory<_i27.TotalOrdersDetailsBloc>(
-        () => _i27.TotalOrdersDetailsBloc(gh<_i3.ITotalOrdersRepo>()));
-    gh.factory<_i28.TotalOrdersHeaderBloc>(
-        () => _i28.TotalOrdersHeaderBloc(gh<_i3.ITotalOrdersRepo>()));
-    gh.factory<_i29.UserLoginBloc>(
-        () => _i29.UserLoginBloc(gh<_i3.ILoginRepo>()));
-    gh.factory<_i30.ArDetailsBloc>(
-        () => _i30.ArDetailsBloc(gh<_i3.IArCollectionRepo>()));
-    gh.factory<_i31.ArHeaderBloc>(
-        () => _i31.ArHeaderBloc(gh<_i3.IArCollectionRepo>()));
-    gh.factory<_i32.CusInsArHeaderBloc>(
-        () => _i32.CusInsArHeaderBloc(gh<_i3.ICusInsArRepo>()));
-    gh.factory<_i33.CusInsInvoiceHeaderBloc>(
-        () => _i33.CusInsInvoiceHeaderBloc(gh<_i3.ICusInsInvoiceRepo>()));
-    gh.factory<_i34.CusInsTrnCountBloc>(
-        () => _i34.CusInsTrnCountBloc(gh<_i3.IcusInsCountsRepo>()));
-    gh.factory<_i35.CusInvDetailBlocBloc>(
-        () => _i35.CusInvDetailBlocBloc(gh<_i3.ICusInsInvoiceRepo>()));
-    gh.factory<_i36.CusOutStandingBloc>(
-        () => _i36.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
-    gh.factory<_i37.CusProfileBloc>(
-        () => _i37.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
-    gh.factory<_i38.CusSalesOrdersBloc>(
-        () => _i38.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
-    gh.factory<_i39.CustomerTransactionBloc>(
-        () => _i39.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
-    gh.factory<_i40.CustomersListBlocBloc>(
-        () => _i40.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
+    gh.factory<_i24.LoadingDetailBloc>(
+        () => _i24.LoadingDetailBloc(gh<_i3.ILoadingRepo>()));
+    gh.factory<_i25.LoadingHeaderBloc>(
+        () => _i25.LoadingHeaderBloc(gh<_i3.ILoadingRepo>()));
+    gh.factory<_i26.PickingAndLoadingCountBloc>(() =>
+        _i26.PickingAndLoadingCountBloc(gh<_i3.IPickingAndLoadinCountRepo>()));
+    gh.factory<_i27.SalesOrderCountBloc>(
+        () => _i27.SalesOrderCountBloc(gh<_i3.ISalesOrderRepo>()));
+    gh.factory<_i28.TotalOrdersDetailsBloc>(
+        () => _i28.TotalOrdersDetailsBloc(gh<_i3.ITotalOrdersRepo>()));
+    gh.factory<_i29.TotalOrdersHeaderBloc>(
+        () => _i29.TotalOrdersHeaderBloc(gh<_i3.ITotalOrdersRepo>()));
+    gh.factory<_i30.UserLoginBloc>(
+        () => _i30.UserLoginBloc(gh<_i3.ILoginRepo>()));
+    gh.factory<_i31.ArDetailsBloc>(
+        () => _i31.ArDetailsBloc(gh<_i3.IArCollectionRepo>()));
+    gh.factory<_i32.ArHeaderBloc>(
+        () => _i32.ArHeaderBloc(gh<_i3.IArCollectionRepo>()));
+    gh.factory<_i33.CusInsArHeaderBloc>(
+        () => _i33.CusInsArHeaderBloc(gh<_i3.ICusInsArRepo>()));
+    gh.factory<_i34.CusInsInvoiceHeaderBloc>(
+        () => _i34.CusInsInvoiceHeaderBloc(gh<_i3.ICusInsInvoiceRepo>()));
+    gh.factory<_i35.CusInsTrnCountBloc>(
+        () => _i35.CusInsTrnCountBloc(gh<_i3.IcusInsCountsRepo>()));
+    gh.factory<_i36.CusInvDetailBlocBloc>(
+        () => _i36.CusInvDetailBlocBloc(gh<_i3.ICusInsInvoiceRepo>()));
+    gh.factory<_i37.CusItemsBloc>(
+        () => _i37.CusItemsBloc(gh<_i3.ICusItemsRepo>()));
+    gh.factory<_i38.CusOutStandingBloc>(
+        () => _i38.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
+    gh.factory<_i39.CusProfileBloc>(
+        () => _i39.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
+    gh.factory<_i40.CusSalesOrdersBloc>(
+        () => _i40.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
+    gh.factory<_i41.CustomerTransactionBloc>(
+        () => _i41.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
+    gh.factory<_i42.CustomersListBlocBloc>(
+        () => _i42.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
     return this;
   }
 }

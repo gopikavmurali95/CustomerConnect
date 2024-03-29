@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
@@ -70,6 +72,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log(widget.customer.rotCode ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -126,7 +129,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
+                                '${widget.customer.cusCode} - ',
                                 style: kfontstyle(
                                   fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),
@@ -136,7 +139,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
+                                  widget.customer.cusName ?? "",
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff413434)),
@@ -147,14 +150,14 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
+                                '${widget.customer.headerCode} - ',
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  widget.customer.headerName ?? "",
                                   overflow: TextOverflow.ellipsis,
                                   style: kfontstyle(fontSize: 12.sp),
                                 ),
@@ -162,7 +165,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             ],
                           ),
                           Text(
-                            'Virtual | Supermarket | Dubai ',
+                            '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                             style:
                                 kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
@@ -283,9 +286,15 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     List.of(
                                                                   [
                                                                     PieEntry(
-                                                                        '8', 8),
+                                                                        counts.dueCount ??
+                                                                            '',
+                                                                        double.parse(counts.dueCount ??
+                                                                            '0')),
                                                                     PieEntry(
-                                                                        '4', 4),
+                                                                        counts.overDueCount ??
+                                                                            '',
+                                                                        double.parse(counts.overDueCount ??
+                                                                            '0')),
                                                                   ],
                                                                 ),
                                                               )
@@ -364,7 +373,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                           width: 20.w,
                                                         ),
                                                         Text(
-                                                          '12/15,000.00',
+                                                          '${counts.totCount}/${counts.totAmount}',
                                                           style: kfontstyle(
                                                               fontSize: 13.sp,
                                                               fontWeight:
@@ -376,17 +385,21 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                     SizedBox(
                                                       height: 15.h,
                                                     ),
-                                                    const ArChartItemWidget(
-                                                      amount: '8/700.00',
-                                                      color: Color(0xff9ce895),
+                                                    ArChartItemWidget(
+                                                      amount:
+                                                          '${counts.dueCount}/${counts.dueAmount}',
+                                                      color: const Color(
+                                                          0xff9ce895),
                                                       title: 'Due',
                                                     ),
                                                     SizedBox(
                                                       height: 10.h,
                                                     ),
-                                                    const ArChartItemWidget(
-                                                      amount: '4/500.00',
-                                                      color: Color(0xffe18484),
+                                                    ArChartItemWidget(
+                                                      amount:
+                                                          '${counts.overDueCount}/${counts.overDueAmount}',
+                                                      color: const Color(
+                                                          0xffe18484),
                                                       title: 'Overdue',
                                                     ),
                                                   ],
