@@ -16,3 +16,6 @@ const arDeatilUrl = 'AR/SelectARDetail';
 const customerInsightsCustomersUrl = "CusInsightshome/SelectAllCustomerInsight";
 const cusinsTrnCountUrl = 'CusInsightshome/CusTransactioCount';
 const cusInsArHeaderUrl = 'CusInsightAR/CusInsigntARHeader';
+const todaysdeliveryheaderurl = 'TodayDelivery/SelectTodayDeliveyHeader';
+const todaysdeliverydetailsurl = 'TodayDelivery/SelectTodayDelDetail';
+const specialpriceheaderurl = 'SpecialPrice/SelectSpecialPriceHeader';

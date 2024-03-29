@@ -1,8 +1,10 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
@@ -166,6 +168,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: FlexFit.tight,
                     child: InkWell(
                       onTap: () {
+                        context
+                            .read<SpecialPriceHeaderBloc>()
+                            .add(const ClearSpecialPriceEvent());
+                        context.read<SpecialPriceHeaderBloc>().add(
+                            GetSpecialPriceHeaderEvent(
+                                spPriceInparas: SpecialPriceHeaderModel(
+                                    area: '',
+                                    customer: '',
+                                    fromDate: '01/01/2023',
+                                    mode: '',
+                                    outlet: '',
+                                    route: '',
+                                    subArea: '',
+                                    toDate: '30/03/2024',
+                                    userId: widget.user.usrId)));
                         Navigator.push(
                             context,
                             MaterialPageRoute(
