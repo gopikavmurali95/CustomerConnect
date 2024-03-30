@@ -40,3 +40,4 @@ const cusProfileEditUrl = 'CusInsightCusItems/CusEditProfile';
 const cusDocumentsUrl = 'CusInsightCusItems/GetCustomerDocuments';
 const cusGeoLocationUrl = 'InsightGeoLocation/CusInsightGeolocationHeader';
 const updateGeoLocationUrl = 'InsightGeoLocation/UpdateCustomerGeoLocation';
+const cusSpPriceHeaderUrl = 'CusInsSpecialPricing/SelectCusSPecPricingHeader';

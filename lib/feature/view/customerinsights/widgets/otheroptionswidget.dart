@@ -60,9 +60,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerInsightSpecialPricing(
-                          //isfromUser: false,
-                          ),
+                      builder: (context) => CustomerInsightSpecialPricing(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },
