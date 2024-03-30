@@ -1,11 +1,48 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_geo_loc_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/view/geolocation/widgets/geolocationlistwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class GeoLocationScreen extends StatelessWidget {
-  const GeoLocationScreen({super.key});
+class GeoLocationScreen extends StatefulWidget {
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const GeoLocationScreen(
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
+
+  @override
+  State<GeoLocationScreen> createState() => _GeoLocationScreenState();
+}
+
+class _GeoLocationScreenState extends State<GeoLocationScreen> {
+  @override
+  void initState() {
+    context.read<CusGeoLocationBloc>().add(const ClearCusgeoLocationEvent());
+    context.read<CusGeoLocationBloc>().add(
+          GetCusGeoLocationEvent(
+            cusGeoLocInModel: CusGeoLocInModel(
+                cusId: /* widget.customer.cusId */ '1',
+                area: '',
+                fromDate: widget.fromdatectrl.text,
+                toDate: widget.todatectrl.text,
+                route: '',
+                subArea: '',
+                userId: widget.user.usrId),
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +101,7 @@ class GeoLocationScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
+                                '${widget.customer.cusCode} - ',
                                 style: kfontstyle(
                                   fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),
@@ -74,7 +111,7 @@ class GeoLocationScreen extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
+                                  widget.customer.cusName ?? "",
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff413434)),
@@ -85,14 +122,14 @@ class GeoLocationScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
+                                '${widget.customer.headerCode} - ',
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  widget.customer.headerName ?? "",
                                   overflow: TextOverflow.ellipsis,
                                   style: kfontstyle(fontSize: 12.sp),
                                 ),
@@ -100,7 +137,7 @@ class GeoLocationScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'Virtual | Supermarket | Dubai ',
+                            '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                             style:
                                 kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
@@ -115,7 +152,16 @@ class GeoLocationScreen extends StatelessWidget {
               ],
             ),
           ),
-          const GeoLocationListWidget()
+          Expanded(
+              child: GeoLocationListWidget(
+            customer: widget.customer,
+            user: widget.user,
+            fromdatectrl: widget.fromdatectrl,
+            todatectrl: widget.todatectrl,
+          )),
+          SizedBox(
+            height: 5.h,
+          ),
         ],
       ),
     );

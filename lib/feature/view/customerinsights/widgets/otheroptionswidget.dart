@@ -150,7 +150,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const GeoLocationScreen(),
+                      builder: (context) => GeoLocationScreen(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },

@@ -35,3 +35,5 @@ const cusOutsandingCOuntUrl =
 const cusItemsUrl = 'CusInsightCusItems/SelectCusItems';
 const cusProfileEditUrl = 'CusInsightCusItems/CusEditProfile';
 const cusDocumentsUrl = 'CusInsightCusItems/GetCustomerDocuments';
+const cusGeoLocationUrl = 'InsightGeoLocation/CusInsightGeolocationHeader';
+const updateGeoLocationUrl = 'InsightGeoLocation/UpdateCustomerGeoLocation';

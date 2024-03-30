@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
@@ -34,6 +35,7 @@ import 'package:customer_connect/feature/state/bloc/total_orders_header/total_or
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -169,6 +171,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ConvertpdfurlCubit>(
           create: (context) => ConvertpdfurlCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusGeoLocationBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<UpdateGeoLocationCubit>(),
         ),
       ],
       child: ScreenUtilInit(

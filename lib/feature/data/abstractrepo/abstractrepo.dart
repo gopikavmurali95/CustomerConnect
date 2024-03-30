@@ -3,8 +3,12 @@ import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_m
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
+import 'package:customer_connect/feature/data/models/confirm_geo_locations_model/confirm_geo_locations_model.dart';
 import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
 import 'package:customer_connect/feature/data/models/cus_documents_model/cus_documents_model.dart';
+import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_geo_loc_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_geo_location_model/cus_geo_location_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -176,4 +180,12 @@ abstract class IProfileEditRepo {
 abstract class IcusDocumentsModel {
   Future<Either<MainFailures, List<CusDocumentsModel>>> getCusDocuments(
       String cusID);
+}
+
+abstract class ICusGeoLocationRepo {
+  Future<Either<MainFailures, List<CusGeoLocationModel>>> getCusGeoLocations(
+      CusGeoLocInModel cusIN);
+
+  Future<Either<MainFailures, ConfirmGeoLocationsModel>> confirmGeolocation(
+      ConfirmGeoCodeInModel confirmmodel);
 }
