@@ -1,23 +1,27 @@
 import 'dart:convert';
 
-PickingDetailModel pickingDetailModelFromJson(String str) => PickingDetailModel.fromJson(json.decode(str));
-String pickingDetailModelToJson(PickingDetailModel data) => json.encode(data.toJson());
+PickingDetailModel pickingDetailModelFromJson(String str) =>
+    PickingDetailModel.fromJson(json.decode(str));
+String pickingDetailModelToJson(PickingDetailModel data) =>
+    json.encode(data.toJson());
+
 class PickingDetailModel {
   PickingDetailModel({
-      this.pkdID, 
-      this.pkdPkhID, 
-      this.prdID, 
-      this.prdCode, 
-      this.prdName, 
-      this.prdNameArabic, 
-      this.prdDescription, 
-      this.pkdHigherUom, 
-      this.pkdLowerUom, 
-      this.pkdPickedHQty, 
-      this.pkdPickedLQty, 
-      this.pkdRequestedHQty, 
-      this.pkdRequestedLQty, 
-      this.pkdTransType,});
+    this.pkdID,
+    this.pkdPkhID,
+    this.prdID,
+    this.prdCode,
+    this.prdName,
+    this.prdNameArabic,
+    this.prdDescription,
+    this.pkdHigherUom,
+    this.pkdLowerUom,
+    this.pkdPickedHQty,
+    this.pkdPickedLQty,
+    this.pkdRequestedHQty,
+    this.pkdRequestedLQty,
+    this.pkdTransType,
+  });
 
   PickingDetailModel.fromJson(dynamic json) {
     pkdID = json['pkd_ID'];
@@ -68,5 +72,4 @@ class PickingDetailModel {
     map['pkd_TransType'] = pkdTransType;
     return map;
   }
-
 }

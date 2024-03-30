@@ -8,4 +8,3 @@ class LoadingDetailEvent with _$LoadingDetailEvent {
   const factory LoadingDetailEvent.clearLoadingDetailEvent() =
       ClearLoadingDetailEvent;
 }
-

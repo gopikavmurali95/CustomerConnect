@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,67 +34,75 @@ class PromotionCustomer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(
               children: [
-                SizedBox(
-                  height: 75,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: const Color(0xffB3DAF7),
-                              child: Center(
-                                child: Text(
-                                  'FG',
-                                  style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PromotionDetails()));
+                  },
+                  child: SizedBox(
+                    height: 75,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: const Color(0xffB3DAF7),
+                                child: Center(
+                                  child: Text(
+                                    'FG',
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
                                 ),
                               ),
+                              SizedBox(
+                                width: 15.w,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Free Good Promotion',
+                                    style: blueTextStyle(),
+                                  ),
+                                  Text(
+                                    '21 Feb 2021 to 24 Feb 2021',
+                                    style: subTextStyle(),
+                                  ),
+                                  Text(
+                                    'PR10021',
+                                    style: subTextStyle(),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Details',
+                              style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
-                              width: 15.w,
+                              width: 5.w,
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Free Good Promotion',
-                                  style: blueTextStyle(),
-                                ),
-                                Text(
-                                  '21 Feb 2021 to 24 Feb 2021',
-                                  style: subTextStyle(),
-                                ),
-                                Text(
-                                  'PR10021',
-                                  style: subTextStyle(),
-                                )
-                              ],
-                            ),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 18,
+                            )
                           ],
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Details',
-                            style: TextStyle(fontSize: 10.sp),
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          const Icon(
-                            Icons.keyboard_arrow_right,
-                            size: 18,
-                          )
-                        ],
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(

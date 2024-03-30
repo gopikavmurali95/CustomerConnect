@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
+// import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
@@ -147,9 +150,19 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<CusSalesOrdersBloc>(),
         ),
         BlocProvider(
-            create: (context)=> getit<PickingdetailBloc>()),
+          create: (context) => getit<PickingdetailBloc>(),
+        ),
         BlocProvider(
           create: (context) => getit<PickingHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionCustomerBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionDetailsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

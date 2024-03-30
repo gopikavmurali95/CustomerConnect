@@ -25,6 +25,10 @@ import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_m
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
+import 'package:customer_connect/feature/data/models/promotion_customer_model/promotion_customer_model.dart';
+import 'package:customer_connect/feature/data/models/promotion_details_model/promotion_details_model.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
@@ -122,14 +126,21 @@ abstract class ISpecialPriceRepo {
       getSpecialPrice(SpecialPriceHeaderModel specialPriceIn);
 }
 
-// Future<Either<MainFailures, List<TotalOrdersDetailsModel>>> getOrderDetail(
-//     String ordID);
 abstract class ICusInsInvoiceRepo {
   Future<Either<MainFailures, List<CusInsInvoiceModel>>> getInvoiceHeaders(
       CusInsInvoiceHeaderInModel invIn);
   Future<Either<MainFailures, List<CusInsOnvDetailModel>>> getInvoiceDetails(
       String iD);
   Future<Either<MainFailures, List<CusInsInvTypeModel>>> getInvoicetypes(
+      String iD);
+}
+
+abstract class IPromotionHeaderRepo {
+  Future<Either<MainFailures, List<PromotionHeaderModel>>> getPromotionHeader(
+      PromotionHeaderInParas inpromtionIn);
+  Future<Either<MainFailures, List<PromotionCustomerModel>>>
+      getPromotionCustomer(String iD);
+  Future<Either<MainFailures, List<PromotionDetailsModel>>> getPromotionDetails(
       String iD);
 }
 
@@ -143,11 +154,9 @@ abstract class ISalesOrdersRepo {
       SalesOrdersInModel salesIn);
 }
 
-abstract class IPickingHeaderRepo{
-  Future<Either<MainFailures,List<PickingOutModel>>> getPickingHeaders(
-      PickingInModel pickingInModel
-      );
+abstract class IPickingHeaderRepo {
+  Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
+      PickingInModel pickingInModel);
   Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
-      String iD
-      );
+      String iD);
 }

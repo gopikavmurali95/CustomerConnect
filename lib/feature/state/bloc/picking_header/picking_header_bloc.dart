@@ -17,14 +17,13 @@ class PickingHeaderBloc extends Bloc<PickingHeaderEvent, PickingHeaderState> {
   final IPickingHeaderRepo pickHead;
 
   PickingHeaderBloc(this.pickHead) : super(PickingHeaderState.initial()) {
-    on<GetpickingHeaderEvent>((event, emit) async{
-      Either<MainFailures,List<PickingOutModel>> pickingHead =
-      await pickHead.getPickingHeaders(event.pickingHeadIn);
+    on<GetpickingHeaderEvent>((event, emit) async {
+      Either<MainFailures, List<PickingOutModel>> pickingHead =
+          await pickHead.getPickingHeaders(event.pickingHeadIn);
 
       emit(pickingHead.fold(
-              (l) => const  PickingHeaderState.pickingheaderFailedState(),
-              (r) => PickingHeaderState.getPickingHeaderState(pickingOut: r)));
-
+          (l) => const PickingHeaderState.pickingheaderFailedState(),
+          (r) => PickingHeaderState.getPickingHeaderState(pickingOut: r)));
     });
     on<ClearPickingevent>((event, emit) {
       emit(const GetPickingHeaderState(pickingOut: null));

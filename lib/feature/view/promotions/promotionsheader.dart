@@ -1,13 +1,38 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class PromotionHeader extends StatelessWidget {
-  const PromotionHeader({super.key});
+class PromotionHeader extends StatefulWidget {
+  final LoginUserModel user;
+  const PromotionHeader({super.key, required this.user});
+
+  @override
+  State<PromotionHeader> createState() => _PromotionHeaderState();
+}
+
+class _PromotionHeaderState extends State<PromotionHeader> {
+  @override
+  void initState() {
+    context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
+        promotionInparas: PromotionHeaderInParas(
+            area: '',
+            cusOutlet: '',
+            customer: '',
+            fromDate: '01-01-2023',
+            route: '',
+            subArea: '',
+            toDate: '29-03-2024',
+            userId: widget.user.usrId)));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
