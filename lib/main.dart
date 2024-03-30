@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_b
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
@@ -185,6 +186,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusSpPriceBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusPromotionsHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

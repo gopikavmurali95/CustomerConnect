@@ -87,9 +87,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerInsightPromotion(
-                          // isfromUser: false,
-                          ),
+                      builder: (context) => CustomerInsightPromotion(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },
