@@ -2,14 +2,17 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+// import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
@@ -34,6 +37,7 @@ import 'package:customer_connect/feature/state/bloc/total_orders_details/total_o
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
+// import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -152,12 +156,6 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<CusSalesOrdersBloc>(),
         ),
         BlocProvider(
-          create: (context) => getit<CusOutStandingBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getit<CusItemsBloc>(),
-        ),
-        BlocProvider(
           create: (context) => getit<PickingdetailBloc>(),
         ),
         BlocProvider(
@@ -177,6 +175,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<UpdateGeoLocationCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusOutStandingBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusItemsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

@@ -27,6 +27,9 @@ const cusProfileUrl = 'CusInsightshome/CusInsightProfileDetail';
 const cusInsInvDetailUrl = 'CusInsInvoice/SelectCusInvoiceDetail';
 const cusInvTypeUrl = 'CusInsInvoice/SelectCusInvoiceDetailTypeWise';
 const cusSalesOrdersUrl = 'CusInsightSalesOrder/SelectSalesOrders';
+const promotionheaderurl = 'Promotion/SelectPromotionHeader';
+const promotioncustomerurl = 'Promotion/SelectPromotionCustomer';
+const promotiondetailsurl = 'Promotion/SelectPromotionDetail';
 const cusInsOutStandingHeaderUrl =
     'CusInsightOutStanging/CusInsightOutstandingHeader';
 

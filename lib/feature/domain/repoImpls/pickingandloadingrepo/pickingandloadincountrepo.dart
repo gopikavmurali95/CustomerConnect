@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+// import 'package:logger/logger.dart';
 import 'package:http/http.dart' as http;
 
 @LazySingleton(as: IPickingAndLoadinCountRepo)

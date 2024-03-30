@@ -48,7 +48,7 @@ class GeoLocationRepo implements ICusGeoLocationRepo {
           Uri.parse(baseUrl + updateGeoLocationUrl),
           body: confirmmodel.toJson());
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final update = ConfirmGeoLocationsModel.fromJson(json["result"][0]);
         return right(update);

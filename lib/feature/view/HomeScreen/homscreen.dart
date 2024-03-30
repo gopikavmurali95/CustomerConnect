@@ -242,7 +242,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const PromotionHeader()));
+                                builder: (context) => PromotionHeader(
+                                      user: widget.user,
+                                    )));
                       },
                       child: Container(
                         // height: 50,

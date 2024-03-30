@@ -61,7 +61,7 @@ class TotalOrderRepo implements ITotalOrdersRepo {
         );
       }
     } catch (e) {
-      logger.e('Invoice Details error$e');
+      logger.e('Total Order error$e');
       return left(const MainFailures.serverfailure());
     }
   }
