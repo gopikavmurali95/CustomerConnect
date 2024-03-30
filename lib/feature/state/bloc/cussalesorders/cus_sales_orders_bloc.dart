@@ -21,7 +21,6 @@ class CusSalesOrdersBloc
       (event, emit) async {
         Either<MainFailures, List<SalesOrdersModel>> orders =
             await salesOrderRepo.getSalesOrders(event.salesIn);
-
         emit(
           orders.fold(
             (l) => const SalesOrdersFailedState(),

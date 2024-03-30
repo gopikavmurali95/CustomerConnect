@@ -30,3 +30,11 @@ const cusSalesOrdersUrl = 'CusInsightSalesOrder/SelectSalesOrders';
 const promotionheaderurl = 'Promotion/SelectPromotionHeader';
 const promotioncustomerurl = 'Promotion/SelectPromotionCustomer';
 const promotiondetailsurl = 'Promotion/SelectPromotionDetail';
+const cusInsOutStandingHeaderUrl =
+    'CusInsightOutStanging/CusInsightOutstandingHeader';
+
+const cusOutsandingCOuntUrl =
+    'CusInsightOutStanging/CusInsightOutStandingCount';
+const cusItemsUrl = 'CusInsightCusItems/SelectCusItems';
+const cusProfileEditUrl = 'CusInsightCusItems/CusEditProfile';
+const cusDocumentsUrl = 'CusInsightCusItems/GetCustomerDocuments';

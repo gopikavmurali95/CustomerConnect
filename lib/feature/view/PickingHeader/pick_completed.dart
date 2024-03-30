@@ -1,7 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
-import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/completed.dart';
 

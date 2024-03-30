@@ -1,17 +1,27 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/customerinsightspecialpricing.dart';
 import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.dart';
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../custinsightpromotion/custinsightpromotion.dart';
 
 class OtherOptionsWidget extends StatelessWidget {
-  const OtherOptionsWidget({super.key});
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const OtherOptionsWidget(
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +37,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const InsghtsOutStandingScreen(),
+                      builder: (context) => InsghtsOutStandingScreen(
+                        customer: customer,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                        user: user,
+                      ),
                     ),
                   );
                 },
@@ -89,9 +104,10 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerItemList(
-                          // isfromUser: false,
-                          ),
+                      builder: (context) => CustomerItemList(
+                        customer: customer,
+                        user: user,
+                      ),
                     ),
                   );
                 },
@@ -113,7 +129,10 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerDocumentScreen(),
+                      builder: (context) => CustomerDocumentScreen(
+                        customer: customer,
+                        user: user,
+                      ),
                     ),
                   );
                 },

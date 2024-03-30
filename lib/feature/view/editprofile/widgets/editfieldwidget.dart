@@ -6,10 +6,12 @@ import 'package:flutter_svg/svg.dart';
 class EditProfilefieldWidget extends StatelessWidget {
   final String title;
   final String icon;
+  final TextEditingController controller;
   const EditProfilefieldWidget({
     super.key,
     required this.title,
     required this.icon,
+    required this.controller,
   });
 
   @override
@@ -44,7 +46,7 @@ class EditProfilefieldWidget extends StatelessWidget {
                 height: 10.h,
               ),
               Container(
-                height: 30.h,
+                // height: 30.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
@@ -57,6 +59,14 @@ class EditProfilefieldWidget extends StatelessWidget {
                     ]),
                 width: MediaQuery.of(context).size.width - 50,
                 child: TextFormField(
+                  controller: controller,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "$title can't be empty";
+                    } else {
+                      return null;
+                    }
+                  },
                   decoration: const InputDecoration(
                       isDense: true,
                       contentPadding:

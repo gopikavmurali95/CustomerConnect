@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
 import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
+import 'package:customer_connect/feature/data/models/cus_documents_model/cus_documents_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -11,8 +12,14 @@ import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_ins_invoice_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_onv_detail_model/cus_ins_onv_detail_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_outstanding_header_model/cus_ins_outstanding_header_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
+import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_model.dart';
+import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -154,9 +161,30 @@ abstract class ISalesOrdersRepo {
       SalesOrdersInModel salesIn);
 }
 
+abstract class ICusOutstandingRepo {
+  Future<Either<MainFailures, CusOutstandingCountModel>> getOutStandingCounts(
+      CusOutStandingInModel outIn);
+  Future<Either<MainFailures, List<CusInsOutstandingHeaderModel>>>
+      getCusOutstanding(CusOutStandingInModel outIn);
+}
+
+abstract class ICusItemsRepo {
+  Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(String route);
+}
+
 abstract class IPickingHeaderRepo {
   Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
       PickingInModel pickingInModel);
   Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
       String iD);
+}
+
+abstract class IProfileEditRepo {
+  Future<Either<MainFailures, EditProfileRespModel>> editProfile(
+      EditProfileInModel outIn);
+}
+
+abstract class IcusDocumentsModel {
+  Future<Either<MainFailures, List<CusDocumentsModel>>> getCusDocuments(
+      String cusID);
 }

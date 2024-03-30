@@ -1,10 +1,38 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/view/editprofile/widgets/editfieldwidget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+class EditProfileScreen extends StatefulWidget {
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  const EditProfileScreen(
+      {super.key, required this.user, required this.customer});
+
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+final _mailctrl = TextEditingController();
+final _mobctrl = TextEditingController();
+final _whatsappctrl = TextEditingController();
+final _formkey = GlobalKey<FormState>();
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  @override
+  void initState() {
+    context.read<CusProfileBloc>().add(GetCusProfileEvent(
+        userID: widget.user.usrId ?? '', cusID: widget.customer.cusId ?? ''));
+    context.read<EditCusProfileBloc>().add(const ClearEditStateEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +56,128 @@ class EditProfileScreen extends StatelessWidget {
           style: appHeading(),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        child: Column(
-          children: [
-            EditProfilefieldWidget(
-              title: 'Mail ID',
-              icon: 'assets/svg/mail.svg',
-            ),
-            EditProfilefieldWidget(
-              title: 'Mobile Number',
-              icon: 'assets/svg/phone.svg',
-            ),
-            EditProfilefieldWidget(
-              title: 'Whatsapp Number',
-              icon: 'assets/svg/whatsapp_1.svg',
-            )
-          ],
+      body: BlocListener<EditCusProfileBloc, EditCusProfileState>(
+        listener: (context, state) {
+          state.when(
+            editProfileState: (editrep) {
+              if (editrep != null) {
+                context.read<CusProfileBloc>().add(GetCusProfileEvent(
+                    userID: widget.user.usrId ?? '',
+                    cusID: widget.customer.cusId ?? ''));
+                Navigator.pop(context);
+                if (editrep.res == '1') {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: Text(editrep.title ?? ''),
+                      content: const Text('Your profile has been updated'),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text(
+                            'Ok',
+                            style: kfontstyle(),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                } else {
+                  Navigator.pop(context);
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: Text(editrep.title ?? ''),
+                      content: const Text('Your profile has been Failed'),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text(
+                            'Ok',
+                            style: kfontstyle(),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                }
+              }
+            },
+            editFailedState: () {},
+            editLoadingState: () {
+              showCupertinoDialog(
+                  context: context,
+                  builder: (context) => const CupertinoActivityIndicator(
+                        animating: true,
+                        color: Colors.red,
+                        radius: 30,
+                      ));
+            },
+          );
+        },
+        child: BlocConsumer<CusProfileBloc, CusProfileState>(
+          listener: (context, state) {
+            state.when(
+              getCusProfileState: (profile) {
+                if (profile != null) {
+                  _mailctrl.text = profile.cusEmail ?? '';
+                  _mobctrl.text = profile.cusPhone ?? '';
+                  _whatsappctrl.text = profile.cusWhatsappNumber ?? '';
+                }
+              },
+              getcusprofileFailedState: () {},
+            );
+          },
+          builder: (context, state) {
+            return state.when(
+              getCusProfileState: (profile) => profile == null
+                  ? const Center(
+                      child: CupertinoActivityIndicator(
+                        animating: true,
+                        color: Colors.red,
+                        radius: 30,
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: Form(
+                        key: _formkey,
+                        child: Column(
+                          children: [
+                            EditProfilefieldWidget(
+                              title: 'Mail ID',
+                              icon: 'assets/svg/mail.svg',
+                              controller: _mailctrl,
+                            ),
+                            EditProfilefieldWidget(
+                              title: 'Mobile Number',
+                              icon: 'assets/svg/phone.svg',
+                              controller: _mobctrl,
+                            ),
+                            EditProfilefieldWidget(
+                              title: 'Whatsapp Number',
+                              icon: 'assets/svg/whatsapp_1.svg',
+                              controller: _whatsappctrl,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+              getcusprofileFailedState: () => Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
+              ),
+            );
+          },
         ),
       ),
       bottomNavigationBar: Card(
@@ -114,7 +245,22 @@ class EditProfileScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_formkey.currentState!.validate()) {
+                        context
+                            .read<EditCusProfileBloc>()
+                            .add(const EditLoadingEvent());
+                        context.read<EditCusProfileBloc>().add(
+                              EditProfileEvent(
+                                profile: EditProfileInModel(
+                                    cusId: widget.customer.cusId,
+                                    mail: _mailctrl.text,
+                                    mob: _mobctrl.text,
+                                    whatsappNo: _whatsappctrl.text),
+                              ),
+                            );
+                      }
+                    },
                   ),
                 )
               ],
