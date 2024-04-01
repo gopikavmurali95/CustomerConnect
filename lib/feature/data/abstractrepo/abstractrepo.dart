@@ -45,6 +45,7 @@ import 'package:customer_connect/feature/data/models/promotion_customer_model/pr
 import 'package:customer_connect/feature/data/models/promotion_details_model/promotion_details_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
+import 'package:customer_connect/feature/data/models/qualification_group_model/qualification_group_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
@@ -216,4 +217,9 @@ abstract class ICusProtionRepo {
       CusPromoInModel cusIN);
   Future<Either<MainFailures, List<CusPromotionDetailModel>>>
       getCusPromotionDetails(String iD);
+}
+
+abstract class IQualificationGroupRepo {
+  Future<Either<MainFailures, List<QualificationGroupModel>>> getGroupItems(
+      String iD, String mode);
 }

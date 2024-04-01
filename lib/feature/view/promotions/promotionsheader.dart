@@ -1,9 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
+// import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +24,7 @@ class PromotionHeader extends StatefulWidget {
 class _PromotionHeaderState extends State<PromotionHeader> {
   @override
   void initState() {
+    context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
     context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
         promotionInparas: PromotionHeaderInParas(
             area: '',
@@ -114,7 +118,20 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
-            child: Column(
+            child:
+                // BlocBuilder<PromotionHeaderBloc, PromotionHeaderState>(
+                // builder: (context, state) {
+                //return state.when(
+                // getPromotionsHeader: (promoheader) => promoheader == null
+                // ? const Center(
+                //     child: CupertinoActivityIndicator(
+                //       animating: true,
+                //       color: Colors.red,
+                //       radius: 30,
+                //     ),
+                //   )
+                //:
+                Column(
               children: [
                 SizedBox(
                   height: 25.h,
@@ -170,6 +187,18 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                       ),
                                       GestureDetector(
                                         onTap: () {
+                                          // context
+                                          //     .read<
+                                          //         PromotionCustomerBloc>()
+                                          //     .add(
+                                          //         const ClearOromotionCustomer());
+                                          // context
+                                          //     .read<
+                                          //         PromotionCustomerBloc>()
+                                          //     .add(GetPromotionCustomerEvent(
+                                          //         id: promoheader[
+                                          //                 index]
+                                          //             .id!));
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -202,6 +231,19 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
+                                    // context
+                                    //     .read<
+                                    //         PromotionDetailsBloc>()
+                                    //     .add(
+                                    //         const ClearPromotionDetails());
+                                    // context
+                                    //     .read<
+                                    //         PromotionDetailsBloc>()
+                                    //     .add(
+                                    //         GetPromotionDetailsEvent(
+                                    //             id: promoheader[
+                                    //                     index]
+                                    //                 .id!));
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -235,6 +277,18 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                     })
               ],
             ),
+            // promotionHeaderFailed: () => SizedBox(
+            //   height: 500.h,
+            //   child: Center(
+            //     child: Text(
+            //       'No Date Available',
+            //       style: kfontstyle(),
+            //     ),
+            //   ),
+            // ),
+            //);
+            //},
+            //),
           ),
         ),
       ),

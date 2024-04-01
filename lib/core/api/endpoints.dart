@@ -32,6 +32,7 @@ const promotioncustomerurl = 'Promotion/SelectPromotionCustomer';
 const promotiondetailsurl = 'Promotion/SelectPromotionDetail';
 const cusInsOutStandingHeaderUrl =
     'CusInsightOutStanging/CusInsightOutstandingHeader';
+const qualificationgroupurl = 'Promotion/SelectGroupItems';
 
 const cusOutsandingCOuntUrl =
     'CusInsightOutStanging/CusInsightOutStandingCount';

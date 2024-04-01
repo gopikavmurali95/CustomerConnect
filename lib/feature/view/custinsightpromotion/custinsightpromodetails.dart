@@ -3,12 +3,10 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
-import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
+import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -191,6 +189,12 @@ class _CustInsightPromotionDetailsState
                 ),
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const ClearGroupData());
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const GetGroupWiseDataEvent(id: "1", mode: " "));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -250,10 +254,16 @@ class _CustInsightPromotionDetailsState
                 ),
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const ClearGroupData());
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const GetGroupWiseDataEvent(id: "1", mode: ""));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AssignmentGroup()));
+                            builder: (context) => const QualificationGroup()));
                   },
                   child: Container(
                     height: 62,

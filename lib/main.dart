@@ -33,6 +33,9 @@ import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/pi
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
@@ -41,7 +44,6 @@ import 'package:customer_connect/feature/state/bloc/total_orders_details/total_o
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
-// import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -166,6 +168,15 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<PickingHeaderBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<PromotionHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionCustomerBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionDetailsBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<EditCusProfileBloc>(),
         ),
         BlocProvider(
@@ -197,6 +208,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<PromotionHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<QualificationGroupBloc>(),
         ),
       ],
       child: ScreenUtilInit(
