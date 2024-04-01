@@ -1,8 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
-import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';

@@ -60,9 +60,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerInsightSpecialPricing(
-                          //isfromUser: false,
-                          ),
+                      builder: (context) => CustomerInsightSpecialPricing(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },
@@ -84,9 +87,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerInsightPromotion(
-                          // isfromUser: false,
-                          ),
+                      builder: (context) => CustomerInsightPromotion(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },
@@ -150,7 +156,12 @@ class OtherOptionsWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const GeoLocationScreen(),
+                      builder: (context) => GeoLocationScreen(
+                        customer: customer,
+                        user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
+                      ),
                     ),
                   );
                 },
