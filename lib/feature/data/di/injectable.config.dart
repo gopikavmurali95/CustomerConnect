@@ -82,18 +82,20 @@ import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_stand
     as _i58;
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
     as _i59;
-import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart'
     as _i60;
-import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
     as _i61;
-import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
     as _i62;
-import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
     as _i63;
-import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
     as _i64;
-import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
     as _i65;
+import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
+    as _i66;
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart'
     as _i29;
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart'
@@ -101,9 +103,9 @@ import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoi
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart'
     as _i31;
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart'
-    as _i32;
-import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
     as _i33;
+import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
+    as _i32;
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i34;
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart'
@@ -239,18 +241,20 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i58.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
     gh.factory<_i59.CusProfileBloc>(
         () => _i59.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
-    gh.factory<_i60.CusPromotionsHeaderBloc>(
-        () => _i60.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
-    gh.factory<_i61.CusSalesOrdersBloc>(
-        () => _i61.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
-    gh.factory<_i62.CusSpPriceBloc>(
-        () => _i62.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
-    gh.factory<_i63.CustomerTransactionBloc>(
-        () => _i63.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
-    gh.factory<_i64.CustomersListBlocBloc>(
-        () => _i64.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
-    gh.factory<_i65.EditCusProfileBloc>(
-        () => _i65.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
+    gh.factory<_i60.CusPromoDetailBloc>(
+        () => _i60.CusPromoDetailBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i61.CusPromotionsHeaderBloc>(
+        () => _i61.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i62.CusSalesOrdersBloc>(
+        () => _i62.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
+    gh.factory<_i63.CusSpPriceBloc>(
+        () => _i63.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
+    gh.factory<_i64.CustomerTransactionBloc>(
+        () => _i64.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
+    gh.factory<_i65.CustomersListBlocBloc>(
+        () => _i65.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
+    gh.factory<_i66.EditCusProfileBloc>(
+        () => _i66.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
     return this;
   }
 }

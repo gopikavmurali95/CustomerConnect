@@ -42,3 +42,4 @@ const cusGeoLocationUrl = 'InsightGeoLocation/CusInsightGeolocationHeader';
 const updateGeoLocationUrl = 'InsightGeoLocation/UpdateCustomerGeoLocation';
 const cusSpPriceHeaderUrl = 'CusInsSpecialPricing/SelectCusSPecPricingHeader';
 const cusPromotionHeaderUrl = 'CusInsPromotion/SelectCusPromotionHeader';
+const cuspromotionDetailUrl = 'CusInsPromotion/SelectCusPromotionDetail';

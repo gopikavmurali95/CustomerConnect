@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_b
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
@@ -31,6 +32,7 @@ import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
@@ -190,11 +192,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<CusPromotionsHeaderBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<CusPromoDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PromotionHeaderBloc>(),
+        ),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
           theme: ThemeData(
             useMaterial3: true,
             scaffoldBackgroundColor: Colors.white,
