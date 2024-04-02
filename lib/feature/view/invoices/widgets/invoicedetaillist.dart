@@ -18,11 +18,14 @@ class InvoiceDetailListWidget extends StatelessWidget {
             builder: (context, state) {
               return state.when(
                 getInvoiceDetailsState: (invdetails) => invdetails == null
-                    ? const Center(
-                        child: CupertinoActivityIndicator(
-                          animating: true,
-                          color: Colors.red,
-                          radius: 30,
+                    ? SizedBox(
+                        height: 100.h,
+                        child: const Center(
+                          child: CupertinoActivityIndicator(
+                            animating: true,
+                            color: Colors.red,
+                            radius: 30,
+                          ),
                         ),
                       )
                     : ListView.separated(

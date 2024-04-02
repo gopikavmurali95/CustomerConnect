@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -19,6 +21,7 @@ class PromotionCustomerBloc
     on<GetPromotionCustomerEvent>((event, emit) async {
       Either<MainFailures, List<PromotionCustomerModel>> customers =
           await promocustomer.getPromotionCustomer(event.id);
+      log(customers.fold((l) => 'empty', (r) => r.length.toString()));
       emit(customers.fold((l) => const PromotionCustomerFailed(),
           (r) => GetPromotionCustomerState(promotioncust: r)));
     });

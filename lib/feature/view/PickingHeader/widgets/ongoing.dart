@@ -1,8 +1,10 @@
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/picking_ongoing.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
 import '../../../state/bloc/picking_detail/pickingdetail_bloc.dart';
@@ -16,12 +18,17 @@ class OnGoing extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           getPickingHeaderState: (pickingOut) => pickingOut == null
-              ? const Center(
-                  child: CupertinoActivityIndicator(
-                    radius: 30,
-                    color: Colors.red,
-                    animating: true,
-                  ),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => ShimmerContainers(
+                          height: 60.h, width: double.infinity),
+                      separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                      itemCount: 10),
                 )
               : ListView.builder(
                   padding: const EdgeInsets.only(

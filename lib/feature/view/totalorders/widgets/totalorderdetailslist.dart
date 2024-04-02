@@ -20,11 +20,14 @@ class TotalOrderDetailsList extends StatelessWidget {
               return state.when(
                 getTotalOrdersDetailsState: (orderdetails) => orderdetails ==
                         null
-                    ? const Center(
-                        child: CupertinoActivityIndicator(
-                          animating: true,
-                          color: Colors.red,
-                          radius: 30,
+                    ? SizedBox(
+                        height: 400.h,
+                        child: const Center(
+                          child: CupertinoActivityIndicator(
+                            animating: true,
+                            color: Colors.red,
+                            radius: 30,
+                          ),
                         ),
                       )
                     : Column(

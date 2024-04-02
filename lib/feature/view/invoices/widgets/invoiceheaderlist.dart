@@ -2,7 +2,8 @@ import 'package:customer_connect/constants/fonts.dart';
 // import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:customer_connect/feature/widgets/shimmer.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,13 +18,16 @@ class InvoiceHeaderListWidget extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           invoiceHeaderSuccessState: (invheader) => invheader == null
-              ? const Center(
-                  child: CupertinoActivityIndicator(
-                    animating: true,
-                    color: Colors.red,
-                    radius: 30,
-                  ),
-                )
+              // ? ListView.separated(
+              //     physics: const NeverScrollableScrollPhysics(),
+              //     shrinkWrap: true,
+              //     itemBuilder: (context, index) =>
+              //         ShimmerContainers(height: 60.h, width: double.infinity),
+              //     separatorBuilder: (context, index) => Divider(
+              //           color: Colors.grey[300],
+              //         ),
+              //     itemCount: 10)
+              ? const SizedBox()
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ListView.separated(

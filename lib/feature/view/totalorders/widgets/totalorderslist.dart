@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/totalorderdetails.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -19,13 +20,15 @@ class TotalOrderList extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             getTotalOrderState: (totalorders) => totalorders == null
-                ? const Center(
-                    child: CupertinoActivityIndicator(
-                      animating: true,
-                      color: Colors.red,
-                      radius: 30,
-                    ),
-                  )
+                ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        ShimmerContainers(height: 60.h, width: double.infinity),
+                    separatorBuilder: (context, index) => Divider(
+                          color: Colors.grey[300],
+                        ),
+                    itemCount: 10)
                 : ListView.separated(
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {

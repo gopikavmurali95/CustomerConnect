@@ -2,6 +2,7 @@ import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/fonts.dart';
 
 class CompletedeDetail extends StatelessWidget {
@@ -13,10 +14,15 @@ class CompletedeDetail extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           pickingSuccessState: (pdetailList) => pdetailList == null
-              ? const CupertinoActivityIndicator(
-                  animating: true,
-                  color: Colors.red,
-                  radius: 30,
+              ? SizedBox(
+                  height: 400.h,
+                  child: const Center(
+                    child: CupertinoActivityIndicator(
+                      animating: true,
+                      color: Colors.red,
+                      radius: 30,
+                    ),
+                  ),
                 )
               : ListView.separated(
                   itemCount: pdetailList.length,

@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_orde
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -239,7 +240,10 @@ class SalesOrders extends StatelessWidget {
                       ),
                     ));
               } else {
-                return const SizedBox();
+                return ShimmerContainers(
+                  height: 20.h,
+                  width: double.infinity,
+                );
               }
             },
             salesOrderCountFailedState: () => const SizedBox(),

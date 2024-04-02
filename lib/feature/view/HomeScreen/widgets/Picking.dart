@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import '../../../../constants/fonts.dart';
 import '../../PickingHeader/pick_completed.dart';
@@ -506,7 +507,10 @@ class PickingWidget extends StatelessWidget {
                   ),
                 );
               } else {
-                return const SizedBox(); // Return a default Widget when count is null
+                return ShimmerContainers(
+                  height: 70.h,
+                  width: double.infinity,
+                ); // Return a default Widget when count is null
               }
             },
             plCountFailedState: () => const SizedBox(),

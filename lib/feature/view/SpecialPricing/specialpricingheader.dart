@@ -27,7 +27,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           ),
         ),
         title: Text(
-          "Special Pricingg",
+          "Special Pricing",
           style: appHeading(),
         ),
         actions: [

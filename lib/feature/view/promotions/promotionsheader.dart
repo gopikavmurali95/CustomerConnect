@@ -1,8 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
-// import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
-// import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
@@ -123,13 +123,15 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                 // builder: (context, state) {
                 //return state.when(
                 // getPromotionsHeader: (promoheader) => promoheader == null
-                // ? const Center(
-                //     child: CupertinoActivityIndicator(
-                //       animating: true,
-                //       color: Colors.red,
-                //       radius: 30,
+                // ? ListView.separated(
+                // physics: const NeverScrollableScrollPhysics(),
+                // shrinkWrap: true,
+                // itemBuilder: (context, index) =>
+                //     ShimmerContainers(height: 60.h, width: double.infinity),
+                // separatorBuilder: (context, index) => Divider(
+                //       color: Colors.grey[300],
                 //     ),
-                //   )
+                // itemCount: 10)
                 //:
                 Column(
               children: [
@@ -187,18 +189,15 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          // context
-                                          //     .read<
-                                          //         PromotionCustomerBloc>()
-                                          //     .add(
-                                          //         const ClearOromotionCustomer());
-                                          // context
-                                          //     .read<
-                                          //         PromotionCustomerBloc>()
-                                          //     .add(GetPromotionCustomerEvent(
-                                          //         id: promoheader[
-                                          //                 index]
-                                          //             .id!));
+                                          context
+                                              .read<PromotionCustomerBloc>()
+                                              .add(
+                                                  const ClearOromotionCustomer());
+                                          context
+                                              .read<PromotionCustomerBloc>()
+                                              .add(
+                                                  const GetPromotionCustomerEvent(
+                                                      id: '1'));
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -231,19 +230,12 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    // context
-                                    //     .read<
-                                    //         PromotionDetailsBloc>()
-                                    //     .add(
-                                    //         const ClearPromotionDetails());
-                                    // context
-                                    //     .read<
-                                    //         PromotionDetailsBloc>()
-                                    //     .add(
-                                    //         GetPromotionDetailsEvent(
-                                    //             id: promoheader[
-                                    //                     index]
-                                    //                 .id!));
+                                    context
+                                        .read<PromotionDetailsBloc>()
+                                        .add(const ClearPromotionDetails());
+                                    context.read<PromotionDetailsBloc>().add(
+                                        const GetPromotionDetailsEvent(
+                                            id: '1'));
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

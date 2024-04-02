@@ -45,7 +45,6 @@ class PromotionDetails extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  //color: Colors.red,
                   height: 55,
                   width: double.infinity,
                   child: Row(

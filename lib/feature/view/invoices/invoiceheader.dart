@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/invoice_header_inparas/invo
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoiceheaderlist.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,12 +76,17 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
         builder: (context, state) {
           return state.when(
             invoiceHeaderSuccessState: (invheader) => invheader == null
-                ? const Center(
-                    child: CupertinoActivityIndicator(
-                      animating: true,
-                      color: Colors.red,
-                      radius: 30,
-                    ),
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
                   )
                 : Column(
                     children: [

@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +69,15 @@ class _TotalOrdersState extends State<TotalOrders> {
         builder: (context, state) {
           return state.when(
             getTotalOrderState: (totalorders) => totalorders == null
-                ? const SizedBox()
+                ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        ShimmerContainers(height: 60.h, width: double.infinity),
+                    separatorBuilder: (context, index) => Divider(
+                          color: Colors.grey[300],
+                        ),
+                    itemCount: 10)
                 : Column(
                     children: [
                       Padding(

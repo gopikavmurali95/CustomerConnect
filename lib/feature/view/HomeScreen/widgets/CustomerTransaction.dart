@@ -2,6 +2,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/invoices/invoiceheader.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -223,7 +224,10 @@ class CustomerTransaction extends StatelessWidget {
                         ),
                       ));
                 } else {
-                  return const SizedBox();
+                  return ShimmerContainers(
+                    height: 20.h,
+                    width: double.infinity,
+                  );
                 }
               },
               cusTransactionFailedState: () => const SizedBox(),

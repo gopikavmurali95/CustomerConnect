@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
 import '../../../state/bloc/picking_detail/pickingdetail_bloc.dart';
@@ -14,10 +15,15 @@ class OngoingDetail extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           pickingSuccessState: (pdetailList) => pdetailList == null
-              ? CupertinoActivityIndicator(
-                  animating: true,
-                  color: Colors.red,
-                  radius: 30,
+              ? SizedBox(
+                  height: 400.h,
+                  child: const Center(
+                    child: CupertinoActivityIndicator(
+                      animating: true,
+                      color: Colors.red,
+                      radius: 30,
+                    ),
+                  ),
                 )
               : ListView.separated(
                   itemCount: 4,
