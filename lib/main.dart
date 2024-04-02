@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
+//import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';

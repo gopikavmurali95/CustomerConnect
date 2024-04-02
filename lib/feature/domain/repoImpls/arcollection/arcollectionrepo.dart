@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -48,7 +47,6 @@ class ArCollectionRepo implements IArCollectionRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + arHeaderUrl),
           body: arin.toJson());
-
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -56,7 +54,6 @@ class ArCollectionRepo implements IArCollectionRepo {
         List<ArHeaderModel> headerlist = arheaderdata
             .map<ArHeaderModel>((json) => ArHeaderModel.fromJson(json))
             .toList();
-
         return right(headerlist);
       } else {
         return left(
