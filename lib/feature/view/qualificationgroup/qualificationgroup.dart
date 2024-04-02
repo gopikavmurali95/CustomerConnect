@@ -105,6 +105,7 @@ class QualificationGroup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
@@ -141,32 +142,9 @@ class QualificationGroup extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Items',
-                    style: countHeading(),
-                  ),
-                  Text(
-                    '7',
-                    style: countHeading(),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              const QualificationGroupList()
-            ],
-          ),
-        ),
-      ),
+      body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: QualificationGroupList()),
     );
   }
 }

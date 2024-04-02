@@ -3,7 +3,6 @@ import 'package:customer_connect/feature/view/PickingDetail/widgets/notstarted_d
 import 'package:flutter/material.dart';
 import '../../../constants/fonts.dart';
 
-
 class PickingDetailNotStarted extends StatefulWidget {
   final PickingOutModel picking;
   const PickingDetailNotStarted({super.key, required this.picking});
@@ -11,6 +10,7 @@ class PickingDetailNotStarted extends StatefulWidget {
   State<PickingDetailNotStarted> createState() =>
       _PickingDetailNotStartedState();
 }
+
 class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
   @override
   Widget build(BuildContext context) {
@@ -135,7 +135,7 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
             const SizedBox(
               height: 10,
             ),
-           const NotStartedDetail()
+            const NotStartedDetail()
           ],
         ),
       ),

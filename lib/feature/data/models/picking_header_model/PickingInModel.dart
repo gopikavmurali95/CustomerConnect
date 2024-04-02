@@ -1,18 +1,21 @@
 import 'dart:convert';
 
-PickingInModel pickingInModelFromJson(String str) => PickingInModel.fromJson(json.decode(str));
+PickingInModel pickingInModelFromJson(String str) =>
+    PickingInModel.fromJson(json.decode(str));
 String pickingInModelToJson(PickingInModel data) => json.encode(data.toJson());
+
 class PickingInModel {
   PickingInModel({
-      this.userID, 
-      this.mode, 
-      this.fromDate, 
-      this.toDate, 
-      this.area, 
-      this.subArea, 
-      this.route, 
-      this.customer, 
-      this.outlet,});
+    this.userID,
+    this.mode,
+    this.fromDate,
+    this.toDate,
+    this.area,
+    this.subArea,
+    this.route,
+    this.customer,
+    this.outlet,
+  });
 
   PickingInModel.fromJson(dynamic json) {
     userID = json['UserID'];
@@ -48,5 +51,4 @@ class PickingInModel {
     map['Outlet'] = outlet;
     return map;
   }
-
 }

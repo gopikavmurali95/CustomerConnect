@@ -27,3 +27,20 @@ const cusProfileUrl = 'CusInsightshome/CusInsightProfileDetail';
 const cusInsInvDetailUrl = 'CusInsInvoice/SelectCusInvoiceDetail';
 const cusInvTypeUrl = 'CusInsInvoice/SelectCusInvoiceDetailTypeWise';
 const cusSalesOrdersUrl = 'CusInsightSalesOrder/SelectSalesOrders';
+const promotionheaderurl = 'Promotion/SelectPromotionHeader';
+const promotioncustomerurl = 'Promotion/SelectPromotionCustomer';
+const promotiondetailsurl = 'Promotion/SelectPromotionDetail';
+const cusInsOutStandingHeaderUrl =
+    'CusInsightOutStanging/CusInsightOutstandingHeader';
+const qualificationgroupurl = 'Promotion/SelectGroupItems';
+
+const cusOutsandingCOuntUrl =
+    'CusInsightOutStanging/CusInsightOutStandingCount';
+const cusItemsUrl = 'CusInsightCusItems/SelectCusItems';
+const cusProfileEditUrl = 'CusInsightCusItems/CusEditProfile';
+const cusDocumentsUrl = 'CusInsightCusItems/GetCustomerDocuments';
+const cusGeoLocationUrl = 'InsightGeoLocation/CusInsightGeolocationHeader';
+const updateGeoLocationUrl = 'InsightGeoLocation/UpdateCustomerGeoLocation';
+const cusSpPriceHeaderUrl = 'CusInsSpecialPricing/SelectCusSPecPricingHeader';
+const cusPromotionHeaderUrl = 'CusInsPromotion/SelectCusPromotionHeader';
+const cuspromotionDetailUrl = 'CusInsPromotion/SelectCusPromotionDetail';

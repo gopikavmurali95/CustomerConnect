@@ -1,18 +1,22 @@
 import 'dart:convert';
 
-PickingOutModel pickingOutModelFromJson(String str) => PickingOutModel.fromJson(json.decode(str));
-String pickingOutModelToJson(PickingOutModel data) => json.encode(data.toJson());
+PickingOutModel pickingOutModelFromJson(String str) =>
+    PickingOutModel.fromJson(json.decode(str));
+String pickingOutModelToJson(PickingOutModel data) =>
+    json.encode(data.toJson());
+
 class PickingOutModel {
   PickingOutModel({
-      this.pickingID, 
-      this.pickingNumber, 
-      this.rotID, 
-      this.rotCode, 
-      this.rotName, 
-      this.rsnID, 
-      this.rsnName, 
-      this.date, 
-      this.time,});
+    this.pickingID,
+    this.pickingNumber,
+    this.rotID,
+    this.rotCode,
+    this.rotName,
+    this.rsnID,
+    this.rsnName,
+    this.date,
+    this.time,
+  });
 
   PickingOutModel.fromJson(dynamic json) {
     pickingID = json['PickingID'];
@@ -48,5 +52,4 @@ class PickingOutModel {
     map['Time'] = time;
     return map;
   }
-
 }

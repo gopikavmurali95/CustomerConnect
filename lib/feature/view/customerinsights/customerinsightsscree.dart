@@ -151,7 +151,12 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                   ),
                 ],
               ),
-              const OtherOptionsWidget(),
+              OtherOptionsWidget(
+                user: widget.user,
+                customer: widget.customer,
+                fromdatectrl: _fromdatectrl,
+                todatectrl: _todatectrl,
+              ),
               SizedBox(
                 height: 10.h,
               ),
@@ -162,24 +167,27 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                     "Profile Details",
                     style: countHeading(),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: const LinearGradient(
-                        colors: [Color(0xff99bedb), Color(0xff62a5d6)],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfileScreen(
+                              user: widget.user,
+                              customer: widget.customer,
+                            ),
+                          ));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: const LinearGradient(
+                          colors: [Color(0xff99bedb), Color(0xff62a5d6)],
+                        ),
                       ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 8),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const EditProfileScreen(),
-                              ));
-                        },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 8),
                         child: Row(
                           children: [
                             SvgPicture.asset(

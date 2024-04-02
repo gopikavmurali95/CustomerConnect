@@ -1,11 +1,50 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/widgets/insightspecialpricelist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomerInsightSpecialPricing extends StatelessWidget {
-  const CustomerInsightSpecialPricing({super.key});
+class CustomerInsightSpecialPricing extends StatefulWidget {
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const CustomerInsightSpecialPricing(
+      {super.key,
+      required this.user,
+      required this.customer,
+      required this.fromdatectrl,
+      required this.todatectrl});
+
+  @override
+  State<CustomerInsightSpecialPricing> createState() =>
+      _CustomerInsightSpecialPricingState();
+}
+
+class _CustomerInsightSpecialPricingState
+    extends State<CustomerInsightSpecialPricing> {
+  @override
+  void initState() {
+    context.read<CusSpPriceBloc>().add(const ClearCusSpPriceHeaderEvent());
+    context.read<CusSpPriceBloc>().add(
+          GetCusSpPriceHeadersEvent(
+            cuIN: CusSpPriceInModel(
+                cusId: widget.customer.cusId,
+                userId: widget.user.usrId,
+                area: '',
+                fromDate: widget.fromdatectrl.text,
+                route: '',
+                subArea: '',
+                toDate: widget.todatectrl.text),
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,20 +101,19 @@ class CustomerInsightSpecialPricing extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'A025206 ',
+                            '${widget.customer.cusCode} - ',
                             style: kfontstyle(
                               fontSize: 12.sp,
-                              color: const Color(0xff413434),
+                              color: const Color(0xff2C6B9E),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                           Expanded(
                             child: Text(
                               overflow: TextOverflow.ellipsis,
-                              'Tromp, Muller and Mitchell',
+                              widget.customer.cusName ?? "",
                               style: kfontstyle(
                                   fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
                                   color: const Color(0xff413434)),
                             ),
                           ),
@@ -84,14 +122,14 @@ class CustomerInsightSpecialPricing extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '199525 - ',
+                            '${widget.customer.headerCode} - ',
                             style: kfontstyle(
                                 fontSize: 11.sp,
                                 color: const Color(0xff413434)),
                           ),
                           Expanded(
                             child: Text(
-                              'Carrefour Hypermarket',
+                              widget.customer.headerName ?? "",
                               overflow: TextOverflow.ellipsis,
                               style: kfontstyle(fontSize: 12.sp),
                             ),
@@ -99,7 +137,7 @@ class CustomerInsightSpecialPricing extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'Virtual | Supermarket | Dubai ',
+                        '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                         style: kfontstyle(fontSize: 10.sp, color: Colors.grey),
                       ),
                     ],
@@ -120,6 +158,7 @@ class CustomerInsightSpecialPricing extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
@@ -164,9 +203,24 @@ class CustomerInsightSpecialPricing extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
-                child: Text(
-                  "7",
-                  style: countHeading(),
+                child: BlocBuilder<CusSpPriceBloc, CusSpPriceState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getCusSpPriceHeadersState: (headers) => headers == null
+                          ? Text(
+                              "0",
+                              style: countHeading(),
+                            )
+                          : Text(
+                              "${headers.length}",
+                              style: countHeading(),
+                            ),
+                      cusSpPriceHeaderFailedState: () => Text(
+                        "0",
+                        style: countHeading(),
+                      ),
+                    );
+                  },
                 ),
               ),
               // SizedBox(width: ,),

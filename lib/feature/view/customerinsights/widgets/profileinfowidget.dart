@@ -61,7 +61,7 @@ class ProfileInfoWidget extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/mail.svg",

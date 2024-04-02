@@ -1,4 +1,3 @@
-
 import 'package:customer_connect/feature/view/PickingDetail/widgets/ongoing_detail.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/fonts.dart';

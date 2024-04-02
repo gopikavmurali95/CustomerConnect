@@ -3,7 +3,12 @@ import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_m
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
+import 'package:customer_connect/feature/data/models/confirm_geo_locations_model/confirm_geo_locations_model.dart';
 import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
+import 'package:customer_connect/feature/data/models/cus_documents_model/cus_documents_model.dart';
+import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_geo_loc_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_geo_location_model/cus_geo_location_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -11,8 +16,19 @@ import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_ins_invoice_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_onv_detail_model/cus_ins_onv_detail_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_outstanding_header_model/cus_ins_outstanding_header_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins_tr_n_counts.dart';
+import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_model.dart';
+import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_promo_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/cus_promotion_detail_model.dart';
+import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
+import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
+import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -21,12 +37,15 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
-import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
+import 'package:customer_connect/feature/data/models/promotion_customer_model/promotion_customer_model.dart';
+import 'package:customer_connect/feature/data/models/promotion_details_model/promotion_details_model.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
+import 'package:customer_connect/feature/data/models/qualification_group_model/qualification_group_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
@@ -124,14 +143,21 @@ abstract class ISpecialPriceRepo {
       getSpecialPrice(SpecialPriceHeaderModel specialPriceIn);
 }
 
-// Future<Either<MainFailures, List<TotalOrdersDetailsModel>>> getOrderDetail(
-//     String ordID);
 abstract class ICusInsInvoiceRepo {
   Future<Either<MainFailures, List<CusInsInvoiceModel>>> getInvoiceHeaders(
       CusInsInvoiceHeaderInModel invIn);
   Future<Either<MainFailures, List<CusInsOnvDetailModel>>> getInvoiceDetails(
       String iD);
   Future<Either<MainFailures, List<CusInsInvTypeModel>>> getInvoicetypes(
+      String iD);
+}
+
+abstract class IPromotionHeaderRepo {
+  Future<Either<MainFailures, List<PromotionHeaderModel>>> getPromotionHeader(
+      PromotionHeaderInParas inpromtionIn);
+  Future<Either<MainFailures, List<PromotionCustomerModel>>>
+      getPromotionCustomer(String iD);
+  Future<Either<MainFailures, List<PromotionDetailsModel>>> getPromotionDetails(
       String iD);
 }
 
@@ -145,20 +171,55 @@ abstract class ISalesOrdersRepo {
       SalesOrdersInModel salesIn);
 }
 
-abstract class IPickingHeaderRepo{
-  Future<Either<MainFailures,List<PickingOutModel>>> getPickingHeaders(
-      PickingInModel pickingInModel
-      );
-  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
-      String iD
-      );
+abstract class ICusOutstandingRepo {
+  Future<Either<MainFailures, CusOutstandingCountModel>> getOutStandingCounts(
+      CusOutStandingInModel outIn);
+  Future<Either<MainFailures, List<CusInsOutstandingHeaderModel>>>
+      getCusOutstanding(CusOutStandingInModel outIn);
 }
 
-abstract class IOutStandingHeaderRepo {
-  Future<Either<MainFailures, List<OutStandOutModel>>> getOutStandingHeaders(
-      OutStandingHeaderModel outStandIn);
+abstract class ICusItemsRepo {
+  Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(String route);
+}
 
-  // Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
-  //     ArTotalInModel loadingIn);
-  // Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
+abstract class IPickingHeaderRepo {
+  Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
+      PickingInModel pickingInModel);
+  Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
+      String iD);
+}
+
+abstract class IProfileEditRepo {
+  Future<Either<MainFailures, EditProfileRespModel>> editProfile(
+      EditProfileInModel outIn);
+}
+
+abstract class IcusDocumentsModel {
+  Future<Either<MainFailures, List<CusDocumentsModel>>> getCusDocuments(
+      String cusID);
+}
+
+abstract class ICusGeoLocationRepo {
+  Future<Either<MainFailures, List<CusGeoLocationModel>>> getCusGeoLocations(
+      CusGeoLocInModel cusIN);
+
+  Future<Either<MainFailures, ConfirmGeoLocationsModel>> confirmGeolocation(
+      ConfirmGeoCodeInModel confirmmodel);
+}
+
+abstract class ICusSpPriceRepo {
+  Future<Either<MainFailures, List<CusSpPriceModel>>> getCusSpPriceHeaders(
+      CusSpPriceInModel cusIN);
+}
+
+abstract class ICusProtionRepo {
+  Future<Either<MainFailures, List<CusPromotionHeader>>> getCusPromotionHeaders(
+      CusPromoInModel cusIN);
+  Future<Either<MainFailures, List<CusPromotionDetailModel>>>
+      getCusPromotionDetails(String iD);
+}
+
+abstract class IQualificationGroupRepo {
+  Future<Either<MainFailures, List<QualificationGroupModel>>> getGroupItems(
+      String iD, String mode);
 }

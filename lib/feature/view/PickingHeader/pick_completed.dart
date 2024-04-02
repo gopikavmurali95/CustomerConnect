@@ -1,7 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
-import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/completed.dart';
 
@@ -23,13 +22,17 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
   @override
   void initState() {
     context.read<PickingHeaderBloc>().add(const ClearPickingevent());
-    context.read<PickingHeaderBloc>().add(
-        GetpickingHeaderEvent(pickingHeadIn:PickingInModel(
+    context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+        pickingHeadIn: PickingInModel(
             userID: widget.user.usrId,
-        area: '',
-          customer: '',fromDate: '01/01/2023',mode: 'PC',outlet: '',route: '',subArea: '',
-            toDate: '26/03/2024'
-        )  ));
+            area: '',
+            customer: '',
+            fromDate: '01/01/2023',
+            mode: 'PC',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '26/03/2024')));
     // TODO: implement initState
     super.initState();
   }

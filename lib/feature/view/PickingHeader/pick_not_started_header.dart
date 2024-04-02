@@ -18,16 +18,19 @@ class PickHeaderNotStarted extends StatefulWidget {
 }
 
 class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
-
   void initState() {
     context.read<PickingHeaderBloc>().add(const ClearPickingevent());
-    context.read<PickingHeaderBloc>().add(
-        GetpickingHeaderEvent(pickingHeadIn:PickingInModel(
+    context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+        pickingHeadIn: PickingInModel(
             userID: widget.user.usrId,
             area: '',
-            customer: '',fromDate: '01-01-2023',mode: 'N',outlet: '',route: '',subArea: '',
-            toDate: '26-03-2024'
-        )  ));
+            customer: '',
+            fromDate: '01-01-2023',
+            mode: 'N',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '26-03-2024')));
     // TODO: implement initState
     super.initState();
   }

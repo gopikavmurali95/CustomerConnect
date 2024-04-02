@@ -1,9 +1,11 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
+import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -112,6 +114,12 @@ class PromotionDetails extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const ClearGroupData());
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const GetGroupWiseDataEvent(id: "1", mode: " "));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -171,10 +179,16 @@ class PromotionDetails extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const ClearGroupData());
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const GetGroupWiseDataEvent(id: "1", mode: " "));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AssignmentGroup()));
+                            builder: (context) => const QualificationGroup()));
                   },
                   child: Container(
                     height: 62,
