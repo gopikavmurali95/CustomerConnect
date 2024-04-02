@@ -1,13 +1,13 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_promo_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -73,14 +73,32 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
           style: appHeading(),
         ),
         actions: [
-          Padding(
+          /*  Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: SvgPicture.asset(
               "assets/svg/filter.svg",
               height: 20,
               fit: BoxFit.scaleDown,
             ),
-          ),
+          ), */
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CustInsightPromotionDetails(
+                      customer: widget.customer,
+                      header: CusPromotionHeader(id: '1'),
+                      user: widget.user,
+                    ),
+                  ),
+                );
+              },
+              icon: SvgPicture.asset(
+                "assets/svg/filter.svg",
+                height: 20,
+                fit: BoxFit.scaleDown,
+              ))
         ],
       ),
       body: SizedBox(
@@ -325,10 +343,18 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                 GestureDetector(
                                                   onTap: () {
                                                     Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const CustInsightPromotionDetails()));
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            CustInsightPromotionDetails(
+                                                          customer:
+                                                              widget.customer,
+                                                          header:
+                                                              headers[index],
+                                                          user: widget.user,
+                                                        ),
+                                                      ),
+                                                    );
                                                   },
                                                   child: Text(
                                                     'Details',

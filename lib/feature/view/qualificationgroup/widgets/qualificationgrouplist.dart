@@ -46,7 +46,7 @@ class QualificationGroupList extends StatelessWidget {
                       height: 12.h,
                     ),
                     ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
+                        // physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: groupdata.length,
                         itemBuilder: (context, index) {

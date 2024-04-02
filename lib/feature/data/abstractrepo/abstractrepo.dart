@@ -37,6 +37,8 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
+import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -186,8 +188,20 @@ abstract class IPickingHeaderRepo {
   Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
       PickingInModel pickingInModel);
   Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
-      String iD);
+      String iD
+      );
 }
+
+abstract class IOutStandingHeaderRepo {
+  Future<Either<MainFailures, List<OutStandOutModel>>> getOutStandingHeaders(
+      OutStandingHeaderModel outStandIn);
+
+  // Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
+  //     ArTotalInModel loadingIn);
+  // Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
+}
+
+
 
 abstract class IProfileEditRepo {
   Future<Either<MainFailures, EditProfileRespModel>> editProfile(
@@ -223,3 +237,4 @@ abstract class IQualificationGroupRepo {
   Future<Either<MainFailures, List<QualificationGroupModel>>> getGroupItems(
       String iD, String mode);
 }
+

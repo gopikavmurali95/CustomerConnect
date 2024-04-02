@@ -84,18 +84,20 @@ import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_stand
     as _i60;
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
     as _i61;
-import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart'
     as _i62;
-import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
     as _i63;
-import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
     as _i64;
-import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
     as _i65;
-import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
     as _i66;
-import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
     as _i67;
+import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
+    as _i68;
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart'
     as _i30;
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart'
@@ -247,18 +249,20 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i60.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
     gh.factory<_i61.CusProfileBloc>(
         () => _i61.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
-    gh.factory<_i62.CusPromotionsHeaderBloc>(
-        () => _i62.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
-    gh.factory<_i63.CusSalesOrdersBloc>(
-        () => _i63.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
-    gh.factory<_i64.CusSpPriceBloc>(
-        () => _i64.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
-    gh.factory<_i65.CustomerTransactionBloc>(
-        () => _i65.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
-    gh.factory<_i66.CustomersListBlocBloc>(
-        () => _i66.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
-    gh.factory<_i67.EditCusProfileBloc>(
-        () => _i67.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
+    gh.factory<_i62.CusPromoDetailBloc>(
+        () => _i62.CusPromoDetailBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i63.CusPromotionsHeaderBloc>(
+        () => _i63.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i64.CusSalesOrdersBloc>(
+        () => _i64.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
+    gh.factory<_i65.CusSpPriceBloc>(
+        () => _i65.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
+    gh.factory<_i66.CustomerTransactionBloc>(
+        () => _i66.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
+    gh.factory<_i67.CustomersListBlocBloc>(
+        () => _i67.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
+    gh.factory<_i68.EditCusProfileBloc>(
+        () => _i68.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
     return this;
   }
 }

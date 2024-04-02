@@ -45,3 +45,4 @@ const cusSpPriceHeaderUrl = 'CusInsSpecialPricing/SelectCusSPecPricingHeader';
 const cusPromotionHeaderUrl = 'CusInsPromotion/SelectCusPromotionHeader';
 const cusSpecialPriceDetailsUrl =
     'CusInsSpecialPricing/SelectCusSPecPricingHeader';
+const cuspromotionDetailUrl = 'CusInsPromotion/SelectCusPromotionDetail';

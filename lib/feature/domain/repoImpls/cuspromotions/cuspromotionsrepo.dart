@@ -18,7 +18,7 @@ class CusPromotionsRepo implements ICusProtionRepo {
       getCusPromotionDetails(String iD) async {
     try {
       final response = await http
-          .post(Uri.parse(baseUrl + cusPromotionHeaderUrl), body: {"ID": iD});
+          .post(Uri.parse(baseUrl + cuspromotionDetailUrl), body: {"ID": iD});
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
