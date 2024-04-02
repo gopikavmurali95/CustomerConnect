@@ -39,7 +39,10 @@ class PromotionCustomerList extends StatelessWidget {
                             backgroundColor: const Color(0xffB3DAF7),
                             child: Center(
                               child: Text(
-                                'FG',
+                                promocustomer[index]
+                                    .cusName!
+                                    .split('')
+                                    .toList()[0],
                                 style: TextStyle(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.bold,
@@ -54,26 +57,27 @@ class PromotionCustomerList extends StatelessWidget {
                                 '${promocustomer[index].cusCode}',
                                 style: blueTextStyle(),
                               ),
-                              Text(' -Tramp, Muller and Mitchel',
+                              Text(' - ${promocustomer[index].cusName}',
                                   style: subTitleTextStyle())
                             ],
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              /*   Text(
                                 '199521 - Carrefour Hypermarket',
                                 style: subTitleTextStyle(),
-                              ),
+                              ), */
                               Text(
-                                'Virtual | Supermarket | Dubai',
+                                '${promocustomer[index].cusType} | ${promocustomer[index].promotionCustomerModelClass} | ${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
                               )
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 0),
                           child: Divider(
                             color: Colors.grey.shade300,
                           ),

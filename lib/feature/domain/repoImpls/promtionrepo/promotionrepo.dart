@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -50,14 +49,12 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
       final response = await http
           .post(Uri.parse(baseUrl + promotioncustomerurl), body: {"ID": iD});
       if (response.statusCode == 200) {
-        //logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> pCustomer = json['result'];
         List<PromotionCustomerModel> customerdata = pCustomer
             .map<PromotionCustomerModel>(
-                (e) => PromotionCustomerModel.fromJson(json))
+                (e) => PromotionCustomerModel.fromJson(e))
             .toList();
-        log(customerdata.length.toString());
         return right(customerdata);
       } else {
         return left(
