@@ -29,6 +29,10 @@ import 'package:customer_connect/feature/state/bloc/customers/customers_list_blo
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
@@ -211,6 +215,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<QualificationGroupBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<NotificationListingBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<NotificationReplayBlocBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<NotiReadFlagUpdateBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutstandingBloc>(),
         ),
       ],
       child: ScreenUtilInit(

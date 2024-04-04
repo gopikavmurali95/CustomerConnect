@@ -46,3 +46,8 @@ const cusPromotionHeaderUrl = 'CusInsPromotion/SelectCusPromotionHeader';
 const cusSpecialPriceDetailsUrl =
     'CusInsSpecialPricing/SelectCusSPecPricingHeader';
 const cuspromotionDetailUrl = 'CusInsPromotion/SelectCusPromotionDetail';
+const userNotificationsUrl = 'Notification/SelectUserNotifications';
+const notificationReplayUrl = 'Notification/InsNotificationReply';
+const notiReadFlagUpdateUrl = 'Notification/UpdateNotificationReadFlag';
+const outStandingHeaderUrl = 'OutStanding/SelectOutstandingHeader';
+const outStandingCountUrl = 'OutStanding/SelectOutStandingCount';

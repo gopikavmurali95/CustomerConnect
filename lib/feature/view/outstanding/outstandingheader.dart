@@ -1,15 +1,47 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
+import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ssun_chart/pie_chart.dart';
 
-class OutstandingHeaderScreen extends StatelessWidget {
+class OutstandingHeaderScreen extends StatefulWidget {
+  final LoginUserModel user;
   final bool isfromUser;
 
-  const OutstandingHeaderScreen({super.key, required this.isfromUser});
+  const OutstandingHeaderScreen(
+      {super.key, required this.isfromUser, required this.user});
+
+  @override
+  State<OutstandingHeaderScreen> createState() =>
+      _OutstandingHeaderScreenState();
+}
+
+List<int> _pievalues = [];
+
+class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
+  @override
+  void initState() {
+    _pievalues.clear();
+    context.read<OutstandingBloc>().add(const ClearOutStandingEvent());
+    context.read<OutstandingBloc>().add(GetOutstandingDataEvent(
+        outIn: OutStandingHeaderModel(
+            area: '',
+            customer: '',
+            fromDate: '01-01-2023',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '04-04-2024',
+            userID: /* widget.user.usrId */ '1')));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,93 +125,187 @@ class OutstandingHeaderScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: 110.w,
-                          height: 110.h,
-                          child: PieChart(
-                            bgColor: Colors.transparent,
-                            usePercentValues: false,
-                            centerTextColor: Colors.blue,
-                            centerTextSize: 11,
-                            drawCenterText: true,
-                            drawHoleEnabled: true,
-                            holeRadius: 20,
-                            entryLabelTextSize: 10,
-                            transparentCircleRadius: 27,
-                            entryLabelColor: Colors.white,
-                            data: PieData(
-                              List.of(
-                                [
-                                  PieDataSet(
-                                    colors: outstandingcolorslist,
-                                    entries: List.of(
-                                      [
-                                        PieEntry('8', 8),
-                                        PieEntry('4', 4),
-                                      ],
+                  BlocConsumer<OutstandingBloc, OutstandingState>(
+                    listener: (context, state) {
+                      state.when(
+                        getOutstandingDataState: (headers, counts) {
+                          if (counts != null) {
+                            if (int.parse(counts.dueCount ?? '') > 0) {
+                              _pievalues
+                                  .add(int.parse(counts.overDueCount ?? ''));
+                            }
+                            if (int.parse(counts.overDueCount ?? '') > 0) {
+                              _pievalues
+                                  .add(int.parse(counts.overDueCount ?? ''));
+                            }
+                          }
+                        },
+                        outstandingFailedState: () {},
+                      );
+                    },
+                    builder: (context, state) {
+                      return state.when(
+                        getOutstandingDataState: (headers, counts) => counts ==
+                                null
+                            ? Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: ShimmerContainers(
+                                    height: 110.h, width: double.infinity),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    _pievalues.length > 1
+                                        ? SizedBox(
+                                            width: 110.w,
+                                            height: 110.h,
+                                            child: PieChart(
+                                              bgColor: Colors.transparent,
+                                              usePercentValues: false,
+                                              centerTextColor: Colors.blue,
+                                              centerTextSize: 11,
+                                              drawCenterText: true,
+                                              drawHoleEnabled: true,
+                                              holeRadius: 20,
+                                              entryLabelTextSize: 10,
+                                              transparentCircleRadius: 27,
+                                              entryLabelColor: Colors.white,
+                                              data: PieData(
+                                                List.of(
+                                                  [
+                                                    PieDataSet(
+                                                      colors:
+                                                          outstandingcolorslist,
+                                                      entries: List.of(
+                                                        [
+                                                          PieEntry(
+                                                              counts.dueCount ??
+                                                                  '',
+                                                              double.parse(counts
+                                                                      .dueCount ??
+                                                                  '0')),
+                                                          PieEntry(
+                                                              counts.overDueCount ??
+                                                                  '',
+                                                              double.parse(counts
+                                                                      .overDueCount ??
+                                                                  '0')),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : _pievalues.isEmpty
+                                            ? const Center()
+                                            : Stack(
+                                                children: [
+                                                  CircleAvatar(
+                                                    radius: 50.h,
+                                                    backgroundColor: _pievalues[
+                                                                0] ==
+                                                            int.parse(counts
+                                                                    .dueCount ??
+                                                                '')
+                                                        ? outstandingcolorslist[
+                                                            0]
+                                                        : outstandingcolorslist[
+                                                            1],
+                                                    child: Center(
+                                                      child: CircleAvatar(
+                                                        radius: 23.h,
+                                                        backgroundColor:
+                                                            Colors.white30,
+                                                        child: Center(
+                                                          child: CircleAvatar(
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                            radius: 16.h,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                      top: 50,
+                                                      right: 15,
+                                                      child: Text(
+                                                        '${_pievalues[0]}',
+                                                        style: kfontstyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ))
+                                                ],
+                                              ),
+                                    SizedBox(
+                                      width: 20.w,
                                     ),
-                                  )
-                                ],
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Outstanding',
+                                                style:
+                                                    kfontstyle(fontSize: 10.sp),
+                                              ),
+                                              SizedBox(
+                                                width: 20.w,
+                                              ),
+                                              Text(
+                                                '${counts.totCount}/${counts.totAmount}',
+                                                style: kfontstyle(
+                                                    fontSize: 13.sp,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 15.h,
+                                          ),
+                                          ArChartItemWidget(
+                                            amount:
+                                                '${counts.dueCount}/${counts.dueAmount}',
+                                            color: const Color(0xff9ce895),
+                                            title: 'Due',
+                                          ),
+                                          SizedBox(
+                                            height: 10.h,
+                                          ),
+                                          ArChartItemWidget(
+                                            amount:
+                                                '${counts.overDueCount}/${counts.overDueAmount}',
+                                            color: const Color(0xffe18484),
+                                            title: 'Overdue',
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Total Outstanding',
-                                    style: kfontstyle(fontSize: 10.sp),
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Text(
-                                    '12/15,000.00',
-                                    style: kfontstyle(
-                                        fontSize: 13.sp,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15.h,
-                              ),
-                              const ArChartItemWidget(
-                                amount: '8/700.00',
-                                color: Color(0xff9ce895),
-                                title: 'Due',
-                              ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              const ArChartItemWidget(
-                                amount: '4/500.00',
-                                color: Color(0xffe18484),
-                                title: 'Overdue',
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                        outstandingFailedState: () => const SizedBox(),
+                      );
+                    },
                   ),
                   SizedBox(
                     height: 15.h,
@@ -199,9 +325,19 @@ class OutstandingHeaderScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 20.0, right: 20, top: 0),
-                        child: Text(
-                          "6",
-                          style: countHeading(),
+                        child: BlocBuilder<OutstandingBloc, OutstandingState>(
+                          builder: (context, state) {
+                            return Text(
+                              state.when(
+                                getOutstandingDataState: (headers, counts) =>
+                                    headers == null
+                                        ? "0"
+                                        : headers.length.toString(),
+                                outstandingFailedState: () => '0',
+                              ),
+                              style: countHeading(),
+                            );
+                          },
                         ),
                       ),
                       // SizedBox(width: ,),

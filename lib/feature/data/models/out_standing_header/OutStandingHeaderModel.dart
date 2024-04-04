@@ -1,17 +1,21 @@
 import 'dart:convert';
 
-OutStandingHeaderModel outStandingHeaderModelFromJson(String str) => OutStandingHeaderModel.fromJson(json.decode(str));
-String outStandingHeaderModelToJson(OutStandingHeaderModel data) => json.encode(data.toJson());
+OutStandingHeaderModel outStandingHeaderModelFromJson(String str) =>
+    OutStandingHeaderModel.fromJson(json.decode(str));
+String outStandingHeaderModelToJson(OutStandingHeaderModel data) =>
+    json.encode(data.toJson());
+
 class OutStandingHeaderModel {
   OutStandingHeaderModel({
-      this.userID, 
-      this.fromDate, 
-      this.toDate, 
-      this.area, 
-      this.subArea, 
-      this.route, 
-      this.customer, 
-      this.outlet,});
+    this.userID,
+    this.fromDate,
+    this.toDate,
+    this.area,
+    this.subArea,
+    this.route,
+    this.customer,
+    this.outlet,
+  });
 
   OutStandingHeaderModel.fromJson(dynamic json) {
     userID = json['UserID'];
@@ -44,5 +48,4 @@ class OutStandingHeaderModel {
     map['Outlet'] = outlet;
     return map;
   }
-
 }

@@ -67,14 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 22.sp,
         ),
         actions: [
-          InkWell(
-              onTap: () {
+          IconButton(
+              onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const NotificationScreen()));
+                        builder: (context) => NotificationScreen(
+                              user: widget.user,
+                            )));
               },
-              child: SvgPicture.asset("assets/svg/notification.svg")),
+              icon: SvgPicture.asset("assets/svg/notification.svg")),
           const SizedBox(
             width: 10,
           ),
@@ -291,8 +293,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const OutstandingHeaderScreen(
+                            builder: (context) => OutstandingHeaderScreen(
                               isfromUser: false,
+                              user: widget.user,
                             ),
                           ),
                         );

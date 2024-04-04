@@ -1,28 +1,32 @@
 import 'dart:convert';
 
-OutStandOutModel outStandOutModelFromJson(String str) => OutStandOutModel.fromJson(json.decode(str));
-String outStandOutModelToJson(OutStandOutModel data) => json.encode(data.toJson());
+OutStandOutModel outStandOutModelFromJson(String str) =>
+    OutStandOutModel.fromJson(json.decode(str));
+String outStandOutModelToJson(OutStandOutModel data) =>
+    json.encode(data.toJson());
+
 class OutStandOutModel {
   OutStandOutModel({
-      this.invoiceID, 
-      this.invoicedOn, 
-      this.invoiceAmount, 
-      this.amountPaid, 
-      this.invoiceBalance, 
-      this.pDCAmount, 
-      this.createdDate, 
-      this.cusID, 
-      this.cusCode, 
-      this.cusName, 
-      this.cshID, 
-      this.cshCode, 
-      this.cshName, 
-      this.rotID, 
-      this.rotCode, 
-      this.rotName, 
-      this.status, 
-      this.id, 
-      this.invPayType,});
+    this.invoiceID,
+    this.invoicedOn,
+    this.invoiceAmount,
+    this.amountPaid,
+    this.invoiceBalance,
+    this.pDCAmount,
+    this.createdDate,
+    this.cusID,
+    this.cusCode,
+    this.cusName,
+    this.cshID,
+    this.cshCode,
+    this.cshName,
+    this.rotID,
+    this.rotCode,
+    this.rotName,
+    this.status,
+    this.id,
+    this.invPayType,
+  });
 
   OutStandOutModel.fromJson(dynamic json) {
     invoiceID = json['InvoiceID'];
@@ -88,5 +92,4 @@ class OutStandOutModel {
     map['inv_PayType'] = invPayType;
     return map;
   }
-
 }

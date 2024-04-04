@@ -37,8 +37,11 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
+import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
+import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -59,6 +62,7 @@ import 'package:customer_connect/feature/data/models/sales_orders_model/sales_or
 import 'package:customer_connect/feature/data/models/total_orders_details_model/total_orders_details_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
+import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ILoginRepo {
@@ -188,20 +192,18 @@ abstract class IPickingHeaderRepo {
   Future<Either<MainFailures, List<PickingOutModel>>> getPickingHeaders(
       PickingInModel pickingInModel);
   Future<Either<MainFailures, List<PickingDetailModel>>> getPickingDetail(
-      String iD
-      );
+      String iD);
 }
 
 abstract class IOutStandingHeaderRepo {
   Future<Either<MainFailures, List<OutStandOutModel>>> getOutStandingHeaders(
       OutStandingHeaderModel outStandIn);
-
+  Future<Either<MainFailures, OutstandingCountModel>> getoutstandingTotal(
+      OutStandingHeaderModel outin);
   // Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
   //     ArTotalInModel loadingIn);
   // Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
 }
-
-
 
 abstract class IProfileEditRepo {
   Future<Either<MainFailures, EditProfileRespModel>> editProfile(
@@ -238,3 +240,11 @@ abstract class IQualificationGroupRepo {
       String iD, String mode);
 }
 
+abstract class INotificationRepo {
+  Future<Either<MainFailures, List<UserNotificationModel>>>
+      getUserNotifications(String userID);
+  Future<Either<MainFailures, NotificationReplayOutModel>> sendNotiReplay(
+      NotificationReplayInModel replay);
+  Future<Either<MainFailures, NotificationReplayOutModel>> updateNotiReadFlag(
+      String rntID);
+}
