@@ -21,7 +21,7 @@ class TotalOrderList extends StatelessWidget {
           return state.when(
             getTotalOrderState: (totalorders) => totalorders == null
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: ListView.separated(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
