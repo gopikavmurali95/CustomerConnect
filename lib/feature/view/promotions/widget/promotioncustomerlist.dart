@@ -39,7 +39,10 @@ class PromotionCustomerList extends StatelessWidget {
                             backgroundColor: const Color(0xffB3DAF7),
                             child: Center(
                               child: Text(
-                                'FG',
+                                promocustomer[index]
+                                    .cusName!
+                                    .split('')
+                                    .toList()[0],
                                 style: TextStyle(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.bold,
@@ -77,6 +80,10 @@ class PromotionCustomerList extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              /*   Text(
+                                '199521 - Carrefour Hypermarket',
+                                style: subTitleTextStyle(),
+                              ), */
                               Text(
                                 '${promocustomer[index].cusType} | ${promocustomer[index].promotionCustomerModelClass} | ${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
@@ -85,7 +92,8 @@ class PromotionCustomerList extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 0),
                           child: Divider(
                             color: Colors.grey.shade300,
                           ),

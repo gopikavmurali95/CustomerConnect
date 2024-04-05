@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
 import 'package:flutter/material.dart';
@@ -124,6 +125,7 @@ class PromotionCustomer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
@@ -175,9 +177,19 @@ class PromotionCustomer extends StatelessWidget {
                       'Assigned Customers',
                       style: countHeading(),
                     ),
-                    Text(
-                      '13',
-                      style: countHeading(),
+                    BlocBuilder<PromotionCustomerBloc, PromotionCustomerState>(
+                      builder: (context, state) {
+                        return Text(
+                          state.when(
+                            getPromotionCustomer: (promotioncust) =>
+                                promotioncust == null
+                                    ? '0'
+                                    : promotioncust.length.toString(),
+                            promotionCustomerFailed: () => '0',
+                          ),
+                          style: countHeading(),
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -57,7 +56,6 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
             .map<PromotionCustomerModel>(
                 (e) => PromotionCustomerModel.fromJson(e))
             .toList();
-        log(customerdata.length.toString());
         return right(customerdata);
       } else {
         return left(
