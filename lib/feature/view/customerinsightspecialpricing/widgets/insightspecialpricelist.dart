@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 
 class InsightSpecialPriceList extends StatelessWidget {
   const InsightSpecialPriceList({super.key});
@@ -37,6 +38,9 @@ class InsightSpecialPriceList extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
+                              context.read<SpecialPriceDetailsBloc>().add(
+                                  const GetSpecialPriceDetailsEvent(
+                                      prhID: "1"));
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

@@ -508,7 +508,7 @@ class PickingWidget extends StatelessWidget {
                 );
               } else {
                 return ShimmerContainers(
-                  height: 70.h,
+                  height: 120.h,
                   width: double.infinity,
                 ); // Return a default Widget when count is null
               }

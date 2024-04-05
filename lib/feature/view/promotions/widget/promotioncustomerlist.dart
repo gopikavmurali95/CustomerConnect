@@ -50,23 +50,35 @@ class PromotionCustomerList extends StatelessWidget {
                           title: Row(
                             children: [
                               Text(
-                                // promocustomer[index].cusCode ?? '',
-                                '${promocustomer[index].cusCode}',
+                                promocustomer[index].cusCode ?? '',
                                 style: blueTextStyle(),
                               ),
-                              Text(' -Tramp, Muller and Mitchel',
+                              Text(' -', style: subTitleTextStyle()),
+                              Text(promocustomer[index].cusName ?? '',
                                   style: subTitleTextStyle())
                             ],
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '199521 - Carrefour Hypermarket',
-                                style: subTitleTextStyle(),
+                              Row(
+                                children: [
+                                  Text(
+                                    promocustomer[index].cusCode ?? '',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  Text(
+                                    ' - ',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  Text(
+                                    promocustomer[index].areaName ?? '',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                ],
                               ),
                               Text(
-                                'Virtual | Supermarket | Dubai',
+                                '${promocustomer[index].cusType} | ${promocustomer[index].promotionCustomerModelClass} | ${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
                               )
                             ],

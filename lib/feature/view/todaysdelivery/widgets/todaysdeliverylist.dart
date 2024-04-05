@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdeliverydetails.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +17,18 @@ class TodaysDeliveryList extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             getTodaysDeliveryState: (delivery) => delivery == null
-                ? const SizedBox()
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
+                  )
                 : ListView.separated(
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {
