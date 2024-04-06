@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:dartz/dartz.dart';
@@ -34,7 +35,35 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
         );
       }
     } catch (e) {
-      logger.e('Todays Delivery error$e');
+      logger.e('Special Price error$e');
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, List<SpecialPriceDetailsModel>>> getPriceDetail(
+      String prdID) async {
+    var logger = Logger();
+    try {
+      final response = await http.post(
+          Uri.parse(baseUrl + specialPriceDetailsUrl),
+          body: {"prh_id": prdID});
+      if (response.statusCode == 200) {
+        logger.w('response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final List<dynamic> specialPriceDetails = json['result'];
+        List<SpecialPriceDetailsModel> pricedetails = specialPriceDetails
+            .map<SpecialPriceDetailsModel>(
+                (json) => SpecialPriceDetailsModel.fromJson(json))
+            .toList();
+        return right(pricedetails);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      logger.e('Special Price Details error$e');
       return left(const MainFailures.serverfailure());
     }
   }

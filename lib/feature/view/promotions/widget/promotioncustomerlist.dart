@@ -53,17 +53,33 @@ class PromotionCustomerList extends StatelessWidget {
                           title: Row(
                             children: [
                               Text(
-                                // promocustomer[index].cusCode ?? '',
-                                '${promocustomer[index].cusCode}',
+                                promocustomer[index].cusCode ?? '',
                                 style: blueTextStyle(),
                               ),
-                              Text(' - ${promocustomer[index].cusName}',
+                              Text(' -', style: subTitleTextStyle()),
+                              Text(promocustomer[index].cusName ?? '',
                                   style: subTitleTextStyle())
                             ],
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    promocustomer[index].cusCode ?? '',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  Text(
+                                    ' - ',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  Text(
+                                    promocustomer[index].areaName ?? '',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                ],
+                              ),
                               /*   Text(
                                 '199521 - Carrefour Hypermarket',
                                 style: subTitleTextStyle(),

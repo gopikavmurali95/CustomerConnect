@@ -1,8 +1,10 @@
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/view/LoadInDetail/load_detail_pending.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
 
@@ -15,12 +17,17 @@ class PendingList extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           getloadingHeaderState: (loadingheaders) => loadingheaders == null
-              ? const Center(
-                  child: CupertinoActivityIndicator(
-                    animating: true,
-                    color: Colors.red,
-                    radius: 30,
-                  ),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => ShimmerContainers(
+                          height: 60.h, width: double.infinity),
+                      separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                      itemCount: 10),
                 )
               : loadingheaders.isEmpty
                   ? Center(

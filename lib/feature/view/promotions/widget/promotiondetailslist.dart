@@ -1,8 +1,10 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PromotionDetailsList extends StatelessWidget {
   const PromotionDetailsList({super.key});
@@ -13,12 +15,17 @@ class PromotionDetailsList extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           getPromotionDetailsState: (prodetails) => prodetails == null
-              ? const Center(
-                  child: CupertinoActivityIndicator(
-                    animating: true,
-                    color: Colors.red,
-                    radius: 30,
-                  ),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => ShimmerContainers(
+                          height: 60.h, width: double.infinity),
+                      separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                      itemCount: 10),
                 )
               : ListView.builder(
                   //physics: const NeverScrollableScrollPhysics(),

@@ -44,11 +44,12 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
   @override
   Future<Either<MainFailures, List<PromotionCustomerModel>>>
       getPromotionCustomer(String iD) async {
-    //var logger = Logger();
+    // var logger = Logger();
     try {
       final response = await http
           .post(Uri.parse(baseUrl + promotioncustomerurl), body: {"ID": iD});
       if (response.statusCode == 200) {
+        // logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> pCustomer = json['result'];
         List<PromotionCustomerModel> customerdata = pCustomer

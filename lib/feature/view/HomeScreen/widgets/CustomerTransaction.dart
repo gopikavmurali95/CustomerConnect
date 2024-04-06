@@ -225,7 +225,7 @@ class CustomerTransaction extends StatelessWidget {
                       ));
                 } else {
                   return ShimmerContainers(
-                    height: 20.h,
+                    height: 80.h,
                     width: double.infinity,
                   );
                 }

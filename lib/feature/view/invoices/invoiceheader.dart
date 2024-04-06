@@ -2,9 +2,9 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoiceheaderlist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -239,45 +239,37 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
           );
         },
       ),
-      bottomNavigationBar: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
-        builder: (context, state) {
-          return state.when(
-              invoiceHeaderSuccessState: (invoiceheader) =>
-                  invoiceheader == null
-                      ? const SizedBox()
-                      : Container(
-                          decoration: const BoxDecoration(boxShadow: [
-                            BoxShadow(
-                                blurRadius: 3,
-                                color: Colors.black12,
-                                blurStyle: BlurStyle.outer,
-                                offset: Offset(3, 3))
-                          ]),
-                          height: 40.h,
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Total Invoice Amount',
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  '1200.00',
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-              invoiceHeaderFailedState: () => const SizedBox());
-        },
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(boxShadow: [
+          BoxShadow(
+              blurRadius: 3,
+              color: Colors.black12,
+              blurStyle: BlurStyle.outer,
+              offset: Offset(3, 3))
+        ]),
+        height: 40.h,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total Invoice Amount',
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
+              ),
+              BlocBuilder<CusInvTotalCounterCubit, CusInvTotalCounterState>(
+                builder: (context, state) {
+                  return Text(
+                    state.amount,
+                    style:
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                  );
+                },
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

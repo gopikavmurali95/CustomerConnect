@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
@@ -38,6 +39,12 @@ class PromotionCustomer extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
+                    context
+                        .read<PromotionDetailsBloc>()
+                        .add(const ClearPromotionDetails());
+                    context
+                        .read<PromotionDetailsBloc>()
+                        .add(const GetPromotionDetailsEvent(id: "1"));
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

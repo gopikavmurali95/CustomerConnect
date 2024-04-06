@@ -1,4 +1,7 @@
+import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
@@ -262,103 +265,138 @@ class _SpecialPricingState extends State<SpecialPricing> {
             const SizedBox(
               height: 10,
             ),
-            ListView.separated(
-              itemCount: 4,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15.0, top: 2),
-                          child: Container(
-                            height: 55,
-                            width: 180,
-                            color: Colors.white,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+            BlocBuilder<SpecialPriceDetailsBloc, SpecialPriceDetailsState>(
+              builder: (context, state) {
+                return state.when(
+                  getSpecialPriceDetailsState: (spPrice) => spPrice == null
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) =>
+                                  ShimmerContainers(
+                                      height: 60.h, width: double.infinity),
+                              separatorBuilder: (context, index) => Divider(
+                                    color: Colors.grey[300],
+                                  ),
+                              itemCount: 10),
+                        )
+                      : ListView.separated(
+                          itemCount: spPrice.length,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
                               children: [
-                                Text("400478754", style: loadTextStyle()),
-                                Text(
-                                  "Divella forfalle pasta 500g",
-                                  style: subTitleTextStyle(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, top: 2),
+                                      child: Container(
+                                        //height: 55,
+                                        width: 180,
+                                        color: Colors.white,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(spPrice[index].prdCode ?? '',
+                                                style: loadTextStyle()),
+                                            Text(
+                                              spPrice[index].prdName ?? '',
+                                              style: subTitleTextStyle(),
+                                            ),
+                                            Text(
+                                              spPrice[index].prdDescription ??
+                                                  '',
+                                              style: subTitleTextStyle(),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          spPrice[index].uom ?? '',
+                                          style: subTitleTextStyle(),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          spPrice[index].uom ?? '',
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 2.0),
+                                      child: Column(
+                                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        // crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            spPrice[index].stdPrice ?? '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            spPrice[index].stdPrice ?? '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 20.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            spPrice[index].specialPrice ?? '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            spPrice[index].specialPrice ?? '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    //  SizedBox(width: 0,)
+                                  ],
                                 ),
-                                Text(
-                                  "Offer Pack",
-                                  style: subTitleTextStyle(),
-                                ),
+                                //  Divider(),
                               ],
-                            ),
-                          ),
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const Padding(
+                              padding: EdgeInsets.only(left: 0.0, right: 0),
+                              child: Divider(),
+                            );
+                          },
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              "Cs",
-                              style: subTitleTextStyle(),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Cs",
-                              style: subTitleTextStyle(),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 2.0),
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "2.50",
-                                style: subTitleTextStyle(),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "12.00",
-                                style: subTitleTextStyle(),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5, right: 20.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                "10.00",
-                                style: subTitleTextStyle(),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "10.45",
-                                style: subTitleTextStyle(),
-                              ),
-                            ],
-                          ),
-                        ),
-                        //  SizedBox(width: 0,)
-                      ],
+                  specialPriceDetailsFailedState: () => Center(
+                    child: Text(
+                      'NoData Available',
+                      style: kfontstyle(),
                     ),
-                    //  Divider(),
-                  ],
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.only(left: 0.0, right: 0),
-                  child: Divider(),
+                  ),
                 );
               },
             ),
