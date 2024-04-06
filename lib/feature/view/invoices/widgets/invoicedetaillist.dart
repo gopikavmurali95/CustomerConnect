@@ -53,7 +53,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                             Text(
                                               invdetails[index].prdCode ?? '',
                                               style: kfontstyle(
-                                                fontSize: 12.sp,
+                                                fontSize: 11.sp,
                                                 color: const Color(0xff2C6B9E),
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -61,15 +61,18 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                             SizedBox(
                                               width: 200.w,
                                               child: Text(
-                                                  invdetails[index].prdName ??
-                                                      '',
-                                                  //'Divella Farfalle farfalle pasta 500g Offer pack',
-                                                  style: /* kfontstyle(
+                                                invdetails[index].prdName ?? '',
+                                                //'Divella Farfalle farfalle pasta 500g Offer pack',
+                                                /* style:  kfontstyle(
                                                   fontSize: 12.sp,
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w400,
                                                 ), */
-                                                      subTitleTextStyle()),
+                                                style: kfontstyle(
+                                                    fontSize: 10.sp,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -79,7 +82,9 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                       ),
                                       Text(
                                         invdetails[index].prdType ?? '',
-                                        style: subTitleTextStyle(),
+                                        style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w400),
                                       ),
                                       SizedBox(
                                         width: 30.h,
@@ -88,14 +93,18 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                         children: [
                                           Text(
                                             invdetails[index].higherUom ?? '',
-                                            style: subTitleTextStyle(),
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                           SizedBox(
                                             height: 5.h,
                                           ),
                                           Text(
                                             invdetails[index].lowerUom ?? '',
-                                            style: subTitleTextStyle(),
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       ),
@@ -106,14 +115,18 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                         children: [
                                           Text(
                                             invdetails[index].higherQty ?? '',
-                                            style: subTitleTextStyle(),
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                           SizedBox(
                                             height: 5.h,
                                           ),
                                           Text(
                                             invdetails[index].lowerQty ?? '',
-                                            style: subTitleTextStyle(),
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ],
                                       ),
@@ -166,64 +179,35 @@ class InvoiceDetailListWidget extends StatelessWidget {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.only(
+                  left: 20, right: 10, top: 10, bottom: 10),
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Flexible(
                     flex: 3,
                     fit: FlexFit.tight,
-                    child: Text(
-                      'Type',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: Text('Type', style: boxHeading()),
                   ),
                   Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: Text(
-                      'value',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: Text('value', style: boxHeading()),
                   ),
                   Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: Text(
-                      'Discount',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: Text('Discount', style: boxHeading()),
                   ),
                   Flexible(
                     flex: 1,
                     fit: FlexFit.tight,
-                    child: Text(
-                      'Vat',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: Text('Vat', style: boxHeading()),
                   ),
                   Flexible(
                     flex: 2,
                     fit: FlexFit.tight,
-                    child: Text(
-                      'Subtotal',
-                      style: kfontstyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: Text('Subtotal', style: boxHeading()),
                   ),
                 ],
               ),
@@ -240,8 +224,8 @@ class InvoiceDetailListWidget extends StatelessWidget {
                         itemCount: typewiseinvoice.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 10),
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 10, top: 10, bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
