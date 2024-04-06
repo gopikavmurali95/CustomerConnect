@@ -18,10 +18,26 @@ class LoadingHeaderBloc extends Bloc<LoadingHeaderEvent, LoadingHeaderState> {
     on<GetLoadingHeaderEvent>((event, emit) async {
       Either<MainFailures, List<LoadingHeadermodel>> loadingheaders =
           await loadingRepo.getLoadingHeaders(event.loadingin);
+      List<LoadingHeadermodel> searcheditems = [];
+
       emit(
         loadingheaders.fold(
           (l) => const LoadingHeaderFailedState(),
-          (r) => GetloadingHeaderState(loadingheaders: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.transactionCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.rotName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetloadingHeaderState(
+                loadingheaders: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

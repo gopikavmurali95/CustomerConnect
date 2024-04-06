@@ -18,20 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadingHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoadingHeaderInModel loadingin)
+    required TResult Function(
+            LoadingHeaderInModel loadingin, String searchQuery)
         getLoadingHeaderEvent,
     required TResult Function() clearLoadingHeadderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult? Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult? Function()? clearLoadingHeadderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult Function()? clearLoadingHeadderEvent,
     required TResult orElse(),
   }) =>
@@ -84,7 +87,7 @@ abstract class _$$GetLoadingHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetLoadingHeaderEventImpl) then) =
       __$$GetLoadingHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LoadingHeaderInModel loadingin});
+  $Res call({LoadingHeaderInModel loadingin, String searchQuery});
 }
 
 /// @nodoc
@@ -99,12 +102,17 @@ class __$$GetLoadingHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loadingin = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetLoadingHeaderEventImpl(
       loadingin: null == loadingin
           ? _value.loadingin
           : loadingin // ignore: cast_nullable_to_non_nullable
               as LoadingHeaderInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -112,14 +120,17 @@ class __$$GetLoadingHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetLoadingHeaderEventImpl implements GetLoadingHeaderEvent {
-  const _$GetLoadingHeaderEventImpl({required this.loadingin});
+  const _$GetLoadingHeaderEventImpl(
+      {required this.loadingin, required this.searchQuery});
 
   @override
   final LoadingHeaderInModel loadingin;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadingHeaderEvent.getLoadingHeaderEvent(loadingin: $loadingin)';
+    return 'LoadingHeaderEvent.getLoadingHeaderEvent(loadingin: $loadingin, searchQuery: $searchQuery)';
   }
 
   @override
@@ -128,11 +139,13 @@ class _$GetLoadingHeaderEventImpl implements GetLoadingHeaderEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetLoadingHeaderEventImpl &&
             (identical(other.loadingin, loadingin) ||
-                other.loadingin == loadingin));
+                other.loadingin == loadingin) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loadingin);
+  int get hashCode => Object.hash(runtimeType, loadingin, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -144,31 +157,34 @@ class _$GetLoadingHeaderEventImpl implements GetLoadingHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoadingHeaderInModel loadingin)
+    required TResult Function(
+            LoadingHeaderInModel loadingin, String searchQuery)
         getLoadingHeaderEvent,
     required TResult Function() clearLoadingHeadderEvent,
   }) {
-    return getLoadingHeaderEvent(loadingin);
+    return getLoadingHeaderEvent(loadingin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult? Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult? Function()? clearLoadingHeadderEvent,
   }) {
-    return getLoadingHeaderEvent?.call(loadingin);
+    return getLoadingHeaderEvent?.call(loadingin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult Function()? clearLoadingHeadderEvent,
     required TResult orElse(),
   }) {
     if (getLoadingHeaderEvent != null) {
-      return getLoadingHeaderEvent(loadingin);
+      return getLoadingHeaderEvent(loadingin, searchQuery);
     }
     return orElse();
   }
@@ -209,10 +225,11 @@ class _$GetLoadingHeaderEventImpl implements GetLoadingHeaderEvent {
 
 abstract class GetLoadingHeaderEvent implements LoadingHeaderEvent {
   const factory GetLoadingHeaderEvent(
-          {required final LoadingHeaderInModel loadingin}) =
-      _$GetLoadingHeaderEventImpl;
+      {required final LoadingHeaderInModel loadingin,
+      required final String searchQuery}) = _$GetLoadingHeaderEventImpl;
 
   LoadingHeaderInModel get loadingin;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetLoadingHeaderEventImplCopyWith<_$GetLoadingHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -260,7 +277,8 @@ class _$ClearLoadingHeadderEventImpl implements ClearLoadingHeadderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoadingHeaderInModel loadingin)
+    required TResult Function(
+            LoadingHeaderInModel loadingin, String searchQuery)
         getLoadingHeaderEvent,
     required TResult Function() clearLoadingHeadderEvent,
   }) {
@@ -270,7 +288,8 @@ class _$ClearLoadingHeadderEventImpl implements ClearLoadingHeadderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult? Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult? Function()? clearLoadingHeadderEvent,
   }) {
     return clearLoadingHeadderEvent?.call();
@@ -279,7 +298,8 @@ class _$ClearLoadingHeadderEventImpl implements ClearLoadingHeadderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoadingHeaderInModel loadingin)? getLoadingHeaderEvent,
+    TResult Function(LoadingHeaderInModel loadingin, String searchQuery)?
+        getLoadingHeaderEvent,
     TResult Function()? clearLoadingHeadderEvent,
     required TResult orElse(),
   }) {

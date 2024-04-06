@@ -22,6 +22,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
   void initState() {
     context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
     context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+        searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
             fromDate: '01-01-2023',

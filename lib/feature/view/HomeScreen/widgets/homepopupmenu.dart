@@ -18,26 +18,27 @@ class HomePopUPMenuButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       surfaceTintColor: Colors.white,
       color: Colors.white,
-      constraints:
-          BoxConstraints(minWidth: MediaQuery.of(context).size.width / 4),
+      constraints: BoxConstraints(
+        minWidth: MediaQuery.of(context).size.width / 4,
+      ),
       itemBuilder: (context) => [
         PopupMenuItem(
           enabled: false,
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: Column(
             children: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Row(
+                  children: [
+                    Icon(
                       Icons.close,
                       size: 12.sp,
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
               ListTile(
                 onTap: () {
@@ -49,71 +50,27 @@ class HomePopUPMenuButton extends StatelessWidget {
                       )); */
                 },
                 leading: CircleAvatar(
-                  radius: 16.sp,
+                  radius: 14.sp,
                 ),
                 title: Text(
                   'Lewis Rodney',
                   style: kfontstyle(
-                    fontSize: 12.sp,
-                    color: Colors.black,
+                    fontSize: 11.sp,
+                    color: Colors.black87,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 subtitle: Text(
                   '123456 | Sales Executive',
                   style: kfontstyle(
-                    fontSize: 10.sp,
+                    fontSize: 9.sp,
                     color: Colors.grey,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.close,
-                    size: 12.sp,
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(
-                    'Settings',
-                    style: kfontstyle(
-                      fontSize: 14.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.close,
-                    size: 12.sp,
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(
-                    'Change Password',
-                    style: kfontstyle(
-                      fontSize: 14.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
+                height: 6.h,
               ),
               Row(
                 children: [
@@ -127,8 +84,8 @@ class HomePopUPMenuButton extends StatelessWidget {
                   Text(
                     'About',
                     style: kfontstyle(
-                      fontSize: 14.sp,
-                      color: Colors.black,
+                      fontSize: 12.sp,
+                      color: Colors.black87,
                       fontWeight: FontWeight.w400,
                     ),
                   )
@@ -162,8 +119,8 @@ class HomePopUPMenuButton extends StatelessWidget {
                     Text(
                       'Logout',
                       style: kfontstyle(
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontSize: 12.sp,
+                        color: Colors.black87,
                         fontWeight: FontWeight.w400,
                       ),
                     )
