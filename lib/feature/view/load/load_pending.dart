@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -16,6 +18,7 @@ class LoadPending extends StatefulWidget {
 }
 
 final _loadPendingSearchCtrl = TextEditingController();
+Timer? debounce;
 
 class _LoadPendingState extends State<LoadPending> {
   @override
@@ -87,19 +90,27 @@ class _LoadPendingState extends State<LoadPending> {
                 child: TextFormField(
                   controller: _loadPendingSearchCtrl,
                   onChanged: (value) {
-                    context.read<LoadingHeaderBloc>().add(
-                          GetLoadingHeaderEvent(
-                            searchQuery: value.trim(),
-                            loadingin: LoadingHeaderInModel(
-                                userId: widget.user.usrId,
-                                fromDate: '01-01-2023',
-                                toDate: '23-03-2024',
-                                mode: 'DD',
-                                area: '',
-                                route: '',
-                                subArea: ''),
-                          ),
-                        );
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<LoadingHeaderBloc>().add(
+                              GetLoadingHeaderEvent(
+                                searchQuery: value.trim(),
+                                loadingin: LoadingHeaderInModel(
+                                    userId: widget.user.usrId,
+                                    fromDate: '01-01-2023',
+                                    toDate: '23-03-2024',
+                                    mode: 'DD',
+                                    area: '',
+                                    route: '',
+                                    subArea: ''),
+                              ),
+                            );
+                      },
+                    );
                   },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
