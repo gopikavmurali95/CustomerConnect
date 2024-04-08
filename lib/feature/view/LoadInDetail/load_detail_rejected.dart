@@ -21,9 +21,8 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
   @override
   void initState() {
     context.read<LoadingDetailBloc>().add(const ClearLoadingDetailEvent());
-    context
-        .read<LoadingDetailBloc>()
-        .add(GetloadingDetailEvent(iD: widget.loadingheader.id ?? ''));
+    context.read<LoadingDetailBloc>().add(GetloadingDetailEvent(
+        iD: widget.loadingheader.id ?? '', searchQuery: ''));
     super.initState();
   }
 

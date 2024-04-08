@@ -1,7 +1,6 @@
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +19,8 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
   @override
   void initState() {
     context.read<LoadingDetailBloc>().add(const ClearLoadingDetailEvent());
-    context
-        .read<LoadingDetailBloc>()
-        .add(GetloadingDetailEvent(iD: widget.loadingheader.id ?? ''));
+    context.read<LoadingDetailBloc>().add(GetloadingDetailEvent(
+        iD: widget.loadingheader.id ?? '', searchQuery: ''));
     super.initState();
   }
 

@@ -16,12 +16,27 @@ class LoadingDetailBloc extends Bloc<LoadingDetailEvent, LoadingDetailState> {
   final ILoadingRepo loadingRepo;
   LoadingDetailBloc(this.loadingRepo) : super(LoadingDetailState.initial()) {
     on<GetloadingDetailEvent>((event, emit) async {
+      List<LoadingDetailModel> searcheditems = [];
       Either<MainFailures, List<LoadingDetailModel>> loadingDetails =
           await loadingRepo.getLoadingDetail(event.iD);
       emit(
         loadingDetails.fold(
           (l) => const LoadingDetailFailedState(),
-          (r) => GetloadingDetail(detail: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetloadingDetail(
+                detail: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });
