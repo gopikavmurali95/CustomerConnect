@@ -18,19 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusInsInvoiceHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsInvoiceHeaderInModel invIn) getCusInvEvent,
+    required TResult Function(
+            CusInsInvoiceHeaderInModel invIn, String searchQuery)
+        getCusInvEvent,
     required TResult Function() clearinvEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult? Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult? Function()? clearinvEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult Function()? clearinvEvent,
     required TResult orElse(),
   }) =>
@@ -81,7 +85,7 @@ abstract class _$$GetCusInvEventImplCopyWith<$Res> {
           $Res Function(_$GetCusInvEventImpl) then) =
       __$$GetCusInvEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CusInsInvoiceHeaderInModel invIn});
+  $Res call({CusInsInvoiceHeaderInModel invIn, String searchQuery});
 }
 
 /// @nodoc
@@ -96,12 +100,17 @@ class __$$GetCusInvEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? invIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusInvEventImpl(
       invIn: null == invIn
           ? _value.invIn
           : invIn // ignore: cast_nullable_to_non_nullable
               as CusInsInvoiceHeaderInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -109,14 +118,16 @@ class __$$GetCusInvEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusInvEventImpl implements GetCusInvEvent {
-  const _$GetCusInvEventImpl({required this.invIn});
+  const _$GetCusInvEventImpl({required this.invIn, required this.searchQuery});
 
   @override
   final CusInsInvoiceHeaderInModel invIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusInsInvoiceHeaderEvent.getCusInvEvent(invIn: $invIn)';
+    return 'CusInsInvoiceHeaderEvent.getCusInvEvent(invIn: $invIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -124,11 +135,13 @@ class _$GetCusInvEventImpl implements GetCusInvEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusInvEventImpl &&
-            (identical(other.invIn, invIn) || other.invIn == invIn));
+            (identical(other.invIn, invIn) || other.invIn == invIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invIn);
+  int get hashCode => Object.hash(runtimeType, invIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -140,30 +153,34 @@ class _$GetCusInvEventImpl implements GetCusInvEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsInvoiceHeaderInModel invIn) getCusInvEvent,
+    required TResult Function(
+            CusInsInvoiceHeaderInModel invIn, String searchQuery)
+        getCusInvEvent,
     required TResult Function() clearinvEvent,
   }) {
-    return getCusInvEvent(invIn);
+    return getCusInvEvent(invIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult? Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult? Function()? clearinvEvent,
   }) {
-    return getCusInvEvent?.call(invIn);
+    return getCusInvEvent?.call(invIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult Function()? clearinvEvent,
     required TResult orElse(),
   }) {
     if (getCusInvEvent != null) {
-      return getCusInvEvent(invIn);
+      return getCusInvEvent(invIn, searchQuery);
     }
     return orElse();
   }
@@ -202,9 +219,11 @@ class _$GetCusInvEventImpl implements GetCusInvEvent {
 
 abstract class GetCusInvEvent implements CusInsInvoiceHeaderEvent {
   const factory GetCusInvEvent(
-      {required final CusInsInvoiceHeaderInModel invIn}) = _$GetCusInvEventImpl;
+      {required final CusInsInvoiceHeaderInModel invIn,
+      required final String searchQuery}) = _$GetCusInvEventImpl;
 
   CusInsInvoiceHeaderInModel get invIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusInvEventImplCopyWith<_$GetCusInvEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -248,7 +267,9 @@ class _$ClearinvEventImpl implements ClearinvEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsInvoiceHeaderInModel invIn) getCusInvEvent,
+    required TResult Function(
+            CusInsInvoiceHeaderInModel invIn, String searchQuery)
+        getCusInvEvent,
     required TResult Function() clearinvEvent,
   }) {
     return clearinvEvent();
@@ -257,7 +278,8 @@ class _$ClearinvEventImpl implements ClearinvEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult? Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult? Function()? clearinvEvent,
   }) {
     return clearinvEvent?.call();
@@ -266,7 +288,8 @@ class _$ClearinvEventImpl implements ClearinvEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsInvoiceHeaderInModel invIn)? getCusInvEvent,
+    TResult Function(CusInsInvoiceHeaderInModel invIn, String searchQuery)?
+        getCusInvEvent,
     TResult Function()? clearinvEvent,
     required TResult orElse(),
   }) {

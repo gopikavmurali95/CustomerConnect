@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -34,6 +35,8 @@ class InsghtsOutStandingScreen extends StatefulWidget {
 }
 
 List<int> pievalues = [];
+final _cusOutstandSearchCtrl = TextEditingController();
+Timer? debounce;
 
 class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
   final ScrollController _scrollController = ScrollController();
@@ -42,11 +45,13 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
   void initState() {
     super.initState();
     pievalues.clear();
+    _cusOutstandSearchCtrl.clear();
     context.read<ArScrollCtrlCubit>().onInit();
     _scrollController.addListener(_scrollListener);
     context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
     context.read<CusOutStandingBloc>().add(
           GetCusOutstandingEvent(
+            searchQuery: '',
             outIn: CusOutStandingInModel(
                 cusId: widget.customer.cusId,
                 userId: widget.user.usrId,
@@ -193,11 +198,68 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                   blurRadius: 0.4,
                                   spreadRadius: 0.4)
                             ]),
-                        child: TextField(
+                        child: TextFormField(
+                          controller: _cusOutstandSearchCtrl,
+                          onChanged: (value) {
+                            if (debounce?.isActive ?? false) debounce!.cancel();
+                            debounce = Timer(
+                              const Duration(
+                                milliseconds: 200,
+                              ),
+                              () async {
+                                context.read<CusOutStandingBloc>().add(
+                                      GetCusOutstandingEvent(
+                                        searchQuery: value.trim(),
+                                        outIn: CusOutStandingInModel(
+                                            cusId: widget.customer.cusId,
+                                            userId: widget.user.usrId,
+                                            area: '',
+                                            fromDate: widget.fromdatectrl.text,
+                                            toDate: widget.todatectrl.text,
+                                            route: '',
+                                            subArea: ''),
+                                      ),
+                                    );
+                              },
+                            );
+                          },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
                                 Icons.search,
                                 size: 20,
+                              ),
+                              suffix: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5.h),
+                                  Expanded(
+                                    child: IconButton(
+                                      onPressed: () {
+                                        _cusOutstandSearchCtrl.clear();
+                                        context.read<CusOutStandingBloc>().add(
+                                              GetCusOutstandingEvent(
+                                                searchQuery: '',
+                                                outIn: CusOutStandingInModel(
+                                                    cusId:
+                                                        widget.customer.cusId,
+                                                    userId: widget.user.usrId,
+                                                    area: '',
+                                                    fromDate: widget
+                                                        .fromdatectrl.text,
+                                                    toDate:
+                                                        widget.todatectrl.text,
+                                                    route: '',
+                                                    subArea: ''),
+                                              ),
+                                            );
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        size: 13.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               hintText: "Search Invoices",
                               hintStyle: kfontstyle(

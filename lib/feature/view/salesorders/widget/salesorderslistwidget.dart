@@ -23,73 +23,83 @@ class SalesOrdersListingWidget extends StatelessWidget {
                           height: 5.h,
                         ),
                     itemCount: 10)
-                : ListView.separated(
-                    itemBuilder: (context, index) => Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 20,
-                              backgroundColor: const Color(0xffbadb95),
-                              child: Image.asset(
-                                'assets/images/delivery.png',
-                                height: 20.h,
-                                width: 20.w,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    orders[index].orderId ?? '',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff2C6B9E),
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Text(
-                                    '${orders[index].date} | ${orders[index].time}',
-                                    style: kfontstyle(
-                                        fontSize: 10.sp, color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Column(
+                : orders.isEmpty
+                    ? Center(
+                        child: Text(
+                          'No Data Found',
+                          style: kfontstyle(),
+                        ),
+                      )
+                    : ListView.separated(
+                        itemBuilder: (context, index) => Row(
                               children: [
-                                Container(
-                                  height: 14.h,
-                                  width: 30.w,
-                                  decoration: BoxDecoration(
-                                      color: /* index % 2 == 0
-                                          ? */
-                                          const Color(
-                                              0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                    child: Text(
-                                      orders[index].status ?? '',
-                                      style: kfontstyle(
-                                        fontSize: 10.sp,
-                                        color: const Color(0xff413434),
-                                      ),
-                                    ),
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: const Color(0xffbadb95),
+                                  child: Image.asset(
+                                    'assets/images/delivery.png',
+                                    height: 20.h,
+                                    width: 20.w,
                                   ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        orders[index].orderId ?? '',
+                                        style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          color: const Color(0xff2C6B9E),
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+                                      Text(
+                                        '${orders[index].date} | ${orders[index].time}',
+                                        style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            color: Colors.grey),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 14.h,
+                                      width: 30.w,
+                                      decoration: BoxDecoration(
+                                          color: /* index % 2 == 0
+                                          ? */
+                                              const Color(
+                                                  0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Center(
+                                        child: Text(
+                                          orders[index].status ?? '',
+                                          style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            color: const Color(0xff413434),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 )
                               ],
-                            )
-                          ],
-                        ),
-                    separatorBuilder: (context, index) => Divider(
-                          color: Colors.grey[300],
-                        ),
-                    itemCount: orders.length),
+                            ),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: orders.length),
             salesOrdersFailedState: () => Center(
               child: Text(
                 'No Data Available',

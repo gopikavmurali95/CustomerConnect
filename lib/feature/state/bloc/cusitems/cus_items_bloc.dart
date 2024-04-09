@@ -15,13 +15,28 @@ class CusItemsBloc extends Bloc<CusItemsEvent, CusItemsState> {
   final ICusItemsRepo itemsRepo;
   CusItemsBloc(this.itemsRepo) : super(CusItemsState.initial()) {
     on<GetItemsEvent>((event, emit) async {
+      List<CusItemsModel> searcheditems = [];
       Either<MainFailures, List<CusItemsModel>> items =
           await itemsRepo.getCusItems(event.route);
 
       emit(
         items.fold(
           (l) => const GetitemsFailedState(),
-          (r) => GetCusItemsState(items: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetCusItemsState(
+                items: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

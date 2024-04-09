@@ -51,7 +51,6 @@ class CusInsInvoiceRepo implements ICusInsInvoiceRepo {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
-        log(response.body);
         final List<dynamic> invheaderdata = json['result'];
         List<CusInsInvoiceModel> headerlist = invheaderdata
             .map<CusInsInvoiceModel>(

@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/loading_headermodel/loading
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -107,6 +108,28 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
+                          ),
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 5.h),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    _loadPendingSearchCtrl.clear();
+                                    context.read<LoadingDetailBloc>().add(
+                                          GetloadingDetailEvent(
+                                              iD: widget.loadingheader.id ?? '',
+                                              searchQuery: ''),
+                                        );
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 13.sp,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           hintText: "Search Items",
                           hintStyle: const TextStyle(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
@@ -26,12 +28,16 @@ class InsightsInvoiceScreen extends StatefulWidget {
   State<InsightsInvoiceScreen> createState() => _InsightsInvoiceScreenState();
 }
 
+final _cusInvSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
   @override
   void initState() {
     context.read<CusInsInvoiceHeaderBloc>().add(const ClearinvEvent());
     context.read<CusInsInvoiceHeaderBloc>().add(
           GetCusInvEvent(
+            searchQuery: '',
             invIn: CusInsInvoiceHeaderInModel(
                 cusId: /* widget.customer.cusId */ '1',
                 userId: widget.user.usrId,
@@ -175,11 +181,73 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                             blurRadius: 0.4,
                             spreadRadius: 0.4)
                       ]),
-                  child: TextField(
+                  child: TextFormField(
+                    controller: _cusInvSearchCtrl,
+                    onChanged: (value) {
+                      if (debounce?.isActive ?? false) debounce!.cancel();
+                      debounce = Timer(
+                        const Duration(
+                          milliseconds: 200,
+                        ),
+                        () async {
+                          context.read<CusInsInvoiceHeaderBloc>().add(
+                                GetCusInvEvent(
+                                  searchQuery: value.trim(),
+                                  invIn: CusInsInvoiceHeaderInModel(
+                                      cusId: /* widget.customer.cusId */ '1',
+                                      userId: widget.user.usrId,
+                                      area: '',
+                                      fromDate: widget.fromdatectrl.text,
+                                      toDate: widget.todatectrl.text,
+                                      invoiceType: '',
+                                      invoiceWith: '',
+                                      paymentType: '',
+                                      route: '',
+                                      subArea: ''),
+                                ),
+                              );
+                        },
+                      );
+                    },
                     decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.search,
                           size: 20,
+                        ),
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  _cusInvSearchCtrl.clear();
+                                  context.read<CusInsInvoiceHeaderBloc>().add(
+                                        GetCusInvEvent(
+                                          searchQuery: '',
+                                          invIn: CusInsInvoiceHeaderInModel(
+                                              cusId: /* widget.customer.cusId */
+                                                  '1',
+                                              userId: widget.user.usrId,
+                                              area: '',
+                                              fromDate:
+                                                  widget.fromdatectrl.text,
+                                              toDate: widget.todatectrl.text,
+                                              invoiceType: '',
+                                              invoiceWith: '',
+                                              paymentType: '',
+                                              route: '',
+                                              subArea: ''),
+                                        ),
+                                      );
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 13.sp,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         hintText: "Search Invoices",
                         hintStyle: kfontstyle(

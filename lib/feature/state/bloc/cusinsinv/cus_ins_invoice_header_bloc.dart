@@ -18,11 +18,20 @@ class CusInsInvoiceHeaderBloc
   CusInsInvoiceHeaderBloc(this.invoiceRepo)
       : super(CusInsInvoiceHeaderState.initial()) {
     on<GetCusInvEvent>((event, emit) async {
+      List<CusInsInvoiceModel> searcheditems = [];
       Either<MainFailures, List<CusInsInvoiceModel>> invs =
           await invoiceRepo.getInvoiceHeaders(event.invIn);
 
-      emit(invs.fold((l) => const GetcusInvFailedState(),
-          (r) => GetCusInvoiceHeaderState(headers: r)));
+      emit(invs.fold((l) => const GetcusInvFailedState(), (r) {
+        searcheditems = r
+            .where((element) => element.invoiceNo!
+                .toLowerCase()
+                .toUpperCase()
+                .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetCusInvoiceHeaderState(
+            headers: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
 
     on<ClearinvEvent>((event, emit) {

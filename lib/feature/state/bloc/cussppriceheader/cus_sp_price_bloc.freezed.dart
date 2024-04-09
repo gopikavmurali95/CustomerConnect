@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusSpPriceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusSpPriceInModel cuIN) getCusSpPriceHeadersEvent,
+    required TResult Function(CusSpPriceInModel cuIN, String searchQuery)
+        getCusSpPriceHeadersEvent,
     required TResult Function() clearCusSpPriceHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult? Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult? Function()? clearCusSpPriceHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult Function()? clearCusSpPriceHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -87,7 +90,7 @@ abstract class _$$GetCusSpPriceHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetCusSpPriceHeadersEventImpl) then) =
       __$$GetCusSpPriceHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CusSpPriceInModel cuIN});
+  $Res call({CusSpPriceInModel cuIN, String searchQuery});
 }
 
 /// @nodoc
@@ -103,12 +106,17 @@ class __$$GetCusSpPriceHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cuIN = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusSpPriceHeadersEventImpl(
       cuIN: null == cuIN
           ? _value.cuIN
           : cuIN // ignore: cast_nullable_to_non_nullable
               as CusSpPriceInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,14 +124,17 @@ class __$$GetCusSpPriceHeadersEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusSpPriceHeadersEventImpl implements GetCusSpPriceHeadersEvent {
-  const _$GetCusSpPriceHeadersEventImpl({required this.cuIN});
+  const _$GetCusSpPriceHeadersEventImpl(
+      {required this.cuIN, required this.searchQuery});
 
   @override
   final CusSpPriceInModel cuIN;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusSpPriceEvent.getCusSpPriceHeadersEvent(cuIN: $cuIN)';
+    return 'CusSpPriceEvent.getCusSpPriceHeadersEvent(cuIN: $cuIN, searchQuery: $searchQuery)';
   }
 
   @override
@@ -131,11 +142,13 @@ class _$GetCusSpPriceHeadersEventImpl implements GetCusSpPriceHeadersEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusSpPriceHeadersEventImpl &&
-            (identical(other.cuIN, cuIN) || other.cuIN == cuIN));
+            (identical(other.cuIN, cuIN) || other.cuIN == cuIN) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cuIN);
+  int get hashCode => Object.hash(runtimeType, cuIN, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +160,33 @@ class _$GetCusSpPriceHeadersEventImpl implements GetCusSpPriceHeadersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusSpPriceInModel cuIN) getCusSpPriceHeadersEvent,
+    required TResult Function(CusSpPriceInModel cuIN, String searchQuery)
+        getCusSpPriceHeadersEvent,
     required TResult Function() clearCusSpPriceHeaderEvent,
   }) {
-    return getCusSpPriceHeadersEvent(cuIN);
+    return getCusSpPriceHeadersEvent(cuIN, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult? Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult? Function()? clearCusSpPriceHeaderEvent,
   }) {
-    return getCusSpPriceHeadersEvent?.call(cuIN);
+    return getCusSpPriceHeadersEvent?.call(cuIN, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult Function()? clearCusSpPriceHeaderEvent,
     required TResult orElse(),
   }) {
     if (getCusSpPriceHeadersEvent != null) {
-      return getCusSpPriceHeadersEvent(cuIN);
+      return getCusSpPriceHeadersEvent(cuIN, searchQuery);
     }
     return orElse();
   }
@@ -215,10 +231,11 @@ class _$GetCusSpPriceHeadersEventImpl implements GetCusSpPriceHeadersEvent {
 
 abstract class GetCusSpPriceHeadersEvent implements CusSpPriceEvent {
   const factory GetCusSpPriceHeadersEvent(
-          {required final CusSpPriceInModel cuIN}) =
-      _$GetCusSpPriceHeadersEventImpl;
+      {required final CusSpPriceInModel cuIN,
+      required final String searchQuery}) = _$GetCusSpPriceHeadersEventImpl;
 
   CusSpPriceInModel get cuIN;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusSpPriceHeadersEventImplCopyWith<_$GetCusSpPriceHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,7 +283,8 @@ class _$ClearCusSpPriceHeaderEventImpl implements ClearCusSpPriceHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusSpPriceInModel cuIN) getCusSpPriceHeadersEvent,
+    required TResult Function(CusSpPriceInModel cuIN, String searchQuery)
+        getCusSpPriceHeadersEvent,
     required TResult Function() clearCusSpPriceHeaderEvent,
   }) {
     return clearCusSpPriceHeaderEvent();
@@ -275,7 +293,8 @@ class _$ClearCusSpPriceHeaderEventImpl implements ClearCusSpPriceHeaderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult? Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult? Function()? clearCusSpPriceHeaderEvent,
   }) {
     return clearCusSpPriceHeaderEvent?.call();
@@ -284,7 +303,8 @@ class _$ClearCusSpPriceHeaderEventImpl implements ClearCusSpPriceHeaderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusSpPriceInModel cuIN)? getCusSpPriceHeadersEvent,
+    TResult Function(CusSpPriceInModel cuIN, String searchQuery)?
+        getCusSpPriceHeadersEvent,
     TResult Function()? clearCusSpPriceHeaderEvent,
     required TResult orElse(),
   }) {

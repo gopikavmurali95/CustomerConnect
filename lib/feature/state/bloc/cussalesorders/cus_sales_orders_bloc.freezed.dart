@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusSalesOrdersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SalesOrdersInModel salesIn) getSalesOrdersEvent,
+    required TResult Function(SalesOrdersInModel salesIn, String searchQuery)
+        getSalesOrdersEvent,
     required TResult Function() clearsalesOrdersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult? Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult? Function()? clearsalesOrdersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult Function()? clearsalesOrdersEvent,
     required TResult orElse(),
   }) =>
@@ -81,7 +84,7 @@ abstract class _$$GetSalesOrdersEventImplCopyWith<$Res> {
           $Res Function(_$GetSalesOrdersEventImpl) then) =
       __$$GetSalesOrdersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SalesOrdersInModel salesIn});
+  $Res call({SalesOrdersInModel salesIn, String searchQuery});
 }
 
 /// @nodoc
@@ -96,12 +99,17 @@ class __$$GetSalesOrdersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? salesIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetSalesOrdersEventImpl(
       salesIn: null == salesIn
           ? _value.salesIn
           : salesIn // ignore: cast_nullable_to_non_nullable
               as SalesOrdersInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -109,14 +117,17 @@ class __$$GetSalesOrdersEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetSalesOrdersEventImpl implements GetSalesOrdersEvent {
-  const _$GetSalesOrdersEventImpl({required this.salesIn});
+  const _$GetSalesOrdersEventImpl(
+      {required this.salesIn, required this.searchQuery});
 
   @override
   final SalesOrdersInModel salesIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusSalesOrdersEvent.getSalesOrdersEvent(salesIn: $salesIn)';
+    return 'CusSalesOrdersEvent.getSalesOrdersEvent(salesIn: $salesIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -124,11 +135,13 @@ class _$GetSalesOrdersEventImpl implements GetSalesOrdersEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetSalesOrdersEventImpl &&
-            (identical(other.salesIn, salesIn) || other.salesIn == salesIn));
+            (identical(other.salesIn, salesIn) || other.salesIn == salesIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, salesIn);
+  int get hashCode => Object.hash(runtimeType, salesIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -140,30 +153,33 @@ class _$GetSalesOrdersEventImpl implements GetSalesOrdersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SalesOrdersInModel salesIn) getSalesOrdersEvent,
+    required TResult Function(SalesOrdersInModel salesIn, String searchQuery)
+        getSalesOrdersEvent,
     required TResult Function() clearsalesOrdersEvent,
   }) {
-    return getSalesOrdersEvent(salesIn);
+    return getSalesOrdersEvent(salesIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult? Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult? Function()? clearsalesOrdersEvent,
   }) {
-    return getSalesOrdersEvent?.call(salesIn);
+    return getSalesOrdersEvent?.call(salesIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult Function()? clearsalesOrdersEvent,
     required TResult orElse(),
   }) {
     if (getSalesOrdersEvent != null) {
-      return getSalesOrdersEvent(salesIn);
+      return getSalesOrdersEvent(salesIn, searchQuery);
     }
     return orElse();
   }
@@ -203,9 +219,11 @@ class _$GetSalesOrdersEventImpl implements GetSalesOrdersEvent {
 
 abstract class GetSalesOrdersEvent implements CusSalesOrdersEvent {
   const factory GetSalesOrdersEvent(
-      {required final SalesOrdersInModel salesIn}) = _$GetSalesOrdersEventImpl;
+      {required final SalesOrdersInModel salesIn,
+      required final String searchQuery}) = _$GetSalesOrdersEventImpl;
 
   SalesOrdersInModel get salesIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetSalesOrdersEventImplCopyWith<_$GetSalesOrdersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -251,7 +269,8 @@ class _$ClearsalesOrdersEventImpl implements ClearsalesOrdersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SalesOrdersInModel salesIn) getSalesOrdersEvent,
+    required TResult Function(SalesOrdersInModel salesIn, String searchQuery)
+        getSalesOrdersEvent,
     required TResult Function() clearsalesOrdersEvent,
   }) {
     return clearsalesOrdersEvent();
@@ -260,7 +279,8 @@ class _$ClearsalesOrdersEventImpl implements ClearsalesOrdersEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult? Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult? Function()? clearsalesOrdersEvent,
   }) {
     return clearsalesOrdersEvent?.call();
@@ -269,7 +289,8 @@ class _$ClearsalesOrdersEventImpl implements ClearsalesOrdersEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SalesOrdersInModel salesIn)? getSalesOrdersEvent,
+    TResult Function(SalesOrdersInModel salesIn, String searchQuery)?
+        getSalesOrdersEvent,
     TResult Function()? clearsalesOrdersEvent,
     required TResult orElse(),
   }) {

@@ -17,11 +17,25 @@ class QualificationGroupBloc
   QualificationGroupBloc(this.qualificationgroup)
       : super(QualificationGroupState.initial()) {
     on<GetGroupWiseDataEvent>((event, emit) async {
+      List<QualificationGroupModel> searcheditems = [];
       Either<MainFailures, List<QualificationGroupModel>> groupmodel =
           await qualificationgroup.getGroupItems(event.id, event.mode);
 
-      emit(groupmodel.fold((l) => const GroupWiseDataFailed(),
-          (r) => GetGroupwiseDataState(groupdata: r)));
+      emit(groupmodel.fold((l) => const GroupWiseDataFailed(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prdCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetGroupwiseDataState(
+            groupdata: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
 
     on<ClearGroupData>((event, emit) {

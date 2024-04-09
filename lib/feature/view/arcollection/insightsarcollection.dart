@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -32,6 +34,9 @@ class InsightsArCollection extends StatefulWidget {
 
 List<int> pievalues = [];
 
+final _cusArSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _InsightsArCollectionState extends State<InsightsArCollection> {
   final ScrollController _scrollController = ScrollController();
 
@@ -39,25 +44,13 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
   void initState() {
     super.initState();
     pievalues.clear();
+    _cusArSearchCtrl.clear();
     context.read<ArScrollCtrlCubit>().onInit();
     _scrollController.addListener(_scrollListener);
     context.read<CusInsArHeaderBloc>().add(const ClearCusInsArHeader());
-
-    /* context.read<ArHeaderBloc>().add(
-          GetArHeaderData(
-            arIn: ArTotalInModel(
-                userId: widget.user.usrId,
-                fromDate: '01-01-2023',
-                toDate: '25-03-2024',
-                area: '',
-                customer: widget.customer.cusId,
-                outlet: '',
-                route: '',
-                subArea: ''),
-          ),
-        ); */
     context.read<CusInsArHeaderBloc>().add(
           GetCusInsArHeaderEvent(
+            searchQuery: '',
             arIn: CusInsArHeaderInModel(
               userId: widget.user.usrId,
               cusId: /* widget.customer.cusId */ '2',
@@ -200,6 +193,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                     state.when(
                       getArHeadersState: (arHeaders, artotal) {
                         if (artotal != null) {
+                          pievalues.clear();
                           if (int.parse(artotal.hcCount ?? '') > 0) {
                             pievalues.add(int.parse(artotal.hcCount ?? ''));
                           }
@@ -448,11 +442,87 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                 blurRadius: 0.4,
                                                 spreadRadius: 0.4)
                                           ]),
-                                      child: TextField(
+                                      child: TextFormField(
+                                        controller: _cusArSearchCtrl,
+                                        onChanged: (value) {
+                                          if (debounce?.isActive ?? false) {
+                                            debounce!.cancel();
+                                          }
+                                          debounce = Timer(
+                                            const Duration(
+                                              milliseconds: 200,
+                                            ),
+                                            () async {
+                                              context
+                                                  .read<CusInsArHeaderBloc>()
+                                                  .add(
+                                                    GetCusInsArHeaderEvent(
+                                                      searchQuery: value.trim(),
+                                                      arIn:
+                                                          CusInsArHeaderInModel(
+                                                        userId:
+                                                            widget.user.usrId,
+                                                        cusId: /* widget.customer.cusId */
+                                                            '2',
+                                                        fromDate: widget
+                                                            .fromdatectrl.text,
+                                                        toDate: widget
+                                                            .todatectrl.text,
+                                                        area: '',
+                                                        route: '',
+                                                        subArea: '',
+                                                      ),
+                                                    ),
+                                                  );
+                                            },
+                                          );
+                                        },
                                         decoration: InputDecoration(
                                             prefixIcon: const Icon(
                                               Icons.search,
                                               size: 20,
+                                            ),
+                                            suffix: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(height: 5.h),
+                                                Expanded(
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      _cusArSearchCtrl.clear();
+                                                      context
+                                                          .read<
+                                                              CusInsArHeaderBloc>()
+                                                          .add(
+                                                            GetCusInsArHeaderEvent(
+                                                              searchQuery: '',
+                                                              arIn:
+                                                                  CusInsArHeaderInModel(
+                                                                userId: widget
+                                                                    .user.usrId,
+                                                                cusId: /* widget.customer.cusId */
+                                                                    '2',
+                                                                fromDate: widget
+                                                                    .fromdatectrl
+                                                                    .text,
+                                                                toDate: widget
+                                                                    .todatectrl
+                                                                    .text,
+                                                                area: '',
+                                                                route: '',
+                                                                subArea: '',
+                                                              ),
+                                                            ),
+                                                          );
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.close,
+                                                      size: 13.sp,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             hintText: "Search AR Collections",
                                             hintStyle: const TextStyle(

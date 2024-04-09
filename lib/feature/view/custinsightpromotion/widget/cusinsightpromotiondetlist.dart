@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CusInsightPromotionDetaoilsList extends StatelessWidget {

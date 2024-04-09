@@ -192,9 +192,9 @@ class _CustInsightPromotionDetailsState
                     context
                         .read<QualificationGroupBloc>()
                         .add(const ClearGroupData());
-                    context
-                        .read<QualificationGroupBloc>()
-                        .add(const GetGroupWiseDataEvent(id: "1", mode: " "));
+                    context.read<QualificationGroupBloc>().add(
+                        const GetGroupWiseDataEvent(
+                            id: "1", mode: " ", searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -257,9 +257,9 @@ class _CustInsightPromotionDetailsState
                     context
                         .read<QualificationGroupBloc>()
                         .add(const ClearGroupData());
-                    context
-                        .read<QualificationGroupBloc>()
-                        .add(const GetGroupWiseDataEvent(id: "1", mode: ""));
+                    context.read<QualificationGroupBloc>().add(
+                        const GetGroupWiseDataEvent(
+                            id: "1", mode: "", searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
@@ -26,6 +28,9 @@ class CustomerInsightSpecialPricing extends StatefulWidget {
       _CustomerInsightSpecialPricingState();
 }
 
+final _cusSpPriceSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _CustomerInsightSpecialPricingState
     extends State<CustomerInsightSpecialPricing> {
   @override
@@ -33,6 +38,7 @@ class _CustomerInsightSpecialPricingState
     context.read<CusSpPriceBloc>().add(const ClearCusSpPriceHeaderEvent());
     context.read<CusSpPriceBloc>().add(
           GetCusSpPriceHeadersEvent(
+            searchQuery: '',
             cuIN: CusSpPriceInModel(
                 cusId: widget.customer.cusId,
                 userId: widget.user.usrId,
@@ -163,11 +169,66 @@ class _CustomerInsightSpecialPricingState
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _cusSpPriceSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 200,
+                          ),
+                          () async {
+                            context.read<CusSpPriceBloc>().add(
+                                  GetCusSpPriceHeadersEvent(
+                                    searchQuery: value.trim(),
+                                    cuIN: CusSpPriceInModel(
+                                        cusId: widget.customer.cusId,
+                                        userId: widget.user.usrId,
+                                        area: '',
+                                        fromDate: widget.fromdatectrl.text,
+                                        route: '',
+                                        subArea: '',
+                                        toDate: widget.todatectrl.text),
+                                  ),
+                                );
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
+                          ),
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 5.h),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    _cusSpPriceSearchCtrl.clear();
+                                    context.read<CusSpPriceBloc>().add(
+                                          GetCusSpPriceHeadersEvent(
+                                            searchQuery: '',
+                                            cuIN: CusSpPriceInModel(
+                                                cusId: widget.customer.cusId,
+                                                userId: widget.user.usrId,
+                                                area: '',
+                                                fromDate:
+                                                    widget.fromdatectrl.text,
+                                                route: '',
+                                                subArea: '',
+                                                toDate: widget.todatectrl.text),
+                                          ),
+                                        );
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 13.sp,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           hintText: "Search special pricing ",
                           hintStyle: const TextStyle(

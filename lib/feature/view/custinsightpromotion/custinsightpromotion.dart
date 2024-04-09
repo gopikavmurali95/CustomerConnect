@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_promo_in_model.dart';
@@ -6,6 +8,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,12 +34,17 @@ class CustomerInsightPromotion extends StatefulWidget {
       _CustomerInsightPromotionState();
 }
 
+final _cusPromoSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
   @override
   void initState() {
+    _cusPromoSearchCtrl.clear();
     context.read<CusPromotionsHeaderBloc>().add(const ClearCusPromoEvent());
     context.read<CusPromotionsHeaderBloc>().add(
           GetCusPromoHeaderEvent(
+            searchQuery: '',
             cusIn: CusPromoInModel(
               cusId: widget.customer.cusId,
               area: '',
@@ -189,11 +197,67 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                             blurRadius: 0.4,
                             spreadRadius: 0.4)
                       ]),
-                  child: TextField(
+                  child: TextFormField(
+                    controller: _cusPromoSearchCtrl,
+                    onChanged: (value) {
+                      if (debounce?.isActive ?? false) debounce!.cancel();
+                      debounce = Timer(
+                        const Duration(
+                          milliseconds: 200,
+                        ),
+                        () async {
+                          context.read<CusPromotionsHeaderBloc>().add(
+                                GetCusPromoHeaderEvent(
+                                  searchQuery: value.trim(),
+                                  cusIn: CusPromoInModel(
+                                    cusId: widget.customer.cusId,
+                                    area: '',
+                                    fromDate: widget.fromdatectrl.text,
+                                    route: '',
+                                    subArea: '',
+                                    toDate: widget.todatectrl.text,
+                                    userId: widget.user.usrId,
+                                  ),
+                                ),
+                              );
+                        },
+                      );
+                    },
                     decoration: InputDecoration(
                         prefixIcon: const Icon(
                           Icons.search,
                           size: 20,
+                        ),
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  _cusPromoSearchCtrl.clear();
+                                  context.read<CusPromotionsHeaderBloc>().add(
+                                        GetCusPromoHeaderEvent(
+                                          searchQuery: '',
+                                          cusIn: CusPromoInModel(
+                                            cusId: widget.customer.cusId,
+                                            area: '',
+                                            fromDate: widget.fromdatectrl.text,
+                                            route: '',
+                                            subArea: '',
+                                            toDate: widget.todatectrl.text,
+                                            userId: widget.user.usrId,
+                                          ),
+                                        ),
+                                      );
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 13.sp,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         hintText: "Search Promotions",
                         hintStyle: const TextStyle(
@@ -251,135 +315,163 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                 builder: (context, state) {
                   return state.when(
                     getCusPromotionsHeaderState: (headers) => headers == null
-                        ? const Center(
-                            child: CupertinoActivityIndicator(
-                              animating: true,
-                              color: Colors.red,
-                              radius: 30,
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) =>
+                                  ShimmerContainers(
+                                height: 60.h,
+                                width: double.infinity,
+                              ),
+                              itemCount: 10,
                             ),
                           )
-                        : ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 7,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  SizedBox(
-                                    //color: Colors.red,
-                                    height: 50,
-                                    width: double.infinity,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15.0, right: 20),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          SizedBox(
-                                            child: Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  backgroundColor:
-                                                      const Color(0xffB3DAF7),
-                                                  child: Center(
-                                                    child: Text(
-                                                      'AL',
-                                                      style: TextStyle(
-                                                          fontSize: 14.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.white),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 15.w,
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const PromotionCustomer()));
-                                                  },
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Free Good Promotions',
-                                                        style: blueTextStyle(),
-                                                      ),
-                                                      Text(
-                                                        '21 Feb 2021 to 24 Feb 2021',
-                                                        style: subTextStyle(),
-                                                      ),
-                                                      Text(
-                                                        'PR10021',
-                                                        style: subTextStyle(),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const PromotionDetails()));
-                                            },
-                                            child: Row(
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            CustInsightPromotionDetails(
-                                                          customer:
-                                                              widget.customer,
-                                                          header:
-                                                              headers[index],
-                                                          user: widget.user,
+                        : headers.isEmpty
+                            ? Center(
+                                child: Text(
+                                  'No Data Found',
+                                  style: kfontstyle(),
+                                ),
+                              )
+                            : ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: headers.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        //color: Colors.red,
+                                        height: 50,
+                                        width: double.infinity,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 15.0, right: 20),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                child: Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0xffB3DAF7),
+                                                      child: Center(
+                                                        child: Text(
+                                                          headers[index]
+                                                              .pName!
+                                                              .split('pattern')
+                                                              .toList()[0],
+                                                          style: TextStyle(
+                                                              fontSize: 14.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.white),
                                                         ),
                                                       ),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                    'Details',
-                                                    style: TextStyle(
-                                                        fontSize: 10.sp),
-                                                  ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 15.w,
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        const PromotionCustomer()));
+                                                      },
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            headers[index]
+                                                                    .pName ??
+                                                                '',
+                                                            style:
+                                                                blueTextStyle(),
+                                                          ),
+                                                          Text(
+                                                            '${headers[index].dateRange}',
+                                                            style:
+                                                                subTextStyle(),
+                                                          ),
+                                                          Text(
+                                                            headers[index]
+                                                                    .pCode ??
+                                                                '',
+                                                            style:
+                                                                subTextStyle(),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                SizedBox(
-                                                  width: 5.w,
+                                              ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const PromotionDetails()));
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                CustInsightPromotionDetails(
+                                                              customer: widget
+                                                                  .customer,
+                                                              header: headers[
+                                                                  index],
+                                                              user: widget.user,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: Text(
+                                                        'Details',
+                                                        style: TextStyle(
+                                                            fontSize: 10.sp),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5.w,
+                                                    ),
+                                                    const Icon(
+                                                      Icons
+                                                          .keyboard_arrow_right,
+                                                      size: 18,
+                                                    )
+                                                  ],
                                                 ),
-                                                const Icon(
-                                                  Icons.keyboard_arrow_right,
-                                                  size: 18,
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  const Divider()
-                                ],
-                              );
-                            }),
+                                      const Divider()
+                                    ],
+                                  );
+                                }),
                     cusPromotionHeaderFailedState: () => Center(
                       child: Text(
                         'No Data Available',

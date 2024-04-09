@@ -102,6 +102,34 @@ class _CustomersScrenState extends State<CustomersScren> {
                         Icons.search,
                         size: 20,
                       ),
+                      suffix: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 5.h),
+                          Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                _customerSearchCtrl.clear();
+                                isSearchLoading = true;
+                                context
+                                    .read<CustomerSearchLoadingCubit>()
+                                    .addSearchLoadingEvent();
+                                context.read<CustomersListBlocBloc>().add(
+                                    GetCustomersEvent(
+                                        userId: widget.user.usrId ?? '',
+                                        area: '',
+                                        subarea: '',
+                                        route: '',
+                                        searchQuery: ''));
+                              },
+                              icon: Icon(
+                                Icons.close,
+                                size: 13.sp,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       hintText: "Search Customers",
                       hintStyle: kfontstyle(
                           fontSize: 14,

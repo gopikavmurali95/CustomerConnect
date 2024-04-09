@@ -28,78 +28,86 @@ class InsightsOutstandingList extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: 10)
-                    : Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundColor: const Color(0xffDB95B5),
-                            child: Image.asset(
-                              'assets/images/ar_li.png',
-                              height: 20.h,
-                              width: 20.w,
+                    : headers.isEmpty
+                        ? Center(
+                            child: Text(
+                              'No Data Found',
+                              style: kfontstyle(),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  headers[index].invoiceId ?? '',
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff2C6B9E),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Text(
-                                  headers[index].invoicedOn ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 10.sp, color: Colors.grey),
-                                ),
-                                Text(
-                                  headers[index].invoiceAmount ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 10.sp, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Column(
+                          )
+                        : Row(
                             children: [
-                              Text(
-                                headers[index].amountPaid ?? "",
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500),
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundColor: const Color(0xffDB95B5),
+                                child: Image.asset(
+                                  'assets/images/ar_li.png',
+                                  height: 20.h,
+                                  width: 20.w,
+                                ),
                               ),
                               SizedBox(
-                                height: 5.h,
+                                width: 10.w,
                               ),
-                              Container(
-                                height: 14.h,
-                                width: 50.w,
-                                decoration: BoxDecoration(
-                                    color: /* index % 2 == 0
-                                        ? */
-                                        const Color(
-                                            0xffe3f7e2) /* : const Color(0xfff7f4e2), */,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                  child: Text(
-                                    headers[index].status ?? '',
-                                    style: kfontstyle(
-                                        fontSize: 10.sp,
-                                        color: const Color(0xff413434)),
-                                  ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      headers[index].invoiceId ?? '',
+                                      style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff2C6B9E),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      headers[index].invoicedOn ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp, color: Colors.grey),
+                                    ),
+                                    Text(
+                                      headers[index].invoiceAmount ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 10.sp, color: Colors.grey),
+                                    ),
+                                  ],
                                 ),
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    headers[index].amountPaid ?? "",
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Container(
+                                    height: 14.h,
+                                    width: 50.w,
+                                    decoration: BoxDecoration(
+                                        color: /* index % 2 == 0
+                                        ? */
+                                            const Color(
+                                                0xffe3f7e2) /* : const Color(0xfff7f4e2), */,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        headers[index].status ?? '',
+                                        style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            color: const Color(0xff413434)),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
-                      ),
+                          ),
                 separatorBuilder: (context, index) => Divider(
                       color: Colors.grey[300],
                     ),
