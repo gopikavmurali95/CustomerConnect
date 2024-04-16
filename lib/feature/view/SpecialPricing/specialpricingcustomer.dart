@@ -188,6 +188,21 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               Icons.search,
                               size: 20,
                             ),
+                            suffix: InkWell(
+                              onTap: () {
+                                _spCustomergSearchCtrl.clear();
+                                context.read<SpecialPriceCustomersBloc>().add(
+                                    GetSpecialPriceCustomersEvent(
+                                        userID: widget.user.usrId!,
+                                        fromDate: '01-01-2023',
+                                        todate: '01-05-2024',
+                                        searchQuery: ''));
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                size: 14,
+                              ),
+                            ),
                             hintText: "Search Customers",
                             hintStyle: const TextStyle(
                                 fontSize: 14,

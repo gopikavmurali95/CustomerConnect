@@ -125,6 +125,27 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                         Icons.search,
                         size: 20,
                       ),
+                      suffix: InkWell(
+                        onTap: () {
+                          _promotionHeaderSearchCtrl.clear();
+                          context.read<PromotionHeaderBloc>().add(
+                              GetPromotionHeaderEvent(
+                                  promotionInparas: PromotionHeaderInParas(
+                                      area: '',
+                                      cusOutlet: '',
+                                      customer: '',
+                                      fromDate: '01-01-2023',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '01-05-2024',
+                                      userId: widget.user.usrId),
+                                  searchQuery: ''));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       hintText: "Search promotions",
                       hintStyle: const TextStyle(
                           fontSize: 14,
@@ -321,7 +342,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                     height: 500.h,
                     child: Center(
                       child: Text(
-                        'No Date Available',
+                        'No Data Available',
                         style: kfontstyle(),
                       ),
                     ),

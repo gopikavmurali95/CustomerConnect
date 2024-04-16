@@ -171,7 +171,10 @@ class _TotalOrdersState extends State<TotalOrders> {
                 builder: (context, state) {
                   return state.when(
                     getTotalOrderState: (totalOrders) => totalOrders == null
-                        ? const SizedBox()
+                        ? Text(
+                            "0",
+                            style: countHeading(),
+                          )
                         : Padding(
                             padding: const EdgeInsets.only(
                                 left: 20.0, right: 20, top: 10),
@@ -180,7 +183,10 @@ class _TotalOrdersState extends State<TotalOrders> {
                               style: countHeading(),
                             ),
                           ),
-                    totalOrdersFailedState: () => const SizedBox(),
+                    totalOrdersFailedState: () => Text(
+                      "0",
+                      style: countHeading(),
+                    ),
                   );
                 },
               ),

@@ -166,6 +166,18 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                             Icons.search,
                             size: 20,
                           ),
+                          suffix: InkWell(
+                            onTap: () {
+                              _promotionCustomerSearchCtrl.clear();
+                              context.read<PromotionCustomerBloc>().add(
+                                  const GetPromotionCustomerEvent(
+                                      id: "1", searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           hintText: "Search customers",
                           hintStyle: const TextStyle(
                               fontSize: 14,

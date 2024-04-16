@@ -107,7 +107,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                                     area: '',
                                     customer: '',
                                     fromDate: '01-01-2023',
-                                    mode: '',
+                                    mode: 'N',
                                     outlet: '',
                                     route: '',
                                     subArea: '',
@@ -200,9 +200,24 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
+                  child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
+                    builder: (context, state) {
+                      return state.when(
+                        getPickingHeaderState: (count) => count != null
+                            ? Text(
+                                count.length.toString(),
+                                style: countHeading(),
+                              )
+                            : Text(
+                                "0",
+                                style: countHeading(),
+                              ),
+                        pickingheaderFailedState: () => Text(
+                          "0",
+                          style: countHeading(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 // SizedBox(width: ,),

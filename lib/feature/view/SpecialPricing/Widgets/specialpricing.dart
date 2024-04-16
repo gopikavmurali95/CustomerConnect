@@ -228,6 +228,18 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             Icons.search,
                             size: 20,
                           ),
+                          suffix: InkWell(
+                            onTap: () {
+                              _spPriceSearchCtrl.clear();
+                              context.read<SpecialPriceDetailsBloc>().add(
+                                  const GetSpecialPriceDetailsEvent(
+                                      prhID: "1", searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           hintText: "Search Items",
                           hintStyle: const TextStyle(
                               fontSize: 14,
