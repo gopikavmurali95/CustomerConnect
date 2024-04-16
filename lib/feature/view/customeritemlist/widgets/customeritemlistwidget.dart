@@ -15,11 +15,14 @@ class CustomerItemListWidget extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           getCusItemsState: (items) => items == null
-              ? ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) =>
-                      ShimmerContainers(height: 80.h, width: double.infinity),
-                  itemCount: 10,
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        ShimmerContainers(height: 80.h, width: double.infinity),
+                    itemCount: 10,
+                  ),
                 )
               : items.isEmpty
                   ? Center(
