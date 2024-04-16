@@ -19,8 +19,22 @@ class TodaysDeliveryDetailsBloc
     on<GetTodaysDeliveryDetailsEvent>((event, emit) async {
       Either<MainFailures, List<TodaysDeliveryDetailsModel>> details =
           await deliverydetails.getDeliveryDetail(event.id);
-      emit(details.fold((l) => const TodaysDeliveryFailedState(),
-          (r) => GetTodaysDeliveryDetailsState(deliverydet: r)));
+      List<TodaysDeliveryDetailsModel> searcheditems = [];
+      emit(details.fold((l) => const TodaysDeliveryFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prhId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prhName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetTodaysDeliveryDetailsState(
+            deliverydet: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
   }
 }

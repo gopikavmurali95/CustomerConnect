@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SpecialPriceHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SpecialPriceHeaderModel spPriceInparas)
+    required TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)
         getSpecialPriceHeaderEvent,
     required TResult Function() specialPriceFailedEvent,
     required TResult Function() clearSpecialPriceEvent,
@@ -26,7 +27,8 @@ mixin _$SpecialPriceHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult? Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult? Function()? specialPriceFailedEvent,
     TResult? Function()? clearSpecialPriceEvent,
@@ -34,7 +36,8 @@ mixin _$SpecialPriceHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult Function()? specialPriceFailedEvent,
     TResult Function()? clearSpecialPriceEvent,
@@ -96,7 +99,7 @@ abstract class _$$GetSpecialPriceHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetSpecialPriceHeaderEventImpl) then) =
       __$$GetSpecialPriceHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SpecialPriceHeaderModel spPriceInparas});
+  $Res call({SpecialPriceHeaderModel spPriceInparas, String searchQuery});
 }
 
 /// @nodoc
@@ -113,12 +116,17 @@ class __$$GetSpecialPriceHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? spPriceInparas = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetSpecialPriceHeaderEventImpl(
       spPriceInparas: null == spPriceInparas
           ? _value.spPriceInparas
           : spPriceInparas // ignore: cast_nullable_to_non_nullable
               as SpecialPriceHeaderModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -126,14 +134,17 @@ class __$$GetSpecialPriceHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetSpecialPriceHeaderEventImpl implements GetSpecialPriceHeaderEvent {
-  const _$GetSpecialPriceHeaderEventImpl({required this.spPriceInparas});
+  const _$GetSpecialPriceHeaderEventImpl(
+      {required this.spPriceInparas, required this.searchQuery});
 
   @override
   final SpecialPriceHeaderModel spPriceInparas;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'SpecialPriceHeaderEvent.getSpecialPriceHeaderEvent(spPriceInparas: $spPriceInparas)';
+    return 'SpecialPriceHeaderEvent.getSpecialPriceHeaderEvent(spPriceInparas: $spPriceInparas, searchQuery: $searchQuery)';
   }
 
   @override
@@ -142,11 +153,13 @@ class _$GetSpecialPriceHeaderEventImpl implements GetSpecialPriceHeaderEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetSpecialPriceHeaderEventImpl &&
             (identical(other.spPriceInparas, spPriceInparas) ||
-                other.spPriceInparas == spPriceInparas));
+                other.spPriceInparas == spPriceInparas) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, spPriceInparas);
+  int get hashCode => Object.hash(runtimeType, spPriceInparas, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -158,36 +171,39 @@ class _$GetSpecialPriceHeaderEventImpl implements GetSpecialPriceHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SpecialPriceHeaderModel spPriceInparas)
+    required TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)
         getSpecialPriceHeaderEvent,
     required TResult Function() specialPriceFailedEvent,
     required TResult Function() clearSpecialPriceEvent,
   }) {
-    return getSpecialPriceHeaderEvent(spPriceInparas);
+    return getSpecialPriceHeaderEvent(spPriceInparas, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult? Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult? Function()? specialPriceFailedEvent,
     TResult? Function()? clearSpecialPriceEvent,
   }) {
-    return getSpecialPriceHeaderEvent?.call(spPriceInparas);
+    return getSpecialPriceHeaderEvent?.call(spPriceInparas, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult Function()? specialPriceFailedEvent,
     TResult Function()? clearSpecialPriceEvent,
     required TResult orElse(),
   }) {
     if (getSpecialPriceHeaderEvent != null) {
-      return getSpecialPriceHeaderEvent(spPriceInparas);
+      return getSpecialPriceHeaderEvent(spPriceInparas, searchQuery);
     }
     return orElse();
   }
@@ -234,10 +250,11 @@ class _$GetSpecialPriceHeaderEventImpl implements GetSpecialPriceHeaderEvent {
 
 abstract class GetSpecialPriceHeaderEvent implements SpecialPriceHeaderEvent {
   const factory GetSpecialPriceHeaderEvent(
-          {required final SpecialPriceHeaderModel spPriceInparas}) =
-      _$GetSpecialPriceHeaderEventImpl;
+      {required final SpecialPriceHeaderModel spPriceInparas,
+      required final String searchQuery}) = _$GetSpecialPriceHeaderEventImpl;
 
   SpecialPriceHeaderModel get spPriceInparas;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetSpecialPriceHeaderEventImplCopyWith<_$GetSpecialPriceHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -285,7 +302,8 @@ class _$SpecialPriceFailedEventImpl implements SpecialPriceFailedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SpecialPriceHeaderModel spPriceInparas)
+    required TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)
         getSpecialPriceHeaderEvent,
     required TResult Function() specialPriceFailedEvent,
     required TResult Function() clearSpecialPriceEvent,
@@ -296,7 +314,8 @@ class _$SpecialPriceFailedEventImpl implements SpecialPriceFailedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult? Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult? Function()? specialPriceFailedEvent,
     TResult? Function()? clearSpecialPriceEvent,
@@ -307,7 +326,8 @@ class _$SpecialPriceFailedEventImpl implements SpecialPriceFailedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult Function()? specialPriceFailedEvent,
     TResult Function()? clearSpecialPriceEvent,
@@ -405,7 +425,8 @@ class _$ClearSpecialPriceEventImpl implements ClearSpecialPriceEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SpecialPriceHeaderModel spPriceInparas)
+    required TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)
         getSpecialPriceHeaderEvent,
     required TResult Function() specialPriceFailedEvent,
     required TResult Function() clearSpecialPriceEvent,
@@ -416,7 +437,8 @@ class _$ClearSpecialPriceEventImpl implements ClearSpecialPriceEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult? Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult? Function()? specialPriceFailedEvent,
     TResult? Function()? clearSpecialPriceEvent,
@@ -427,7 +449,8 @@ class _$ClearSpecialPriceEventImpl implements ClearSpecialPriceEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SpecialPriceHeaderModel spPriceInparas)?
+    TResult Function(
+            SpecialPriceHeaderModel spPriceInparas, String searchQuery)?
         getSpecialPriceHeaderEvent,
     TResult Function()? specialPriceFailedEvent,
     TResult Function()? clearSpecialPriceEvent,

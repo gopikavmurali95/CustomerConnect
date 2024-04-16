@@ -1,18 +1,38 @@
+import 'dart:async';
+
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerlist.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants/fonts.dart';
 
 class SpecialPricingCustomer extends StatefulWidget {
-  const SpecialPricingCustomer({super.key});
+  final LoginUserModel user;
+  const SpecialPricingCustomer({super.key, required this.user});
 
   @override
   State<SpecialPricingCustomer> createState() => _SpecialPricingCustomerState();
 }
 
+final _spCustomergSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
+  @override
+  void initState() {
+    _spCustomergSearchCtrl.clear();
+    context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
+        userID: widget.user.usrId!,
+        fromDate: '01-01-2023',
+        todate: '01-05-2024',
+        searchQuery: ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +115,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SpecialPricing(),
+                                  builder: (context) => SpecialPricing(
+                                    user: widget.user,
+                                  ),
                                 ),
                               );
                             },
@@ -112,7 +134,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SpecialPricing(),
+                                  builder: (context) => SpecialPricing(
+                                    user: widget.user,
+                                  ),
                                 ),
                               );
                             },
@@ -141,7 +165,24 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 blurRadius: 0.4,
                                 spreadRadius: 0.4)
                           ]),
-                      child: TextField(
+                      child: TextFormField(
+                        controller: _spCustomergSearchCtrl,
+                        onChanged: (value) {
+                          if (debounce?.isActive ?? false) debounce!.cancel();
+                          debounce = Timer(
+                            const Duration(
+                              milliseconds: 500,
+                            ),
+                            () async {
+                              context.read<SpecialPriceCustomersBloc>().add(
+                                  GetSpecialPriceCustomersEvent(
+                                      userID: widget.user.usrId!,
+                                      fromDate: '01-01-2023',
+                                      todate: '01-05-2024',
+                                      searchQuery: value.trim()));
+                            },
+                          );
+                        },
                         decoration: InputDecoration(
                             prefixIcon: const Icon(
                               Icons.search,

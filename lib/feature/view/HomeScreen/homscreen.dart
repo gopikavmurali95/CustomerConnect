@@ -184,12 +184,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     route: '',
                                     subArea: '',
                                     toDate: '30/03/2024',
-                                    userId: widget.user.usrId)));
+                                    userId: widget.user.usrId),
+                                searchQuery: ''));
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const SpecialPricingHeader()));
+                                builder: (context) => SpecialPricingHeader(
+                                      user: widget.user,
+                                    )));
                       },
                       child: Container(
                         // height: 50,

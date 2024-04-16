@@ -29,80 +29,85 @@ class CompletedList extends StatelessWidget {
                           ),
                       itemCount: 10),
                 )
-              : ListView.builder(
-                  padding: const EdgeInsets.only(
-                    left: 05, right: 05,
-                    top: 10,
-                    //  bottom: 10
-                  ),
-                  shrinkWrap: true,
-                  itemCount: loadingheaders.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        SizedBox(
-                          height: 50,
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoadDetailCompleted(
-                                    loadingheader: loadingheaders[index],
+              : loadingheaders.isEmpty
+                  ? const Center(
+                      child: Text('No Data Found'),
+                    )
+                  : ListView.builder(
+                      padding: const EdgeInsets.only(
+                        left: 05, right: 05,
+                        top: 10,
+                        //  bottom: 10
+                      ),
+                      shrinkWrap: true,
+                      itemCount: loadingheaders.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 50,
+                              child: ListTile(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoadDetailCompleted(
+                                        loadingheader: loadingheaders[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                //titleAlignment: ListTileTitleAlignment.center,
+                                //minVerticalPadding:5,
+                                //minLeadingWidth: 50,
+                                //titleAlignment:ListTileTitleAlignment.center,
+                                horizontalTitleGap: 10,
+                                leading: Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: const Color(0xff9AD694),
+                                    child: Image.asset(
+                                      "assets/images/listicon.png",
+                                      height: 20,
+                                    ),
                                   ),
                                 ),
-                              );
-                            },
-                            //titleAlignment: ListTileTitleAlignment.center,
-                            //minVerticalPadding:5,
-                            //minLeadingWidth: 50,
-                            //titleAlignment:ListTileTitleAlignment.center,
-                            horizontalTitleGap: 10,
-                            leading: Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: CircleAvatar(
-                                radius: 20,
-                                backgroundColor: const Color(0xff9AD694),
-                                child: Image.asset(
-                                  "assets/images/listicon.png",
-                                  height: 20,
+                                title: Text(
+                                  loadingheaders[index].transactionCode ?? "",
+                                  style: blueTextStyle(),
+                                ),
+                                subtitle: Padding(
+                                  padding: const EdgeInsets.only(
+                                    bottom: 10.0,
+                                  ),
+                                  child: RichText(
+                                      text: TextSpan(
+                                          text:
+                                              "${loadingheaders[index].rotName} | ",
+                                          style: subTitleTextStyle(),
+                                          children: [
+                                        TextSpan(
+                                            text:
+                                                "${loadingheaders[index].date}",
+                                            style: subTitleTextStyle()),
+                                      ])),
                                 ),
                               ),
                             ),
-                            title: Text(
-                              loadingheaders[index].transactionCode ?? "",
-                              style: blueTextStyle(),
-                            ),
-                            subtitle: Padding(
+                            Padding(
                               padding: const EdgeInsets.only(
-                                bottom: 10.0,
-                              ),
-                              child: RichText(
-                                  text: TextSpan(
-                                      text:
-                                          "${loadingheaders[index].rotName} | ",
-                                      style: subTitleTextStyle(),
-                                      children: [
-                                    TextSpan(
-                                        text: "${loadingheaders[index].date}",
-                                        style: subTitleTextStyle()),
-                                  ])),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 0, right: 0, top: 05
+                                  left: 0, right: 0, top: 05
                                   // top: 10,bottom: 10
                                   ),
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ),
+                              child: Divider(
+                                color: Colors.grey.shade300,
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    ),
           loadingHeaderFailedState: () => Center(
             child: Text(
               'No Data Available',

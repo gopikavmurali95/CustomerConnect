@@ -19,8 +19,23 @@ class TotalOrdersDetailsBloc
     on<GetTotalOrdersDetailsEvent>((event, emit) async {
       Either<MainFailures, List<TotalOrdersDetailsModel>> orderdetails =
           await totalordersdetrepo.getOrderDetail(event.userID);
-      emit(orderdetails.fold((l) => const TotalOrdersDetailsFailedState(),
-          (r) => GetTotalOrdersDetailsState(ordersdet: r)));
+
+      List<TotalOrdersDetailsModel> searcheditems = [];
+      emit(orderdetails.fold((l) => const TotalOrdersDetailsFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prdCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetTotalOrdersDetailsState(
+            ordersdet: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on((event, emit) => emit(
         const TotalOrdersDetailsState.getTotalOrdersDetailsState(

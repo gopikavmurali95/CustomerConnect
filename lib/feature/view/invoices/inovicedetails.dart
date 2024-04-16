@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
@@ -18,13 +20,16 @@ class InvoiceDetailScreen extends StatefulWidget {
   State<InvoiceDetailScreen> createState() => _InvoiceDetailScreenState();
 }
 
+final _invoiceDetailsSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
   @override
   void initState() {
+    _invoiceDetailsSearchCtrl.clear();
     context.read<InvoiceDetailsBloc>().add(const ClearInvoiceDetails());
-    context
-        .read<InvoiceDetailsBloc>()
-        .add(GetInvoiceDetailsEvent(id: widget.invoiceheader.id!));
+    context.read<InvoiceDetailsBloc>().add(
+        GetInvoiceDetailsEvent(id: widget.invoiceheader.id!, searchQuery: ''));
     super.initState();
     context
         .read<InvoiceDetailsFooterBloc>()
@@ -301,7 +306,22 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _invoiceDetailsSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<InvoiceDetailsBloc>().add(
+                                GetInvoiceDetailsEvent(
+                                    id: widget.invoiceheader.id!,
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -317,6 +337,19 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _invoiceDetailsSearchCtrl.clear();
+                              context.read<InvoiceDetailsBloc>().add(
+                                  GetInvoiceDetailsEvent(
+                                      id: widget.invoiceheader.id!,
+                                      searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),

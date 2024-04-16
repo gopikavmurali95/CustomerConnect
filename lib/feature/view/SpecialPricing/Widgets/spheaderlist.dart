@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricing.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/fonts.dart';
 
 class SpPrHeaderList extends StatelessWidget {
-  const SpPrHeaderList({super.key});
+  final LoginUserModel user;
+  const SpPrHeaderList({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,9 @@ class SpPrHeaderList extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      const SpecialPricing()));
+                                                      SpecialPricing(
+                                                        user: user,
+                                                      )));
                                         },
                                         child: Column(
                                           mainAxisAlignment:
@@ -117,12 +121,15 @@ class SpPrHeaderList extends StatelessWidget {
                                               .read<SpecialPriceDetailsBloc>()
                                               .add(
                                                   const GetSpecialPriceDetailsEvent(
-                                                      prhID: "1"));
+                                                      prhID: "1",
+                                                      searchQuery: ''));
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      const SpecialPricing()));
+                                                      SpecialPricing(
+                                                        user: user,
+                                                      )));
                                         },
                                         child: Text(
                                           'Details',

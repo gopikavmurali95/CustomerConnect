@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdeliverydetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
@@ -7,7 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TodaysDeliveryList extends StatelessWidget {
-  const TodaysDeliveryList({super.key});
+  final LoginUserModel user;
+  const TodaysDeliveryList({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class TodaysDeliveryList extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => TodaysDeliveryDetails(
                                   todaysdelivery: delivery[index],
+                                  user: user,
                                 ),
                               ),
                             );

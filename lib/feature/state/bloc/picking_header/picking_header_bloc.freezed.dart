@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PickingHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PickingInModel pickingHeadIn)
+    required TResult Function(PickingInModel pickingHeadIn, String searchQuery)
         getpickingHeaderEvent,
     required TResult Function() clearPickingevent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult? Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult? Function()? clearPickingevent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult Function()? clearPickingevent,
     required TResult orElse(),
   }) =>
@@ -83,7 +85,7 @@ abstract class _$$GetpickingHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetpickingHeaderEventImpl) then) =
       __$$GetpickingHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PickingInModel pickingHeadIn});
+  $Res call({PickingInModel pickingHeadIn, String searchQuery});
 }
 
 /// @nodoc
@@ -98,12 +100,17 @@ class __$$GetpickingHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pickingHeadIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetpickingHeaderEventImpl(
       pickingHeadIn: null == pickingHeadIn
           ? _value.pickingHeadIn
           : pickingHeadIn // ignore: cast_nullable_to_non_nullable
               as PickingInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -111,14 +118,17 @@ class __$$GetpickingHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetpickingHeaderEventImpl implements GetpickingHeaderEvent {
-  const _$GetpickingHeaderEventImpl({required this.pickingHeadIn});
+  const _$GetpickingHeaderEventImpl(
+      {required this.pickingHeadIn, required this.searchQuery});
 
   @override
   final PickingInModel pickingHeadIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PickingHeaderEvent.getpickingHeaderEvent(pickingHeadIn: $pickingHeadIn)';
+    return 'PickingHeaderEvent.getpickingHeaderEvent(pickingHeadIn: $pickingHeadIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -127,11 +137,13 @@ class _$GetpickingHeaderEventImpl implements GetpickingHeaderEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetpickingHeaderEventImpl &&
             (identical(other.pickingHeadIn, pickingHeadIn) ||
-                other.pickingHeadIn == pickingHeadIn));
+                other.pickingHeadIn == pickingHeadIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pickingHeadIn);
+  int get hashCode => Object.hash(runtimeType, pickingHeadIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -143,31 +155,33 @@ class _$GetpickingHeaderEventImpl implements GetpickingHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PickingInModel pickingHeadIn)
+    required TResult Function(PickingInModel pickingHeadIn, String searchQuery)
         getpickingHeaderEvent,
     required TResult Function() clearPickingevent,
   }) {
-    return getpickingHeaderEvent(pickingHeadIn);
+    return getpickingHeaderEvent(pickingHeadIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult? Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult? Function()? clearPickingevent,
   }) {
-    return getpickingHeaderEvent?.call(pickingHeadIn);
+    return getpickingHeaderEvent?.call(pickingHeadIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult Function()? clearPickingevent,
     required TResult orElse(),
   }) {
     if (getpickingHeaderEvent != null) {
-      return getpickingHeaderEvent(pickingHeadIn);
+      return getpickingHeaderEvent(pickingHeadIn, searchQuery);
     }
     return orElse();
   }
@@ -207,10 +221,11 @@ class _$GetpickingHeaderEventImpl implements GetpickingHeaderEvent {
 
 abstract class GetpickingHeaderEvent implements PickingHeaderEvent {
   const factory GetpickingHeaderEvent(
-          {required final PickingInModel pickingHeadIn}) =
-      _$GetpickingHeaderEventImpl;
+      {required final PickingInModel pickingHeadIn,
+      required final String searchQuery}) = _$GetpickingHeaderEventImpl;
 
   PickingInModel get pickingHeadIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetpickingHeaderEventImplCopyWith<_$GetpickingHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -254,7 +269,7 @@ class _$ClearPickingeventImpl implements ClearPickingevent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PickingInModel pickingHeadIn)
+    required TResult Function(PickingInModel pickingHeadIn, String searchQuery)
         getpickingHeaderEvent,
     required TResult Function() clearPickingevent,
   }) {
@@ -264,7 +279,8 @@ class _$ClearPickingeventImpl implements ClearPickingevent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult? Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult? Function()? clearPickingevent,
   }) {
     return clearPickingevent?.call();
@@ -273,7 +289,8 @@ class _$ClearPickingeventImpl implements ClearPickingevent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PickingInModel pickingHeadIn)? getpickingHeaderEvent,
+    TResult Function(PickingInModel pickingHeadIn, String searchQuery)?
+        getpickingHeaderEvent,
     TResult Function()? clearPickingevent,
     required TResult orElse(),
   }) {

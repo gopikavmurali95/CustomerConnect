@@ -21,6 +21,7 @@ const cusInsArHeaderUrl = 'CusInsightAR/CusInsigntARHeader';
 const todaysdeliveryheaderurl = 'TodayDelivery/SelectTodayDeliveyHeader';
 const todaysdeliverydetailsurl = 'TodayDelivery/SelectTodayDelDetail';
 const specialpriceheaderurl = 'SpecialPrice/SelectSpecialPriceHeader';
+const specialPRiceCustomerurl = 'SpecialPrice/SelectCustomerForSpecialPrice';
 const cusInsArTotalUrl = 'CusInsightAR/CusInsigntARCollectionCount';
 const cusinsInvHUrl = 'CusInsInvoice/SelectCusInvoiceHeader';
 const cusProfileUrl = 'CusInsightshome/CusInsightProfileDetail';

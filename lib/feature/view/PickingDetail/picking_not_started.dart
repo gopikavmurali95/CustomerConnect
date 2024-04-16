@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
+import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/widgets/notstarted_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 
 class PickingDetailNotStarted extends StatefulWidget {
@@ -11,7 +15,16 @@ class PickingDetailNotStarted extends StatefulWidget {
       _PickingDetailNotStartedState();
 }
 
+final _pickingNotStartedSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
+  @override
+  void initState() {
+    _pickingNotStartedSearchCtrl.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +82,22 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _pickingNotStartedSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<PickingdetailBloc>().add(
+                                PickingDetailSuccess(
+                                    pickingID: widget.picking.pickingID!,
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -85,6 +113,20 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _pickingNotStartedSearchCtrl.clear();
+
+                              context.read<PickingdetailBloc>().add(
+                                  PickingDetailSuccess(
+                                      pickingID: widget.picking.pickingID!,
+                                      searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),

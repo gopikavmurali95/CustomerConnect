@@ -26,129 +26,139 @@ class ARHeaderListWidget extends StatelessWidget {
                           color: Colors.grey[300],
                         ),
                     itemCount: 10)
-                : ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ARDetailScreen(
-                                  arheader: arHeaders[index],
-                                ),
-                              ),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                radius: 20,
-                                backgroundColor: const Color(0xffDB95B5),
-                                child: Image.asset(
-                                  'assets/images/ar_li.png',
-                                  height: 20.h,
-                                  width: 20.w,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      arHeaders[index].arhArNumber ?? '',
-                                      style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        color: const Color(0xff2C6B9E),
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                : arHeaders.isEmpty
+                    ? const Center(
+                        child: Text('No Data Found'),
+                      )
+                    : ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ARDetailScreen(
+                                      arheader: arHeaders[index],
                                     ),
-                                    Row(
+                                  ),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: const Color(0xffDB95B5),
+                                    child: Image.asset(
+                                      'assets/images/ar_li.png',
+                                      height: 20.h,
+                                      width: 20.w,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${arHeaders[index].cshCode} - ',
+                                          arHeaders[index].arhArNumber ?? '',
                                           style: kfontstyle(
-                                            fontSize: 11.sp,
+                                            fontSize: 12.sp,
                                             color: const Color(0xff2C6B9E),
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        Expanded(
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '${arHeaders[index].cshCode} - ',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                color: const Color(0xff2C6B9E),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                arHeaders[index].cshName ?? "",
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color: const Color(
+                                                        0xff413434)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '${arHeaders[index].cusCode} - ',
+                                              style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                arHeaders[index].cusName ?? "",
+                                                overflow: TextOverflow.ellipsis,
+                                                style:
+                                                    kfontstyle(fontSize: 11.sp),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          '${arHeaders[index].arhPayType?.trim()} | Route ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
+                                          style: kfontstyle(
+                                              fontSize: 10.sp,
+                                              color: Colors.grey),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        arHeaders[index].arhCollectedAmount ??
+                                            "",
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+                                      Container(
+                                        height: 14.h,
+                                        width: 30.w,
+                                        decoration: BoxDecoration(
+                                            color: index % 2 == 0
+                                                ? const Color(0xffe3f7e2)
+                                                : const Color(0xfff7f4e2),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Center(
                                           child: Text(
-                                            overflow: TextOverflow.ellipsis,
-                                            arHeaders[index].cshName ?? "",
+                                            arHeaders[index].arhPayMode ?? '',
                                             style: kfontstyle(
-                                                fontSize: 12.sp,
+                                                fontSize: 10.sp,
                                                 color: const Color(0xff413434)),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '${arHeaders[index].cusCode} - ',
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              color: const Color(0xff413434)),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            arHeaders[index].cusName ?? "",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: kfontstyle(fontSize: 11.sp),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      '${arHeaders[index].arhPayType?.trim()} | Route ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
-                                      style: kfontstyle(
-                                          fontSize: 10.sp, color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                children: [
-                                  Text(
-                                    arHeaders[index].arhCollectedAmount ?? "",
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  SizedBox(
-                                    height: 5.h,
-                                  ),
-                                  Container(
-                                    height: 14.h,
-                                    width: 30.w,
-                                    decoration: BoxDecoration(
-                                        color: index % 2 == 0
-                                            ? const Color(0xffe3f7e2)
-                                            : const Color(0xfff7f4e2),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        arHeaders[index].arhPayMode ?? '',
-                                        style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            color: const Color(0xff413434)),
-                                      ),
-                                    ),
+                                      )
+                                    ],
                                   )
                                 ],
-                              )
-                            ],
-                          ),
-                        ),
-                    separatorBuilder: (context, index) => Divider(
-                          color: Colors.grey[300],
-                        ),
-                    itemCount: arHeaders.length),
+                              ),
+                            ),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: arHeaders.length),
             arHeaderFailedState: () => Center(
               child: Text(
                 'No Data Available',

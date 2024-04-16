@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +11,23 @@ import '../../../../constants/fonts.dart';
 import '../specialpricingcustomer.dart';
 
 class SpecialPricing extends StatefulWidget {
-  const SpecialPricing({super.key});
+  final LoginUserModel user;
+  const SpecialPricing({super.key, required this.user});
 
   @override
   State<SpecialPricing> createState() => _SpecialPricingState();
 }
 
+final _spPriceSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _SpecialPricingState extends State<SpecialPricing> {
+  @override
+  void initState() {
+    _spPriceSearchCtrl.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,8 +79,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SpecialPricing()));
+                                        builder: (context) => SpecialPricing(
+                                              user: widget.user,
+                                            )));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +121,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const SpecialPricingCustomer()));
+                                            SpecialPricingCustomer(
+                                              user: widget.user,
+                                            )));
                               },
                               child: Text(
                                 'Customer',
@@ -192,7 +208,21 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _spPriceSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<SpecialPriceDetailsBloc>().add(
+                                GetSpecialPriceDetailsEvent(
+                                    prhID: '1', searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,

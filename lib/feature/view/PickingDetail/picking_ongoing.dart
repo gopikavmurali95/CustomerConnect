@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/widgets/ongoing_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 import '../../data/models/picking_header_model/PickingOutModel.dart';
 
@@ -11,7 +15,16 @@ class PickingOgoing extends StatefulWidget {
   State<PickingOgoing> createState() => _PickingOgoingState();
 }
 
+final _pickingOngoingSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _PickingOgoingState extends State<PickingOgoing> {
+  @override
+  void initState() {
+    _pickingOngoingSearchCtrl.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +80,22 @@ class _PickingOgoingState extends State<PickingOgoing> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _pickingOngoingSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<PickingdetailBloc>().add(
+                                PickingDetailSuccess(
+                                    pickingID: widget.picking.pickingID!,
+                                    searchQuery: ''));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -83,6 +111,20 @@ class _PickingOgoingState extends State<PickingOgoing> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _pickingOngoingSearchCtrl.clear();
+
+                              context.read<PickingdetailBloc>().add(
+                                  PickingDetailSuccess(
+                                      pickingID: widget.picking.pickingID!,
+                                      searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),

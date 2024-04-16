@@ -52,6 +52,7 @@ import 'package:customer_connect/feature/data/models/promotion_header_in_paras/p
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/data/models/qualification_group_model/qualification_group_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
@@ -151,6 +152,9 @@ abstract class ISpecialPriceRepo {
 
   Future<Either<MainFailures, List<SpecialPriceDetailsModel>>> getPriceDetail(
       String prdID);
+
+  Future<Either<MainFailures, List<SpecialPriceCustomerModel>>>
+      getPriceCustomer(String userID, String fromDate, String toDate);
 }
 
 abstract class ICusInsInvoiceRepo {

@@ -22,8 +22,22 @@ class PromotionCustomerBloc
       Either<MainFailures, List<PromotionCustomerModel>> customers =
           await promocustomer.getPromotionCustomer(event.id);
       log(customers.fold((l) => 'empty', (r) => r.length.toString()));
-      emit(customers.fold((l) => const PromotionCustomerFailed(),
-          (r) => GetPromotionCustomerState(promotioncust: r)));
+      List<PromotionCustomerModel> searcheditems = [];
+      emit(customers.fold((l) => const PromotionCustomerFailed(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.cusCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetPromotionCustomerState(
+            promotioncust: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearOromotionCustomer>((event, emit) {
       emit(const GetPromotionCustomerState(promotioncust: null));

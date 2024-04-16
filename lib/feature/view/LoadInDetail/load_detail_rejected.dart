@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,13 +19,16 @@ class LoadDetailRejected extends StatefulWidget {
   State<LoadDetailRejected> createState() => _LoadDetailRejectedState();
 }
 
+final _loadRejectedDetailSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _LoadDetailRejectedState extends State<LoadDetailRejected> {
   @override
   void initState() {
+    _loadRejectedDetailSearchCtrl.clear();
     context.read<LoadingDetailBloc>().add(const ClearLoadingDetailEvent());
-    context
-        .read<LoadingDetailBloc>()
-        .add(GetloadingDetailEvent(iD: widget.loadingheader.id ?? ''));
+    context.read<LoadingDetailBloc>().add(GetloadingDetailEvent(
+        iD: widget.loadingheader.id ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -89,7 +94,22 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _loadRejectedDetailSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<LoadingDetailBloc>().add(
+                                GetloadingDetailEvent(
+                                    iD: widget.loadingheader.id!,
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -105,6 +125,19 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _loadRejectedDetailSearchCtrl.clear();
+                              context.read<LoadingDetailBloc>().add(
+                                  GetloadingDetailEvent(
+                                      iD: widget.loadingheader.id!,
+                                      searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),
@@ -134,83 +167,90 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                             ),
                         itemCount: 10),
                   )
-                : SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 30,
-                          color: Colors.grey.shade200,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 160),
-                                child: Text(
-                                  "Items",
-                                  style: boxHeading(),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  "UOM",
-                                  style: boxHeading(),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 30),
-                                child: Text(
-                                  "Qty",
-                                  style: boxHeading(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ListView.separated(
-                          itemCount: detail.length,
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15.0, top: 2),
-                                      child: Container(
-                                        height: 55,
-                                        width: 200,
-                                        color: Colors.white,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(detail[index].prdCode ?? "",
-                                                style: loadTextStyle()),
-                                            Text(
-                                              detail[index].prdName ?? "",
-                                              style: subTitleTextStyle(),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                : detail.isEmpty
+                    ? const Center(
+                        child: Text('No Data Found'),
+                      )
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 30,
+                              color: Colors.grey.shade200,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 160),
+                                    child: Text(
+                                      "Items",
+                                      style: boxHeading(),
                                     ),
-                                    Column(
-                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      // crossAxisAlignment: CrossAxisAlignment.start,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 50),
+                                    child: Text(
+                                      "UOM",
+                                      style: boxHeading(),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: Text(
+                                      "Qty",
+                                      style: boxHeading(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            ListView.separated(
+                              itemCount: detail.length,
+                              shrinkWrap: true,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Visibility(
-                                          visible:
-                                              detail[index].higherUom == null ||
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 15.0, top: 2),
+                                          child: Container(
+                                            height: 55,
+                                            width: 200,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                    detail[index].prdCode ?? "",
+                                                    style: loadTextStyle()),
+                                                Text(
+                                                  detail[index].prdName ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          // crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Visibility(
+                                              visible: detail[index]
+                                                              .higherUom ==
+                                                          null ||
                                                       detail[index]
                                                           .higherUom!
                                                           .isEmpty ||
@@ -221,17 +261,18 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                                           .isEmpty
                                                   ? false
                                                   : true,
-                                          child: Text(
-                                            detail[index].higherUom ?? "",
-                                            style: subTitleTextStyle(),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        Visibility(
-                                          visible:
-                                              detail[index].lowerUom == null ||
+                                              child: Text(
+                                                detail[index].higherUom ?? "",
+                                                style: subTitleTextStyle(),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Visibility(
+                                              visible: detail[index]
+                                                              .lowerUom ==
+                                                          null ||
                                                       detail[index]
                                                           .lowerUom!
                                                           .isEmpty ||
@@ -242,81 +283,84 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                                           .isEmpty
                                                   ? false
                                                   : true,
-                                          child: Text(
-                                            detail[index].lowerUom ?? '',
-                                            style: subTitleTextStyle(),
+                                              child: Text(
+                                                detail[index].lowerUom ?? '',
+                                                style: subTitleTextStyle(),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 5, right: 20.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Visibility(
+                                                visible: detail[index]
+                                                                .higherUom ==
+                                                            null ||
+                                                        detail[index]
+                                                            .higherUom!
+                                                            .isEmpty ||
+                                                        detail[index]
+                                                                .higherQty ==
+                                                            null ||
+                                                        detail[index]
+                                                            .higherQty!
+                                                            .isEmpty
+                                                    ? false
+                                                    : true,
+                                                child: Text(
+                                                  detail[index].higherQty ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              Visibility(
+                                                visible:
+                                                    detail[index].lowerUom ==
+                                                                null ||
+                                                            detail[index]
+                                                                .lowerUom!
+                                                                .isEmpty ||
+                                                            detail[index]
+                                                                    .lowerQty ==
+                                                                null ||
+                                                            detail[index]
+                                                                .lowerQty!
+                                                                .isEmpty
+                                                        ? false
+                                                        : true,
+                                                child: Text(
+                                                  detail[index].lowerQty ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
+                                        //  SizedBox(width: 0,)
                                       ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 5, right: 20.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Visibility(
-                                            visible: detail[index]
-                                                            .higherUom ==
-                                                        null ||
-                                                    detail[index]
-                                                        .higherUom!
-                                                        .isEmpty ||
-                                                    detail[index].higherQty ==
-                                                        null ||
-                                                    detail[index]
-                                                        .higherQty!
-                                                        .isEmpty
-                                                ? false
-                                                : true,
-                                            child: Text(
-                                              detail[index].higherQty ?? "",
-                                              style: subTitleTextStyle(),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Visibility(
-                                            visible: detail[index]
-                                                            .lowerUom ==
-                                                        null ||
-                                                    detail[index]
-                                                        .lowerUom!
-                                                        .isEmpty ||
-                                                    detail[index].lowerQty ==
-                                                        null ||
-                                                    detail[index]
-                                                        .lowerQty!
-                                                        .isEmpty
-                                                ? false
-                                                : true,
-                                            child: Text(
-                                              detail[index].lowerQty ?? "",
-                                              style: subTitleTextStyle(),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    //  SizedBox(width: 0,)
+                                    //  Divider(),
                                   ],
-                                ),
-                                //  Divider(),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const Padding(
-                              padding: EdgeInsets.only(left: 0.0, right: 0),
-                              child: Divider(),
-                            );
-                          },
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(left: 0.0, right: 0),
+                                  child: Divider(),
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
             loadingDetailFailedState: () => Center(
               child: Text(
                 'No Data Available',

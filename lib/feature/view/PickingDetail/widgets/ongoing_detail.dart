@@ -28,90 +28,97 @@ class OngoingDetail extends StatelessWidget {
                           ),
                       itemCount: 10),
                 )
-              : ListView.separated(
-                  itemCount: 4,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              : pdetailList.isEmpty
+                  ? const Center(
+                      child: Text('No Data Found'),
+                    )
+                  : ListView.separated(
+                      itemCount: 4,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
                           children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15.0, top: 2),
-                              child: Container(
-                                height: 55,
-                                width: 200,
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 15.0, top: 2),
+                                  child: Container(
+                                    height: 55,
+                                    width: 200,
+                                    color: Colors.white,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("400478754",
+                                            style: loadTextStyle()),
+                                        Text(
+                                          "How are the Pasta 500g",
+                                          style: subTitleTextStyle(),
+                                        ),
+                                        Text(
+                                          "Offer Pack",
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("400478754", style: loadTextStyle()),
                                     Text(
-                                      "How are the Pasta 500g",
+                                      "Cs",
                                       style: subTitleTextStyle(),
                                     ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
                                     Text(
-                                      "Offer Pack",
+                                      "Cs",
                                       style: subTitleTextStyle(),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                            Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Cs",
-                                  style: subTitleTextStyle(),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 5, right: 20.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "2",
+                                        style: subTitleTextStyle(),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "1",
+                                        style: subTitleTextStyle(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "Cs",
-                                  style: subTitleTextStyle(),
-                                ),
+                                //  SizedBox(width: 0,)
                               ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 5, right: 20.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "2",
-                                    style: subTitleTextStyle(),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "1",
-                                    style: subTitleTextStyle(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            //  SizedBox(width: 0,)
+                            //  Divider(),
                           ],
-                        ),
-                        //  Divider(),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(left: 0, right: 0),
-                      child: Divider(),
-                    );
-                  },
-                ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const Padding(
+                          padding: EdgeInsets.only(left: 0, right: 0),
+                          child: Divider(),
+                        );
+                      },
+                    ),
           pickingFailedState: () => Center(
             child: Text(
               'No Data Available',

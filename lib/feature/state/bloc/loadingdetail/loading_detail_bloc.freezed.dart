@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadingDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iD) getloadingDetailEvent,
+    required TResult Function(String iD, String searchQuery)
+        getloadingDetailEvent,
     required TResult Function() clearLoadingDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iD)? getloadingDetailEvent,
+    TResult? Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult? Function()? clearLoadingDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iD)? getloadingDetailEvent,
+    TResult Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult Function()? clearLoadingDetailEvent,
     required TResult orElse(),
   }) =>
@@ -83,7 +84,7 @@ abstract class _$$GetloadingDetailEventImplCopyWith<$Res> {
           $Res Function(_$GetloadingDetailEventImpl) then) =
       __$$GetloadingDetailEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String iD});
+  $Res call({String iD, String searchQuery});
 }
 
 /// @nodoc
@@ -98,11 +99,16 @@ class __$$GetloadingDetailEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? iD = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetloadingDetailEventImpl(
       iD: null == iD
           ? _value.iD
           : iD // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -111,14 +117,17 @@ class __$$GetloadingDetailEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetloadingDetailEventImpl implements GetloadingDetailEvent {
-  const _$GetloadingDetailEventImpl({required this.iD});
+  const _$GetloadingDetailEventImpl(
+      {required this.iD, required this.searchQuery});
 
   @override
   final String iD;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadingDetailEvent.getloadingDetailEvent(iD: $iD)';
+    return 'LoadingDetailEvent.getloadingDetailEvent(iD: $iD, searchQuery: $searchQuery)';
   }
 
   @override
@@ -126,11 +135,13 @@ class _$GetloadingDetailEventImpl implements GetloadingDetailEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetloadingDetailEventImpl &&
-            (identical(other.iD, iD) || other.iD == iD));
+            (identical(other.iD, iD) || other.iD == iD) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, iD);
+  int get hashCode => Object.hash(runtimeType, iD, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -142,30 +153,31 @@ class _$GetloadingDetailEventImpl implements GetloadingDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iD) getloadingDetailEvent,
+    required TResult Function(String iD, String searchQuery)
+        getloadingDetailEvent,
     required TResult Function() clearLoadingDetailEvent,
   }) {
-    return getloadingDetailEvent(iD);
+    return getloadingDetailEvent(iD, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iD)? getloadingDetailEvent,
+    TResult? Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult? Function()? clearLoadingDetailEvent,
   }) {
-    return getloadingDetailEvent?.call(iD);
+    return getloadingDetailEvent?.call(iD, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iD)? getloadingDetailEvent,
+    TResult Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult Function()? clearLoadingDetailEvent,
     required TResult orElse(),
   }) {
     if (getloadingDetailEvent != null) {
-      return getloadingDetailEvent(iD);
+      return getloadingDetailEvent(iD, searchQuery);
     }
     return orElse();
   }
@@ -205,10 +217,12 @@ class _$GetloadingDetailEventImpl implements GetloadingDetailEvent {
 }
 
 abstract class GetloadingDetailEvent implements LoadingDetailEvent {
-  const factory GetloadingDetailEvent({required final String iD}) =
-      _$GetloadingDetailEventImpl;
+  const factory GetloadingDetailEvent(
+      {required final String iD,
+      required final String searchQuery}) = _$GetloadingDetailEventImpl;
 
   String get iD;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetloadingDetailEventImplCopyWith<_$GetloadingDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -256,7 +270,8 @@ class _$ClearLoadingDetailEventImpl implements ClearLoadingDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String iD) getloadingDetailEvent,
+    required TResult Function(String iD, String searchQuery)
+        getloadingDetailEvent,
     required TResult Function() clearLoadingDetailEvent,
   }) {
     return clearLoadingDetailEvent();
@@ -265,7 +280,7 @@ class _$ClearLoadingDetailEventImpl implements ClearLoadingDetailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String iD)? getloadingDetailEvent,
+    TResult? Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult? Function()? clearLoadingDetailEvent,
   }) {
     return clearLoadingDetailEvent?.call();
@@ -274,7 +289,7 @@ class _$ClearLoadingDetailEventImpl implements ClearLoadingDetailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String iD)? getloadingDetailEvent,
+    TResult Function(String iD, String searchQuery)? getloadingDetailEvent,
     TResult Function()? clearLoadingDetailEvent,
     required TResult orElse(),
   }) {

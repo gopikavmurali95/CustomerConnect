@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverdetaillist.dart';
@@ -9,19 +12,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TodaysDeliveryDetails extends StatefulWidget {
+  final LoginUserModel user;
   final TodaysDeliveryHeaderModel todaysdelivery;
-  const TodaysDeliveryDetails({super.key, required this.todaysdelivery});
+  const TodaysDeliveryDetails(
+      {super.key, required this.todaysdelivery, required this.user});
 
   @override
   State<TodaysDeliveryDetails> createState() => _TodaysDeliveryDetailsState();
 }
 
+final _todaysDeliveryDetailsSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
   @override
   void initState() {
-    context
-        .read<TodaysDeliveryDetailsBloc>()
-        .add(GetTodaysDeliveryDetailsEvent(id: widget.todaysdelivery.id!));
+    _todaysDeliveryDetailsSearchCtrl.clear();
+    context.read<TodaysDeliveryDetailsBloc>().add(GetTodaysDeliveryDetailsEvent(
+        id: widget.todaysdelivery.id!, searchQuery: ''));
     super.initState();
   }
 
@@ -158,7 +166,22 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _todaysDeliveryDetailsSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<TodaysDeliveryDetailsBloc>().add(
+                                GetTodaysDeliveryDetailsEvent(
+                                    id: widget.user.usrId!,
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -174,6 +197,18 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _todaysDeliveryDetailsSearchCtrl.clear();
+                              context.read<TodaysDeliveryDetailsBloc>().add(
+                                  GetTodaysDeliveryDetailsEvent(
+                                      id: widget.user.usrId!, searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),

@@ -18,10 +18,23 @@ class PickingdetailBloc extends Bloc<PickingdetailEvent, PickingdetailState> {
   PickingdetailBloc(this.pDetail) : super(PickingdetailState.initial()) {
     on<PickingDetailSuccess>((event, emit) async {
       Either<MainFailures, List<PickingDetailModel>> pickdetailList =
-          await pDetail.getPickingDetail(event.PickingID);
-      emit(pickdetailList.fold((l) => const PickingFailedState(),
-          (r) => PickingSuccessState(pdetailList: r)));
-      // TODO: implement event handler
+          await pDetail.getPickingDetail(event.pickingID);
+      List<PickingDetailModel> searcheditems = [];
+      emit(pickdetailList.fold((l) => const PickingFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prdCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return PickingSuccessState(
+            pdetailList: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
 
     on<ClearPickingDetailevent>((event, emit) {

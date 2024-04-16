@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoiceheaderlist.dart';
-import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +21,13 @@ class InvoiceHeaderScreen extends StatefulWidget {
   State<InvoiceHeaderScreen> createState() => _InvoiceHeaderScreenState();
 }
 
+final _invoiceHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
   @override
   void initState() {
+    _invoiceHeaderSearchCtrl.clear();
     context.read<InvoiceHeaderBloc>().add(const ClearInvoiceHeader());
     context.read<InvoiceHeaderBloc>().add(InvoiceHeaderSuccessEvent(
         invheaderin: InvoiceHeaderInparas(
@@ -36,7 +41,8 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             paymentType: '',
             route: '',
             subArea: '',
-            userId: widget.user.usrId)));
+            userId: widget.user.usrId),
+        searchQuery: ''));
     super.initState();
   }
 
@@ -72,172 +78,214 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
           ),
         ],
       ),
-      body: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
-        builder: (context, state) {
-          return state.when(
-            invoiceHeaderSuccessState: (invheader) => invheader == null
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => ShimmerContainers(
-                            height: 60.h, width: double.infinity),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
+      body: Column(
+        children: [
+          Visibility(
+            visible: widget.isfromUser,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        color: const Color(0xfffee8e0),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'A025206 - ',
+                              style: kfontstyle(
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                        itemCount: 10),
-                  )
-                : Column(
-                    children: [
-                      Visibility(
-                        visible: widget.isfromUser,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 10,
-                                decoration: BoxDecoration(
-                                    color: const Color(0xfffee8e0),
-                                    borderRadius: BorderRadius.circular(20)),
+                            Expanded(
+                              child: Text(
+                                overflow: TextOverflow.ellipsis,
+                                'Tromp, Muller and Mitchell',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff413434)),
                               ),
-                              SizedBox(
-                                width: 10.w,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '199525 - ',
+                              style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff413434)),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Carrefour Hypermarket',
+                                overflow: TextOverflow.ellipsis,
+                                style: kfontstyle(fontSize: 12.sp),
                               ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'A025206 - ',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            overflow: TextOverflow.ellipsis,
-                                            'Tromp, Muller and Mitchell',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff413434)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '199525 - ',
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              color: const Color(0xff413434)),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Carrefour Hypermarket',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: kfontstyle(fontSize: 12.sp),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      'Virtual | Supermarket | Dubai ',
-                                      style: kfontstyle(
-                                          fontSize: 10.sp, color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Virtual | Supermarket | Dubai ',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey.shade200),
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: const [
+                      BoxShadow(
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
+                          blurRadius: 0.4,
+                          spreadRadius: 0.4)
+                    ]),
+                child: TextFormField(
+                  controller: _invoiceHeaderSearchCtrl,
+
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<InvoiceHeaderBloc>().add(
+                            InvoiceHeaderSuccessEvent(
+                                invheaderin: InvoiceHeaderInparas(
+                                    area: '',
+                                    customer: '',
+                                    customerOutlet: '',
+                                    fromDate: '01-01-2023',
+                                    invoiceType: '',
+                                    invoiceWith: '',
+                                    paymentType: '',
+                                    route: '',
+                                    subArea: '',
+                                    toDate: '06-04-2024',
+                                    userId: widget.user.usrId),
+                                searchQuery: value.trim()));
+                      },
+                    );
+                  },
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        size: 20,
+                      ),
+                      hintText: "Search Invoices",
+                      hintStyle: kfontstyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
+                      isDense: true,
+                      counterText: "",
+                      contentPadding: const EdgeInsets.all(15.0),
+                      filled: true,
+                      fillColor: Colors.white,
+                      suffix: InkWell(
+                        onTap: () {
+                          _invoiceHeaderSearchCtrl.clear();
+                          context.read<InvoiceHeaderBloc>().add(
+                              InvoiceHeaderSuccessEvent(
+                                  invheaderin: InvoiceHeaderInparas(
+                                      area: '',
+                                      customer: '',
+                                      customerOutlet: '',
+                                      fromDate: '01-01-2023',
+                                      toDate: '25-03-2024',
+                                      invoiceType: '',
+                                      invoiceWith: '',
+                                      paymentType: '',
+                                      route: '',
+                                      subArea: '',
+                                      userId: widget.user.usrId),
+                                  searchQuery: ''));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        child: Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.grey.shade200),
-                                borderRadius: BorderRadius.circular(10.0),
-                                boxShadow: const [
-                                  BoxShadow(
-                                      // ignore: use_full_hex_values_for_flutter_colors
-                                      color: Color(0xff00000050),
-                                      blurRadius: 0.4,
-                                      spreadRadius: 0.4)
-                                ]),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  prefixIcon: const Icon(
-                                    Icons.search,
-                                    size: 20,
-                                  ),
-                                  hintText: "Search Invoices",
-                                  hintStyle: kfontstyle(
-                                      fontSize: 14,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.normal),
-                                  isDense: true,
-                                  counterText: "",
-                                  contentPadding: const EdgeInsets.all(15.0),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      borderSide: BorderSide.none)),
-                              textAlign: TextAlign.start,
-                              maxLines: 1,
-                              maxLength: 20,
-                              // controller: _locationNameTextController,
-                            )),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide.none)),
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  maxLength: 20,
+                  // controller: _locationNameTextController,
+                )),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: Text(
+                  "All invoices",
+                  style: countHeading(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                child: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
+                  builder: (context, state) {
+                    return state.when(
+                      invoiceHeaderSuccessState: (invheader) =>
+                          invheader == null
+                              ? const SizedBox()
+                              : Text(
+                                  // "80",
+                                  invheader.length.toString(),
+                                  style: countHeading(),
+                                ),
+                      invoiceHeaderFailedState: () => Center(
+                        child: Text(
+                          'No Data Available',
+                          style: kfontstyle(),
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //SizedBox(width: 05,),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 10),
-                            child: Text(
-                              "All invoices",
-                              style: countHeading(),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 10),
-                            child: Text(
-                              // "80",
-                              invheader.length.toString(),
-                              style: countHeading(),
-                            ),
-                          ),
-                          // SizedBox(width: ,),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Expanded(
-                          child: InvoiceHeaderListWidget(
-                        isfromUser: widget.isfromUser,
-                      ))
-                    ],
-                  ),
-            invoiceHeaderFailedState: () => const SizedBox(),
-          );
-        },
+                    );
+                  },
+                ),
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Expanded(
+              child: InvoiceHeaderListWidget(
+            isfromUser: widget.isfromUser,
+          ))
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(boxShadow: [

@@ -20,8 +20,22 @@ class SpecialPriceHeaderBloc
     on<GetSpecialPriceHeaderEvent>((event, emit) async {
       Either<MainFailures, List<SpecialPriceHeaderOutparas>> pricelist =
           await spPriceRepo.getSpecialPrice(event.spPriceInparas);
-      emit(pricelist.fold((l) => const SpeciaPriceHeaderFailedState(),
-          (r) => GetSspecialPriceHeaderState(spPrice: r)));
+      List<SpecialPriceHeaderOutparas> searcheditems = [];
+      emit(pricelist.fold((l) => const SpeciaPriceHeaderFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prhCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prhName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetSspecialPriceHeaderState(
+            spPrice: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearSpecialPriceEvent>((event, emit) =>
         emit(const GetSspecialPriceHeaderState(spPrice: null)));

@@ -48,6 +48,7 @@ class ArCollectionRepo implements IArCollectionRepo {
       final response = await http.post(Uri.parse(baseUrl + arHeaderUrl),
           body: arin.toJson());
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> arheaderdata = json['result'];

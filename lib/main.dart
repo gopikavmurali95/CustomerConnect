@@ -41,6 +41,7 @@ import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
@@ -150,6 +151,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<SpecialPriceHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SpecialPriceCustomersBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<CusInsInvoiceHeaderBloc>(),

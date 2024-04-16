@@ -20,8 +20,24 @@ class TotalOrdersHeaderBloc
     on<GetTotalOrdersEvent>((event, emit) async {
       Either<MainFailures, List<TotalOrdersModel>> ordersheader =
           await totalorder.getTotalOrders(event.ordersin);
-      emit(ordersheader.fold((l) => const TotalOrdersFailedState(),
-          (r) => GetTotalOrderState(totalorders: r)));
+      List<TotalOrdersModel> searcheditems = [];
+      emit(ordersheader.fold((l) => const TotalOrdersFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.orderId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        // return GetloadingHeaderState(
+        //     loadingheaders: event.searchQuery.isEmpty ? r : searcheditems);
+        return GetTotalOrderState(
+            totalorders: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
   }
 }

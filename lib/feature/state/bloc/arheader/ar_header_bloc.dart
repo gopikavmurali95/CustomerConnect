@@ -23,11 +23,28 @@ class ArHeaderBloc extends Bloc<ArHeaderEvent, ArHeaderState> {
       Either<MainFailures, List<ArHeaderModel>> arheader =
           await arCollectionRepo.getARHeaders(event.arIn);
 
-      emit(arheader.fold(
-          (l) => const ArHeaderFailedState(),
-          (hr) => ArHeaderSuccessState(
-              artotal: totalcollection.fold((l) => null, (r) => r),
-              arHeaders: hr)));
+      List<ArHeaderModel> searcheditems = [];
+
+      emit(arheader.fold((l) => const ArHeaderFailedState(), (hr) {
+        searcheditems = hr
+            .where((element) =>
+                element.arhArNumber!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cshCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return ArHeaderSuccessState(
+            artotal: totalcollection.fold((l) => null, (r) => r),
+            arHeaders: event.searchQuery.isEmpty ? hr : searcheditems);
+      }
+          //  => ArHeaderSuccessState(
+          //     artotal: totalcollection.fold((l) => null, (r) => r),
+          //     arHeaders: hr)
+          ));
     });
 
     on<ClearArHeaderEvent>((event, emit) {
