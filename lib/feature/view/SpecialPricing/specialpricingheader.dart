@@ -102,6 +102,28 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                         Icons.search,
                         size: 20,
                       ),
+                      suffix: InkWell(
+                        onTap: () {
+                          _spPriceSearchCtrl.clear();
+                          context.read<SpecialPriceHeaderBloc>().add(
+                              GetSpecialPriceHeaderEvent(
+                                  spPriceInparas: SpecialPriceHeaderModel(
+                                      area: '',
+                                      customer: '',
+                                      fromDate: '01-01-2023',
+                                      mode: '',
+                                      outlet: '',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '01-05-2024',
+                                      userId: widget.user.usrId),
+                                  searchQuery: ''));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       hintText: "Search promotions",
                       hintStyle: const TextStyle(
                           fontSize: 14,

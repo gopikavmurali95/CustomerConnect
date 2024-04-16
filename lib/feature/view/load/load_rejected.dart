@@ -31,7 +31,7 @@ class _LoadRejectedState extends State<LoadRejected> {
             userId: widget.user.usrId,
             fromDate: '01-01-2023',
             toDate: '25-03-2024',
-            mode: 'LD',
+            mode: 'R',
             area: '',
             route: '',
             subArea: '')));
@@ -140,7 +140,7 @@ class _LoadRejectedState extends State<LoadRejected> {
                                       userId: widget.user.usrId,
                                       fromDate: '01-01-2023',
                                       toDate: '23-03-2024',
-                                      mode: 'DD',
+                                      mode: 'R',
                                       area: '',
                                       route: '',
                                       subArea: ''),

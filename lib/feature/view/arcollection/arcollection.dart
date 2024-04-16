@@ -32,6 +32,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
 
   @override
   void initState() {
+    pievalues.clear();
     _arHeaderSearchCtrl.clear();
     super.initState();
     context.read<ArScrollCtrlCubit>().onInit();
@@ -118,6 +119,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                         listener: (context, state) {
                           state.when(
                             arHeaderSuccessState: (artotal, arHeaders) {
+                              pievalues.clear();
                               if (artotal != null) {
                                 if (int.parse(artotal.hcCount ?? '') > 0) {
                                   pievalues

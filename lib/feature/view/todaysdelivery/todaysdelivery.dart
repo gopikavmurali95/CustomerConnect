@@ -160,9 +160,25 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "20",
-                  style: countHeading(),
+                child: BlocBuilder<TodaysDeliveryHeaderBloc,
+                    TodaysDeliveryHeaderState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getTodaysDeliveryState: (count) => count != null
+                          ? Text(
+                              "${count.length}",
+                              style: countHeading(),
+                            )
+                          : Text(
+                              "0",
+                              style: countHeading(),
+                            ),
+                      todaysDeliveryFailedState: () => Text(
+                        "0",
+                        style: countHeading(),
+                      ),
+                    );
+                  },
                 ),
               ),
               // SizedBox(width: ,),

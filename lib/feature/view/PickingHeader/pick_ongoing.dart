@@ -106,7 +106,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                                     area: '',
                                     customer: '',
                                     fromDate: '01-01-2023',
-                                    mode: '',
+                                    mode: 'O',
                                     outlet: '',
                                     route: '',
                                     subArea: '',
@@ -141,7 +141,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                                       area: '',
                                       customer: '',
                                       fromDate: '01-01-2023',
-                                      mode: 'N',
+                                      mode: 'O',
                                       outlet: '',
                                       route: '',
                                       subArea: '',
@@ -182,9 +182,24 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
+                  child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
+                    builder: (context, state) {
+                      return state.when(
+                        getPickingHeaderState: (count) => count != null
+                            ? Text(
+                                "${count.length}",
+                                style: countHeading(),
+                              )
+                            : Text(
+                                "0",
+                                style: countHeading(),
+                              ),
+                        pickingheaderFailedState: () => Text(
+                          "0",
+                          style: countHeading(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 // SizedBox(width: ,),
