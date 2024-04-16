@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,13 +22,13 @@ class LoadDetailPending extends StatefulWidget {
   State<LoadDetailPending> createState() => _LoadDetailPendingState();
 }
 
-final _loadPendingdetailsSearchCtrl = TextEditingController();
+final _loadPendingSearchCtrl = TextEditingController();
 Timer? debounce;
 
 class _LoadDetailPendingState extends State<LoadDetailPending> {
   @override
   void initState() {
-    _loadPendingdetailsSearchCtrl.clear();
+    _loadPendingSearchCtrl.clear();
     context.read<LoadingDetailBloc>().add(const ClearLoadingDetailEvent());
     context.read<LoadingDetailBloc>().add(GetloadingDetailEvent(
         iD: widget.loadingheader.id ?? '', searchQuery: ''));
@@ -95,18 +93,18 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                               spreadRadius: 0.4)
                         ]),
                     child: TextFormField(
-                      controller: _loadPendingdetailsSearchCtrl,
+                      controller: _loadPendingSearchCtrl,
                       onChanged: (value) {
                         if (debounce?.isActive ?? false) debounce!.cancel();
                         debounce = Timer(
                           const Duration(
-                            milliseconds: 500,
+                            milliseconds: 200,
                           ),
                           () async {
                             context.read<LoadingDetailBloc>().add(
                                 GetloadingDetailEvent(
-                                    iD: widget.loadingheader.id!,
-                                    searchQuery: value.trim()));
+                                    iD: widget.loadingheader.id ?? '',
+                                    searchQuery: value));
                           },
                         );
                       },
@@ -114,6 +112,28 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
+                          ),
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 5.h),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    _loadPendingSearchCtrl.clear();
+                                    context.read<LoadingDetailBloc>().add(
+                                          GetloadingDetailEvent(
+                                              iD: widget.loadingheader.id ?? '',
+                                              searchQuery: ''),
+                                        );
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 13.sp,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           hintText: "Search Items",
                           hintStyle: const TextStyle(
@@ -125,26 +145,26 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
-                          suffix: InkWell(
-                            onTap: () {
-                              _loadPendingdetailsSearchCtrl.clear();
-                              context.read<LoadingHeaderBloc>().add(
-                                  GetLoadingHeaderEvent(
-                                      searchQuery: '',
-                                      loadingin: LoadingHeaderInModel(
-                                          userId: widget.user.usrId,
-                                          fromDate: '01-01-2023',
-                                          toDate: '23-03-2024',
-                                          mode: 'DD',
-                                          area: '',
-                                          route: '',
-                                          subArea: '')));
-                            },
-                            child: const Icon(
-                              Icons.close,
-                              size: 14,
-                            ),
-                          ),
+                          // suffix: InkWell(
+                          //   onTap: () {
+                          //     _loadPendingdetailsSearchCtrl.clear();
+                          //     context.read<LoadingHeaderBloc>().add(
+                          //         GetLoadingHeaderEvent(
+                          //             searchQuery: '',
+                          //             loadingin: LoadingHeaderInModel(
+                          //                 userId: widget.user.usrId,
+                          //                 fromDate: '01-01-2023',
+                          //                 toDate: '23-03-2024',
+                          //                 mode: 'DD',
+                          //                 area: '',
+                          //                 route: '',
+                          //                 subArea: '')));
+                          //   },
+                          //   child: const Icon(
+                          //     Icons.close,
+                          //     size: 14,
+                          //   ),
+                          // ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),
@@ -175,8 +195,11 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                         itemCount: 10),
                   )
                 : detail.isEmpty
-                    ? const Center(
-                        child: Text('No Data Found'),
+                    ? Center(
+                        child: Text(
+                          'No Data Found',
+                          style: kfontstyle(),
+                        ),
                       )
                     : SingleChildScrollView(
                         child: Column(

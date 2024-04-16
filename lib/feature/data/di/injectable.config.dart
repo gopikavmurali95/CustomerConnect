@@ -109,9 +109,9 @@ import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoi
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart'
     as _i34;
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart'
-    as _i36;
-import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
     as _i35;
+import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
+    as _i36;
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i37;
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart'

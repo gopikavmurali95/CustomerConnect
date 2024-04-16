@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusPromotionsHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusPromoInModel cusIn) getCusPromoHeaderEvent,
+    required TResult Function(CusPromoInModel cusIn, String searchQuery)
+        getCusPromoHeaderEvent,
     required TResult Function() clearCusPromoEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult? Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult? Function()? clearCusPromoEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult Function()? clearCusPromoEvent,
     required TResult orElse(),
   }) =>
@@ -83,7 +86,7 @@ abstract class _$$GetCusPromoHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetCusPromoHeaderEventImpl) then) =
       __$$GetCusPromoHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CusPromoInModel cusIn});
+  $Res call({CusPromoInModel cusIn, String searchQuery});
 }
 
 /// @nodoc
@@ -100,12 +103,17 @@ class __$$GetCusPromoHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cusIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusPromoHeaderEventImpl(
       cusIn: null == cusIn
           ? _value.cusIn
           : cusIn // ignore: cast_nullable_to_non_nullable
               as CusPromoInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -113,14 +121,17 @@ class __$$GetCusPromoHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusPromoHeaderEventImpl implements GetCusPromoHeaderEvent {
-  const _$GetCusPromoHeaderEventImpl({required this.cusIn});
+  const _$GetCusPromoHeaderEventImpl(
+      {required this.cusIn, required this.searchQuery});
 
   @override
   final CusPromoInModel cusIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusPromotionsHeaderEvent.getCusPromoHeaderEvent(cusIn: $cusIn)';
+    return 'CusPromotionsHeaderEvent.getCusPromoHeaderEvent(cusIn: $cusIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -128,11 +139,13 @@ class _$GetCusPromoHeaderEventImpl implements GetCusPromoHeaderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusPromoHeaderEventImpl &&
-            (identical(other.cusIn, cusIn) || other.cusIn == cusIn));
+            (identical(other.cusIn, cusIn) || other.cusIn == cusIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cusIn);
+  int get hashCode => Object.hash(runtimeType, cusIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -144,30 +157,33 @@ class _$GetCusPromoHeaderEventImpl implements GetCusPromoHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusPromoInModel cusIn) getCusPromoHeaderEvent,
+    required TResult Function(CusPromoInModel cusIn, String searchQuery)
+        getCusPromoHeaderEvent,
     required TResult Function() clearCusPromoEvent,
   }) {
-    return getCusPromoHeaderEvent(cusIn);
+    return getCusPromoHeaderEvent(cusIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult? Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult? Function()? clearCusPromoEvent,
   }) {
-    return getCusPromoHeaderEvent?.call(cusIn);
+    return getCusPromoHeaderEvent?.call(cusIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult Function()? clearCusPromoEvent,
     required TResult orElse(),
   }) {
     if (getCusPromoHeaderEvent != null) {
-      return getCusPromoHeaderEvent(cusIn);
+      return getCusPromoHeaderEvent(cusIn, searchQuery);
     }
     return orElse();
   }
@@ -206,10 +222,12 @@ class _$GetCusPromoHeaderEventImpl implements GetCusPromoHeaderEvent {
 }
 
 abstract class GetCusPromoHeaderEvent implements CusPromotionsHeaderEvent {
-  const factory GetCusPromoHeaderEvent({required final CusPromoInModel cusIn}) =
-      _$GetCusPromoHeaderEventImpl;
+  const factory GetCusPromoHeaderEvent(
+      {required final CusPromoInModel cusIn,
+      required final String searchQuery}) = _$GetCusPromoHeaderEventImpl;
 
   CusPromoInModel get cusIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusPromoHeaderEventImplCopyWith<_$GetCusPromoHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -254,7 +272,8 @@ class _$ClearCusPromoEventImpl implements ClearCusPromoEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusPromoInModel cusIn) getCusPromoHeaderEvent,
+    required TResult Function(CusPromoInModel cusIn, String searchQuery)
+        getCusPromoHeaderEvent,
     required TResult Function() clearCusPromoEvent,
   }) {
     return clearCusPromoEvent();
@@ -263,7 +282,8 @@ class _$ClearCusPromoEventImpl implements ClearCusPromoEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult? Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult? Function()? clearCusPromoEvent,
   }) {
     return clearCusPromoEvent?.call();
@@ -272,7 +292,8 @@ class _$ClearCusPromoEventImpl implements ClearCusPromoEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusPromoInModel cusIn)? getCusPromoHeaderEvent,
+    TResult Function(CusPromoInModel cusIn, String searchQuery)?
+        getCusPromoHeaderEvent,
     TResult Function()? clearCusPromoEvent,
     required TResult orElse(),
   }) {

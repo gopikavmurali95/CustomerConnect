@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -25,12 +27,17 @@ class SalesrdersScreen extends StatefulWidget {
   State<SalesrdersScreen> createState() => _SalesrdersScreenState();
 }
 
+final _salesOrdersCtrl = TextEditingController();
+Timer? debounce;
+
 class _SalesrdersScreenState extends State<SalesrdersScreen> {
   @override
   void initState() {
+    _salesOrdersCtrl.clear();
     context.read<CusSalesOrdersBloc>().add(const ClearsalesOrdersEvent());
     context.read<CusSalesOrdersBloc>().add(
           GetSalesOrdersEvent(
+            searchQuery: '',
             salesIn: SalesOrdersInModel(
                 userId: widget.user.usrId,
                 cusId: /* widget.customer.cusId */ '1',
@@ -164,11 +171,68 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                           blurRadius: 0.4,
                           spreadRadius: 0.4)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _salesOrdersCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 200,
+                      ),
+                      () async {
+                        context.read<CusSalesOrdersBloc>().add(
+                              GetSalesOrdersEvent(
+                                searchQuery: value.trim(),
+                                salesIn: SalesOrdersInModel(
+                                    userId: widget.user.usrId,
+                                    cusId: /* widget.customer.cusId */ '1',
+                                    area: '',
+                                    fromDate: widget.fromdatecontroller.text,
+                                    toDate: widget.todatecontroller.text,
+                                    route: '',
+                                    subArea: ''),
+                              ),
+                            );
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
                         size: 20,
+                      ),
+                      suffix: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 5.h),
+                          Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                _salesOrdersCtrl.clear();
+                                context.read<CusSalesOrdersBloc>().add(
+                                      GetSalesOrdersEvent(
+                                        searchQuery: '',
+                                        salesIn: SalesOrdersInModel(
+                                            userId: widget.user.usrId,
+                                            cusId: /* widget.customer.cusId */
+                                                '1',
+                                            area: '',
+                                            fromDate:
+                                                widget.fromdatecontroller.text,
+                                            toDate:
+                                                widget.todatecontroller.text,
+                                            route: '',
+                                            subArea: ''),
+                                      ),
+                                    );
+                              },
+                              icon: Icon(
+                                Icons.close,
+                                size: 13.sp,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       hintText: "Search Orders",
                       hintStyle: kfontstyle(

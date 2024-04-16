@@ -51,6 +51,7 @@ import 'package:customer_connect/feature/state/bloc/total_orders_header/total_or
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
@@ -235,6 +236,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<SpecialPriceDetailsBloc>(),
+        ),
+        BlocProvider<CustomerSearchLoadingCubit>(
+          create: (context) => CustomerSearchLoadingCubit(),
         ),
       ],
       child: ScreenUtilInit(

@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusInsArHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsArHeaderInModel arIn)
+    required TResult Function(CusInsArHeaderInModel arIn, String searchQuery)
         getCusInsArHeaderEvent,
     required TResult Function() clearCusInsArHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult? Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult? Function()? clearCusInsArHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult Function()? clearCusInsArHeader,
     required TResult orElse(),
   }) =>
@@ -83,7 +85,7 @@ abstract class _$$GetCusInsArHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetCusInsArHeaderEventImpl) then) =
       __$$GetCusInsArHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CusInsArHeaderInModel arIn});
+  $Res call({CusInsArHeaderInModel arIn, String searchQuery});
 }
 
 /// @nodoc
@@ -100,12 +102,17 @@ class __$$GetCusInsArHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? arIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusInsArHeaderEventImpl(
       arIn: null == arIn
           ? _value.arIn
           : arIn // ignore: cast_nullable_to_non_nullable
               as CusInsArHeaderInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -113,14 +120,17 @@ class __$$GetCusInsArHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusInsArHeaderEventImpl implements GetCusInsArHeaderEvent {
-  const _$GetCusInsArHeaderEventImpl({required this.arIn});
+  const _$GetCusInsArHeaderEventImpl(
+      {required this.arIn, required this.searchQuery});
 
   @override
   final CusInsArHeaderInModel arIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusInsArHeaderEvent.getCusInsArHeaderEvent(arIn: $arIn)';
+    return 'CusInsArHeaderEvent.getCusInsArHeaderEvent(arIn: $arIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -128,11 +138,13 @@ class _$GetCusInsArHeaderEventImpl implements GetCusInsArHeaderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusInsArHeaderEventImpl &&
-            (identical(other.arIn, arIn) || other.arIn == arIn));
+            (identical(other.arIn, arIn) || other.arIn == arIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, arIn);
+  int get hashCode => Object.hash(runtimeType, arIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -144,31 +156,33 @@ class _$GetCusInsArHeaderEventImpl implements GetCusInsArHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsArHeaderInModel arIn)
+    required TResult Function(CusInsArHeaderInModel arIn, String searchQuery)
         getCusInsArHeaderEvent,
     required TResult Function() clearCusInsArHeader,
   }) {
-    return getCusInsArHeaderEvent(arIn);
+    return getCusInsArHeaderEvent(arIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult? Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult? Function()? clearCusInsArHeader,
   }) {
-    return getCusInsArHeaderEvent?.call(arIn);
+    return getCusInsArHeaderEvent?.call(arIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult Function()? clearCusInsArHeader,
     required TResult orElse(),
   }) {
     if (getCusInsArHeaderEvent != null) {
-      return getCusInsArHeaderEvent(arIn);
+      return getCusInsArHeaderEvent(arIn, searchQuery);
     }
     return orElse();
   }
@@ -208,10 +222,11 @@ class _$GetCusInsArHeaderEventImpl implements GetCusInsArHeaderEvent {
 
 abstract class GetCusInsArHeaderEvent implements CusInsArHeaderEvent {
   const factory GetCusInsArHeaderEvent(
-          {required final CusInsArHeaderInModel arIn}) =
-      _$GetCusInsArHeaderEventImpl;
+      {required final CusInsArHeaderInModel arIn,
+      required final String searchQuery}) = _$GetCusInsArHeaderEventImpl;
 
   CusInsArHeaderInModel get arIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusInsArHeaderEventImplCopyWith<_$GetCusInsArHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -256,7 +271,7 @@ class _$ClearCusInsArHeaderImpl implements ClearCusInsArHeader {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusInsArHeaderInModel arIn)
+    required TResult Function(CusInsArHeaderInModel arIn, String searchQuery)
         getCusInsArHeaderEvent,
     required TResult Function() clearCusInsArHeader,
   }) {
@@ -266,7 +281,8 @@ class _$ClearCusInsArHeaderImpl implements ClearCusInsArHeader {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult? Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult? Function()? clearCusInsArHeader,
   }) {
     return clearCusInsArHeader?.call();
@@ -275,7 +291,8 @@ class _$ClearCusInsArHeaderImpl implements ClearCusInsArHeader {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusInsArHeaderInModel arIn)? getCusInsArHeaderEvent,
+    TResult Function(CusInsArHeaderInModel arIn, String searchQuery)?
+        getCusInsArHeaderEvent,
     TResult Function()? clearCusInsArHeader,
     required TResult orElse(),
   }) {

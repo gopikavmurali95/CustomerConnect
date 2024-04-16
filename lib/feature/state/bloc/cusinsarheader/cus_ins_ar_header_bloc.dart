@@ -18,15 +18,29 @@ class CusInsArHeaderBloc
   final ICusInsArRepo arRepo;
   CusInsArHeaderBloc(this.arRepo) : super(CusInsArHeaderState.initial()) {
     on<GetCusInsArHeaderEvent>((event, emit) async {
+      List<CusInsArHEaderModel> searcheditems = [];
       Either<MainFailures, List<CusInsArHEaderModel>> headers =
           await arRepo.getARHeaders(event.arIn);
       Either<MainFailures, ArTotalCollectionModel> totals =
           await arRepo.getArTotal(event.arIn);
 
-      emit(headers.fold(
+      emit(
+        headers.fold(
           (l) => const GetArHeadersFailedState(),
-          (r) => GetArHeadersState(
-              headers: r, artotals: totals.fold((l) => null, (r) => r))));
+          (r) {
+            searcheditems = r
+                .where((element) => element.arhArNumber!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetArHeadersState(
+              headers: event.searchQuery.isEmpty ? r : searcheditems,
+              artotals: totals.fold((l) => null, (r) => r),
+            );
+          },
+        ),
+      );
     });
     on<ClearCusInsArHeader>((event, emit) {
       emit(const GetArHeadersState(headers: null, artotals: null));

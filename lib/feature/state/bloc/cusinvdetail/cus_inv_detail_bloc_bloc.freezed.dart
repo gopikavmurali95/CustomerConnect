@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusInvDetailBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invId) getCusInvDetailsEvent,
+    required TResult Function(String invId, String searchQuery)
+        getCusInvDetailsEvent,
     required TResult Function() clearinvDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invId)? getCusInvDetailsEvent,
+    TResult? Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult? Function()? clearinvDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invId)? getCusInvDetailsEvent,
+    TResult Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult Function()? clearinvDetails,
     required TResult orElse(),
   }) =>
@@ -83,7 +84,7 @@ abstract class _$$GetCusInvDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetCusInvDetailsEventImpl) then) =
       __$$GetCusInvDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String invId});
+  $Res call({String invId, String searchQuery});
 }
 
 /// @nodoc
@@ -99,11 +100,16 @@ class __$$GetCusInvDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? invId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusInvDetailsEventImpl(
       invId: null == invId
           ? _value.invId
           : invId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -112,14 +118,17 @@ class __$$GetCusInvDetailsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusInvDetailsEventImpl implements GetCusInvDetailsEvent {
-  const _$GetCusInvDetailsEventImpl({required this.invId});
+  const _$GetCusInvDetailsEventImpl(
+      {required this.invId, required this.searchQuery});
 
   @override
   final String invId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusInvDetailBlocEvent.getCusInvDetailsEvent(invId: $invId)';
+    return 'CusInvDetailBlocEvent.getCusInvDetailsEvent(invId: $invId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -127,11 +136,13 @@ class _$GetCusInvDetailsEventImpl implements GetCusInvDetailsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusInvDetailsEventImpl &&
-            (identical(other.invId, invId) || other.invId == invId));
+            (identical(other.invId, invId) || other.invId == invId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invId);
+  int get hashCode => Object.hash(runtimeType, invId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -143,30 +154,31 @@ class _$GetCusInvDetailsEventImpl implements GetCusInvDetailsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invId) getCusInvDetailsEvent,
+    required TResult Function(String invId, String searchQuery)
+        getCusInvDetailsEvent,
     required TResult Function() clearinvDetails,
   }) {
-    return getCusInvDetailsEvent(invId);
+    return getCusInvDetailsEvent(invId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invId)? getCusInvDetailsEvent,
+    TResult? Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult? Function()? clearinvDetails,
   }) {
-    return getCusInvDetailsEvent?.call(invId);
+    return getCusInvDetailsEvent?.call(invId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invId)? getCusInvDetailsEvent,
+    TResult Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult Function()? clearinvDetails,
     required TResult orElse(),
   }) {
     if (getCusInvDetailsEvent != null) {
-      return getCusInvDetailsEvent(invId);
+      return getCusInvDetailsEvent(invId, searchQuery);
     }
     return orElse();
   }
@@ -205,10 +217,12 @@ class _$GetCusInvDetailsEventImpl implements GetCusInvDetailsEvent {
 }
 
 abstract class GetCusInvDetailsEvent implements CusInvDetailBlocEvent {
-  const factory GetCusInvDetailsEvent({required final String invId}) =
-      _$GetCusInvDetailsEventImpl;
+  const factory GetCusInvDetailsEvent(
+      {required final String invId,
+      required final String searchQuery}) = _$GetCusInvDetailsEventImpl;
 
   String get invId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusInvDetailsEventImplCopyWith<_$GetCusInvDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -252,7 +266,8 @@ class _$ClearinvDetailsImpl implements ClearinvDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invId) getCusInvDetailsEvent,
+    required TResult Function(String invId, String searchQuery)
+        getCusInvDetailsEvent,
     required TResult Function() clearinvDetails,
   }) {
     return clearinvDetails();
@@ -261,7 +276,7 @@ class _$ClearinvDetailsImpl implements ClearinvDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invId)? getCusInvDetailsEvent,
+    TResult? Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult? Function()? clearinvDetails,
   }) {
     return clearinvDetails?.call();
@@ -270,7 +285,7 @@ class _$ClearinvDetailsImpl implements ClearinvDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invId)? getCusInvDetailsEvent,
+    TResult Function(String invId, String searchQuery)? getCusInvDetailsEvent,
     TResult Function()? clearinvDetails,
     required TResult orElse(),
   }) {

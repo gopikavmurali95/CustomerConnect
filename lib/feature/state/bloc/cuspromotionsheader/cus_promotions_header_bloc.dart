@@ -18,13 +18,28 @@ class CusPromotionsHeaderBloc
   CusPromotionsHeaderBloc(this.protionRepo)
       : super(CusPromotionsHeaderState.initial()) {
     on<GetCusPromoHeaderEvent>((event, emit) async {
+      List<CusPromotionHeader> searcheditems = [];
       Either<MainFailures, List<CusPromotionHeader>> headers =
           await protionRepo.getCusPromotionHeaders(event.cusIn);
 
       emit(
         headers.fold(
           (l) => const CusPromotionHeaderFailedState(),
-          (r) => GetCusPromotionsHeaderState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.pCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.pName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetCusPromotionsHeaderState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

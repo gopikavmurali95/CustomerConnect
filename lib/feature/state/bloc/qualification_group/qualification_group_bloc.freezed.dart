@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QualificationGroupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String mode) getGroupWiseDataEvent,
+    required TResult Function(String id, String mode, String searchQuery)
+        getGroupWiseDataEvent,
     required TResult Function() clearGroupData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult? Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult? Function()? clearGroupData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult Function()? clearGroupData,
     required TResult orElse(),
   }) =>
@@ -83,7 +86,7 @@ abstract class _$$GetGroupWiseDataEventImplCopyWith<$Res> {
           $Res Function(_$GetGroupWiseDataEventImpl) then) =
       __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, String mode});
+  $Res call({String id, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -100,6 +103,7 @@ class __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetGroupWiseDataEventImpl(
       id: null == id
@@ -110,6 +114,10 @@ class __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -117,16 +125,19 @@ class __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
-  const _$GetGroupWiseDataEventImpl({required this.id, required this.mode});
+  const _$GetGroupWiseDataEventImpl(
+      {required this.id, required this.mode, required this.searchQuery});
 
   @override
   final String id;
   @override
   final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'QualificationGroupEvent.getGroupWiseDataEvent(id: $id, mode: $mode)';
+    return 'QualificationGroupEvent.getGroupWiseDataEvent(id: $id, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -135,11 +146,13 @@ class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetGroupWiseDataEventImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.mode, mode) || other.mode == mode));
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, mode);
+  int get hashCode => Object.hash(runtimeType, id, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +164,33 @@ class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String mode) getGroupWiseDataEvent,
+    required TResult Function(String id, String mode, String searchQuery)
+        getGroupWiseDataEvent,
     required TResult Function() clearGroupData,
   }) {
-    return getGroupWiseDataEvent(id, mode);
+    return getGroupWiseDataEvent(id, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult? Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult? Function()? clearGroupData,
   }) {
-    return getGroupWiseDataEvent?.call(id, mode);
+    return getGroupWiseDataEvent?.call(id, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult Function()? clearGroupData,
     required TResult orElse(),
   }) {
     if (getGroupWiseDataEvent != null) {
-      return getGroupWiseDataEvent(id, mode);
+      return getGroupWiseDataEvent(id, mode, searchQuery);
     }
     return orElse();
   }
@@ -215,10 +231,12 @@ class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
 abstract class GetGroupWiseDataEvent implements QualificationGroupEvent {
   const factory GetGroupWiseDataEvent(
       {required final String id,
-      required final String mode}) = _$GetGroupWiseDataEventImpl;
+      required final String mode,
+      required final String searchQuery}) = _$GetGroupWiseDataEventImpl;
 
   String get id;
   String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetGroupWiseDataEventImplCopyWith<_$GetGroupWiseDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -262,7 +280,8 @@ class _$ClearGroupDataImpl implements ClearGroupData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, String mode) getGroupWiseDataEvent,
+    required TResult Function(String id, String mode, String searchQuery)
+        getGroupWiseDataEvent,
     required TResult Function() clearGroupData,
   }) {
     return clearGroupData();
@@ -271,7 +290,8 @@ class _$ClearGroupDataImpl implements ClearGroupData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult? Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult? Function()? clearGroupData,
   }) {
     return clearGroupData?.call();
@@ -280,7 +300,8 @@ class _$ClearGroupDataImpl implements ClearGroupData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String mode)? getGroupWiseDataEvent,
+    TResult Function(String id, String mode, String searchQuery)?
+        getGroupWiseDataEvent,
     TResult Function()? clearGroupData,
     required TResult orElse(),
   }) {

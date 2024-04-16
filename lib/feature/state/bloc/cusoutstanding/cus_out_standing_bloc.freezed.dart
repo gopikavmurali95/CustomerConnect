@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusOutStandingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusOutStandingInModel outIn)
+    required TResult Function(CusOutStandingInModel outIn, String searchQuery)
         getCusOutstandingEvent,
     required TResult Function() clearCusOutStandingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult? Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult? Function()? clearCusOutStandingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult Function()? clearCusOutStandingEvent,
     required TResult orElse(),
   }) =>
@@ -84,7 +86,7 @@ abstract class _$$GetCusOutstandingEventImplCopyWith<$Res> {
           $Res Function(_$GetCusOutstandingEventImpl) then) =
       __$$GetCusOutstandingEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CusOutStandingInModel outIn});
+  $Res call({CusOutStandingInModel outIn, String searchQuery});
 }
 
 /// @nodoc
@@ -101,12 +103,17 @@ class __$$GetCusOutstandingEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? outIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCusOutstandingEventImpl(
       outIn: null == outIn
           ? _value.outIn
           : outIn // ignore: cast_nullable_to_non_nullable
               as CusOutStandingInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -114,14 +121,17 @@ class __$$GetCusOutstandingEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusOutstandingEventImpl implements GetCusOutstandingEvent {
-  const _$GetCusOutstandingEventImpl({required this.outIn});
+  const _$GetCusOutstandingEventImpl(
+      {required this.outIn, required this.searchQuery});
 
   @override
   final CusOutStandingInModel outIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CusOutStandingEvent.getCusOutstandingEvent(outIn: $outIn)';
+    return 'CusOutStandingEvent.getCusOutstandingEvent(outIn: $outIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -129,11 +139,13 @@ class _$GetCusOutstandingEventImpl implements GetCusOutstandingEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusOutstandingEventImpl &&
-            (identical(other.outIn, outIn) || other.outIn == outIn));
+            (identical(other.outIn, outIn) || other.outIn == outIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, outIn);
+  int get hashCode => Object.hash(runtimeType, outIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -145,31 +157,33 @@ class _$GetCusOutstandingEventImpl implements GetCusOutstandingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusOutStandingInModel outIn)
+    required TResult Function(CusOutStandingInModel outIn, String searchQuery)
         getCusOutstandingEvent,
     required TResult Function() clearCusOutStandingEvent,
   }) {
-    return getCusOutstandingEvent(outIn);
+    return getCusOutstandingEvent(outIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult? Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult? Function()? clearCusOutStandingEvent,
   }) {
-    return getCusOutstandingEvent?.call(outIn);
+    return getCusOutstandingEvent?.call(outIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult Function()? clearCusOutStandingEvent,
     required TResult orElse(),
   }) {
     if (getCusOutstandingEvent != null) {
-      return getCusOutstandingEvent(outIn);
+      return getCusOutstandingEvent(outIn, searchQuery);
     }
     return orElse();
   }
@@ -210,10 +224,11 @@ class _$GetCusOutstandingEventImpl implements GetCusOutstandingEvent {
 
 abstract class GetCusOutstandingEvent implements CusOutStandingEvent {
   const factory GetCusOutstandingEvent(
-          {required final CusOutStandingInModel outIn}) =
-      _$GetCusOutstandingEventImpl;
+      {required final CusOutStandingInModel outIn,
+      required final String searchQuery}) = _$GetCusOutstandingEventImpl;
 
   CusOutStandingInModel get outIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusOutstandingEventImplCopyWith<_$GetCusOutstandingEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -261,7 +276,7 @@ class _$ClearCusOutStandingEventImpl implements ClearCusOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CusOutStandingInModel outIn)
+    required TResult Function(CusOutStandingInModel outIn, String searchQuery)
         getCusOutstandingEvent,
     required TResult Function() clearCusOutStandingEvent,
   }) {
@@ -271,7 +286,8 @@ class _$ClearCusOutStandingEventImpl implements ClearCusOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult? Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult? Function()? clearCusOutStandingEvent,
   }) {
     return clearCusOutStandingEvent?.call();
@@ -280,7 +296,8 @@ class _$ClearCusOutStandingEventImpl implements ClearCusOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CusOutStandingInModel outIn)? getCusOutstandingEvent,
+    TResult Function(CusOutStandingInModel outIn, String searchQuery)?
+        getCusOutstandingEvent,
     TResult Function()? clearCusOutStandingEvent,
     required TResult orElse(),
   }) {

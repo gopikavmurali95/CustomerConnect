@@ -19,12 +19,22 @@ class CusSalesOrdersBloc
       : super(CusSalesOrdersState.initial()) {
     on<GetSalesOrdersEvent>(
       (event, emit) async {
+        List<SalesOrdersModel> searcheditems = [];
         Either<MainFailures, List<SalesOrdersModel>> orders =
             await salesOrderRepo.getSalesOrders(event.salesIn);
         emit(
           orders.fold(
             (l) => const SalesOrdersFailedState(),
-            (r) => GetsalesOrdersState(orders: r),
+            (r) {
+              searcheditems = r
+                  .where((element) => element.orderId!
+                      .toLowerCase()
+                      .toUpperCase()
+                      .contains(event.searchQuery.toUpperCase()))
+                  .toList();
+              return GetsalesOrdersState(
+                  orders: event.searchQuery.isEmpty ? r : searcheditems);
+            },
           ),
         );
       },

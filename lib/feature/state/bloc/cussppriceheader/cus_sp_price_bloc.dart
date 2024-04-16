@@ -16,12 +16,27 @@ class CusSpPriceBloc extends Bloc<CusSpPriceEvent, CusSpPriceState> {
   final ICusSpPriceRepo cusSpPriceRepo;
   CusSpPriceBloc(this.cusSpPriceRepo) : super(CusSpPriceState.initial()) {
     on<GetCusSpPriceHeadersEvent>((event, emit) async {
+      List<CusSpPriceModel> searcheditems = [];
       Either<MainFailures, List<CusSpPriceModel>> spprice =
           await cusSpPriceRepo.getCusSpPriceHeaders(event.cuIN);
       emit(
         spprice.fold(
           (l) => const CusSpPriceHeaderFailedState(),
-          (r) => GetCusSpPriceHeadersState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prhCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prhName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetCusSpPriceHeadersState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

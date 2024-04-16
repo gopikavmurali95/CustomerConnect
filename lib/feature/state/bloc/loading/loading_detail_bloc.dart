@@ -16,9 +16,9 @@ class LoadingDetailBloc extends Bloc<LoadingDetailEvent, LoadingDetailState> {
   final ILoadingRepo loadingRepo;
   LoadingDetailBloc(this.loadingRepo) : super(LoadingDetailState.initial()) {
     on<GetloadingDetailEvent>((event, emit) async {
+      List<LoadingDetailModel> searcheditems = [];
       Either<MainFailures, List<LoadingDetailModel>> loadingDetails =
           await loadingRepo.getLoadingDetail(event.iD);
-      List<LoadingDetailModel> searcheditems = [];
       emit(
         loadingDetails.fold(
           (l) => const LoadingDetailFailedState(),

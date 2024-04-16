@@ -18,6 +18,7 @@ class CusInvDetailBlocBloc
   CusInvDetailBlocBloc(this.invoiceRepo)
       : super(CusInvDetailBlocState.initial()) {
     on<GetCusInvDetailsEvent>((event, emit) async {
+      List<CusInsOnvDetailModel> searcheditems = [];
       Either<MainFailures, List<CusInsOnvDetailModel>> details =
           await invoiceRepo.getInvoiceDetails(event.invId);
       Either<MainFailures, List<CusInsInvTypeModel>> types =
@@ -25,10 +26,23 @@ class CusInvDetailBlocBloc
       emit(
         details.fold(
           (l) => const GetcusInvFailedState(),
-          (r) => GetcusInvDetailState(
-            details: r,
-            types: types.fold((l) => [], (t) => t),
-          ),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetcusInvDetailState(
+              details: event.searchQuery.isEmpty ? r : searcheditems,
+              types: types.fold((l) => [], (t) => t),
+            );
+          },
         ),
       );
     });

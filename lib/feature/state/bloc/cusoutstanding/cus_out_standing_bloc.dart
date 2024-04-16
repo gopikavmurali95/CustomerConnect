@@ -20,6 +20,7 @@ class CusOutStandingBloc
       : super(CusOutStandingState.initial()) {
     on<GetCusOutstandingEvent>(
       (event, emit) async {
+        List<CusInsOutstandingHeaderModel> searcheditems = [];
         Either<MainFailures, CusOutstandingCountModel> counts =
             await cusOutstandingRepo.getOutStandingCounts(event.outIn);
         Either<MainFailures, List<CusInsOutstandingHeaderModel>> headers =
@@ -28,8 +29,22 @@ class CusOutStandingBloc
         emit(
           headers.fold(
             (l) => const GetOutStandingFailedState(),
-            (r) => GetCusOutStandingState(
-                counts: counts.fold((l) => null, (r) => r), headers: r),
+            (r) {
+              searcheditems = r
+                  .where((element) =>
+                      element.cusName!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()) ||
+                      element.invoiceId!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()))
+                  .toList();
+              return GetCusOutStandingState(
+                  counts: counts.fold((l) => null, (r) => r),
+                  headers: event.searchQuery.isEmpty ? r : searcheditems);
+            },
           ),
         );
       },

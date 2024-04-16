@@ -30,7 +30,6 @@ class CusInsArRepo implements ICusInsArRepo {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
-        log(response.body);
         final List<dynamic> arheaderdata = json['result'];
         List<CusInsArHEaderModel> headerlist = arheaderdata
             .map<CusInsArHEaderModel>(

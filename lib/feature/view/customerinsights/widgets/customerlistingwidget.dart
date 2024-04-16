@@ -28,101 +28,115 @@ class CustomersListingWidget extends StatelessWidget {
                           color: Colors.grey[300],
                         ),
                     itemCount: 10)
-                : ListView.separated(
-                    itemBuilder: (context, index) => InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CustomerInsightsScreen(
-                                  customer: customers[index],
-                                  user: user,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: const Color(0xff95cbdb),
-                                  child: Center(
-                                    child: Text(
-                                      customers[index].cusName == null
-                                          ? 'D'
-                                          : customers[index]
-                                              .cusName!
-                                              .split('')
-                                              .toList()[0],
-                                      style: kfontstyle(
-                                        fontSize: 16.sp,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                : customers.isEmpty
+                    ? Center(
+                        child: Text(
+                          'No Data Found',
+                          style: kfontstyle(),
+                        ),
+                      )
+                    : ListView.separated(
+                        itemBuilder: (context, index) => InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CustomerInsightsScreen(
+                                      customer: customers[index],
+                                      user: user,
                                     ),
-                                  )),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '${customers[index].cusCode} - ',
+                                  ),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: const Color(0xff95cbdb),
+                                      child: Center(
+                                        child: Text(
+                                          customers[index].cusName == null
+                                              ? 'D'
+                                              : customers[index]
+                                                  .cusName!
+                                                  .split('')
+                                                  .toList()[0],
                                           style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16.sp,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Text(
-                                            overflow: TextOverflow.ellipsis,
-                                            customers[index].cusName ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff413434)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
+                                      )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Expanded(
+                                    child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          '${customers[index].headerCode} - ',
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              color: const Color(0xff413434)),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '${customers[index].cusCode} - ',
+                                              style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff2C6B9E),
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                customers[index].cusName ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color: const Color(
+                                                        0xff413434)),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Expanded(
-                                          child: Text(
-                                            customers[index].headerName ?? '',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: kfontstyle(fontSize: 11.sp),
-                                          ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '${customers[index].headerCode} - ',
+                                              style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                customers[index].headerName ??
+                                                    '',
+                                                overflow: TextOverflow.ellipsis,
+                                                style:
+                                                    kfontstyle(fontSize: 11.sp),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          '${customers[index].cusType} | ${customers[index].rotName} ',
+                                          style: kfontstyle(
+                                              fontSize: 10.sp,
+                                              color: Colors.grey),
                                         ),
                                       ],
                                     ),
-                                    Text(
-                                      '${customers[index].cusType} | ${customers[index].rotName} ',
-                                      style: kfontstyle(
-                                          fontSize: 10.sp, color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                    separatorBuilder: (context, index) => Divider(
-                          color: Colors.grey[300],
-                        ),
-                    itemCount: customers.length),
+                            ),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: customers.length),
             getcustomersFailedState: () => Center(
               child: Text(
                 'No Data Available',

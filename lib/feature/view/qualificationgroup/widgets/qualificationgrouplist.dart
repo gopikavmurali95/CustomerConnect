@@ -18,7 +18,7 @@ class QualificationGroupList extends StatelessWidget {
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
+                      // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => ShimmerContainers(
                           height: 60.h, width: double.infinity),
@@ -27,50 +27,57 @@ class QualificationGroupList extends StatelessWidget {
                           ),
                       itemCount: 10),
                 )
-              : Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              : groupdata.isEmpty
+                  ? Center(
+                      child: Text(
+                        'No Data Found',
+                        style: kfontstyle(),
+                      ),
+                    )
+                  : Column(
                       children: [
-                        Text(
-                          'Items',
-                          style: countHeading(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Items',
+                              style: countHeading(),
+                            ),
+                            Text(
+                              groupdata.length.toString(),
+                              style: countHeading(),
+                            )
+                          ],
                         ),
-                        Text(
-                          groupdata.length.toString(),
-                          style: countHeading(),
-                        )
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        ListView.builder(
+                            // physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: groupdata.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    groupdata[index].prdCode ?? '',
+                                    style: loadTextStyle(),
+                                  ),
+                                  Text(
+                                    groupdata[index].prdName ?? '',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  Text(
+                                    'Offer Packs',
+                                    style: subTitleTextStyle(),
+                                  ),
+                                  const Divider()
+                                ],
+                              );
+                            }),
                       ],
                     ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    ListView.builder(
-                        // physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: groupdata.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                groupdata[index].prdCode ?? '',
-                                style: loadTextStyle(),
-                              ),
-                              Text(
-                                groupdata[index].prdName ?? '',
-                                style: subTitleTextStyle(),
-                              ),
-                              Text(
-                                'Offer Packs',
-                                style: subTitleTextStyle(),
-                              ),
-                              const Divider()
-                            ],
-                          );
-                        }),
-                  ],
-                ),
           groupWiseDataFailed: () => Center(
             child: Text(
               'No Data Available',

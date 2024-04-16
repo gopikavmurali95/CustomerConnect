@@ -18,7 +18,6 @@ class SalesOrdersRepo implements ISalesOrdersRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + cusSalesOrdersUrl),
           body: salesIn.toJson());
-      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> salesdata = json['result'];

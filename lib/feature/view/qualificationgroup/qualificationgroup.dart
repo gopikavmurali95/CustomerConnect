@@ -1,14 +1,33 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/widgets/qualificationgrouplist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class QualificationGroup extends StatelessWidget {
+class QualificationGroup extends StatefulWidget {
   const QualificationGroup({super.key});
+
+  @override
+  State<QualificationGroup> createState() => _QualificationGroupState();
+}
+
+final _groupProdctrl = TextEditingController();
+Timer? debounce;
+
+class _QualificationGroupState extends State<QualificationGroup> {
+  @override
+  void initState() {
+    _groupProdctrl.clear();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -110,11 +129,49 @@ class QualificationGroup extends StatelessWidget {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _groupProdctrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 200,
+                          ),
+                          () async {
+                            context.read<QualificationGroupBloc>().add(
+                                GetGroupWiseDataEvent(
+                                    id: "1",
+                                    mode: " ",
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
+                          ),
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 5.h),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    _groupProdctrl.clear();
+                                    context.read<QualificationGroupBloc>().add(
+                                        const GetGroupWiseDataEvent(
+                                            id: "1",
+                                            mode: " ",
+                                            searchQuery: ''));
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 13.sp,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           hintText: "Search Items",
                           hintStyle: const TextStyle(
@@ -142,7 +199,7 @@ class QualificationGroup extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
+      body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: QualificationGroupList()),
     );

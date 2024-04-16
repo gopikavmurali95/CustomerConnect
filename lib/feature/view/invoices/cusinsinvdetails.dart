@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_ins_invoice_model.dart';
@@ -25,13 +27,16 @@ class CusInsInvoiceDetailScreen extends StatefulWidget {
       _CusInsInvoiceDetailScreenState();
 }
 
+final _cusInvSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
   @override
   void initState() {
+    _cusInvSearchCtrl.clear();
     context.read<CusInvDetailBlocBloc>().add(const ClearinvDetails());
-    context
-        .read<CusInvDetailBlocBloc>()
-        .add(GetCusInvDetailsEvent(invId: widget.invoice.id ?? ''));
+    context.read<CusInvDetailBlocBloc>().add(
+        GetCusInvDetailsEvent(invId: widget.invoice.id ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -169,11 +174,47 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _cusInvSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 200,
+                          ),
+                          () async {
+                            context.read<CusInvDetailBlocBloc>().add(
+                                GetCusInvDetailsEvent(
+                                    invId: widget.invoice.id ?? '',
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
+                          ),
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 5.h),
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    _cusInvSearchCtrl.clear();
+                                    context.read<CusInvDetailBlocBloc>().add(
+                                        GetCusInvDetailsEvent(
+                                            invId: widget.invoice.id ?? '',
+                                            searchQuery: ''));
+                                  },
+                                  icon: Icon(
+                                    Icons.close,
+                                    size: 13.sp,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           hintText: "Search Invoices",
                           hintStyle: kfontstyle(

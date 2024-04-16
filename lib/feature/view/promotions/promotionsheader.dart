@@ -89,6 +89,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                     borderRadius: BorderRadius.circular(10.0),
                     boxShadow: const [
                       BoxShadow(
+                          // ignore: use_full_hex_values_for_flutter_colors
                           color: Color(0xff00000050),
                           blurRadius: 0.4,
                           spreadRadius: 0.4)

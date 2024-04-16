@@ -18,22 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CustomersListBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String userId, String area, String subarea, String route)
+    required TResult Function(String userId, String area, String subarea,
+            String route, String searchQuery)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId, String area, String subarea, String route)?
+    TResult? Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId, String area, String subarea, String route)?
+    TResult Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     required TResult orElse(),
@@ -85,7 +87,12 @@ abstract class _$$GetCustomersEventImplCopyWith<$Res> {
           $Res Function(_$GetCustomersEventImpl) then) =
       __$$GetCustomersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId, String area, String subarea, String route});
+  $Res call(
+      {String userId,
+      String area,
+      String subarea,
+      String route,
+      String searchQuery});
 }
 
 /// @nodoc
@@ -103,6 +110,7 @@ class __$$GetCustomersEventImplCopyWithImpl<$Res>
     Object? area = null,
     Object? subarea = null,
     Object? route = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCustomersEventImpl(
       userId: null == userId
@@ -121,6 +129,10 @@ class __$$GetCustomersEventImplCopyWithImpl<$Res>
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -132,7 +144,8 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
       {required this.userId,
       required this.area,
       required this.subarea,
-      required this.route});
+      required this.route,
+      required this.searchQuery});
 
   @override
   final String userId;
@@ -142,10 +155,12 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
   final String subarea;
   @override
   final String route;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CustomersListBlocEvent.getCustomersEvent(userId: $userId, area: $area, subarea: $subarea, route: $route)';
+    return 'CustomersListBlocEvent.getCustomersEvent(userId: $userId, area: $area, subarea: $subarea, route: $route, searchQuery: $searchQuery)';
   }
 
   @override
@@ -156,11 +171,14 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.area, area) || other.area == area) &&
             (identical(other.subarea, subarea) || other.subarea == subarea) &&
-            (identical(other.route, route) || other.route == route));
+            (identical(other.route, route) || other.route == route) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, area, subarea, route);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, area, subarea, route, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -172,34 +190,36 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String userId, String area, String subarea, String route)
+    required TResult Function(String userId, String area, String subarea,
+            String route, String searchQuery)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
   }) {
-    return getCustomersEvent(userId, area, subarea, route);
+    return getCustomersEvent(userId, area, subarea, route, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId, String area, String subarea, String route)?
+    TResult? Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
   }) {
-    return getCustomersEvent?.call(userId, area, subarea, route);
+    return getCustomersEvent?.call(userId, area, subarea, route, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId, String area, String subarea, String route)?
+    TResult Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     required TResult orElse(),
   }) {
     if (getCustomersEvent != null) {
-      return getCustomersEvent(userId, area, subarea, route);
+      return getCustomersEvent(userId, area, subarea, route, searchQuery);
     }
     return orElse();
   }
@@ -241,12 +261,14 @@ abstract class GetCustomersEvent implements CustomersListBlocEvent {
       {required final String userId,
       required final String area,
       required final String subarea,
-      required final String route}) = _$GetCustomersEventImpl;
+      required final String route,
+      required final String searchQuery}) = _$GetCustomersEventImpl;
 
   String get userId;
   String get area;
   String get subarea;
   String get route;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCustomersEventImplCopyWith<_$GetCustomersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -292,8 +314,8 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String userId, String area, String subarea, String route)
+    required TResult Function(String userId, String area, String subarea,
+            String route, String searchQuery)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
   }) {
@@ -303,7 +325,8 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId, String area, String subarea, String route)?
+    TResult? Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
   }) {
@@ -313,7 +336,8 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId, String area, String subarea, String route)?
+    TResult Function(String userId, String area, String subarea, String route,
+            String searchQuery)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     required TResult orElse(),

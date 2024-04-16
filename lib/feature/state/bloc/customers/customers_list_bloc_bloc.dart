@@ -17,12 +17,26 @@ class CustomersListBlocBloc
   CustomersListBlocBloc(this.cusInsightsCustomersRepo)
       : super(CustomersListBlocState.initial()) {
     on<GetCustomersEvent>((event, emit) async {
+      List<CusInsCustomersModel> searcheditems = [];
       Either<MainFailures, List<CusInsCustomersModel>> customers =
           await cusInsightsCustomersRepo.getCustomers(
               event.userId, event.area, event.subarea, event.route);
 
-      emit(customers.fold((l) => const GetcustomersFailedState(),
-          (r) => GetCustomersSstate(customers: r)));
+      emit(customers.fold((l) => const GetcustomersFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.cusCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetCustomersSstate(
+            customers: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearCustomersEvent>((event, emit) {
       emit(const GetCustomersSstate(customers: null));

@@ -21,7 +21,6 @@ class GeoLocationRepo implements ICusGeoLocationRepo {
       final response = await http.post(Uri.parse(baseUrl + cusGeoLocationUrl),
           body: cusIN.toJson());
       if (response.statusCode == 200) {
-        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> geoheaderdatea = json['result'];
         List<CusGeoLocationModel> geolist = geoheaderdatea
