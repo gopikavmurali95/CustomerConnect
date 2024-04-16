@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PickingdetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String PickingID) pickingDetailSuccess,
+    required TResult Function(String pickingID, String searchQuery)
+        pickingDetailSuccess,
     required TResult Function() clearPickingDetailevent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String PickingID)? pickingDetailSuccess,
+    TResult? Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult? Function()? clearPickingDetailevent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String PickingID)? pickingDetailSuccess,
+    TResult Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult Function()? clearPickingDetailevent,
     required TResult orElse(),
   }) =>
@@ -81,7 +84,7 @@ abstract class _$$PickingDetailSuccessImplCopyWith<$Res> {
           $Res Function(_$PickingDetailSuccessImpl) then) =
       __$$PickingDetailSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String PickingID});
+  $Res call({String pickingID, String searchQuery});
 }
 
 /// @nodoc
@@ -95,12 +98,17 @@ class __$$PickingDetailSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? PickingID = null,
+    Object? pickingID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$PickingDetailSuccessImpl(
-      PickingID: null == PickingID
-          ? _value.PickingID
-          : PickingID // ignore: cast_nullable_to_non_nullable
+      pickingID: null == pickingID
+          ? _value.pickingID
+          : pickingID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -109,14 +117,17 @@ class __$$PickingDetailSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PickingDetailSuccessImpl implements PickingDetailSuccess {
-  const _$PickingDetailSuccessImpl({required this.PickingID});
+  const _$PickingDetailSuccessImpl(
+      {required this.pickingID, required this.searchQuery});
 
   @override
-  final String PickingID;
+  final String pickingID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PickingdetailEvent.pickingDetailSuccess(PickingID: $PickingID)';
+    return 'PickingdetailEvent.pickingDetailSuccess(pickingID: $pickingID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -124,12 +135,14 @@ class _$PickingDetailSuccessImpl implements PickingDetailSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PickingDetailSuccessImpl &&
-            (identical(other.PickingID, PickingID) ||
-                other.PickingID == PickingID));
+            (identical(other.pickingID, pickingID) ||
+                other.pickingID == pickingID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, PickingID);
+  int get hashCode => Object.hash(runtimeType, pickingID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -142,30 +155,33 @@ class _$PickingDetailSuccessImpl implements PickingDetailSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String PickingID) pickingDetailSuccess,
+    required TResult Function(String pickingID, String searchQuery)
+        pickingDetailSuccess,
     required TResult Function() clearPickingDetailevent,
   }) {
-    return pickingDetailSuccess(PickingID);
+    return pickingDetailSuccess(pickingID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String PickingID)? pickingDetailSuccess,
+    TResult? Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult? Function()? clearPickingDetailevent,
   }) {
-    return pickingDetailSuccess?.call(PickingID);
+    return pickingDetailSuccess?.call(pickingID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String PickingID)? pickingDetailSuccess,
+    TResult Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult Function()? clearPickingDetailevent,
     required TResult orElse(),
   }) {
     if (pickingDetailSuccess != null) {
-      return pickingDetailSuccess(PickingID);
+      return pickingDetailSuccess(pickingID, searchQuery);
     }
     return orElse();
   }
@@ -204,10 +220,12 @@ class _$PickingDetailSuccessImpl implements PickingDetailSuccess {
 }
 
 abstract class PickingDetailSuccess implements PickingdetailEvent {
-  const factory PickingDetailSuccess({required final String PickingID}) =
-      _$PickingDetailSuccessImpl;
+  const factory PickingDetailSuccess(
+      {required final String pickingID,
+      required final String searchQuery}) = _$PickingDetailSuccessImpl;
 
-  String get PickingID;
+  String get pickingID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$PickingDetailSuccessImplCopyWith<_$PickingDetailSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -255,7 +273,8 @@ class _$ClearPickingDetaileventImpl implements ClearPickingDetailevent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String PickingID) pickingDetailSuccess,
+    required TResult Function(String pickingID, String searchQuery)
+        pickingDetailSuccess,
     required TResult Function() clearPickingDetailevent,
   }) {
     return clearPickingDetailevent();
@@ -264,7 +283,8 @@ class _$ClearPickingDetaileventImpl implements ClearPickingDetailevent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String PickingID)? pickingDetailSuccess,
+    TResult? Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult? Function()? clearPickingDetailevent,
   }) {
     return clearPickingDetailevent?.call();
@@ -273,7 +293,8 @@ class _$ClearPickingDetaileventImpl implements ClearPickingDetailevent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String PickingID)? pickingDetailSuccess,
+    TResult Function(String pickingID, String searchQuery)?
+        pickingDetailSuccess,
     TResult Function()? clearPickingDetailevent,
     required TResult orElse(),
   }) {

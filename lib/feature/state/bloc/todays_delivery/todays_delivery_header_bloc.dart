@@ -20,8 +20,22 @@ class TodaysDeliveryHeaderBloc
     on<GetTodaysDeliveryEvent>((event, emit) async {
       Either<MainFailures, List<TodaysDeliveryHeaderModel>> deliverydata =
           await todaysDelivery.getTodaysDelivery(event.todaysdelivery);
-      emit(deliverydata.fold((l) => const TodaysDeliveryFailedState(),
-          (r) => GetTodaysDeliveryState(todaysdelivery: r)));
+      List<TodaysDeliveryHeaderModel> searcheditems = [];
+      emit(deliverydata.fold((l) => const TodaysDeliveryFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.orderId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.rotName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetTodaysDeliveryState(
+            todaysdelivery: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearTodaysDelivery>((event, emit) =>
         emit(const GetTodaysDeliveryState(todaysdelivery: null)));

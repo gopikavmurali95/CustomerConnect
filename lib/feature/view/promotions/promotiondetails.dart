@@ -98,9 +98,9 @@ class PromotionDetails extends StatelessWidget {
                           context
                               .read<PromotionCustomerBloc>()
                               .add(const ClearOromotionCustomer());
-                          context
-                              .read<PromotionCustomerBloc>()
-                              .add(const GetPromotionCustomerEvent(id: '1'));
+                          context.read<PromotionCustomerBloc>().add(
+                              const GetPromotionCustomerEvent(
+                                  id: '1', searchQuery: ''));
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
@@ -18,9 +20,13 @@ class PickHeaderCompleted extends StatefulWidget {
   State<PickHeaderCompleted> createState() => _PickHeaderCompletedState();
 }
 
+final _pickingCompletedSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
   @override
   void initState() {
+    _pickingCompletedSearchCtrl.clear();
     context.read<PickingHeaderBloc>().add(const ClearPickingevent());
     context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
         pickingHeadIn: PickingInModel(
@@ -32,8 +38,9 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '26/03/2024')));
-    // TODO: implement initState
+            toDate: '26/03/2024'),
+        searchQuery: ''));
+
     super.initState();
   }
 
@@ -88,7 +95,31 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                           blurRadius: 0.4,
                           spreadRadius: 0.4)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _pickingCompletedSearchCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<PickingHeaderBloc>().add(
+                            GetpickingHeaderEvent(
+                                pickingHeadIn: PickingInModel(
+                                    area: '',
+                                    customer: '',
+                                    fromDate: '01-01-2023',
+                                    mode: '',
+                                    outlet: '',
+                                    route: '',
+                                    subArea: '',
+                                    toDate: '06-04-2024',
+                                    userID: widget.user.usrId),
+                                searchQuery: value.trim()));
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -104,6 +135,28 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                       contentPadding: const EdgeInsets.all(15.0),
                       filled: true,
                       fillColor: Colors.white,
+                      suffix: InkWell(
+                        onTap: () {
+                          _pickingCompletedSearchCtrl.clear();
+                          context.read<PickingHeaderBloc>().add(
+                              GetpickingHeaderEvent(
+                                  pickingHeadIn: PickingInModel(
+                                      userID: widget.user.usrId,
+                                      area: '',
+                                      customer: '',
+                                      fromDate: '01-01-2023',
+                                      mode: 'N',
+                                      outlet: '',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '26-03-2024'),
+                                  searchQuery: ''));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none)),

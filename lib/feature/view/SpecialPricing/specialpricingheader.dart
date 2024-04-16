@@ -1,17 +1,33 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SpecialPricingHeader extends StatefulWidget {
-  const SpecialPricingHeader({super.key});
+  final LoginUserModel user;
+  const SpecialPricingHeader({super.key, required this.user});
 
   @override
   State<SpecialPricingHeader> createState() => _SpecialPricingHeaderState();
 }
 
+final _spPriceSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
+  @override
+  void initState() {
+    _spPriceSearchCtrl.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +72,31 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                           blurRadius: 0.4,
                           spreadRadius: 0.2)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _spPriceSearchCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<SpecialPriceHeaderBloc>().add(
+                            GetSpecialPriceHeaderEvent(
+                                spPriceInparas: SpecialPriceHeaderModel(
+                                    area: '',
+                                    customer: '',
+                                    fromDate: '01-01-2023',
+                                    mode: '',
+                                    outlet: '',
+                                    route: '',
+                                    subArea: '',
+                                    toDate: '01-05-2024',
+                                    userId: widget.user.usrId),
+                                searchQuery: value.trim()));
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -101,15 +141,27 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, right: 20, top: 10, bottom: 10),
-                  child: Text(
-                    "10",
-                    style: countHeading(),
+                  child: BlocBuilder<SpecialPriceHeaderBloc,
+                      SpecialPriceHeaderState>(
+                    builder: (context, state) {
+                      return state.when(
+                        getSpecialPriceHeaderState: (spPrice) => spPrice == null
+                            ? const SizedBox()
+                            : Text(
+                                spPrice.length.toString(),
+                                style: countHeading(),
+                              ),
+                        speciaPriceHeaderFailedState: () => const Text('0'),
+                      );
+                    },
                   ),
                 ),
                 // SizedBox(width: ,),
               ],
             ),
-            const SpPrHeaderList(),
+            SpPrHeaderList(
+              user: widget.user,
+            ),
           ],
         ),
       ),

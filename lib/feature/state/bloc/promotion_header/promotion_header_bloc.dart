@@ -20,8 +20,22 @@ class PromotionHeaderBloc
     on<GetPromotionHeaderEvent>((event, emit) async {
       Either<MainFailures, List<PromotionHeaderModel>> promotions =
           await promotionRepo.getPromotionHeader(event.promotionInparas);
-      emit(promotions.fold((l) => const PromotionHeaderFailed(),
-          (r) => GetPromotionsHeaderState(promotion: r)));
+      List<PromotionHeaderModel> searcheditems = [];
+      emit(promotions.fold((l) => const PromotionHeaderFailed(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.pCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.pName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetPromotionsHeaderState(
+            promotion: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearPromotionHeader>((event, emit) {
       emit(const PromotionHeaderState.getPromotionsHeader(promotion: null));

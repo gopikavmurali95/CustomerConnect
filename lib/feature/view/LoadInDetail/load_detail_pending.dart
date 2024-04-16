@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +14,9 @@ import '../../../constants/fonts.dart';
 
 class LoadDetailPending extends StatefulWidget {
   final LoadingHeadermodel loadingheader;
-  const LoadDetailPending({super.key, required this.loadingheader});
+  final LoginUserModel user;
+  const LoadDetailPending(
+      {super.key, required this.loadingheader, required this.user});
 
   @override
   State<LoadDetailPending> createState() => _LoadDetailPendingState();
@@ -141,6 +145,26 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          // suffix: InkWell(
+                          //   onTap: () {
+                          //     _loadPendingdetailsSearchCtrl.clear();
+                          //     context.read<LoadingHeaderBloc>().add(
+                          //         GetLoadingHeaderEvent(
+                          //             searchQuery: '',
+                          //             loadingin: LoadingHeaderInModel(
+                          //                 userId: widget.user.usrId,
+                          //                 fromDate: '01-01-2023',
+                          //                 toDate: '23-03-2024',
+                          //                 mode: 'DD',
+                          //                 area: '',
+                          //                 route: '',
+                          //                 subArea: '')));
+                          //   },
+                          //   child: const Icon(
+                          //     Icons.close,
+                          //     size: 14,
+                          //   ),
+                          // ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),

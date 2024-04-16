@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PromotionHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PromotionHeaderInParas promotionInparas)
+    required TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)
         getpromotionHeaderEvent,
     required TResult Function() clearPromotionHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PromotionHeaderInParas promotionInparas)?
+    TResult? Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult? Function()? clearPromotionHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PromotionHeaderInParas promotionInparas)?
+    TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult Function()? clearPromotionHeader,
     required TResult orElse(),
@@ -86,7 +89,7 @@ abstract class _$$GetPromotionHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetPromotionHeaderEventImpl) then) =
       __$$GetPromotionHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PromotionHeaderInParas promotionInparas});
+  $Res call({PromotionHeaderInParas promotionInparas, String searchQuery});
 }
 
 /// @nodoc
@@ -103,12 +106,17 @@ class __$$GetPromotionHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? promotionInparas = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetPromotionHeaderEventImpl(
       promotionInparas: null == promotionInparas
           ? _value.promotionInparas
           : promotionInparas // ignore: cast_nullable_to_non_nullable
               as PromotionHeaderInParas,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,14 +124,17 @@ class __$$GetPromotionHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPromotionHeaderEventImpl implements GetPromotionHeaderEvent {
-  const _$GetPromotionHeaderEventImpl({required this.promotionInparas});
+  const _$GetPromotionHeaderEventImpl(
+      {required this.promotionInparas, required this.searchQuery});
 
   @override
   final PromotionHeaderInParas promotionInparas;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PromotionHeaderEvent.getpromotionHeaderEvent(promotionInparas: $promotionInparas)';
+    return 'PromotionHeaderEvent.getpromotionHeaderEvent(promotionInparas: $promotionInparas, searchQuery: $searchQuery)';
   }
 
   @override
@@ -132,11 +143,13 @@ class _$GetPromotionHeaderEventImpl implements GetPromotionHeaderEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetPromotionHeaderEventImpl &&
             (identical(other.promotionInparas, promotionInparas) ||
-                other.promotionInparas == promotionInparas));
+                other.promotionInparas == promotionInparas) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, promotionInparas);
+  int get hashCode => Object.hash(runtimeType, promotionInparas, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -148,33 +161,36 @@ class _$GetPromotionHeaderEventImpl implements GetPromotionHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PromotionHeaderInParas promotionInparas)
+    required TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)
         getpromotionHeaderEvent,
     required TResult Function() clearPromotionHeader,
   }) {
-    return getpromotionHeaderEvent(promotionInparas);
+    return getpromotionHeaderEvent(promotionInparas, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PromotionHeaderInParas promotionInparas)?
+    TResult? Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult? Function()? clearPromotionHeader,
   }) {
-    return getpromotionHeaderEvent?.call(promotionInparas);
+    return getpromotionHeaderEvent?.call(promotionInparas, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PromotionHeaderInParas promotionInparas)?
+    TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult Function()? clearPromotionHeader,
     required TResult orElse(),
   }) {
     if (getpromotionHeaderEvent != null) {
-      return getpromotionHeaderEvent(promotionInparas);
+      return getpromotionHeaderEvent(promotionInparas, searchQuery);
     }
     return orElse();
   }
@@ -214,10 +230,11 @@ class _$GetPromotionHeaderEventImpl implements GetPromotionHeaderEvent {
 
 abstract class GetPromotionHeaderEvent implements PromotionHeaderEvent {
   const factory GetPromotionHeaderEvent(
-          {required final PromotionHeaderInParas promotionInparas}) =
-      _$GetPromotionHeaderEventImpl;
+      {required final PromotionHeaderInParas promotionInparas,
+      required final String searchQuery}) = _$GetPromotionHeaderEventImpl;
 
   PromotionHeaderInParas get promotionInparas;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetPromotionHeaderEventImplCopyWith<_$GetPromotionHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -262,7 +279,8 @@ class _$ClearPromotionHeaderImpl implements ClearPromotionHeader {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PromotionHeaderInParas promotionInparas)
+    required TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)
         getpromotionHeaderEvent,
     required TResult Function() clearPromotionHeader,
   }) {
@@ -272,7 +290,8 @@ class _$ClearPromotionHeaderImpl implements ClearPromotionHeader {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PromotionHeaderInParas promotionInparas)?
+    TResult? Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult? Function()? clearPromotionHeader,
   }) {
@@ -282,7 +301,8 @@ class _$ClearPromotionHeaderImpl implements ClearPromotionHeader {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PromotionHeaderInParas promotionInparas)?
+    TResult Function(
+            PromotionHeaderInParas promotionInparas, String searchQuery)?
         getpromotionHeaderEvent,
     TResult Function()? clearPromotionHeader,
     required TResult orElse(),

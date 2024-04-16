@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -5,7 +7,7 @@ import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header
 import 'package:customer_connect/feature/view/load/widgets/CompletedList.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,9 +19,13 @@ class LoadCompleted extends StatefulWidget {
   State<LoadCompleted> createState() => _LoadCompletedState();
 }
 
+final _loadCompletedSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _LoadCompletedState extends State<LoadCompleted> {
   @override
   void initState() {
+    _loadCompletedSearchCtrl.clear();
     context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
     context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
         searchQuery: '',
@@ -85,7 +91,31 @@ class _LoadCompletedState extends State<LoadCompleted> {
                           blurRadius: 0.4,
                           spreadRadius: 0.4)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _loadCompletedSearchCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<LoadingHeaderBloc>().add(
+                              GetLoadingHeaderEvent(
+                                searchQuery: value.trim(),
+                                loadingin: LoadingHeaderInModel(
+                                    userId: widget.user.usrId,
+                                    fromDate: '01-01-2023',
+                                    toDate: '23-03-2024',
+                                    mode: 'DD',
+                                    area: '',
+                                    route: '',
+                                    subArea: ''),
+                              ),
+                            );
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -101,6 +131,26 @@ class _LoadCompletedState extends State<LoadCompleted> {
                       contentPadding: const EdgeInsets.all(15.0),
                       filled: true,
                       fillColor: Colors.white,
+                      suffix: InkWell(
+                        onTap: () {
+                          _loadCompletedSearchCtrl.clear();
+                          context.read<LoadingHeaderBloc>().add(
+                              GetLoadingHeaderEvent(
+                                  searchQuery: '',
+                                  loadingin: LoadingHeaderInModel(
+                                      userId: widget.user.usrId,
+                                      fromDate: '01-01-2023',
+                                      toDate: '23-03-2024',
+                                      mode: 'DD',
+                                      area: '',
+                                      route: '',
+                                      subArea: '')));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none)),

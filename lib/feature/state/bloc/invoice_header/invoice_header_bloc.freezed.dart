@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$InvoiceHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(InvoiceHeaderInparas invheaderin)
+    required TResult Function(
+            InvoiceHeaderInparas invheaderin, String searchQuery)
         invoiceHeaderSuccessEvent,
     required TResult Function() invoiceHeaderFailedEvent,
     required TResult Function() clearInvoiceHeader,
@@ -26,7 +27,7 @@ mixin _$InvoiceHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(InvoiceHeaderInparas invheaderin)?
+    TResult? Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult? Function()? invoiceHeaderFailedEvent,
     TResult? Function()? clearInvoiceHeader,
@@ -34,7 +35,7 @@ mixin _$InvoiceHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(InvoiceHeaderInparas invheaderin)?
+    TResult Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult Function()? invoiceHeaderFailedEvent,
     TResult Function()? clearInvoiceHeader,
@@ -94,7 +95,7 @@ abstract class _$$InvoiceHeaderSuccessEventImplCopyWith<$Res> {
           $Res Function(_$InvoiceHeaderSuccessEventImpl) then) =
       __$$InvoiceHeaderSuccessEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({InvoiceHeaderInparas invheaderin});
+  $Res call({InvoiceHeaderInparas invheaderin, String searchQuery});
 }
 
 /// @nodoc
@@ -111,12 +112,17 @@ class __$$InvoiceHeaderSuccessEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? invheaderin = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$InvoiceHeaderSuccessEventImpl(
       invheaderin: null == invheaderin
           ? _value.invheaderin
           : invheaderin // ignore: cast_nullable_to_non_nullable
               as InvoiceHeaderInparas,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -124,14 +130,17 @@ class __$$InvoiceHeaderSuccessEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InvoiceHeaderSuccessEventImpl implements InvoiceHeaderSuccessEvent {
-  const _$InvoiceHeaderSuccessEventImpl({required this.invheaderin});
+  const _$InvoiceHeaderSuccessEventImpl(
+      {required this.invheaderin, required this.searchQuery});
 
   @override
   final InvoiceHeaderInparas invheaderin;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'InvoiceHeaderEvent.invoiceHeaderSuccessEvent(invheaderin: $invheaderin)';
+    return 'InvoiceHeaderEvent.invoiceHeaderSuccessEvent(invheaderin: $invheaderin, searchQuery: $searchQuery)';
   }
 
   @override
@@ -140,11 +149,13 @@ class _$InvoiceHeaderSuccessEventImpl implements InvoiceHeaderSuccessEvent {
         (other.runtimeType == runtimeType &&
             other is _$InvoiceHeaderSuccessEventImpl &&
             (identical(other.invheaderin, invheaderin) ||
-                other.invheaderin == invheaderin));
+                other.invheaderin == invheaderin) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invheaderin);
+  int get hashCode => Object.hash(runtimeType, invheaderin, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -156,36 +167,37 @@ class _$InvoiceHeaderSuccessEventImpl implements InvoiceHeaderSuccessEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(InvoiceHeaderInparas invheaderin)
+    required TResult Function(
+            InvoiceHeaderInparas invheaderin, String searchQuery)
         invoiceHeaderSuccessEvent,
     required TResult Function() invoiceHeaderFailedEvent,
     required TResult Function() clearInvoiceHeader,
   }) {
-    return invoiceHeaderSuccessEvent(invheaderin);
+    return invoiceHeaderSuccessEvent(invheaderin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(InvoiceHeaderInparas invheaderin)?
+    TResult? Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult? Function()? invoiceHeaderFailedEvent,
     TResult? Function()? clearInvoiceHeader,
   }) {
-    return invoiceHeaderSuccessEvent?.call(invheaderin);
+    return invoiceHeaderSuccessEvent?.call(invheaderin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(InvoiceHeaderInparas invheaderin)?
+    TResult Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult Function()? invoiceHeaderFailedEvent,
     TResult Function()? clearInvoiceHeader,
     required TResult orElse(),
   }) {
     if (invoiceHeaderSuccessEvent != null) {
-      return invoiceHeaderSuccessEvent(invheaderin);
+      return invoiceHeaderSuccessEvent(invheaderin, searchQuery);
     }
     return orElse();
   }
@@ -231,10 +243,11 @@ class _$InvoiceHeaderSuccessEventImpl implements InvoiceHeaderSuccessEvent {
 
 abstract class InvoiceHeaderSuccessEvent implements InvoiceHeaderEvent {
   const factory InvoiceHeaderSuccessEvent(
-          {required final InvoiceHeaderInparas invheaderin}) =
-      _$InvoiceHeaderSuccessEventImpl;
+      {required final InvoiceHeaderInparas invheaderin,
+      required final String searchQuery}) = _$InvoiceHeaderSuccessEventImpl;
 
   InvoiceHeaderInparas get invheaderin;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$InvoiceHeaderSuccessEventImplCopyWith<_$InvoiceHeaderSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -282,7 +295,8 @@ class _$InvoiceHeaderFailedEventImpl implements InvoiceHeaderFailedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(InvoiceHeaderInparas invheaderin)
+    required TResult Function(
+            InvoiceHeaderInparas invheaderin, String searchQuery)
         invoiceHeaderSuccessEvent,
     required TResult Function() invoiceHeaderFailedEvent,
     required TResult Function() clearInvoiceHeader,
@@ -293,7 +307,7 @@ class _$InvoiceHeaderFailedEventImpl implements InvoiceHeaderFailedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(InvoiceHeaderInparas invheaderin)?
+    TResult? Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult? Function()? invoiceHeaderFailedEvent,
     TResult? Function()? clearInvoiceHeader,
@@ -304,7 +318,7 @@ class _$InvoiceHeaderFailedEventImpl implements InvoiceHeaderFailedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(InvoiceHeaderInparas invheaderin)?
+    TResult Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult Function()? invoiceHeaderFailedEvent,
     TResult Function()? clearInvoiceHeader,
@@ -397,7 +411,8 @@ class _$ClearInvoiceHeaderImpl implements ClearInvoiceHeader {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(InvoiceHeaderInparas invheaderin)
+    required TResult Function(
+            InvoiceHeaderInparas invheaderin, String searchQuery)
         invoiceHeaderSuccessEvent,
     required TResult Function() invoiceHeaderFailedEvent,
     required TResult Function() clearInvoiceHeader,
@@ -408,7 +423,7 @@ class _$ClearInvoiceHeaderImpl implements ClearInvoiceHeader {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(InvoiceHeaderInparas invheaderin)?
+    TResult? Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult? Function()? invoiceHeaderFailedEvent,
     TResult? Function()? clearInvoiceHeader,
@@ -419,7 +434,7 @@ class _$ClearInvoiceHeaderImpl implements ClearInvoiceHeader {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(InvoiceHeaderInparas invheaderin)?
+    TResult Function(InvoiceHeaderInparas invheaderin, String searchQuery)?
         invoiceHeaderSuccessEvent,
     TResult Function()? invoiceHeaderFailedEvent,
     TResult Function()? clearInvoiceHeader,

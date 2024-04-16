@@ -18,21 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$InvoiceDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getInvoiceDetailsEvent,
+    required TResult Function(String id, String searchQuery)
+        getInvoiceDetailsEvent,
     required TResult Function() getInvoiceDetailsFailedEvent,
     required TResult Function() clearInvoiceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getInvoiceDetailsEvent,
+    TResult? Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult? Function()? getInvoiceDetailsFailedEvent,
     TResult? Function()? clearInvoiceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getInvoiceDetailsEvent,
+    TResult Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult Function()? getInvoiceDetailsFailedEvent,
     TResult Function()? clearInvoiceDetails,
     required TResult orElse(),
@@ -91,7 +92,7 @@ abstract class _$$GetInvoiceDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetInvoiceDetailsEventImpl) then) =
       __$$GetInvoiceDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, String searchQuery});
 }
 
 /// @nodoc
@@ -108,11 +109,16 @@ class __$$GetInvoiceDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetInvoiceDetailsEventImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,14 +127,17 @@ class __$$GetInvoiceDetailsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInvoiceDetailsEventImpl implements GetInvoiceDetailsEvent {
-  const _$GetInvoiceDetailsEventImpl({required this.id});
+  const _$GetInvoiceDetailsEventImpl(
+      {required this.id, required this.searchQuery});
 
   @override
   final String id;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'InvoiceDetailsEvent.getInvoiceDetailsEvent(id: $id)';
+    return 'InvoiceDetailsEvent.getInvoiceDetailsEvent(id: $id, searchQuery: $searchQuery)';
   }
 
   @override
@@ -136,11 +145,13 @@ class _$GetInvoiceDetailsEventImpl implements GetInvoiceDetailsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInvoiceDetailsEventImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -152,33 +163,34 @@ class _$GetInvoiceDetailsEventImpl implements GetInvoiceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getInvoiceDetailsEvent,
+    required TResult Function(String id, String searchQuery)
+        getInvoiceDetailsEvent,
     required TResult Function() getInvoiceDetailsFailedEvent,
     required TResult Function() clearInvoiceDetails,
   }) {
-    return getInvoiceDetailsEvent(id);
+    return getInvoiceDetailsEvent(id, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getInvoiceDetailsEvent,
+    TResult? Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult? Function()? getInvoiceDetailsFailedEvent,
     TResult? Function()? clearInvoiceDetails,
   }) {
-    return getInvoiceDetailsEvent?.call(id);
+    return getInvoiceDetailsEvent?.call(id, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getInvoiceDetailsEvent,
+    TResult Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult Function()? getInvoiceDetailsFailedEvent,
     TResult Function()? clearInvoiceDetails,
     required TResult orElse(),
   }) {
     if (getInvoiceDetailsEvent != null) {
-      return getInvoiceDetailsEvent(id);
+      return getInvoiceDetailsEvent(id, searchQuery);
     }
     return orElse();
   }
@@ -223,10 +235,12 @@ class _$GetInvoiceDetailsEventImpl implements GetInvoiceDetailsEvent {
 }
 
 abstract class GetInvoiceDetailsEvent implements InvoiceDetailsEvent {
-  const factory GetInvoiceDetailsEvent({required final String id}) =
-      _$GetInvoiceDetailsEventImpl;
+  const factory GetInvoiceDetailsEvent(
+      {required final String id,
+      required final String searchQuery}) = _$GetInvoiceDetailsEventImpl;
 
   String get id;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetInvoiceDetailsEventImplCopyWith<_$GetInvoiceDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -275,7 +289,8 @@ class _$GetInvoiceDetailsFailedEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getInvoiceDetailsEvent,
+    required TResult Function(String id, String searchQuery)
+        getInvoiceDetailsEvent,
     required TResult Function() getInvoiceDetailsFailedEvent,
     required TResult Function() clearInvoiceDetails,
   }) {
@@ -285,7 +300,7 @@ class _$GetInvoiceDetailsFailedEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getInvoiceDetailsEvent,
+    TResult? Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult? Function()? getInvoiceDetailsFailedEvent,
     TResult? Function()? clearInvoiceDetails,
   }) {
@@ -295,7 +310,7 @@ class _$GetInvoiceDetailsFailedEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getInvoiceDetailsEvent,
+    TResult Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult Function()? getInvoiceDetailsFailedEvent,
     TResult Function()? clearInvoiceDetails,
     required TResult orElse(),
@@ -389,7 +404,8 @@ class _$ClearInvoiceDetailsImpl implements ClearInvoiceDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getInvoiceDetailsEvent,
+    required TResult Function(String id, String searchQuery)
+        getInvoiceDetailsEvent,
     required TResult Function() getInvoiceDetailsFailedEvent,
     required TResult Function() clearInvoiceDetails,
   }) {
@@ -399,7 +415,7 @@ class _$ClearInvoiceDetailsImpl implements ClearInvoiceDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getInvoiceDetailsEvent,
+    TResult? Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult? Function()? getInvoiceDetailsFailedEvent,
     TResult? Function()? clearInvoiceDetails,
   }) {
@@ -409,7 +425,7 @@ class _$ClearInvoiceDetailsImpl implements ClearInvoiceDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getInvoiceDetailsEvent,
+    TResult Function(String id, String searchQuery)? getInvoiceDetailsEvent,
     TResult Function()? getInvoiceDetailsFailedEvent,
     TResult Function()? clearInvoiceDetails,
     required TResult orElse(),

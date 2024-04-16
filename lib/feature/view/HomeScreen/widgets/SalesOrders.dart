@@ -154,12 +154,15 @@ class SalesOrders extends StatelessWidget {
                                                       route: '',
                                                       subArea: '',
                                                       toDate: '31-03-2024',
-                                                      userId: user.usrId)));
+                                                      userId: user.usrId),
+                                              searchQuery: ''));
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const TodaysDelivery()));
+                                                  TodaysDelivery(
+                                                    user: user,
+                                                  )));
                                     },
                                     child: Container(
                                       /* height: 70,
@@ -219,7 +222,7 @@ class SalesOrders extends StatelessWidget {
                                                   ],
                                                 ),
                                                 Text(
-                                                  "Total Deliveries",
+                                                  "Today's Deliveries",
                                                   style: statusTextStyle(),
                                                 )
                                               ],

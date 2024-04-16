@@ -45,7 +45,7 @@ class InsightSpecialPriceList extends StatelessWidget {
                                 onTap: () {
                                   context.read<SpecialPriceDetailsBloc>().add(
                                       const GetSpecialPriceDetailsEvent(
-                                          prhID: "1"));
+                                          prhID: "1", searchQuery: ''));
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

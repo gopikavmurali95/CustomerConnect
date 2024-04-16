@@ -27,113 +27,120 @@ class CompletedeDetail extends StatelessWidget {
                           ),
                       itemCount: 10),
                 )
-              : ListView.separated(
-                  itemCount: pdetailList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              : pdetailList.isEmpty
+                  ? const Center(
+                      child: Text('No Data Found'),
+                    )
+                  : ListView.separated(
+                      itemCount: pdetailList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
                           children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15.0, top: 2),
-                              child: Container(
-                                height: 60,
-                                width: 200,
-                                color: Colors.white,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 15.0, top: 2),
+                                  child: Container(
+                                    height: 60,
+                                    width: 200,
+                                    color: Colors.white,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("${pdetailList[index].prdCode}",
+                                            style: loadTextStyle()),
+                                        Text(
+                                          "${pdetailList[index].prdName}",
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${pdetailList[index].prdCode}",
-                                        style: loadTextStyle()),
+                                    Visibility(
+                                      visible:
+                                          pdetailList[index].pkdHigherUom ==
+                                                      null ||
+                                                  pdetailList[index]
+                                                      .pkdHigherUom!
+                                                      .isEmpty
+                                              ? false
+                                              : true,
+                                      child: Text(
+                                        "${pdetailList[index].pkdHigherUom}",
+                                        style: subTitleTextStyle(),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
                                     Text(
-                                      "${pdetailList[index].prdName}",
+                                      "${pdetailList[index].pkdPickedHQty}",
                                       style: subTitleTextStyle(),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                            Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Visibility(
-                                  visible:
-                                      pdetailList[index].pkdHigherUom == null ||
-                                              pdetailList[index]
-                                                  .pkdHigherUom!
-                                                  .isEmpty
-                                          ? false
-                                          : true,
-                                  child: Text(
-                                    "${pdetailList[index].pkdHigherUom}",
-                                    style: subTitleTextStyle(),
+                                Column(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "${pdetailList[index].pkdPkhID}",
+                                      style: subTitleTextStyle(),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "${pdetailList[index].pkdRequestedHQty}",
+                                      style: subTitleTextStyle(),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 30.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "${pdetailList[index].prdID}",
+                                        style: subTitleTextStyle(),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "${pdetailList[index].prdID}",
+                                        style: subTitleTextStyle(),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "${pdetailList[index].pkdPickedHQty}",
-                                  style: subTitleTextStyle(),
-                                ),
+                                //  SizedBox(width: 0,)
                               ],
                             ),
-                            Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${pdetailList[index].pkdPkhID}",
-                                  style: subTitleTextStyle(),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "${pdetailList[index].pkdRequestedHQty}",
-                                  style: subTitleTextStyle(),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20, right: 30.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "${pdetailList[index].prdID}",
-                                    style: subTitleTextStyle(),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "${pdetailList[index].prdID}",
-                                    style: subTitleTextStyle(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            //  SizedBox(width: 0,)
+                            //  Divider(),
                           ],
-                        ),
-                        //  Divider(),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Padding(
-                      padding: EdgeInsets.only(left: 0.0, right: 0),
-                      child: Divider(),
-                    );
-                  },
-                ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const Padding(
+                          padding: EdgeInsets.only(left: 0.0, right: 0),
+                          child: Divider(),
+                        );
+                      },
+                    ),
           pickingFailedState: () => Center(
             child: Text(
               'No Data Available',

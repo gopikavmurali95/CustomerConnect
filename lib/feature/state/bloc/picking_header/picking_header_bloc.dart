@@ -21,9 +21,24 @@ class PickingHeaderBloc extends Bloc<PickingHeaderEvent, PickingHeaderState> {
       Either<MainFailures, List<PickingOutModel>> pickingHead =
           await pickHead.getPickingHeaders(event.pickingHeadIn);
 
+      List<PickingOutModel> searcheditems = [];
+
       emit(pickingHead.fold(
-          (l) => const PickingHeaderState.pickingheaderFailedState(),
-          (r) => PickingHeaderState.getPickingHeaderState(pickingOut: r)));
+          (l) => const PickingHeaderState.pickingheaderFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.pickingNumber!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.rotCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetPickingHeaderState(
+            pickingOut: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearPickingevent>((event, emit) {
       emit(const GetPickingHeaderState(pickingOut: null));

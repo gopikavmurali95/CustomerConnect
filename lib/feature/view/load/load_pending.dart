@@ -127,6 +127,26 @@ class _LoadPendingState extends State<LoadPending> {
                       contentPadding: const EdgeInsets.all(15.0),
                       filled: true,
                       fillColor: Colors.white,
+                      suffix: InkWell(
+                        onTap: () {
+                          _loadPendingSearchCtrl.clear();
+                          context.read<LoadingHeaderBloc>().add(
+                              GetLoadingHeaderEvent(
+                                  searchQuery: '',
+                                  loadingin: LoadingHeaderInModel(
+                                      userId: widget.user.usrId,
+                                      fromDate: '01-01-2023',
+                                      toDate: '23-03-2024',
+                                      mode: 'DD',
+                                      area: '',
+                                      route: '',
+                                      subArea: '')));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none)),
@@ -186,7 +206,10 @@ class _LoadPendingState extends State<LoadPending> {
               // SizedBox(width: ,),
             ],
           ),
-          const Expanded(child: PendingList()),
+          Expanded(
+              child: PendingList(
+            user: widget.user,
+          )),
         ],
       ),
     );

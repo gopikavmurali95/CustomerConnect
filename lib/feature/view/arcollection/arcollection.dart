@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -22,11 +24,15 @@ class ArCollectionScreen extends StatefulWidget {
   State<ArCollectionScreen> createState() => _ArCollectionScreenState();
 }
 
+final _arHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _ArCollectionScreenState extends State<ArCollectionScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
+    _arHeaderSearchCtrl.clear();
     super.initState();
     context.read<ArScrollCtrlCubit>().onInit();
     _scrollController.addListener(_scrollListener);
@@ -42,6 +48,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                 outlet: '',
                 route: '',
                 subArea: ''),
+            searchQuery: '',
           ),
         );
   }
@@ -378,7 +385,30 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                   blurRadius: 0.4,
                                   spreadRadius: 0.4)
                             ]),
-                        child: TextField(
+                        child: TextFormField(
+                          controller: _arHeaderSearchCtrl,
+                          onChanged: (value) {
+                            if (debounce?.isActive ?? false) debounce!.cancel();
+                            debounce = Timer(
+                              const Duration(
+                                milliseconds: 500,
+                              ),
+                              () async {
+                                context.read<ArHeaderBloc>().add(
+                                    GetArHeaderData(
+                                        arIn: ArTotalInModel(
+                                            userId: widget.user.usrId,
+                                            fromDate: '01-01-2023',
+                                            toDate: '25-03-2024',
+                                            area: '',
+                                            customer: '327',
+                                            outlet: '',
+                                            route: '',
+                                            subArea: ''),
+                                        searchQuery: value.trim()));
+                              },
+                            );
+                          },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
                                 Icons.search,
@@ -394,6 +424,29 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                               contentPadding: const EdgeInsets.all(15.0),
                               filled: true,
                               fillColor: Colors.white,
+                              suffix: InkWell(
+                                onTap: () {
+                                  _arHeaderSearchCtrl.clear();
+                                  context.read<ArHeaderBloc>().add(
+                                        GetArHeaderData(
+                                          arIn: ArTotalInModel(
+                                              userId: widget.user.usrId,
+                                              fromDate: '01-01-2023',
+                                              toDate: '25-03-2024',
+                                              area: '',
+                                              customer: '327',
+                                              outlet: '',
+                                              route: '',
+                                              subArea: ''),
+                                          searchQuery: '',
+                                        ),
+                                      );
+                                },
+                                child: const Icon(
+                                  Icons.close,
+                                  size: 14,
+                                ),
+                              ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none)),

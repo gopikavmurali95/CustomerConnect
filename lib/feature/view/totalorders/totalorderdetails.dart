@@ -1,13 +1,34 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
+import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderdetailslist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TotalOrderDetails extends StatelessWidget {
+class TotalOrderDetails extends StatefulWidget {
+  final LoginUserModel user;
   final TotalOrdersModel totalorders;
-  const TotalOrderDetails({super.key, required this.totalorders});
+  const TotalOrderDetails(
+      {super.key, required this.totalorders, required this.user});
+
+  @override
+  State<TotalOrderDetails> createState() => _TotalOrderDetailsState();
+}
+
+final _totalOrderDetailSearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _TotalOrderDetailsState extends State<TotalOrderDetails> {
+  @override
+  void initState() {
+    _totalOrderDetailSearchCtrl.clear();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +79,7 @@ class TotalOrderDetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            totalorders.orderId ?? '',
+                            widget.totalorders.orderId ?? '',
                             style: kfontstyle(
                               fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
@@ -68,7 +89,7 @@ class TotalOrderDetails extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                totalorders.cusCode ?? '',
+                                widget.totalorders.cusCode ?? '',
                                 style: kfontstyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
@@ -84,7 +105,7 @@ class TotalOrderDetails extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  totalorders.cusName ?? '',
+                                  widget.totalorders.cusName ?? '',
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff413434)),
@@ -95,7 +116,7 @@ class TotalOrderDetails extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                totalorders.cshCode ?? '',
+                                widget.totalorders.cshCode ?? '',
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     color: const Color(0xff413434)),
@@ -108,7 +129,7 @@ class TotalOrderDetails extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Text(
-                                  totalorders.cshName ?? '',
+                                  widget.totalorders.cshName ?? '',
                                   overflow: TextOverflow.ellipsis,
                                   style: kfontstyle(fontSize: 12.sp),
                                 ),
@@ -123,7 +144,7 @@ class TotalOrderDetails extends StatelessWidget {
                               //       fontSize: 10.sp, color: Colors.grey),
                               // ),
                               Text(
-                                totalorders.status ?? '',
+                                widget.totalorders.status ?? '',
                                 style: kfontstyle(
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
@@ -133,7 +154,7 @@ class TotalOrderDetails extends StatelessWidget {
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
                               Text(
-                                totalorders.rotName ?? '',
+                                widget.totalorders.rotName ?? '',
                                 style: kfontstyle(
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
@@ -143,7 +164,7 @@ class TotalOrderDetails extends StatelessWidget {
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
                               Text(
-                                totalorders.date ?? '',
+                                widget.totalorders.date ?? '',
                                 style: kfontstyle(
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
@@ -153,7 +174,7 @@ class TotalOrderDetails extends StatelessWidget {
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
                               Text(
-                                totalorders.time ?? '',
+                                widget.totalorders.time ?? '',
                                 style: kfontstyle(
                                     fontSize: 10.sp, color: Colors.grey),
                               ),
@@ -166,13 +187,13 @@ class TotalOrderDetails extends StatelessWidget {
                       height: 14.h,
                       width: 30.w,
                       decoration: BoxDecoration(
-                          color: totalorders.ordType == 'O'
+                          color: widget.totalorders.ordType == 'O'
                               ? const Color(0xffe3f7e2)
                               : const Color(0xfff7f4e2),
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          totalorders.ordType ?? '',
+                          widget.totalorders.ordType ?? '',
                           style: kfontstyle(
                               fontSize: 10.sp, color: const Color(0xff413434)),
                         ),
@@ -195,7 +216,22 @@ class TotalOrderDetails extends StatelessWidget {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _totalOrderDetailSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<TotalOrdersDetailsBloc>().add(
+                                GetTotalOrdersDetailsEvent(
+                                    userID: widget.user.usrId!,
+                                    searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
@@ -211,6 +247,19 @@ class TotalOrderDetails extends StatelessWidget {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _totalOrderDetailSearchCtrl.clear();
+                              context.read<TotalOrdersDetailsBloc>().add(
+                                  GetTotalOrdersDetailsEvent(
+                                      userID: widget.user.usrId!,
+                                      searchQuery: ''));
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),
@@ -260,7 +309,7 @@ class TotalOrderDetails extends StatelessWidget {
           ),
           Expanded(
               child: TotalOrderDetailsList(
-            totalorders: totalorders,
+            totalorders: widget.totalorders,
           )),
         ],
       ),
@@ -278,7 +327,7 @@ class TotalOrderDetails extends StatelessWidget {
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
               ),
               Text(
-                totalorders.grandTotal ?? '',
+                widget.totalorders.grandTotal ?? '',
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
               )
             ],

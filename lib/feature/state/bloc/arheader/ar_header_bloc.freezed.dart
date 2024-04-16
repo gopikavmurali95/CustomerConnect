@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ArTotalInModel arIn) getArHeaderData,
+    required TResult Function(ArTotalInModel arIn, String searchQuery)
+        getArHeaderData,
     required TResult Function() clearArHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult? Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult? Function()? clearArHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult Function()? clearArHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -80,7 +81,7 @@ abstract class _$$GetArHeaderDataImplCopyWith<$Res> {
           $Res Function(_$GetArHeaderDataImpl) then) =
       __$$GetArHeaderDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ArTotalInModel arIn});
+  $Res call({ArTotalInModel arIn, String searchQuery});
 }
 
 /// @nodoc
@@ -95,12 +96,17 @@ class __$$GetArHeaderDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? arIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetArHeaderDataImpl(
       arIn: null == arIn
           ? _value.arIn
           : arIn // ignore: cast_nullable_to_non_nullable
               as ArTotalInModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,14 +114,16 @@ class __$$GetArHeaderDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetArHeaderDataImpl implements GetArHeaderData {
-  const _$GetArHeaderDataImpl({required this.arIn});
+  const _$GetArHeaderDataImpl({required this.arIn, required this.searchQuery});
 
   @override
   final ArTotalInModel arIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'ArHeaderEvent.getArHeaderData(arIn: $arIn)';
+    return 'ArHeaderEvent.getArHeaderData(arIn: $arIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -123,11 +131,13 @@ class _$GetArHeaderDataImpl implements GetArHeaderData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetArHeaderDataImpl &&
-            (identical(other.arIn, arIn) || other.arIn == arIn));
+            (identical(other.arIn, arIn) || other.arIn == arIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, arIn);
+  int get hashCode => Object.hash(runtimeType, arIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -139,30 +149,31 @@ class _$GetArHeaderDataImpl implements GetArHeaderData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ArTotalInModel arIn) getArHeaderData,
+    required TResult Function(ArTotalInModel arIn, String searchQuery)
+        getArHeaderData,
     required TResult Function() clearArHeaderEvent,
   }) {
-    return getArHeaderData(arIn);
+    return getArHeaderData(arIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult? Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult? Function()? clearArHeaderEvent,
   }) {
-    return getArHeaderData?.call(arIn);
+    return getArHeaderData?.call(arIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult Function()? clearArHeaderEvent,
     required TResult orElse(),
   }) {
     if (getArHeaderData != null) {
-      return getArHeaderData(arIn);
+      return getArHeaderData(arIn, searchQuery);
     }
     return orElse();
   }
@@ -200,10 +211,12 @@ class _$GetArHeaderDataImpl implements GetArHeaderData {
 }
 
 abstract class GetArHeaderData implements ArHeaderEvent {
-  const factory GetArHeaderData({required final ArTotalInModel arIn}) =
-      _$GetArHeaderDataImpl;
+  const factory GetArHeaderData(
+      {required final ArTotalInModel arIn,
+      required final String searchQuery}) = _$GetArHeaderDataImpl;
 
   ArTotalInModel get arIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetArHeaderDataImplCopyWith<_$GetArHeaderDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -247,7 +260,8 @@ class _$ClearArHeaderEventImpl implements ClearArHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ArTotalInModel arIn) getArHeaderData,
+    required TResult Function(ArTotalInModel arIn, String searchQuery)
+        getArHeaderData,
     required TResult Function() clearArHeaderEvent,
   }) {
     return clearArHeaderEvent();
@@ -256,7 +270,7 @@ class _$ClearArHeaderEventImpl implements ClearArHeaderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult? Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult? Function()? clearArHeaderEvent,
   }) {
     return clearArHeaderEvent?.call();
@@ -265,7 +279,7 @@ class _$ClearArHeaderEventImpl implements ClearArHeaderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ArTotalInModel arIn)? getArHeaderData,
+    TResult Function(ArTotalInModel arIn, String searchQuery)? getArHeaderData,
     TResult Function()? clearArHeaderEvent,
     required TResult orElse(),
   }) {

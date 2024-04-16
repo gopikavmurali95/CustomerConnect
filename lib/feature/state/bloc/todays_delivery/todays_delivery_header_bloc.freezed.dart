@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodaysDeliveryHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TodaysDeliveryInParas todaysdelivery)
+    required TResult Function(
+            TodaysDeliveryInParas todaysdelivery, String searchQuery)
         getTodaysDeliveryEvent,
     required TResult Function() todaysDeliveryFailedEvent,
     required TResult Function() clearTodaysDelivery,
@@ -26,7 +27,7 @@ mixin _$TodaysDeliveryHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult? Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult? Function()? todaysDeliveryFailedEvent,
     TResult? Function()? clearTodaysDelivery,
@@ -34,7 +35,7 @@ mixin _$TodaysDeliveryHeaderEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult Function()? todaysDeliveryFailedEvent,
     TResult Function()? clearTodaysDelivery,
@@ -95,7 +96,7 @@ abstract class _$$GetTodaysDeliveryEventImplCopyWith<$Res> {
           $Res Function(_$GetTodaysDeliveryEventImpl) then) =
       __$$GetTodaysDeliveryEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TodaysDeliveryInParas todaysdelivery});
+  $Res call({TodaysDeliveryInParas todaysdelivery, String searchQuery});
 }
 
 /// @nodoc
@@ -112,12 +113,17 @@ class __$$GetTodaysDeliveryEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? todaysdelivery = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetTodaysDeliveryEventImpl(
       todaysdelivery: null == todaysdelivery
           ? _value.todaysdelivery
           : todaysdelivery // ignore: cast_nullable_to_non_nullable
               as TodaysDeliveryInParas,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -125,14 +131,17 @@ class __$$GetTodaysDeliveryEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetTodaysDeliveryEventImpl implements GetTodaysDeliveryEvent {
-  const _$GetTodaysDeliveryEventImpl({required this.todaysdelivery});
+  const _$GetTodaysDeliveryEventImpl(
+      {required this.todaysdelivery, required this.searchQuery});
 
   @override
   final TodaysDeliveryInParas todaysdelivery;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'TodaysDeliveryHeaderEvent.getTodaysDeliveryEvent(todaysdelivery: $todaysdelivery)';
+    return 'TodaysDeliveryHeaderEvent.getTodaysDeliveryEvent(todaysdelivery: $todaysdelivery, searchQuery: $searchQuery)';
   }
 
   @override
@@ -141,11 +150,13 @@ class _$GetTodaysDeliveryEventImpl implements GetTodaysDeliveryEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetTodaysDeliveryEventImpl &&
             (identical(other.todaysdelivery, todaysdelivery) ||
-                other.todaysdelivery == todaysdelivery));
+                other.todaysdelivery == todaysdelivery) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, todaysdelivery);
+  int get hashCode => Object.hash(runtimeType, todaysdelivery, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -157,36 +168,37 @@ class _$GetTodaysDeliveryEventImpl implements GetTodaysDeliveryEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TodaysDeliveryInParas todaysdelivery)
+    required TResult Function(
+            TodaysDeliveryInParas todaysdelivery, String searchQuery)
         getTodaysDeliveryEvent,
     required TResult Function() todaysDeliveryFailedEvent,
     required TResult Function() clearTodaysDelivery,
   }) {
-    return getTodaysDeliveryEvent(todaysdelivery);
+    return getTodaysDeliveryEvent(todaysdelivery, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult? Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult? Function()? todaysDeliveryFailedEvent,
     TResult? Function()? clearTodaysDelivery,
   }) {
-    return getTodaysDeliveryEvent?.call(todaysdelivery);
+    return getTodaysDeliveryEvent?.call(todaysdelivery, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult Function()? todaysDeliveryFailedEvent,
     TResult Function()? clearTodaysDelivery,
     required TResult orElse(),
   }) {
     if (getTodaysDeliveryEvent != null) {
-      return getTodaysDeliveryEvent(todaysdelivery);
+      return getTodaysDeliveryEvent(todaysdelivery, searchQuery);
     }
     return orElse();
   }
@@ -232,10 +244,11 @@ class _$GetTodaysDeliveryEventImpl implements GetTodaysDeliveryEvent {
 
 abstract class GetTodaysDeliveryEvent implements TodaysDeliveryHeaderEvent {
   const factory GetTodaysDeliveryEvent(
-          {required final TodaysDeliveryInParas todaysdelivery}) =
-      _$GetTodaysDeliveryEventImpl;
+      {required final TodaysDeliveryInParas todaysdelivery,
+      required final String searchQuery}) = _$GetTodaysDeliveryEventImpl;
 
   TodaysDeliveryInParas get todaysdelivery;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetTodaysDeliveryEventImplCopyWith<_$GetTodaysDeliveryEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -283,7 +296,8 @@ class _$TodaysDeliveryFailedEventImpl implements TodaysDeliveryFailedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TodaysDeliveryInParas todaysdelivery)
+    required TResult Function(
+            TodaysDeliveryInParas todaysdelivery, String searchQuery)
         getTodaysDeliveryEvent,
     required TResult Function() todaysDeliveryFailedEvent,
     required TResult Function() clearTodaysDelivery,
@@ -294,7 +308,7 @@ class _$TodaysDeliveryFailedEventImpl implements TodaysDeliveryFailedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult? Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult? Function()? todaysDeliveryFailedEvent,
     TResult? Function()? clearTodaysDelivery,
@@ -305,7 +319,7 @@ class _$TodaysDeliveryFailedEventImpl implements TodaysDeliveryFailedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult Function()? todaysDeliveryFailedEvent,
     TResult Function()? clearTodaysDelivery,
@@ -400,7 +414,8 @@ class _$ClearTodaysDeliveryImpl implements ClearTodaysDelivery {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TodaysDeliveryInParas todaysdelivery)
+    required TResult Function(
+            TodaysDeliveryInParas todaysdelivery, String searchQuery)
         getTodaysDeliveryEvent,
     required TResult Function() todaysDeliveryFailedEvent,
     required TResult Function() clearTodaysDelivery,
@@ -411,7 +426,7 @@ class _$ClearTodaysDeliveryImpl implements ClearTodaysDelivery {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult? Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult? Function()? todaysDeliveryFailedEvent,
     TResult? Function()? clearTodaysDelivery,
@@ -422,7 +437,7 @@ class _$ClearTodaysDeliveryImpl implements ClearTodaysDelivery {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TodaysDeliveryInParas todaysdelivery)?
+    TResult Function(TodaysDeliveryInParas todaysdelivery, String searchQuery)?
         getTodaysDeliveryEvent,
     TResult Function()? todaysDeliveryFailedEvent,
     TResult Function()? clearTodaysDelivery,

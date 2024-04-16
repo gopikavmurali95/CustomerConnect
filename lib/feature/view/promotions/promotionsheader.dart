@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
@@ -7,6 +9,8 @@ import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_h
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+// import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +24,13 @@ class PromotionHeader extends StatefulWidget {
   State<PromotionHeader> createState() => _PromotionHeaderState();
 }
 
+final _promotionHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _PromotionHeaderState extends State<PromotionHeader> {
   @override
   void initState() {
+    _promotionHeaderSearchCtrl.clear();
     context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
     context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
         promotionInparas: PromotionHeaderInParas(
@@ -33,7 +41,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
             route: '',
             subArea: '',
             toDate: '29-03-2024',
-            userId: widget.user.usrId)));
+            userId: widget.user.usrId),
+        searchQuery: ''));
     super.initState();
   }
 
@@ -85,7 +94,32 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                           blurRadius: 0.4,
                           spreadRadius: 0.4)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _promotionHeaderSearchCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context
+                            .read<PromotionHeaderBloc>()
+                            .add(GetPromotionHeaderEvent(
+                                promotionInparas: PromotionHeaderInParas(
+                                  area: '',
+                                  cusOutlet: '',
+                                  customer: '',
+                                  fromDate: '01-01-2023',
+                                  route: '',
+                                  subArea: '',
+                                  toDate: '01-05-2024',
+                                  userId: widget.user.usrId,
+                                ),
+                                searchQuery: value.trim()));
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -200,7 +234,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                               PromotionCustomerBloc>()
                                                           .add(
                                                               const GetPromotionCustomerEvent(
-                                                                  id: '1'));
+                                                                  id: '1',
+                                                                  searchQuery:
+                                                                      ''));
                                                       Navigator.push(
                                                           context,
                                                           MaterialPageRoute(

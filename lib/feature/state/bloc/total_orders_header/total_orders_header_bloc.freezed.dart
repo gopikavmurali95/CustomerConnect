@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TotalOrdersHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TotalOrdersInparas ordersin) getTotalOrdersEvent,
+    required TResult Function(TotalOrdersInparas ordersin, String searchQuery)
+        getTotalOrdersEvent,
     required TResult Function() totalOrdersFailedEvent,
     required TResult Function() totalOrdersClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult? Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult? Function()? totalOrdersFailedEvent,
     TResult? Function()? totalOrdersClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult Function()? totalOrdersFailedEvent,
     TResult Function()? totalOrdersClearEvent,
     required TResult orElse(),
@@ -89,7 +92,7 @@ abstract class _$$GetTotalOrdersEventImplCopyWith<$Res> {
           $Res Function(_$GetTotalOrdersEventImpl) then) =
       __$$GetTotalOrdersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TotalOrdersInparas ordersin});
+  $Res call({TotalOrdersInparas ordersin, String searchQuery});
 }
 
 /// @nodoc
@@ -105,12 +108,17 @@ class __$$GetTotalOrdersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ordersin = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetTotalOrdersEventImpl(
       ordersin: null == ordersin
           ? _value.ordersin
           : ordersin // ignore: cast_nullable_to_non_nullable
               as TotalOrdersInparas,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,14 +126,17 @@ class __$$GetTotalOrdersEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetTotalOrdersEventImpl implements GetTotalOrdersEvent {
-  const _$GetTotalOrdersEventImpl({required this.ordersin});
+  const _$GetTotalOrdersEventImpl(
+      {required this.ordersin, required this.searchQuery});
 
   @override
   final TotalOrdersInparas ordersin;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'TotalOrdersHeaderEvent.getTotalOrdersEvent(ordersin: $ordersin)';
+    return 'TotalOrdersHeaderEvent.getTotalOrdersEvent(ordersin: $ordersin, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +145,13 @@ class _$GetTotalOrdersEventImpl implements GetTotalOrdersEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetTotalOrdersEventImpl &&
             (identical(other.ordersin, ordersin) ||
-                other.ordersin == ordersin));
+                other.ordersin == ordersin) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ordersin);
+  int get hashCode => Object.hash(runtimeType, ordersin, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -150,33 +163,36 @@ class _$GetTotalOrdersEventImpl implements GetTotalOrdersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TotalOrdersInparas ordersin) getTotalOrdersEvent,
+    required TResult Function(TotalOrdersInparas ordersin, String searchQuery)
+        getTotalOrdersEvent,
     required TResult Function() totalOrdersFailedEvent,
     required TResult Function() totalOrdersClearEvent,
   }) {
-    return getTotalOrdersEvent(ordersin);
+    return getTotalOrdersEvent(ordersin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult? Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult? Function()? totalOrdersFailedEvent,
     TResult? Function()? totalOrdersClearEvent,
   }) {
-    return getTotalOrdersEvent?.call(ordersin);
+    return getTotalOrdersEvent?.call(ordersin, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult Function()? totalOrdersFailedEvent,
     TResult Function()? totalOrdersClearEvent,
     required TResult orElse(),
   }) {
     if (getTotalOrdersEvent != null) {
-      return getTotalOrdersEvent(ordersin);
+      return getTotalOrdersEvent(ordersin, searchQuery);
     }
     return orElse();
   }
@@ -220,9 +236,11 @@ class _$GetTotalOrdersEventImpl implements GetTotalOrdersEvent {
 
 abstract class GetTotalOrdersEvent implements TotalOrdersHeaderEvent {
   const factory GetTotalOrdersEvent(
-      {required final TotalOrdersInparas ordersin}) = _$GetTotalOrdersEventImpl;
+      {required final TotalOrdersInparas ordersin,
+      required final String searchQuery}) = _$GetTotalOrdersEventImpl;
 
   TotalOrdersInparas get ordersin;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetTotalOrdersEventImplCopyWith<_$GetTotalOrdersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -270,7 +288,8 @@ class _$TotalOrdersFailedEventImpl implements TotalOrdersFailedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TotalOrdersInparas ordersin) getTotalOrdersEvent,
+    required TResult Function(TotalOrdersInparas ordersin, String searchQuery)
+        getTotalOrdersEvent,
     required TResult Function() totalOrdersFailedEvent,
     required TResult Function() totalOrdersClearEvent,
   }) {
@@ -280,7 +299,8 @@ class _$TotalOrdersFailedEventImpl implements TotalOrdersFailedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult? Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult? Function()? totalOrdersFailedEvent,
     TResult? Function()? totalOrdersClearEvent,
   }) {
@@ -290,7 +310,8 @@ class _$TotalOrdersFailedEventImpl implements TotalOrdersFailedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult Function()? totalOrdersFailedEvent,
     TResult Function()? totalOrdersClearEvent,
     required TResult orElse(),
@@ -383,7 +404,8 @@ class _$TotalOrdersClearEventImpl implements TotalOrdersClearEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TotalOrdersInparas ordersin) getTotalOrdersEvent,
+    required TResult Function(TotalOrdersInparas ordersin, String searchQuery)
+        getTotalOrdersEvent,
     required TResult Function() totalOrdersFailedEvent,
     required TResult Function() totalOrdersClearEvent,
   }) {
@@ -393,7 +415,8 @@ class _$TotalOrdersClearEventImpl implements TotalOrdersClearEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult? Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult? Function()? totalOrdersFailedEvent,
     TResult? Function()? totalOrdersClearEvent,
   }) {
@@ -403,7 +426,8 @@ class _$TotalOrdersClearEventImpl implements TotalOrdersClearEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TotalOrdersInparas ordersin)? getTotalOrdersEvent,
+    TResult Function(TotalOrdersInparas ordersin, String searchQuery)?
+        getTotalOrdersEvent,
     TResult Function()? totalOrdersFailedEvent,
     TResult Function()? totalOrdersClearEvent,
     required TResult orElse(),

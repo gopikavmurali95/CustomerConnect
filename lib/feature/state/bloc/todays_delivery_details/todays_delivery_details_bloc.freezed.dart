@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TodaysDeliveryDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getTodaysDeliveryDetails,
+    required TResult Function(String id, String searchQuery)
+        getTodaysDeliveryDetails,
     required TResult Function() clearTodasDeliveryDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getTodaysDeliveryDetails,
+    TResult? Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult? Function()? clearTodasDeliveryDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getTodaysDeliveryDetails,
+    TResult Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult Function()? clearTodasDeliveryDetails,
     required TResult orElse(),
   }) =>
@@ -89,7 +90,7 @@ abstract class _$$GetTodaysDeliveryDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetTodaysDeliveryDetailsEventImpl) then) =
       __$$GetTodaysDeliveryDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, String searchQuery});
 }
 
 /// @nodoc
@@ -106,11 +107,16 @@ class __$$GetTodaysDeliveryDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetTodaysDeliveryDetailsEventImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -120,14 +126,17 @@ class __$$GetTodaysDeliveryDetailsEventImplCopyWithImpl<$Res>
 
 class _$GetTodaysDeliveryDetailsEventImpl
     implements GetTodaysDeliveryDetailsEvent {
-  const _$GetTodaysDeliveryDetailsEventImpl({required this.id});
+  const _$GetTodaysDeliveryDetailsEventImpl(
+      {required this.id, required this.searchQuery});
 
   @override
   final String id;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'TodaysDeliveryDetailsEvent.getTodaysDeliveryDetails(id: $id)';
+    return 'TodaysDeliveryDetailsEvent.getTodaysDeliveryDetails(id: $id, searchQuery: $searchQuery)';
   }
 
   @override
@@ -135,11 +144,13 @@ class _$GetTodaysDeliveryDetailsEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTodaysDeliveryDetailsEventImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -152,30 +163,31 @@ class _$GetTodaysDeliveryDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getTodaysDeliveryDetails,
+    required TResult Function(String id, String searchQuery)
+        getTodaysDeliveryDetails,
     required TResult Function() clearTodasDeliveryDetails,
   }) {
-    return getTodaysDeliveryDetails(id);
+    return getTodaysDeliveryDetails(id, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getTodaysDeliveryDetails,
+    TResult? Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult? Function()? clearTodasDeliveryDetails,
   }) {
-    return getTodaysDeliveryDetails?.call(id);
+    return getTodaysDeliveryDetails?.call(id, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getTodaysDeliveryDetails,
+    TResult Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult Function()? clearTodasDeliveryDetails,
     required TResult orElse(),
   }) {
     if (getTodaysDeliveryDetails != null) {
-      return getTodaysDeliveryDetails(id);
+      return getTodaysDeliveryDetails(id, searchQuery);
     }
     return orElse();
   }
@@ -220,10 +232,12 @@ class _$GetTodaysDeliveryDetailsEventImpl
 
 abstract class GetTodaysDeliveryDetailsEvent
     implements TodaysDeliveryDetailsEvent {
-  const factory GetTodaysDeliveryDetailsEvent({required final String id}) =
-      _$GetTodaysDeliveryDetailsEventImpl;
+  const factory GetTodaysDeliveryDetailsEvent(
+      {required final String id,
+      required final String searchQuery}) = _$GetTodaysDeliveryDetailsEventImpl;
 
   String get id;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetTodaysDeliveryDetailsEventImplCopyWith<
           _$GetTodaysDeliveryDetailsEventImpl>
@@ -272,7 +286,8 @@ class _$ClearTodasDeliveryDetailsImpl implements ClearTodasDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getTodaysDeliveryDetails,
+    required TResult Function(String id, String searchQuery)
+        getTodaysDeliveryDetails,
     required TResult Function() clearTodasDeliveryDetails,
   }) {
     return clearTodasDeliveryDetails();
@@ -281,7 +296,7 @@ class _$ClearTodasDeliveryDetailsImpl implements ClearTodasDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getTodaysDeliveryDetails,
+    TResult? Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult? Function()? clearTodasDeliveryDetails,
   }) {
     return clearTodasDeliveryDetails?.call();
@@ -290,7 +305,7 @@ class _$ClearTodasDeliveryDetailsImpl implements ClearTodasDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getTodaysDeliveryDetails,
+    TResult Function(String id, String searchQuery)? getTodaysDeliveryDetails,
     TResult Function()? clearTodasDeliveryDetails,
     required TResult orElse(),
   }) {

@@ -1,11 +1,32 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
+import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverylist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TodaysDelivery extends StatelessWidget {
-  const TodaysDelivery({super.key});
+class TodaysDelivery extends StatefulWidget {
+  final LoginUserModel user;
+  const TodaysDelivery({super.key, required this.user});
+
+  @override
+  State<TodaysDelivery> createState() => _TodaysDeliveryState();
+}
+
+final _todaysDeliverySearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _TodaysDeliveryState extends State<TodaysDelivery> {
+  @override
+  void initState() {
+    _todaysDeliverySearchCtrl.clear();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +76,31 @@ class TodaysDelivery extends StatelessWidget {
                           blurRadius: 0.4,
                           spreadRadius: 0.4)
                     ]),
-                child: TextField(
+                child: TextFormField(
+                  controller: _todaysDeliverySearchCtrl,
+                  onChanged: (value) {
+                    if (debounce?.isActive ?? false) debounce!.cancel();
+                    debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ),
+                      () async {
+                        context.read<TodaysDeliveryHeaderBloc>().add(
+                            GetTodaysDeliveryEvent(
+                                todaysdelivery: TodaysDeliveryInParas(
+                                    area: '',
+                                    customer: '',
+                                    customerOutlet: '',
+                                    fromDate: '01-01-2023',
+                                    mode: '',
+                                    route: '',
+                                    subArea: '',
+                                    toDate: '31-03-2024',
+                                    userId: widget.user.usrId),
+                                searchQuery: value.trim()));
+                      },
+                    );
+                  },
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -71,6 +116,28 @@ class TodaysDelivery extends StatelessWidget {
                       contentPadding: const EdgeInsets.all(15.0),
                       filled: true,
                       fillColor: Colors.white,
+                      suffix: InkWell(
+                        onTap: () {
+                          _todaysDeliverySearchCtrl.clear();
+                          context.read<TodaysDeliveryHeaderBloc>().add(
+                              GetTodaysDeliveryEvent(
+                                  todaysdelivery: TodaysDeliveryInParas(
+                                      area: '',
+                                      customer: '',
+                                      customerOutlet: '',
+                                      fromDate: '01-01-2023',
+                                      mode: '',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '31-03-2024',
+                                      userId: widget.user.usrId),
+                                  searchQuery: ''));
+                        },
+                        child: const Icon(
+                          Icons.close,
+                          size: 14,
+                        ),
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none)),
@@ -104,7 +171,10 @@ class TodaysDelivery extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          const Expanded(child: TodaysDeliveryList())
+          Expanded(
+              child: TodaysDeliveryList(
+            user: widget.user,
+          ))
         ],
       ),
     );

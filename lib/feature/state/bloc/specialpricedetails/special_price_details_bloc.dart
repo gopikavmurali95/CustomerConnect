@@ -19,8 +19,22 @@ class SpecialPriceDetailsBloc
     on<GetSpecialPriceDetailsEvent>((event, emit) async {
       Either<MainFailures, List<SpecialPriceDetailsModel>> details =
           await spdetails.getPriceDetail(event.prhID);
-      emit(details.fold((l) => const specialPriceDetailsFailedState(),
-          (r) => GetSpecialPriceDetailsState(spdetails: r)));
+      List<SpecialPriceDetailsModel> searcheditems = [];
+      emit(details.fold((l) => const specialPriceDetailsFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prdCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetSpecialPriceDetailsState(
+            spdetails: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearSpecialriceDetailsEvent>((event, emit) {
       emit(const GetSpecialPriceDetailsState(spdetails: null));

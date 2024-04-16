@@ -18,8 +18,23 @@ class InvoiceDetailsBloc
     on<GetInvoiceDetailsEvent>((event, emit) async {
       Either<MainFailures, List<InvoiceDetailsModel>> invoicedetails =
           await invrepo.getInvoiceDetail(event.id);
-      emit(invoicedetails.fold((l) => const GetInvoiceDetailsFailedState(),
-          (r) => GetInvoiceDetailsState(invdetails: r)));
+      List<InvoiceDetailsModel> searcheditems = [];
+      emit(
+          invoicedetails.fold((l) => const GetInvoiceDetailsFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.prdCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetInvoiceDetailsState(
+            invdetails: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearInvoiceDetails>(
         (event, emit) => emit(const GetInvoiceDetailsState(invdetails: null)));

@@ -18,8 +18,24 @@ class InvoiceHeaderBloc extends Bloc<InvoiceHeaderEvent, InvoiceHeaderState> {
     on<InvoiceHeaderSuccessEvent>((event, emit) async {
       Either<MainFailures, List<InvoiceHeaderModel>> invoiceheader =
           await invrepo.getInvoiceHeaders(event.invheaderin);
-      emit(invoiceheader.fold((l) => const InvoiceHeaderFailedState(),
-          (r) => InvoiceHeaderSuccessState(invheader: r)));
+
+      List<InvoiceHeaderModel> searcheditems = [];
+
+      emit(invoiceheader.fold((l) => const InvoiceHeaderFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.invoiceNo!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return InvoiceHeaderSuccessState(
+            invheader: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on((event, emit) => emit(const InvoiceHeaderSuccessState(invheader: null)));
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
@@ -7,8 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PromotionCustomer extends StatelessWidget {
+class PromotionCustomer extends StatefulWidget {
   const PromotionCustomer({super.key});
+
+  @override
+  State<PromotionCustomer> createState() => _PromotionCustomerState();
+}
+
+final _promotionCustomerSearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _PromotionCustomerState extends State<PromotionCustomer> {
+  @override
+  void initState() {
+    _promotionCustomerSearchCtrl.clear();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +146,21 @@ class PromotionCustomer extends StatelessWidget {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _promotionCustomerSearchCtrl,
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ),
+                          () async {
+                            context.read<PromotionCustomerBloc>().add(
+                                GetPromotionCustomerEvent(
+                                    id: '1', searchQuery: value.trim()));
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
