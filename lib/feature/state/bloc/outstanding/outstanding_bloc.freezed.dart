@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OutstandingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OutStandingHeaderModel outIn)
+    required TResult Function(OutStandingHeaderModel outIn, String searchQuery)
         getOutstandingDataEvent,
     required TResult Function() clearOutStandingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult? Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult? Function()? clearOutStandingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult Function()? clearOutStandingEvent,
     required TResult orElse(),
   }) =>
@@ -84,7 +86,7 @@ abstract class _$$GetOutstandingDataEventImplCopyWith<$Res> {
           $Res Function(_$GetOutstandingDataEventImpl) then) =
       __$$GetOutstandingDataEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OutStandingHeaderModel outIn});
+  $Res call({OutStandingHeaderModel outIn, String searchQuery});
 }
 
 /// @nodoc
@@ -100,12 +102,17 @@ class __$$GetOutstandingDataEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? outIn = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetOutstandingDataEventImpl(
       outIn: null == outIn
           ? _value.outIn
           : outIn // ignore: cast_nullable_to_non_nullable
               as OutStandingHeaderModel,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -113,14 +120,17 @@ class __$$GetOutstandingDataEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetOutstandingDataEventImpl implements GetOutstandingDataEvent {
-  const _$GetOutstandingDataEventImpl({required this.outIn});
+  const _$GetOutstandingDataEventImpl(
+      {required this.outIn, required this.searchQuery});
 
   @override
   final OutStandingHeaderModel outIn;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'OutstandingEvent.getOutstandingDataEvent(outIn: $outIn)';
+    return 'OutstandingEvent.getOutstandingDataEvent(outIn: $outIn, searchQuery: $searchQuery)';
   }
 
   @override
@@ -128,11 +138,13 @@ class _$GetOutstandingDataEventImpl implements GetOutstandingDataEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOutstandingDataEventImpl &&
-            (identical(other.outIn, outIn) || other.outIn == outIn));
+            (identical(other.outIn, outIn) || other.outIn == outIn) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, outIn);
+  int get hashCode => Object.hash(runtimeType, outIn, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -144,31 +156,33 @@ class _$GetOutstandingDataEventImpl implements GetOutstandingDataEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OutStandingHeaderModel outIn)
+    required TResult Function(OutStandingHeaderModel outIn, String searchQuery)
         getOutstandingDataEvent,
     required TResult Function() clearOutStandingEvent,
   }) {
-    return getOutstandingDataEvent(outIn);
+    return getOutstandingDataEvent(outIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult? Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult? Function()? clearOutStandingEvent,
   }) {
-    return getOutstandingDataEvent?.call(outIn);
+    return getOutstandingDataEvent?.call(outIn, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult Function()? clearOutStandingEvent,
     required TResult orElse(),
   }) {
     if (getOutstandingDataEvent != null) {
-      return getOutstandingDataEvent(outIn);
+      return getOutstandingDataEvent(outIn, searchQuery);
     }
     return orElse();
   }
@@ -209,10 +223,11 @@ class _$GetOutstandingDataEventImpl implements GetOutstandingDataEvent {
 
 abstract class GetOutstandingDataEvent implements OutstandingEvent {
   const factory GetOutstandingDataEvent(
-          {required final OutStandingHeaderModel outIn}) =
-      _$GetOutstandingDataEventImpl;
+      {required final OutStandingHeaderModel outIn,
+      required final String searchQuery}) = _$GetOutstandingDataEventImpl;
 
   OutStandingHeaderModel get outIn;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetOutstandingDataEventImplCopyWith<_$GetOutstandingDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -258,7 +273,7 @@ class _$ClearOutStandingEventImpl implements ClearOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OutStandingHeaderModel outIn)
+    required TResult Function(OutStandingHeaderModel outIn, String searchQuery)
         getOutstandingDataEvent,
     required TResult Function() clearOutStandingEvent,
   }) {
@@ -268,7 +283,8 @@ class _$ClearOutStandingEventImpl implements ClearOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult? Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult? Function()? clearOutStandingEvent,
   }) {
     return clearOutStandingEvent?.call();
@@ -277,7 +293,8 @@ class _$ClearOutStandingEventImpl implements ClearOutStandingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OutStandingHeaderModel outIn)? getOutstandingDataEvent,
+    TResult Function(OutStandingHeaderModel outIn, String searchQuery)?
+        getOutstandingDataEvent,
     TResult Function()? clearOutStandingEvent,
     required TResult orElse(),
   }) {

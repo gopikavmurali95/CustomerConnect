@@ -107,7 +107,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                                     userId: widget.user.usrId,
                                     fromDate: '01-01-2023',
                                     toDate: '23-03-2024',
-                                    mode: 'DD',
+                                    mode: 'LD',
                                     area: '',
                                     route: '',
                                     subArea: ''),
@@ -141,7 +141,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                                       userId: widget.user.usrId,
                                       fromDate: '01-01-2023',
                                       toDate: '23-03-2024',
-                                      mode: 'DD',
+                                      mode: 'LD',
                                       area: '',
                                       route: '',
                                       subArea: '')));

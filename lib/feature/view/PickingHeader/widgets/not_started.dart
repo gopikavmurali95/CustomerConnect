@@ -38,12 +38,13 @@ class NotStartedHead extends StatelessWidget {
                       ),
                     )
                   : ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       padding: const EdgeInsets.only(
                         left: 05, right: 05,
                         top: 10,
                         //  bottom: 10
                       ),
-                      shrinkWrap: true,
                       itemCount: pickingOut.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Column(

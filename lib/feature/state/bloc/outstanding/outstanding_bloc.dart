@@ -22,12 +22,28 @@ class OutstandingBloc extends Bloc<OutstandingEvent, OutstandingState> {
           await outStandingHeaderRepo.getOutStandingHeaders(event.outIn);
       Either<MainFailures, OutstandingCountModel> counts =
           await outStandingHeaderRepo.getoutstandingTotal(event.outIn);
+      List<OutStandOutModel> searcheditems = [];
       emit(
         headers.fold(
           (l) => const OutstandingFailedState(),
           (r) => counts.fold(
             (l) => const OutstandingFailedState(),
-            (c) => GetOutstandingDataState(headers: r, counts: c),
+            (c) {
+              searcheditems = r
+                  .where((element) =>
+                      element.invoiceID!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()) ||
+                      element.cusCode!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()))
+                  .toList();
+              return GetOutstandingDataState(
+                  headers: event.searchQuery.isEmpty ? r : searcheditems,
+                  counts: c);
+            },
           ),
         ),
       );

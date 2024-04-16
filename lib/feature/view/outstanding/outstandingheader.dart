@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
@@ -24,13 +26,17 @@ class OutstandingHeaderScreen extends StatefulWidget {
 }
 
 List<int> _pievalues = [];
+final _outstandingHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
 
 class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
   @override
   void initState() {
     _pievalues.clear();
+    _outstandingHeaderSearchCtrl.clear();
     context.read<OutstandingBloc>().add(const ClearOutStandingEvent());
     context.read<OutstandingBloc>().add(GetOutstandingDataEvent(
+        searchQuery: '',
         outIn: OutStandingHeaderModel(
             area: '',
             customer: '',
@@ -94,13 +100,40 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
                         ]),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _outstandingHeaderSearchCtrl,
+
+                      onChanged: (value) {
+                        if (debounce?.isActive ?? false) debounce!.cancel();
+                        debounce = Timer(
+                          const Duration(
+                            milliseconds: 100,
+                          ),
+                          () async {
+                            context.read<OutstandingBloc>().add(
+                                  GetOutstandingDataEvent(
+                                    searchQuery: value.trim(),
+                                    outIn: OutStandingHeaderModel(
+                                      area: '',
+                                      customer: '',
+                                      fromDate: '01-01-2023',
+                                      outlet: '',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '04-04-2024',
+                                      userID: /* widget.user.usrId */ '1',
+                                    ),
+                                  ),
+                                );
+                          },
+                        );
+                      },
                       decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Inovices",
+                          hintText: "Search Invoices",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -110,6 +143,30 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                           contentPadding: const EdgeInsets.all(15.0),
                           filled: true,
                           fillColor: Colors.white,
+                          suffix: InkWell(
+                            onTap: () {
+                              _outstandingHeaderSearchCtrl.clear();
+                              context.read<OutstandingBloc>().add(
+                                    GetOutstandingDataEvent(
+                                      searchQuery: '',
+                                      outIn: OutStandingHeaderModel(
+                                          area: '',
+                                          customer: '',
+                                          fromDate: '01-01-2023',
+                                          outlet: '',
+                                          route: '',
+                                          subArea: '',
+                                          toDate: '04-04-2024',
+                                          userID: /* widget.user.usrId */
+                                              '1'),
+                                    ),
+                                  );
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                            ),
+                          ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide.none)),
@@ -130,6 +187,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                       state.when(
                         getOutstandingDataState: (headers, counts) {
                           if (counts != null) {
+                            _pievalues.clear();
                             if (int.parse(counts.dueCount ?? '') > 0) {
                               _pievalues
                                   .add(int.parse(counts.overDueCount ?? ''));

@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/cusinsdetaillist.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -245,7 +246,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -253,38 +254,41 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                     'items',
                     style: boxHeading(),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Type',
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                      Text(
-                        'Uom',
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                      Text(
-                        'Qty',
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                    ],
+                  const Spacer(),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Type',
+                          style: boxHeading(),
+                        ),
+                        /*  SizedBox(
+                          width: 15.h,
+                        ), */
+                        Text(
+                          'Uom',
+                          style: boxHeading(),
+                        ),
+                        /*  SizedBox(
+                          width: 15.h,
+                        ), */
+                        Text(
+                          'Qty',
+                          style: boxHeading(),
+                        ),
+                        /*  SizedBox(
+                          width: 15.h,
+                        ), */
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
           ),
           SizedBox(
-            width: 15.h,
+            height: 8.h,
           ),
           const Expanded(child: CusInsInvoiceDetailListWidget())
         ],

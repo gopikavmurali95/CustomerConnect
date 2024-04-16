@@ -40,8 +40,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) => Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
+                                  padding: const EdgeInsets.only(left: 20),
                                   child: Column(
                                     children: [
                                       Row(
@@ -51,7 +50,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
-                                                2,
+                                                1.86,
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
