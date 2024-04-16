@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/PickingHeader/widgets/completed.da
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
@@ -83,88 +84,97 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
           preferredSize: const Size(100, 50),
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
-            child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
-                child: TextFormField(
-                  controller: _pickingCompletedSearchCtrl,
-                  onChanged: (value) {
-                    if (debounce?.isActive ?? false) debounce!.cancel();
-                    debounce = Timer(
-                      const Duration(
-                        milliseconds: 500,
+            child: SizedBox(
+              height: 40,
+              child: TextFormField(
+                controller: _pickingCompletedSearchCtrl,
+                onChanged: (value) {
+                  if (debounce?.isActive ?? false) debounce!.cancel();
+                  debounce = Timer(
+                    const Duration(
+                      milliseconds: 200,
+                    ),
+                    () async {
+                      context.read<PickingHeaderBloc>().add(
+                          GetpickingHeaderEvent(
+                              pickingHeadIn: PickingInModel(
+                                  area: '',
+                                  customer: '',
+                                  fromDate: '01-01-2023',
+                                  mode: 'PC',
+                                  outlet: '',
+                                  route: '',
+                                  subArea: '',
+                                  toDate: '06-04-2024',
+                                  userID: widget.user.usrId),
+                              searchQuery: value.trim()));
+                    },
+                  );
+                },
+                decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      size: 20,
+                    ),
+                    hintText: "Search Deliveries",
+                    hintStyle: TextStyle(
+                        fontSize: 13.sp,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
+                    isDense: true,
+                    counterText: "",
+                    contentPadding: const EdgeInsets.all(15.0),
+                    filled: true,
+                    fillColor: Colors.white,
+                    suffix: SizedBox(
+                      height: 40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 10.sp),
+                            child: InkWell(
+                              onTap: () {
+                                _pickingCompletedSearchCtrl.clear();
+                                context.read<PickingHeaderBloc>().add(
+                                      GetpickingHeaderEvent(
+                                          pickingHeadIn: PickingInModel(
+                                              userID: widget.user.usrId,
+                                              area: '',
+                                              customer: '',
+                                              fromDate: '01-01-2023',
+                                              mode: 'PC',
+                                              outlet: '',
+                                              route: '',
+                                              subArea: '',
+                                              toDate: '26-03-2024'),
+                                          searchQuery: ''),
+                                    );
+                              },
+                              child: Icon(
+                                Icons.close,
+                                size: 15.sp,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      () async {
-                        context.read<PickingHeaderBloc>().add(
-                            GetpickingHeaderEvent(
-                                pickingHeadIn: PickingInModel(
-                                    area: '',
-                                    customer: '',
-                                    fromDate: '01-01-2023',
-                                    mode: 'PC',
-                                    outlet: '',
-                                    route: '',
-                                    subArea: '',
-                                    toDate: '06-04-2024',
-                                    userID: widget.user.usrId),
-                                searchQuery: value.trim()));
-                      },
-                    );
-                  },
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 20,
-                      ),
-                      hintText: "Search Deliveries",
-                      hintStyle: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal),
-                      isDense: true,
-                      counterText: "",
-                      contentPadding: const EdgeInsets.all(15.0),
-                      filled: true,
-                      fillColor: Colors.white,
-                      suffix: InkWell(
-                        onTap: () {
-                          _pickingCompletedSearchCtrl.clear();
-                          context.read<PickingHeaderBloc>().add(
-                              GetpickingHeaderEvent(
-                                  pickingHeadIn: PickingInModel(
-                                      userID: widget.user.usrId,
-                                      area: '',
-                                      customer: '',
-                                      fromDate: '01-01-2023',
-                                      mode: 'PC',
-                                      outlet: '',
-                                      route: '',
-                                      subArea: '',
-                                      toDate: '26-03-2024'),
-                                  searchQuery: ''));
-                        },
-                        child: const Icon(
-                          Icons.close,
-                          size: 14,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none)),
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  maxLength: 20,
-                  // controller: _locationNameTextController,
-                )),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.grey.shade200)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.grey.shade200)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.grey.shade200))),
+                textAlign: TextAlign.start,
+                maxLines: 1,
+                maxLength: 20,
+                // controller: _locationNameTextController,
+              ),
+            ),
           ),
         ),
       ),
