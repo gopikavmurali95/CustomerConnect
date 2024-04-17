@@ -103,6 +103,9 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<LoadingDetailBloc>()
+                                .add(const ClearLoadingDetailEvent());
                             context.read<LoadingDetailBloc>().add(
                                 GetloadingDetailEvent(
                                     iD: widget.loadingheader.id!,
@@ -128,6 +131,9 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                           suffix: InkWell(
                             onTap: () {
                               _loadRejectedDetailSearchCtrl.clear();
+                              context
+                                  .read<LoadingDetailBloc>()
+                                  .add(const ClearLoadingDetailEvent());
                               context.read<LoadingDetailBloc>().add(
                                   GetloadingDetailEvent(
                                       iD: widget.loadingheader.id!,

@@ -25,6 +25,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
   @override
   void initState() {
     _spCustomergSearchCtrl.clear();
+    context
+        .read<SpecialPriceCustomersBloc>()
+        .add(const ClearSpecialPriceCustomer());
     context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
         userID: widget.user.usrId!,
         fromDate: '01-01-2023',
@@ -174,6 +177,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               milliseconds: 500,
                             ),
                             () async {
+                              context
+                                  .read<SpecialPriceCustomersBloc>()
+                                  .add(const ClearSpecialPriceCustomer());
                               context.read<SpecialPriceCustomersBloc>().add(
                                   GetSpecialPriceCustomersEvent(
                                       userID: widget.user.usrId!,
@@ -191,6 +197,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                             suffix: InkWell(
                               onTap: () {
                                 _spCustomergSearchCtrl.clear();
+                                context
+                                    .read<SpecialPriceCustomersBloc>()
+                                    .add(const ClearSpecialPriceCustomer());
                                 context.read<SpecialPriceCustomersBloc>().add(
                                     GetSpecialPriceCustomersEvent(
                                         userID: widget.user.usrId!,

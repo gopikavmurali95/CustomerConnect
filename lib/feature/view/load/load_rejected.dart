@@ -99,6 +99,9 @@ class _LoadRejectedState extends State<LoadRejected> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<LoadingHeaderBloc>()
+                            .add(const ClearLoadingHeadderEvent());
                         context.read<LoadingHeaderBloc>().add(
                               GetLoadingHeaderEvent(
                                 searchQuery: value.trim(),
@@ -133,6 +136,9 @@ class _LoadRejectedState extends State<LoadRejected> {
                       suffix: InkWell(
                         onTap: () {
                           _loadRejectedSearchCtrl.clear();
+                          context
+                              .read<LoadingHeaderBloc>()
+                              .add(const ClearLoadingHeadderEvent());
                           context.read<LoadingHeaderBloc>().add(
                                 GetLoadingHeaderEvent(
                                   searchQuery: '',

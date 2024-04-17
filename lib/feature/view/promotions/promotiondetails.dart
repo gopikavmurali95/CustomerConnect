@@ -5,7 +5,7 @@ import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart'
 
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

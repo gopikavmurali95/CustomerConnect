@@ -91,6 +91,9 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<PickingdetailBloc>()
+                                .add(const ClearPickingDetailevent());
                             context.read<PickingdetailBloc>().add(
                                 PickingDetailSuccess(
                                     pickingID: widget.picking.pickingID!,
@@ -116,7 +119,9 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                           suffix: InkWell(
                             onTap: () {
                               _pickingNotStartedSearchCtrl.clear();
-
+                              context
+                                  .read<PickingdetailBloc>()
+                                  .add(const ClearPickingDetailevent());
                               context.read<PickingdetailBloc>().add(
                                   PickingDetailSuccess(
                                       pickingID: widget.picking.pickingID!,

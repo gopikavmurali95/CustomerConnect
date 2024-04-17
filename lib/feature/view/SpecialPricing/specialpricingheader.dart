@@ -81,6 +81,9 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<SpecialPriceHeaderBloc>()
+                            .add(const ClearSpecialPriceEvent());
                         context.read<SpecialPriceHeaderBloc>().add(
                             GetSpecialPriceHeaderEvent(
                                 spPriceInparas: SpecialPriceHeaderModel(
@@ -105,6 +108,9 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                       suffix: InkWell(
                         onTap: () {
                           _spPriceSearchCtrl.clear();
+                          context
+                              .read<SpecialPriceHeaderBloc>()
+                              .add(const ClearSpecialPriceEvent());
                           context.read<SpecialPriceHeaderBloc>().add(
                               GetSpecialPriceHeaderEvent(
                                   spPriceInparas: SpecialPriceHeaderModel(

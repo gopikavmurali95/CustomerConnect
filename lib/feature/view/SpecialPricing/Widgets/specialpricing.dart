@@ -217,6 +217,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<SpecialPriceDetailsBloc>()
+                                .add(const ClearSpecialriceDetailsEvent());
                             context.read<SpecialPriceDetailsBloc>().add(
                                 GetSpecialPriceDetailsEvent(
                                     prhID: '1', searchQuery: value.trim()));
@@ -231,6 +234,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           suffix: InkWell(
                             onTap: () {
                               _spPriceSearchCtrl.clear();
+                              context
+                                  .read<SpecialPriceDetailsBloc>()
+                                  .add(const ClearSpecialriceDetailsEvent());
                               context.read<SpecialPriceDetailsBloc>().add(
                                   const GetSpecialPriceDetailsEvent(
                                       prhID: "1", searchQuery: ''));

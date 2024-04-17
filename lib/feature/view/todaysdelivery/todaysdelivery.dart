@@ -85,6 +85,9 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<TodaysDeliveryHeaderBloc>()
+                            .add(const ClearTodaysDelivery());
                         context.read<TodaysDeliveryHeaderBloc>().add(
                             GetTodaysDeliveryEvent(
                                 todaysdelivery: TodaysDeliveryInParas(
@@ -119,6 +122,9 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                       suffix: InkWell(
                         onTap: () {
                           _todaysDeliverySearchCtrl.clear();
+                          context
+                              .read<TodaysDeliveryHeaderBloc>()
+                              .add(const ClearTodaysDelivery());
                           context.read<TodaysDeliveryHeaderBloc>().add(
                               GetTodaysDeliveryEvent(
                                   todaysdelivery: TodaysDeliveryInParas(

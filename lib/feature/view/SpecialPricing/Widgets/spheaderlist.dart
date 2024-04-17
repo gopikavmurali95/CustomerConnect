@@ -120,6 +120,10 @@ class SpPrHeaderList extends StatelessWidget {
                                           context
                                               .read<SpecialPriceDetailsBloc>()
                                               .add(
+                                                  const ClearSpecialriceDetailsEvent());
+                                          context
+                                              .read<SpecialPriceDetailsBloc>()
+                                              .add(
                                                   const GetSpecialPriceDetailsEvent(
                                                       prhID: "1",
                                                       searchQuery: ''));

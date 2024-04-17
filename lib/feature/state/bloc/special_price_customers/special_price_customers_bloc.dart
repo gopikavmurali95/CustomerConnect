@@ -38,5 +38,8 @@ class SpecialPriceCustomersBloc
             spCustomers: event.searchQuery.isEmpty ? r : searcheditems);
       }));
     });
+    on<ClearSpecialPriceCustomer>((event, emit) {
+      emit(const GetSpecialPriceCustomersState(spCustomers: null));
+    });
   }
 }

@@ -101,6 +101,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     ),
                     () async {
                       if (value.isNotEmpty) {
+                        context
+                            .read<PickingHeaderBloc>()
+                            .add(const ClearPickingevent());
                         context.read<PickingHeaderBloc>().add(
                             GetpickingHeaderEvent(
                                 pickingHeadIn: PickingInModel(
@@ -115,6 +118,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                                     userID: widget.user.usrId),
                                 searchQuery: value.trim()));
                       } else {
+                        context
+                            .read<PickingHeaderBloc>()
+                            .add(const ClearPickingevent());
                         context.read<PickingHeaderBloc>().add(
                             GetpickingHeaderEvent(
                                 pickingHeadIn: PickingInModel(
@@ -150,6 +156,9 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     suffix: InkWell(
                       onTap: () {
                         _pickingnotstartedSearchCtrl.clear();
+                        context
+                            .read<PickingHeaderBloc>()
+                            .add(const ClearPickingevent());
                         context.read<PickingHeaderBloc>().add(
                             GetpickingHeaderEvent(
                                 pickingHeadIn: PickingInModel(

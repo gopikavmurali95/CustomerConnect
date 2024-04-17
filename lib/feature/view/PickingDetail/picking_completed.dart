@@ -119,7 +119,9 @@ class _PickingCompletedState extends State<PickingCompleted> {
                           suffix: InkWell(
                             onTap: () {
                               _pickingCompletedSearchCtrl.clear();
-
+                              context
+                                  .read<PickingdetailBloc>()
+                                  .add(const ClearPickingDetailevent());
                               context.read<PickingdetailBloc>().add(
                                   PickingDetailSuccess(
                                       pickingID: widget.picking.pickingID!,

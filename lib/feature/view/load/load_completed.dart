@@ -100,6 +100,9 @@ class _LoadCompletedState extends State<LoadCompleted> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<LoadingHeaderBloc>()
+                            .add(const ClearLoadingHeadderEvent());
                         context.read<LoadingHeaderBloc>().add(
                               GetLoadingHeaderEvent(
                                 searchQuery: value.trim(),
@@ -134,6 +137,9 @@ class _LoadCompletedState extends State<LoadCompleted> {
                       suffix: InkWell(
                         onTap: () {
                           _loadCompletedSearchCtrl.clear();
+                          context
+                              .read<LoadingHeaderBloc>()
+                              .add(const ClearLoadingHeadderEvent());
                           context.read<LoadingHeaderBloc>().add(
                               GetLoadingHeaderEvent(
                                   searchQuery: '',

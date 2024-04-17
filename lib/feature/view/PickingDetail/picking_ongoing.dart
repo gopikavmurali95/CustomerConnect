@@ -89,6 +89,9 @@ class _PickingOgoingState extends State<PickingOgoing> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<PickingdetailBloc>()
+                                .add(const ClearPickingDetailevent());
                             context.read<PickingdetailBloc>().add(
                                 PickingDetailSuccess(
                                     pickingID: widget.picking.pickingID!,
@@ -114,7 +117,9 @@ class _PickingOgoingState extends State<PickingOgoing> {
                           suffix: InkWell(
                             onTap: () {
                               _pickingOngoingSearchCtrl.clear();
-
+                              context
+                                  .read<PickingdetailBloc>()
+                                  .add(const ClearPickingDetailevent());
                               context.read<PickingdetailBloc>().add(
                                   PickingDetailSuccess(
                                       pickingID: widget.picking.pickingID!,

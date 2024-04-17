@@ -96,6 +96,9 @@ class _LoadPendingState extends State<LoadPending> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<LoadingHeaderBloc>()
+                            .add(const ClearLoadingHeadderEvent());
                         context.read<LoadingHeaderBloc>().add(
                               GetLoadingHeaderEvent(
                                 searchQuery: value.trim(),
@@ -130,6 +133,9 @@ class _LoadPendingState extends State<LoadPending> {
                       suffix: InkWell(
                         onTap: () {
                           _loadPendingSearchCtrl.clear();
+                          context
+                              .read<LoadingHeaderBloc>()
+                              .add(const ClearLoadingHeadderEvent());
                           context.read<LoadingHeaderBloc>().add(
                               GetLoadingHeaderEvent(
                                   searchQuery: '',

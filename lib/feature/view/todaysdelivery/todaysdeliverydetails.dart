@@ -28,6 +28,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
   @override
   void initState() {
     _todaysDeliveryDetailsSearchCtrl.clear();
+    context
+        .read<TodaysDeliveryDetailsBloc>()
+        .add(const ClearTodasDeliveryDetails());
     context.read<TodaysDeliveryDetailsBloc>().add(GetTodaysDeliveryDetailsEvent(
         id: widget.todaysdelivery.id!, searchQuery: ''));
     super.initState();
@@ -175,6 +178,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<TodaysDeliveryDetailsBloc>()
+                                .add(const ClearTodasDeliveryDetails());
                             context.read<TodaysDeliveryDetailsBloc>().add(
                                 GetTodaysDeliveryDetailsEvent(
                                     id: widget.user.usrId!,
@@ -200,6 +206,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                           suffix: InkWell(
                             onTap: () {
                               _todaysDeliveryDetailsSearchCtrl.clear();
+                              context
+                                  .read<TodaysDeliveryDetailsBloc>()
+                                  .add(const ClearTodasDeliveryDetails());
                               context.read<TodaysDeliveryDetailsBloc>().add(
                                   GetTodaysDeliveryDetailsEvent(
                                       id: widget.user.usrId!, searchQuery: ''));

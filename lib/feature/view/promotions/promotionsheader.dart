@@ -105,6 +105,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                       () async {
                         context
                             .read<PromotionHeaderBloc>()
+                            .add(const ClearPromotionHeader());
+                        context
+                            .read<PromotionHeaderBloc>()
                             .add(GetPromotionHeaderEvent(
                                 promotionInparas: PromotionHeaderInParas(
                                   area: '',
@@ -128,6 +131,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                       suffix: InkWell(
                         onTap: () {
                           _promotionHeaderSearchCtrl.clear();
+                          context
+                              .read<PromotionHeaderBloc>()
+                              .add(const ClearPromotionHeader());
                           context.read<PromotionHeaderBloc>().add(
                               GetPromotionHeaderEvent(
                                   promotionInparas: PromotionHeaderInParas(

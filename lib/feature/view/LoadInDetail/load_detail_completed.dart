@@ -100,6 +100,9 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<LoadingDetailBloc>()
+                                .add(const ClearLoadingDetailEvent());
                             context.read<LoadingDetailBloc>().add(
                                 GetloadingDetailEvent(
                                     iD: widget.loadingheader.id!,
@@ -125,6 +128,9 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                           suffix: InkWell(
                             onTap: () {
                               _loadingCompleteDetailsSearchCtrl.clear();
+                              context
+                                  .read<LoadingDetailBloc>()
+                                  .add(const ClearLoadingDetailEvent());
                               context.read<LoadingDetailBloc>().add(
                                   GetloadingDetailEvent(
                                       iD: widget.loadingheader.id!,

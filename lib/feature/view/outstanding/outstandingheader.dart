@@ -110,6 +110,9 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                             milliseconds: 100,
                           ),
                           () async {
+                            context
+                                .read<OutstandingBloc>()
+                                .add(const ClearOutStandingEvent());
                             context.read<OutstandingBloc>().add(
                                   GetOutstandingDataEvent(
                                     searchQuery: value.trim(),
@@ -146,6 +149,9 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                           suffix: InkWell(
                             onTap: () {
                               _outstandingHeaderSearchCtrl.clear();
+                              context
+                                  .read<OutstandingBloc>()
+                                  .add(const ClearOutStandingEvent());
                               context.read<OutstandingBloc>().add(
                                     GetOutstandingDataEvent(
                                       searchQuery: '',

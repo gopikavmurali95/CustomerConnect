@@ -101,6 +101,9 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                             milliseconds: 200,
                           ),
                           () async {
+                            context
+                                .read<LoadingDetailBloc>()
+                                .add(const ClearLoadingDetailEvent());
                             context.read<LoadingDetailBloc>().add(
                                 GetloadingDetailEvent(
                                     iD: widget.loadingheader.id ?? '',
@@ -121,6 +124,9 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                 child: IconButton(
                                   onPressed: () {
                                     _loadPendingSearchCtrl.clear();
+                                    context
+                                        .read<LoadingDetailBloc>()
+                                        .add(const ClearLoadingDetailEvent());
                                     context.read<LoadingDetailBloc>().add(
                                           GetloadingDetailEvent(
                                               iD: widget.loadingheader.id ?? '',

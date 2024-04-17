@@ -25,6 +25,7 @@ class _TotalOrdersState extends State<TotalOrders> {
   @override
   void initState() {
     _totalOrderSearchCtrl.clear();
+    context.read<TotalOrdersHeaderBloc>().add(const TotalOrdersClearEvent());
     context.read<TotalOrdersHeaderBloc>().add(GetTotalOrdersEvent(
         ordersin: TotalOrdersInparas(
             area: '',
@@ -96,6 +97,9 @@ class _TotalOrdersState extends State<TotalOrders> {
                         milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<TotalOrdersHeaderBloc>()
+                            .add(const TotalOrdersClearEvent());
                         context.read<TotalOrdersHeaderBloc>().add(
                             GetTotalOrdersEvent(
                                 ordersin: TotalOrdersInparas(
@@ -129,6 +133,9 @@ class _TotalOrdersState extends State<TotalOrders> {
                       suffix: InkWell(
                         onTap: () {
                           _totalOrderSearchCtrl.clear();
+                          context
+                              .read<TotalOrdersHeaderBloc>()
+                              .add(const TotalOrdersClearEvent());
                           context.read<TotalOrdersHeaderBloc>().add(
                               GetTotalOrdersEvent(
                                   ordersin: TotalOrdersInparas(

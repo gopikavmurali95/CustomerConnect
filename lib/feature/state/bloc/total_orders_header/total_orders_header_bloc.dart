@@ -39,5 +39,8 @@ class TotalOrdersHeaderBloc
             totalorders: event.searchQuery.isEmpty ? r : searcheditems);
       }));
     });
+    on<TotalOrdersClearEvent>((event, emit) {
+      emit(const GetTotalOrderState(totalorders: null));
+    });
   }
 }

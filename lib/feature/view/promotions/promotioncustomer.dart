@@ -155,6 +155,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                             milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<PromotionCustomerBloc>()
+                                .add(const ClearOromotionCustomer());
                             context.read<PromotionCustomerBloc>().add(
                                 GetPromotionCustomerEvent(
                                     id: '1', searchQuery: value.trim()));
@@ -169,6 +172,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                           suffix: InkWell(
                             onTap: () {
                               _promotionCustomerSearchCtrl.clear();
+                              context
+                                  .read<PromotionCustomerBloc>()
+                                  .add(const ClearOromotionCustomer());
                               context.read<PromotionCustomerBloc>().add(
                                   const GetPromotionCustomerEvent(
                                       id: "1", searchQuery: ''));

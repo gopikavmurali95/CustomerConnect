@@ -95,6 +95,9 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                       milliseconds: 200,
                     ),
                     () async {
+                      context
+                          .read<PickingHeaderBloc>()
+                          .add(const ClearPickingevent());
                       context.read<PickingHeaderBloc>().add(
                           GetpickingHeaderEvent(
                               pickingHeadIn: PickingInModel(
@@ -136,6 +139,9 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                             child: InkWell(
                               onTap: () {
                                 _pickingCompletedSearchCtrl.clear();
+                                context
+                                    .read<PickingHeaderBloc>()
+                                    .add(const ClearPickingevent());
                                 context.read<PickingHeaderBloc>().add(
                                       GetpickingHeaderEvent(
                                           pickingHeadIn: PickingInModel(
