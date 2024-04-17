@@ -148,9 +148,12 @@ class _CustomerItemListState extends State<CustomerItemList> {
                     if (debounce?.isActive ?? false) debounce!.cancel();
                     debounce = Timer(
                       const Duration(
-                        milliseconds: 200,
+                        milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<CusItemsBloc>()
+                            .add(const ClearItemsEvent());
                         context.read<CusItemsBloc>().add(GetItemsEvent(
                             route: widget.customer.rotId ?? '',
                             searchQuery: value.trim()));
@@ -170,6 +173,9 @@ class _CustomerItemListState extends State<CustomerItemList> {
                             child: IconButton(
                               onPressed: () {
                                 _cusItemSearchCtrl.clear();
+                                context
+                                    .read<CusItemsBloc>()
+                                    .add(const ClearItemsEvent());
                                 context.read<CusItemsBloc>().add(
                                       GetItemsEvent(
                                           route: widget.customer.rotId ?? '',

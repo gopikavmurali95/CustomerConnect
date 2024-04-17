@@ -175,9 +175,12 @@ class _CustomerInsightSpecialPricingState
                         if (debounce?.isActive ?? false) debounce!.cancel();
                         debounce = Timer(
                           const Duration(
-                            milliseconds: 200,
+                            milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<CusSpPriceBloc>()
+                                .add(const ClearCusSpPriceHeaderEvent());
                             context.read<CusSpPriceBloc>().add(
                                   GetCusSpPriceHeadersEvent(
                                     searchQuery: value.trim(),
@@ -206,6 +209,8 @@ class _CustomerInsightSpecialPricingState
                               Expanded(
                                 child: IconButton(
                                   onPressed: () {
+                                    context.read<CusSpPriceBloc>().add(
+                                        const ClearCusSpPriceHeaderEvent());
                                     _cusSpPriceSearchCtrl.clear();
                                     context.read<CusSpPriceBloc>().add(
                                           GetCusSpPriceHeadersEvent(

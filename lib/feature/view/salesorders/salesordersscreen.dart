@@ -177,9 +177,12 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                     if (debounce?.isActive ?? false) debounce!.cancel();
                     debounce = Timer(
                       const Duration(
-                        milliseconds: 200,
+                        milliseconds: 500,
                       ),
                       () async {
+                        context
+                            .read<CusSalesOrdersBloc>()
+                            .add(const ClearsalesOrdersEvent());
                         context.read<CusSalesOrdersBloc>().add(
                               GetSalesOrdersEvent(
                                 searchQuery: value.trim(),
@@ -209,6 +212,9 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                             child: IconButton(
                               onPressed: () {
                                 _salesOrdersCtrl.clear();
+                                context
+                                    .read<CusSalesOrdersBloc>()
+                                    .add(const ClearsalesOrdersEvent());
                                 context.read<CusSalesOrdersBloc>().add(
                                       GetSalesOrdersEvent(
                                         searchQuery: '',
