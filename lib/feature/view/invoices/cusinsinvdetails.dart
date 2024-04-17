@@ -7,7 +7,6 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/cusinsdetaillist.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -86,7 +85,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'M076876',
+                            widget.invoice.invoiceNo ?? '',
                             style: TextStyle(
                               fontSize: 13.sp,
                               color: const Color(0xff2C6B9E),
@@ -181,9 +180,13 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                         if (debounce?.isActive ?? false) debounce!.cancel();
                         debounce = Timer(
                           const Duration(
-                            milliseconds: 200,
+                            milliseconds: 500,
                           ),
                           () async {
+                            context
+                                .read<CusInvDetailBlocBloc>()
+                                .add(const ClearinvDetails());
+
                             context.read<CusInvDetailBlocBloc>().add(
                                 GetCusInvDetailsEvent(
                                     invId: widget.invoice.id ?? '',
@@ -204,6 +207,10 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                                 child: IconButton(
                                   onPressed: () {
                                     _cusInvSearchCtrl.clear();
+                                    context
+                                        .read<CusInvDetailBlocBloc>()
+                                        .add(const ClearinvDetails());
+
                                     context.read<CusInvDetailBlocBloc>().add(
                                         GetCusInvDetailsEvent(
                                             invId: widget.invoice.id ?? '',

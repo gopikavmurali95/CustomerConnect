@@ -9,7 +9,6 @@ import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_prom
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -203,9 +202,13 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                       if (debounce?.isActive ?? false) debounce!.cancel();
                       debounce = Timer(
                         const Duration(
-                          milliseconds: 200,
+                          milliseconds: 500,
                         ),
                         () async {
+                          context
+                              .read<CusPromotionsHeaderBloc>()
+                              .add(const ClearCusPromoEvent());
+
                           context.read<CusPromotionsHeaderBloc>().add(
                                 GetCusPromoHeaderEvent(
                                   searchQuery: value.trim(),
@@ -236,6 +239,10 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                               child: IconButton(
                                 onPressed: () {
                                   _cusPromoSearchCtrl.clear();
+                                  context
+                                      .read<CusPromotionsHeaderBloc>()
+                                      .add(const ClearCusPromoEvent());
+
                                   context.read<CusPromotionsHeaderBloc>().add(
                                         GetCusPromoHeaderEvent(
                                           searchQuery: '',

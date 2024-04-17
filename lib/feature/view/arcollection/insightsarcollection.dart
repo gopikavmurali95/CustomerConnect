@@ -450,9 +450,13 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                           }
                                           debounce = Timer(
                                             const Duration(
-                                              milliseconds: 200,
+                                              milliseconds: 500,
                                             ),
                                             () async {
+                                              context
+                                                  .read<CusInsArHeaderBloc>()
+                                                  .add(
+                                                      const ClearCusInsArHeader());
                                               context
                                                   .read<CusInsArHeaderBloc>()
                                                   .add(
@@ -491,6 +495,11 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                   child: IconButton(
                                                     onPressed: () {
                                                       _cusArSearchCtrl.clear();
+                                                      context
+                                                          .read<
+                                                              CusInsArHeaderBloc>()
+                                                          .add(
+                                                              const ClearCusInsArHeader());
                                                       context
                                                           .read<
                                                               CusInsArHeaderBloc>()

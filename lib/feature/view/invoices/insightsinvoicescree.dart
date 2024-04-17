@@ -35,6 +35,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
   @override
   void initState() {
     context.read<CusInsInvoiceHeaderBloc>().add(const ClearinvEvent());
+    _cusInvSearchCtrl.clear();
     context.read<CusInsInvoiceHeaderBloc>().add(
           GetCusInvEvent(
             searchQuery: '',
@@ -187,9 +188,12 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                       if (debounce?.isActive ?? false) debounce!.cancel();
                       debounce = Timer(
                         const Duration(
-                          milliseconds: 200,
+                          milliseconds: 500,
                         ),
                         () async {
+                          context
+                              .read<CusInsInvoiceHeaderBloc>()
+                              .add(const ClearinvEvent());
                           context.read<CusInsInvoiceHeaderBloc>().add(
                                 GetCusInvEvent(
                                   searchQuery: value.trim(),
@@ -222,6 +226,9 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                               child: IconButton(
                                 onPressed: () {
                                   _cusInvSearchCtrl.clear();
+                                  context
+                                      .read<CusInsInvoiceHeaderBloc>()
+                                      .add(const ClearinvEvent());
                                   context.read<CusInsInvoiceHeaderBloc>().add(
                                         GetCusInvEvent(
                                           searchQuery: '',

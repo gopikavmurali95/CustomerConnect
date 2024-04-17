@@ -182,7 +182,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                 child: Column(
                   children: [
                     Container(
@@ -204,9 +204,12 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             if (debounce?.isActive ?? false) debounce!.cancel();
                             debounce = Timer(
                               const Duration(
-                                milliseconds: 200,
+                                milliseconds: 500,
                               ),
                               () async {
+                                context
+                                    .read<CusOutStandingBloc>()
+                                    .add(const ClearCusOutStandingEvent());
                                 context.read<CusOutStandingBloc>().add(
                                       GetCusOutstandingEvent(
                                         searchQuery: value.trim(),
@@ -236,6 +239,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                     child: IconButton(
                                       onPressed: () {
                                         _cusOutstandSearchCtrl.clear();
+                                        context.read<CusOutStandingBloc>().add(
+                                            const ClearCusOutStandingEvent());
                                         context.read<CusOutStandingBloc>().add(
                                               GetCusOutstandingEvent(
                                                 searchQuery: '',
@@ -280,7 +285,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                           // controller: _locationNameTextController,
                         )),
                     SizedBox(
-                      height: 10.h,
+                      height: 0.h,
                     ),
                     Visibility(
                       visible: state.isOnTop,

@@ -26,7 +26,7 @@ class InsightInvoiceListWidget extends StatelessWidget {
           return state.when(
             getCusInvoiceHeaderState: (headers) => headers == null
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 0),
                     child: ListView.separated(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
