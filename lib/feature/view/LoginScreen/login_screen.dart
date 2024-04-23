@@ -33,24 +33,42 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (user.usrId != null && user.usrId!.isNotEmpty) {
                   final SharedPreferences sharedprefs =
                       await SharedPreferences.getInstance();
-
                   await sharedprefs.setString(
                     "user",
                     jsonEncode(user),
                   );
-
                   await sharedprefs.setBool('isLogin', true);
-                  Future.delayed(const Duration(microseconds: 100), () {
-                    Navigator.pop(context);
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(
-                            user: user,
+                  Future.delayed(
+                    const Duration(microseconds: 100),
+                    () {
+                      Navigator.pop(context);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(
+                              user: user,
+                            ),
                           ),
+                          (route) => false);
+                    },
+                  );
+                } else {
+                  Navigator.pop(context);
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: const Text('Alert'),
+                      content: Text("${user.title} \n ${user.descr}"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Ok'),
                         ),
-                        (route) => false);
-                  });
+                      ],
+                    ),
+                  );
                 }
               }
             },

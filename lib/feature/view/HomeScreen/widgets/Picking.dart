@@ -97,13 +97,15 @@ class PickingWidget extends StatelessWidget {
                                               style: countHeading()),
                                           Row(
                                             children: [
-                                              Text("(", style: subTextStyle()),
                                               Text(
+                                                  "(${count.pickingNotStartedRoute} Routes)",
+                                                  style: subTextStyle()),
+                                              /* Text(
                                                   count.pickingNotStartedRoute ??
                                                       '',
                                                   style: subTextStyle()),
                                               Text(" Routes)",
-                                                  style: subTextStyle()),
+                                                  style: subTextStyle()), */
                                             ],
                                           ),
                                           SizedBox(
