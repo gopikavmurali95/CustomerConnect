@@ -22,18 +22,15 @@ class TotalOrderList extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             getTotalOrderState: (totalorders) => totalorders == null
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => ShimmerContainers(
-                            height: 60.h, width: double.infinity),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10),
-                  )
+                ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        ShimmerContainers(height: 60.h, width: double.infinity),
+                    separatorBuilder: (context, index) => Divider(
+                          color: Colors.grey[300],
+                        ),
+                    itemCount: 10)
                 : totalorders.isEmpty
                     ? const Center(
                         child: Text('No Data Found'),

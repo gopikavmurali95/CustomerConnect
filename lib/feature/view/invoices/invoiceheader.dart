@@ -4,7 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
-import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoiceheaderlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -306,10 +306,20 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                 'Total Invoice Amount',
                 style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
               ),
-              BlocBuilder<CusInvTotalCounterCubit, CusInvTotalCounterState>(
+              // BlocBuilder<CusInvTotalCounterCubit, CusInvTotalCounterState>(
+              //   builder: (context, state) {
+              //     return Text(
+              //       state.amount,
+              //       style:
+              //           TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+              //     );
+              //   },
+              // )
+              BlocBuilder<InvoiceTotalCubit, InvoiceTotalState>(
                 builder: (context, state) {
                   return Text(
                     state.amount,
+                    // "0",
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   );
