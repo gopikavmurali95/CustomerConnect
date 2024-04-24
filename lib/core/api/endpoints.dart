@@ -51,3 +51,6 @@ const notificationReplayUrl = 'Notification/InsNotificationReply';
 const notiReadFlagUpdateUrl = 'Notification/UpdateNotificationReadFlag';
 const outStandingHeaderUrl = 'OutStanding/SelectOutstandingHeader';
 const outStandingCountUrl = 'OutStanding/SelectOutStandingCount';
+const returnApprovalsHeaderUrl = 'ReturnApproval/GetReturnReqHeader';
+const returnApprovalsDetailUrl = 'ReturnApproval/GetReturnReqDetail';
+const approvalBaseUrl = 'http://sfa-muom.dev-ts.online/WS/';
