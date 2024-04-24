@@ -36,6 +36,7 @@ import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
@@ -243,6 +244,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CustomerSearchLoadingCubit>(
           create: (context) => CustomerSearchLoadingCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PriceChangeHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

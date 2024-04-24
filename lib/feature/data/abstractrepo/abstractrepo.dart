@@ -46,6 +46,7 @@ import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_m
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
+import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_customer_model/promotion_customer_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_details_model/promotion_details_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
@@ -255,4 +256,9 @@ abstract class INotificationRepo {
       NotificationReplayInModel replay);
   Future<Either<MainFailures, NotificationReplayOutModel>> updateNotiReadFlag(
       String rntID);
+}
+
+abstract class IPriceChangeRepo {
+  Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
+      String rotID);
 }

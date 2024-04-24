@@ -51,3 +51,4 @@ const notificationReplayUrl = 'Notification/InsNotificationReply';
 const notiReadFlagUpdateUrl = 'Notification/UpdateNotificationReadFlag';
 const outStandingHeaderUrl = 'OutStanding/SelectOutstandingHeader';
 const outStandingCountUrl = 'OutStanding/SelectOutStandingCount';
+const pricechangeheaderurl = 'PriceChangeApproval/PriceChangeHeader';
