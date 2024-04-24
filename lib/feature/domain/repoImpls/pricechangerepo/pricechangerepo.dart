@@ -6,7 +6,7 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:http/http.dart' as http;
 
 @LazySingleton(as: IPriceChangeRepo)
@@ -14,13 +14,13 @@ class PriceChangeRepo implements IPriceChangeRepo {
   @override
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
       String rotID) async {
-    var logger = Logger();
+    // var logger = Logger();
     try {
       final response = await http.post(
-          Uri.parse(baseUrl + pricechangeheaderurl),
+          Uri.parse(approvalBaseUrl + pricechangeheaderurl),
           body: {"rotID": rotID});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        //logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> priceChange = json['result'];
         List<PriceChangeHeaderModel> priceList = priceChange

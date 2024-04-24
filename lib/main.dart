@@ -41,6 +41,8 @@ import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_h
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
@@ -247,6 +249,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<PriceChangeHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ReturnApprovalHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ReturnApprovalDetailBloc>(),
         ),
       ],
       child: ScreenUtilInit(

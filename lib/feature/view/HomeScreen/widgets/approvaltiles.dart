@@ -96,7 +96,7 @@ class ApprovalTiles extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PriceChangeApproval()));
+                            builder: (context) => const PriceChangeHeader()));
                   },
                   child: Container(
                     // height: 50,
