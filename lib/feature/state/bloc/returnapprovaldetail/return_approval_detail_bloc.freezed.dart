@@ -353,21 +353,21 @@ abstract class ClearReturnDetailEvent implements ReturnApprovalDetailEvent {
 mixin _$ReturnApprovalDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ReturnApprovalDetailModel? details)
+    required TResult Function(List<ReturnApprovalDetailModel>? details)
         getReturnApprovelDetailState,
     required TResult Function() returnApprovalDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ReturnApprovalDetailModel? details)?
+    TResult? Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult? Function()? returnApprovalDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ReturnApprovalDetailModel? details)?
+    TResult Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult Function()? returnApprovalDetailFailedState,
     required TResult orElse(),
@@ -426,7 +426,7 @@ abstract class _$$GetReturnApprovelDetailStateImplCopyWith<$Res> {
           $Res Function(_$GetReturnApprovelDetailStateImpl) then) =
       __$$GetReturnApprovelDetailStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ReturnApprovalDetailModel? details});
+  $Res call({List<ReturnApprovalDetailModel>? details});
 }
 
 /// @nodoc
@@ -446,9 +446,9 @@ class __$$GetReturnApprovelDetailStateImplCopyWithImpl<$Res>
   }) {
     return _then(_$GetReturnApprovelDetailStateImpl(
       details: freezed == details
-          ? _value.details
+          ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
-              as ReturnApprovalDetailModel?,
+              as List<ReturnApprovalDetailModel>?,
     ));
   }
 }
@@ -457,10 +457,19 @@ class __$$GetReturnApprovelDetailStateImplCopyWithImpl<$Res>
 
 class _$GetReturnApprovelDetailStateImpl
     implements GetReturnApprovelDetailState {
-  const _$GetReturnApprovelDetailStateImpl({required this.details});
+  const _$GetReturnApprovelDetailStateImpl(
+      {required final List<ReturnApprovalDetailModel>? details})
+      : _details = details;
 
+  final List<ReturnApprovalDetailModel>? _details;
   @override
-  final ReturnApprovalDetailModel? details;
+  List<ReturnApprovalDetailModel>? get details {
+    final value = _details;
+    if (value == null) return null;
+    if (_details is EqualUnmodifiableListView) return _details;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -472,11 +481,12 @@ class _$GetReturnApprovelDetailStateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetReturnApprovelDetailStateImpl &&
-            (identical(other.details, details) || other.details == details));
+            const DeepCollectionEquality().equals(other._details, _details));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, details);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
   @JsonKey(ignore: true)
   @override
@@ -489,7 +499,7 @@ class _$GetReturnApprovelDetailStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ReturnApprovalDetailModel? details)
+    required TResult Function(List<ReturnApprovalDetailModel>? details)
         getReturnApprovelDetailState,
     required TResult Function() returnApprovalDetailFailedState,
   }) {
@@ -499,7 +509,7 @@ class _$GetReturnApprovelDetailStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ReturnApprovalDetailModel? details)?
+    TResult? Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult? Function()? returnApprovalDetailFailedState,
   }) {
@@ -509,7 +519,7 @@ class _$GetReturnApprovelDetailStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ReturnApprovalDetailModel? details)?
+    TResult Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult Function()? returnApprovalDetailFailedState,
     required TResult orElse(),
@@ -561,10 +571,10 @@ class _$GetReturnApprovelDetailStateImpl
 abstract class GetReturnApprovelDetailState
     implements ReturnApprovalDetailState {
   const factory GetReturnApprovelDetailState(
-          {required final ReturnApprovalDetailModel? details}) =
+          {required final List<ReturnApprovalDetailModel>? details}) =
       _$GetReturnApprovelDetailStateImpl;
 
-  ReturnApprovalDetailModel? get details;
+  List<ReturnApprovalDetailModel>? get details;
   @JsonKey(ignore: true)
   _$$GetReturnApprovelDetailStateImplCopyWith<
           _$GetReturnApprovelDetailStateImpl>
@@ -614,7 +624,7 @@ class _$ReturnApprovalDetailFailedStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ReturnApprovalDetailModel? details)
+    required TResult Function(List<ReturnApprovalDetailModel>? details)
         getReturnApprovelDetailState,
     required TResult Function() returnApprovalDetailFailedState,
   }) {
@@ -624,7 +634,7 @@ class _$ReturnApprovalDetailFailedStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ReturnApprovalDetailModel? details)?
+    TResult? Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult? Function()? returnApprovalDetailFailedState,
   }) {
@@ -634,7 +644,7 @@ class _$ReturnApprovalDetailFailedStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ReturnApprovalDetailModel? details)?
+    TResult Function(List<ReturnApprovalDetailModel>? details)?
         getReturnApprovelDetailState,
     TResult Function()? returnApprovalDetailFailedState,
     required TResult orElse(),

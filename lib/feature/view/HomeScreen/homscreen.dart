@@ -343,7 +343,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const ApprovalTiles(),
+            ApprovalTiles(
+              user: widget.user,
+            ),
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),

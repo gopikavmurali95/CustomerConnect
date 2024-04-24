@@ -1,12 +1,15 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
+import 'package:customer_connect/feature/view/returnapproval/returnapprovaldetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ReturnApprovalHeader extends StatefulWidget {
-  const ReturnApprovalHeader({super.key});
+  final LoginUserModel user;
+  const ReturnApprovalHeader({super.key, required this.user});
 
   @override
   State<ReturnApprovalHeader> createState() => _ReturnApprovalHeaderState();
@@ -20,7 +23,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
         .add(const ClearReturnHeaderState());
     context
         .read<ReturnApprovalHeaderBloc>()
-        .add(const GetReturnApprovalHeaders(rotID: '45'));
+        .add(GetReturnApprovalHeaders(rotID: widget.user.usrId ?? ''));
     super.initState();
   }
 
@@ -70,64 +73,80 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                               itemCount: 10),
                         )
                       : ListView.separated(
-                          itemBuilder: (context, index) => Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: const Color(0xffDB95B5),
-                                    child: Image.asset(
-                                      'assets/images/ar_li.png',
-                                      height: 20.h,
-                                      width: 20.w,
+                          itemBuilder: (context, index) => GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ReturnApprovalDetailScreen(
+                                        returnApprovel: headers[index],
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          headers[index].ithRequestNumber ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w600,
+                                  );
+                                },
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: const Color(0xffDB95B5),
+                                      child: Image.asset(
+                                        'assets/images/ar_li.png',
+                                        height: 20.h,
+                                        width: 20.w,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10.w,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            headers[index].ithRequestNumber ??
+                                                '',
+                                            style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff2C6B9E),
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '${headers[index].cusCode} - ',
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                color: const Color(0xff2C6B9E),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                headers[index].cusName ?? '',
+                                          Row(
+                                            children: [
+                                              Text(
+                                                '${headers[index].cusCode} - ',
                                                 style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color: const Color(
-                                                        0xff413434)),
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff2C6B9E),
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          headers[index].createdDate ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
+                                              Expanded(
+                                                child: Text(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  headers[index].cusName ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            headers[index].createdDate ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                           separatorBuilder: (context, index) => Divider(
                                 color: Colors.grey[300],

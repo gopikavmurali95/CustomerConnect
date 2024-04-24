@@ -1,4 +1,5 @@
 import 'package:customer_connect/core/failures/failures.dart';
+import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_model.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
@@ -262,6 +263,10 @@ abstract class INotificationRepo {
 abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, List<ReturnApprovalHeaderModel>>>
       getReturnApprovalHeaders(String rotID);
-  Future<Either<MainFailures, ReturnApprovalDetailModel>>
+  Future<Either<MainFailures, List<ReturnApprovalDetailModel>>>
       getReturnApprovalDetails(String reqID, String mode);
+  Future<Either<MainFailures, List<ApprovalResonModel>>>
+      getReturnApprovalResons(
+    String rsnType,
+  );
 }
