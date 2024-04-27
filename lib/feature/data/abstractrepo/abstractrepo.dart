@@ -54,6 +54,8 @@ import 'package:customer_connect/feature/data/models/promotion_header_model/prom
 import 'package:customer_connect/feature/data/models/qualification_group_model/qualification_group_model.dart';
 import 'package:customer_connect/feature/data/models/return_approval_detail_model/return_approval_detail_model.dart';
 import 'package:customer_connect/feature/data/models/return_approval_header_model/return_approval_header_model.dart';
+import 'package:customer_connect/feature/data/models/return_approve_in_model/return_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/return_approve_out_model/return_approve_out_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
@@ -268,5 +270,9 @@ abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, List<ApprovalResonModel>>>
       getReturnApprovalResons(
     String rsnType,
+  );
+
+  Future<Either<MainFailures, ReturnApproveOutModel>> approveReturnProduct(
+    ReturnApproveInModel approveIn,
   );
 }

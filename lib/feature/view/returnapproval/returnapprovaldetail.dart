@@ -1,10 +1,17 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/return_approval_header_model/return_approval_header_model.dart';
+import 'package:customer_connect/feature/data/models/return_approve_in_model/return_approve_in_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,15 +20,17 @@ bool isselected = true;
 
 class ReturnApprovalDetailScreen extends StatefulWidget {
   final ReturnApprovalHeaderModel returnApprovel;
-  const ReturnApprovalDetailScreen({super.key, required this.returnApprovel});
+  final LoginUserModel user;
+  const ReturnApprovalDetailScreen(
+      {super.key, required this.returnApprovel, required this.user});
 
   @override
   State<ReturnApprovalDetailScreen> createState() =>
       _ReturnApprovalDetailScreenState();
 }
 
-List<ApprovalResonModel> selectedresons = [];
-List<bool> statuslist = [];
+List<String> selectedresons = [];
+List<bool?> statuslist = [];
 
 List<ApprovalResonModel> availableresons = [];
 
@@ -118,7 +127,9 @@ class _ReturnApprovalDetailScreenState
                         .read<ApprovalReasonsBloc>()
                         .add(const GetApprovalReasonsEvent(rsnType: 'rsnType'));
                     statuslist.clear();
-                    statuslist = List.generate(details.length, (index) => true);
+
+                    statuslist /* length = details.length; */
+                        = List.generate(details.length, (index) => null);
                   }
                 },
                 returnApprovalDetailFailedState: () {},
@@ -237,10 +248,14 @@ class _ReturnApprovalDetailScreenState
                                               availableresons.clear();
                                               availableresons = [
                                                 ApprovalResonModel(
-                                                    rsnId: '10000',
+                                                    rsnId: '-1',
                                                     rsnName: 'Select reason',
                                                     rsnType: 'null')
                                               ];
+
+                                              selectedresons = List.generate(
+                                                  details.length,
+                                                  (index) => '-1');
                                               availableresons.addAll(resons);
                                             }
                                           },
@@ -265,7 +280,8 @@ class _ReturnApprovalDetailScreenState
                                                             Colors.white,
                                                         value:
                                                             availableresons[0]
-                                                                .rsnName,
+                                                                    .rsnId ??
+                                                                '',
                                                         style: kfontstyle(
                                                             color:
                                                                 Colors.black),
@@ -278,7 +294,7 @@ class _ReturnApprovalDetailScreenState
                                                             (ApprovalResonModel
                                                                 item) {
                                                           return DropdownMenuItem(
-                                                            value: item.rsnName,
+                                                            value: item.rsnId,
                                                             child: Text(
                                                               overflow:
                                                                   TextOverflow
@@ -291,7 +307,11 @@ class _ReturnApprovalDetailScreenState
                                                             ),
                                                           );
                                                         }).toList(),
-                                                        onChanged: (value) {},
+                                                        onChanged: (value) {
+                                                          selectedresons[
+                                                                  index] =
+                                                              value ?? '';
+                                                        },
                                                       ),
                                                     ),
                                           getReasonsFailedState: () =>
@@ -303,92 +323,361 @@ class _ReturnApprovalDetailScreenState
                                   BlocBuilder<AapprovalOrRejectRadioCubit,
                                       AapprovalOrRejectRadioState>(
                                     builder: (context, state) {
-                                      return Row(
-                                        children: [
-                                          Transform.scale(
-                                            scale: 0.8,
-                                            child: Row(
-                                              children: [
-                                                Radio(
-                                                  fillColor:
-                                                      MaterialStateProperty
-                                                          .resolveWith<
-                                                              Color>((Set<
-                                                                  MaterialState>
-                                                              states) {
-                                                    return (statuslist[index] ==
-                                                            true)
-                                                        ? const Color(
-                                                            0xff0075ff)
-                                                        : Colors.grey;
-                                                  }),
-                                                  /* activeColor: isselected == true
-                                                                                      ? const Color(0xff0075ff)
-                                                                                      : Colors.grey, */
-                                                  value:
-                                                      statuslist[index] == true
-                                                          ? true
-                                                          : false,
-                                                  groupValue: true,
-                                                  onChanged: (value) {
-                                                    statuslist[index] = true;
-                                                    setState(() {});
-                                                    /*  context
-                                                        .read<
-                                                            AapprovalOrRejectRadioCubit>()
-                                                        .changeApprovalStatus(
-                                                            statuslist[index]); */
-                                                  },
+                                      return BlocConsumer<
+                                          ApproveReturnProductBloc,
+                                          ApproveReturnProductState>(
+                                        listener: (context, state) {
+                                          state.when(
+                                            approveReturnProductdSTatusState:
+                                                (response) {
+                                              if (response != null) {
+                                                Navigator.pop(context);
+                                                showCupertinoDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      CupertinoAlertDialog(
+                                                    title: const Text('Alert'),
+                                                    content: Text(
+                                                        "Product Status Update ${response.status} "),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            approveReturnLoadingState: () {
+                                              showCupertinoModalPopup(
+                                                  context: context,
+                                                  barrierDismissible: false,
+                                                  builder: (context) =>
+                                                      SizedBox(
+                                                        height: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .height,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        child: const PopScope(
+                                                          canPop: true,
+                                                          child:
+                                                              CupertinoActivityIndicator(
+                                                            animating: true,
+                                                            color: Colors.red,
+                                                            radius: 30,
+                                                          ),
+                                                        ),
+                                                      ));
+                                            },
+                                            approvalFailedState: () {
+                                              Navigator.pop(context);
+                                              showCupertinoDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    CupertinoAlertDialog(
+                                                  title: const Text('Alert'),
+                                                  content: const Text(
+                                                      "Something Went Wrong, please Try again later"),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Text(
-                                                  'Approve',
-                                                  style: kfontstyle(),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Transform.scale(
-                                            scale: 0.8,
-                                            child: Row(
-                                              children: [
-                                                Radio(
-                                                  fillColor:
-                                                      MaterialStateProperty
-                                                          .resolveWith<
-                                                              Color>((Set<
-                                                                  MaterialState>
-                                                              states) {
-                                                    return (!statuslist[index])
-                                                        ? const Color(
-                                                            0xff0075ff)
-                                                        : Colors.grey;
-                                                  }),
-                                                  /*  activeColor: isselected == false
-                                                                                      ? const Color(0xff0075ff)
-                                                                                      : Colors.grey, */
-                                                  value:
-                                                      statuslist[index] == true
-                                                          ? true
-                                                          : false,
-                                                  groupValue: false,
-                                                  onChanged: (value) {
-                                                    statuslist[index] = false;
-                                                    setState(() {});
-                                                    /* context
-                                                        .read<
-                                                            AapprovalOrRejectRadioCubit>()
-                                                        .changeApprovalStatus(
-                                                            statuslist[index]); */
-                                                  },
+                                              );
+                                            },
+                                          );
+                                        },
+                                        builder: (context, state) {
+                                          return Row(
+                                            children: [
+                                              Transform.scale(
+                                                scale: 0.8,
+                                                child: Row(
+                                                  children: [
+                                                    Radio(
+                                                      fillColor:
+                                                          MaterialStateProperty
+                                                              .resolveWith<
+                                                                  Color>((Set<
+                                                                      MaterialState>
+                                                                  states) {
+                                                        return (statuslist[
+                                                                    index] ==
+                                                                true)
+                                                            ? const Color(
+                                                                0xff0075ff)
+                                                            : Colors.grey;
+                                                      }),
+                                                      /* activeColor: isselected == true
+                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                            : Colors.grey, */
+                                                      value: statuslist[
+                                                                  index] ==
+                                                              null
+                                                          ? false
+                                                          : statuslist[index] ==
+                                                                  true
+                                                              ? true
+                                                              : false,
+                                                      groupValue: true,
+                                                      onChanged: (value) {
+                                                        if (selectedresons[
+                                                                index] ==
+                                                            '-1') {
+                                                          showCupertinoDialog(
+                                                            context: context,
+                                                            builder: (context) =>
+                                                                CupertinoAlertDialog(
+                                                              title: const Text(
+                                                                  'Alert'),
+                                                              content: const Text(
+                                                                  "Plese select a reason"),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child:
+                                                                      const Text(
+                                                                          'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        } else {
+                                                          showCupertinoDialog(
+                                                            context: context,
+                                                            builder: (context) =>
+                                                                CupertinoAlertDialog(
+                                                              title: const Text(
+                                                                  'Alert'),
+                                                              content: const Text(
+                                                                  "Do you Want to Approve this product"),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    setState(
+                                                                        () {});
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child: const Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    statuslist[
+                                                                            index] =
+                                                                        true;
+                                                                    setState(
+                                                                        () {});
+                                                                    context
+                                                                        .read<
+                                                                            ApproveReturnProductBloc>()
+                                                                        .add(
+                                                                            const AddApprovalLoadingEvent());
+
+                                                                    context
+                                                                        .read<
+                                                                            ApproveReturnProductBloc>()
+                                                                        .add(
+                                                                          ApproveProductEvent(
+                                                                            approval: ReturnApproveInModel(
+                                                                                radId: details[index].radId,
+                                                                                reason: selectedresons[index],
+                                                                                status: 'A',
+                                                                                returnID: widget.returnApprovel.ithRequestNumber,
+                                                                                userID: '45'),
+                                                                          ),
+                                                                        );
+
+                                                                    log(
+                                                                      jsonEncode(
+                                                                        ReturnApproveInModel(
+                                                                            radId: details[index]
+                                                                                .radId,
+                                                                            reason: selectedresons[
+                                                                                index],
+                                                                            status:
+                                                                                'A',
+                                                                            returnID:
+                                                                                widget.returnApprovel.rahId,
+                                                                            userID: '45'),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  child: const Text(
+                                                                      'Proceed'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        /*  context
+                                                                                              .read<
+                                                                                                  AapprovalOrRejectRadioCubit>()
+                                                                                              .changeApprovalStatus(
+                                                                                                  statuslist[index]); */
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      'Approve',
+                                                      style: kfontstyle(),
+                                                    )
+                                                  ],
                                                 ),
-                                                Text(
-                                                  'Reject',
-                                                  style: kfontstyle(),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
+                                              ),
+                                              Transform.scale(
+                                                scale: 0.8,
+                                                child: Row(
+                                                  children: [
+                                                    Radio(
+                                                      fillColor:
+                                                          MaterialStateProperty
+                                                              .resolveWith<
+                                                                  Color>((Set<
+                                                                      MaterialState>
+                                                                  states) {
+                                                        return (statuslist[
+                                                                        index] !=
+                                                                    null &&
+                                                                !statuslist[
+                                                                    index]!)
+                                                            ? const Color(
+                                                                0xff0075ff)
+                                                            : Colors.grey;
+                                                      }),
+                                                      /*  activeColor: isselected == false
+                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                            : Colors.grey, */
+                                                      value: statuslist[
+                                                                  index] ==
+                                                              null
+                                                          ? true
+                                                          : statuslist[index] ==
+                                                                  true
+                                                              ? true
+                                                              : false,
+                                                      groupValue: false,
+                                                      onChanged: (value) {
+                                                        if (selectedresons[
+                                                                index] ==
+                                                            '-1') {
+                                                          showCupertinoDialog(
+                                                            context: context,
+                                                            builder: (context) =>
+                                                                CupertinoAlertDialog(
+                                                              title: const Text(
+                                                                  'Alert'),
+                                                              content: const Text(
+                                                                  "Plese select a reason"),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child:
+                                                                      const Text(
+                                                                          'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        } else {
+                                                          showCupertinoDialog(
+                                                            context: context,
+                                                            builder: (context) =>
+                                                                CupertinoAlertDialog(
+                                                              title: const Text(
+                                                                  'Alert'),
+                                                              content: const Text(
+                                                                  "Do you Want to Reject this product"),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    setState(
+                                                                        () {});
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child: const Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    statuslist[
+                                                                            index] =
+                                                                        false;
+                                                                    setState(
+                                                                        () {});
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    context
+                                                                        .read<
+                                                                            ApproveReturnProductBloc>()
+                                                                        .add(
+                                                                            const AddApprovalLoadingEvent());
+
+                                                                    context.read<ApproveReturnProductBloc>().add(ApproveProductEvent(
+                                                                        approval: ReturnApproveInModel(
+                                                                            radId: details[index]
+                                                                                .radId,
+                                                                            reason: selectedresons[
+                                                                                index],
+                                                                            status:
+                                                                                'R',
+                                                                            returnID:
+                                                                                widget.returnApprovel.ithRequestNumber,
+                                                                            userID: '45')));
+                                                                  },
+                                                                  child: const Text(
+                                                                      'Proceed'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }
+
+                                                        /* context
+                                                                                              .read<
+                                                                                                  AapprovalOrRejectRadioCubit>()
+                                                                                              .changeApprovalStatus(
+                                                                                                  statuslist[index]); */
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      'Reject',
+                                                      style: kfontstyle(),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          );
+                                        },
                                       );
                                     },
                                   )

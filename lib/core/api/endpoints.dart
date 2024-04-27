@@ -55,3 +55,4 @@ const returnApprovalsHeaderUrl = 'ReturnApproval/GetReturnReqHeader';
 const returnApprovalsDetailUrl = 'ReturnApproval/GetReturnReqDetail';
 const approvalBaseUrl = 'http://sfa-muom.dev-ts.online/WS/';
 const approvalReasonUrl = 'ReturnApproval/GetReasonFromDrop';
+const approveReturnProductUrl = 'ReturnApproval/PostReturnRequestApproval';
