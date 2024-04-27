@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
@@ -36,7 +37,9 @@ import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/pricechangedetails/price_change_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
@@ -51,6 +54,7 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_deliv
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
@@ -251,10 +255,22 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<PriceChangeHeaderBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<PriceChangeDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PriceChangeReasonsBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<ReturnApprovalHeaderBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<ReturnApprovalDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ApprovalReasonsBloc>(),
+        ),
+        BlocProvider<AapprovalOrRejectRadioCubit>(
+          create: (context) => AapprovalOrRejectRadioCubit(),
         ),
       ],
       child: ScreenUtilInit(

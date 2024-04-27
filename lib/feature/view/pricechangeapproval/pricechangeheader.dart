@@ -52,16 +52,19 @@ class PriceChangeHeader extends StatelessWidget {
                         Expanded(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PriceChangeDetails()));
-                            },
-                            child: ListView.separated(
-                                itemBuilder: (context, index) => Row(
+                          child: ListView.separated(
+                              itemBuilder: (context, index) => GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const PriceChangeDetail(
+                                                      // priceCgangeApproval:
+                                                      // pChange[index],
+                                                      )));
+                                    },
+                                    child: Row(
                                       children: [
                                         CircleAvatar(
                                           radius: 20,
@@ -132,11 +135,11 @@ class PriceChangeHeader extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                separatorBuilder: (context, index) => Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                itemCount: pChange.length),
-                          ),
+                                  ),
+                              separatorBuilder: (context, index) => Divider(
+                                    color: Colors.grey[300],
+                                  ),
+                              itemCount: pChange.length),
                         ))
                       ],
                     ),

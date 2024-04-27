@@ -1,13 +1,15 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ApprovalTiles extends StatelessWidget {
-  const ApprovalTiles({super.key});
+  final LoginUserModel user;
+  const ApprovalTiles({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +38,13 @@ class ApprovalTiles extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ReturnApprovalHeader(),
-                        ));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReturnApprovalHeader(
+                          user: user,
+                        ),
+                      ),
+                    );
                   },
                   child: Container(
                     //height: 50,
@@ -92,7 +97,7 @@ class ApprovalTiles extends StatelessWidget {
                         .add(const ClearPriceChangeHeader());
                     context
                         .read<PriceChangeHeaderBloc>()
-                        .add(const GetPriceChangeHeaderEvent(rotID: '36'));
+                        .add(const GetPriceChangeHeaderEvent(rotID: '46'));
                     Navigator.push(
                         context,
                         MaterialPageRoute(

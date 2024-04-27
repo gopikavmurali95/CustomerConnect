@@ -3,7 +3,7 @@ part of 'return_approval_detail_bloc.dart';
 @freezed
 class ReturnApprovalDetailState with _$ReturnApprovalDetailState {
   const factory ReturnApprovalDetailState.getReturnApprovelDetailState(
-          {required ReturnApprovalDetailModel? details}) =
+          {required List<ReturnApprovalDetailModel>? details}) =
       GetReturnApprovelDetailState;
 
   const factory ReturnApprovalDetailState.returnApprovalDetailFailedState() =

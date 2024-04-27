@@ -17,7 +17,7 @@ class ReturnApprovalDetailBloc
   ReturnApprovalDetailBloc(this.returnApprovalRepo)
       : super(ReturnApprovalDetailState.initial()) {
     on<GetReturnApprovalDetailEvennt>((event, emit) async {
-      Either<MainFailures, ReturnApprovalDetailModel> details =
+      Either<MainFailures, List<ReturnApprovalDetailModel>> details =
           await returnApprovalRepo.getReturnApprovalDetails(
               event.reqID, event.mode);
 

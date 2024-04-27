@@ -114,7 +114,7 @@ class CustomerItemListWidget extends StatelessWidget {
                       separatorBuilder: (context, index) => Divider(
                         color: Colors.grey[300],
                       ),
-                      itemCount: 20,
+                      itemCount: items.length,
                     ),
           getitemsFailedState: () => Center(
             child: Text(
