@@ -95,6 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SalesOrders(
               user: widget.user,
             ),
+            ApprovalTiles(
+              user: widget.user,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
               child: Row(
@@ -342,9 +345,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-            ),
-            ApprovalTiles(
-              user: widget.user,
             ),
             Padding(
               padding:

@@ -4,11 +4,13 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/price_change_reason_model/price_change_reason_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'price_change_reasons_event.dart';
 part 'price_change_reasons_state.dart';
 part 'price_change_reasons_bloc.freezed.dart';
 
+@injectable
 class PriceChangeReasonsBloc
     extends Bloc<PriceChangeReasonsEvent, PriceChangeReasonsState> {
   final IPriceChangeRepo pcReason;

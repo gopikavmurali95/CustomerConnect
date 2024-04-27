@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
@@ -271,6 +272,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AapprovalOrRejectRadioCubit>(
           create: (context) => AapprovalOrRejectRadioCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ApproveReturnProductBloc>(),
         ),
       ],
       child: ScreenUtilInit(

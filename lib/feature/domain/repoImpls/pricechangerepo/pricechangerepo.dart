@@ -1,14 +1,16 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/approve_price_change_model/approve_price_change_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_details_model/price_change_details_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_reason_model/price_change_reason_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:http/http.dart' as http;
 
 @LazySingleton(as: IPriceChangeRepo)
@@ -68,12 +70,12 @@ class PriceChangeRepo implements IPriceChangeRepo {
   @override
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
       getPricChangeReasons(String rsnType) async {
-    var logger = Logger();
+    // var logger = Logger();
     try {
       final response =
           await http.post(Uri.parse(approvalBaseUrl + priceChangeReasonUrl));
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        // logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> priceChangeReason = json['result'];
         List<PriceChangeReasonModel> priceReason = priceChangeReason
@@ -87,6 +89,41 @@ class PriceChangeRepo implements IPriceChangeRepo {
         );
       }
     } catch (e) {
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
+      String priceID, String userID, String jsonString) async {
+    try {
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + approvePriceChangeUrl), body: {
+        "PriceID": priceID,
+        "UserID": userID,
+        "JSONString": [
+          {
+            "pcd_ID": '',
+            "Reason": '',
+            "Status": '',
+            "aprvdHprice": '',
+            "LowerQty": '',
+            "aprvdLprice": ''
+          }
+        ].toString()
+      });
+      if (response.statusCode == 200) {
+        log('Approve Response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final approve = ApprovePriceChangeModel.fromJson(json["result"][0]);
+        return right(approve);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      log('Approve error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

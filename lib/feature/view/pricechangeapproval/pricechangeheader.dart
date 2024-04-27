@@ -59,10 +59,10 @@ class PriceChangeHeader extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const PriceChangeDetail(
-                                                      // priceCgangeApproval:
-                                                      // pChange[index],
-                                                      )));
+                                                  PriceChangeDetail(
+                                                    priceChangeApprovel:
+                                                        pChange[index],
+                                                  )));
                                     },
                                     child: Row(
                                       children: [

@@ -21,9 +21,8 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
     context
         .read<ReturnApprovalHeaderBloc>()
         .add(const ClearReturnHeaderState());
-    context
-        .read<ReturnApprovalHeaderBloc>()
-        .add(const GetReturnApprovalHeaders(rotID: '45'));
+    context.read<ReturnApprovalHeaderBloc>().add(const GetReturnApprovalHeaders(
+        rotID: /*  widget.user.usrId ?? */ '45'));
     super.initState();
   }
 
@@ -81,6 +80,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                       builder: (context) =>
                                           ReturnApprovalDetailScreen(
                                         returnApprovel: headers[index],
+                                        user: widget.user,
                                       ),
                                     ),
                                   );

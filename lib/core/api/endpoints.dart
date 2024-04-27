@@ -58,3 +58,5 @@ const returnApprovalsDetailUrl = 'ReturnApproval/GetReturnReqDetail';
 const approvalBaseUrl = 'http://sfa-muom.dev-ts.online/WS/';
 const approvalReasonUrl = 'ReturnApproval/GetReasonFromDrop';
 const priceChangeReasonUrl = 'PriceChangeApproval/GetReason';
+const approveReturnProductUrl = 'ReturnApproval/PostReturnRequestApproval';
+const approvePriceChangeUrl = 'PriceChangeApproval/PostPriceChangeApproval';
