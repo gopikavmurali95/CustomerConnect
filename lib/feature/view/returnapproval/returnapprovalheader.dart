@@ -100,48 +100,74 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                       width: 10.w,
                                     ),
                                     Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      child: Row(
                                         children: [
-                                          Text(
-                                            headers[index].ithRequestNumber ??
-                                                '',
-                                            style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff2C6B9E),
-                                              fontWeight: FontWeight.w600,
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  headers[index]
+                                                          .ithRequestNumber ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff2C6B9E),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      '${headers[index].cusCode} - ',
+                                                      style: kfontstyle(
+                                                        fontSize: 11.sp,
+                                                        color: const Color(
+                                                            0xff2C6B9E),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        headers[index]
+                                                                .cusName ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Text(
+                                                  headers[index].createdDate ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '${headers[index].cusCode} - ',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  color:
-                                                      const Color(0xff2C6B9E),
-                                                ),
+                                          Container(
+                                            height: 10.h,
+                                            width: 10.h,
+                                            decoration: BoxDecoration(
+                                              color: headers[index]
+                                                      .rahApprovalStatus!
+                                                      .isEmpty
+                                                  ? Colors.red
+                                                  : Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                10,
                                               ),
-                                              Expanded(
-                                                child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  headers[index].cusName ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            headers[index].createdDate ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: Colors.grey),
-                                          ),
+                                            ),
+                                          )
                                         ],
                                       ),
                                     ),

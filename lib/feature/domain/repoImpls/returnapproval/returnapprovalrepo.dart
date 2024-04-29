@@ -102,12 +102,28 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + approveReturnProductUrl), body: {
-        "rad_ID": approveIn.radId,
-        "Reason": approveIn.reason,
-        "Status": approveIn.status,
+        "ReturnID": approveIn.returnID,
         "UserId": approveIn.userID,
-        "ReturnID": approveIn.returnID
+        "JSONString": jsonEncode([
+          {
+            "rad_ID": approveIn.radId,
+            "Reason": approveIn.reason,
+            "Status": approveIn.status
+          }
+        ])
       });
+
+      log({
+        "ReturnID": approveIn.returnID,
+        "UserId": approveIn.userID,
+        "JSONString": jsonEncode([
+          {
+            "rad_ID": approveIn.radId,
+            "Reason": approveIn.reason,
+            "Status": approveIn.status
+          }
+        ])
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
