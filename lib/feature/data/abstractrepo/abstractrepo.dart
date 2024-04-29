@@ -1,6 +1,7 @@
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/approve_price_change_model/approve_price_change_model.dart';
+import 'package:customer_connect/feature/data/models/approve_price_changein_model/approve_price_changein_model.dart';
 import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_model.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
@@ -269,17 +270,14 @@ abstract class INotificationRepo {
 abstract class IPriceChangeRepo {
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
       String rotID);
-
   Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
       priceChangeDetails(String pchID);
-
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
       getPricChangeReasons(
     String rsnType,
   );
-
   Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
-      String priceID, String userID, String jsonString);
+      ApprovePriceChangeinModel approveIn);
 }
 
 abstract class IReturnApprovalRepo {

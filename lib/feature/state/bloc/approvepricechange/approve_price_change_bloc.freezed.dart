@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ApprovePriceChangeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String prdID, String userID, String jsonString)
+    required TResult Function(ApprovePriceChangeinModel approval)
         getPricChangeApprovalEvent,
     required TResult Function() addApprovalLoadinEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String prdID, String userID, String jsonString)?
+    TResult? Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult? Function()? addApprovalLoadinEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String prdID, String userID, String jsonString)?
+    TResult Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult Function()? addApprovalLoadinEvent,
     required TResult orElse(),
@@ -89,7 +89,7 @@ abstract class _$$GetPricChangeApprovalEventImplCopyWith<$Res> {
           $Res Function(_$GetPricChangeApprovalEventImpl) then) =
       __$$GetPricChangeApprovalEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String prdID, String userID, String jsonString});
+  $Res call({ApprovePriceChangeinModel approval});
 }
 
 /// @nodoc
@@ -105,23 +105,13 @@ class __$$GetPricChangeApprovalEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? prdID = null,
-    Object? userID = null,
-    Object? jsonString = null,
+    Object? approval = null,
   }) {
     return _then(_$GetPricChangeApprovalEventImpl(
-      prdID: null == prdID
-          ? _value.prdID
-          : prdID // ignore: cast_nullable_to_non_nullable
-              as String,
-      userID: null == userID
-          ? _value.userID
-          : userID // ignore: cast_nullable_to_non_nullable
-              as String,
-      jsonString: null == jsonString
-          ? _value.jsonString
-          : jsonString // ignore: cast_nullable_to_non_nullable
-              as String,
+      approval: null == approval
+          ? _value.approval
+          : approval // ignore: cast_nullable_to_non_nullable
+              as ApprovePriceChangeinModel,
     ));
   }
 }
@@ -129,19 +119,14 @@ class __$$GetPricChangeApprovalEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPricChangeApprovalEventImpl implements GetPricChangeApprovalEvent {
-  const _$GetPricChangeApprovalEventImpl(
-      {required this.prdID, required this.userID, required this.jsonString});
+  const _$GetPricChangeApprovalEventImpl({required this.approval});
 
   @override
-  final String prdID;
-  @override
-  final String userID;
-  @override
-  final String jsonString;
+  final ApprovePriceChangeinModel approval;
 
   @override
   String toString() {
-    return 'ApprovePriceChangeEvent.getPricChangeApprovalEvent(prdID: $prdID, userID: $userID, jsonString: $jsonString)';
+    return 'ApprovePriceChangeEvent.getPricChangeApprovalEvent(approval: $approval)';
   }
 
   @override
@@ -149,14 +134,12 @@ class _$GetPricChangeApprovalEventImpl implements GetPricChangeApprovalEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPricChangeApprovalEventImpl &&
-            (identical(other.prdID, prdID) || other.prdID == prdID) &&
-            (identical(other.userID, userID) || other.userID == userID) &&
-            (identical(other.jsonString, jsonString) ||
-                other.jsonString == jsonString));
+            (identical(other.approval, approval) ||
+                other.approval == approval));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, prdID, userID, jsonString);
+  int get hashCode => Object.hash(runtimeType, approval);
 
   @JsonKey(ignore: true)
   @override
@@ -168,33 +151,33 @@ class _$GetPricChangeApprovalEventImpl implements GetPricChangeApprovalEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String prdID, String userID, String jsonString)
+    required TResult Function(ApprovePriceChangeinModel approval)
         getPricChangeApprovalEvent,
     required TResult Function() addApprovalLoadinEvent,
   }) {
-    return getPricChangeApprovalEvent(prdID, userID, jsonString);
+    return getPricChangeApprovalEvent(approval);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String prdID, String userID, String jsonString)?
+    TResult? Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult? Function()? addApprovalLoadinEvent,
   }) {
-    return getPricChangeApprovalEvent?.call(prdID, userID, jsonString);
+    return getPricChangeApprovalEvent?.call(approval);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String prdID, String userID, String jsonString)?
+    TResult Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult Function()? addApprovalLoadinEvent,
     required TResult orElse(),
   }) {
     if (getPricChangeApprovalEvent != null) {
-      return getPricChangeApprovalEvent(prdID, userID, jsonString);
+      return getPricChangeApprovalEvent(approval);
     }
     return orElse();
   }
@@ -237,13 +220,10 @@ class _$GetPricChangeApprovalEventImpl implements GetPricChangeApprovalEvent {
 
 abstract class GetPricChangeApprovalEvent implements ApprovePriceChangeEvent {
   const factory GetPricChangeApprovalEvent(
-      {required final String prdID,
-      required final String userID,
-      required final String jsonString}) = _$GetPricChangeApprovalEventImpl;
+          {required final ApprovePriceChangeinModel approval}) =
+      _$GetPricChangeApprovalEventImpl;
 
-  String get prdID;
-  String get userID;
-  String get jsonString;
+  ApprovePriceChangeinModel get approval;
   @JsonKey(ignore: true)
   _$$GetPricChangeApprovalEventImplCopyWith<_$GetPricChangeApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -291,7 +271,7 @@ class _$AddApprovalLoadinEventImpl implements AddApprovalLoadinEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String prdID, String userID, String jsonString)
+    required TResult Function(ApprovePriceChangeinModel approval)
         getPricChangeApprovalEvent,
     required TResult Function() addApprovalLoadinEvent,
   }) {
@@ -301,7 +281,7 @@ class _$AddApprovalLoadinEventImpl implements AddApprovalLoadinEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String prdID, String userID, String jsonString)?
+    TResult? Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult? Function()? addApprovalLoadinEvent,
   }) {
@@ -311,7 +291,7 @@ class _$AddApprovalLoadinEventImpl implements AddApprovalLoadinEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String prdID, String userID, String jsonString)?
+    TResult Function(ApprovePriceChangeinModel approval)?
         getPricChangeApprovalEvent,
     TResult Function()? addApprovalLoadinEvent,
     required TResult orElse(),

@@ -5,6 +5,7 @@ import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/approve_price_change_model/approve_price_change_model.dart';
+import 'package:customer_connect/feature/data/models/approve_price_changein_model/approve_price_changein_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_details_model/price_change_details_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_reason_model/price_change_reason_model.dart';
@@ -95,22 +96,22 @@ class PriceChangeRepo implements IPriceChangeRepo {
 
   @override
   Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
-      String priceID, String userID, String jsonString) async {
+      ApprovePriceChangeinModel approveIn) async {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + approvePriceChangeUrl), body: {
-        "PriceID": priceID,
-        "UserID": userID,
-        "JSONString": [
+        "PriceID": approveIn.priceId,
+        "UserID": approveIn.userId,
+        "JSONString": jsonEncode([
           {
-            "pcd_ID": '',
-            "Reason": '',
-            "Status": '',
-            "aprvdHprice": '',
-            "LowerQty": '',
-            "aprvdLprice": ''
+            "pcd_ID": approveIn.pcdId,
+            "Reason": approveIn.reason,
+            "Status": approveIn.status,
+            "aprvdHprice": approveIn.aprvdHprice,
+            "LowerQty": approveIn.lowerQty,
+            "aprvdLprice": approveIn.aprvdLprice
           }
-        ].toString()
+        ])
       });
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
