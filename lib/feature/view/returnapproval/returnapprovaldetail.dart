@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -16,8 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-bool isselected = true;
-
 class ReturnApprovalDetailScreen extends StatefulWidget {
   final ReturnApprovalHeaderModel returnApprovel;
   final LoginUserModel user;
@@ -31,13 +26,18 @@ class ReturnApprovalDetailScreen extends StatefulWidget {
 
 List<String> selectedresons = [];
 List<bool?> statuslist = [];
+bool isLoading = false;
 
+int loadingCount = 0;
 List<ApprovalResonModel> availableresons = [];
+int approvedCount = 0;
 
 class _ReturnApprovalDetailScreenState
     extends State<ReturnApprovalDetailScreen> {
   @override
   void initState() {
+    approvedCount = 0;
+    loadingCount = 0;
     context
         .read<ReturnApprovalDetailBloc>()
         .add(const ClearReturnDetailEvent());
@@ -130,6 +130,16 @@ class _ReturnApprovalDetailScreenState
 
                     statuslist /* length = details.length; */
                         = List.generate(details.length, (index) => null);
+
+                    for (int i = 0; i < details.length; i++) {
+                      if (details[i].radApprovalStatus!.isNotEmpty) {
+                        if (details[i].radApprovalStatus == 'A') {
+                          statuslist[i] = true;
+                        } else {
+                          statuslist[i] = false;
+                        }
+                      }
+                    }
                   }
                 },
                 returnApprovalDetailFailedState: () {},
@@ -152,255 +162,284 @@ class _ReturnApprovalDetailScreenState
                       )
                     : ListView.separated(
                         shrinkWrap: true,
-                        itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          details[index].prdCode ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff7b70ac),
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Text(
-                                          details[index].prdName ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black54),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Text(
-                                            details[index].huom ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
-                                          ),
-                                          SizedBox(
-                                            height: 10.h,
-                                          ),
-                                          Text(
-                                            details[index].luom ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
+                        itemBuilder: (context, index) => BlocListener<
+                            ApproveReturnProductBloc,
+                            ApproveReturnProductState>(
+                          listener: (context, state) {
+                            state.when(
+                              approveReturnProductdSTatusState: (response) {
+                                if (response != null) {
+                                  Navigator.pop(context);
+                                  isLoading = false;
+                                  if (response.mode == '1') {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: Text(
+                                            "Product Status Update ${response.status} "),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
                                           ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        width: 50.w,
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            details[index].returnHQty ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
-                                          ),
-                                          SizedBox(
-                                            height: 10.h,
-                                          ),
-                                          Text(
-                                            details[index].returnLQty ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
+                                    );
+                                  } else {
+                                    statuslist[index] = null;
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: Text(
+                                            "Product Status Update ${response.status} ,Try Again"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
                                           ),
                                         ],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              approveReturnLoadingState: () {
+                                if (loadingCount == 0) {
+                                  loadingCount = 1;
+                                  approvedCount += 1;
+                                  showCupertinoModalPopup(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => SizedBox(
+                                            height: MediaQuery.of(context)
+                                                .size
+                                                .height,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            child: const PopScope(
+                                              canPop: true,
+                                              child: CupertinoActivityIndicator(
+                                                animating: true,
+                                                color: Colors.red,
+                                                radius: 30,
+                                              ),
+                                            ),
+                                          ));
+                                }
+                              },
+                              approvalFailedState: () {
+                                statuslist[index] = null;
+                                setState(() {});
+                                Navigator.pop(context);
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: const Text('Alert'),
+                                    content: const Text(
+                                        "Something Went Wrong, please Try again later"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Ok'),
                                       ),
                                     ],
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: BlocConsumer<ApprovalReasonsBloc,
-                                        ApprovalReasonsState>(
-                                      listener: (context, state) {
-                                        state.when(
-                                          getApprovalResonsState: (resons) {
-                                            if (resons != null) {
-                                              selectedresons.clear();
-
-                                              availableresons.clear();
-                                              availableresons = [
-                                                ApprovalResonModel(
-                                                    rsnId: '-1',
-                                                    rsnName: 'Select reason',
-                                                    rsnType: 'null')
-                                              ];
-
-                                              selectedresons = List.generate(
-                                                  details.length,
-                                                  (index) => '-1');
-                                              availableresons.addAll(resons);
-                                            }
-                                          },
-                                          getReasonsFailedState: () {},
-                                        );
-                                      },
-                                      builder: (context, state) {
-                                        return state.when(
-                                          getApprovalResonsState: (resons) =>
-                                              resons == null ||
-                                                      availableresons.isEmpty
-                                                  ? const ShimmerContainers(
-                                                      height: 30,
-                                                      width: 80,
-                                                    )
-                                                  : SizedBox(
-                                                      // height: 30.h,
-                                                      // width: MediaQuery.of(context).size.width / 3,
-                                                      child:
-                                                          DropdownButtonFormField(
-                                                        dropdownColor:
-                                                            Colors.white,
-                                                        value:
-                                                            availableresons[0]
-                                                                    .rsnId ??
-                                                                '',
-                                                        style: kfontstyle(
-                                                            color:
-                                                                Colors.black),
-                                                        decoration:
-                                                            const InputDecoration(
-                                                          border:
-                                                              InputBorder.none,
-                                                        ),
-                                                        items: availableresons.map(
-                                                            (ApprovalResonModel
-                                                                item) {
-                                                          return DropdownMenuItem(
-                                                            value: item.rsnId,
-                                                            child: Text(
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              item.rsnName ??
-                                                                  '',
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      9.sp),
-                                                            ),
-                                                          );
-                                                        }).toList(),
-                                                        onChanged: (value) {
-                                                          selectedresons[
-                                                                  index] =
-                                                              value ?? '';
-                                                        },
-                                                      ),
-                                                    ),
-                                          getReasonsFailedState: () =>
-                                              const SizedBox(),
-                                        );
-                                      },
-                                    ),
                                   ),
-                                  BlocBuilder<AapprovalOrRejectRadioCubit,
-                                      AapprovalOrRejectRadioState>(
-                                    builder: (context, state) {
-                                      return BlocConsumer<
-                                          ApproveReturnProductBloc,
-                                          ApproveReturnProductState>(
+                                );
+                              },
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            details[index].prdCode ?? '',
+                                            style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff7b70ac),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          Text(
+                                            details[index].prdName ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black54),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(
+                                              details[index].huom ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.black54),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Text(
+                                              details[index].luom ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.black54),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 50.w,
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              details[index].returnHQty ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.black54),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Text(
+                                              details[index].returnLQty ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.black54),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: BlocConsumer<ApprovalReasonsBloc,
+                                          ApprovalReasonsState>(
                                         listener: (context, state) {
                                           state.when(
-                                            approveReturnProductdSTatusState:
-                                                (response) {
-                                              if (response != null) {
-                                                Navigator.pop(context);
-                                                showCupertinoDialog(
-                                                  context: context,
-                                                  builder: (context) =>
-                                                      CupertinoAlertDialog(
-                                                    title: const Text('Alert'),
-                                                    content: Text(
-                                                        "Product Status Update ${response.status} "),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
+                                            getApprovalResonsState: (resons) {
+                                              if (resons != null) {
+                                                selectedresons.clear();
+                                                availableresons.clear();
+                                                availableresons = [
+                                                  ApprovalResonModel(
+                                                      rsnId: '-1',
+                                                      rsnName: 'Select reason',
+                                                      rsnType: 'null')
+                                                ];
+
+                                                selectedresons = List.generate(
+                                                    details.length,
+                                                    (index) => '-1');
+
+                                                availableresons.addAll(resons);
                                               }
                                             },
-                                            approveReturnLoadingState: () {
-                                              showCupertinoModalPopup(
-                                                  context: context,
-                                                  barrierDismissible: false,
-                                                  builder: (context) =>
-                                                      SizedBox(
-                                                        height: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .height,
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        child: const PopScope(
-                                                          canPop: true,
-                                                          child:
-                                                              CupertinoActivityIndicator(
-                                                            animating: true,
-                                                            color: Colors.red,
-                                                            radius: 30,
-                                                          ),
-                                                        ),
-                                                      ));
-                                            },
-                                            approvalFailedState: () {
-                                              Navigator.pop(context);
-                                              showCupertinoDialog(
-                                                context: context,
-                                                builder: (context) =>
-                                                    CupertinoAlertDialog(
-                                                  title: const Text('Alert'),
-                                                  content: const Text(
-                                                      "Something Went Wrong, please Try again later"),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: const Text('Ok'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
+                                            getReasonsFailedState: () {},
                                           );
                                         },
                                         builder: (context, state) {
-                                          return Row(
+                                          return state.when(
+                                            getApprovalResonsState: (resons) =>
+                                                resons == null ||
+                                                        availableresons.isEmpty
+                                                    ? const ShimmerContainers(
+                                                        height: 30,
+                                                        width: 80,
+                                                      )
+                                                    : SizedBox(
+                                                        // height: 30.h,
+                                                        // width: MediaQuery.of(context).size.width / 3,
+                                                        child:
+                                                            DropdownButtonFormField(
+                                                          dropdownColor:
+                                                              Colors.white,
+                                                          value:
+                                                              availableresons[0]
+                                                                      .rsnId ??
+                                                                  '',
+                                                          style: kfontstyle(
+                                                              color:
+                                                                  Colors.black),
+                                                          decoration:
+                                                              const InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                          items: availableresons
+                                                              .map(
+                                                                  (ApprovalResonModel
+                                                                      item) {
+                                                            return DropdownMenuItem(
+                                                              value: item.rsnId,
+                                                              child: Text(
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                item.rsnName ??
+                                                                    '',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        9.sp),
+                                                              ),
+                                                            );
+                                                          }).toList(),
+                                                          onChanged: (value) {
+                                                            selectedresons[
+                                                                    index] =
+                                                                value ?? '';
+                                                          },
+                                                        ),
+                                                      ),
+                                            getReasonsFailedState: () =>
+                                                const SizedBox(),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    BlocBuilder<AapprovalOrRejectRadioCubit,
+                                        AapprovalOrRejectRadioState>(
+                                      builder: (context, state) {
+                                        return AbsorbPointer(
+                                          absorbing: details[index]
+                                                  .radApprovalStatus!
+                                                  .isNotEmpty
+                                              ? true
+                                              : false,
+                                          child: Row(
                                             children: [
                                               Transform.scale(
                                                 scale: 0.8,
@@ -421,8 +460,8 @@ class _ReturnApprovalDetailScreenState
                                                             : Colors.grey;
                                                       }),
                                                       /* activeColor: isselected == true
-                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                            : Colors.grey, */
+                                                                                                                                                      ? const Color(0xff0075ff)
+                                                                                                                                                      : Colors.grey, */
                                                       value: statuslist[
                                                                   index] ==
                                                               null
@@ -482,13 +521,15 @@ class _ReturnApprovalDetailScreenState
                                                                 TextButton(
                                                                   onPressed:
                                                                       () {
-                                                                    Navigator.pop(
-                                                                        context);
                                                                     statuslist[
                                                                             index] =
                                                                         true;
+                                                                    loadingCount =
+                                                                        0;
                                                                     setState(
                                                                         () {});
+                                                                    Navigator.pop(
+                                                                        context);
                                                                     context
                                                                         .read<
                                                                             ApproveReturnProductBloc>()
@@ -504,25 +545,10 @@ class _ReturnApprovalDetailScreenState
                                                                                 radId: details[index].radId,
                                                                                 reason: selectedresons[index],
                                                                                 status: 'A',
-                                                                                returnID: widget.returnApprovel.ithRequestNumber,
+                                                                                returnID: widget.returnApprovel.rahId,
                                                                                 userID: '45'),
                                                                           ),
                                                                         );
-
-                                                                    log(
-                                                                      jsonEncode(
-                                                                        ReturnApproveInModel(
-                                                                            radId: details[index]
-                                                                                .radId,
-                                                                            reason: selectedresons[
-                                                                                index],
-                                                                            status:
-                                                                                'A',
-                                                                            returnID:
-                                                                                widget.returnApprovel.rahId,
-                                                                            userID: '45'),
-                                                                      ),
-                                                                    );
                                                                   },
                                                                   child: const Text(
                                                                       'Proceed'),
@@ -533,10 +559,10 @@ class _ReturnApprovalDetailScreenState
                                                         }
 
                                                         /*  context
-                                                                                              .read<
-                                                                                                  AapprovalOrRejectRadioCubit>()
-                                                                                              .changeApprovalStatus(
-                                                                                                  statuslist[index]); */
+                                                                                                                        .read<
+                                                                                                                            AapprovalOrRejectRadioCubit>()
+                                                                                                                        .changeApprovalStatus(
+                                                                                                                            statuslist[index]); */
                                                       },
                                                     ),
                                                     Text(
@@ -567,8 +593,8 @@ class _ReturnApprovalDetailScreenState
                                                             : Colors.grey;
                                                       }),
                                                       /*  activeColor: isselected == false
-                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                            : Colors.grey, */
+                                                                                                                                                      ? const Color(0xff0075ff)
+                                                                                                                                                      : Colors.grey, */
                                                       value: statuslist[
                                                                   index] ==
                                                               null
@@ -631,6 +657,9 @@ class _ReturnApprovalDetailScreenState
                                                                     statuslist[
                                                                             index] =
                                                                         false;
+
+                                                                    loadingCount =
+                                                                        0;
                                                                     setState(
                                                                         () {});
                                                                     Navigator.pop(
@@ -641,17 +670,19 @@ class _ReturnApprovalDetailScreenState
                                                                         .add(
                                                                             const AddApprovalLoadingEvent());
 
-                                                                    context.read<ApproveReturnProductBloc>().add(ApproveProductEvent(
-                                                                        approval: ReturnApproveInModel(
-                                                                            radId: details[index]
-                                                                                .radId,
-                                                                            reason: selectedresons[
-                                                                                index],
-                                                                            status:
-                                                                                'R',
-                                                                            returnID:
-                                                                                widget.returnApprovel.ithRequestNumber,
-                                                                            userID: '45')));
+                                                                    context
+                                                                        .read<
+                                                                            ApproveReturnProductBloc>()
+                                                                        .add(
+                                                                          ApproveProductEvent(
+                                                                            approval: ReturnApproveInModel(
+                                                                                radId: details[index].radId,
+                                                                                reason: selectedresons[index],
+                                                                                status: 'R',
+                                                                                returnID: widget.returnApprovel.rahId,
+                                                                                userID: '45'),
+                                                                          ),
+                                                                        );
                                                                   },
                                                                   child: const Text(
                                                                       'Proceed'),
@@ -662,10 +693,10 @@ class _ReturnApprovalDetailScreenState
                                                         }
 
                                                         /* context
-                                                                                              .read<
-                                                                                                  AapprovalOrRejectRadioCubit>()
-                                                                                              .changeApprovalStatus(
-                                                                                                  statuslist[index]); */
+                                                                                                                        .read<
+                                                                                                                            AapprovalOrRejectRadioCubit>()
+                                                                                                                        .changeApprovalStatus(
+                                                                                                                            statuslist[index]); */
                                                       },
                                                     ),
                                                     Text(
@@ -676,14 +707,14 @@ class _ReturnApprovalDetailScreenState
                                                 ),
                                               )
                                             ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                  )
-                                ],
-                              )
-                            ],
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         separatorBuilder: (context, index) => Divider(
