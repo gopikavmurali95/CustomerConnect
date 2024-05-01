@@ -1,5 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePopUPMenuButton extends StatelessWidget {
-  const HomePopUPMenuButton({super.key});
+  final LoginUserModel user;
+  const HomePopUPMenuButton({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   radius: 14.sp,
                 ),
                 title: Text(
-                  'Lewis Rodney',
+                  "${user.firstName} ${user.lastName}",
                   style: kfontstyle(
                     fontSize: 11.sp,
                     color: Colors.black87,
@@ -61,7 +64,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  '123456 | Sales Executive',
+                  '${user.contacInfo} | ${user.userName}',
                   style: kfontstyle(
                     fontSize: 9.sp,
                     color: Colors.grey,
@@ -96,16 +99,42 @@ class HomePopUPMenuButton extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  final sharedprefs = await SharedPreferences.getInstance();
-                  sharedprefs.clear();
-                  Future.delayed(const Duration(microseconds: 100), () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: const Text('Alert'),
+                      content: Text(
+                        'Do you want to logout',
+                        style: kfontstyle(),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('cancel'),
                         ),
-                        (route) => false);
-                  });
+                        TextButton(
+                          onPressed: () async {
+                            Navigator.pop(context);
+                            final sharedprefs =
+                                await SharedPreferences.getInstance();
+                            sharedprefs.clear();
+                            Future.delayed(const Duration(microseconds: 100),
+                                () {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginScreen(),
+                                  ),
+                                  (route) => false);
+                            });
+                          },
+                          child: const Text('proceeda'),
+                        ),
+                      ],
+                    ),
+                  );
                 },
                 child: Row(
                   children: [

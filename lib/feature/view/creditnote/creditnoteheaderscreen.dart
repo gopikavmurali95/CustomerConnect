@@ -1,32 +1,29 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
-import 'package:customer_connect/feature/view/disputenote/disputenotedetailscreen.dart';
+import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
+import 'package:customer_connect/feature/view/creditnote/creditnotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DisputeNoteApprovalHEaderScreen extends StatefulWidget {
+class CreditNoteHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
-  const DisputeNoteApprovalHEaderScreen({super.key, required this.user});
+  const CreditNoteHeaderScreen({super.key, required this.user});
 
   @override
-  State<DisputeNoteApprovalHEaderScreen> createState() =>
-      _DisputeNoteApprovalHEaderScreenState();
+  State<CreditNoteHeaderScreen> createState() => _CreditNoteHeaderScreenState();
 }
 
-class _DisputeNoteApprovalHEaderScreenState
-    extends State<DisputeNoteApprovalHEaderScreen> {
+class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
   @override
   void initState() {
     context
-        .read<DisputeNoteHeaderBloc>()
-        .add(const ClearDisputeNoteHEaderEvent());
-
+        .read<CreditNoteHeaderBloc>()
+        .add(const ClearCreditNoteHeadersEvent());
     context
-        .read<DisputeNoteHeaderBloc>()
-        .add(GetDisputeNoteHeadersEvent(userID: widget.user.usrId ?? ''));
+        .read<CreditNoteHeaderBloc>()
+        .add(GetAllCreditNoteHeadersEvent(userId: widget.user.usrId ?? ''));
     super.initState();
   }
 
@@ -57,10 +54,10 @@ class _DisputeNoteApprovalHEaderScreenState
           Expanded(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: BlocBuilder<DisputeNoteHeaderBloc, DisputeNoteHeaderState>(
+            child: BlocBuilder<CreditNoteHeaderBloc, CreditNoteHeaderState>(
               builder: (context, state) {
                 return state.when(
-                  getDisputeNoteHeaderState: (headers) => headers == null
+                  getCreditNoteHeadersState: (headers) => headers == null
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: ListView.separated(
@@ -81,8 +78,8 @@ class _DisputeNoteApprovalHEaderScreenState
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          DisputeNoteDetailScreen(
-                                        disputenote: headers[index],
+                                          CreditNoteDetailScreen(
+                                        creditNote: headers[index],
                                         user: widget.user,
                                       ),
                                     ),
@@ -111,7 +108,7 @@ class _DisputeNoteApprovalHEaderScreenState
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  headers[index].drhTransId ??
+                                                  headers[index].cnhNumber ??
                                                       '',
                                                   style: kfontstyle(
                                                     fontSize: 12.sp,
@@ -146,7 +143,7 @@ class _DisputeNoteApprovalHEaderScreenState
                                                   ],
                                                 ),
                                                 Text(
-                                                  headers[index].transTime ??
+                                                  headers[index].createdDate ??
                                                       '',
                                                   style: kfontstyle(
                                                       fontSize: 10.sp,
@@ -161,7 +158,7 @@ class _DisputeNoteApprovalHEaderScreenState
                                                           .status!
                                                           .isEmpty ||
                                                       headers[index].status !=
-                                                          'Approved'
+                                                          'Action Taken'
                                                   ? headers[index].status ==
                                                           'Rejected'
                                                       ? Colors.red[300]
@@ -200,7 +197,7 @@ class _DisputeNoteApprovalHEaderScreenState
                                 color: Colors.grey[300],
                               ),
                           itemCount: headers.length),
-                  disputeNoteHeaderFailedState: () => Center(
+                  creditNoteHeaderFailedState: () => Center(
                     child: Text(
                       'No Data Available',
                       style: kfontstyle(),
