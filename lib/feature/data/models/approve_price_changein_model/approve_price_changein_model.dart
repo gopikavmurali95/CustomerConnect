@@ -15,8 +15,6 @@ class ApprovePriceChangeinModel {
   @JsonKey(name: 'Status')
   String? status;
   String? aprvdHprice;
-  @JsonKey(name: 'LowerQty')
-  String? lowerQty;
   String? aprvdLprice;
 
   ApprovePriceChangeinModel({
@@ -26,7 +24,6 @@ class ApprovePriceChangeinModel {
     this.reason,
     this.status,
     this.aprvdHprice,
-    this.lowerQty,
     this.aprvdLprice,
   });
 

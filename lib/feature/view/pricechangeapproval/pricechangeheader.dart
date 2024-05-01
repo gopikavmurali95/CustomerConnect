@@ -133,6 +133,20 @@ class PriceChangeHeader extends StatelessWidget {
                                             ],
                                           ),
                                         ),
+                                        Container(
+                                          height: 10.h,
+                                          width: 10.h,
+                                          decoration: BoxDecoration(
+                                            color: pChange[index]
+                                                    .pchApprovalStatus!
+                                                    .isEmpty
+                                                ? Colors.red
+                                                : Colors.green,
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                          ),
+                                        )
                                       ],
                                     ),
                                   ),

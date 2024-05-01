@@ -15,7 +15,6 @@ ApprovePriceChangeinModel _$ApprovePriceChangeinModelFromJson(
       reason: json['Reason'] as String?,
       status: json['Status'] as String?,
       aprvdHprice: json['aprvdHprice'] as String?,
-      lowerQty: json['LowerQty'] as String?,
       aprvdLprice: json['aprvdLprice'] as String?,
     );
 
@@ -28,6 +27,5 @@ Map<String, dynamic> _$ApprovePriceChangeinModelToJson(
       'Reason': instance.reason,
       'Status': instance.status,
       'aprvdHprice': instance.aprvdHprice,
-      'LowerQty': instance.lowerQty,
       'aprvdLprice': instance.aprvdLprice,
     };

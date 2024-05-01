@@ -30,6 +30,11 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
+import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
+import 'package:customer_connect/feature/data/models/dispute_approval_status_model/dispute_approval_status_model.dart';
+import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/dispute_note_detail_model/dispute_note_detail_model.dart';
+import 'package:customer_connect/feature/data/models/dispute_note_header_model/dispute_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
@@ -293,4 +298,20 @@ abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, ReturnApproveOutModel>> approveReturnProduct(
     ReturnApproveInModel approveIn,
   );
+}
+
+abstract class IDisputeNoteApprovalRepo {
+  Future<Either<MainFailures, List<DisputeNoteHeaderModel>>>
+      getDisputeNoteApprovalHeaders(String userID);
+
+  Future<Either<MainFailures, List<DisputeNoteDetailModel>>>
+      getDisputeApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, DisputeApprovalStatusModel>>
+      getDisputeApprovalStatus(String userID);
+
+  Future<Either<MainFailures, DisputeApprovalRespModel>> disputeApproval(
+      DisputeInvoiceApproveInModel approve);
+  Future<Either<MainFailures, DisputeApprovalRespModel>> disputeReject(
+      DisputeInvoiceApproveInModel reject);
 }

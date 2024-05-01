@@ -108,11 +108,23 @@ class PriceChangeRepo implements IPriceChangeRepo {
             "Reason": approveIn.reason,
             "Status": approveIn.status,
             "aprvdHprice": approveIn.aprvdHprice,
-            "LowerQty": approveIn.lowerQty,
             "aprvdLprice": approveIn.aprvdLprice
           }
         ])
       });
+      log({
+        "PriceID": approveIn.priceId,
+        "UserID": approveIn.userId,
+        "JSONString": jsonEncode([
+          {
+            "pcd_ID": approveIn.pcdId,
+            "Reason": approveIn.reason,
+            "Status": approveIn.status,
+            "aprvdHprice": approveIn.aprvdHprice,
+            "aprvdLprice": approveIn.aprvdLprice
+          }
+        ])
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

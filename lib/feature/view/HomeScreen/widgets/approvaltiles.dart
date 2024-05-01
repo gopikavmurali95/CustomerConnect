@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -142,7 +143,7 @@ class ApprovalTiles extends StatelessWidget {
             ],
           ),
         ),
-        /* SizedBox(
+        SizedBox(
           height: 10.h,
         ),
         Padding(
@@ -153,12 +154,13 @@ class ApprovalTiles extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    /* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PromotionHeader(
-                                      user: widget.user,
-                                    ))); */
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DisputeNoteApprovalHEaderScreen(
+                                  user: user,
+                                )));
                   },
                   child: Container(
                     // height: 50,
@@ -187,7 +189,7 @@ class ApprovalTiles extends StatelessWidget {
                             width: 8.w,
                           ),
                           Text(
-                            "Promotions",
+                            "Dispute Note",
                             style: headTextStyle(),
                           )
                         ],
@@ -251,7 +253,7 @@ class ApprovalTiles extends StatelessWidget {
               ),
             ],
           ),
-        ), */
+        ),
       ],
     );
   }
