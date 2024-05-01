@@ -62,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
           fit: BoxFit.scaleDown,
           height: 20,
         ) */
-            const HomePopUPMenuButton(),
+            HomePopUPMenuButton(
+          user: widget.user,
+        ),
         title: SvgPicture.asset(
           "assets/svg/logo_ccsfa.svg",
           height: 22.sp,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -7,6 +8,9 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
@@ -62,6 +66,7 @@ import 'package:customer_connect/feature/state/bloc/total_orders_header/total_or
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
@@ -299,6 +304,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<DisputeNoteApprovalAndRejectBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<CreditNoteHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CreditNoteDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CreditNoteApprovalLevelStatusCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CreditNoteApprovalAndRejectBloc>(),
+        ),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
@@ -306,6 +323,28 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             useMaterial3: true,
             scaffoldBackgroundColor: Colors.white,
+            textTheme: TextTheme(
+              bodySmall: kfontstyle(),
+              bodyLarge: kfontstyle(),
+              bodyMedium: kfontstyle(),
+              displayLarge: kfontstyle(),
+              displayMedium: kfontstyle(),
+              displaySmall: kfontstyle(),
+              titleLarge: kfontstyle(),
+              titleMedium: kfontstyle(),
+              titleSmall: kfontstyle(),
+            ),
+            primaryTextTheme: TextTheme(
+              bodySmall: kfontstyle(),
+              bodyLarge: kfontstyle(),
+              bodyMedium: kfontstyle(),
+              displayLarge: kfontstyle(),
+              displayMedium: kfontstyle(),
+              displaySmall: kfontstyle(),
+              titleLarge: kfontstyle(),
+              titleMedium: kfontstyle(),
+              titleSmall: kfontstyle(),
+            ),
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.white,
               surfaceTintColor: Colors.white,

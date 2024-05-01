@@ -8,6 +8,8 @@ import 'package:customer_connect/feature/data/models/ar_total_collection_model/a
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_locations_model/confirm_geo_locations_model.dart';
+import 'package:customer_connect/feature/data/models/credit_note_detail_model/credit_note_detail_model.dart';
+import 'package:customer_connect/feature/data/models/credit_note_header_model/credit_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/cu_s_profile_model/cu_s_profile_model.dart';
 import 'package:customer_connect/feature/data/models/cus_documents_model/cus_documents_model.dart';
 import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_geo_loc_in_model.dart';
@@ -313,5 +315,21 @@ abstract class IDisputeNoteApprovalRepo {
   Future<Either<MainFailures, DisputeApprovalRespModel>> disputeApproval(
       DisputeInvoiceApproveInModel approve);
   Future<Either<MainFailures, DisputeApprovalRespModel>> disputeReject(
+      DisputeInvoiceApproveInModel reject);
+}
+
+abstract class ICreditNoteApprovalRepo {
+  Future<Either<MainFailures, List<CreditNoteHeaderModel>>>
+      getCreditNoteApprovalHeaders(String userID);
+
+  Future<Either<MainFailures, List<CreditNoteDetailModel>>>
+      getCreditApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, DisputeApprovalStatusModel>>
+      getcreditNoteApprovalStatus(String userID);
+
+  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteApproval(
+      DisputeInvoiceApproveInModel approve);
+  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteReject(
       DisputeInvoiceApproveInModel reject);
 }

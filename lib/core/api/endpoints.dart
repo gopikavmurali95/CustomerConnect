@@ -65,3 +65,9 @@ const disputeNoteDetailUrl = 'CusOperation/DisputeNoteDetail';
 const disputeApprovalStatusUrl = 'CusOperation/GetDisputeApprovalLevelStatus';
 const disputeRejectUrl = 'CusOperation/DisputeNoteReject';
 const disputeApprovalUrl = 'CusOperation/DisputeNoteApproval';
+const creditNoteApprovalHeaderUrl = 'CusOperation/CreditNoteHeader';
+const creditnoteDetailUrl = 'CusOperation/CreditNoteDetail';
+const creditNoteApprovalLevelStatusUrl =
+    'CusOperation/GetCreditNoteApprovalLevelStatus';
+const creditNoteAapprovalUrl = 'CusOperation/CreditNoteApproval';
+const creditNoteRejectUrl = 'CusOperation/CreditNoteReject';

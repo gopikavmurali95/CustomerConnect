@@ -1,5 +1,4 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_note_header_model/dispute_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -23,14 +22,6 @@ class DisputeNoteDetailScreen extends StatefulWidget {
   State<DisputeNoteDetailScreen> createState() =>
       _DisputeNoteDetailScreenState();
 }
-
-List<String> selectedresons = [];
-List<bool?> statuslist = [];
-bool isLoading = false;
-
-int loadingCount = 0;
-List<ApprovalResonModel> availableresons = [];
-int approvedCount = 0;
 
 TextEditingController _remarksctrls = TextEditingController();
 
@@ -77,9 +68,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
-          context
+          /*   context
               .read<DisputeNoteHeaderBloc>()
-              .add(const ClearDisputeNoteHEaderEvent());
+              .add(const ClearDisputeNoteHEaderEvent()); */
 
           context
               .read<DisputeNoteHeaderBloc>()
@@ -93,20 +84,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                 listener: (context, state) {
                   state.when(
                     getDisputeNoteDetailState: (details) {
-                      if (details != null) {
-                        statuslist /* length = details.length; */
-                            = List.generate(details.length, (index) => null);
-
-                        /* for (int i = 0; i < details.length; i++) {
-                      if (details[i].!.isNotEmpty) {
-                        if (details[i].radApprovalStatus == 'A') {
-                          statuslist[i] = true;
-                        } else {
-                          statuslist[i] = false;
-                        }
-                      }
-                    } */
-                      }
+                      if (details != null) {}
                     },
                     getdisputenoteDetailFailedState: () {},
                   );
@@ -214,49 +192,49 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   getDisputeApprovalStatusLevelState:
                       (statuslevel, isApproval) {
                     if (statuslevel != null) {
-                      if (statuslevel.currentLevel == '1') {
-                        FocusScope.of(context).unfocus();
+                      // if (statuslevel.currentLevel == '1') {
+                      FocusScope.of(context).unfocus();
 
-                        Navigator.pop(context);
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: const Text('Alert'),
-                            content: Text(statuslevel.status ?? ''),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Cancel'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  context
-                                      .read<DisputeNoteApprovalAndRejectBloc>()
-                                      .add(
-                                          const AddDisputeNoteApprovalLoadingEvent());
-                                  context
-                                      .read<DisputeNoteApprovalAndRejectBloc>()
-                                      .add(
-                                        ApproveDisputeNoteEvent(
-                                          approve: DisputeInvoiceApproveInModel(
-                                              nextLevel: isApproval == true
-                                                  ? statuslevel.nextLevel
-                                                  : '',
-                                              remark: _remarksctrls.text,
-                                              reqId: widget.disputenote.drhId,
-                                              userId: widget.user.usrId ?? ''),
-                                        ),
-                                      );
-                                },
-                                child: const Text('Proceed'),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
+                      Navigator.pop(context);
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content: Text(statuslevel.status ?? ''),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                context
+                                    .read<DisputeNoteApprovalAndRejectBloc>()
+                                    .add(
+                                        const AddDisputeNoteApprovalLoadingEvent());
+                                context
+                                    .read<DisputeNoteApprovalAndRejectBloc>()
+                                    .add(
+                                      ApproveDisputeNoteEvent(
+                                        approve: DisputeInvoiceApproveInModel(
+                                            nextLevel: isApproval == true
+                                                ? statuslevel.nextLevel
+                                                : '',
+                                            remark: _remarksctrls.text,
+                                            reqId: widget.disputenote.drhId,
+                                            userId: widget.user.usrId ?? ''),
+                                      ),
+                                    );
+                              },
+                              child: const Text('Proceed'),
+                            ),
+                          ],
+                        ),
+                      );
+                      /* } else {
                         showCupertinoDialog(
                           context: context,
                           builder: (context) => CupertinoAlertDialog(
@@ -272,7 +250,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                             ],
                           ),
                         );
-                      }
+                      } */
                     }
                   },
                   disputStatusLevelFailedState: () {
@@ -338,8 +316,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                               ),
                               content: Text(
                                 isApprove == true
-                                    ? 'Disputenote ${resp.status}'
-                                    : 'Disputenote ${resp.status}',
+                                    ? 'Dispute note ${resp.status}'
+                                    : 'Dispute note ${resp.status}',
                                 style: kfontstyle(),
                               ),
                               actions: [
@@ -400,106 +378,145 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   );
                 },
                 builder: (context, state) {
-                  return SizedBox(
-                    height: 80.h,
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                          ),
-                          child: TextFormField(
-                            controller: _remarksctrls,
-                            decoration: InputDecoration(
-                              hintText: 'Remarks',
-                              hintStyle: kfontstyle(
-                                fontSize: 12.sp,
-                                color: Colors.red.shade300,
-                              ),
-                              border: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey[300]!),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey[300]!),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey[300]!),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                fit: FlexFit.tight,
-                                child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: Colors.red.shade300,
-                                  onPressed: () {
-                                    context
-                                        .read<
-                                            DisputeApprovalStatusLevelCubitCubit>()
-                                        .addDisputeStatusLoaingEvent();
-                                    context
-                                        .read<
-                                            DisputeApprovalStatusLevelCubitCubit>()
-                                        .checkApprovalstatusLevel(
-                                            widget.user.usrId ?? '', false);
-                                  },
-                                  child: Text(
-                                    'Reject',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
+                  return BlocBuilder<DisputeNoteDetailBloc,
+                      DisputeNoteDetailState>(
+                    builder: (context, state) {
+                      return state.when(
+                        getDisputeNoteDetailState: (details) => details == null
+                            ? const SizedBox.shrink()
+                            : SizedBox(
+                                height: 80.h,
+                                width: double.infinity,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                      ),
+                                      child: TextFormField(
+                                        controller: _remarksctrls,
+                                        enabled: widget.disputenote.status ==
+                                                'Pending'
+                                            ? true
+                                            : false,
+                                        decoration: InputDecoration(
+                                          hintText: 'Remarks',
+                                          hintStyle: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: widget.disputenote.status ==
+                                                    'Pending'
+                                                ? Colors.red.shade300
+                                                : Colors.grey,
+                                          ),
+                                          border: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey[300]!),
+                                          ),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey[300]!),
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.grey[300]!),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Row(
+                                        children: [
+                                          Flexible(
+                                            flex: 1,
+                                            fit: FlexFit.tight,
+                                            child: MaterialButton(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              color:
+                                                  widget.disputenote.status ==
+                                                          'Pending'
+                                                      ? Colors.red.shade300
+                                                      : Colors.grey[300],
+                                              onPressed: () {
+                                                if (widget.disputenote.status ==
+                                                    'Pending') {
+                                                  context
+                                                      .read<
+                                                          DisputeApprovalStatusLevelCubitCubit>()
+                                                      .addDisputeStatusLoaingEvent();
+                                                  context
+                                                      .read<
+                                                          DisputeApprovalStatusLevelCubitCubit>()
+                                                      .checkApprovalstatusLevel(
+                                                          widget.user.usrId ??
+                                                              '',
+                                                          false);
+                                                }
+                                              },
+                                              child: Text(
+                                                'Reject',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
+                                          Flexible(
+                                            flex: 1,
+                                            fit: FlexFit.tight,
+                                            child: MaterialButton(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              color:
+                                                  widget.disputenote.status ==
+                                                          'Pending'
+                                                      ? Colors.green.shade300
+                                                      : Colors.grey[300],
+                                              onPressed: () {
+                                                if (widget.disputenote.status ==
+                                                    'Pending') {
+                                                  context
+                                                      .read<
+                                                          DisputeApprovalStatusLevelCubitCubit>()
+                                                      .addDisputeStatusLoaingEvent();
+                                                  context
+                                                      .read<
+                                                          DisputeApprovalStatusLevelCubitCubit>()
+                                                      .checkApprovalstatusLevel(
+                                                          widget.user.usrId ??
+                                                              '',
+                                                          true);
+                                                }
+                                              },
+                                              child: Text(
+                                                'Approve',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                fit: FlexFit.tight,
-                                child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: Colors.green.shade300,
-                                  onPressed: () {
-                                    context
-                                        .read<
-                                            DisputeApprovalStatusLevelCubitCubit>()
-                                        .addDisputeStatusLoaingEvent();
-                                    context
-                                        .read<
-                                            DisputeApprovalStatusLevelCubitCubit>()
-                                        .checkApprovalstatusLevel(
-                                            widget.user.usrId ?? '', true);
-                                  },
-                                  child: Text(
-                                    'Approve',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                        getdisputenoteDetailFailedState: () =>
+                            const SizedBox.shrink(),
+                      );
+                    },
                   );
                 },
               ),
