@@ -1,5 +1,7 @@
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
+import 'package:customer_connect/feature/data/models/approve_price_change_model/approve_price_change_model.dart';
+import 'package:customer_connect/feature/data/models/approve_price_changein_model/approve_price_changein_model.dart';
 import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_model.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
@@ -54,6 +56,9 @@ import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_m
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
+import 'package:customer_connect/feature/data/models/price_change_details_model/price_change_details_model.dart';
+import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
+import 'package:customer_connect/feature/data/models/price_change_reason_model/price_change_reason_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_customer_model/promotion_customer_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_details_model/promotion_details_model.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_in_paras/promotion_header_in_paras.dart';
@@ -269,6 +274,19 @@ abstract class INotificationRepo {
       NotificationReplayInModel replay);
   Future<Either<MainFailures, NotificationReplayOutModel>> updateNotiReadFlag(
       String rntID);
+}
+
+abstract class IPriceChangeRepo {
+  Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
+      String rotID);
+  Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
+      priceChangeDetails(String pchID);
+  Future<Either<MainFailures, List<PriceChangeReasonModel>>>
+      getPricChangeReasons(
+    String rsnType,
+  );
+  Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
+      ApprovePriceChangeinModel approveIn);
 }
 
 abstract class IReturnApprovalRepo {

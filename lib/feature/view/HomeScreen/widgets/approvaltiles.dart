@@ -1,10 +1,13 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
+import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ApprovalTiles extends StatelessWidget {
@@ -91,7 +94,18 @@ class ApprovalTiles extends StatelessWidget {
                 flex: 2,
                 fit: FlexFit.tight,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context
+                        .read<PriceChangeHeaderBloc>()
+                        .add(const ClearPriceChangeHeader());
+                    context
+                        .read<PriceChangeHeaderBloc>()
+                        .add(const GetPriceChangeHeaderEvent(rotID: '46'));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PriceChangeHeader()));
+                  },
                   child: Container(
                     // height: 50,
                     // width: MediaQuery.of(context).size.width / 2,
