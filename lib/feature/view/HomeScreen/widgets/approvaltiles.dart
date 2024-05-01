@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
+import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -229,6 +230,117 @@ class ApprovalTiles extends StatelessWidget {
                           ),
                           Text(
                             "Credit Note",
+                            style: headTextStyle(),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ScheduledReturnHEaderScreen(
+                          user: user,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // height: 50,
+                    // width: MediaQuery.of(context).size.width / 2,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade300,
+                              spreadRadius: 1,
+                              blurRadius: 1)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/images/pro.png",
+                            height: 15.h,
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            "Scheduled Return",
+                            style: headTextStyle(),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    /*  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ScheduledReturnHEaderScreen(
+                          user: user,
+                        ),
+                      ),
+                    ); */
+                  },
+                  child: Container(
+                    //height: 50,
+                    // width: MediaQuery.of(context).size.width / 2,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade300,
+                              spreadRadius: 1,
+                              blurRadius: 1)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/images/os.png",
+                            height: 15.h,
+                          ),
+                          // fit: BoxFit.scaleDown,),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            "fghj",
                             style: headTextStyle(),
                           )
                         ],

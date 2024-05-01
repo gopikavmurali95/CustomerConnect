@@ -52,6 +52,8 @@ import 'package:customer_connect/feature/state/bloc/qualification_group/qualific
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
@@ -299,6 +301,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CreditNoteApprovalAndRejectBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SchduledReturnHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ScheduledReturnDetailsBloc>(),
         ),
       ],
       child: ScreenUtilInit(
