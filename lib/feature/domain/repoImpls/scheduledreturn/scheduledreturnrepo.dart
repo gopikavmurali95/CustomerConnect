@@ -4,6 +4,9 @@ import 'dart:developer';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:dartz/dartz.dart';
@@ -62,6 +65,67 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
       }
     } catch (e) {
       log('detail error $e');
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, List<RouteModel>>> getAllRoutes() async {
+    try {
+      final response = await http.post(
+        Uri.parse(approvalBaseUrl + getRoutesForScUrl),
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final List<dynamic> routedata = json['result'];
+        List<RouteModel> routes = routedata
+            .map<RouteModel>((json) => RouteModel.fromJson(json))
+            .toList();
+        return right(routes);
+      } else {
+        log(response.body);
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      log('routes error $e');
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
+      scheduledReturnApproval(ScheduledReturnApprovalInModel approve) async {
+    try {
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + approveScReturnUrl), body: {
+        "JSONString": jsonEncode([
+          {
+            "rrd_ID": approve.rrdId,
+            "Reason": approve.reason,
+            "Status": approve.status
+          }
+        ]),
+        "UserId": approve.userId,
+        "ReturnID": approve.returnId,
+        "RouteId": approve.routeId
+      });
+
+      if (response.statusCode == 200) {
+        log('Approve Response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final approve =
+            ScheduledReturnApprovalOutModel.fromJson(json["result"][0]);
+        return right(approve);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      log('Approve error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

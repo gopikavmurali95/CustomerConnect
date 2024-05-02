@@ -56,6 +56,7 @@ import 'package:customer_connect/feature/state/bloc/qualification_group/qualific
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
@@ -73,6 +74,7 @@ import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_c
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
@@ -323,6 +325,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<ScheduledReturnDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<RouteForScCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SchduledReturnApprovalBloc>(),
         ),
       ],
       child: ScreenUtilInit(

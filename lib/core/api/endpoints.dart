@@ -73,3 +73,5 @@ const creditNoteAapprovalUrl = 'CusOperation/CreditNoteApproval';
 const creditNoteRejectUrl = 'CusOperation/CreditNoteReject';
 const sheduledReturnHeaderUrl = 'CusOperation/ReturnReqSCHeader';
 const sheduledrRetunrDetailUrl = 'CusOperation/ReturnReqSCDetails';
+const getRoutesForScUrl = 'CusOperation/SelectRouteForReturnSC';
+const approveScReturnUrl = 'CusOperation/PostReturnReqSCApprovals';

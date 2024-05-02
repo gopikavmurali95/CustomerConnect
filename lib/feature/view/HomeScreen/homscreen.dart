@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/approvaltiles.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
+import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
@@ -341,6 +342,61 @@ class _HomeScreenState extends State<HomeScreen> {
                               )
                             ],
                           ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ApprovalScreen(
+                                    user: widget.user,
+                                  )));
+                    },
+                    child: Container(
+                      // height: 50,
+                      width: MediaQuery.of(context).size.width / 2.2,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade300,
+                                spreadRadius: 1,
+                                blurRadius: 1)
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/pro.png",
+                              height: 15.h,
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Text(
+                              "Approvals",
+                              style: headTextStyle(),
+                            )
+                          ],
                         ),
                       ),
                     ),

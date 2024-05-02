@@ -68,7 +68,10 @@ import 'package:customer_connect/feature/data/models/return_approval_detail_mode
 import 'package:customer_connect/feature/data/models/return_approval_header_model/return_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/return_approve_in_model/return_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/return_approve_out_model/return_approve_out_model.dart';
+import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
@@ -342,12 +345,7 @@ abstract class IScheduledReturnApprovalRepo {
 
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
       getScheduledReturnApprovalDetails(String reqID);
-/* 
-  Future<Either<MainFailures, DisputeApprovalStatusModel>>
-      getcreditNoteApprovalStatus(String userID);
-
-  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteApproval(
-      DisputeInvoiceApproveInModel approve);
-  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteReject(
-      DisputeInvoiceApproveInModel reject); */
+  Future<Either<MainFailures, List<RouteModel>>> getAllRoutes();
+  Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
+      scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
 }

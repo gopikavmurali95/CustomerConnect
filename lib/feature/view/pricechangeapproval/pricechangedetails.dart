@@ -175,7 +175,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               state.when(
                                 getPriceChangeApprovalState: (response) {
                                   if (response != null) {
-                                    Navigator.pop(context);
+                                    // Navigator.pop(context);
                                     isLoading = false;
                                     if (response.mode == '1') {
                                       showCupertinoDialog(
@@ -198,7 +198,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     } else {
                                       statuslist[index] = null;
                                       setState(() {});
-                                      Navigator.pop(context);
+                                      // Navigator.pop(context);
                                       showCupertinoDialog(
                                         context: context,
                                         builder: (context) =>
