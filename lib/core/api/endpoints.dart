@@ -73,3 +73,4 @@ const creditNoteAapprovalUrl = 'CusOperation/CreditNoteApproval';
 const creditNoteRejectUrl = 'CusOperation/CreditNoteReject';
 const sheduledReturnHeaderUrl = 'CusOperation/ReturnReqSCHeader';
 const sheduledrRetunrDetailUrl = 'CusOperation/ReturnReqSCDetails';
+const partialDeliverHeaderUrl = 'CusOperation/PartialDeliveryHeader';

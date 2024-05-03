@@ -52,6 +52,7 @@ import 'package:customer_connect/feature/data/models/notification_replay_out_mod
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/partial_delivery_header_model/partial_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -350,4 +351,15 @@ abstract class IScheduledReturnApprovalRepo {
       DisputeInvoiceApproveInModel approve);
   Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteReject(
       DisputeInvoiceApproveInModel reject); */
+}
+
+abstract class IPartialDeliveryRepo {
+  Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
+      partialDeliveryList(String userID);
+  /*Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
+      priceChangeDetails(String pchID);
+  Future<Either<MainFailures, List<PriceChangeReasonModel>>>
+      getPricChangeReasons(
+    String rsnType,
+  );*/
 }

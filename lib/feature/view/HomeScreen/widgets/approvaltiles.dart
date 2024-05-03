@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
+import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
@@ -317,14 +318,14 @@ class ApprovalTiles extends StatelessWidget {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    /*  Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ScheduledReturnHEaderScreen(
+                        builder: (context) => PartialDeliveryHeader(
                           user: user,
                         ),
                       ),
-                    ); */
+                    );
                   },
                   child: Container(
                     //height: 50,
@@ -354,7 +355,7 @@ class ApprovalTiles extends StatelessWidget {
                             width: 8.w,
                           ),
                           Text(
-                            "fghj",
+                            "Partial Delivery",
                             style: headTextStyle(),
                           )
                         ],
