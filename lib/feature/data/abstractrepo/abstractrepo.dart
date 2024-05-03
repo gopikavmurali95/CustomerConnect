@@ -39,6 +39,8 @@ import 'package:customer_connect/feature/data/models/dispute_note_detail_model/d
 import 'package:customer_connect/feature/data/models/dispute_note_header_model/dispute_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -348,4 +350,12 @@ abstract class IScheduledReturnApprovalRepo {
   Future<Either<MainFailures, List<RouteModel>>> getAllRoutes();
   Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
       scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
+}
+
+abstract class IFieldServiceInvoiceApprovalRepo {
+  Future<Either<MainFailures, List<FieldServiceInvoiceHeaderModel>>>
+      getFieldServiceApprovalHeaders(String userID);
+
+  Future<Either<MainFailures, List<FieldServiceDetailModel>>>
+      getFieldServiceApprovalDetails(String reqID);
 }
