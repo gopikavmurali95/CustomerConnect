@@ -6,6 +6,9 @@ import 'package:customer_connect/feature/data/models/ar_detail_model/ar_detail_m
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_collection_model/ar_total_collection_model.dart';
 import 'package:customer_connect/feature/data/models/ar_total_in_model/ar_total_in_model.dart';
+import 'package:customer_connect/feature/data/models/asset_add_approval_in_model/asset_add_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/asset_add_request_header_model/asset_add_request_header_model.dart';
+import 'package:customer_connect/feature/data/models/asset_add_resp_out_model/asset_add_resp_out_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_locations_model/confirm_geo_locations_model.dart';
 import 'package:customer_connect/feature/data/models/credit_note_detail_model/credit_note_detail_model.dart';
@@ -358,4 +361,14 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
   Future<Either<MainFailures, List<FieldServiceDetailModel>>>
       getFieldServiceApprovalDetails(String reqID);
+}
+
+abstract class IAssetAddApprovalRepo {
+  Future<Either<MainFailures, List<AssetAddRequestHeaderModel>>>
+      getAssetAddApprovalHeaders(String userID);
+
+  Future<Either<MainFailures, AssetAddRespOutModel>> assetAddApproval(
+      AssetAddApprovalInModel approve);
+  Future<Either<MainFailures, AssetAddRespOutModel>> assetAddReject(
+      AssetAddApprovalInModel approve);
 }

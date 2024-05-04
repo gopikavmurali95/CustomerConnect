@@ -8,6 +8,8 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
@@ -331,6 +333,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<SchduledReturnApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetAddInApprovalHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetAddingApprovalAndRjectBlocBloc>(),
         ),
       ],
       child: ScreenUtilInit(
