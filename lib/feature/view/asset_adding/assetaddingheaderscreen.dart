@@ -20,6 +20,7 @@ class AssetAddingApprovalHeaderScreen extends StatefulWidget {
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
+List<TextEditingController> _slNoCtrls = [];
 
 class _AssetAddingApprovalHeaderScreenState
     extends State<AssetAddingApprovalHeaderScreen> {
@@ -35,6 +36,12 @@ class _AssetAddingApprovalHeaderScreenState
             userId: /* widget.user.usrId ?? */ '64'));
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _slNoCtrls.clear();
+    super.dispose();
   }
 
   @override
@@ -69,6 +76,8 @@ class _AssetAddingApprovalHeaderScreenState
                 getAllAssetAddingHeadersState: (headers) {
                   if (headers != null) {
                     statuslist = List.generate(headers.length, (index) => null);
+                    _slNoCtrls = List.generate(
+                        headers.length, (index) => TextEditingController());
                   }
                 },
                 assetAddingHeaderFailedState: () {},
@@ -335,6 +344,31 @@ class _AssetAddingApprovalHeaderScreenState
                                                             MainAxisAlignment
                                                                 .end,
                                                         children: [
+                                                          Expanded(
+                                                            child:
+                                                                TextFormField(
+                                                              controller:
+                                                                  _slNoCtrls[
+                                                                      index],
+                                                              cursorColor:
+                                                                  Colors.black,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    'Sl:No',
+                                                                hintStyle:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                ),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+                                                              ),
+                                                            ),
+                                                          ),
                                                           Transform.scale(
                                                             scale: 0.8,
                                                             child: Row(
@@ -366,47 +400,70 @@ class _AssetAddingApprovalHeaderScreenState
                                                                       true,
                                                                   onChanged:
                                                                       (value) {
-                                                                    showCupertinoDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) =>
-                                                                              CupertinoAlertDialog(
-                                                                        title: const Text(
-                                                                            'Alert'),
-                                                                        content:
-                                                                            const Text("Do you Want to Approve this product"),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              setState(() {});
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child:
-                                                                                const Text('Cancel'),
-                                                                          ),
-                                                                          TextButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              statuslist[index] = true;
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
-                                                                              context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                              context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                    AssetAddingApproveEvent(
-                                                                                      approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: headers[index].aahSlno, userId: widget.user.usrId),
-                                                                                    ),
-                                                                                  );
+                                                                    if (_slNoCtrls[
+                                                                            index]
+                                                                        .text
+                                                                        .isEmpty) {
+                                                                      showCupertinoDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) =>
+                                                                                CupertinoAlertDialog(
+                                                                          title:
+                                                                              const Text('Alert'),
+                                                                          content:
+                                                                              const Text("Please Enter Sl:No"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () {
+                                                                                // setState(() {});
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: const Text('ok'),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    } else {
+                                                                      showCupertinoDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) =>
+                                                                                CupertinoAlertDialog(
+                                                                          title:
+                                                                              const Text('Alert'),
+                                                                          content:
+                                                                              const Text("Do you Want to Approve this product"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () {
+                                                                                setState(() {});
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: const Text('Cancel'),
+                                                                            ),
+                                                                            TextButton(
+                                                                              onPressed: () {
+                                                                                statuslist[index] = true;
+                                                                                loadingCount = 0;
+                                                                                setState(() {});
+                                                                                context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                      AssetAddingApproveEvent(
+                                                                                        approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: headers[index].aahSlno, userId: widget.user.usrId),
+                                                                                      ),
+                                                                                    );
 
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child:
-                                                                                const Text('Proceed'),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    );
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: const Text('Proceed'),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    }
                                                                   },
                                                                 ),
                                                                 Text(

@@ -73,6 +73,7 @@ class AssetAddIngApprovalRepo implements IAssetAddApprovalRepo {
         body: {"ReqID": approve.reqId, "UserID": approve.userId},
       );
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final status = AssetAddRespOutModel.fromJson(json["result"][0]);
         return right(status);

@@ -80,3 +80,6 @@ const fieldServiceDetailUrl = 'FieldService/InvoiceApprovalDetails';
 const assetAddRequestHeaderUrl = 'FieldService/AssetAddReqHeader';
 const assetAddApprovalUrl = 'FieldService/AssetAddReqHeaderApproval';
 const assetAddRejectUrl = 'FieldService/AssetAddReqHeaderReject';
+const assetRemovalHeaderUrl = 'FieldService/AssetRemoveReqHeader';
+const assetRemovalApproveUrl = 'FieldService/PostAssetRemovalReqApproval';
+const assetRemovalRejectUrl = 'FieldService/PostAssetRemovalReqReject';
