@@ -29,6 +29,9 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -47,6 +50,7 @@ import 'package:customer_connect/feature/state/bloc/notificationlisting/notifica
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
@@ -70,6 +74,9 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_deliv
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
@@ -331,10 +338,31 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<ScheduledReturnDetailsBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<PartialDeliveryHeaderBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<RouteForScCubit>(),
         ),
         BlocProvider(
           create: (context) => getit<SchduledReturnApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FIeldServiceDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceInvoiceApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanDetailsBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<AssetAddInApprovalHeaderBloc>(),

@@ -4,7 +4,6 @@ import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -234,7 +233,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         height: 18.h,
                                         fit: BoxFit.contain),
                                   ),
-                                  suffixIcon: Padding(
+                                  /* suffixIcon: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 20.0,
                                         right: 20,
@@ -246,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       height: 20,
                                       fit: BoxFit.fill,
                                     ),
-                                  ),
+                                  ), */
                                 ),
                               ),
                             ),

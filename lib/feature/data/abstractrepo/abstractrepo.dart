@@ -46,6 +46,7 @@ import 'package:customer_connect/feature/data/models/dispute_note_header_model/d
 import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
@@ -67,6 +68,7 @@ import 'package:customer_connect/feature/data/models/notification_replay_out_mod
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/partial_delivery_header_model/partial_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -102,6 +104,10 @@ import 'package:customer_connect/feature/data/models/total_orders_details_model/
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_details_model/van_to_van_details_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ILoginRepo {
@@ -371,6 +377,32 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
   Future<Either<MainFailures, List<FieldServiceDetailModel>>>
       getFieldServiceApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>>
+      invoiceApprovalRepo(String reqID, String userID);
+}
+
+abstract class IPartialDeliveryRepo {
+  Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
+      partialDeliveryList(String userID);
+  /*Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
+      priceChangeDetails(String pchID);
+  Future<Either<MainFailures, List<PriceChangeReasonModel>>>
+      getPricChangeReasons(
+    String rsnType,
+  );*/
+}
+
+abstract class IVanToVanApprovalRepo {
+  Future<Either<MainFailures, List<VanToVanHeaderModel>>>
+      getVanToVanApprovalHeader(String userID);
+
+  Future<Either<MainFailures, List<VanToVanDetailsModel>>>
+      getVanToVanApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, VanToVanApprovalModel>> approveVanToVan(
+    VanToVanApprovalInParas approveIn,
+  );
 }
 
 abstract class IAssetAddApprovalRepo {
