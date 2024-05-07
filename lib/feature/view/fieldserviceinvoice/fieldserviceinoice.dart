@@ -1,33 +1,15 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
-import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+// import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinvoicedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ScheduledReturnHEaderScreen extends StatefulWidget {
+class FieldServiceInvoiceHeader extends StatelessWidget {
   final LoginUserModel user;
-  const ScheduledReturnHEaderScreen({super.key, required this.user});
-
-  @override
-  State<ScheduledReturnHEaderScreen> createState() =>
-      _ScheduledReturnHEaderScreenState();
-}
-
-class _ScheduledReturnHEaderScreenState
-    extends State<ScheduledReturnHEaderScreen> {
-  @override
-  void initState() {
-    context
-        .read<SchduledReturnHeaderBloc>()
-        .add(const ClearScheduledReturnHeadersEvent());
-    context.read<SchduledReturnHeaderBloc>().add(
-        const GetAllScheduledReturnHeadersEvent(
-            userID: /* widget.user.usrId ?? */ '62'));
-    super.initState();
-  }
+  const FieldServiceInvoiceHeader({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +29,7 @@ class _ScheduledReturnHEaderScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Invoice Approval",
           style: appHeading(),
         ),
       ),
@@ -56,11 +38,11 @@ class _ScheduledReturnHEaderScreenState
           Expanded(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: BlocBuilder<SchduledReturnHeaderBloc,
-                SchduledReturnHeaderState>(
+            child: BlocBuilder<FieldServiceHeaderBloc, FieldServiceHeaderState>(
               builder: (context, state) {
                 return state.when(
-                  getScheduledReturnHeadersState: (headers) => headers == null
+                  getFieldServiceInvoiceHEadersState: (headers) => headers ==
+                          null
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: ListView.separated(
@@ -77,16 +59,13 @@ class _ScheduledReturnHEaderScreenState
                       : ListView.separated(
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
+                                  /*Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          ScheduledReturnDetailScreen(
-                                        scheduledreturn: headers[index],
-                                        user: widget.user,
-                                      ),
+                                          const FieldServiceInvoiceDetails(),
                                     ),
-                                  );
+                                  );*/
                                 },
                                 child: Row(
                                   children: [
@@ -111,8 +90,7 @@ class _ScheduledReturnHEaderScreenState
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  headers[index]
-                                                          .rrhRequestNumber ??
+                                                  headers[index].sjhNumber ??
                                                       '',
                                                   style: kfontstyle(
                                                     fontSize: 12.sp,
@@ -120,6 +98,9 @@ class _ScheduledReturnHEaderScreenState
                                                         const Color(0xff2C6B9E),
                                                     fontWeight: FontWeight.w600,
                                                   ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5.h,
                                                 ),
                                                 Row(
                                                   children: [
@@ -147,7 +128,7 @@ class _ScheduledReturnHEaderScreenState
                                                   ],
                                                 ),
                                                 Text(
-                                                  headers[index].createdDate ??
+                                                  headers[index].transTime ??
                                                       '',
                                                   style: kfontstyle(
                                                       fontSize: 10.sp,
@@ -201,7 +182,7 @@ class _ScheduledReturnHEaderScreenState
                                 color: Colors.grey[300],
                               ),
                           itemCount: headers.length),
-                  scheduledRetunrHEadersFailedState: () => Center(
+                  fieldServiceInvoiceHeaderFailedState: () => Center(
                     child: Text(
                       'No Data Available',
                       style: kfontstyle(),

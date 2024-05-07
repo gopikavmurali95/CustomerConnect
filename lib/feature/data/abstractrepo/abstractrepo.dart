@@ -39,6 +39,9 @@ import 'package:customer_connect/feature/data/models/dispute_note_detail_model/d
 import 'package:customer_connect/feature/data/models/dispute_note_header_model/dispute_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edit_profile_resp_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
+import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -69,7 +72,10 @@ import 'package:customer_connect/feature/data/models/return_approval_detail_mode
 import 'package:customer_connect/feature/data/models/return_approval_header_model/return_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/return_approve_in_model/return_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/return_approve_out_model/return_approve_out_model.dart';
+import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
@@ -85,6 +91,10 @@ import 'package:customer_connect/feature/data/models/total_orders_details_model/
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_details_model/van_to_van_details_model.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ILoginRepo {
@@ -343,14 +353,20 @@ abstract class IScheduledReturnApprovalRepo {
 
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
       getScheduledReturnApprovalDetails(String reqID);
-/* 
-  Future<Either<MainFailures, DisputeApprovalStatusModel>>
-      getcreditNoteApprovalStatus(String userID);
+  Future<Either<MainFailures, List<RouteModel>>> getAllRoutes();
+  Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
+      scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
+}
 
-  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteApproval(
-      DisputeInvoiceApproveInModel approve);
-  Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteReject(
-      DisputeInvoiceApproveInModel reject); */
+abstract class IFieldServiceInvoiceApprovalRepo {
+  Future<Either<MainFailures, List<FieldServiceInvoiceHeaderModel>>>
+      getFieldServiceApprovalHeaders(String userID);
+
+  Future<Either<MainFailures, List<FieldServiceDetailModel>>>
+      getFieldServiceApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>>
+      invoiceApprovalRepo(String reqID, String userID);
 }
 
 abstract class IPartialDeliveryRepo {
@@ -362,4 +378,16 @@ abstract class IPartialDeliveryRepo {
       getPricChangeReasons(
     String rsnType,
   );*/
+}
+
+abstract class IVanToVanApprovalRepo {
+  Future<Either<MainFailures, List<VanToVanHeaderModel>>>
+      getVanToVanApprovalHeader(String userID);
+
+  Future<Either<MainFailures, List<VanToVanDetailsModel>>>
+      getVanToVanApprovalDetails(String reqID);
+
+  Future<Either<MainFailures, VanToVanApprovalModel>> approveVanToVan(
+    VanToVanApprovalInParas approveIn,
+  );
 }

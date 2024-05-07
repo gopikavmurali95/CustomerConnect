@@ -25,6 +25,9 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -57,6 +60,7 @@ import 'package:customer_connect/feature/state/bloc/qualification_group/qualific
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
@@ -66,6 +70,9 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_deliv
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
@@ -74,6 +81,7 @@ import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_c
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
@@ -327,6 +335,30 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<PartialDeliveryHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<RouteForScCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SchduledReturnApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FIeldServiceDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceInvoiceApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanDetailsBloc>(),
         ),
       ],
       child: ScreenUtilInit(
