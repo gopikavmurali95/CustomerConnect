@@ -8,6 +8,10 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
@@ -359,6 +363,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<VanToVanDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetAddInApprovalHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetAddingApprovalAndRjectBlocBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetRemovelRequestHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AssetRemovalApprvalBloc>(),
         ),
       ],
       child: ScreenUtilInit(
