@@ -452,7 +452,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
                                                                                 context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
                                                                                       AssetAddingApproveEvent(
-                                                                                        approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: headers[index].aahSlno, userId: widget.user.usrId),
+                                                                                        approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
                                                                                       ),
                                                                                     );
 
@@ -533,11 +533,14 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               statuslist[index] = false;
                                                                               loadingCount = 0;
                                                                               setState(() {});
-
                                                                               context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
                                                                               context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
                                                                                     AssetAddingApproveEvent(
-                                                                                      approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: null, userId: widget.user.usrId),
+                                                                                      approve: AssetAddApprovalInModel(
+                                                                                        reqId: headers[index].aahId,
+                                                                                        serialNum: null,
+                                                                                        userId: widget.user.usrId,
+                                                                                      ),
                                                                                     ),
                                                                                   );
                                                                               Navigator.pop(context);
