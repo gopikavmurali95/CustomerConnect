@@ -84,6 +84,17 @@ class LoadTransferApprovalRepo implements ILoadTransferApprovalRepo {
         "ReqID": approve.reqId,
       });
 
+      log({
+        "JSONString": jsonEncode([
+          {
+            "ldr_ID": approve.ldrId,
+            "Status": approve.status,
+          }
+        ]),
+        "UserId": approve.userId,
+        "ReqID": approve.reqId,
+      }.toString());
+
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

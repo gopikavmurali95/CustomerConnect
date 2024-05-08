@@ -440,4 +440,7 @@ abstract class IJourneyPlanApprovalRepo {
 
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve);
+
+      Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanReject(
+      JourneyPlanApprovalInModel approve);
 }

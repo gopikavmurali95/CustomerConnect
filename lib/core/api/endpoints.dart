@@ -94,3 +94,4 @@ const loadTransferDetailUrl = 'InventoryApproval/LoadTranferApprovalDetails';
 const loadTransferApprovalUrl = 'InventoryApproval/PostLoadTranferApproval';
 const journeyPlanApprovalHeaders = 'Journeyplanseq/JourneyplanseqHeader';
 const journeyPlanApprovalApproval = 'Journeyplanseq/PostJourneyplanseqApproval';
+const journeyPlanRejectUrl = 'Journeyplanseq/PostJourneyplanseqReject';

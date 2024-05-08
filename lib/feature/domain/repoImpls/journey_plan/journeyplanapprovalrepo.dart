@@ -68,4 +68,33 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
       return left(const MainFailures.serverfailure());
     }
   }
+
+  @override
+  Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanReject(
+      JourneyPlanApprovalInModel approve) async {
+    try {
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + journeyPlanRejectUrl), body: {
+        "JSONString": jsonEncode([
+          {
+            "jps_ID": approve.jpsId,
+          }
+        ]),
+        "UserId": approve.userId,
+      });
+      if (response.statusCode == 200) {
+        log('Approve Response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final approve = JoutneyPlanApprovalOutModel.fromJson(json["result"][0]);
+        return right(approve);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      log('Approve error : $e');
+      return left(const MainFailures.serverfailure());
+    }
+  }
 }
