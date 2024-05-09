@@ -1,31 +1,32 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
+import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FieldServiceInvoiceDetails extends StatefulWidget {
-  const FieldServiceInvoiceDetails({super.key});
+class VanToVanApprovalDetails extends StatefulWidget {
+  final VanToVanHeaderModel vanToVanHeader;
+  const VanToVanApprovalDetails({super.key, required this.vanToVanHeader});
 
   @override
-  State<FieldServiceInvoiceDetails> createState() =>
-      FieldServiceInvoiceDetailsState();
+  State<VanToVanApprovalDetails> createState() =>
+      _VanToVanApprovalDetailsState();
 }
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
 
-class FieldServiceInvoiceDetailsState
-    extends State<FieldServiceInvoiceDetails> {
+class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
   @override
   void initState() {
     context
-        .read<FIeldServiceDetailBloc>()
-        .add(const GetAllFieldServiceDetailEvent(reqId: '26'));
+        .read<VanToVanDetailsBloc>()
+        .add(const GetVanToVanDetailEvent(reqID: '10'));
     super.initState();
   }
 
@@ -47,7 +48,7 @@ class FieldServiceInvoiceDetailsState
           ),
         ),
         title: Text(
-          "Invoice Approval",
+          "Van To Van Approval",
           style: appHeading(),
         ),
       ),
@@ -98,24 +99,22 @@ class FieldServiceInvoiceDetailsState
             ),
           ),
           Expanded(
-            child:
-                BlocListener<FIeldServiceDetailBloc, FIeldServiceDetailState>(
+            child: BlocListener<VanToVanDetailsBloc, VanToVanDetailsState>(
               listener: (context, state) {
                 state.when(
-                  getFieldServiceDetailState: (details) {
+                  getVanToVanDetailsState: ((details) {
                     if (details != null) {
                       statuslist =
                           List.generate(details.length, (index) => null);
                     }
-                  },
-                  fieldServiceDetailFailedState: () {},
+                  }),
+                  vanToVanDetailFailedState: () {},
                 );
               },
-              child:
-                  BlocBuilder<FIeldServiceDetailBloc, FIeldServiceDetailState>(
+              child: BlocBuilder<VanToVanDetailsBloc, VanToVanDetailsState>(
                 builder: (context, state) {
                   return state.when(
-                    getFieldServiceDetailState: (details) => details == null
+                    getVanToVanDetailsState: (details) => details == null
                         ? Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 0),
                             child: ListView.separated(
@@ -167,22 +166,22 @@ class FieldServiceInvoiceDetailsState
                                           Column(
                                             children: [
                                               Text(
-                                                details[index].sadUom ?? '',
+                                                details[index].vvdHuom ?? '',
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w400,
                                                     color: Colors.black54),
                                               ),
-                                              /*SizedBox(
-                                                          height: 10.h,
-                                                        ),
-                                                        Text(
-                                                          'Cs',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight: FontWeight.w400,
-                                                              color: Colors.black54),
-                                                        ),*/
+                                              SizedBox(
+                                                height: 10.h,
+                                              ),
+                                              Text(
+                                                details[index].vvdLuom ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
                                             ],
                                           ),
                                           SizedBox(
@@ -191,34 +190,33 @@ class FieldServiceInvoiceDetailsState
                                           Column(
                                             children: [
                                               Text(
-                                                details[index].sadQty ?? '',
+                                                details[index].vvdHQty ?? '',
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w400,
                                                     color: Colors.black54),
                                               ),
-                                              /*SizedBox(
-                                                          height: 10.h,
-                                                        ),
-                                                        Text(
-                                                          '2',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight: FontWeight.w400,
-                                                              color: Colors.black54),
-                                                        ),*/
+                                              SizedBox(
+                                                height: 10.h,
+                                              ),
+                                              Text(
+                                                details[index].vvdLQty ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
                                             ],
                                           )
                                         ],
                                       )
                                     ],
                                   ),
-                                  BlocConsumer<FieldServiceInvoiceApprovalBloc,
-                                      FieldServiceInvoiceApprovalState>(
+                                  BlocConsumer<VanToVanApprovalBloc,
+                                      VanToVanApprovalState>(
                                     listener: (context, state) {
                                       state.when(
-                                        getFieldServiceInvoiceApproval:
-                                            (response) {
+                                        getVanToVanApproval: (response) {
                                           if (response != null) {
                                             Navigator.pop(context);
                                             // if (isApproval) {
@@ -234,10 +232,10 @@ class FieldServiceInvoiceDetailsState
                                                     onPressed: () {
                                                       context
                                                           .read<
-                                                              FIeldServiceDetailBloc>()
+                                                              VanToVanDetailsBloc>()
                                                           .add(
-                                                              const GetAllFieldServiceDetailEvent(
-                                                                  reqId: '26'));
+                                                              const GetVanToVanDetailEvent(
+                                                                  reqID: '10'));
                                                       Navigator.pop(context);
                                                     },
                                                     child:
@@ -249,7 +247,7 @@ class FieldServiceInvoiceDetailsState
                                             // }
                                           }
                                         },
-                                        fieldServiceInvoiceApprovalFailed: () {
+                                        vanToVanApprovalFailedstate: () {
                                           Navigator.pop(context);
                                           showCupertinoDialog(
                                             context: context,
@@ -263,10 +261,10 @@ class FieldServiceInvoiceDetailsState
                                                   onPressed: () {
                                                     context
                                                         .read<
-                                                            FIeldServiceDetailBloc>()
+                                                            VanToVanDetailsBloc>()
                                                         .add(
-                                                            const GetAllFieldServiceDetailEvent(
-                                                                reqId: '26'));
+                                                            const GetVanToVanDetailEvent(
+                                                                reqID: '10'));
                                                     Navigator.pop(context);
                                                   },
                                                   child: const Text('Ok'),
@@ -275,7 +273,7 @@ class FieldServiceInvoiceDetailsState
                                             ),
                                           );
                                         },
-                                        fieldServiceInvoiceLoadingState: () {
+                                        vanToVanApprovalLoadingState: () {
                                           if (loadingCount == 0) {
                                             loadingCount = 1;
                                             showCupertinoModalPopup(
@@ -327,8 +325,8 @@ class FieldServiceInvoiceDetailsState
                                                         : Colors.grey;
                                                   }),
                                                   /* activeColor: isselected == true
-                                                                                                                                                                                                                                                ? const Color(0xff0075ff)
-                                                                                                                                                                                                                                                : Colors.grey, */
+                                                                                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                                                                                    : Colors.grey, */
                                                   value:
                                                       statuslist[index] == null
                                                           ? false
@@ -362,18 +360,31 @@ class FieldServiceInvoiceDetailsState
                                                                   index] = true;
                                                               loadingCount = 0;
                                                               setState(() {});
+
+                                                              // context
+                                                              //     .read<
+                                                              //         VanToVanApprovalBloc>()
+                                                              //     .add(
+                                                              // const VanToVanApprovalLoadingEvent());
                                                               context
                                                                   .read<
-                                                                      FieldServiceInvoiceApprovalBloc>()
+                                                                      VanToVanApprovalBloc>()
                                                                   .add(
-                                                                      const FieldServiceInvoicLoadingEvent());
-                                                              context
-                                                                  .read<
-                                                                      FieldServiceInvoiceApprovalBloc>()
-                                                                  .add(const GetFieldServiceInvoiceApprovalEvent(
-                                                                      reqID: '',
-                                                                      userID:
-                                                                          ''));
+                                                                    GetVanToVanApprovalEent(
+                                                                        approvalIn: VanToVanApprovalInParas(
+                                                                            vvdId:
+                                                                                '187',
+                                                                            hqty:
+                                                                                '1',
+                                                                            lqty:
+                                                                                '1',
+                                                                            status:
+                                                                                'A',
+                                                                            userID:
+                                                                                '48',
+                                                                            reqID:
+                                                                                '11')),
+                                                                  );
 
                                                               Navigator.pop(
                                                                   context);
@@ -412,8 +423,8 @@ class FieldServiceInvoiceDetailsState
                                                         : Colors.grey;
                                                   }),
                                                   /*  activeColor: isselected == false
-                                                                                                                                                                                                                                                ? const Color(0xff0075ff)
-                                                                                                                                                                                                                                                : Colors.grey, */
+                                                                                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                                                                                    : Colors.grey, */
                                                   value:
                                                       statuslist[index] == null
                                                           ? true
@@ -448,30 +459,26 @@ class FieldServiceInvoiceDetailsState
                                                                   false;
                                                               loadingCount = 0;
                                                               setState(() {});
-                                                              /*context
-                                                                            .read<
-                                                                                VanToVanApprovalBloc>()
-                                                                            .add(
-                                                                                const VanToVanApprovalLoadingEvent());
-                                                                        context
-                                                                            .read<
-                                                                                VanToVanApprovalBloc>()
-                                                                            .add(
-                                                                              GetVanToVanApprovalEent(
-                                                                                  approvalIn: VanToVanApprovalInParas(
-                                                                                      hqty:
-                                                                                          '',
-                                                                                      lqty:
-                                                                                          '',
-                                                                                      reqID:
-                                                                                          '10',
-                                                                                      status:
-                                                                                          'R',
-                                                                                      userID:
-                                                                                          '48',
-                                                                                      vvdId:
-                                                                                          '')),
-                                                                            );*/
+                                                              context
+                                                                  .read<
+                                                                      VanToVanApprovalBloc>()
+                                                                  .add(
+                                                                    GetVanToVanApprovalEent(
+                                                                        approvalIn: VanToVanApprovalInParas(
+                                                                            vvdId:
+                                                                                '187',
+                                                                            hqty:
+                                                                                '1',
+                                                                            lqty:
+                                                                                '1',
+                                                                            status:
+                                                                                'R',
+                                                                            userID:
+                                                                                '48',
+                                                                            reqID:
+                                                                                '11')),
+                                                                  );
+
                                                               Navigator.pop(
                                                                   context);
                                                             },
@@ -483,10 +490,10 @@ class FieldServiceInvoiceDetailsState
                                                     );
 
                                                     /* context
-                                                                                                                                                                                                                  .read<
-                                                                                                                                                                                                                      AapprovalOrRejectRadioCubit>()
-                                                                                                                                                                                                                  .changeApprovalStatus(
-                                                                                                                                                                                                                      statuslist[index]); */
+                                                                                                                                                                                                      .read<
+                                                                                                                                                                                                          AapprovalOrRejectRadioCubit>()
+                                                                                                                                                                                                      .changeApprovalStatus(
+                                                                                                                                                                                                          statuslist[index]); */
                                                   },
                                                 ),
                                                 Text(
@@ -508,7 +515,7 @@ class FieldServiceInvoiceDetailsState
                             ),
                             itemCount: details.length,
                           ),
-                    fieldServiceDetailFailedState: () => Center(
+                    vanToVanDetailFailedState: () => Center(
                       child: Text(
                         'No Data Available',
                         style: kfontstyle(),

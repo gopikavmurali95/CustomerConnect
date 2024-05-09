@@ -31,6 +31,18 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
           }
         ])
       });
+      log({
+        "UserId": approveIn.userID,
+        "ReqID": approveIn.reqID,
+        "JSONString": jsonEncode([
+          {
+            "vvd_ID": approveIn.vvdId,
+            "HQTY": approveIn.hqty,
+            "LQTY": approveIn.lqty,
+            "Status": approveIn.status
+          }
+        ])
+      }.toString());
 
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
@@ -57,6 +69,7 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
           body: {"ReqID": reqID});
 
       if (response.statusCode == 200) {
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> vantovandetailsdata = json['result'];
         List<VanToVanDetailsModel> returns = vantovandetailsdata
@@ -81,9 +94,10 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
       getVanToVanApprovalHeader(String userID) async {
     try {
       final response = await http.post(
-          Uri.parse(approvalBaseUrl + returnApprovalsHeaderUrl),
+          Uri.parse(approvalBaseUrl + vanToVanHeaderUrl),
           body: {"UserID": userID});
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> vantovanheaderdata = json['result'];
         List<VanToVanHeaderModel> returns = vantovanheaderdata

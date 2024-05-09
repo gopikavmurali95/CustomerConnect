@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
@@ -11,6 +12,7 @@ import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryhea
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
+import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -483,6 +485,56 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         Text(
                           "Field Service Invoice",
+                          style: headTextStyle(),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.w,
+              ),
+              GestureDetector(
+                onTap: () {
+                  context
+                      .read<VanToVanHeaderBloc>()
+                      .add(const getVanToVanHeaderEvent(userID: '48'));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const VanToVanApprovalHeader(),
+                    ),
+                  );
+                },
+                child: Container(
+                  // height: 50,
+                  // width: MediaQuery.of(context).size.width / 2,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade300,
+                            spreadRadius: 1,
+                            blurRadius: 1)
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/images/pro.png",
+                          height: 15.h,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text(
+                          "Van To Van Approval",
                           style: headTextStyle(),
                         )
                       ],
