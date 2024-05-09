@@ -3,7 +3,6 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
-import 'package:customer_connect/feature/view/approvals/tempnav.dart';
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
@@ -45,18 +44,6 @@ class ApprovalScreen extends StatelessWidget {
           "Approvals",
           style: appHeading(),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ApprovalScreenTemp(key: Key(''), items: []),
-                    ));
-              },
-              icon: const Icon(Icons.abc_sharp))
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
