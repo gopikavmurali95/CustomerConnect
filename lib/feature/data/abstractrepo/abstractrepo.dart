@@ -52,6 +52,13 @@ import 'package:customer_connect/feature/data/models/invoice_details_footer_mode
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/journey_plan_approval_in_model/journey_plan_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/journey_plan_header_model/journey_plan_header_model.dart';
+import 'package:customer_connect/feature/data/models/joutney_plan_approval_out_model/joutney_plan_approval_out_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_approval_header_model/load_transfer_approval_header_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_approval_in_model/load_transfer_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_approval_out_model/load_transfer_approval_out_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_detail_model/load_transfer_detail_model.dart';
 import 'package:customer_connect/feature/data/models/loading_detail_model/loading_detail_model.dart';
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
@@ -416,4 +423,24 @@ abstract class IAssetRemovalRequestRepo {
       assetRemovalApproval(AssetRemovalApprovalInModel approve);
   Future<Either<MainFailures, AssetRemovalApproveOutModel>> assetRemovalReject(
       AssetRemovalApprovalInModel reject);
+}
+
+abstract class ILoadTransferApprovalRepo {
+  Future<Either<MainFailures, List<LoadTransferApprovalHeaderModel>>>
+      getLoadTransferHeaders(String userID);
+  Future<Either<MainFailures, List<LoadTransferDetailModel>>>
+      getLoadTransferDetails(String reqID);
+  Future<Either<MainFailures, LoadTransferApprovalOutModel>>
+      loadTransferApproval(LoadTransferApprovalInModel approve);
+}
+
+abstract class IJourneyPlanApprovalRepo {
+  Future<Either<MainFailures, List<JourneyPlanHeaderModel>>>
+      getJourneyPlanHeaders(String userID);
+
+  Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
+      JourneyPlanApprovalInModel approve);
+
+      Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanReject(
+      JourneyPlanApprovalInModel approve);
 }

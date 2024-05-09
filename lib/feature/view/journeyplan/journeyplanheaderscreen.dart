@@ -1,47 +1,36 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/asset_add_approval_in_model/asset_add_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/journey_plan_approval_in_model/journey_plan_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AssetAddingApprovalHeaderScreen extends StatefulWidget {
+class JourneyPlanHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
-  const AssetAddingApprovalHeaderScreen({super.key, required this.user});
+  const JourneyPlanHeaderScreen({super.key, required this.user});
 
   @override
-  State<AssetAddingApprovalHeaderScreen> createState() =>
-      _AssetAddingApprovalHeaderScreenState();
+  State<JourneyPlanHeaderScreen> createState() =>
+      _JourneyPlanHeaderScreenState();
 }
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
-List<TextEditingController> _slNoCtrls = [];
 
-class _AssetAddingApprovalHeaderScreenState
-    extends State<AssetAddingApprovalHeaderScreen> {
+class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
   @override
   void initState() {
-    loadingCount = 0;
     context
-        .read<AssetAddInApprovalHeaderBloc>()
-        .add(const ClearAllRequestHeadersState());
-
-    context.read<AssetAddInApprovalHeaderBloc>().add(
-        const GetallAssetAddingRequestHeadersEvent(
-            userId: /* widget.user.usrId ?? */ '64'));
-
+        .read<JourneyPlanHeaderBloc>()
+        .add(const ClearJourneyPlanHeadersEvent());
+    context
+        .read<JourneyPlanHeaderBloc>()
+        .add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? ''));
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _slNoCtrls.clear();
-    super.dispose();
   }
 
   @override
@@ -69,27 +58,24 @@ class _AssetAddingApprovalHeaderScreenState
       body: Column(
         children: [
           Expanded(
-              child: BlocListener<AssetAddInApprovalHeaderBloc,
-                  AssetAddInApprovalHeaderState>(
+              child:
+                  BlocListener<JourneyPlanHeaderBloc, JourneyPlanHeaderState>(
             listener: (context, state) {
               state.when(
-                getAllAssetAddingHeadersState: (headers) {
+                getAllJourneyPlanHeadersState: (headers) {
                   if (headers != null) {
                     statuslist = List.generate(headers.length, (index) => null);
-                    _slNoCtrls = List.generate(
-                        headers.length, (index) => TextEditingController());
                   }
                 },
-                assetAddingHeaderFailedState: () {},
+                journeyPlanHeadersFailedState: () {},
               );
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: BlocBuilder<AssetAddInApprovalHeaderBloc,
-                  AssetAddInApprovalHeaderState>(
+              child: BlocBuilder<JourneyPlanHeaderBloc, JourneyPlanHeaderState>(
                 builder: (context, state) {
                   return state.when(
-                    getAllAssetAddingHeadersState: (headers) => headers == null
+                    getAllJourneyPlanHeadersState: (headers) => headers == null
                         ? Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 0),
                             child: ListView.separated(
@@ -121,26 +107,14 @@ class _AssetAddingApprovalHeaderScreenState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 10),
-                                        child: CircleAvatar(
-                                          radius: 20,
-                                          backgroundColor:
-                                              const Color(0xffDB95B5),
-                                          child: ClipOval(
-                                            child: SizedBox.fromSize(
-                                              size: MediaQuery.of(context).size,
-                                              child: Image.network(
-                                                headers[index].image ?? '',
-                                                height: 20.h,
-                                                width: 20.w,
-                                                fit: BoxFit.cover,
-                                                errorBuilder: (context, error,
-                                                        stackTrace) =>
-                                                    const SizedBox(),
-                                              ),
-                                            ),
-                                          ),
+                                      CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor:
+                                            const Color(0xffDB95B5),
+                                        child: Image.asset(
+                                          'assets/images/ar_li.png',
+                                          height: 20.h,
+                                          width: 20.w,
                                         ),
                                       ),
                                       SizedBox(
@@ -155,7 +129,8 @@ class _AssetAddingApprovalHeaderScreenState
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    headers[index].rsnName ??
+                                                    headers[index]
+                                                            .jpsCurrentSeq ??
                                                         '',
                                                     style: kfontstyle(
                                                       fontSize: 12.sp,
@@ -168,7 +143,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        '${headers[index].astCode} - ',
+                                                        '${headers[index].cusCode} - ',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             color: const Color(
@@ -183,7 +158,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           headers[index]
-                                                                  .astName ??
+                                                                  .cusName ??
                                                               '',
                                                           style: kfontstyle(
                                                               fontSize: 12.sp,
@@ -225,13 +200,12 @@ class _AssetAddingApprovalHeaderScreenState
                                                         color: Colors.grey),
                                                   ),
                                                   BlocConsumer<
-                                                      AssetAddingApprovalAndRjectBlocBloc,
-                                                      AssetAddingApprovalAndRjectBlocState>(
+                                                      JoureyPlanApprovalBloc,
+                                                      JoureyPlanApprovalState>(
                                                     listener: (context, state) {
                                                       state.when(
-                                                        assetAddingApprvalState:
-                                                            (response,
-                                                                isApproval) {
+                                                        approveJourneyPlanState:
+                                                            (response) {
                                                           if (response !=
                                                               null) {
                                                             Navigator.pop(
@@ -253,9 +227,9 @@ class _AssetAddingApprovalHeaderScreenState
                                                                         () {
                                                                       context
                                                                           .read<
-                                                                              AssetAddInApprovalHeaderBloc>()
-                                                                          .add(const GetallAssetAddingRequestHeadersEvent(
-                                                                              userId: /* widget.user.usrId ?? */ '64'));
+                                                                              JourneyPlanHeaderBloc>()
+                                                                          .add(GetAllJourneyPlanHeadersEvent(
+                                                                              userID: widget.user.usrId ?? ''));
                                                                       Navigator.pop(
                                                                           context);
                                                                     },
@@ -268,7 +242,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                             // }
                                                           }
                                                         },
-                                                        assetAddingApprovalFailedState:
+                                                        approveJourneyPlanFailedState:
                                                             () {
                                                           Navigator.pop(
                                                               context);
@@ -286,12 +260,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                       () {
                                                                     context
                                                                         .read<
-                                                                            AssetAddInApprovalHeaderBloc>()
-                                                                        .add(
-                                                                          const GetallAssetAddingRequestHeadersEvent(
-                                                                              userId: /* widget.user.usrId ?? */
-                                                                                  '64'),
-                                                                        );
+                                                                            JourneyPlanHeaderBloc>()
+                                                                        .add(GetAllJourneyPlanHeadersEvent(
+                                                                            userID:
+                                                                                widget.user.usrId ?? ''));
                                                                     Navigator.pop(
                                                                         context);
                                                                   },
@@ -303,7 +275,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                             ),
                                                           );
                                                         },
-                                                        assetAddingApprovalLoadingState:
+                                                        approveJourneyPlanLoadingState:
                                                             () {
                                                           if (loadingCount ==
                                                               0) {
@@ -344,31 +316,6 @@ class _AssetAddingApprovalHeaderScreenState
                                                             MainAxisAlignment
                                                                 .end,
                                                         children: [
-                                                          Expanded(
-                                                            child:
-                                                                TextFormField(
-                                                              controller:
-                                                                  _slNoCtrls[
-                                                                      index],
-                                                              cursorColor:
-                                                                  Colors.black,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                hintText:
-                                                                    'Sl:No',
-                                                                hintStyle:
-                                                                    kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  color: Colors
-                                                                      .grey,
-                                                                ),
-                                                                border:
-                                                                    InputBorder
-                                                                        .none,
-                                                              ),
-                                                            ),
-                                                          ),
                                                           Transform.scale(
                                                             scale: 0.8,
                                                             child: Row(
@@ -400,70 +347,44 @@ class _AssetAddingApprovalHeaderScreenState
                                                                       true,
                                                                   onChanged:
                                                                       (value) {
-                                                                    if (_slNoCtrls[
-                                                                            index]
-                                                                        .text
-                                                                        .isEmpty) {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              const Text('Alert'),
-                                                                          content:
-                                                                              const Text("Please Enter Sl:No"),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                // setState(() {});
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('ok'),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                    } else {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              const Text('Alert'),
-                                                                          content:
-                                                                              const Text("Do you Want to Approve this product"),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                setState(() {});
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('Cancel'),
-                                                                            ),
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                statuslist[index] = true;
-                                                                                loadingCount = 0;
-                                                                                setState(() {});
-                                                                                context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                                context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                      AssetAddingApproveEvent(
-                                                                                        approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
-                                                                                      ),
-                                                                                    );
+                                                                    showCupertinoDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) =>
+                                                                              CupertinoAlertDialog(
+                                                                        title: const Text(
+                                                                            'Alert'),
+                                                                        content:
+                                                                            const Text("Do you Want to Approve this product"),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              setState(() {});
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                            child:
+                                                                                const Text('Cancel'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              statuslist[index] = true;
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('Proceed'),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                    }
+                                                                              context.read<JoureyPlanApprovalBloc>().add(ApproveJourneyPlanEvent(approve: JourneyPlanApprovalInModel(jpsId: headers[index].jpsId, userId: widget.user.usrId)));
+
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                            child:
+                                                                                const Text('Proceed'),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    );
                                                                   },
                                                                 ),
                                                                 Text(
@@ -533,16 +454,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               statuslist[index] = false;
                                                                               loadingCount = 0;
                                                                               setState(() {});
-                                                                              context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                              context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                    AssetAddingApproveEvent(
-                                                                                      approve: AssetAddApprovalInModel(
-                                                                                        reqId: headers[index].aahId,
-                                                                                        serialNum: null,
-                                                                                        userId: widget.user.usrId,
-                                                                                      ),
-                                                                                    ),
-                                                                                  );
+                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+
+                                                                              context.read<JoureyPlanApprovalBloc>().add(RejectaJOurneyPlanEvent(reject: JourneyPlanApprovalInModel(jpsId: headers[index].jpsId, userId: widget.user.usrId)));
+
                                                                               Navigator.pop(context);
                                                                             },
                                                                             child:
@@ -584,7 +499,7 @@ class _AssetAddingApprovalHeaderScreenState
                                   color: Colors.grey[300],
                                 ),
                             itemCount: headers.length),
-                    assetAddingHeaderFailedState: () => Center(
+                    journeyPlanHeadersFailedState: () => Center(
                       child: Text(
                         'No Data Available',
                         style: kfontstyle(),

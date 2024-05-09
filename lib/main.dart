@@ -43,8 +43,13 @@ import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
@@ -375,6 +380,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<AssetRemovalApprvalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<JourneyPlanHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<JoureyPlanApprovalBloc>(),
         ),
       ],
       child: ScreenUtilInit(
