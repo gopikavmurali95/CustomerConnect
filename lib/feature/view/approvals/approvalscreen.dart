@@ -19,6 +19,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../materialrequest/materialrequestdetailheader.dart';
+
 class ApprovalScreen extends StatelessWidget {
   final LoginUserModel user;
   const ApprovalScreen({super.key, required this.user});
@@ -644,6 +646,52 @@ class ApprovalScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 10.w,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MaterialRequestHeaderScreen(
+                        user: user,
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  // height: 50,
+                  // width: MediaQuery.of(context).size.width / 2,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade300,
+                            spreadRadius: 1,
+                            blurRadius: 1)
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/images/pro.png",
+                          height: 15.h,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text(
+                          "Material Request",
+                          style: headTextStyle(),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

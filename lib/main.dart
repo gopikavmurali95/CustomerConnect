@@ -87,8 +87,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
+import 'feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+import 'feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
+import 'feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
+import 'feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
+import 'feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
+import 'feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
+import 'feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
 import 'feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
+import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
+import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
+import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
+import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -334,10 +346,31 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<ScheduledReturnDetailsBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<PartialDeliveryHeaderBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<RouteForScCubit>(),
         ),
         BlocProvider(
           create: (context) => getit<SchduledReturnApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FIeldServiceDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FieldServiceInvoiceApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<VanToVanDetailsBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<AssetAddInApprovalHeaderBloc>(),
@@ -350,6 +383,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<AssetRemovalApprvalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadTransferApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<JourneyPlanHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<JoureyPlanApprovalBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<MaterialReqHeadBloc>(),
