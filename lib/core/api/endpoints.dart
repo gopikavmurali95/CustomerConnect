@@ -83,3 +83,6 @@ const assetAddRejectUrl = 'FieldService/AssetAddReqHeaderReject';
 const assetRemovalHeaderUrl = 'FieldService/AssetRemoveReqHeader';
 const assetRemovalApproveUrl = 'FieldService/PostAssetRemovalReqApproval';
 const assetRemovalRejectUrl = 'FieldService/PostAssetRemovalReqReject';
+const materialReqHeaderUrl = 'InventoryApproval/MaterialReqHeader';
+const materialReqDetailUrl = 'InventoryApproval/MaterialReqDetails';
+

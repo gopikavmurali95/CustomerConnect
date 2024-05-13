@@ -87,6 +87,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
+import 'feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureinjection();
@@ -348,6 +351,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<AssetRemovalApprvalBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<MaterialReqHeadBloc>(),
+        ),
+        BlocProvider(create: (context) => getit<MaterialReqDetailBloc>(),
+        )
       ],
       child: ScreenUtilInit(
         child: MaterialApp(

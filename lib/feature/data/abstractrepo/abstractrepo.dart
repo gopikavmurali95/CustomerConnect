@@ -55,6 +55,7 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
@@ -96,6 +97,8 @@ import 'package:customer_connect/feature/data/models/total_orders_inparas/total_
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
 import 'package:dartz/dartz.dart';
+
+import '../models/material_req_detail_model/MaterialReqDetailModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
@@ -385,3 +388,24 @@ abstract class IAssetRemovalRequestRepo {
   Future<Either<MainFailures, AssetRemovalApproveOutModel>> assetRemovalReject(
       AssetRemovalApprovalInModel reject);
 }
+
+// abstract class IPriceChangeRepo {
+//   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
+//       String rotID);
+//   Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
+//   priceChangeDetails(String pchID);
+//   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
+//   getPricChangeReasons(
+//       String rsnType,
+//       );
+//   Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
+//       ApprovePriceChangeinModel approveIn);
+//}
+
+abstract class IMaterialReqHeaderRepo
+{
+  Future<Either<MainFailures, List<MaterialReqHeaderModel>>> materialreqheaderList(String userId);
+
+  Future<Either<MainFailures, List<MaterialReqDetailModel>>> materialreqdetailList(String reqId);
+}
+
