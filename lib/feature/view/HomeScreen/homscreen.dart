@@ -352,95 +352,93 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ApprovalScreen(
-                                    user: widget.user,
-                                  )));
-                    },
-                    child: Container(
-                      // height: 50,
-                      width: MediaQuery.of(context).size.width / 2.2,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade300,
-                                spreadRadius: 1,
-                                blurRadius: 1)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "assets/images/pro.png",
-                              height: 15.h,
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Text(
-                              "Approvals",
-                              style: headTextStyle(),
-                            )
-                          ],
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ApprovalScreen(
+                                      user: widget.user,
+                                    )));
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/apvl.png",
+                                height: 15.h,
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Approvals",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
-              child: Row(
-                children: [
+                  SizedBox(
+                    width: 10.w,
+                  ),
                   Expanded(
-                    child: Container(
-                      height: 50,
-                      // width: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.shade300,
-                              spreadRadius: 1,
-                              blurRadius: 1)
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10.0, top: 10, bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/ts.png",
-                              height: 20,
-                            ),
-                            //SvgPicture.asset("assets/svg/ts.svg",height: 20,
-                            //fit: BoxFit.scaleDown,),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Track Salesman",
-                              style: headTextStyle(),
-                            )
-                          ],
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/ts.png",
+                                height: 15.h,
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Track Salesman",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
