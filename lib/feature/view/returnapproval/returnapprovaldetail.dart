@@ -32,7 +32,7 @@ bool isLoading = false;
 int loadingCount = 0;
 List<ApprovalResonModel> availableresons = [];
 int approvedCount = 0;
-int _totalCount = 0;
+// int _totalCount = 0;
 
 class _ReturnApprovalDetailScreenState
     extends State<ReturnApprovalDetailScreen> {
