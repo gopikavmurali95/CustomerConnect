@@ -70,83 +70,9 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
             ),
           ),
         ],
-        /* bottom: PreferredSize(
-          preferredSize: Size(100, 120.h),
-          child: 
-        ), */
       ),
       body: Column(
         children: [
-          /* Visibility(
-            visible: isfromUser,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        color: const Color(0xfffee8e0),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'A025206 - ',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff2C6B9E),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '199525 - ',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Carrefour Hypermarket',
-                                overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Virtual | Supermarket | Dubai ',
-                          style:
-                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ), */
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(
@@ -327,7 +253,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Invoices",
+                          hintText: "Search Items",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -385,22 +311,22 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
                       Text(
                         'Uom',
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
                       Text(
                         'Qty',
                         style: boxHeading(),
                       ),
-                      SizedBox(
+                      /*  SizedBox(
                         width: 15.h,
-                      ),
+                      ), */
                     ],
                   ),
                 ],

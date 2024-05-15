@@ -19,6 +19,9 @@ class UserLoginRepo implements ILoginRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + loginUrl),
           body: {"Username": username, "Password": password});
+
+      log("${baseUrl + loginUrl} ,{Username: $username, Password: $password}");
+      log('Response: ${response.body}');
       if (response.statusCode == 200) {
         logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+// import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -21,6 +22,7 @@ class InvoiceRepo implements IInvoiceRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + invoiceheaderurl),
           body: invoiceIn.toJson());
+      // log(response.body);
       if (response.statusCode == 200) {
         // logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

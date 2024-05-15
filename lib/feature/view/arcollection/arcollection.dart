@@ -24,34 +24,38 @@ class ArCollectionScreen extends StatefulWidget {
   State<ArCollectionScreen> createState() => _ArCollectionScreenState();
 }
 
-final _arHeaderSearchCtrl = TextEditingController();
+TextEditingController _arHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
 
 class _ArCollectionScreenState extends State<ArCollectionScreen> {
   final ScrollController _scrollController = ScrollController();
-
   @override
   void initState() {
     pievalues.clear();
+    _arHeaderSearchCtrl = TextEditingController();
     _arHeaderSearchCtrl.clear();
-    super.initState();
-    context.read<ArScrollCtrlCubit>().onInit();
-    _scrollController.addListener(_scrollListener);
-    context.read<ArHeaderBloc>().add(const ClearArHeaderEvent());
+
     context.read<ArHeaderBloc>().add(
           GetArHeaderData(
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
-                fromDate: '01-01-2023',
-                toDate: '25-03-2024',
+                fromDate: '24-04-2024',
+                toDate:
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',
-                customer: '327',
+                customer: '',
                 outlet: '',
                 route: '',
                 subArea: ''),
             searchQuery: '',
           ),
         );
+
+    context.read<ArScrollCtrlCubit>().onInit();
+    _scrollController.addListener(_scrollListener);
+    // context.read<ArHeaderBloc>().add(const ClearArHeaderEvent());
+
+    super.initState();
   }
 
   @override
@@ -121,19 +125,20 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                             arHeaderSuccessState: (artotal, arHeaders) {
                               pievalues.clear();
                               if (artotal != null) {
-                                if (int.parse(artotal.hcCount ?? '') > 0) {
+                                if (int.parse(artotal.hcCount ?? '') > 0.00) {
                                   pievalues
                                       .add(int.parse(artotal.hcCount ?? ''));
                                 }
-                                if (int.parse(artotal.opCount ?? '') > 0) {
+                                if (int.parse(artotal.opCount ?? '') > 0.00) {
                                   pievalues
                                       .add(int.parse(artotal.opCount ?? ''));
                                 }
-                                if (int.parse(artotal.posCount ?? '') > 0) {
+                                if (int.parse(artotal.posCount ?? '') > 0.00) {
                                   pievalues
                                       .add(int.parse(artotal.posCount ?? ''));
                                 }
-                                if (int.parse(artotal.chequeCount ?? '') > 0) {
+                                if (int.parse(artotal.chequeCount ?? '') >
+                                    0.00) {
                                   pievalues.add(
                                       int.parse(artotal.chequeCount ?? ''));
                                 }
@@ -194,7 +199,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                   true,
                                                               holeRadius: 20,
                                                               entryLabelTextSize:
-                                                                  10,
+                                                                  12.sp,
                                                               transparentCircleRadius:
                                                                   27,
                                                               entryLabelColor:
@@ -207,10 +212,15 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                           colorslist,
                                                                       entries:
                                                                           List.of(
+                                                                        growable:
+                                                                            false,
                                                                         [
                                                                           PieEntry(
-                                                                              artotal.hcCount ?? '0',
-                                                                              double.parse(artotal.hcCount ?? '0')),
+                                                                            artotal.hcCount ??
+                                                                                '0',
+                                                                            double.parse(artotal.hcCount ??
+                                                                                '0'),
+                                                                          ),
                                                                           PieEntry(
                                                                               artotal.opCount ?? '0',
                                                                               double.parse(artotal.opCount ?? '0')),
@@ -219,7 +229,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                               double.parse(artotal.posCount ?? '0')),
                                                                           PieEntry(
                                                                               artotal.chequeCount ?? '0',
-                                                                              double.parse(artotal.hcCount ?? '0')),
+                                                                              double.parse(artotal.chequeCount ?? '0')),
                                                                         ],
                                                                       ),
                                                                     )
@@ -304,14 +314,16 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                             SizedBox(
                                                               width: 20.w,
                                                             ),
-                                                            Text(
-                                                              '${artotal.totalCount ?? '0'}/${artotal.totalAmount ?? '0.00'}',
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      13.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${artotal.totalCount ?? '0'}/${artotal.totalAmount ?? '0.00'}',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        11.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                              ),
                                                             )
                                                           ],
                                                         ),
@@ -396,18 +408,18 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                 milliseconds: 500,
                               ),
                               () async {
-                                context.read<ArHeaderBloc>().add(
-                                    GetArHeaderData(
-                                        arIn: ArTotalInModel(
-                                            userId: widget.user.usrId,
-                                            fromDate: '01-01-2023',
-                                            toDate: '25-03-2024',
-                                            area: '',
-                                            customer: '327',
-                                            outlet: '',
-                                            route: '',
-                                            subArea: ''),
-                                        searchQuery: value.trim()));
+                                context.read<ArHeaderBloc>().add(GetArHeaderData(
+                                    arIn: ArTotalInModel(
+                                        userId: widget.user.usrId,
+                                        fromDate: '24-04-2024',
+                                        toDate:
+                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                        area: '',
+                                        customer: '327',
+                                        outlet: '',
+                                        route: '',
+                                        subArea: ''),
+                                    searchQuery: value.trim()));
                               },
                             );
                           },
@@ -433,8 +445,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                         GetArHeaderData(
                                           arIn: ArTotalInModel(
                                               userId: widget.user.usrId,
-                                              fromDate: '01-01-2023',
-                                              toDate: '25-03-2024',
+                                              fromDate: '24-04-2024',
+                                              toDate:
+                                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                               area: '',
                                               customer: '327',
                                               outlet: '',

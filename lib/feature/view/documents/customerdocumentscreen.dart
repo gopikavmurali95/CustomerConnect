@@ -5,7 +5,6 @@ import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_b
 import 'package:customer_connect/feature/widgets/pdfviewer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +28,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
     context.read<CusDocumentsBloc>().add(const ClearCusDocsEvent());
     context
         .read<CusDocumentsBloc>()
-        .add(const GetCusDOcsEvevnt(cusID: /* widget.customer.cusId ?? */ '1'));
+        .add(GetCusDOcsEvevnt(cusID: widget.customer.cusId ?? ''));
     super.initState();
   }
 

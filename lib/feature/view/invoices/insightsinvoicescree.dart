@@ -40,7 +40,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
           GetCusInvEvent(
             searchQuery: '',
             invIn: CusInsInvoiceHeaderInModel(
-                cusId: /* widget.customer.cusId */ '1',
+                cusId: widget.customer.cusId,
                 userId: widget.user.usrId,
                 area: '',
                 fromDate: widget.fromdatectrl.text,

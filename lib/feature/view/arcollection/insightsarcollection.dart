@@ -53,7 +53,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
             searchQuery: '',
             arIn: CusInsArHeaderInModel(
               userId: widget.user.usrId,
-              cusId: /* widget.customer.cusId */ '2',
+              cusId: widget.customer.cusId ?? '',
               fromDate: widget.fromdatectrl.text,
               toDate: widget.todatectrl.text,
               area: '',

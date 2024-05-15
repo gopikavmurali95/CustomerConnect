@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -205,7 +204,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
             color: const Color(0xfff5f5f5),
             child: Padding(
               padding: const EdgeInsets.only(
-                  left: 20, right: 10, top: 10, bottom: 10),
+                  left: 20, right: 0, top: 10, bottom: 10),
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -250,7 +249,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.only(
-                                left: 20, right: 10, top: 10, bottom: 10),
+                                left: 20, right: 0, top: 10, bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -300,6 +299,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                     fit: FlexFit.tight,
                                     child: Text(
                                       typewiseinvoice[index].subTotal ?? '',
+                                      textAlign: TextAlign.center,
                                       style: kfontstyle(
                                           fontSize: 10.sp,
                                           fontWeight: FontWeight.w400),

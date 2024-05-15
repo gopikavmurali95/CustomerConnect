@@ -30,12 +30,14 @@ class ProfileInfoWidget extends StatelessWidget {
                         SizedBox(
                           width: 20.w,
                         ),
-                        Text(
-                          profile.cusName ?? '',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
+                        Flexible(
+                          child: Text(
+                            profile.cusName ?? '',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ],

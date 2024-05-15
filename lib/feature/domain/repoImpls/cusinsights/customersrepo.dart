@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:isolate';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -14,34 +16,60 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
   @override
   Future<Either<MainFailures, List<CusInsCustomersModel>>> getCustomers(
       String userId, String area, String subarea, String route) async {
-    try {
-      final response = await http
-          .post(Uri.parse(baseUrl + customerInsightsCustomersUrl), body: {
-        "UserID": userId,
-        "Area": area,
-        "SubArea": subarea,
-        "Route": route,
-      });
-      log('in repo');
-      if (response.statusCode == 200) {
-        // log(response.body);
-        Map<String, dynamic> json = jsonDecode(response.body);
+    Completer<Either<MainFailures, List<CusInsCustomersModel>>> completer =
+        Completer();
 
+    // Create a new receive port to receive response from the isolate
+    ReceivePort receivePort = ReceivePort();
+
+    // Spawn a new isolate
+    await Isolate.spawn(_fetchDataIsolate, {
+      'userId': userId,
+      'area': area,
+      'subarea': subarea,
+      'route': route,
+      'receivePort': receivePort.sendPort,
+    });
+
+    receivePort.listen((data) {
+      if (data is MainFailures) {
+        completer.complete(left(data));
+      } else if (data is List<CusInsCustomersModel>) {
+        completer.complete(right(data));
+      }
+      receivePort.close();
+    });
+
+    return completer.future;
+  }
+
+  void _fetchDataIsolate(Map<String, dynamic> message) async {
+    try {
+      final response = await http.post(
+        Uri.parse(baseUrl + customerInsightsCustomersUrl),
+        body: {
+          'UserID': message['userId'],
+          'Area': message['area'],
+          'SubArea': message['subarea'],
+          'Route': message['route'],
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
         final List<dynamic> cusdetaildata = json['result'];
-        List<CusInsCustomersModel> cuslist = cusdetaildata
+        final cuslist = cusdetaildata
             .map<CusInsCustomersModel>(
                 (json) => CusInsCustomersModel.fromJson(json))
             .toList();
-
-        return right(cuslist);
+        message['receivePort'].send(cuslist);
       } else {
-        return left(
-          const MainFailures.networkerror(error: 'Something went Wrong'),
-        );
+        message['receivePort'].send(
+            const MainFailures.networkerror(error: 'Something went Wrong'));
       }
     } catch (e) {
       log('cus error: $e');
-      return left(const MainFailures.serverfailure());
+      message['receivePort'].send(const MainFailures.serverfailure());
     }
   }
 }

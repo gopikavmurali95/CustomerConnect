@@ -281,7 +281,7 @@ class PickingWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Loading",
+                                "Load in",
                                 style: boxHeading(),
                               ),
                               Text(
@@ -466,12 +466,8 @@ class PickingWidget extends StatelessWidget {
                                               style: countHeading()),
                                           Row(
                                             children: [
-                                              Text("(", style: subTextStyle()),
                                               Text(
-                                                  count.loadInCancelledRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text("(6 Routes)",
+                                                  '(${count.loadInCancelledRoute}) Routes',
                                                   style: subTextStyle()),
                                             ],
                                           ),

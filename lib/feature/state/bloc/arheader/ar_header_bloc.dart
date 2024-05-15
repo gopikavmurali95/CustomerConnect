@@ -40,11 +40,7 @@ class ArHeaderBloc extends Bloc<ArHeaderEvent, ArHeaderState> {
         return ArHeaderSuccessState(
             artotal: totalcollection.fold((l) => null, (r) => r),
             arHeaders: event.searchQuery.isEmpty ? hr : searcheditems);
-      }
-          //  => ArHeaderSuccessState(
-          //     artotal: totalcollection.fold((l) => null, (r) => r),
-          //     arHeaders: hr)
-          ));
+      }));
     });
 
     on<ClearArHeaderEvent>((event, emit) {

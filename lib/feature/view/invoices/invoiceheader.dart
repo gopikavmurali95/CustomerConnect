@@ -28,14 +28,16 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
   @override
   void initState() {
     _invoiceHeaderSearchCtrl.clear();
-    context.read<InvoiceHeaderBloc>().add(const ClearInvoiceHeader());
+    // context.read<InvoiceHeaderBloc>().add(const ClearInvoiceHeader());
+    context.read<InvoiceTotalCubit>().getInvTotal([]);
     context.read<InvoiceHeaderBloc>().add(InvoiceHeaderSuccessEvent(
         invheaderin: InvoiceHeaderInparas(
             area: '',
             customer: '',
             customerOutlet: '',
-            fromDate: '01-01-2023',
-            toDate: '25-03-2024',
+            fromDate: '1-04-2024',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             invoiceType: '',
             invoiceWith: '',
             paymentType: '',
@@ -80,76 +82,6 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
       ),
       body: Column(
         children: [
-          Visibility(
-            visible: widget.isfromUser,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        color: const Color(0xfffee8e0),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'A025206 - ',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff2C6B9E),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '199525 - ',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Carrefour Hypermarket',
-                                overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Virtual | Supermarket | Dubai ',
-                          style:
-                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
@@ -181,13 +113,14 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                     area: '',
                                     customer: '',
                                     customerOutlet: '',
-                                    fromDate: '01-01-2023',
+                                    fromDate: '01-04-2024',
                                     invoiceType: '',
                                     invoiceWith: '',
                                     paymentType: '',
                                     route: '',
                                     subArea: '',
-                                    toDate: '06-04-2024',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     userId: widget.user.usrId),
                                 searchQuery: value.trim()));
                       },
@@ -254,25 +187,39 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
-                  builder: (context, state) {
-                    return state.when(
-                      invoiceHeaderSuccessState: (invheader) =>
-                          invheader == null
-                              ? const SizedBox()
-                              : Text(
-                                  // "80",
-                                  invheader.length.toString(),
-                                  style: countHeading(),
-                                ),
-                      invoiceHeaderFailedState: () => Center(
-                        child: Text(
-                          'No Data Available',
-                          style: kfontstyle(),
-                        ),
-                      ),
+                child: BlocListener<InvoiceHeaderBloc, InvoiceHeaderState>(
+                  listener: (context, state) {
+                    state.when(
+                      invoiceHeaderSuccessState: (invheader) {
+                        if (invheader != null) {
+                          context
+                              .read<InvoiceTotalCubit>()
+                              .getInvTotal(invheader);
+                        }
+                      },
+                      invoiceHeaderFailedState: () {},
                     );
                   },
+                  child: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
+                    builder: (context, state) {
+                      return state.when(
+                        invoiceHeaderSuccessState: (invheader) =>
+                            invheader == null
+                                ? const SizedBox()
+                                : Text(
+                                    // "80",
+                                    invheader.length.toString(),
+                                    style: countHeading(),
+                                  ),
+                        invoiceHeaderFailedState: () => Center(
+                          child: Text(
+                            '0',
+                            style: kfontstyle(),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               // SizedBox(width: ,),

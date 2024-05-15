@@ -1,5 +1,4 @@
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,14 +68,14 @@ class NotStartedDetail extends StatelessWidget {
                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "${pdetailList[index].pkdPickedHQty}",
+                                      "${pdetailList[index].pkdHigherUom}",
                                       style: subTitleTextStyle(),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
-                                      "${pdetailList[index].pkdPickedLQty}",
+                                      "${pdetailList[index].pkdLowerUom}",
                                       style: subTitleTextStyle(),
                                     ),
                                   ],
@@ -88,7 +87,7 @@ class NotStartedDetail extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${pdetailList[index].pkdPkhID}",
+                                        "${pdetailList[index].pkdPickedHQty}",
                                         style: subTitleTextStyle(),
                                       ),
                                       const SizedBox(
