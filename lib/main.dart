@@ -29,9 +29,6 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -43,19 +40,13 @@ import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
@@ -79,9 +70,6 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_deliv
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
@@ -98,6 +86,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
+import 'feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+import 'feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
+import 'feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
+import 'feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
+import 'feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
+import 'feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
+import 'feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
+import 'feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
+import 'feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
+import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
+import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
+import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
+import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -396,6 +399,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<JoureyPlanApprovalBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<MaterialReqHeadBloc>(),
+        ),
+        BlocProvider(create: (context) => getit<MaterialReqDetailBloc>(),
+        )
       ],
       child: ScreenUtilInit(
         child: MaterialApp(

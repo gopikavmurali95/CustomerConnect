@@ -63,6 +63,8 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/material_req_detail_model/MaterialReqDetailModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
@@ -144,7 +146,7 @@ abstract class IInvoiceRepo {
       String iD);
 
   Future<Either<MainFailures, List<InvoiceDetailsFooterModel>>>
-      getInvoiceDetailFooter(String iD);
+  getInvoiceDetailFooter(String iD);
 }
 
 abstract class ITotalOrdersRepo {
@@ -183,21 +185,21 @@ abstract class ICusInsArRepo {
 
 abstract class ITodaysDeliveryRepo {
   Future<Either<MainFailures, List<TodaysDeliveryHeaderModel>>>
-      getTodaysDelivery(TodaysDeliveryInParas deliveryIn);
+  getTodaysDelivery(TodaysDeliveryInParas deliveryIn);
 
   Future<Either<MainFailures, List<TodaysDeliveryDetailsModel>>>
-      getDeliveryDetail(String id);
+  getDeliveryDetail(String id);
 }
 
 abstract class ISpecialPriceRepo {
   Future<Either<MainFailures, List<SpecialPriceHeaderOutparas>>>
-      getSpecialPrice(SpecialPriceHeaderModel specialPriceIn);
+  getSpecialPrice(SpecialPriceHeaderModel specialPriceIn);
 
   Future<Either<MainFailures, List<SpecialPriceDetailsModel>>> getPriceDetail(
       String prdID);
 
   Future<Either<MainFailures, List<SpecialPriceCustomerModel>>>
-      getPriceCustomer(String userID, String fromDate, String toDate);
+  getPriceCustomer(String userID, String fromDate, String toDate);
 }
 
 abstract class ICusInsInvoiceRepo {
@@ -213,7 +215,7 @@ abstract class IPromotionHeaderRepo {
   Future<Either<MainFailures, List<PromotionHeaderModel>>> getPromotionHeader(
       PromotionHeaderInParas inpromtionIn);
   Future<Either<MainFailures, List<PromotionCustomerModel>>>
-      getPromotionCustomer(String iD);
+  getPromotionCustomer(String iD);
   Future<Either<MainFailures, List<PromotionDetailsModel>>> getPromotionDetails(
       String iD);
 }
@@ -232,7 +234,7 @@ abstract class ICusOutstandingRepo {
   Future<Either<MainFailures, CusOutstandingCountModel>> getOutStandingCounts(
       CusOutStandingInModel outIn);
   Future<Either<MainFailures, List<CusInsOutstandingHeaderModel>>>
-      getCusOutstanding(CusOutStandingInModel outIn);
+  getCusOutstanding(CusOutStandingInModel outIn);
 }
 
 abstract class ICusItemsRepo {
@@ -251,9 +253,9 @@ abstract class IOutStandingHeaderRepo {
       OutStandingHeaderModel outStandIn);
   Future<Either<MainFailures, OutstandingCountModel>> getoutstandingTotal(
       OutStandingHeaderModel outin);
-  // Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
-  //     ArTotalInModel loadingIn);
-  // Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
+// Future<Either<MainFailures, List<ArHeaderModel>>> getARHeaders(
+//     ArTotalInModel loadingIn);
+// Future<Either<MainFailures, List<ArDetailModel>>> getARDetails(String arhID);
 }
 
 abstract class IProfileEditRepo {
@@ -283,7 +285,7 @@ abstract class ICusProtionRepo {
   Future<Either<MainFailures, List<CusPromotionHeader>>> getCusPromotionHeaders(
       CusPromoInModel cusIN);
   Future<Either<MainFailures, List<CusPromotionDetailModel>>>
-      getCusPromotionDetails(String iD);
+  getCusPromotionDetails(String iD);
 }
 
 abstract class IQualificationGroupRepo {
@@ -293,7 +295,7 @@ abstract class IQualificationGroupRepo {
 
 abstract class INotificationRepo {
   Future<Either<MainFailures, List<UserNotificationModel>>>
-      getUserNotifications(String userID);
+  getUserNotifications(String userID);
   Future<Either<MainFailures, NotificationReplayOutModel>> sendNotiReplay(
       NotificationReplayInModel replay);
   Future<Either<MainFailures, NotificationReplayOutModel>> updateNotiReadFlag(
@@ -304,39 +306,39 @@ abstract class IPriceChangeRepo {
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
       String rotID);
   Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
-      priceChangeDetails(String pchID);
+  priceChangeDetails(String pchID);
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
-      getPricChangeReasons(
-    String rsnType,
-  );
+  getPricChangeReasons(
+      String rsnType,
+      );
   Future<Either<MainFailures, ApprovePriceChangeModel>> approvePriceChange(
       ApprovePriceChangeinModel approveIn);
 }
 
 abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, List<ReturnApprovalHeaderModel>>>
-      getReturnApprovalHeaders(String rotID);
+  getReturnApprovalHeaders(String rotID);
   Future<Either<MainFailures, List<ReturnApprovalDetailModel>>>
-      getReturnApprovalDetails(String reqID, String mode);
+  getReturnApprovalDetails(String reqID, String mode);
   Future<Either<MainFailures, List<ApprovalResonModel>>>
-      getReturnApprovalResons(
-    String rsnType,
-  );
+  getReturnApprovalResons(
+      String rsnType,
+      );
 
   Future<Either<MainFailures, ReturnApproveOutModel>> approveReturnProduct(
-    ReturnApproveInModel approveIn,
-  );
+      ReturnApproveInModel approveIn,
+      );
 }
 
 abstract class IDisputeNoteApprovalRepo {
   Future<Either<MainFailures, List<DisputeNoteHeaderModel>>>
-      getDisputeNoteApprovalHeaders(String userID);
+  getDisputeNoteApprovalHeaders(String userID);
 
   Future<Either<MainFailures, List<DisputeNoteDetailModel>>>
-      getDisputeApprovalDetails(String reqID);
+  getDisputeApprovalDetails(String reqID);
 
   Future<Either<MainFailures, DisputeApprovalStatusModel>>
-      getDisputeApprovalStatus(String userID);
+  getDisputeApprovalStatus(String userID);
 
   Future<Either<MainFailures, DisputeApprovalRespModel>> disputeApproval(
       DisputeInvoiceApproveInModel approve);
@@ -346,13 +348,13 @@ abstract class IDisputeNoteApprovalRepo {
 
 abstract class ICreditNoteApprovalRepo {
   Future<Either<MainFailures, List<CreditNoteHeaderModel>>>
-      getCreditNoteApprovalHeaders(String userID);
+  getCreditNoteApprovalHeaders(String userID);
 
   Future<Either<MainFailures, List<CreditNoteDetailModel>>>
-      getCreditApprovalDetails(String reqID);
+  getCreditApprovalDetails(String reqID);
 
   Future<Either<MainFailures, DisputeApprovalStatusModel>>
-      getcreditNoteApprovalStatus(String userID);
+  getcreditNoteApprovalStatus(String userID);
 
   Future<Either<MainFailures, DisputeApprovalRespModel>> creditNoteApproval(
       DisputeInvoiceApproveInModel approve);
@@ -362,30 +364,30 @@ abstract class ICreditNoteApprovalRepo {
 
 abstract class IScheduledReturnApprovalRepo {
   Future<Either<MainFailures, List<SheduledReturnHeaderModel>>>
-      getScheduledReturnApprovalHeaders(String userID);
+  getScheduledReturnApprovalHeaders(String userID);
 
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
-      getScheduledReturnApprovalDetails(String reqID);
+  getScheduledReturnApprovalDetails(String reqID);
   Future<Either<MainFailures, List<RouteModel>>> getAllRoutes();
   Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
-      scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
+  scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
 }
 
 abstract class IFieldServiceInvoiceApprovalRepo {
   Future<Either<MainFailures, List<FieldServiceInvoiceHeaderModel>>>
-      getFieldServiceApprovalHeaders(String userID);
+  getFieldServiceApprovalHeaders(String userID);
 
   Future<Either<MainFailures, List<FieldServiceDetailModel>>>
-      getFieldServiceApprovalDetails(String reqID);
+  getFieldServiceApprovalDetails(String reqID);
 
   Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>>
-      invoiceApprovalRepo(String reqID, String userID);
+  invoiceApprovalRepo(String reqID, String userID);
 }
 
 abstract class IPartialDeliveryRepo {
   Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
-      partialDeliveryList(String userID);
-  /*Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
+  partialDeliveryList(String userID);
+/*Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
       priceChangeDetails(String pchID);
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
       getPricChangeReasons(
@@ -395,19 +397,19 @@ abstract class IPartialDeliveryRepo {
 
 abstract class IVanToVanApprovalRepo {
   Future<Either<MainFailures, List<VanToVanHeaderModel>>>
-      getVanToVanApprovalHeader(String userID);
+  getVanToVanApprovalHeader(String userID);
 
   Future<Either<MainFailures, List<VanToVanDetailsModel>>>
-      getVanToVanApprovalDetails(String reqID);
+  getVanToVanApprovalDetails(String reqID);
 
   Future<Either<MainFailures, VanToVanApprovalModel>> approveVanToVan(
-    VanToVanApprovalInParas approveIn,
-  );
+      VanToVanApprovalInParas approveIn,
+      );
 }
 
 abstract class IAssetAddApprovalRepo {
   Future<Either<MainFailures, List<AssetAddRequestHeaderModel>>>
-      getAssetAddApprovalHeaders(String userID);
+  getAssetAddApprovalHeaders(String userID);
 
   Future<Either<MainFailures, AssetAddRespOutModel>> assetAddApproval(
       AssetAddApprovalInModel approve);
@@ -417,30 +419,38 @@ abstract class IAssetAddApprovalRepo {
 
 abstract class IAssetRemovalRequestRepo {
   Future<Either<MainFailures, List<AssetRemovalRequestHeaderModel>>>
-      getAssetRemovalApprovalHeaders(String userID);
+  getAssetRemovalApprovalHeaders(String userID);
 
   Future<Either<MainFailures, AssetRemovalApproveOutModel>>
-      assetRemovalApproval(AssetRemovalApprovalInModel approve);
+  assetRemovalApproval(AssetRemovalApprovalInModel approve);
   Future<Either<MainFailures, AssetRemovalApproveOutModel>> assetRemovalReject(
       AssetRemovalApprovalInModel reject);
 }
 
 abstract class ILoadTransferApprovalRepo {
   Future<Either<MainFailures, List<LoadTransferApprovalHeaderModel>>>
-      getLoadTransferHeaders(String userID);
+  getLoadTransferHeaders(String userID);
   Future<Either<MainFailures, List<LoadTransferDetailModel>>>
-      getLoadTransferDetails(String reqID);
+  getLoadTransferDetails(String reqID);
   Future<Either<MainFailures, LoadTransferApprovalOutModel>>
-      loadTransferApproval(LoadTransferApprovalInModel approve);
+  loadTransferApproval(LoadTransferApprovalInModel approve);
 }
 
 abstract class IJourneyPlanApprovalRepo {
   Future<Either<MainFailures, List<JourneyPlanHeaderModel>>>
-      getJourneyPlanHeaders(String userID);
+  getJourneyPlanHeaders(String userID);
 
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve);
 
-      Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanReject(
+  Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanReject(
       JourneyPlanApprovalInModel approve);
 }
+
+abstract class IMaterialReqHeaderRepo
+{
+  Future<Either<MainFailures, List<MaterialReqHeaderModel>>> materialreqheaderList(String userId);
+
+  Future<Either<MainFailures, List<MaterialReqDetailModel>>> materialreqdetailList(String reqId);
+}
+
