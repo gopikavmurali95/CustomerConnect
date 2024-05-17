@@ -65,8 +65,9 @@ class ApprovalScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const PriceChangeHeader()));
+                                builder: (context) => PriceChangeHeader(
+                                      user: user,
+                                    )));
                       },
                       child: Container(
                         // height: 50,

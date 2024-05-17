@@ -34,12 +34,15 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
     pievalues.clear();
     _arHeaderSearchCtrl = TextEditingController();
     _arHeaderSearchCtrl.clear();
-
+    context.read<ArScrollCtrlCubit>().onInit();
+    _scrollController.addListener(_scrollListener);
+    context.read<ArHeaderBloc>().add(const ClearArHeaderEvent());
     context.read<ArHeaderBloc>().add(
           GetArHeaderData(
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
-                fromDate: '24-04-2024',
+                fromDate:
+                    '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
                 toDate:
                     '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',
@@ -50,10 +53,6 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
             searchQuery: '',
           ),
         );
-
-    context.read<ArScrollCtrlCubit>().onInit();
-    _scrollController.addListener(_scrollListener);
-    // context.read<ArHeaderBloc>().add(const ClearArHeaderEvent());
 
     super.initState();
   }
@@ -216,19 +215,20 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                             false,
                                                                         [
                                                                           PieEntry(
-                                                                            artotal.hcCount ??
-                                                                                '0',
+                                                                            double.parse(artotal.hcCount ?? '0') <= 0
+                                                                                ? ''
+                                                                                : artotal.hcCount ?? '0',
                                                                             double.parse(artotal.hcCount ??
                                                                                 '0'),
                                                                           ),
                                                                           PieEntry(
-                                                                              artotal.opCount ?? '0',
+                                                                              double.parse(artotal.opCount ?? '0') <= 0 ? '' : artotal.opCount ?? '0',
                                                                               double.parse(artotal.opCount ?? '0')),
                                                                           PieEntry(
-                                                                              artotal.posCount ?? '0',
+                                                                              double.parse(artotal.posCount ?? '0') <= 0 ? '' : artotal.posCount ?? '0',
                                                                               double.parse(artotal.posCount ?? '0')),
                                                                           PieEntry(
-                                                                              artotal.chequeCount ?? '0',
+                                                                              double.parse(artotal.chequeCount ?? '0') <= 0 ? '' : artotal.chequeCount ?? '0',
                                                                               double.parse(artotal.chequeCount ?? '0')),
                                                                         ],
                                                                       ),
@@ -408,14 +408,18 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                 milliseconds: 500,
                               ),
                               () async {
+                                context
+                                    .read<ArHeaderBloc>()
+                                    .add(const ClearArHeaderEvent());
                                 context.read<ArHeaderBloc>().add(GetArHeaderData(
                                     arIn: ArTotalInModel(
                                         userId: widget.user.usrId,
-                                        fromDate: '24-04-2024',
+                                        fromDate:
+                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                         toDate:
                                             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                         area: '',
-                                        customer: '327',
+                                        customer: '',
                                         outlet: '',
                                         route: '',
                                         subArea: ''),
@@ -441,15 +445,19 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                               suffix: InkWell(
                                 onTap: () {
                                   _arHeaderSearchCtrl.clear();
+                                  context
+                                      .read<ArHeaderBloc>()
+                                      .add(const ClearArHeaderEvent());
                                   context.read<ArHeaderBloc>().add(
                                         GetArHeaderData(
                                           arIn: ArTotalInModel(
                                               userId: widget.user.usrId,
-                                              fromDate: '24-04-2024',
+                                              fromDate:
+                                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                               toDate:
                                                   '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                               area: '',
-                                              customer: '327',
+                                              customer: '',
                                               outlet: '',
                                               route: '',
                                               subArea: ''),

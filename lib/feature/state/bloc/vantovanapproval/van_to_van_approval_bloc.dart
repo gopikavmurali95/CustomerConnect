@@ -22,7 +22,7 @@ class VanToVanApprovalBloc
           await vanToVanApproval.approveVanToVan(event.approvalIn);
 
       emit(approve.fold((l) => const VanToVanApprovalFailedstate(),
-          (r) => const GetVanToVanApprovalState(headers: null)));
+          (r) => GetVanToVanApprovalState(headers: r)));
     });
     on<VanToVanApprovalLoadingEvent>((event, emit) {
       emit(const VanToVanApprovalState.vanToVanApprovalLoadingState());

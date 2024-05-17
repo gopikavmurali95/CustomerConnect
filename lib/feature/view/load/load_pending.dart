@@ -29,7 +29,8 @@ class _LoadPendingState extends State<LoadPending> {
         searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'DD',
@@ -105,7 +106,8 @@ class _LoadPendingState extends State<LoadPending> {
                                 searchQuery: value.trim(),
                                 loadingin: LoadingHeaderInModel(
                                     userId: widget.user.usrId,
-                                    fromDate: '01-01-2023',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     toDate:
                                         '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: 'DD',
@@ -138,18 +140,18 @@ class _LoadPendingState extends State<LoadPending> {
                           context
                               .read<LoadingHeaderBloc>()
                               .add(const ClearLoadingHeadderEvent());
-                          context.read<LoadingHeaderBloc>().add(
-                              GetLoadingHeaderEvent(
-                                  searchQuery: '',
-                                  loadingin: LoadingHeaderInModel(
-                                      userId: widget.user.usrId,
-                                      fromDate: '01-01-2023',
-                                      toDate:
-                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                      mode: 'DD',
-                                      area: '',
-                                      route: '',
-                                      subArea: '')));
+                          context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+                              searchQuery: '',
+                              loadingin: LoadingHeaderInModel(
+                                  userId: widget.user.usrId,
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  mode: 'DD',
+                                  area: '',
+                                  route: '',
+                                  subArea: '')));
                         },
                         child: const Icon(
                           Icons.close,

@@ -29,7 +29,8 @@ class _LoadRejectedState extends State<LoadRejected> {
         searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'R',
@@ -108,7 +109,8 @@ class _LoadRejectedState extends State<LoadRejected> {
                                 searchQuery: value.trim(),
                                 loadingin: LoadingHeaderInModel(
                                     userId: widget.user.usrId,
-                                    fromDate: '01-01-2023',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     toDate:
                                         '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: 'DD',
@@ -146,7 +148,8 @@ class _LoadRejectedState extends State<LoadRejected> {
                                   searchQuery: '',
                                   loadingin: LoadingHeaderInModel(
                                       userId: widget.user.usrId,
-                                      fromDate: '01-01-2023',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       toDate:
                                           '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       mode: 'R',

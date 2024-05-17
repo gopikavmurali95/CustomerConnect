@@ -144,7 +144,7 @@ class TodaysDeliveryList extends StatelessWidget {
                     itemCount: 10),
             todaysDeliveryFailedState: () => Center(
               child: Text(
-                'No data Avialble',
+                'No data Available',
                 style: kfontstyle(),
               ),
             ),

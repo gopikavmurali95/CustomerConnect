@@ -75,11 +75,13 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => NotificationScreen(
-                              user: widget.user,
-                            )));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationScreen(
+                      user: widget.user,
+                    ),
+                  ),
+                );
               },
               icon: SvgPicture.asset("assets/svg/notification.svg")),
           const SizedBox(
@@ -87,369 +89,397 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            PickingWidget(
-              user: widget.user,
-            ),
-            CustomerTransaction(
-              user: widget.user,
-            ),
-            SalesOrders(
-              user: widget.user,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Other Options",
-                    style: boxHeading(),
-                  ),
-                ],
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: Colors.amber,
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () {
+          return _onRefreshHome();
+        },
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              PickingWidget(
+                user: widget.user,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    flex: 2,
-                    fit: FlexFit.tight,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CustomersScren(
-                                user: widget.user,
-                              ),
-                            ));
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/customer.png",
-                                height: 15.h,
-                              ),
-                              // SvgPicture.asset("assets/images/os.png",height: 20,
-                              //   fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Customer Insights",
-                                style: headTextStyle(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Flexible(
-                    flex: 2,
-                    fit: FlexFit.tight,
-                    child: InkWell(
-                      onTap: () {
-                        context
-                            .read<SpecialPriceHeaderBloc>()
-                            .add(const ClearSpecialPriceEvent());
-                        context.read<SpecialPriceHeaderBloc>().add(
-                            GetSpecialPriceHeaderEvent(
-                                spPriceInparas: SpecialPriceHeaderModel(
-                                    area: '',
-                                    customer: '',
-                                    fromDate: '01/01/2023',
-                                    mode: '',
-                                    outlet: '',
-                                    route: '',
-                                    subArea: '',
-                                    toDate: '30/03/2024',
-                                    userId: widget.user.usrId),
-                                searchQuery: ''));
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SpecialPricingHeader(
-                                      user: widget.user,
-                                    )));
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/file.png",
-                                height: 15.h,
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Special Pricing",
-                                style: headTextStyle(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              CustomerTransaction(
+                user: widget.user,
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PromotionHeader(
-                                      user: widget.user,
-                                    )));
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/pro.png",
-                                height: 15.h,
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Promotions",
-                                style: headTextStyle(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+              SalesOrders(
+                user: widget.user,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, bottom: 10, top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Other Options",
+                      style: boxHeading(),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => OutstandingHeaderScreen(
-                              isfromUser: false,
-                              user: widget.user,
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CustomersScren(
+                                  user: widget.user,
+                                ),
+                              ));
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/customer.png",
+                                  height: 15.h,
+                                ),
+                                // SvgPicture.asset("assets/images/os.png",height: 20,
+                                //   fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Customer Insights",
+                                  style: headTextStyle(),
+                                )
+                              ],
                             ),
                           ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/os.png",
-                                height: 15.h,
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Outstanding",
-                                style: headTextStyle(),
-                              )
-                            ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Flexible(
+                      flex: 2,
+                      fit: FlexFit.tight,
+                      child: InkWell(
+                        onTap: () {
+                          context
+                              .read<SpecialPriceHeaderBloc>()
+                              .add(const ClearSpecialPriceEvent());
+                          context.read<SpecialPriceHeaderBloc>().add(
+                              GetSpecialPriceHeaderEvent(
+                                  spPriceInparas: SpecialPriceHeaderModel(
+                                      area: '',
+                                      customer: '',
+                                      fromDate: '01/01/2023',
+                                      mode: '',
+                                      outlet: '',
+                                      route: '',
+                                      subArea: '',
+                                      toDate: '30/03/2024',
+                                      userId: widget.user.usrId),
+                                  searchQuery: ''));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpecialPricingHeader(
+                                        user: widget.user,
+                                      )));
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/file.png",
+                                  height: 15.h,
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Special Pricing",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PromotionHeader(
+                                        user: widget.user,
+                                      )));
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/pro.png",
+                                  height: 15.h,
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Promotions",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ApprovalScreen(
-                                      user: widget.user,
-                                    )));
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/apvl.png",
-                                height: 15.h,
+                              builder: (context) => OutstandingHeaderScreen(
+                                isfromUser: false,
+                                user: widget.user,
                               ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Approvals",
-                                style: headTextStyle(),
-                              )
-                            ],
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/os.png",
+                                  height: 15.h,
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Outstanding",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {},
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/ts.png",
-                                height: 15.h,
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                "Track Salesman",
-                                style: headTextStyle(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ApprovalScreen(
+                                        user: widget.user,
+                                      )));
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/apvl.png",
+                                  height: 15.h,
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Approvals",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  "assets/images/ts.png",
+                                  height: 15.h,
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Text(
+                                  "Track Salesman",
+                                  style: headTextStyle(),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  _onRefreshHome() {
+    context
+        .read<PickingAndLoadingCountBloc>()
+        .add(const ClearPichingAndLoadingCount());
+    context
+        .read<PickingAndLoadingCountBloc>()
+        .add(PlCountSuccessEvent(userID: widget.user.usrId!));
+    context
+        .read<CustomerTransactionBloc>()
+        .add(const ClearCustomerTransactionCount());
+    context
+        .read<CustomerTransactionBloc>()
+        .add(CusTransactionSuccessEvent(userID: widget.user.usrId!));
+    context.read<SalesOrderCountBloc>().add(const ClearSalesOrderCount());
+    context
+        .read<SalesOrderCountBloc>()
+        .add(SalesOrderCountSuccessEvent(userID: widget.user.usrId!));
   }
 }

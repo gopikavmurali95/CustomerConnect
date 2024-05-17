@@ -31,7 +31,8 @@ class _LoadCompletedState extends State<LoadCompleted> {
         searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'LD',
@@ -109,7 +110,8 @@ class _LoadCompletedState extends State<LoadCompleted> {
                                 searchQuery: value.trim(),
                                 loadingin: LoadingHeaderInModel(
                                     userId: widget.user.usrId,
-                                    fromDate: '01-01-2023',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     toDate:
                                         '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: 'LD',

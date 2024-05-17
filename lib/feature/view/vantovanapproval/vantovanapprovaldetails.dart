@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
+
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +24,14 @@ class VanToVanApprovalDetails extends StatefulWidget {
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
+int _totalcount = 0;
+int _approvedCount = 0;
 
 class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
   @override
   void initState() {
+    _totalcount = 0;
+    _approvedCount = 0;
     context
         .read<VanToVanDetailsBloc>()
         .add(GetVanToVanDetailEvent(reqID: widget.vanToVanHeader.vvhId ?? ''));
@@ -33,6 +40,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
 
   @override
   Widget build(BuildContext context) {
+    log("$_totalcount $_approvedCount");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -41,6 +49,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
+            /*   if (_approvedCount != 0 && _approvedCount != _totalcount) {
+              Future.delayed(const Duration(microseconds: 100), () {
+                showPopAlert(context);
+              });
+            } else {
+              context.read<NavigatetoBackCubit>().popFromScreen(true);
+            } */
+
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -54,7 +70,20 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
         ),
       ),
       body: PopScope(
+        // canPop: false,
         onPopInvoked: (didPop) {
+          log("$_totalcount $_approvedCount");
+          /*  if (_approvedCount != 0 && _approvedCount != _totalcount) {
+            Future.delayed(const Duration(microseconds: 100), () {
+              showPopAlert(context);
+            });
+          } else {
+            context
+                .read<VanToVanHeaderBloc>()
+                .add(const getVanToVanHeaderEvent(userID: '49'));
+            context.read<NavigatetoBackCubit>().popFromScreen(true);
+          } */
+
           context
               .read<VanToVanHeaderBloc>()
               .add(const getVanToVanHeaderEvent(userID: '49'));
@@ -111,6 +140,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                   state.when(
                     getVanToVanDetailsState: ((details) {
                       if (details != null) {
+                        _totalcount = details.length;
                         statuslist =
                             List.generate(details.length, (index) => null);
                       }
@@ -231,7 +261,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                         state.when(
                                           getVanToVanApproval: (response) {
                                             if (response != null) {
-                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
                                               // if (isApproval) {
                                               showCupertinoDialog(
                                                 context: context,
@@ -243,6 +273,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () {
+                                                        _approvedCount++;
                                                         context
                                                             .read<
                                                                 VanToVanDetailsBloc>()
@@ -290,6 +321,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                           vanToVanApprovalLoadingState: () {
                                             if (loadingCount == 0) {
                                               loadingCount = 1;
+
                                               showCupertinoModalPopup(
                                                   context: context,
                                                   barrierDismissible: false,

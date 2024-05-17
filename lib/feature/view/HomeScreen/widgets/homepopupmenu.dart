@@ -130,7 +130,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                                   (route) => false);
                             });
                           },
-                          child: const Text('proceeda'),
+                          child: const Text('proceed'),
                         ),
                       ],
                     ),

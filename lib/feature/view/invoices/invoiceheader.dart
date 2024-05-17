@@ -35,7 +35,8 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             area: '',
             customer: '',
             customerOutlet: '',
-            fromDate: '1-04-2024',
+            fromDate:
+                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             invoiceType: '',
@@ -107,22 +108,22 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                         milliseconds: 500,
                       ),
                       () async {
-                        context.read<InvoiceHeaderBloc>().add(
-                            InvoiceHeaderSuccessEvent(
-                                invheaderin: InvoiceHeaderInparas(
-                                    area: '',
-                                    customer: '',
-                                    customerOutlet: '',
-                                    fromDate: '01-04-2024',
-                                    invoiceType: '',
-                                    invoiceWith: '',
-                                    paymentType: '',
-                                    route: '',
-                                    subArea: '',
-                                    toDate:
-                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                    userId: widget.user.usrId),
-                                searchQuery: value.trim()));
+                        context.read<InvoiceHeaderBloc>().add(InvoiceHeaderSuccessEvent(
+                            invheaderin: InvoiceHeaderInparas(
+                                area: '',
+                                customer: '',
+                                customerOutlet: '',
+                                fromDate:
+                                    '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                invoiceType: '',
+                                invoiceWith: '',
+                                paymentType: '',
+                                route: '',
+                                subArea: '',
+                                toDate:
+                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                userId: widget.user.usrId),
+                            searchQuery: value.trim()));
                       },
                     );
                   },
@@ -150,8 +151,10 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                       area: '',
                                       customer: '',
                                       customerOutlet: '',
-                                      fromDate: '01-01-2023',
-                                      toDate: '25-03-2024',
+                                      fromDate:
+                                          '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       invoiceType: '',
                                       invoiceWith: '',
                                       paymentType: '',

@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -90,15 +89,27 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                 ),
                                                 Column(
                                                   children: [
-                                                    Text(orderdetails[index]
-                                                            .oddLowerUom ??
-                                                        ''),
+                                                    Text(
+                                                      orderdetails[index]
+                                                              .oddLowerUom ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    ),
                                                     SizedBox(
                                                       height: 5.h,
                                                     ),
-                                                    Text(orderdetails[index]
-                                                            .oddHigherUom ??
-                                                        ''),
+                                                    Text(
+                                                      orderdetails[index]
+                                                              .oddHigherUom ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    ),
                                                   ],
                                                 ),
                                                 SizedBox(
@@ -106,15 +117,27 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                 ),
                                                 Column(
                                                   children: [
-                                                    Text(orderdetails[index]
-                                                            .oddLowerQty ??
-                                                        ''),
+                                                    Text(
+                                                      orderdetails[index]
+                                                              .oddLowerQty ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    ),
                                                     SizedBox(
                                                       height: 5.h,
                                                     ),
-                                                    Text(orderdetails[index]
-                                                            .oddHigherQty ??
-                                                        ''),
+                                                    Text(
+                                                      orderdetails[index]
+                                                              .oddHigherQty ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    ),
                                                   ],
                                                 ),
                                               ],

@@ -30,11 +30,13 @@ class _TotalOrdersState extends State<TotalOrders> {
         ordersin: TotalOrdersInparas(
             area: '',
             customer: '',
-            fromDate: '01/01/2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '30/03/2024',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             userId: widget.user.usrId),
         searchQuery: ''));
     super.initState();
@@ -100,18 +102,19 @@ class _TotalOrdersState extends State<TotalOrders> {
                         context
                             .read<TotalOrdersHeaderBloc>()
                             .add(const TotalOrdersClearEvent());
-                        context.read<TotalOrdersHeaderBloc>().add(
-                            GetTotalOrdersEvent(
-                                ordersin: TotalOrdersInparas(
-                                    area: '',
-                                    customer: '',
-                                    fromDate: '01/01/2023',
-                                    outlet: '',
-                                    route: '',
-                                    subArea: '',
-                                    toDate: '30/03/2024',
-                                    userId: widget.user.usrId),
-                                searchQuery: value.trim()));
+                        context.read<TotalOrdersHeaderBloc>().add(GetTotalOrdersEvent(
+                            ordersin: TotalOrdersInparas(
+                                area: '',
+                                customer: '',
+                                fromDate:
+                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                outlet: '',
+                                route: '',
+                                subArea: '',
+                                toDate:
+                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                userId: widget.user.usrId),
+                            searchQuery: value.trim()));
                       },
                     );
                   },
@@ -136,18 +139,19 @@ class _TotalOrdersState extends State<TotalOrders> {
                           context
                               .read<TotalOrdersHeaderBloc>()
                               .add(const TotalOrdersClearEvent());
-                          context.read<TotalOrdersHeaderBloc>().add(
-                              GetTotalOrdersEvent(
-                                  ordersin: TotalOrdersInparas(
-                                      area: '',
-                                      customer: '',
-                                      fromDate: '01/01/2023',
-                                      outlet: '',
-                                      route: '',
-                                      subArea: '',
-                                      toDate: '30/03/2024',
-                                      userId: widget.user.usrId),
-                                  searchQuery: ''));
+                          context.read<TotalOrdersHeaderBloc>().add(GetTotalOrdersEvent(
+                              ordersin: TotalOrdersInparas(
+                                  area: '',
+                                  customer: '',
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  outlet: '',
+                                  route: '',
+                                  subArea: '',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  userId: widget.user.usrId),
+                              searchQuery: ''));
                         },
                         child: const Icon(
                           Icons.close,
