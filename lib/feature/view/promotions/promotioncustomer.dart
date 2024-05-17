@@ -61,10 +61,10 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                     context
                         .read<PromotionDetailsBloc>()
                         .add(const GetPromotionDetailsEvent(id: "1"));
-                    Navigator.pushReplacement(
+                    /*Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PromotionDetails()));
+                            builder: (context) =>  PromotionDetails()));*/
                   },
                   child: SizedBox(
                     height: 75,

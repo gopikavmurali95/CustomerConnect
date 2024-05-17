@@ -16,6 +16,7 @@ import 'package:customer_connect/feature/view/returnapproval/returnapprovalheade
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -87,9 +88,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/pc.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/pc.png",
+                                  height: 17.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -138,9 +142,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/pd.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: Image.asset(
+                                  "assets/images/pd.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -198,9 +205,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/sr.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/sr.png",
+                                  height: 17.5.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -249,9 +259,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/rtn.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/rtn.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -308,9 +321,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/dr.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/dr.png",
+                                  height: 17.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -359,9 +375,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/cr.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/cr.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -420,9 +439,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/aa.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/aa.png",
+                                  height: 17.2.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -471,9 +493,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/aa.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/ar2.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -533,9 +558,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/vv.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/vv.png",
+                                  height: 17.2.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -585,9 +613,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/lt.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/lt.png",
+                                  height: 15.5.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -645,9 +676,12 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/jp.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/jp.png",
+                                  height: 17.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -698,17 +732,23 @@ class ApprovalScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/fs.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/fs.png",
+                                  height: 18.3.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Field Service Invoice",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  "Field Service Invoice",
+                                  style: headTextStyle(),
+                                ),
                               )
                             ],
                           ),
@@ -721,498 +761,6 @@ class ApprovalScreen extends StatelessWidget {
             ),
           ],
         ),
-
-        /*Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  //height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/customer.png",
-                          height: 15.h,
-                        ),
-                        // SvgPicture.asset("assets/images/os.png",height: 20,
-                        //   fit: BoxFit.scaleDown,),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Return",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              
-              
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Dispute Note",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              InkWell(
-                onTap: () {
-                 
-                },
-                child: Container(
-                  //height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/os.png",
-                          height: 15.h,
-                        ),
-                        // fit: BoxFit.scaleDown,),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Credit Note",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                 
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Scheduled Return",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AssetAddingApprovalHeaderScreen(
-                        user: user,
-                      ),
-                    ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Asset Adding",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Asset Removal",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Field Service Invoice",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<VanToVanHeaderBloc>()
-                      .add(const getVanToVanHeaderEvent(userID: '49'));
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VanToVanApprovalHeader(),
-                    ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Van To Van Approval",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Load Transfer",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Journey Plan",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MaterialRequestHeaderScreen(
-                        user: user,
-                      ),
-                    ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Material Request",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),*/
       ),
     );
   }

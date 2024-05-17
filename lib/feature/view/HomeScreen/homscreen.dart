@@ -148,9 +148,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/customer.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/customer.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // SvgPicture.asset("assets/images/os.png",height: 20,
                               //   fit: BoxFit.scaleDown,),
@@ -183,12 +186,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 spPriceInparas: SpecialPriceHeaderModel(
                                     area: '',
                                     customer: '',
-                                    fromDate: '01/01/2023',
+                                    fromDate: '01/01/2024',
                                     mode: '',
                                     outlet: '',
                                     route: '',
                                     subArea: '',
-                                    toDate: '30/03/2024',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     userId: widget.user.usrId),
                                 searchQuery: ''));
                         Navigator.push(
@@ -217,9 +221,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/file.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/file.png",
+                                  height: 15.5.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -274,9 +281,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/pro.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/pro.png",
+                                  height: 17.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -326,9 +336,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/os.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/os.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(
@@ -384,9 +397,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/apvl.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/apvl.png",
+                                  height: 17.h,
+                                ),
                               ),
                               SizedBox(
                                 width: 8.w,
@@ -426,9 +442,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/ts.png",
-                                height: 15.h,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/ts.png",
+                                  height: 17.h,
+                                ),
                               ),
                               // fit: BoxFit.scaleDown,),
                               SizedBox(

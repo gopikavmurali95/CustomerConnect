@@ -1,9 +1,13 @@
 import 'dart:async';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +16,8 @@ import '../specialpricingcustomer.dart';
 
 class SpecialPricing extends StatefulWidget {
   final LoginUserModel user;
-  const SpecialPricing({super.key, required this.user});
+  final SpecialPriceHeaderOutparas spPrice;
+  const SpecialPricing({super.key, required this.user, required this.spPrice});
 
   @override
   State<SpecialPricing> createState() => _SpecialPricingState();
@@ -63,7 +68,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  'AL',
+                                  widget.spPrice.prhName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -81,22 +86,27 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                     MaterialPageRoute(
                                         builder: (context) => SpecialPricing(
                                               user: widget.user,
+                                              spPrice: widget.spPrice,
                                             )));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Special Pricing 01',
-                                    style: blueTextStyle(),
+                                  SizedBox(
+                                    width: 190.w,
+                                    child: Text(
+                                      widget.spPrice.prhName ?? '',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: blueTextStyle(),
+                                    ),
                                   ),
                                   Text(
-                                    '21 Feb 2021 to 24 Feb 2021',
+                                    '${widget.spPrice.startDate} To ${widget.spPrice.endDate}',
                                     style: subTextStyle(),
                                   ),
                                   Text(
-                                    'PR10021',
+                                    widget.spPrice.prhCode ?? '',
                                     style: subTextStyle(),
                                   )
                                 ],
@@ -222,7 +232,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                 .add(const ClearSpecialriceDetailsEvent());
                             context.read<SpecialPriceDetailsBloc>().add(
                                 GetSpecialPriceDetailsEvent(
-                                    prhID: '1', searchQuery: value.trim()));
+                                    prhID: widget.spPrice.prhId ?? '',
+                                    searchQuery: value.trim()));
                           },
                         );
                       },
@@ -238,8 +249,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                   .read<SpecialPriceDetailsBloc>()
                                   .add(const ClearSpecialriceDetailsEvent());
                               context.read<SpecialPriceDetailsBloc>().add(
-                                  const GetSpecialPriceDetailsEvent(
-                                      prhID: "1", searchQuery: ''));
+                                  GetSpecialPriceDetailsEvent(
+                                      prhID: widget.spPrice.prhId ?? '',
+                                      searchQuery: ''));
                             },
                             child: const Icon(
                               Icons.close,
@@ -269,55 +281,55 @@ class _SpecialPricingState extends State<SpecialPricing> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 30,
-              color: Colors.grey.shade200,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 110),
-                    child: Text(
-                      "Items",
-                      style: boxHeading(),
-                    ),
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 30,
+            color: Colors.grey.shade200,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 110),
+                  child: Text(
+                    "Items",
+                    style: boxHeading(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 42),
-                    child: Text(
-                      "UOM",
-                      style: boxHeading(),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 42),
+                  child: Text(
+                    "UOM",
+                    style: boxHeading(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Std Price",
-                      style: boxHeading(),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    "Std Price",
+                    style: boxHeading(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
-                      "Spcl Price",
-                      style: boxHeading(),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    "Spcl Price",
+                    style: boxHeading(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            BlocBuilder<SpecialPriceDetailsBloc, SpecialPriceDetailsState>(
-              builder: (context, state) {
-                return state.when(
-                  getSpecialPriceDetailsState: (spPrice) => spPrice == null
-                      ? Padding(
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          BlocBuilder<SpecialPriceDetailsBloc, SpecialPriceDetailsState>(
+            builder: (context, state) {
+              return state.when(
+                getSpecialPriceDetailsState: (spPrice) => spPrice == null
+                    ? Expanded(
+                        child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: ListView.separated(
                               physics: const NeverScrollableScrollPhysics(),
@@ -329,10 +341,13 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                     color: Colors.grey[300],
                                   ),
                               itemCount: 10),
-                        )
-                      : ListView.separated(
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.separated(
                           itemCount: spPrice.length,
-                          shrinkWrap: true,
+                          // physics: const NeverScrollableScrollPhysics(),
+                          // shrinkWrap: true,
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: [
@@ -439,17 +454,17 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             );
                           },
                         ),
-                  specialPriceDetailsFailedState: () => Center(
-                    child: Text(
-                      'NoData Available',
-                      style: kfontstyle(),
-                    ),
+                      ),
+                specialPriceDetailsFailedState: () => Center(
+                  child: Text(
+                    'NoData Available',
+                    style: kfontstyle(),
                   ),
-                );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

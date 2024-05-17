@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,10 +38,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
             area: '',
             cusOutlet: '',
             customer: '',
-            fromDate: '01-01-2023',
+            fromDate: '01-01-2024',
             route: '',
             subArea: '',
-            toDate: '29-03-2024',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             userId: widget.user.usrId),
         searchQuery: ''));
     super.initState();
@@ -113,10 +115,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                   area: '',
                                   cusOutlet: '',
                                   customer: '',
-                                  fromDate: '01-01-2023',
+                                  fromDate: '01-01-2024',
                                   route: '',
                                   subArea: '',
-                                  toDate: '01-05-2024',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                   userId: widget.user.usrId,
                                 ),
                                 searchQuery: value.trim()));
@@ -140,10 +143,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                       area: '',
                                       cusOutlet: '',
                                       customer: '',
-                                      fromDate: '01-01-2023',
+                                      fromDate: '01-01-2024',
                                       route: '',
                                       subArea: '',
-                                      toDate: '01-05-2024',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       userId: widget.user.usrId),
                                   searchQuery: ''));
                         },
@@ -205,7 +209,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                   style: countHeading(),
                                 ),
                                 Text(
-                                  '7',
+                                  promoheader.length.toString(),
                                   style: countHeading(),
                                 ),
                               ],
@@ -216,61 +220,68 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                             ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: 7,
+                                itemCount: promoheader.length,
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [
-                                      SizedBox(
-                                        //color: Colors.red,
-                                        height: 60,
-                                        width: double.infinity,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                              child: Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundColor:
-                                                        const Color(0xffB3DAF7),
-                                                    child: Center(
-                                                      child: Text(
-                                                        'AL',
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Colors.white),
+                                      InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<PromotionCustomerBloc>()
+                                              .add(
+                                                  const ClearOromotionCustomer());
+                                          context
+                                              .read<PromotionCustomerBloc>()
+                                              .add(
+                                                  const GetPromotionCustomerEvent(
+                                                      id: '1',
+                                                      searchQuery: ''));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const PromotionCustomer()));
+                                        },
+                                        child: SizedBox(
+                                          //color: Colors.red,
+                                          height: 60,
+                                          width: double.infinity,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                child: Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0xffB3DAF7),
+                                                      child: Center(
+                                                        child: Text(
+                                                          promoheader[index]
+                                                                      .pName ==
+                                                                  null
+                                                              ? 'D'
+                                                              : promoheader[
+                                                                      index]
+                                                                  .pName!
+                                                                  .split('')
+                                                                  .toList()[0],
+                                                          style: TextStyle(
+                                                              fontSize: 14.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15.w,
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      context
-                                                          .read<
-                                                              PromotionCustomerBloc>()
-                                                          .add(
-                                                              const ClearOromotionCustomer());
-                                                      context
-                                                          .read<
-                                                              PromotionCustomerBloc>()
-                                                          .add(
-                                                              const GetPromotionCustomerEvent(
-                                                                  id: '1',
-                                                                  searchQuery:
-                                                                      ''));
-                                                      Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  const PromotionCustomer()));
-                                                    },
-                                                    child: Column(
+                                                    SizedBox(
+                                                      width: 15.w,
+                                                    ),
+                                                    Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .center,
@@ -279,61 +290,66 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Amount Off Line item',
+                                                          '${promoheader[index].pName}',
                                                           style:
                                                               blueTextStyle(),
                                                         ),
                                                         Text(
-                                                          '21 Feb 2021 to 24 Feb 2021',
+                                                          '${promoheader[index].dateRange}',
                                                           style: subTextStyle(),
                                                         ),
                                                         Text(
-                                                          'PR10021',
+                                                          '${promoheader[index].pCode}',
                                                           style: subTextStyle(),
                                                         )
                                                       ],
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                context
-                                                    .read<
-                                                        PromotionDetailsBloc>()
-                                                    .add(
-                                                        const ClearPromotionDetails());
-                                                context
-                                                    .read<
-                                                        PromotionDetailsBloc>()
-                                                    .add(
-                                                        const GetPromotionDetailsEvent(
-                                                            id: '1'));
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const PromotionDetails()));
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Details',
-                                                    style: TextStyle(
-                                                        fontSize: 10.sp),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5.w,
-                                                  ),
-                                                  const Icon(
-                                                    Icons.keyboard_arrow_right,
-                                                    size: 18,
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ],
+                                              GestureDetector(
+                                                onTap: () {
+                                                  context
+                                                      .read<
+                                                          PromotionDetailsBloc>()
+                                                      .add(
+                                                          const ClearPromotionDetails());
+                                                  context
+                                                      .read<
+                                                          PromotionDetailsBloc>()
+                                                      .add(
+                                                          const GetPromotionDetailsEvent(
+                                                              id: '1'));
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PromotionDetails(
+                                                                promotion:
+                                                                    promoheader[
+                                                                        index],
+                                                              )));
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'Details',
+                                                      style: TextStyle(
+                                                          fontSize: 10.sp),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5.w,
+                                                    ),
+                                                    const Icon(
+                                                      Icons
+                                                          .keyboard_arrow_right,
+                                                      size: 18,
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       Divider(

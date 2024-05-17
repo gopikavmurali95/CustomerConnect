@@ -445,7 +445,7 @@ class CusTransNavWIdget extends StatelessWidget {
                 Text(
                   count,
                   style: kfontstyle(
-                    fontSize: 16.sp,
+                    fontSize: 11.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black87,
                   ),

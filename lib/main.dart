@@ -78,6 +78,7 @@ import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_c
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -402,8 +403,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MaterialReqHeadBloc>(),
         ),
-        BlocProvider(create: (context) => getit<MaterialReqDetailBloc>(),
-        )
+        BlocProvider(
+          create: (context) => getit<MaterialReqDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InvoiceDetailsTotalCubit>(),
+        ),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(

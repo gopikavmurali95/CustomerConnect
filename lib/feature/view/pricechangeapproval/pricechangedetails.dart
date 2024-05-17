@@ -13,6 +13,7 @@ import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -288,19 +289,22 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
-                                            Text(
-                                              pdet[index].prdName ?? '',
-                                              style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black54),
+                                            SizedBox(
+                                              width: 200.w,
+                                              child: Text(
+                                                pdet[index].prdName ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 145.w,
-                                      ),
+                                      // SizedBox(
+                                      //   width: 145.w,
+                                      // ),
                                       Column(
                                         children: [
                                           Text(

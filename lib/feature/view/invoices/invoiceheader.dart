@@ -35,7 +35,8 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             area: '',
             customer: '',
             customerOutlet: '',
-            fromDate: '1-04-2024',
+            fromDate:
+                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             invoiceType: '',
