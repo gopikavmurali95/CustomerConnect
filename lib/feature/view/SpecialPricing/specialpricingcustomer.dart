@@ -115,14 +115,14 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.push(
+                              /*Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => SpecialPricing(
                                     user: widget.user,
                                   ),
                                 ),
-                              );
+                              );*/
                             },
                             child: Text(
                               'Details',
@@ -134,14 +134,14 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
+                              /*Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => SpecialPricing(
                                     user: widget.user,
                                   ),
                                 ),
-                              );
+                              );*/
                             },
                             child: const Icon(
                               Icons.keyboard_arrow_right,

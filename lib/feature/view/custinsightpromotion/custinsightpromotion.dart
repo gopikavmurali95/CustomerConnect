@@ -430,11 +430,11 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                               ),
                                               GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(
+                                                  /* Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const PromotionDetails()));
+                                                              const PromotionDetails()));*/
                                                 },
                                                 child: Row(
                                                   children: [
