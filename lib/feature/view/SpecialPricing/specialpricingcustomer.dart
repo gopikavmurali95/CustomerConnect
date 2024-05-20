@@ -212,7 +212,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 size: 14,
                               ),
                             ),
-                            hintText: "Search Customers",
+                            hintText: "Search here..",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,

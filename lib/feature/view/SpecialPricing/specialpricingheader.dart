@@ -130,7 +130,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search promotions",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

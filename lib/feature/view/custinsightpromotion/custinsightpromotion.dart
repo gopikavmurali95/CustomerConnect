@@ -266,7 +266,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                             ),
                           ],
                         ),
-                        hintText: "Search Promotions",
+                        hintText: "Search here..",
                         hintStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,

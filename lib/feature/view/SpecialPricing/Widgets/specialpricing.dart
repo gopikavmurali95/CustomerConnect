@@ -258,7 +258,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search Items",
+                          hintText: "Search here..",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

@@ -156,7 +156,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search promotions",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

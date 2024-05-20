@@ -17,7 +17,7 @@ class CusProfileRepo implements ICusProfileRepo {
       final response = await http.post(Uri.parse(baseUrl + cusProfileUrl),
           body: {"UserID": userId, "cus_ID": cusId});
       if (response.statusCode == 200) {
-        // log(response.body);
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusprofile = CuSProfileModel.fromJson(json["result"][0]);
         return right(cusprofile);

@@ -184,7 +184,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search customers",
+                          hintText: "Search here..",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

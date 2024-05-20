@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovaldetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
@@ -7,7 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VanToVanApprovalHeader extends StatefulWidget {
-  const VanToVanApprovalHeader({super.key});
+  final LoginUserModel user;
+  const VanToVanApprovalHeader({super.key, required this.user});
 
   @override
   State<VanToVanApprovalHeader> createState() => _VanToVanApprovalHeaderState();
@@ -67,6 +69,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                   VanToVanApprovalDetails(
                                                     vanToVanHeader:
                                                         pChange[index],
+                                                    user: widget.user,
                                                   )));
                                     },
                                     child: Row(

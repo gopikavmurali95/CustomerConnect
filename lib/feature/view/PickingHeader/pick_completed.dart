@@ -119,7 +119,7 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                       Icons.search,
                       size: 20,
                     ),
-                    hintText: "Search Deliveries",
+                    hintText: "Search here..",
                     hintStyle: TextStyle(
                         fontSize: 13.sp,
                         color: Colors.grey,

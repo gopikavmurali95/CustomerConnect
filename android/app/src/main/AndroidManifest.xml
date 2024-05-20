@@ -39,9 +39,29 @@ package="com.example.customer_connect">
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
+        <!-- To open phone's dialer app -->
         <intent>
-            <action android:name="android.intent.action.PROCESS_TEXT"/>
-            <data android:mimeType="text/plain"/>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
         </intent>
+        <!-- To send SMS messages -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
+        </intent>
+        <!-- To open email app -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="/" />
+        </intent>
+          <!-- To opens https URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+
+        
+        <package android:name="com.whatsapp" />s
     </queries>
+    
 </manifest>

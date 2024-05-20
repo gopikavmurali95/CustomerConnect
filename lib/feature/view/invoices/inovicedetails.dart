@@ -28,7 +28,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
   @override
   void initState() {
     _invoiceDetailsSearchCtrl.clear();
-    context.read<InvoiceDetailsTotalCubit>().getInvTotal([]);
+    // context.read<InvoiceDetailsTotalCubit>().getInvTotal([]);
     context.read<InvoiceDetailsBloc>().add(const ClearInvoiceDetails());
     context.read<InvoiceDetailsBloc>().add(
         GetInvoiceDetailsEvent(id: widget.invoiceheader.id!, searchQuery: ''));
@@ -360,7 +360,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
-                  BlocBuilder<InvoiceDetailsTotalCubit,
+                  /*BlocBuilder<InvoiceDetailsTotalCubit,
                       InvoiceDetailsTotalState>(
                     builder: (context, state) {
                       return Text(
@@ -369,6 +369,11 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             fontSize: 12.sp, fontWeight: FontWeight.w600),
                       );
                     },
+                  )*/
+                  Text(
+                    widget.invoiceheader.grandTotal ?? '',
+                    style:
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),

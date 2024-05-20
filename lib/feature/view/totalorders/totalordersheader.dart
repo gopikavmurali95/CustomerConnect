@@ -120,7 +120,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries ",
+                      hintText: "Search here.. ",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

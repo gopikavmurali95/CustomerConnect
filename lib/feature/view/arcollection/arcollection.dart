@@ -428,7 +428,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                 Icons.search,
                                 size: 20,
                               ),
-                              hintText: "Search AR Collections",
+                              hintText: "Search here..",
                               hintStyle: const TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,

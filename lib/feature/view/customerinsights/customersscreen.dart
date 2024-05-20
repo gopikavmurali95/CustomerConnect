@@ -130,7 +130,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                           ),
                         ],
                       ),
-                      hintText: "Search Customers",
+                      hintText: "Search here..",
                       hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,

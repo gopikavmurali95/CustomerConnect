@@ -235,7 +235,7 @@ class _CustomerInsightSpecialPricingState
                               ),
                             ],
                           ),
-                          hintText: "Search special pricing ",
+                          hintText: "Search here..",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
