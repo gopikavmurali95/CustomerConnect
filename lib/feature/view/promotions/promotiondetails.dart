@@ -106,8 +106,9 @@ class PromotionDetails extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const PromotionCustomer()));
+                                  builder: (context) => PromotionCustomer(
+                                        promotion: promotion,
+                                      )));
                         },
                         child: Row(
                           children: [

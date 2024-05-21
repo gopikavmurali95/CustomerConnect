@@ -3,7 +3,9 @@ import 'package:customer_connect/feature/data/models/total_orders_model/total_or
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -90,15 +92,41 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                 ),
                                                 Column(
                                                   children: [
-                                                    Text(orderdetails[index]
-                                                            .oddLowerUom ??
-                                                        ''),
+                                                    Visibility(
+                                                      visible: orderdetails[
+                                                                          index]
+                                                                      .oddHigherUom ==
+                                                                  null ||
+                                                              orderdetails[
+                                                                      index]
+                                                                  .oddHigherUom!
+                                                                  .isEmpty
+                                                          ? false
+                                                          : true,
+                                                      child: Text(orderdetails[
+                                                                  index]
+                                                              .oddHigherUom ??
+                                                          ''),
+                                                    ),
                                                     SizedBox(
                                                       height: 5.h,
                                                     ),
-                                                    Text(orderdetails[index]
-                                                            .oddHigherUom ??
-                                                        ''),
+                                                    Visibility(
+                                                      visible: orderdetails[
+                                                                          index]
+                                                                      .oddLowerUom ==
+                                                                  null ||
+                                                              orderdetails[
+                                                                      index]
+                                                                  .oddLowerUom!
+                                                                  .isEmpty
+                                                          ? false
+                                                          : true,
+                                                      child: Text(orderdetails[
+                                                                  index]
+                                                              .oddLowerUom ??
+                                                          ''),
+                                                    ),
                                                   ],
                                                 ),
                                                 SizedBox(
@@ -107,13 +135,13 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                 Column(
                                                   children: [
                                                     Text(orderdetails[index]
-                                                            .oddLowerQty ??
+                                                            .oddHigherQty ??
                                                         ''),
                                                     SizedBox(
                                                       height: 5.h,
                                                     ),
                                                     Text(orderdetails[index]
-                                                            .oddHigherQty ??
+                                                            .oddLowerQty ??
                                                         ''),
                                                   ],
                                                 ),

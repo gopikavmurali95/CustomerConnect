@@ -1,5 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SPCustomerList extends StatelessWidget {
@@ -7,53 +11,93 @@ class SPCustomerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: const Color(0xffB3DAF7),
-                  child: Center(
-                    child: Text(
-                      'FG',
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+    return BlocBuilder<SpecialPriceCustomersBloc, SpecialPriceCustomersState>(
+      builder: (context, state) {
+        return state.when(
+          getSpecialPriceCustomers: (customer) => customer == null
+              ? Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
                   ),
+                )
+              : Expanded(
+                  child: ListView.builder(
+                      itemCount: 8,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: const Color(0xffB3DAF7),
+                                child: Center(
+                                  child: Text(
+                                    customer[index]
+                                        .cusName!
+                                        .split('')
+                                        .toList()[0],
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              title: Row(
+                                children: [
+                                  Text(
+                                    customer[index].cusCode!,
+                                    style: blueTextStyle(),
+                                  ),
+                                  Expanded(
+                                    child: Text(' -${customer[index].cusName}',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: subTitleTextStyle()),
+                                  )
+                                ],
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 250.w,
+                                    child: Text(
+                                      '${customer[index].cusCode} - ${customer[index].cusName}',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: subTitleTextStyle(),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Virtual | Supermarket | Dubai',
+                                    style: statusTextStyle(),
+                                  )
+                                ],
+                              ),
+                            ),
+                            const Divider()
+                          ],
+                        );
+                      }),
                 ),
-                title: Row(
-                  children: [
-                    Text(
-                      'A02526',
-                      style: blueTextStyle(),
-                    ),
-                    Text(' -Tramp, Muller and Mitchel',
-                        style: subTitleTextStyle())
-                  ],
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '199521 - Carrefour Hypermarket',
-                      style: subTitleTextStyle(),
-                    ),
-                    Text(
-                      'Virtual | Supermarket | Dubai',
-                      style: statusTextStyle(),
-                    )
-                  ],
-                ),
+          specialPriceCustomersFailedState: () => SizedBox(
+            height: 400.h,
+            child: Center(
+              child: Text(
+                'No data Available',
+                style: kfontstyle(),
               ),
-              const Divider()
-            ],
-          );
-        });
+            ),
+          ),
+        );
+      },
+    );
   }
 }

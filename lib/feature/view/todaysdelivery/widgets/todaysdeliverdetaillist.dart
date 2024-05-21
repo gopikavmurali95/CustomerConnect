@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +54,7 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '40047977',
+                                                    delDetails[index].prhCode!,
                                                     style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(
@@ -62,13 +63,18 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                           FontWeight.w600,
                                                     ),
                                                   ),
-                                                  Text(
-                                                    'Divella Farfalle farfalle pasta Offer pack',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                  Expanded(
+                                                    child: Text(
+                                                      delDetails[index]
+                                                          .prhName!,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],

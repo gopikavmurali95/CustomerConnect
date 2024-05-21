@@ -1,11 +1,13 @@
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
-import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricing.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricingdetails.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/specialpricingcustomer.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,6 +15,7 @@ import '../../../../constants/fonts.dart';
 
 class SpPrHeaderList extends StatelessWidget {
   final LoginUserModel user;
+
   const SpPrHeaderList({super.key, required this.user});
 
   @override
@@ -85,7 +88,7 @@ class SpPrHeaderList extends StatelessWidget {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        SpecialPricing(
+                                                        SpecialPricingCustomer(
                                                           user: user,
                                                           spPrice:
                                                               spHeader[index],
@@ -120,54 +123,44 @@ class SpPrHeaderList extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  GestureDetector(
-                                    // onTap: () {
-                                    //   Navigator.push(
-                                    //       context,
-                                    //       MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //           const PromotionDetails()));
-                                    // },
-                                    child: Row(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {
-                                            context
-                                                .read<SpecialPriceDetailsBloc>()
-                                                .add(
-                                                    const ClearSpecialriceDetailsEvent());
-                                            context
-                                                .read<SpecialPriceDetailsBloc>()
-                                                .add(
-                                                    GetSpecialPriceDetailsEvent(
-                                                        prhID: spHeader[index]
-                                                                .prhId ??
-                                                            '',
-                                                        searchQuery: ''));
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        SpecialPricing(
-                                                          user: user,
-                                                          spPrice:
-                                                              spHeader[index],
-                                                        )));
-                                          },
-                                          child: Text(
-                                            'Details',
-                                            style: TextStyle(fontSize: 10.sp),
-                                          ),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<SpecialPriceDetailsBloc>()
+                                              .add(
+                                                  const ClearSpecialriceDetailsEvent());
+                                          context
+                                              .read<SpecialPriceDetailsBloc>()
+                                              .add(GetSpecialPriceDetailsEvent(
+                                                  prhID:
+                                                      spHeader[index].prhId ??
+                                                          '',
+                                                  searchQuery: ''));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SpecialPricing(
+                                                        user: user,
+                                                        spPrice:
+                                                            spHeader[index],
+                                                      )));
+                                        },
+                                        child: Text(
+                                          'Details',
+                                          style: TextStyle(fontSize: 10.sp),
                                         ),
-                                        SizedBox(
-                                          width: 5.w,
-                                        ),
-                                        const Icon(
-                                          Icons.keyboard_arrow_right,
-                                          size: 18,
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      const Icon(
+                                        Icons.keyboard_arrow_right,
+                                        size: 18,
+                                      )
+                                    ],
                                   )
                                 ],
                               ),

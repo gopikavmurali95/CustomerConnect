@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
+
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
 
@@ -12,6 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SpecialPricingHeader extends StatefulWidget {
   final LoginUserModel user;
+
   const SpecialPricingHeader({super.key, required this.user});
 
   @override

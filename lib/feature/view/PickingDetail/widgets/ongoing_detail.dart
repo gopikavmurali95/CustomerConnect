@@ -1,6 +1,8 @@
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -54,14 +56,15 @@ class OngoingDetail extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text("400478754",
+                                        Text(pdetailList[index].prdCode ?? '',
                                             style: loadTextStyle()),
                                         Text(
-                                          "How are the Pasta 500g",
+                                          pdetailList[index].prdName ?? '',
                                           style: subTitleTextStyle(),
                                         ),
                                         Text(
-                                          "Offer Pack",
+                                          pdetailList[index].prdDescription ??
+                                              '',
                                           style: subTitleTextStyle(),
                                         ),
                                       ],
@@ -72,16 +75,35 @@ class OngoingDetail extends StatelessWidget {
                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Cs",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible:
+                                          pdetailList[index].pkdHigherUom ==
+                                                      null ||
+                                                  pdetailList[index]
+                                                      .pkdHigherUom!
+                                                      .isEmpty
+                                              ? false
+                                              : true,
+                                      child: Text(
+                                        pdetailList[index].pkdHigherUom ?? '',
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "Cs",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible: pdetailList[index].pkdLowerUom ==
+                                                  null ||
+                                              pdetailList[index]
+                                                  .pkdLowerUom!
+                                                  .isEmpty
+                                          ? false
+                                          : true,
+                                      child: Text(
+                                        pdetailList[index].pkdLowerUom!,
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -92,14 +114,14 @@ class OngoingDetail extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "2",
+                                        pdetailList[index].pkdPickedHQty!,
                                         style: subTitleTextStyle(),
                                       ),
                                       const SizedBox(
                                         height: 5,
                                       ),
                                       Text(
-                                        "1",
+                                        pdetailList[index].pkdPickedLQty!,
                                         style: subTitleTextStyle(),
                                       ),
                                     ],

@@ -52,7 +52,7 @@ package="com.example.customer_connect">
         <!-- To open email app -->
         <intent>
             <action android:name="android.intent.action.SEND" />
-            <data android:mimeType="/" />
+            <data android:mimeType="*/*" />
         </intent>
           <!-- To opens https URLs -->
         <intent>
@@ -61,7 +61,8 @@ package="com.example.customer_connect">
         </intent>
 
         
-        <package android:name="com.whatsapp" />s
+        
+        <package android:name="com.whatsapp" />
     </queries>
     
 </manifest>

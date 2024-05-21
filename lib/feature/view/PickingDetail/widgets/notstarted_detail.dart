@@ -1,4 +1,5 @@
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,16 +68,35 @@ class NotStartedDetail extends StatelessWidget {
                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "${pdetailList[index].pkdHigherUom}",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible:
+                                          pdetailList[index].pkdHigherUom ==
+                                                      null ||
+                                                  pdetailList[index]
+                                                      .pkdHigherUom!
+                                                      .isEmpty
+                                              ? false
+                                              : true,
+                                      child: Text(
+                                        "${pdetailList[index].pkdHigherUom}",
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "${pdetailList[index].pkdLowerUom}",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible: pdetailList[index].pkdLowerUom ==
+                                                  null ||
+                                              pdetailList[index]
+                                                  .pkdLowerUom!
+                                                  .isEmpty
+                                          ? false
+                                          : true,
+                                      child: Text(
+                                        "${pdetailList[index].pkdLowerUom}",
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                   ],
                                 ),

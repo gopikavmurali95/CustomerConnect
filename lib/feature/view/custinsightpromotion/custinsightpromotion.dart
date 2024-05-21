@@ -388,12 +388,12 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        Navigator.push(
+                                                        /* Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        const PromotionCustomer()));
+                                                                        const PromotionCustomer())); */
                                                       },
                                                       child: Column(
                                                         mainAxisAlignment:
@@ -434,7 +434,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const PromotionDetails()));*/
+                                                               PromotionDetails(promotion: headers[index],))); */
                                                 },
                                                 child: Row(
                                                   children: [

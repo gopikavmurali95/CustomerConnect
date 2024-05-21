@@ -2,7 +2,9 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -104,24 +106,44 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                           ),
                                           Column(
                                             children: [
-                                              Text(
-                                                invdetails[index].higherUom ??
-                                                    '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w400),
+                                              Visibility(
+                                                visible: invdetails[index]
+                                                                .higherUom ==
+                                                            null ||
+                                                        invdetails[index]
+                                                            .higherUom!
+                                                            .isEmpty
+                                                    ? false
+                                                    : true,
+                                                child: Text(
+                                                  invdetails[index].higherUom ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: 5.h,
                                               ),
-                                              Text(
-                                                invdetails[index].lowerUom ??
-                                                    '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    fontWeight:
-                                                        FontWeight.w400),
+                                              Visibility(
+                                                visible: invdetails[index]
+                                                                .lowerUom ==
+                                                            null ||
+                                                        invdetails[index]
+                                                            .lowerUom!
+                                                            .isEmpty
+                                                    ? false
+                                                    : true,
+                                                child: Text(
+                                                  invdetails[index].lowerUom ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
                                               ),
                                             ],
                                           ),
