@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerlist.dart';
-import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

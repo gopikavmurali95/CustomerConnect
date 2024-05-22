@@ -1,20 +1,24 @@
 import 'dart:convert';
 
-MaterialReqDetailModel materialReqDetailModelFromJson(String str) => MaterialReqDetailModel.fromJson(json.decode(str));
-String materialReqDetailModelToJson(MaterialReqDetailModel data) => json.encode(data.toJson());
+MaterialReqDetailModel materialReqDetailModelFromJson(String str) =>
+    MaterialReqDetailModel.fromJson(json.decode(str));
+String materialReqDetailModelToJson(MaterialReqDetailModel data) =>
+    json.encode(data.toJson());
+
 class MaterialReqDetailModel {
   MaterialReqDetailModel({
-      this.mrdID, 
-      this.mrdMrhID, 
-      this.prdID, 
-      this.prdCode, 
-      this.prdName, 
-      this.reqHUOM, 
-      this.reqLUOM, 
-      this.requestedHQty, 
-      this.requestedLQty, 
-      this.adjustedHQty, 
-      this.adjustedLQty,});
+    this.mrdID,
+    this.mrdMrhID,
+    this.prdID,
+    this.prdCode,
+    this.prdName,
+    this.reqHUOM,
+    this.reqLUOM,
+    this.requestedHQty,
+    this.requestedLQty,
+    this.adjustedHQty,
+    this.adjustedLQty,
+  });
 
   MaterialReqDetailModel.fromJson(dynamic json) {
     mrdID = json['mrd_ID'];
@@ -56,5 +60,4 @@ class MaterialReqDetailModel {
     map['AdjustedLQty'] = adjustedLQty;
     return map;
   }
-
 }

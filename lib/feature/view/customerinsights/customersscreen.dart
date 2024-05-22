@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +22,8 @@ class CustomersScren extends StatefulWidget {
 }
 
 final _customerSearchCtrl = TextEditingController();
+final _routeIDCtrl = TextEditingController();
+
 Timer? debounce;
 bool isSearchLoading = false;
 
@@ -26,13 +31,12 @@ class _CustomersScrenState extends State<CustomersScren> {
   @override
   void initState() {
     _customerSearchCtrl.clear();
+    _routeIDCtrl.clear();
+
+    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
-    context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-        userId: widget.user.usrId ?? '',
-        area: '',
-        subarea: '',
-        route: '',
-        searchQuery: ''));
+    context.read<GetAllRouteBloc>().add(const ClearAllRouteEvent());
+
     super.initState();
   }
 
@@ -83,17 +87,19 @@ class _CustomersScrenState extends State<CustomersScren> {
                         milliseconds: 500,
                       ),
                       () async {
-                        isSearchLoading = true;
-                        context
-                            .read<CustomerSearchLoadingCubit>()
-                            .addSearchLoadingEvent();
-                        context.read<CustomersListBlocBloc>().add(
-                            GetCustomersEvent(
-                                userId: widget.user.usrId ?? '',
-                                area: '',
-                                subarea: '',
-                                route: '',
-                                searchQuery: value.trim()));
+                        if (_routeIDCtrl.text != '-1') {
+                          isSearchLoading = true;
+                          context
+                              .read<CustomerSearchLoadingCubit>()
+                              .addSearchLoadingEvent();
+                          context.read<CustomersListBlocBloc>().add(
+                              GetCustomersEvent(
+                                  userId: widget.user.usrId ?? '',
+                                  area: '',
+                                  subarea: '',
+                                  route: _routeIDCtrl.text,
+                                  searchQuery: value.trim()));
+                        }
                       },
                     );
                   },
@@ -109,18 +115,20 @@ class _CustomersScrenState extends State<CustomersScren> {
                           Expanded(
                             child: IconButton(
                               onPressed: () {
-                                _customerSearchCtrl.clear();
-                                isSearchLoading = true;
-                                context
-                                    .read<CustomerSearchLoadingCubit>()
-                                    .addSearchLoadingEvent();
-                                context.read<CustomersListBlocBloc>().add(
-                                    GetCustomersEvent(
-                                        userId: widget.user.usrId ?? '',
-                                        area: '',
-                                        subarea: '',
-                                        route: '',
-                                        searchQuery: ''));
+                                if (_routeIDCtrl.text != '-1') {
+                                  _customerSearchCtrl.clear();
+                                  isSearchLoading = true;
+                                  context
+                                      .read<CustomerSearchLoadingCubit>()
+                                      .addSearchLoadingEvent();
+                                  context.read<CustomersListBlocBloc>().add(
+                                      GetCustomersEvent(
+                                          userId: widget.user.usrId ?? '',
+                                          area: '',
+                                          subarea: '',
+                                          route: _routeIDCtrl.text,
+                                          searchQuery: ''));
+                                }
                               },
                               icon: Icon(
                                 Icons.close,
@@ -175,12 +183,99 @@ class _CustomersScrenState extends State<CustomersScren> {
         child: Column(
           children: [
             Row(
+              children: [
+                Expanded(
+                  child: BlocBuilder<GetAllRouteBloc, GetAllRouteState>(
+                    builder: (context, state) {
+                      return state.when(
+                        getAllRoutesSuccessState: (routes) => routes == null
+                            ? Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                child: ShimmerContainers(
+                                    height: 40.h, width: double.infinity),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          color: Colors.grey.shade200),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            // ignore: use_full_hex_values_for_flutter_colors
+                                            color: Color(0xff00000050),
+                                            blurRadius: 0.4,
+                                            spreadRadius: 0.4)
+                                      ]),
+                                  child: DropdownButtonFormField(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    dropdownColor: Colors.white,
+                                    value: routes[0].rotId ?? '',
+                                    style: kfontstyle(color: Colors.black),
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                    ),
+                                    items: routes.map((CuSInsRotList item) {
+                                      return DropdownMenuItem(
+                                        value: item.rotId,
+                                        child: Text(
+                                          overflow: TextOverflow.ellipsis,
+                                          item.rotName ?? '',
+                                          style: kfontstyle(fontSize: 11.sp),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      _routeIDCtrl.text = value!;
+                                      if (value != '-1' || value.isNotEmpty) {
+                                        context
+                                            .read<CustomersListBlocBloc>()
+                                            .add(const ClearCustomersEvent());
+                                        context
+                                            .read<CustomersListBlocBloc>()
+                                            .add(GetCustomersEvent(
+                                                userId: widget.user.usrId ?? '',
+                                                area: '',
+                                                subarea: '',
+                                                route: value,
+                                                searchQuery: ''));
+                                      } else if (value == '-1' ||
+                                          value.isEmpty) {
+                                        _routeIDCtrl.clear();
+                                        context
+                                            .read<CustomersListBlocBloc>()
+                                            .add(const ClearCustomersEvent());
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                        getAllRoutesFailedState: () => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Center(
+                            child: Text(
+                              'No routes available',
+                              style: kfontstyle(),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //SizedBox(width: 05,),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
                   child: Text(
                     "Customers",
                     style: countHeading(),
@@ -207,7 +302,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                         getCustomersSstate: (customers) => customers == null
                             ? Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
+                                    left: 20.0, right: 20, top: 0),
                                 child: Text(
                                   "0",
                                   style: countHeading(),
@@ -225,7 +320,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                           padding: const EdgeInsets.only(
                               left: 20.0, right: 20, top: 10),
                           child: Text(
-                            "130",
+                            "0",
                             style: countHeading(),
                           ),
                         ),
@@ -239,10 +334,22 @@ class _CustomersScrenState extends State<CustomersScren> {
             SizedBox(
               height: 10.h,
             ),
-            Expanded(
-                child: CustomersListingWidget(
-              user: widget.user,
-            ))
+            BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
+              builder: (context, state) {
+                return Expanded(
+                    child:
+                        _routeIDCtrl.text.isEmpty || _routeIDCtrl.text == '-1'
+                            ? Center(
+                                child: Text(
+                                  'Select a Route',
+                                  style: kfontstyle(),
+                                ),
+                              )
+                            : CustomersListingWidget(
+                                user: widget.user,
+                              ));
+              },
+            )
           ],
         ),
       ),

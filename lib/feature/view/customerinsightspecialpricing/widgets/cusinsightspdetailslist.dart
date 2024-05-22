@@ -31,32 +31,33 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  spPrice[index].prdCode ?? '',
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff6E62A4),
-                                    fontWeight: FontWeight.w600,
+                          Flexible(
+                            flex: 2,
+                            fit: FlexFit.tight,
+                            child: SizedBox(
+                              // width: MediaQuery.of(context).size.width / 2.5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    spPrice[index].prdCode ?? '',
+                                    style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff6E62A4),
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  spPrice[index].prdName ?? '',
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
+                                  Text(
+                                    spPrice[index].prdName ?? '',
+                                    style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 15.h,
                           ),
                           Column(
                             children: [

@@ -36,5 +36,8 @@ class TodaysDeliveryDetailsBloc
             deliverydet: event.searchQuery.isEmpty ? r : searcheditems);
       }));
     });
+    on<ClearTodasDeliveryDetails>((event, emit) {
+      emit(const GetTodaysDeliveryDetailsState(deliverydet: null));
+    });
   }
 }

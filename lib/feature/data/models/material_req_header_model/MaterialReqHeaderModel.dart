@@ -1,22 +1,26 @@
 import 'dart:convert';
 
-MaterialReqHeaderModel materialReqHeaderModelFromJson(String str) => MaterialReqHeaderModel.fromJson(json.decode(str));
-String materialReqHeaderModelToJson(MaterialReqHeaderModel data) => json.encode(data.toJson());
+MaterialReqHeaderModel materialReqHeaderModelFromJson(String str) =>
+    MaterialReqHeaderModel.fromJson(json.decode(str));
+String materialReqHeaderModelToJson(MaterialReqHeaderModel data) =>
+    json.encode(data.toJson());
+
 class MaterialReqHeaderModel {
   MaterialReqHeaderModel({
-      this.mrhID, 
-      this.mrhNumber, 
-      this.mrhStrID, 
-      this.strName, 
-      this.mrhWarID, 
-      this.warName, 
-      this.mrhExpDate, 
-      this.createdDate, 
-      this.mrhRemarks, 
-      this.mrhStatus, 
-      this.status, 
-      this.mrhIsReOrder, 
-      this.mrhIntegrationStatus,});
+    this.mrhID,
+    this.mrhNumber,
+    this.mrhStrID,
+    this.strName,
+    this.mrhWarID,
+    this.warName,
+    this.mrhExpDate,
+    this.createdDate,
+    this.mrhRemarks,
+    this.mrhStatus,
+    this.status,
+    this.mrhIsReOrder,
+    this.mrhIntegrationStatus,
+  });
 
   MaterialReqHeaderModel.fromJson(dynamic json) {
     mrhID = json['mrh_ID'];
@@ -64,5 +68,4 @@ class MaterialReqHeaderModel {
     map['mrh_IntegrationStatus'] = mrhIntegrationStatus;
     return map;
   }
-
 }

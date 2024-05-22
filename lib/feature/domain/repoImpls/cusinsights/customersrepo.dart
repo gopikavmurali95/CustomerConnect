@@ -19,10 +19,8 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
     Completer<Either<MainFailures, List<CusInsCustomersModel>>> completer =
         Completer();
 
-    // Create a new receive port to receive response from the isolate
     ReceivePort receivePort = ReceivePort();
 
-    // Spawn a new isolate
     await Isolate.spawn(_fetchDataIsolate, {
       'userId': userId,
       'area': area,
@@ -54,7 +52,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
           'Route': message['route'],
         },
       );
-
+      // log(response.body);
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         final List<dynamic> cusdetaildata = json['result'];

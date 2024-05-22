@@ -97,4 +97,4 @@ const journeyPlanApprovalApproval = 'Journeyplanseq/PostJourneyplanseqApproval';
 const journeyPlanRejectUrl = 'Journeyplanseq/PostJourneyplanseqReject';
 const materialReqHeaderUrl = 'InventoryApproval/MaterialReqHeader';
 const materialReqDetailUrl = 'InventoryApproval/MaterialReqDetails';
-
+const allRoutesUrl = 'Home/GetRoute';

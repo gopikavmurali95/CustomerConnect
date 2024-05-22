@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TodaysDeliveryDetailsList extends StatelessWidget {
-  const TodaysDeliveryDetailsList({super.key});
+  final TodaysDeliveryHeaderModel delivery;
+  const TodaysDeliveryDetailsList({super.key, required this.delivery});
 
   @override
   Widget build(BuildContext context) {
@@ -42,48 +44,61 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
                                         child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  2,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    '40047977',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff6E62A4),
-                                                      fontWeight:
-                                                          FontWeight.w600,
+                                            Flexible(
+                                              child: SizedBox(
+                                                /*  width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    2, */
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      delDetails[index]
+                                                              .prhCode ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        color: const Color(
+                                                            0xff6E62A4),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    'Divella Farfalle farfalle pasta Offer pack',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                    Text(
+                                                      delDetails[index]
+                                                              .prhName ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: 8.h,
                                             ),
                                             Column(
                                               children: [
-                                                const Text('CS'),
+                                                Text(
+                                                  delDetails[index].hUom ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp),
+                                                ),
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
-                                                const Text('CS'),
+                                                Text(
+                                                  delDetails[index].lUom ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp),
+                                                ),
                                               ],
                                             ),
                                             SizedBox(
@@ -91,23 +106,19 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                             ),
                                             Column(
                                               children: [
-                                                const Text('1'),
+                                                Text(
+                                                  delDetails[index].hQty ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp),
+                                                ),
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
-                                                const Text('1'),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 45.h,
-                                            ),
-                                            Column(
-                                              children: [
-                                                const Text('1'),
-                                                SizedBox(
-                                                  height: 5.h,
+                                                Text(
+                                                  delDetails[index].lQty ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp),
                                                 ),
-                                                const Text('1'),
                                               ],
                                             ),
                                           ],
@@ -133,7 +144,7 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .symmetric(horizontal: 5),
                                                   child: Text(
-                                                    'AED 34.00',
+                                                    'AED ${delDetails[index].total}',
                                                     style: TextStyle(
                                                       fontSize: 10.sp,
                                                       color: Colors.black,
@@ -152,23 +163,38 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                              itemCount: 10),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                              itemCount: delDetails.length),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Column(
                               children: [
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Sub Total'),
-                                    Text('1800.00')
+                                    Text(
+                                      'Sub Total',
+                                      style: kfontstyle(fontSize: 13.sp),
+                                    ),
+                                    Text(
+                                      delivery.subTotal ?? '',
+                                      style: kfontstyle(fontSize: 13.sp),
+                                    )
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: [Text('VAT'), Text('90.00')],
+                                  children: [
+                                    Text(
+                                      'VAT',
+                                      style: kfontstyle(fontSize: 13.sp),
+                                    ),
+                                    Text(
+                                      delivery.vat ?? '',
+                                      style: kfontstyle(fontSize: 13.sp),
+                                    )
+                                  ],
                                 ),
                               ],
                             ),

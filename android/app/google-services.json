@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932640027414",
+    "project_id": "sfa-customerconnect",
+    "storage_bucket": "sfa-customerconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932640027414:android:323e324826eb1ee069d637",
+        "android_client_info": {
+          "package_name": "com.example.customer_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1inF64x3kxAHWodGHutsB1lO789APTaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

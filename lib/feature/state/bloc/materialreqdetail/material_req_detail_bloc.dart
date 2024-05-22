@@ -10,19 +10,20 @@ part 'material_req_detail_state.dart';
 part 'material_req_detail_bloc.freezed.dart';
 
 @injectable
-class MaterialReqDetailBloc extends Bloc<MaterialReqDetailEvent, MaterialReqDetailState> {
-
+class MaterialReqDetailBloc
+    extends Bloc<MaterialReqDetailEvent, MaterialReqDetailState> {
   final IMaterialReqHeaderRepo materialdetailrepo;
-  MaterialReqDetailBloc(this.materialdetailrepo) : super(MaterialReqDetailState.initial()) {
-    on<MaterialReqDetailSuccessEvent>((event, emit) async{
+  MaterialReqDetailBloc(this.materialdetailrepo)
+      : super(MaterialReqDetailState.initial()) {
+    on<MaterialReqDetailSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqDetailModel>> mdetailList =
-      await materialdetailrepo.materialreqdetailList(event.reqId);
+          await materialdetailrepo.materialreqdetailList(event.reqId);
 
       emit(mdetailList.fold((l) => const MaterialreqdetailFailed(),
-              (r) => Materialreqdetailsuccess(materialdetail: r)));
+          (r) => Materialreqdetailsuccess(materialdetail: r)));
     });
     on<MaterialDetailClearEvent>((event, emit) {
-      emit( const Materialreqdetailsuccess(materialdetail: null));
+      emit(const Materialreqdetailsuccess(materialdetail: null));
     });
   }
 }

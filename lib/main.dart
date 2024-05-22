@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
@@ -29,6 +31,7 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -84,6 +87,9 @@ import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cub
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
+import 'package:customer_connect/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -106,6 +112,16 @@ import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+
+    await PushNotificationService().initialize();
+    FirebaseMessaging.onBackgroundMessage(
+        PushNotificationService().backgroundHandler);
+  } catch (e) {
+    log('Error initializing Firebase: $e');
+  }
   configureinjection();
 
   LoginUserModel? user = await getuserdata();
@@ -412,6 +428,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<InvoiceDetailsTotalCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TodaysDeliveryDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<GetAllRouteBloc>(),
         ),
       ],
       child: ScreenUtilInit(
