@@ -224,7 +224,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               ),
                             ],
                           ),
-                          hintText: "Search Invoices",
+                          hintText: "Search here..",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,

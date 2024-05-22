@@ -4,7 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
-import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
+// import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +28,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
   @override
   void initState() {
     _invoiceDetailsSearchCtrl.clear();
-    context.read<InvoiceDetailsTotalCubit>().getInvTotal([]);
+    // context.read<InvoiceDetailsTotalCubit>().getInvTotal([]);
     context.read<InvoiceDetailsBloc>().add(const ClearInvoiceDetails());
     context.read<InvoiceDetailsBloc>().add(
         GetInvoiceDetailsEvent(id: widget.invoiceheader.id!, searchQuery: ''));
@@ -360,7 +360,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
-                  BlocBuilder<InvoiceDetailsTotalCubit,
+                  /*BlocBuilder<InvoiceDetailsTotalCubit,
                       InvoiceDetailsTotalState>(
                     builder: (context, state) {
                       return Text(
@@ -369,6 +369,11 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             fontSize: 12.sp, fontWeight: FontWeight.w600),
                       );
                     },
+                  )*/
+                  Text(
+                    widget.invoiceheader.grandTotal ?? '',
+                    style:
+                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),

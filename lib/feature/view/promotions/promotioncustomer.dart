@@ -1,15 +1,18 @@
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
+import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PromotionCustomer extends StatefulWidget {
-  const PromotionCustomer({super.key});
+  final PromotionHeaderModel promotion;
+  const PromotionCustomer({super.key, required this.promotion});
 
   @override
   State<PromotionCustomer> createState() => _PromotionCustomerState();
@@ -60,10 +63,12 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                     context
                         .read<PromotionDetailsBloc>()
                         .add(const GetPromotionDetailsEvent(id: "1"));
-                    /*Navigator.pushReplacement(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>  PromotionDetails()));*/
+                            builder: (context) => PromotionDetails(
+                                  promotion: widget.promotion,
+                                )));
                   },
                   child: SizedBox(
                     height: 75,
@@ -78,7 +83,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 backgroundColor: const Color(0xffB3DAF7),
                                 child: Center(
                                   child: Text(
-                                    'FG',
+                                    widget.promotion.pName!
+                                        .split('')
+                                        .toList()[0],
                                     style: TextStyle(
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.bold,
@@ -94,15 +101,15 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Free Good Promotion',
+                                    widget.promotion.pName!,
                                     style: blueTextStyle(),
                                   ),
                                   Text(
-                                    '21 Feb 2021 to 24 Feb 2021',
+                                    '${widget.promotion.dateRange}',
                                     style: subTextStyle(),
                                   ),
                                   Text(
-                                    'PR10021',
+                                    widget.promotion.pCode!,
                                     style: subTextStyle(),
                                   )
                                 ],
@@ -183,7 +190,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search customers",
+                          hintText: "Search here..",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

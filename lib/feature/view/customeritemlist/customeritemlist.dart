@@ -190,7 +190,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                           ),
                         ],
                       ),
-                      hintText: "Search Items",
+                      hintText: "Search here..",
                       hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,

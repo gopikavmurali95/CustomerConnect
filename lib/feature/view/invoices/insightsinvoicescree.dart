@@ -256,7 +256,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                             ),
                           ],
                         ),
-                        hintText: "Search Invoices",
+                        hintText: "Search here..",
                         hintStyle: kfontstyle(
                             fontSize: 14,
                             color: Colors.grey,

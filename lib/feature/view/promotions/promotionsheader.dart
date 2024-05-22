@@ -156,7 +156,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search promotions",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -240,7 +240,10 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      const PromotionCustomer()));
+                                                      PromotionCustomer(
+                                                        promotion:
+                                                            promoheader[index],
+                                                      )));
                                         },
                                         child: SizedBox(
                                           //color: Colors.red,
@@ -330,22 +333,28 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                                         index],
                                                               )));
                                                 },
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      'Details',
-                                                      style: TextStyle(
-                                                          fontSize: 10.sp),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 5.w,
-                                                    ),
-                                                    const Icon(
-                                                      Icons
-                                                          .keyboard_arrow_right,
-                                                      size: 18,
-                                                    )
-                                                  ],
+                                                child: SizedBox(
+                                                  height: 20.h,
+                                                  width: 65.w,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        'Details',
+                                                        style: TextStyle(
+                                                            fontSize: 10.sp),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 5.w,
+                                                      ),
+                                                      const Icon(
+                                                        Icons
+                                                            .keyboard_arrow_right,
+                                                        size: 18,
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               )
                                             ],

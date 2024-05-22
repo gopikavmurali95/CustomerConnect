@@ -266,7 +266,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                   ),
                                 ],
                               ),
-                              hintText: "Search Invoices",
+                              hintText: "Search here..",
                               hintStyle: kfontstyle(
                                   fontSize: 14,
                                   color: Colors.grey,

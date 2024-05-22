@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerlist.dart';
+import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricingdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +14,9 @@ import '../../../constants/fonts.dart';
 
 class SpecialPricingCustomer extends StatefulWidget {
   final LoginUserModel user;
-  const SpecialPricingCustomer({super.key, required this.user});
+  final SpecialPriceHeaderOutparas spPrice;
+  const SpecialPricingCustomer(
+      {super.key, required this.user, required this.spPrice});
 
   @override
   State<SpecialPricingCustomer> createState() => _SpecialPricingCustomerState();
@@ -78,7 +83,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  'FG',
+                                  widget.spPrice.prhName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -93,16 +98,20 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Special Pricing 01',
-                                  style: blueTextStyle(),
+                                SizedBox(
+                                  width: 210.w,
+                                  child: Text(
+                                    widget.spPrice.prhName!,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: blueTextStyle(),
+                                  ),
                                 ),
                                 Text(
-                                  '21 Feb 2021 to 24 Feb 2021',
+                                  '${widget.spPrice.startDate} to ${widget.spPrice.endDate}',
                                   style: subTextStyle(),
                                 ),
                                 Text(
-                                  'PR10021',
+                                  widget.spPrice.prhCode!,
                                   style: subTextStyle(),
                                 )
                               ],
@@ -110,44 +119,38 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                           ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              /*Navigator.push(
-                                context,
-                                MaterialPageRoute(
+                      InkWell(
+                        onTap: () {
+                          context
+                              .read<SpecialPriceDetailsBloc>()
+                              .add(const ClearSpecialriceDetailsEvent());
+                          context.read<SpecialPriceDetailsBloc>().add(
+                              GetSpecialPriceDetailsEvent(
+                                  prhID: widget.spPrice.prhId!,
+                                  searchQuery: ''));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
                                   builder: (context) => SpecialPricing(
-                                    user: widget.user,
-                                  ),
-                                ),
-                              );*/
-                            },
-                            child: Text(
+                                        user: widget.user,
+                                        spPrice: widget.spPrice,
+                                      )));
+                        },
+                        child: Row(
+                          children: [
+                            Text(
                               'Details',
                               style: TextStyle(fontSize: 10.sp),
                             ),
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              /*Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SpecialPricing(
-                                    user: widget.user,
-                                  ),
-                                ),
-                              );*/
-                            },
-                            child: const Icon(
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            const Icon(
                               Icons.keyboard_arrow_right,
                               size: 18,
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -211,7 +214,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 size: 14,
                               ),
                             ),
-                            hintText: "Search Customers",
+                            hintText: "Search here..",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -241,31 +244,29 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Assigned Customers',
-                      style: countHeading(),
-                    ),
-                    Text(
-                      '13',
-                      style: countHeading(),
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Assigned Customers',
+                    style: countHeading(),
+                  ),
+                  Text(
+                    '13',
+                    style: countHeading(),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              const SPCustomerList(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const SPCustomerList(),
+          ],
         ),
       ),
     );

@@ -4,7 +4,9 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -78,10 +80,11 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SpecialPricing(
+                                        builder: (context) =>
+                                            SpecialPricingCustomer(
                                               user: widget.user,
                                               spPrice: widget.spPrice,
                                             )));
@@ -113,29 +116,20 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         ),
                       ),
                       GestureDetector(
-                        // onTap: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) =>
-                        //           const PromotionDetails()));
-                        // },
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpecialPricingCustomer(
+                                        user: widget.user,
+                                        spPrice: widget.spPrice,
+                                      )));
+                        },
                         child: Row(
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            SpecialPricingCustomer(
-                                              user: widget.user,
-                                            )));
-                              },
-                              child: Text(
-                                'Customer',
-                                style: TextStyle(fontSize: 10.sp),
-                              ),
+                            Text(
+                              'Customer',
+                              style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
@@ -255,7 +249,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search Items",
+                          hintText: "Search here..",
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

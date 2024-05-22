@@ -16,7 +16,7 @@ import 'package:customer_connect/feature/view/returnapproval/returnapprovalheade
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -535,8 +535,9 @@ class ApprovalScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const VanToVanApprovalHeader(),
+                            builder: (context) => VanToVanApprovalHeader(
+                              user: user,
+                            ),
                           ),
                         );
                       },

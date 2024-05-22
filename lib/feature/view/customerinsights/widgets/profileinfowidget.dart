@@ -1,15 +1,26 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class ProfileInfoWidget extends StatelessWidget {
+class ProfileInfoWidget extends StatefulWidget {
   const ProfileInfoWidget({super.key});
 
+  @override
+  State<ProfileInfoWidget> createState() => _ProfileInfoWidgetState();
+}
+
+const double lat = 2.813812, long = 101.503413;
+
+class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CusProfileBloc, CusProfileState>(
@@ -85,28 +96,188 @@ class ProfileInfoWidget extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SvgPicture.asset(
-                              "assets/svg/sendmail.svg",
-                              height: 15.h,
+                            GestureDetector(
+                              onTap: () async {
+                                logger.e('mailto:${profile.cusEmail}');
+                                try {
+                                  if (profile.cusEmail != null &&
+                                      profile.cusEmail != '') {
+                                    if (await canLaunchUrl(
+                                      Uri.parse("mailto:${profile.cusEmail!}"),
+                                    )) {
+                                      bool issuccess = await launchUrl(
+                                        Uri(
+                                          scheme: 'mailto',
+                                          path: profile.cusEmail!,
+                                          /* queryParameters: {
+                                            'subject': 'hi',
+                                            'body': '',
+                                          }, */
+                                        ),
+                                        mode: LaunchMode.platformDefault,
+                                      );
+                                      log('Launch success: $issuccess');
+                                    } else {
+                                      log('Cannot launch email');
+                                      /* ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                'Cannot launch email client')),
+                                      ); */
+                                    }
+                                  }
+                                } catch (e) {
+                                  log('Error launching mail');
+                                }
+                              },
+                              child: SvgPicture.asset(
+                                "assets/svg/sendmail.svg",
+                                height: 15.h,
+                              ),
                             )
                           ],
                         ),
                       ),
                     ),
-                    ProfileTileRowWidget(
-                      fimg: 'assets/svg/phone.svg',
-                      limg: 'assets/svg/call.svg',
-                      title: profile.cusPhone ?? '',
+                    InkWell(
+                      onTap: () async {
+                        try {
+                          if (profile.cusPhone != null &&
+                              profile.cusPhone != '') {
+                            if (await canLaunchUrl(
+                              Uri(scheme: 'tel', path: profile.cusPhone!),
+                            )) {
+                              bool issuccess = await launchUrl(
+                                Uri(scheme: 'tel', path: profile.cusPhone!),
+                                mode: LaunchMode.platformDefault,
+                              );
+
+                              logger.e('call status: $issuccess');
+                            } else {
+                              logger.e('Cannot launch phone');
+                            }
+                          } else {
+                            return showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                      title: const Text('Alert'),
+                                      content: const Text(
+                                          'Phone number not available'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'))
+                                      ],
+                                    ));
+                          }
+                        } catch (e) {
+                          logger.e('Error opening phone: $e');
+                        }
+                      },
+                      child: ProfileTileRowWidget(
+                        fimg: 'assets/svg/phone.svg',
+                        limg: 'assets/svg/call.svg',
+                        title: profile.cusPhone!,
+                      ),
                     ),
-                    ProfileTileRowWidget(
-                      fimg: 'assets/svg/whatsapp_1.svg',
-                      limg: 'assets/svg/whatsapp.svg',
-                      title: profile.cusWhatsappNumber ?? '',
+                    InkWell(
+                      onTap: () async {
+                        String contact = profile.cusWhatsappNumber!;
+                        Uri androidUrl =
+                            Uri.parse('https://wa.me/$contact?text=Hi');
+                        /*  Uri iosUrl = Uri.parse(
+                                "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
+                        try {
+                          if (profile.cusWhatsappNumber != null &&
+                              profile.cusWhatsappNumber != '') {
+                            if (await canLaunchUrl(
+                              androidUrl,
+                            )) {
+                              bool issuccess = await launchUrl(
+                                androidUrl,
+                                mode: LaunchMode.platformDefault,
+                              );
+
+                              logger.e('WhatsApp Status: $issuccess');
+                            } else {
+                              logger.e('Cannot launch Whatsapp');
+                            }
+                          } else {
+                            return showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                      title: const Text('Alert'),
+                                      content:
+                                          const Text('WhatsApp not available'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'))
+                                      ],
+                                    ));
+                          }
+                        } catch (e) {
+                          logger.e('Error opening whatsapp: $e');
+                        }
+                      },
+                      child: ProfileTileRowWidget(
+                        fimg: 'assets/svg/whatsapp_1.svg',
+                        limg: 'assets/svg/whatsapp.svg',
+                        title: profile.cusWhatsappNumber ?? '',
+                      ),
                     ),
-                    ProfileTileRowWidget(
-                      fimg: 'assets/svg/address.svg',
-                      limg: 'assets/svg/locate.svg',
-                      title: profile.cusAddress ?? '',
+                    InkWell(
+                      onTap: () async {
+                        //String map = profile.cusGeoCode!;
+                        Uri androidUrl = Uri.parse(
+                            'geo:0,0?q=${profile.cusGeoCode} ${profile.cusAddress} ');
+                        /*  Uri iosUrl = Uri.parse(
+                                "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
+                        try {
+                          if (profile.cusAddress != null &&
+                              profile.cusAddress != '') {
+                            if (await canLaunchUrl(
+                              androidUrl,
+                            )) {
+                              bool issuccess = await launchUrl(
+                                androidUrl,
+                                mode: LaunchMode.platformDefault,
+                              );
+
+                              logger.e('Map status $issuccess');
+                            } else {
+                              logger.e('Cannot launch map');
+                            }
+                          } else {
+                            return showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                      title: const Text('Alert'),
+                                      content:
+                                          const Text('Location not available'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'))
+                                      ],
+                                    ));
+                          }
+                        } catch (e) {
+                          logger.e('Error launching map: $e');
+                        }
+                      },
+                      child: ProfileTileRowWidget(
+                        fimg: 'assets/svg/address.svg',
+                        limg: 'assets/svg/locate.svg',
+                        title: profile.cusAddress ?? '',
+                      ),
                     ),
                   ],
                 ),

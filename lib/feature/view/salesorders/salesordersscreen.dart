@@ -240,7 +240,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                           ),
                         ],
                       ),
-                      hintText: "Search Orders",
+                      hintText: "Search here..",
                       hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,

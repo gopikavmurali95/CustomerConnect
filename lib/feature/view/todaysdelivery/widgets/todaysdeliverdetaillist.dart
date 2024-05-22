@@ -2,7 +2,9 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -69,15 +71,19 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                             FontWeight.w600,
                                                       ),
                                                     ),
-                                                    Text(
-                                                      delDetails[index]
-                                                              .prhName ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.w400,
+                                                    Expanded(
+                                                      child: Text(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        delDetails[index]
+                                                                .prhName ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                          fontSize: 12.sp,
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],

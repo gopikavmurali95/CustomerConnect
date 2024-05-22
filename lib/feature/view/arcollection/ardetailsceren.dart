@@ -1,7 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
+import 'package:customer_connect/feature/view/arcollection/imagepreveiewscreen.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -161,7 +163,17 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.arheader;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ArImagePreviewScreen(
+                            arheader: widget.arheader,
+                          ),
+                        ),
+                      );
+                    },
                     child: Text(
                       'Preview Image',
                       style: kfontstyle(
@@ -204,67 +216,80 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                         SizedBox(
                           height: 10.h,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              'Cheque # :',
-                              style: kfontstyle(fontSize: 12.sp),
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            Text(
-                              widget.arheader.arpChequeNo ?? "",
-                              style: kfontstyle(
-                                fontSize: 12.sp,
+                        Visibility(
+                          visible:
+                              widget.arheader.arhPayMode == 'CH' ? true : false,
+                          child: Row(
+                            children: [
+                              Text(
+                                'Cheque # :',
+                                style: kfontstyle(fontSize: 12.sp),
                               ),
-                            )
-                          ],
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Text(
+                                widget.arheader.arpChequeNo ?? "",
+                                style: kfontstyle(
+                                  fontSize: 12.sp,
+                                ),
+                              )
+                            ],
+                          ),
                         )
                       ],
                     ),
                   ),
                   Flexible(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Bank :',
-                              style: kfontstyle(fontSize: 12.sp),
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            Text(
-                              widget.arheader.bankName ?? "",
-                              style: kfontstyle(
-                                fontSize: 12.sp,
+                    child: Visibility(
+                      visible:
+                          widget.arheader.arhPayMode == 'CH' ? true : false,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '',
+                                style: kfontstyle(fontSize: 12.sp),
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Cheque Date :',
-                              style: kfontstyle(fontSize: 12.sp),
-                            ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            Text(
-                              widget.arheader.arpChequeDate ?? '',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
+                              SizedBox(
+                                width: 3.w,
                               ),
-                            )
-                          ],
-                        )
-                      ],
+                              Expanded(
+                                child: Text(
+                                  "Bank : ${widget.arheader.bankName}",
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Cheque Date :',
+                                style: kfontstyle(fontSize: 12.sp),
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  widget.arheader.arpChequeDate ?? '',
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
