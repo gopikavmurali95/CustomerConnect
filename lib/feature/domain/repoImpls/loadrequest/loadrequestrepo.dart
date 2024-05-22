@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/api/endpoints.dart';
 import '../../../data/abstractrepo/abstractrepo.dart';
 import 'package:http/http.dart' as http;
-
 @LazySingleton(as: ILoadRequestHeaderRepo)
 class LoadRequestHeaderRepo implements ILoadRequestHeaderRepo
 {

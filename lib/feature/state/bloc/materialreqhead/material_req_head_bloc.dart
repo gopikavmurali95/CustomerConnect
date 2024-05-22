@@ -10,7 +10,6 @@ import '../../../data/models/material_req_header_model/MaterialReqHeaderModel.da
 part 'material_req_head_event.dart';
 part 'material_req_head_state.dart';
 part 'material_req_head_bloc.freezed.dart';
-
 @injectable
 class MaterialReqHeadBloc
     extends Bloc<MaterialReqHeadEvent, MaterialReqHeadState> {

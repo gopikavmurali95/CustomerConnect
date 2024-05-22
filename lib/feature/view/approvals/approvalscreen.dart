@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
+import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
@@ -19,6 +20,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../materialrequest/materialrequestdetailheader.dart';
 
 class ApprovalScreen extends StatelessWidget {
   final LoginUserModel user;
@@ -749,6 +752,128 @@ class ApprovalScreen extends StatelessWidget {
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
                                   "Field Service Invoice",
+                                  style: headTextStyle(),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MaterialRequestHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/jp.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Materail Request",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        context.read<FieldServiceHeaderBloc>().add(
+                            const GetAllFieldServiceHeadersEvent(userId: '64'));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoadRequestHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/fs.png",
+                                  height: 18.3.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  "Load Request",
                                   style: headTextStyle(),
                                 ),
                               )
