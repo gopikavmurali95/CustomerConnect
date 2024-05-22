@@ -101,8 +101,8 @@ class PromotionDetails extends StatelessWidget {
                               .read<PromotionCustomerBloc>()
                               .add(const ClearOromotionCustomer());
                           context.read<PromotionCustomerBloc>().add(
-                              const GetPromotionCustomerEvent(
-                                  id: '1', searchQuery: ''));
+                              GetPromotionCustomerEvent(
+                                  id: promotion.qid ?? '', searchQuery: ''));
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -138,8 +138,10 @@ class PromotionDetails extends StatelessWidget {
                         .read<QualificationGroupBloc>()
                         .add(const ClearGroupData());
                     context.read<QualificationGroupBloc>().add(
-                        const GetGroupWiseDataEvent(
-                            id: "1", mode: " ", searchQuery: ''));
+                        GetGroupWiseDataEvent(
+                            id: promotion.qid ?? '',
+                            mode: " ",
+                            searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(

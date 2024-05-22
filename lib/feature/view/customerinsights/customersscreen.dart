@@ -61,103 +61,6 @@ class _CustomersScrenState extends State<CustomersScren> {
           "Customers ",
           style: appHeading(),
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size(100, 50),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
-            child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
-                child: TextFormField(
-                  controller: _customerSearchCtrl,
-                  onChanged: (value) {
-                    if (debounce?.isActive ?? false) debounce!.cancel();
-                    debounce = Timer(
-                      const Duration(
-                        milliseconds: 500,
-                      ),
-                      () async {
-                        if (_routeIDCtrl.text != '-1') {
-                          isSearchLoading = true;
-                          context
-                              .read<CustomerSearchLoadingCubit>()
-                              .addSearchLoadingEvent();
-                          context.read<CustomersListBlocBloc>().add(
-                              GetCustomersEvent(
-                                  userId: widget.user.usrId ?? '',
-                                  area: '',
-                                  subarea: '',
-                                  route: _routeIDCtrl.text,
-                                  searchQuery: value.trim()));
-                        }
-                      },
-                    );
-                  },
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 20,
-                      ),
-                      suffix: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 5.h),
-                          Expanded(
-                            child: IconButton(
-                              onPressed: () {
-                                if (_routeIDCtrl.text != '-1') {
-                                  _customerSearchCtrl.clear();
-                                  isSearchLoading = true;
-                                  context
-                                      .read<CustomerSearchLoadingCubit>()
-                                      .addSearchLoadingEvent();
-                                  context.read<CustomersListBlocBloc>().add(
-                                      GetCustomersEvent(
-                                          userId: widget.user.usrId ?? '',
-                                          area: '',
-                                          subarea: '',
-                                          route: _routeIDCtrl.text,
-                                          searchQuery: ''));
-                                }
-                              },
-                              icon: Icon(
-                                Icons.close,
-                                size: 13.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      hintText: "Search here..",
-                      hintStyle: kfontstyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal),
-                      isDense: true,
-                      counterText: "",
-                      contentPadding: const EdgeInsets.all(15.0),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none)),
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  maxLength: 20,
-                  // controller: _locationNameTextController,
-                )),
-          ),
-        ),
       ),
       body:
           BlocListener<CustomerSearchLoadingCubit, CustomerSearchLoadingState>(
@@ -182,6 +85,17 @@ class _CustomersScrenState extends State<CustomersScren> {
         },
         child: Column(
           children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Kindly select a route to view the customers',
+                    style: kfontstyle(fontSize: 11.sp),
+                  ),
+                )
+              ],
+            ),
             Row(
               children: [
                 Expanded(
@@ -231,7 +145,12 @@ class _CustomersScrenState extends State<CustomersScren> {
                                       );
                                     }).toList(),
                                     onChanged: (value) {
+                                      context
+                                          .read<CustomersListBlocBloc>()
+                                          .add(const ClearCustomersEvent());
+                                      // log(value!);
                                       _routeIDCtrl.text = value!;
+
                                       if (value != '-1' || value.isNotEmpty) {
                                         context
                                             .read<CustomersListBlocBloc>()
@@ -270,12 +189,106 @@ class _CustomersScrenState extends State<CustomersScren> {
                 )
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, right: 15),
+              child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade200),
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: const [
+                        BoxShadow(
+                            // ignore: use_full_hex_values_for_flutter_colors
+                            color: Color(0xff00000050),
+                            blurRadius: 0.4,
+                            spreadRadius: 0.4)
+                      ]),
+                  child: TextFormField(
+                    controller: _customerSearchCtrl,
+                    onChanged: (value) {
+                      if (debounce?.isActive ?? false) debounce!.cancel();
+                      debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ),
+                        () async {
+                          if (_routeIDCtrl.text != '-1') {
+                            isSearchLoading = true;
+                            context
+                                .read<CustomerSearchLoadingCubit>()
+                                .addSearchLoadingEvent();
+                            context.read<CustomersListBlocBloc>().add(
+                                GetCustomersEvent(
+                                    userId: widget.user.usrId ?? '',
+                                    area: '',
+                                    subarea: '',
+                                    route: _routeIDCtrl.text,
+                                    searchQuery: value.trim()));
+                          }
+                        },
+                      );
+                    },
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 20,
+                        ),
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  if (_routeIDCtrl.text != '-1') {
+                                    _customerSearchCtrl.clear();
+                                    isSearchLoading = true;
+                                    context
+                                        .read<CustomerSearchLoadingCubit>()
+                                        .addSearchLoadingEvent();
+                                    context.read<CustomersListBlocBloc>().add(
+                                        GetCustomersEvent(
+                                            userId: widget.user.usrId ?? '',
+                                            area: '',
+                                            subarea: '',
+                                            route: _routeIDCtrl.text,
+                                            searchQuery: ''));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 13.sp,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        hintText: "Search here..",
+                        hintStyle: kfontstyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal),
+                        isDense: true,
+                        counterText: "",
+                        contentPadding: const EdgeInsets.all(15.0),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none)),
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    maxLength: 20,
+                    // controller: _locationNameTextController,
+                  )),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //SizedBox(width: 05,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20, top: 0),
+                  padding: const EdgeInsets.only(left: 20.0, right: 20, top: 5),
                   child: Text(
                     "Customers",
                     style: countHeading(),
@@ -302,7 +315,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                         getCustomersSstate: (customers) => customers == null
                             ? Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 0),
+                                    left: 20.0, right: 20, top: 5),
                                 child: Text(
                                   "0",
                                   style: countHeading(),

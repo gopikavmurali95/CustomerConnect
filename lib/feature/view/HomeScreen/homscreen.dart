@@ -224,12 +224,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   spPriceInparas: SpecialPriceHeaderModel(
                                       area: '',
                                       customer: '',
-                                      fromDate: '01/01/2023',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       mode: '',
                                       outlet: '',
                                       route: '',
                                       subArea: '',
-                                      toDate: '30/03/2024',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       userId: widget.user.usrId),
                                   searchQuery: ''));
                           Navigator.push(

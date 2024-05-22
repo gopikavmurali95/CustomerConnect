@@ -336,9 +336,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 145.w,
-                                        ),
+                                        // SizedBox(
+                                        //   width: 145.w,
+                                        // ),
                                         Column(
                                           children: [
                                             Text(

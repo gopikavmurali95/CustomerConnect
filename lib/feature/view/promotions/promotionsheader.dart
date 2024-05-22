@@ -38,7 +38,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
             area: '',
             cusOutlet: '',
             customer: '',
-            fromDate: '01-01-2024',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             route: '',
             subArea: '',
             toDate:
@@ -115,7 +116,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                   area: '',
                                   cusOutlet: '',
                                   customer: '',
-                                  fromDate: '01-01-2024',
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                   route: '',
                                   subArea: '',
                                   toDate:
@@ -143,7 +145,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                       area: '',
                                       cusOutlet: '',
                                       customer: '',
-                                      fromDate: '01-01-2024',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       route: '',
                                       subArea: '',
                                       toDate:
@@ -232,10 +235,10 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                   const ClearOromotionCustomer());
                                           context
                                               .read<PromotionCustomerBloc>()
-                                              .add(
-                                                  const GetPromotionCustomerEvent(
-                                                      id: '1',
-                                                      searchQuery: ''));
+                                              .add(GetPromotionCustomerEvent(
+                                                  id: promoheader[index].qid ??
+                                                      '',
+                                                  searchQuery: ''));
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -321,8 +324,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                       .read<
                                                           PromotionDetailsBloc>()
                                                       .add(
-                                                          const GetPromotionDetailsEvent(
-                                                              id: '1'));
+                                                          GetPromotionDetailsEvent(
+                                                              id: promoheader[
+                                                                          index]
+                                                                      .aid ??
+                                                                  ''));
                                                   Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
@@ -335,7 +341,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                 },
                                                 child: SizedBox(
                                                   height: 20.h,
-                                                  width: 65.w,
+                                                  // width: 65.w,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.end,

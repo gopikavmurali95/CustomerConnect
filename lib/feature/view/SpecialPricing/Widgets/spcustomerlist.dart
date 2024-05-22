@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,7 +30,7 @@ class SPCustomerList extends StatelessWidget {
                 )
               : Expanded(
                   child: ListView.builder(
-                      itemCount: 8,
+                      itemCount: customer.length,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
@@ -64,7 +63,7 @@ class SPCustomerList extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              subtitle: Column(
+                              /*  subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
@@ -75,12 +74,9 @@ class SPCustomerList extends StatelessWidget {
                                       style: subTitleTextStyle(),
                                     ),
                                   ),
-                                  Text(
-                                    'Virtual | Supermarket | Dubai',
-                                    style: statusTextStyle(),
-                                  )
+                                  
                                 ],
-                              ),
+                              ), */
                             ),
                             const Divider()
                           ],

@@ -34,8 +34,10 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         .add(const ClearSpecialPriceCustomer());
     context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
         userID: widget.user.usrId!,
-        fromDate: '01-01-2023',
-        todate: '01-05-2024',
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        todate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
         searchQuery: ''));
     super.initState();
   }
@@ -185,8 +187,10 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               context.read<SpecialPriceCustomersBloc>().add(
                                   GetSpecialPriceCustomersEvent(
                                       userID: widget.user.usrId!,
-                                      fromDate: '01-01-2023',
-                                      todate: '01-05-2024',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                      todate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       searchQuery: value.trim()));
                             },
                           );
@@ -205,8 +209,10 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 context.read<SpecialPriceCustomersBloc>().add(
                                     GetSpecialPriceCustomersEvent(
                                         userID: widget.user.usrId!,
-                                        fromDate: '01-01-2023',
-                                        todate: '01-05-2024',
+                                        fromDate:
+                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                        todate:
+                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                         searchQuery: ''));
                               },
                               child: const Icon(
@@ -214,7 +220,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 size: 14,
                               ),
                             ),
-                            hintText: "Search here..",
+                            hintText: "Search customers",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -255,9 +261,20 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                     'Assigned Customers',
                     style: countHeading(),
                   ),
-                  Text(
-                    '13',
-                    style: countHeading(),
+                  BlocBuilder<SpecialPriceCustomersBloc,
+                      SpecialPriceCustomersState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.when(
+                          getSpecialPriceCustomers: (spCustomers) =>
+                              spCustomers == null
+                                  ? '0'
+                                  : spCustomers.length.toString(),
+                          specialPriceCustomersFailedState: () => '0',
+                        ),
+                        style: countHeading(),
+                      );
+                    },
                   ),
                 ],
               ),
