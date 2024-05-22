@@ -11,7 +11,6 @@ part 'material_req_detail_bloc.freezed.dart';
 
 @injectable
 class MaterialReqDetailBloc extends Bloc<MaterialReqDetailEvent, MaterialReqDetailState> {
-
   final IMaterialReqHeaderRepo materialdetailrepo;
   MaterialReqDetailBloc(this.materialdetailrepo) : super(MaterialReqDetailState.initial()) {
     on<MaterialReqDetailSuccessEvent>((event, emit) async{

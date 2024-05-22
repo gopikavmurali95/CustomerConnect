@@ -42,6 +42,7 @@ import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
@@ -92,11 +93,15 @@ import 'feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 import 'feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
 import 'feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
+import 'feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
+import 'feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
 import 'feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
 import 'feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
 import 'feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
+import 'feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
 import 'feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
+import 'feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
 import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
 import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
@@ -403,7 +408,20 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<MaterialReqHeadBloc>(),
         ),
         BlocProvider(create: (context) => getit<MaterialReqDetailBloc>(),
-        )
+        ),
+        BlocProvider(create: (context) => getit<LoadReqHeaderBloc>(),
+        ),
+        BlocProvider(create: (context) => getit<LoadReqDetailBloc>(),
+        ),
+        BlocProvider(create: (context) => getit<LoadReqApprovalBloc>(),
+        ),
+        BlocProvider(create: (context)=> getit<MaterialReqApprovalBloc>()
+        ),
+        BlocProvider(create: (context)=> getit<MaterialReqRejectionBloc>()
+        ),
+
+
+
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
@@ -421,7 +439,7 @@ class MyApp extends StatelessWidget {
               titleLarge: kfontstyle(),
               titleMedium: kfontstyle(),
               titleSmall: kfontstyle(),
-            ),
+              ),
             primaryTextTheme: TextTheme(
               bodySmall: kfontstyle(),
               bodyLarge: kfontstyle(),
