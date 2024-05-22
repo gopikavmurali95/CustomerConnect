@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,8 +58,11 @@ class PromotionCustomerList extends StatelessWidget {
                                 style: blueTextStyle(),
                               ),
                               Text(' -', style: subTitleTextStyle()),
-                              Text(promocustomer[index].cusName ?? '',
-                                  style: subTitleTextStyle())
+                              Flexible(
+                                child: Text(promocustomer[index].cusName ?? '',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: subTitleTextStyle()),
+                              )
                             ],
                           ),
                           subtitle: Column(

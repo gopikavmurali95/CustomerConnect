@@ -6,8 +6,6 @@ import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_prom
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
-import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
-import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -266,7 +264,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                             ),
                           ],
                         ),
-                        hintText: "Search Promotions",
+                        hintText: "Search here..",
                         hintStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -388,12 +386,12 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        Navigator.push(
+                                                        /* Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        const PromotionCustomer()));
+                                                                        const PromotionCustomer())); */
                                                       },
                                                       child: Column(
                                                         mainAxisAlignment:
@@ -430,11 +428,11 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                               ),
                                               GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(
+                                                  /* Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const PromotionDetails()));
+                                                               PromotionDetails(promotion: headers[index],))); */
                                                 },
                                                 child: Row(
                                                   children: [

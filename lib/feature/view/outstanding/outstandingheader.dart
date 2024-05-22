@@ -136,7 +136,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Invoices",
+                          hintText: "Search here..",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,

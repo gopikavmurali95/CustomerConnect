@@ -29,8 +29,10 @@ class _LoadRejectedState extends State<LoadRejected> {
         searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2023',
-            toDate: '25-03-2024',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'R',
             area: '',
             route: '',
@@ -107,8 +109,10 @@ class _LoadRejectedState extends State<LoadRejected> {
                                 searchQuery: value.trim(),
                                 loadingin: LoadingHeaderInModel(
                                     userId: widget.user.usrId,
-                                    fromDate: '01-01-2023',
-                                    toDate: '23-03-2024',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: 'DD',
                                     area: '',
                                     route: '',
@@ -123,7 +127,7 @@ class _LoadRejectedState extends State<LoadRejected> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search Deliveries",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -144,8 +148,10 @@ class _LoadRejectedState extends State<LoadRejected> {
                                   searchQuery: '',
                                   loadingin: LoadingHeaderInModel(
                                       userId: widget.user.usrId,
-                                      fromDate: '01-01-2023',
-                                      toDate: '23-03-2024',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       mode: 'R',
                                       area: '',
                                       route: '',

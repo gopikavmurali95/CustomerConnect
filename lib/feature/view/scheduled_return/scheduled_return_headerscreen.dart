@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +78,9 @@ class _ScheduledReturnHEaderScreenState
                       : ListView.separated(
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
+                                  context
+                                      .read<NavigatetoBackCubit>()
+                                      .cancelPop(false);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

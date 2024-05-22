@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +78,9 @@ class _DisputeNoteApprovalHEaderScreenState
                       : ListView.separated(
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
+                                  context
+                                      .read<NavigatetoBackCubit>()
+                                      .popFromScreen(false);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

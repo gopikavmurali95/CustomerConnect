@@ -9,21 +9,25 @@ part of 'todays_delivery_details_model.dart';
 TodaysDeliveryDetailsModel _$TodaysDeliveryDetailsModelFromJson(
         Map<String, dynamic> json) =>
     TodaysDeliveryDetailsModel(
-      prhId: json['prh_ID'] as String?,
-      prhCode: json['prh_Code'] as String?,
-      prhName: json['prh_Name'] as String?,
-      startDate: json['StartDate'] as String?,
-      endDate: json['EndDate'] as String?,
-      prhPayMode: json['prh_PayMode'] as String?,
+      prhId: json['prd_ID'] as String?,
+      prhCode: json['prd_Code'] as String?,
+      prhName: json['prd_Name'] as String?,
+      hQty: json['HigherQty'] as String?,
+      hUom: json['HigherUOM'] as String?,
+      lQty: json['LowerQty'] as String?,
+      lUom: json['LowerUOM'] as String?,
+      total: json['Total'] as String?,
     );
 
 Map<String, dynamic> _$TodaysDeliveryDetailsModelToJson(
         TodaysDeliveryDetailsModel instance) =>
     <String, dynamic>{
-      'prh_ID': instance.prhId,
-      'prh_Code': instance.prhCode,
-      'prh_Name': instance.prhName,
-      'StartDate': instance.startDate,
-      'EndDate': instance.endDate,
-      'prh_PayMode': instance.prhPayMode,
+      'prd_ID': instance.prhId,
+      'prd_Code': instance.prhCode,
+      'prd_Name': instance.prhName,
+      'LowerUOM': instance.lUom,
+      'HigherUOM': instance.hUom,
+      'HigherQty': instance.hQty,
+      'LowerQty': instance.lQty,
+      'Total': instance.total,
     };

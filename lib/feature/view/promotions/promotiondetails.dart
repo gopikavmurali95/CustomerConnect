@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
@@ -13,7 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PromotionDetails extends StatelessWidget {
-  const PromotionDetails({super.key});
+  final PromotionHeaderModel promotion;
+  const PromotionDetails({super.key, required this.promotion});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class PromotionDetails extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Promotion Detail ",
+          "Promotion Details ",
           style: appHeading(),
         ),
         // bottom: PreferredSize(
@@ -61,7 +63,7 @@ class PromotionDetails extends StatelessWidget {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  'FG',
+                                  promotion.pName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -77,15 +79,15 @@ class PromotionDetails extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Free Good Promotion',
+                                  promotion.pName ?? '',
                                   style: blueTextStyle(),
                                 ),
                                 Text(
-                                  '21 Feb 2021 to 24 Feb 2021',
+                                  promotion.dateRange ?? '',
                                   style: subTextStyle(),
                                 ),
                                 Text(
-                                  'PR10021',
+                                  promotion.pCode ?? '',
                                   style: subTextStyle(),
                                 )
                               ],
@@ -99,13 +101,14 @@ class PromotionDetails extends StatelessWidget {
                               .read<PromotionCustomerBloc>()
                               .add(const ClearOromotionCustomer());
                           context.read<PromotionCustomerBloc>().add(
-                              const GetPromotionCustomerEvent(
-                                  id: '1', searchQuery: ''));
+                              GetPromotionCustomerEvent(
+                                  id: promotion.qid ?? '', searchQuery: ''));
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const PromotionCustomer()));
+                                  builder: (context) => PromotionCustomer(
+                                        promotion: promotion,
+                                      )));
                         },
                         child: Row(
                           children: [
@@ -124,6 +127,76 @@ class PromotionDetails extends StatelessWidget {
                         ),
                       )
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context
+                        .read<QualificationGroupBloc>()
+                        .add(const ClearGroupData());
+                    context.read<QualificationGroupBloc>().add(
+                        GetGroupWiseDataEvent(
+                            id: promotion.qid ?? '',
+                            mode: " ",
+                            searchQuery: ''));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const QualificationGroup()));
+                  },
+                  child: Container(
+                    height: 62,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 1,
+                          offset: const Offset(0, 0),
+                          blurStyle: BlurStyle.normal,
+                          spreadRadius: 0.4,
+                        ),
+                      ],
+                      // border: Border.all(
+                      //     color: Colors.grey.withOpacity(0.1))),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Qualification Group',
+                                style: kfontstyle(fontSize: 11.sp),
+                              ),
+                              Text(
+                                '10023',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'View Items',
+                                style: kfontstyle(fontSize: 11.sp),
+                              ),
+                              const Icon(Icons.keyboard_arrow_right)
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -169,86 +242,24 @@ class PromotionDetails extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Qualification Group',
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                              Text(
-                                '10023',
-                                style: kfontstyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context
-                        .read<QualificationGroupBloc>()
-                        .add(const ClearGroupData());
-                    context.read<QualificationGroupBloc>().add(
-                        const GetGroupWiseDataEvent(
-                            id: "1", mode: " ", searchQuery: ''));
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const QualificationGroup()));
-                  },
-                  child: Container(
-                    height: 62,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 1,
-                          offset: const Offset(0, 0),
-                          blurStyle: BlurStyle.normal,
-                          spreadRadius: 0.4,
-                        )
-                      ],
-                      // border: Border.all(
-                      //     color: Colors.grey.withOpacity(0.1))),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
                                 'Assignment Group',
-                                style: kfontstyle(fontSize: 12.sp),
+                                style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
-                                '10025',
+                                promotion.id ?? '',
                                 style: kfontstyle(
-                                    fontSize: 13.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                          const Row(
+                          Row(
                             children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
+                              Text(
+                                'View Items',
+                                style: kfontstyle(fontSize: 11.sp),
+                              ),
+                              const Icon(Icons.keyboard_arrow_right)
                             ],
                           )
                         ],

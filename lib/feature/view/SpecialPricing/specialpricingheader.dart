@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
+
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
 
@@ -12,6 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SpecialPricingHeader extends StatefulWidget {
   final LoginUserModel user;
+
   const SpecialPricingHeader({super.key, required this.user});
 
   @override
@@ -130,7 +132,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search promotions",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -151,47 +153,45 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 25.0, right: 20, top: 10, bottom: 10),
-                  child: Text(
-                    "All",
-                    style: countHeading(),
-                  ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //SizedBox(width: 05,),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 25.0, right: 20, top: 10, bottom: 10),
+                child: Text(
+                  "All",
+                  style: countHeading(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, right: 20, top: 10, bottom: 10),
-                  child: BlocBuilder<SpecialPriceHeaderBloc,
-                      SpecialPriceHeaderState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getSpecialPriceHeaderState: (spPrice) => spPrice == null
-                            ? const SizedBox()
-                            : Text(
-                                spPrice.length.toString(),
-                                style: countHeading(),
-                              ),
-                        speciaPriceHeaderFailedState: () => const Text('0'),
-                      );
-                    },
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20, top: 10, bottom: 10),
+                child: BlocBuilder<SpecialPriceHeaderBloc,
+                    SpecialPriceHeaderState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getSpecialPriceHeaderState: (spPrice) => spPrice == null
+                          ? const SizedBox()
+                          : Text(
+                              spPrice.length.toString(),
+                              style: countHeading(),
+                            ),
+                      speciaPriceHeaderFailedState: () => const Text('0'),
+                    );
+                  },
                 ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            SpPrHeaderList(
-              user: widget.user,
-            ),
-          ],
-        ),
+              ),
+              // SizedBox(width: ,),
+            ],
+          ),
+          SpPrHeaderList(
+            user: widget.user,
+          ),
+        ],
       ),
     );
   }

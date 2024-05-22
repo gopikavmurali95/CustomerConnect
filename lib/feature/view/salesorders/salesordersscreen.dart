@@ -40,7 +40,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
             searchQuery: '',
             salesIn: SalesOrdersInModel(
                 userId: widget.user.usrId,
-                cusId: /* widget.customer.cusId */ '1',
+                cusId: widget.customer.cusId ?? '0',
                 area: '',
                 fromDate: widget.fromdatecontroller.text,
                 toDate: widget.todatecontroller.text,
@@ -240,7 +240,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                           ),
                         ],
                       ),
-                      hintText: "Search Orders",
+                      hintText: "Search here..",
                       hintStyle: kfontstyle(
                           fontSize: 14,
                           color: Colors.grey,

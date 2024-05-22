@@ -33,7 +33,7 @@ int _responsecount = 0;
 int loadingCount = 0;
 int _approvedCount = 0;
 int _totalCount = 0;
-showPopAlert(BuildContext context) {
+_showPopAlert(BuildContext context) {
   showCupertinoDialog(
     context: context,
     builder: (context) => CupertinoAlertDialog(
@@ -76,7 +76,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
         leading: IconButton(
           onPressed: () {
             if (_approvedCount != 0 && _approvedCount != _totalCount) {
-              showPopAlert(context);
+              _showPopAlert(context);
               return;
             } else {
               Navigator.pop(context);
@@ -102,7 +102,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                     userID: /* widget.user.usrId?? */ '48'));
 
             log("$_approvedCount / $_totalCount");
-            showPopAlert(context);
+            _showPopAlert(context);
           } else {
             log("$_approvedCount / $_totalCount");
             return;

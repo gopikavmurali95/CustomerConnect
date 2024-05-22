@@ -68,16 +68,35 @@ class NotStartedDetail extends StatelessWidget {
                                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "${pdetailList[index].pkdPickedHQty}",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible:
+                                          pdetailList[index].pkdHigherUom ==
+                                                      null ||
+                                                  pdetailList[index]
+                                                      .pkdHigherUom!
+                                                      .isEmpty
+                                              ? false
+                                              : true,
+                                      child: Text(
+                                        "${pdetailList[index].pkdHigherUom}",
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "${pdetailList[index].pkdPickedLQty}",
-                                      style: subTitleTextStyle(),
+                                    Visibility(
+                                      visible: pdetailList[index].pkdLowerUom ==
+                                                  null ||
+                                              pdetailList[index]
+                                                  .pkdLowerUom!
+                                                  .isEmpty
+                                          ? false
+                                          : true,
+                                      child: Text(
+                                        "${pdetailList[index].pkdLowerUom}",
+                                        style: subTitleTextStyle(),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -88,7 +107,7 @@ class NotStartedDetail extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${pdetailList[index].pkdPkhID}",
+                                        "${pdetailList[index].pkdPickedHQty}",
                                         style: subTitleTextStyle(),
                                       ),
                                       const SizedBox(

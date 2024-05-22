@@ -9,7 +9,6 @@ import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
-import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
@@ -17,10 +16,9 @@ import 'package:customer_connect/feature/view/returnapproval/returnapprovalheade
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../materialrequest/materialrequestdetailheader.dart';
 
 class ApprovalScreen extends StatelessWidget {
   final LoginUserModel user;
@@ -49,702 +47,721 @@ class ApprovalScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReturnApprovalHeader(
-                        user: user,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        context
+                            .read<PriceChangeHeaderBloc>()
+                            .add(const ClearPriceChangeHeader());
+                        context
+                            .read<PriceChangeHeaderBloc>()
+                            .add(const GetPriceChangeHeaderEvent(rotID: '46'));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PriceChangeHeader(
+                                      user: user,
+                                    )));
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/pc.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Price Change",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  //height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/customer.png",
-                          height: 15.h,
-                        ),
-                        // SvgPicture.asset("assets/images/os.png",height: 20,
-                        //   fit: BoxFit.scaleDown,),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Return",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              InkWell(
-                onTap: () {
-                  context
-                      .read<PriceChangeHeaderBloc>()
-                      .add(const ClearPriceChangeHeader());
-                  context
-                      .read<PriceChangeHeaderBloc>()
-                      .add(const GetPriceChangeHeaderEvent(rotID: '46'));
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PriceChangeHeader()));
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/file.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Price Change",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
+                  SizedBox(
+                    width: 10.w,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DisputeNoteApprovalHEaderScreen(
-                                user: user,
-                              )));
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PartialDeliveryHeader(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: Image.asset(
+                                  "assets/images/pd.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Partial Delivery",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Dispute Note",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CreditNoteHeaderScreen(
-                        user: user,
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  //height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/os.png",
-                          height: 15.h,
-                        ),
-                        // fit: BoxFit.scaleDown,),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Credit Note",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ScheduledReturnHEaderScreen(
-                        user: user,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ScheduledReturnHEaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/sr.png",
+                                  height: 17.5.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Scheduled Return",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Scheduled Return",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AssetAddingApprovalHeaderScreen(
-                        user: user,
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ReturnApprovalHeader(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/rtn.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Return",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Asset Adding",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AssetRemovalApprovalScreen(
-                        user: user,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DisputeNoteApprovalHEaderScreen(
+                                      user: user,
+                                    )));
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/dr.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Dispute Request",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Asset Removal",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PartialDeliveryHeader(
-                        user: user,
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CreditNoteHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/cr.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Credit Note",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Partial Delivery",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<FieldServiceHeaderBloc>()
-                      .add(const GetAllFieldServiceHeadersEvent(userId: '64'));
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FieldServiceInvoiceHeader(
-                        user: user,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                AssetAddingApprovalHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/aa.png",
+                                  height: 17.2.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Asset Adding",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Field Service Invoice",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  context
-                      .read<VanToVanHeaderBloc>()
-                      .add(const getVanToVanHeaderEvent(userID: '49'));
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VanToVanApprovalHeader(),
-                    ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Van To Van Approval",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
+                  SizedBox(
+                    width: 10.w,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoadTransferApprovalHeaderScreen(
-                        user: user,
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AssetRemovalApprovalScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/ar2.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Asset Removal",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Load Transfer",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => JourneyPlanHeaderScreen(
-                        user: user,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        context
+                            .read<VanToVanHeaderBloc>()
+                            .add(const getVanToVanHeaderEvent(userID: '48'));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VanToVanApprovalHeader(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/vv.png",
+                                  height: 17.2.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "VanTo Van",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Journey Plan",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MaterialRequestHeaderScreen(
-                        user: user,
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                LoadTransferApprovalHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/lt.png",
+                                  height: 15.5.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Load Transfer",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Material Request",
-                          style: headTextStyle(),
-                        )
-                      ],
-                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 10.w,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoadRequestHeaderScreen(
-                        user: user,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => JourneyPlanHeaderScreen(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        // height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/jp.png",
+                                  height: 17.h,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Journey Plan",
+                                style: headTextStyle(),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  );
-                },
-                child: Container(
-                  // height: 50,
-                  // width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade300,
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          "assets/images/pro.png",
-                          height: 15.h,
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        context.read<FieldServiceHeaderBloc>().add(
+                            const GetAllFieldServiceHeadersEvent(userId: '64'));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FieldServiceInvoiceHeader(
+                              user: user,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        //height: 50,
+                        // width: MediaQuery.of(context).size.width / 2,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: Image.asset(
+                                  "assets/images/fs.png",
+                                  height: 18.3.h,
+                                ),
+                              ),
+                              // fit: BoxFit.scaleDown,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  "Field Service Invoice",
+                                  style: headTextStyle(),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Load Request",
-                          style: headTextStyle(),
-                        )
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

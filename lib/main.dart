@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
@@ -29,6 +31,7 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -42,7 +45,6 @@ import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
@@ -75,14 +77,19 @@ import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
+import 'package:customer_connect/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,15 +100,11 @@ import 'feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 import 'feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
 import 'feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
-import 'feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
-import 'feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
 import 'feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
 import 'feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
 import 'feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
-import 'feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
 import 'feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
-import 'feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
 import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
 import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
@@ -109,6 +112,16 @@ import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+
+    await PushNotificationService().initialize();
+    FirebaseMessaging.onBackgroundMessage(
+        PushNotificationService().backgroundHandler);
+  } catch (e) {
+    log('Error initializing Firebase: $e');
+  }
   configureinjection();
 
   LoginUserModel? user = await getuserdata();
@@ -407,21 +420,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MaterialReqHeadBloc>(),
         ),
-        BlocProvider(create: (context) => getit<MaterialReqDetailBloc>(),
+        BlocProvider(
+          create: (context) => getit<MaterialReqDetailBloc>(),
         ),
-        BlocProvider(create: (context) => getit<LoadReqHeaderBloc>(),
+        BlocProvider<NavigatetoBackCubit>(
+          create: (context) => NavigatetoBackCubit(),
         ),
-        BlocProvider(create: (context) => getit<LoadReqDetailBloc>(),
+        BlocProvider(
+          create: (context) => getit<InvoiceDetailsTotalCubit>(),
         ),
-        BlocProvider(create: (context) => getit<LoadReqApprovalBloc>(),
+        BlocProvider(
+          create: (context) => getit<TodaysDeliveryDetailsBloc>(),
         ),
-        BlocProvider(create: (context)=> getit<MaterialReqApprovalBloc>()
+        BlocProvider(
+          create: (context) => getit<GetAllRouteBloc>(),
         ),
-        BlocProvider(create: (context)=> getit<MaterialReqRejectionBloc>()
-        ),
-
-
-
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
@@ -439,7 +452,7 @@ class MyApp extends StatelessWidget {
               titleLarge: kfontstyle(),
               titleMedium: kfontstyle(),
               titleSmall: kfontstyle(),
-              ),
+            ),
             primaryTextTheme: TextTheme(
               bodySmall: kfontstyle(),
               bodyLarge: kfontstyle(),

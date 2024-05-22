@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -44,13 +45,12 @@ class TodaysDelivery implements ITodaysDeliveryRepo {
   @override
   Future<Either<MainFailures, List<TodaysDeliveryDetailsModel>>>
       getDeliveryDetail(String id) async {
-    var logger = Logger();
     try {
       final response = await http.post(
           Uri.parse(baseUrl + todaysdeliverydetailsurl),
           body: {"ID": id});
+      log('response: ${response.body}');
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> todaysdeliverydet = json['result'];
         List<TodaysDeliveryDetailsModel> orders = todaysdeliverydet
@@ -64,7 +64,7 @@ class TodaysDelivery implements ITodaysDeliveryRepo {
         );
       }
     } catch (e) {
-      logger.e('Todays Delivery details error$e');
+      log('Todays Delivery details error$e');
       return left(const MainFailures.serverfailure());
     }
   }

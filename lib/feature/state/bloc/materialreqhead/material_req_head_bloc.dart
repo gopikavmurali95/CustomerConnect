@@ -12,22 +12,21 @@ part 'material_req_head_state.dart';
 part 'material_req_head_bloc.freezed.dart';
 
 @injectable
-class MaterialReqHeadBloc extends Bloc<MaterialReqHeadEvent, MaterialReqHeadState> {
+class MaterialReqHeadBloc
+    extends Bloc<MaterialReqHeadEvent, MaterialReqHeadState> {
   final IMaterialReqHeaderRepo materialheadrepo;
 
-  MaterialReqHeadBloc(this.materialheadrepo) : super(MaterialReqHeadState.initial()) {
-    on<MaterialHeadSuccessEvent>((event, emit) async{
-
+  MaterialReqHeadBloc(this.materialheadrepo)
+      : super(MaterialReqHeadState.initial()) {
+    on<MaterialHeadSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqHeaderModel>> mheadlist =
-      await materialheadrepo.materialreqheaderList(event.userId);
-      emit(mheadlist.fold((l) => const  MaterialreqheadFailed(),
-              (r) => Materialreqheadsuccess(materialheader: r)));
-
+          await materialheadrepo.materialreqheaderList(event.userId);
+      emit(mheadlist.fold((l) => const MaterialreqheadFailed(),
+          (r) => Materialreqheadsuccess(materialheader: r)));
     });
 
     on<MaterialReqHeadClearEvent>((event, emit) {
-      emit( const Materialreqheadsuccess(materialheader: null
-      ));
+      emit(const Materialreqheadsuccess(materialheader: null));
     });
   }
 }

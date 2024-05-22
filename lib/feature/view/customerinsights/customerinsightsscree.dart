@@ -27,7 +27,7 @@ final _todatectrl = TextEditingController();
 class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
   @override
   void initState() {
-    _fromdatectrl.text = '01-01-2023';
+    _fromdatectrl.text = '01-04-2024';
     _todatectrl.text =
         '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
 

@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -250,16 +252,36 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           // crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              detail[index].liHigherUom ?? "",
-                                              style: subTitleTextStyle(),
+                                            Visibility(
+                                              visible:
+                                                  detail[index].liHigherUom ==
+                                                              null ||
+                                                          detail[index]
+                                                              .liHigherUom!
+                                                              .isEmpty
+                                                      ? false
+                                                      : true,
+                                              child: Text(
+                                                detail[index].liHigherUom ?? "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                             ),
                                             const SizedBox(
                                               height: 5,
                                             ),
-                                            Text(
-                                              detail[index].liLowerUom ?? "",
-                                              style: subTitleTextStyle(),
+                                            Visibility(
+                                              visible:
+                                                  detail[index].liLowerUom ==
+                                                              null ||
+                                                          detail[index]
+                                                              .liLowerUom!
+                                                              .isEmpty
+                                                      ? false
+                                                      : true,
+                                              child: Text(
+                                                detail[index].liLowerUom ?? "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -287,16 +309,36 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             // crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                detail[index].higherUom ?? "",
-                                                style: subTitleTextStyle(),
+                                              Visibility(
+                                                visible:
+                                                    detail[index].higherUom ==
+                                                                null ||
+                                                            detail[index]
+                                                                .higherUom!
+                                                                .isEmpty
+                                                        ? false
+                                                        : true,
+                                                child: Text(
+                                                  detail[index].higherUom ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                               ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                              Text(
-                                                detail[index].lowerUom ?? '',
-                                                style: subTitleTextStyle(),
+                                              Visibility(
+                                                visible:
+                                                    detail[index].lowerUom ==
+                                                                null ||
+                                                            detail[index]
+                                                                .lowerUom!
+                                                                .isEmpty
+                                                        ? false
+                                                        : true,
+                                                child: Text(
+                                                  detail[index].lowerUom ?? '',
+                                                  style: subTitleTextStyle(),
+                                                ),
                                               ),
                                             ],
                                           ),

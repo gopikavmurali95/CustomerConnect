@@ -32,7 +32,7 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
     context.read<CusGeoLocationBloc>().add(
           GetCusGeoLocationEvent(
             cusGeoLocInModel: CusGeoLocInModel(
-                cusId: /* widget.customer.cusId */ '1',
+                cusId: widget.customer.cusId,
                 area: '',
                 fromDate: widget.fromdatectrl.text,
                 toDate: widget.todatectrl.text,

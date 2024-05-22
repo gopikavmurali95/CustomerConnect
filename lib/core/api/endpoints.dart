@@ -1,4 +1,4 @@
-const baseUrl = "https://uom-sfa.dev-ts.online/WS/";
+const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
 const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
@@ -97,9 +97,4 @@ const journeyPlanApprovalApproval = 'Journeyplanseq/PostJourneyplanseqApproval';
 const journeyPlanRejectUrl = 'Journeyplanseq/PostJourneyplanseqReject';
 const materialReqHeaderUrl = 'InventoryApproval/MaterialReqHeader';
 const materialReqDetailUrl = 'InventoryApproval/MaterialReqDetails';
-const loadReqHeaderUrl = 'InventoryApproval/LoadRequestApprovalHeader';
-const loadReqDetailUrl = 'InventoryApproval/LoadRequestApprovalDetails';
-const loadReqApprovalUrl = 'InventoryApproval/PostLoadReqApproval';
-const materialReqApprovalUrl = 'InventoryApproval/PostMaterialReqApproval';
-const materialReqRejectionUrl = 'InventoryApproval/PostMaterialReqReject';
-
+const allRoutesUrl = 'Home/GetRoute';

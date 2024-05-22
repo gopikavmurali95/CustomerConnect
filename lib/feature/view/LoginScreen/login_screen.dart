@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
+// import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
           state.when(
             userLoginSuccessState: (user) async {
               if (user != null) {
-                if (user.usrId != null && user.usrId!.isNotEmpty) {
+                if (user.usrId != null &&
+                    user.usrId!.isNotEmpty &&
+                    user.usrId != '0') {
                   final SharedPreferences sharedprefs =
                       await SharedPreferences.getInstance();
                   await sharedprefs.setString(
@@ -56,14 +59,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
-                      content: Text("${user.title} \n ${user.descr}"),
+                      title: Text('${user.title}'),
+                      content: Text("${user.descr}"),
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text('Ok'),
+                          child: const Text('Try again'),
                         ),
                       ],
                     ),

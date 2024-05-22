@@ -295,9 +295,6 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                         width: 15.h,
                       ),
                       const Text('Qty'),
-                      SizedBox(
-                        width: 15.h,
-                      ),
                     ],
                   ),
                 ],

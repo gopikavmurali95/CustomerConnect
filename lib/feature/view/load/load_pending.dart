@@ -29,13 +29,32 @@ class _LoadPendingState extends State<LoadPending> {
         searchQuery: '',
         loadingin: LoadingHeaderInModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2023',
-            toDate: '23-03-2024',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'DD',
             area: '',
             route: '',
             subArea: '')));
     super.initState();
+  }
+
+  Future<void> _onRefreshLoadin() async {
+    context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
+    context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+        searchQuery: '',
+        loadingin: LoadingHeaderInModel(
+            userId: widget.user.usrId,
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            mode: 'DD',
+            area: '',
+            route: '',
+            subArea: '')));
+    await Future.delayed(const Duration(seconds: 2));
   }
 
   @override
@@ -104,8 +123,10 @@ class _LoadPendingState extends State<LoadPending> {
                                 searchQuery: value.trim(),
                                 loadingin: LoadingHeaderInModel(
                                     userId: widget.user.usrId,
-                                    fromDate: '01-01-2023',
-                                    toDate: '23-03-2024',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: 'DD',
                                     area: '',
                                     route: '',
@@ -120,7 +141,7 @@ class _LoadPendingState extends State<LoadPending> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search Deliveries",
+                      hintText: "Search here..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -136,17 +157,18 @@ class _LoadPendingState extends State<LoadPending> {
                           context
                               .read<LoadingHeaderBloc>()
                               .add(const ClearLoadingHeadderEvent());
-                          context.read<LoadingHeaderBloc>().add(
-                              GetLoadingHeaderEvent(
-                                  searchQuery: '',
-                                  loadingin: LoadingHeaderInModel(
-                                      userId: widget.user.usrId,
-                                      fromDate: '01-01-2023',
-                                      toDate: '23-03-2024',
-                                      mode: 'DD',
-                                      area: '',
-                                      route: '',
-                                      subArea: '')));
+                          context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+                              searchQuery: '',
+                              loadingin: LoadingHeaderInModel(
+                                  userId: widget.user.usrId,
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  mode: 'DD',
+                                  area: '',
+                                  route: '',
+                                  subArea: '')));
                         },
                         child: const Icon(
                           Icons.close,
@@ -164,59 +186,66 @@ class _LoadPendingState extends State<LoadPending> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //SizedBox(width: 05,),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "Pending",
-                  style: countHeading(),
+      body: RefreshIndicator.adaptive(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: _onRefreshLoadin,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //SizedBox(width: 05,),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  child: Text(
+                    "Pending",
+                    style: countHeading(),
+                  ),
                 ),
-              ),
-              BlocBuilder<LoadingHeaderBloc, LoadingHeaderState>(
-                builder: (context, state) {
-                  return state.when(
-                    getloadingHeaderState: (loadingheaders) =>
-                        loadingheaders != null
-                            ? Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child: Text(
-                                  "${loadingheaders.length}",
-                                  style: countHeading(),
+                BlocBuilder<LoadingHeaderBloc, LoadingHeaderState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getloadingHeaderState: (loadingheaders) =>
+                          loadingheaders != null
+                              ? Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20.0, right: 20, top: 10),
+                                  child: Text(
+                                    "${loadingheaders.length}",
+                                    style: countHeading(),
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20.0, right: 20, top: 10),
+                                  child: Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
                                 ),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child: Text(
-                                  "0",
-                                  style: countHeading(),
-                                ),
-                              ),
-                    loadingHeaderFailedState: () => Padding(
-                      padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                      child: Text(
-                        "0",
-                        style: countHeading(),
+                      loadingHeaderFailedState: () => Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, top: 10),
+                        child: Text(
+                          "0",
+                          style: countHeading(),
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
-              // SizedBox(width: ,),
-            ],
-          ),
-          Expanded(
-              child: PendingList(
-            user: widget.user,
-          )),
-        ],
+                    );
+                  },
+                ),
+                // SizedBox(width: ,),
+              ],
+            ),
+            Expanded(
+                child: PendingList(
+              user: widget.user,
+            )),
+          ],
+        ),
       ),
     );
   }

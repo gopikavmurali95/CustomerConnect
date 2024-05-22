@@ -94,11 +94,13 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                                     area: '',
                                     customer: '',
                                     customerOutlet: '',
-                                    fromDate: '01-01-2023',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: '',
                                     route: '',
                                     subArea: '',
-                                    toDate: '31-03-2024',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     userId: widget.user.usrId),
                                 searchQuery: value.trim()));
                       },
@@ -109,7 +111,7 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search deliveries ",
+                      hintText: "Search here.. ",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -131,11 +133,13 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                                       area: '',
                                       customer: '',
                                       customerOutlet: '',
-                                      fromDate: '01-01-2023',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       mode: '',
                                       route: '',
                                       subArea: '',
-                                      toDate: '31-03-2024',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       userId: widget.user.usrId),
                                   searchQuery: ''));
                         },

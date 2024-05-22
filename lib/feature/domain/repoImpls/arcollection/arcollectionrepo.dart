@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-import 'package:customer_connect/constants/fonts.dart';
+import 'dart:isolate';
+// import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -21,7 +23,7 @@ class ArCollectionRepo implements IArCollectionRepo {
     try {
       final response = await http
           .post(Uri.parse(baseUrl + arDeatilUrl), body: {"arh_ID": arhID});
-
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -48,7 +50,7 @@ class ArCollectionRepo implements IArCollectionRepo {
       final response = await http.post(Uri.parse(baseUrl + arHeaderUrl),
           body: arin.toJson());
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> arheaderdata = json['result'];
@@ -70,23 +72,46 @@ class ArCollectionRepo implements IArCollectionRepo {
   @override
   Future<Either<MainFailures, ArTotalCollectionModel>> getArTotal(
       ArTotalInModel totalIn) async {
+    Completer<Either<MainFailures, ArTotalCollectionModel>> completer =
+        Completer();
+
+    ReceivePort receivePort = ReceivePort();
+
+    await Isolate.spawn(_fetchDataIsolate, {
+      'totalIn': totalIn.toJson(),
+      'receivePort': receivePort.sendPort,
+    });
+
+    receivePort.listen((data) {
+      if (data is MainFailures) {
+        completer.complete(left(data));
+      } else if (data is ArTotalCollectionModel) {
+        completer.complete(right(data));
+      }
+      receivePort.close();
+    });
+
+    return completer.future;
+  }
+
+  void _fetchDataIsolate(Map<String, dynamic> message) async {
     try {
       final response = await http.post(
-          Uri.parse(baseUrl + arTotalCollectionUrl),
-          body: totalIn.toJson());
+        Uri.parse(baseUrl + arTotalCollectionUrl),
+        body: message['totalIn'],
+      );
+
       if (response.statusCode == 200) {
-        logger.w('Response: ${response.body}');
-        Map<String, dynamic> json = jsonDecode(response.body);
-        final artotal = ArTotalCollectionModel.fromJson(json["result"][0]);
-        return right(artotal);
+        final json = jsonDecode(response.body);
+        final artotal = ArTotalCollectionModel.fromJson(json['result'][0]);
+        message['receivePort'].send(artotal);
       } else {
-        return left(
-          const MainFailures.networkerror(error: 'Something went Wrong'),
-        );
+        message['receivePort'].send(
+            const MainFailures.networkerror(error: 'Something went Wrong'));
       }
     } catch (e) {
-      log('login error : $e');
-      return left(const MainFailures.serverfailure());
+      log('ar error : $e');
+      message['receivePort'].send(const MainFailures.serverfailure());
     }
   }
 }

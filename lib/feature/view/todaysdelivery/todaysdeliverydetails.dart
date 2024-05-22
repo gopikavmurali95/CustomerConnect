@@ -32,7 +32,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
         .read<TodaysDeliveryDetailsBloc>()
         .add(const ClearTodasDeliveryDetails());
     context.read<TodaysDeliveryDetailsBloc>().add(GetTodaysDeliveryDetailsEvent(
-        id: widget.todaysdelivery.id!, searchQuery: ''));
+        id: widget.todaysdelivery.id ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -252,11 +252,11 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Ord Qty'),
-                      SizedBox(
+                      const Text('Qty'),
+                      /*  SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Del Qty'),
+                      const Text('Del Qty'), */
                     ],
                   ),
                 ],
@@ -266,7 +266,10 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
           SizedBox(
             width: 15.h,
           ),
-          const Expanded(child: TodaysDeliveryDetailsList()),
+          Expanded(
+              child: TodaysDeliveryDetailsList(
+            delivery: widget.todaysdelivery,
+          )),
         ],
       ),
       bottomNavigationBar: SizedBox(
@@ -283,7 +286,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
               ),
               Text(
-                'AED 1890.00',
+                'AED ${widget.todaysdelivery.grandTotal}',
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
               )
             ],

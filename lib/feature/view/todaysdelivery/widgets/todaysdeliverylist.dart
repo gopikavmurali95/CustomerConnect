@@ -62,7 +62,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'MO86764',
+                                      delivery[index].orderId ?? '',
                                       style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff2C6B9E),
@@ -72,7 +72,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'A025206 - ',
+                                          '${delivery[index].cusCode} - ',
                                           style: kfontstyle(
                                             fontSize: 11.sp,
                                             color: const Color(0xff2C6B9E),
@@ -81,7 +81,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                         Expanded(
                                           child: Text(
                                             overflow: TextOverflow.ellipsis,
-                                            'Tromp, Muller and Mitchell',
+                                            delivery[index].cusName ?? '',
                                             style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: const Color(0xff413434)),
@@ -92,14 +92,14 @@ class TodaysDeliveryList extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          '199525 - ',
+                                          '${delivery[index].cusOutCode} - ',
                                           style: kfontstyle(
                                               fontSize: 11.sp,
                                               color: const Color(0xff413434)),
                                         ),
                                         Expanded(
                                           child: Text(
-                                            'Carrefour Hypermarket',
+                                            delivery[index].cusOutName ?? '',
                                             overflow: TextOverflow.ellipsis,
                                             style: kfontstyle(fontSize: 12.sp),
                                           ),
@@ -107,7 +107,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      'CR | Route 101 | 16 May 2023 | 10:35',
+                                      '${delivery[index].salesman} | ${delivery[index].rotName} | ${delivery[index].date} | ${delivery[index].time}',
                                       style: kfontstyle(
                                           fontSize: 10.sp, color: Colors.grey),
                                     ),
@@ -124,7 +124,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                   child: Text(
-                                    index % 2 == 0 ? 'DE' : 'PE',
+                                    delivery[index].status ?? '',
                                     style: kfontstyle(
                                         fontSize: 10.sp,
                                         color: const Color(0xff413434)),
@@ -141,10 +141,10 @@ class TodaysDeliveryList extends StatelessWidget {
                         Divider(
                           color: Colors.grey[300],
                         ),
-                    itemCount: 10),
+                    itemCount: delivery.length),
             todaysDeliveryFailedState: () => Center(
               child: Text(
-                'No data Avialble',
+                'No data Available',
                 style: kfontstyle(),
               ),
             ),

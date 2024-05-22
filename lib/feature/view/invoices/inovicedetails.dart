@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
+// import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
   @override
   void initState() {
     _invoiceDetailsSearchCtrl.clear();
+    // context.read<InvoiceDetailsTotalCubit>().getInvTotal([]);
     context.read<InvoiceDetailsBloc>().add(const ClearInvoiceDetails());
     context.read<InvoiceDetailsBloc>().add(
         GetInvoiceDetailsEvent(id: widget.invoiceheader.id!, searchQuery: ''));
@@ -70,83 +72,9 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
             ),
           ),
         ],
-        /* bottom: PreferredSize(
-          preferredSize: Size(100, 120.h),
-          child: 
-        ), */
       ),
       body: Column(
         children: [
-          /* Visibility(
-            visible: isfromUser,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        color: const Color(0xfffee8e0),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'A025206 - ',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff2C6B9E),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                'Tromp, Muller and Mitchell',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '199525 - ',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Carrefour Hypermarket',
-                                overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Virtual | Supermarket | Dubai ',
-                          style:
-                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ), */
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Column(
@@ -327,7 +255,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Invoices",
+                          hintText: "Search Items",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -385,22 +313,22 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
                       Text(
                         'Uom',
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
                       Text(
                         'Qty',
                         style: boxHeading(),
                       ),
-                      SizedBox(
+                      /*  SizedBox(
                         width: 15.h,
-                      ),
+                      ), */
                     ],
                   ),
                 ],
@@ -432,6 +360,16 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
+                  /*BlocBuilder<InvoiceDetailsTotalCubit,
+                      InvoiceDetailsTotalState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.amount,
+                        style: TextStyle(
+                            fontSize: 12.sp, fontWeight: FontWeight.w600),
+                      );
+                    },
+                  )*/
                   Text(
                     widget.invoiceheader.grandTotal ?? '',
                     style:

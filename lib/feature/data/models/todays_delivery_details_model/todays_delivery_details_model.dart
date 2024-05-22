@@ -4,27 +4,32 @@ part 'todays_delivery_details_model.g.dart';
 
 @JsonSerializable()
 class TodaysDeliveryDetailsModel {
-  @JsonKey(name: 'prh_ID')
+  @JsonKey(name: 'prd_ID')
   String? prhId;
-  @JsonKey(name: 'prh_Code')
+  @JsonKey(name: 'prd_Code')
   String? prhCode;
-  @JsonKey(name: 'prh_Name')
+  @JsonKey(name: 'prd_Name')
   String? prhName;
-  @JsonKey(name: 'StartDate')
-  String? startDate;
-  @JsonKey(name: 'EndDate')
-  String? endDate;
-  @JsonKey(name: 'prh_PayMode')
-  String? prhPayMode;
+  @JsonKey(name: 'LowerUOM')
+  String? lUom;
+  @JsonKey(name: 'HigherUOM')
+  String? hUom;
+  @JsonKey(name: 'HigherQty')
+  String? hQty;
+  @JsonKey(name: 'LowerQty')
+  String? lQty;
+  @JsonKey(name: 'Total')
+  String? total;
 
-  TodaysDeliveryDetailsModel({
-    this.prhId,
-    this.prhCode,
-    this.prhName,
-    this.startDate,
-    this.endDate,
-    this.prhPayMode,
-  });
+  TodaysDeliveryDetailsModel(
+      {this.prhId,
+      this.prhCode,
+      this.prhName,
+      this.hQty,
+      this.hUom,
+      this.lQty,
+      this.lUom,
+      this.total});
 
   factory TodaysDeliveryDetailsModel.fromJson(Map<String, dynamic> json) {
     return _$TodaysDeliveryDetailsModelFromJson(json);
