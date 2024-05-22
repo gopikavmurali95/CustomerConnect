@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_geo_loc_in_model.dart';
@@ -10,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GeoLocationListWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -36,7 +39,7 @@ class GeoLocationListWidget extends StatelessWidget {
                 context.read<CusGeoLocationBloc>().add(
                       GetCusGeoLocationEvent(
                         cusGeoLocInModel: CusGeoLocInModel(
-                            cusId: /* widget.customer.cusId */ '1',
+                            cusId: customer.cusId,
                             area: '',
                             fromDate: fromdatectrl.text,
                             toDate: todatectrl.text,
@@ -155,7 +158,69 @@ class GeoLocationListWidget extends StatelessWidget {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 30.w, vertical: 6),
                                       child: InkWell(
-                                        onTap: () {},
+                                        onTap: () async {
+                                          log("cus geo code ${geolocations[index].geolocurl}");
+
+                                          if (geolocations[index].geolocurl !=
+                                              null) {
+                                            String url = geolocations[index]
+                                                .geolocurl!
+                                                .replaceAll(
+                                                    "System.String[]", "");
+                                            //String map = profile.cusGeoCode!;
+                                            Uri androidUrl =
+                                                Uri.parse('geo:0,0?q=$url');
+                                            /*  Uri iosUrl = Uri.parse(
+                                "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
+                                            try {
+                                              if (geolocations[index]
+                                                          .geolocurl !=
+                                                      null &&
+                                                  geolocations[index]
+                                                          .geolocurl !=
+                                                      '') {
+                                                if (await canLaunchUrl(
+                                                  androidUrl,
+                                                )) {
+                                                  bool issuccess =
+                                                      await launchUrl(
+                                                    androidUrl,
+                                                    mode: LaunchMode
+                                                        .platformDefault,
+                                                  );
+
+                                                  logger.e(
+                                                      'Map status $issuccess');
+                                                } else {
+                                                  logger.e('Cannot launch map');
+                                                }
+                                              } else {
+                                                return showCupertinoDialog(
+                                                    context: context,
+                                                    builder: (context) =>
+                                                        CupertinoAlertDialog(
+                                                          title: const Text(
+                                                              'Alert'),
+                                                          content: const Text(
+                                                              'Location not available'),
+                                                          actions: [
+                                                            TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                        'Ok'))
+                                                          ],
+                                                        ));
+                                              }
+                                            } catch (e) {
+                                              logger
+                                                  .e('Error launching map: $e');
+                                            }
+                                          }
+                                        },
                                         child: Row(
                                           children: [
                                             Text(
@@ -216,7 +281,8 @@ class GeoLocationListWidget extends StatelessWidget {
                                                                   geolocations[
                                                                           index]
                                                                       .cglCusGeoLoc,
-                                                              cusId: '1',
+                                                              cusId: customer
+                                                                  .cusId,
                                                             ),
                                                           );
                                                     },
