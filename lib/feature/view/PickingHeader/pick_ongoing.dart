@@ -170,51 +170,76 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Ongoing",
-                    style: countHeading(),
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshPicking(context),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //SizedBox(width: 05,),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                    child: Text(
+                      "Ongoing",
+                      style: countHeading(),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getPickingHeaderState: (count) => count != null
-                            ? Text(
-                                "${count.length}",
-                                style: countHeading(),
-                              )
-                            : Text(
-                                "0",
-                                style: countHeading(),
-                              ),
-                        pickingheaderFailedState: () => Text(
-                          "0",
-                          style: countHeading(),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                    child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getPickingHeaderState: (count) => count != null
+                              ? Text(
+                                  "${count.length}",
+                                  style: countHeading(),
+                                )
+                              : Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
+                          pickingheaderFailedState: () => Text(
+                            "0",
+                            style: countHeading(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            const OnGoing(),
-          ],
+                  // SizedBox(width: ,),
+                ],
+              ),
+              const OnGoing(),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshPicking(BuildContext context) async {
+    _pickingOngoingSearchCtrl.clear();
+    context.read<PickingHeaderBloc>().add(const ClearPickingevent());
+    context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+        pickingHeadIn: PickingInModel(
+            userID: widget.user.usrId,
+            area: '',
+            customer: '',
+            fromDate: '01-01-2023',
+            mode: '0',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '26-03-2024'),
+        searchQuery: ''));
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

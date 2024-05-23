@@ -143,19 +143,23 @@ class SalesOrders extends StatelessWidget {
                                           .add(const ClearTodaysDelivery());
                                       context
                                           .read<TodaysDeliveryHeaderBloc>()
-                                          .add(GetTodaysDeliveryEvent(
+                                          .add(
+                                            GetTodaysDeliveryEvent(
                                               todaysdelivery: TodaysDeliveryInParas(
                                                   area: '',
                                                   customer: '',
                                                   customerOutlet: '',
-                                                  fromDate: '01-04-2024',
+                                                  fromDate:
+                                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                                   mode: '',
                                                   route: '',
                                                   subArea: '',
                                                   toDate:
                                                       '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                                   userId: user.usrId),
-                                              searchQuery: ''));
+                                              searchQuery: '',
+                                            ),
+                                          );
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(

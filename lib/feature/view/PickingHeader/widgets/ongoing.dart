@@ -121,8 +121,11 @@ class OnGoing extends StatelessWidget {
                         );
                       },
                     ),
-          pickingheaderFailedState: () => const Center(
-            child: Text("No Data Available"),
+          pickingheaderFailedState: () => SizedBox(
+            height: MediaQuery.of(context).size.height / 1.5,
+            child: const Center(
+              child: Text("No Data Available"),
+            ),
           ),
         );
       },

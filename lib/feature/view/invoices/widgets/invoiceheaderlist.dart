@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 // import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
@@ -11,7 +12,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InvoiceHeaderListWidget extends StatelessWidget {
   final bool isfromUser;
-  const InvoiceHeaderListWidget({super.key, required this.isfromUser});
+  final LoginUserModel user;
+  const InvoiceHeaderListWidget(
+      {super.key, required this.isfromUser, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +53,8 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                   : Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
                           itemBuilder: (context, index) => InkWell(
                                 onTap: () {
                                   //context.read<InvoiceDetailsBloc>().add(GetInvoiceDetailsEvent(id: invheader))
@@ -59,6 +64,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                       builder: (context) => InvoiceDetailScreen(
                                         isfromUser: isfromUser,
                                         invoiceheader: invheader[index],
+                                        user: user,
                                       ),
                                     ),
                                   );
@@ -248,10 +254,13 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                               ),
                           itemCount: invheader.length),
                     ),
-          invoiceHeaderFailedState: () => Center(
-            child: Text(
-              'No Data Available',
-              style: kfontstyle(),
+          invoiceHeaderFailedState: () => SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Text(
+                'No Data Available',
+                style: kfontstyle(),
+              ),
             ),
           ),
         );
