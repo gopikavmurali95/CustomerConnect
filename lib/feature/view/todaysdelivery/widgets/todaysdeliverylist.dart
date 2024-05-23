@@ -32,6 +32,8 @@ class TodaysDeliveryList extends StatelessWidget {
                         itemCount: 10),
                   )
                 : ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {
                             Navigator.push(
@@ -142,10 +144,13 @@ class TodaysDeliveryList extends StatelessWidget {
                           color: Colors.grey[300],
                         ),
                     itemCount: delivery.length),
-            todaysDeliveryFailedState: () => Center(
-              child: Text(
-                'No data Available',
-                style: kfontstyle(),
+            todaysDeliveryFailedState: () => SizedBox(
+              height: MediaQuery.of(context).size.height / 1.5,
+              child: Center(
+                child: Text(
+                  'No data Available',
+                  style: kfontstyle(),
+                ),
               ),
             ),
           );

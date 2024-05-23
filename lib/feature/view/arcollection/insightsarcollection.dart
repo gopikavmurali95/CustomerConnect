@@ -10,7 +10,9 @@ import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -564,60 +566,76 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //SizedBox(width: 05,),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20.0, right: 20, top: 0),
-                    child: Text(
-                      "All",
-                      style: countHeading(),
-                    ),
-                  ),
-                  BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getArHeadersState: (headers, totals) => headers == null
-                            ? Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 0),
-                                child: Text(
-                                  "0",
-                                  style: countHeading(),
-                                ),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 0),
-                                child: Text(
-                                  "${headers.length}",
-                                  style: countHeading(),
-                                ),
-                              ),
-                        getArHeadersFailedState: () => Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
-                          child: Text(
-                            "0",
-                            style: countHeading(),
+              RefreshIndicator(
+                triggerMode: RefreshIndicatorTriggerMode.anywhere,
+                color: const Color.fromARGB(255, 181, 218, 245),
+                displacement: BorderSide.strokeAlignCenter,
+                onRefresh: () => _onRefreshArHeader(context),
+                child: SingleChildScrollView(
+                  // controller: _scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          //SizedBox(width: 05,),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, right: 20, top: 0),
+                            child: Text(
+                              "All",
+                              style: countHeading(),
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                          BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
+                            builder: (context, state) {
+                              return state.when(
+                                getArHeadersState: (headers, totals) =>
+                                    headers == null
+                                        ? Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 20.0, right: 20, top: 0),
+                                            child: Text(
+                                              "0",
+                                              style: countHeading(),
+                                            ),
+                                          )
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 20.0, right: 20, top: 0),
+                                            child: Text(
+                                              "${headers.length}",
+                                              style: countHeading(),
+                                            ),
+                                          ),
+                                getArHeadersFailedState: () => Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20.0, right: 20, top: 0),
+                                  child: Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          // SizedBox(width: ,),
+                        ],
+                      ),
+                    ],
                   ),
-                  // SizedBox(width: ,),
-                ],
+                ),
               ),
               SizedBox(
                 height: 10.h,
               ),
-              Expanded(
+              /* Expanded(
                   child: SingleChildScrollView(
                 controller: _scrollController,
                 child: const InsightArListWidget(),
-              )),
+              )), */
+              const InsightArListWidget(),
               SizedBox(
                 height: 10.sp,
               )
@@ -626,5 +644,27 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
         },
       ),
     );
+  }
+
+  Future<void> _onRefreshArHeader(BuildContext context) async {
+    _cusArSearchCtrl.clear();
+    context.read<ArScrollCtrlCubit>().onInit();
+    _scrollController.addListener(_scrollListener);
+    context.read<CusInsArHeaderBloc>().add(const ClearCusInsArHeader());
+    context.read<CusInsArHeaderBloc>().add(
+          GetCusInsArHeaderEvent(
+            searchQuery: '',
+            arIn: CusInsArHeaderInModel(
+              userId: widget.user.usrId,
+              cusId: widget.customer.cusId ?? '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              area: '',
+              route: '',
+              subArea: '',
+            ),
+          ),
+        );
+    await Future.delayed(const Duration(seconds: 2));
   }
 }
