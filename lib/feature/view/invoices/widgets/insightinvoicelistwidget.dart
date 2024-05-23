@@ -38,13 +38,16 @@ class InsightInvoiceListWidget extends StatelessWidget {
                         itemCount: 10),
                   )
                 : headers.isEmpty
-                    ? Center(
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 250),
                         child: Text(
                           'No Data Found',
                           style: kfontstyle(),
                         ),
                       )
                     : ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
                         itemBuilder: (context, index) => InkWell(
                               onTap: () {
                                 Navigator.push(
@@ -135,7 +138,8 @@ class InsightInvoiceListWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: headers.length),
-            getcusInvFailedState: () => Center(
+            getcusInvFailedState: () => Padding(
+              padding: const EdgeInsets.only(top: 250),
               child: Text(
                 'No Data Available',
                 style: kfontstyle(),

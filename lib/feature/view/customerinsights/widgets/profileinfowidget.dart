@@ -233,9 +233,10 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                     ),
                     InkWell(
                       onTap: () async {
+                        log("cus geo code ${profile.cusGeoCode}");
                         //String map = profile.cusGeoCode!;
-                        Uri androidUrl = Uri.parse(
-                            'geo:0,0?q=${profile.cusGeoCode} ${profile.cusAddress} ');
+                        Uri androidUrl =
+                            Uri.parse('geo:0,0?q=${profile.cusGeoCode}');
                         /*  Uri iosUrl = Uri.parse(
                                 "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
                         try {

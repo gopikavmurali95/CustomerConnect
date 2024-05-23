@@ -46,7 +46,12 @@ import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
@@ -438,6 +443,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<GetAllRouteBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MaterialReqApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadReqDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadReqHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MaterialReqRejectionBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<LoadReqApprovalBloc>(),
         ),
       ],
       child: ScreenUtilInit(

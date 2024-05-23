@@ -6,11 +6,9 @@ import 'package:customer_connect/feature/data/models/load_transfer_approval_out_
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
 part 'load_transfer_approval_event.dart';
 part 'load_transfer_approval_state.dart';
 part 'load_transfer_approval_bloc.freezed.dart';
-
 @injectable
 class LoadTransferApprovalBloc
     extends Bloc<LoadTransferApprovalEvent, LoadTransferApprovalState> {
@@ -20,7 +18,6 @@ class LoadTransferApprovalBloc
     on<ApproveLoadtransferEvent>((event, emit) async {
       Either<MainFailures, LoadTransferApprovalOutModel> approve =
           await loadTransferApprovalRepo.loadTransferApproval(event.approve);
-
       emit(
         approve.fold(
           (l) => const LoadTransferApprovalFailedState(),
@@ -28,7 +25,6 @@ class LoadTransferApprovalBloc
         ),
       );
     });
-
     on<AddLoadTransferLoadingEvent>((event, emit) {
       emit(const LoadTransferApprovalLoadingState());
     });

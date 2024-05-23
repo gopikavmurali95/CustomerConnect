@@ -24,20 +24,23 @@ class CustomerItemListWidget extends StatelessWidget {
                   ),
                 )
               : items.isEmpty
-                  ? Center(
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 250),
                       child: Text(
                         'No Data Found',
                         style: kfontstyle(),
                       ),
                     )
                   : ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
+                            SizedBox(
+                              // height: 55.h,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -116,7 +119,8 @@ class CustomerItemListWidget extends StatelessWidget {
                       ),
                       itemCount: items.length,
                     ),
-          getitemsFailedState: () => Center(
+          getitemsFailedState: () => Padding(
+            padding: const EdgeInsets.only(top: 250),
             child: Text(
               'No Data Available',
               style: kfontstyle(),

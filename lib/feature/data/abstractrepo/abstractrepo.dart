@@ -57,6 +57,8 @@ import 'package:customer_connect/feature/data/models/invoice_header_model/invoic
 import 'package:customer_connect/feature/data/models/journey_plan_approval_in_model/journey_plan_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/journey_plan_header_model/journey_plan_header_model.dart';
 import 'package:customer_connect/feature/data/models/joutney_plan_approval_out_model/joutney_plan_approval_out_model.dart';
+import 'package:customer_connect/feature/data/models/load_request_approval/LoadReqInApprovalModel.dart';
+import 'package:customer_connect/feature/data/models/load_request_approval_out_model/LoadRequestApprovalOutModel.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_header_model/load_transfer_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_in_model/load_transfer_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_out_model/load_transfer_approval_out_model.dart';
@@ -65,8 +67,12 @@ import 'package:customer_connect/feature/data/models/loading_detail_model/loadin
 import 'package:customer_connect/feature/data/models/loading_header_in_model/loading_header_in_model.dart';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/material_req_approval_in_model/MaterialReqApprvalInModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_approval_out_model/MaterialReqApprovalOutModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
@@ -113,6 +119,9 @@ import 'package:customer_connect/feature/data/models/van_to_van_approval_model/v
 import 'package:customer_connect/feature/data/models/van_to_van_details_model/van_to_van_details_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
 import 'package:dartz/dartz.dart';
+
+import '../models/load_req_detail_model/LoadReqDetailModel.dart';
+import '../models/load_req_header_model/LoadReqHeaderModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
@@ -460,8 +469,27 @@ abstract class IMaterialReqHeaderRepo {
 
   Future<Either<MainFailures, List<MaterialReqDetailModel>>>
       materialreqdetailList(String reqId);
+
+  Future<Either<MainFailures, MaterialReqApprovalOutModel>> materialApproval(
+      MaterialReqApprovalInModel approval
+      );
+  Future<Either<MainFailures, MaterialReqrejectionOutModel>> materialRejection(
+      MaterialReqRejectionInModel approval
+      );
 }
 
 abstract class IGetAllAvailableRoutesRepo {
   Future<Either<MainFailures, List<CuSInsRotList>>> getallRoutes();
+}
+
+abstract class ILoadRequestHeaderRepo
+{
+  Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(String userId);
+  Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(String reqId);
+}
+
+abstract class ILoadRequestApprovalRepo
+{
+  Future<Either<MainFailures, LoadRequestApprovalOutModel>>
+  loadApproval(LoadReqInApprovalModel   loadapprove);
 }

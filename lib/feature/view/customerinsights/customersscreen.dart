@@ -40,6 +40,20 @@ class _CustomersScrenState extends State<CustomersScren> {
     super.initState();
   }
 
+  Future<void> _onRefreshLoadin(BuildContext context) async {
+    _customerSearchCtrl.clear();
+
+    context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
+
+    context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
+        userId: widget.user.usrId ?? '',
+        area: '',
+        subarea: '',
+        route: _routeIDCtrl.text,
+        searchQuery: ''));
+    await Future.delayed(const Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,308 +76,340 @@ class _CustomersScrenState extends State<CustomersScren> {
           style: appHeading(),
         ),
       ),
-      body:
-          BlocListener<CustomerSearchLoadingCubit, CustomerSearchLoadingState>(
-        listener: (context, state) {
-          state.when(
-            searchLoadingState: () {
-              showCupertinoDialog(
-                  context: context,
-                  builder: (context) => const PopScope(
-                        canPop: false,
-                        child: CupertinoActivityIndicator(
-                          animating: true,
-                          color: Colors.red,
-                          radius: 30,
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshLoadin(context),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: BlocListener<CustomerSearchLoadingCubit,
+                CustomerSearchLoadingState>(
+              listener: (context, state) {
+                state.when(
+                  searchLoadingState: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => const PopScope(
+                              canPop: false,
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                color: Colors.red,
+                                radius: 30,
+                              ),
+                            ));
+                  },
+                  removeSearchLloading: () {
+                    Navigator.pop(context);
+                  },
+                );
+              },
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          'Kindly select a route to view the customers',
+                          style: kfontstyle(fontSize: 11.sp),
                         ),
-                      ));
-            },
-            removeSearchLloading: () {
-              Navigator.pop(context);
-            },
-          );
-        },
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'Kindly select a route to view the customers',
-                    style: kfontstyle(fontSize: 11.sp),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: BlocBuilder<GetAllRouteBloc, GetAllRouteState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getAllRoutesSuccessState: (routes) => routes == null
-                            ? Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
-                                child: ShimmerContainers(
-                                    height: 40.h, width: double.infinity),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                          color: Colors.grey.shade200),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                            // ignore: use_full_hex_values_for_flutter_colors
-                                            color: Color(0xff00000050),
-                                            blurRadius: 0.4,
-                                            spreadRadius: 0.4)
-                                      ]),
-                                  child: DropdownButtonFormField(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    dropdownColor: Colors.white,
-                                    value: routes[0].rotId ?? '',
-                                    style: kfontstyle(color: Colors.black),
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                    ),
-                                    items: routes.map((CuSInsRotList item) {
-                                      return DropdownMenuItem(
-                                        value: item.rotId,
-                                        child: Text(
-                                          overflow: TextOverflow.ellipsis,
-                                          item.rotName ?? '',
-                                          style: kfontstyle(fontSize: 11.sp),
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      context
-                                          .read<CustomersListBlocBloc>()
-                                          .add(const ClearCustomersEvent());
-                                      // log(value!);
-                                      _routeIDCtrl.text = value!;
+                  Row(
+                    children: [
+                      Expanded(
+                        child: BlocBuilder<GetAllRouteBloc, GetAllRouteState>(
+                          builder: (context, state) {
+                            return state.when(
+                              getAllRoutesSuccessState: (routes) => routes ==
+                                      null
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 10),
+                                      child: ShimmerContainers(
+                                          height: 40.h, width: double.infinity),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(
+                                                color: Colors.grey.shade200),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                  // ignore: use_full_hex_values_for_flutter_colors
+                                                  color: Color(0xff00000050),
+                                                  blurRadius: 0.4,
+                                                  spreadRadius: 0.4)
+                                            ]),
+                                        child: DropdownButtonFormField(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          dropdownColor: Colors.white,
+                                          value: routes[0].rotId ?? '',
+                                          style:
+                                              kfontstyle(color: Colors.black),
+                                          decoration: const InputDecoration(
+                                            border: InputBorder.none,
+                                          ),
+                                          items:
+                                              routes.map((CuSInsRotList item) {
+                                            return DropdownMenuItem(
+                                              value: item.rotId,
+                                              child: Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                item.rotName ?? '',
+                                                style:
+                                                    kfontstyle(fontSize: 11.sp),
+                                              ),
+                                            );
+                                          }).toList(),
+                                          onChanged: (value) {
+                                            context
+                                                .read<CustomersListBlocBloc>()
+                                                .add(
+                                                    const ClearCustomersEvent());
+                                            // log(value!);
+                                            _routeIDCtrl.text = value!;
 
-                                      if (value != '-1' || value.isNotEmpty) {
-                                        context
-                                            .read<CustomersListBlocBloc>()
-                                            .add(const ClearCustomersEvent());
-                                        context
-                                            .read<CustomersListBlocBloc>()
-                                            .add(GetCustomersEvent(
-                                                userId: widget.user.usrId ?? '',
-                                                area: '',
-                                                subarea: '',
-                                                route: value,
-                                                searchQuery: ''));
-                                      } else if (value == '-1' ||
-                                          value.isEmpty) {
-                                        _routeIDCtrl.clear();
-                                        context
-                                            .read<CustomersListBlocBloc>()
-                                            .add(const ClearCustomersEvent());
-                                      }
-                                    },
+                                            if (value != '-1' ||
+                                                value.isNotEmpty) {
+                                              context
+                                                  .read<CustomersListBlocBloc>()
+                                                  .add(
+                                                      const ClearCustomersEvent());
+                                              context
+                                                  .read<CustomersListBlocBloc>()
+                                                  .add(GetCustomersEvent(
+                                                      userId:
+                                                          widget.user.usrId ??
+                                                              '',
+                                                      area: '',
+                                                      subarea: '',
+                                                      route: value,
+                                                      searchQuery: ''));
+                                            } else if (value == '-1' ||
+                                                value.isEmpty) {
+                                              _routeIDCtrl.clear();
+                                              context
+                                                  .read<CustomersListBlocBloc>()
+                                                  .add(
+                                                      const ClearCustomersEvent());
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                              getAllRoutesFailedState: () => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Center(
+                                  child: Text(
+                                    'No routes available',
+                                    style: kfontstyle(),
                                   ),
                                 ),
                               ),
-                        getAllRoutesFailedState: () => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Center(
-                            child: Text(
-                              'No routes available',
-                              style: kfontstyle(),
-                            ),
-                          ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, right: 15),
-              child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: const [
-                        BoxShadow(
-                            // ignore: use_full_hex_values_for_flutter_colors
-                            color: Color(0xff00000050),
-                            blurRadius: 0.4,
-                            spreadRadius: 0.4)
-                      ]),
-                  child: TextFormField(
-                    controller: _customerSearchCtrl,
-                    onChanged: (value) {
-                      if (debounce?.isActive ?? false) debounce!.cancel();
-                      debounce = Timer(
-                        const Duration(
-                          milliseconds: 500,
-                        ),
-                        () async {
-                          if (_routeIDCtrl.text != '-1') {
-                            isSearchLoading = true;
-                            context
-                                .read<CustomerSearchLoadingCubit>()
-                                .addSearchLoadingEvent();
-                            context.read<CustomersListBlocBloc>().add(
-                                GetCustomersEvent(
-                                    userId: widget.user.usrId ?? '',
-                                    area: '',
-                                    subarea: '',
-                                    route: _routeIDCtrl.text,
-                                    searchQuery: value.trim()));
-                          }
-                        },
-                      );
-                    },
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          size: 20,
-                        ),
-                        suffix: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(height: 5.h),
-                            Expanded(
-                              child: IconButton(
-                                onPressed: () {
-                                  if (_routeIDCtrl.text != '-1') {
-                                    _customerSearchCtrl.clear();
-                                    isSearchLoading = true;
-                                    context
-                                        .read<CustomerSearchLoadingCubit>()
-                                        .addSearchLoadingEvent();
-                                    context.read<CustomersListBlocBloc>().add(
-                                        GetCustomersEvent(
-                                            userId: widget.user.usrId ?? '',
-                                            area: '',
-                                            subarea: '',
-                                            route: _routeIDCtrl.text,
-                                            searchQuery: ''));
-                                  }
-                                },
-                                icon: Icon(
-                                  Icons.close,
-                                  size: 13.sp,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        hintText: "Search here..",
-                        hintStyle: kfontstyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.normal),
-                        isDense: true,
-                        counterText: "",
-                        contentPadding: const EdgeInsets.all(15.0),
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0, right: 15),
+                    child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide.none)),
-                    textAlign: TextAlign.start,
-                    maxLines: 1,
-                    maxLength: 20,
-                    // controller: _locationNameTextController,
-                  )),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20, top: 5),
-                  child: Text(
-                    "Customers",
-                    style: countHeading(),
+                            boxShadow: const [
+                              BoxShadow(
+                                  // ignore: use_full_hex_values_for_flutter_colors
+                                  color: Color(0xff00000050),
+                                  blurRadius: 0.4,
+                                  spreadRadius: 0.4)
+                            ]),
+                        child: TextFormField(
+                          controller: _customerSearchCtrl,
+                          onChanged: (value) {
+                            if (debounce?.isActive ?? false) debounce!.cancel();
+                            debounce = Timer(
+                              const Duration(
+                                milliseconds: 500,
+                              ),
+                              () async {
+                                if (_routeIDCtrl.text != '-1') {
+                                  isSearchLoading = true;
+                                  context
+                                      .read<CustomerSearchLoadingCubit>()
+                                      .addSearchLoadingEvent();
+                                  context.read<CustomersListBlocBloc>().add(
+                                      GetCustomersEvent(
+                                          userId: widget.user.usrId ?? '',
+                                          area: '',
+                                          subarea: '',
+                                          route: _routeIDCtrl.text,
+                                          searchQuery: value.trim()));
+                                }
+                              },
+                            );
+                          },
+                          decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                size: 20,
+                              ),
+                              suffix: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5.h),
+                                  Expanded(
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (_routeIDCtrl.text != '-1') {
+                                          _customerSearchCtrl.clear();
+                                          isSearchLoading = true;
+                                          context
+                                              .read<
+                                                  CustomerSearchLoadingCubit>()
+                                              .addSearchLoadingEvent();
+                                          context
+                                              .read<CustomersListBlocBloc>()
+                                              .add(GetCustomersEvent(
+                                                  userId:
+                                                      widget.user.usrId ?? '',
+                                                  area: '',
+                                                  subarea: '',
+                                                  route: _routeIDCtrl.text,
+                                                  searchQuery: ''));
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        size: 13.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              hintText: "Search here..",
+                              hintStyle: kfontstyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.normal),
+                              isDense: true,
+                              counterText: "",
+                              contentPadding: const EdgeInsets.all(15.0),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none)),
+                          textAlign: TextAlign.start,
+                          maxLines: 1,
+                          maxLength: 20,
+                          // controller: _locationNameTextController,
+                        )),
                   ),
-                ),
-                BlocListener<CustomersListBlocBloc, CustomersListBlocState>(
-                  listener: (context, state) {
-                    state.when(
-                      getCustomersSstate: (customers) {
-                        if (isSearchLoading == true) {
-                          isSearchLoading = false;
-                          context
-                              .read<CustomerSearchLoadingCubit>()
-                              .removeLoadingEvent();
-                        }
-                      },
-                      getcustomersFailedState: () {},
-                    );
-                  },
-                  child: BlocBuilder<CustomersListBlocBloc,
-                      CustomersListBlocState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getCustomersSstate: (customers) => customers == null
-                            ? Padding(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //SizedBox(width: 05,),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, top: 5),
+                        child: Text(
+                          "Customers",
+                          style: countHeading(),
+                        ),
+                      ),
+                      BlocListener<CustomersListBlocBloc,
+                          CustomersListBlocState>(
+                        listener: (context, state) {
+                          state.when(
+                            getCustomersSstate: (customers) {
+                              if (isSearchLoading == true) {
+                                isSearchLoading = false;
+                                context
+                                    .read<CustomerSearchLoadingCubit>()
+                                    .removeLoadingEvent();
+                              }
+                            },
+                            getcustomersFailedState: () {},
+                          );
+                        },
+                        child: BlocBuilder<CustomersListBlocBloc,
+                            CustomersListBlocState>(
+                          builder: (context, state) {
+                            return state.when(
+                              getCustomersSstate: (customers) =>
+                                  customers == null
+                                      ? Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0, right: 20, top: 5),
+                                          child: Text(
+                                            "0",
+                                            style: countHeading(),
+                                          ),
+                                        )
+                                      : Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0, right: 20, top: 10),
+                                          child: Text(
+                                            "${customers.length}",
+                                            style: countHeading(),
+                                          ),
+                                        ),
+                              getcustomersFailedState: () => Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 5),
+                                    left: 20.0, right: 20, top: 10),
                                 child: Text(
                                   "0",
                                   style: countHeading(),
                                 ),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child: Text(
-                                  "${customers.length}",
-                                  style: countHeading(),
-                                ),
                               ),
-                        getcustomersFailedState: () => Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 10),
-                          child: Text(
-                            "0",
-                            style: countHeading(),
-                          ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                      // SizedBox(width: ,),
+                    ],
                   ),
-                ),
-                // SizedBox(width: ,),
-              ],
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
+                    builder: (context, state) {
+                      return SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          child: _routeIDCtrl.text.isEmpty ||
+                                  _routeIDCtrl.text == '-1'
+                              ? Padding(
+                                  padding: const EdgeInsets.only(top: 250),
+                                  child: Text(
+                                    'Select a Route',
+                                    style: kfontstyle(),
+                                  ),
+                                )
+                              : CustomersListingWidget(
+                                  user: widget.user,
+                                ));
+                    },
+                  )
+                ],
+              ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
-              builder: (context, state) {
-                return Expanded(
-                    child:
-                        _routeIDCtrl.text.isEmpty || _routeIDCtrl.text == '-1'
-                            ? Center(
-                                child: Text(
-                                  'Select a Route',
-                                  style: kfontstyle(),
-                                ),
-                              )
-                            : CustomersListingWidget(
-                                user: widget.user,
-                              ));
-              },
-            )
-          ],
+          ),
         ),
       ),
     );

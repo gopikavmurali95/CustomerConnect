@@ -91,12 +91,14 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                                 spPriceInparas: SpecialPriceHeaderModel(
                                     area: '',
                                     customer: '',
-                                    fromDate: '01-01-2023',
+                                    fromDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     mode: '',
                                     outlet: '',
                                     route: '',
                                     subArea: '',
-                                    toDate: '01-05-2024',
+                                    toDate:
+                                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                     userId: widget.user.usrId),
                                 searchQuery: value.trim()));
                       },
@@ -118,12 +120,14 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                                   spPriceInparas: SpecialPriceHeaderModel(
                                       area: '',
                                       customer: '',
-                                      fromDate: '01-01-2023',
+                                      fromDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       mode: '',
                                       outlet: '',
                                       route: '',
                                       subArea: '',
-                                      toDate: '01-05-2024',
+                                      toDate:
+                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       userId: widget.user.usrId),
                                   searchQuery: ''));
                         },

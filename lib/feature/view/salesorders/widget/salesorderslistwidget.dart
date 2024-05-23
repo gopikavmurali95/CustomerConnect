@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +32,8 @@ class SalesOrdersListingWidget extends StatelessWidget {
                         ),
                       )
                     : ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
                         itemBuilder: (context, index) => Row(
                               children: [
                                 CircleAvatar(
@@ -45,7 +48,8 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 10.w,
                                 ),
-                                Expanded(
+                                SizedBox(
+                                  // height: 55.h,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -100,7 +104,8 @@ class SalesOrdersListingWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: orders.length),
-            salesOrdersFailedState: () => Center(
+            salesOrdersFailedState: () => Padding(
+              padding: EdgeInsets.only(top: 250.h),
               child: Text(
                 'No Data Available',
                 style: kfontstyle(),
