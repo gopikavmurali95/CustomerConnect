@@ -369,7 +369,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                         child: Text(
                                                           headers[index]
                                                               .pName!
-                                                              .split('pattern')
+                                                              .split('')
                                                               .toList()[0],
                                                           style: TextStyle(
                                                               fontSize: 14.sp,

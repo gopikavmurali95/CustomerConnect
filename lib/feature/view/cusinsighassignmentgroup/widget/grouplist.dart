@@ -1,20 +1,20 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class QualificationGroupList extends StatelessWidget {
-  const QualificationGroupList({super.key});
+class CustomerInsightGroupList extends StatelessWidget {
+  const CustomerInsightGroupList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<QualificationGroupBloc, QualificationGroupState>(
+    return BlocBuilder<CustomerInsightGroupBloc, CustomerInsightGroupState>(
       builder: (context, state) {
         return state.when(
-          getGroupwiseData: (groupdata) => groupdata == null
+          getCusInsightGroupSatet: (groupdata) => groupdata == null
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: ListView.separated(
@@ -78,7 +78,7 @@ class QualificationGroupList extends StatelessWidget {
                             }),
                       ],
                     ),
-          groupWiseDataFailed: () => Center(
+          customerInsightGroupFailedState: () => Center(
             child: Text(
               'No Data Available',
               style: kfontstyle(),

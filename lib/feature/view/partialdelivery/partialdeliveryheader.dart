@@ -24,7 +24,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
         .add(const ClearPartialDeliveryHeaderEvent());
     context
         .read<PartialDeliveryHeaderBloc>()
-        .add(const GetPartialDeliveryHeaderEvent(userID: '9'));
+        .add(GetPartialDeliveryHeaderEvent(userID: widget.user.usrId!));
     super.initState();
   }
 

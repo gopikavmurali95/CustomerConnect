@@ -1,25 +1,26 @@
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
+import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
-import 'package:customer_connect/feature/view/qualificationgroup/widgets/qualificationgrouplist.dart';
+import 'package:customer_connect/feature/view/cusinsighassignmentgroup/widget/grouplist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class QualificationGroup extends StatefulWidget {
-  final PromotionHeaderModel promotion;
-  const QualificationGroup({super.key, required this.promotion});
+class CusInsightAssignmentGroup extends StatefulWidget {
+  final CusPromotionHeader header;
+  const CusInsightAssignmentGroup({super.key, required this.header});
 
   @override
-  State<QualificationGroup> createState() => _QualificationGroupState();
+  State<CusInsightAssignmentGroup> createState() =>
+      _CusInsightAssignmentGroup();
 }
 
 final _groupProdctrl = TextEditingController();
 Timer? debounce;
 
-class _QualificationGroupState extends State<QualificationGroup> {
+class _CusInsightAssignmentGroup extends State<CusInsightAssignmentGroup> {
   @override
   void initState() {
     _groupProdctrl.clear();
@@ -45,7 +46,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
           ),
         ),
         title: Text(
-          "Qualification Group",
+          "Assignment Group",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -67,7 +68,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  widget.promotion.pName!.split('').toList()[0],
+                                  widget.header.pName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -83,15 +84,15 @@ class _QualificationGroupState extends State<QualificationGroup> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.promotion.pName!,
+                                  widget.header.pName!,
                                   style: blueTextStyle(),
                                 ),
                                 Text(
-                                  widget.promotion.dateRange!,
+                                  widget.header.dateRange!,
                                   style: subTextStyle(),
                                 ),
                                 Text(
-                                  widget.promotion.pCode!,
+                                  widget.header.pCode!,
                                   style: subTextStyle(),
                                 )
                               ],
@@ -105,11 +106,11 @@ class _QualificationGroupState extends State<QualificationGroup> {
                 Row(
                   children: [
                     Text(
-                      'Qualification Group: ',
+                      'Assignment Group: ',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
-                      widget.promotion.qCode!,
+                      ' ${widget.header.aCode}',
                       style: kfontstyle(
                           fontSize: 13.sp, fontWeight: FontWeight.w500),
                     )
@@ -145,7 +146,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                                 .add(const ClearGroupData());
                             context.read<QualificationGroupBloc>().add(
                                 GetGroupWiseDataEvent(
-                                    id: "1",
+                                    id: widget.header.aid!,
                                     mode: " ",
                                     searchQuery: value.trim()));
                           },
@@ -165,8 +166,8 @@ class _QualificationGroupState extends State<QualificationGroup> {
                                   onPressed: () {
                                     _groupProdctrl.clear();
                                     context.read<QualificationGroupBloc>().add(
-                                        const GetGroupWiseDataEvent(
-                                            id: "1",
+                                        GetGroupWiseDataEvent(
+                                            id: widget.header.aid!,
                                             mode: " ",
                                             searchQuery: ''));
                                   },
@@ -206,7 +207,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
       ),
       body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: QualificationGroupList()),
+          child: CustomerInsightGroupList()),
     );
   }
 }

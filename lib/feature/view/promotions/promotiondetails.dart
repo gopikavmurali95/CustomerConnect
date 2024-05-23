@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
@@ -145,7 +146,9 @@ class PromotionDetails extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QualificationGroup()));
+                            builder: (context) => QualificationGroup(
+                                  promotion: promotion,
+                                )));
                   },
                   child: Container(
                     height: 62,
@@ -178,7 +181,7 @@ class PromotionDetails extends StatelessWidget {
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
-                                '10023',
+                                promotion.qCode!,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
@@ -208,12 +211,14 @@ class PromotionDetails extends StatelessWidget {
                         .read<QualificationGroupBloc>()
                         .add(const ClearGroupData());
                     context.read<QualificationGroupBloc>().add(
-                        const GetGroupWiseDataEvent(
-                            id: "1", mode: " ", searchQuery: ''));
+                        GetGroupWiseDataEvent(
+                            id: promotion.aid!, mode: " ", searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QualificationGroup()));
+                            builder: (context) => AssignmentGroup(
+                                  promotion: promotion,
+                                )));
                   },
                   child: Container(
                     height: 62,
@@ -246,7 +251,7 @@ class PromotionDetails extends StatelessWidget {
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
-                                promotion.id ?? '',
+                                promotion.aCode ?? '',
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),

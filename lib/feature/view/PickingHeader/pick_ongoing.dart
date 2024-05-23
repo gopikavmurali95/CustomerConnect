@@ -29,12 +29,14 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
             userID: widget.user.usrId,
             area: '',
             customer: '',
-            fromDate: '01/01/2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'O',
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '26/03/2024'),
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'),
         searchQuery: ''));
 
     super.initState();
@@ -103,19 +105,20 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                         context
                             .read<PickingHeaderBloc>()
                             .add(const ClearPickingevent());
-                        context.read<PickingHeaderBloc>().add(
-                            GetpickingHeaderEvent(
-                                pickingHeadIn: PickingInModel(
-                                    area: '',
-                                    customer: '',
-                                    fromDate: '01-01-2023',
-                                    mode: 'O',
-                                    outlet: '',
-                                    route: '',
-                                    subArea: '',
-                                    toDate: '06-04-2024',
-                                    userID: widget.user.usrId),
-                                searchQuery: value.trim()));
+                        context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+                            pickingHeadIn: PickingInModel(
+                                area: '',
+                                customer: '',
+                                fromDate:
+                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                mode: 'O',
+                                outlet: '',
+                                route: '',
+                                subArea: '',
+                                toDate:
+                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                userID: widget.user.usrId),
+                            searchQuery: value.trim()));
                       },
                     );
                   },
@@ -140,19 +143,20 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                           context
                               .read<PickingHeaderBloc>()
                               .add(const ClearPickingevent());
-                          context.read<PickingHeaderBloc>().add(
-                              GetpickingHeaderEvent(
-                                  pickingHeadIn: PickingInModel(
-                                      userID: widget.user.usrId,
-                                      area: '',
-                                      customer: '',
-                                      fromDate: '01-01-2023',
-                                      mode: 'O',
-                                      outlet: '',
-                                      route: '',
-                                      subArea: '',
-                                      toDate: '26-03-2024'),
-                                  searchQuery: ''));
+                          context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+                              pickingHeadIn: PickingInModel(
+                                  userID: widget.user.usrId,
+                                  area: '',
+                                  customer: '',
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  mode: 'O',
+                                  outlet: '',
+                                  route: '',
+                                  subArea: '',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'),
+                              searchQuery: ''));
                         },
                         child: const Icon(
                           Icons.close,

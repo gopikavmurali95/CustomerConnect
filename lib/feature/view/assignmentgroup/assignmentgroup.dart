@@ -8,18 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class QualificationGroup extends StatefulWidget {
+class AssignmentGroup extends StatefulWidget {
   final PromotionHeaderModel promotion;
-  const QualificationGroup({super.key, required this.promotion});
+  const AssignmentGroup({super.key, required this.promotion});
 
   @override
-  State<QualificationGroup> createState() => _QualificationGroupState();
+  State<AssignmentGroup> createState() => _QualificationGroupState();
 }
 
 final _groupProdctrl = TextEditingController();
 Timer? debounce;
 
-class _QualificationGroupState extends State<QualificationGroup> {
+class _QualificationGroupState extends State<AssignmentGroup> {
   @override
   void initState() {
     _groupProdctrl.clear();
@@ -45,7 +45,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
           ),
         ),
         title: Text(
-          "Qualification Group",
+          "Assignment Group",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -105,11 +105,11 @@ class _QualificationGroupState extends State<QualificationGroup> {
                 Row(
                   children: [
                     Text(
-                      'Qualification Group: ',
+                      'Assignment Group: ',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
-                      widget.promotion.qCode!,
+                      ' ${widget.promotion.aCode}',
                       style: kfontstyle(
                           fontSize: 13.sp, fontWeight: FontWeight.w500),
                     )
@@ -145,7 +145,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                                 .add(const ClearGroupData());
                             context.read<QualificationGroupBloc>().add(
                                 GetGroupWiseDataEvent(
-                                    id: "1",
+                                    id: widget.promotion.aid!,
                                     mode: " ",
                                     searchQuery: value.trim()));
                           },
@@ -165,8 +165,8 @@ class _QualificationGroupState extends State<QualificationGroup> {
                                   onPressed: () {
                                     _groupProdctrl.clear();
                                     context.read<QualificationGroupBloc>().add(
-                                        const GetGroupWiseDataEvent(
-                                            id: "1",
+                                        GetGroupWiseDataEvent(
+                                            id: widget.promotion.aid!,
                                             mode: " ",
                                             searchQuery: ''));
                                   },

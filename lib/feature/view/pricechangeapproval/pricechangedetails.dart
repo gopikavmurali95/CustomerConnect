@@ -16,7 +16,7 @@ import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,9 +48,8 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
     _totalcount = 0;
     loadingCount = 0;
     context.read<PriceChangeDetailsBloc>().add(const ClearPriceChangeDetails());
-    context
-        .read<PriceChangeDetailsBloc>()
-        .add(const GetPriceChangeDetailsEvent(pchID: '44'));
+    context.read<PriceChangeDetailsBloc>().add(
+        GetPriceChangeDetailsEvent(pchID: widget.priceChangeApprovel.pchId!));
 
     super.initState();
   }
@@ -104,9 +103,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                 showPopAlert(context);
               });
             } else {
-              context
-                  .read<PriceChangeHeaderBloc>()
-                  .add(const GetPriceChangeHeaderEvent(rotID: '46'));
+              context.read<PriceChangeHeaderBloc>().add(
+                  GetPriceChangeHeaderEvent(
+                      rotID: widget.priceChangeApprovel.pchRotId!));
               context.read<NavigatetoBackCubit>().popFromScreen(true);
             }
           },
@@ -589,11 +588,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             approval: ApprovePriceChangeinModel(
                                                                                 aprvdHprice: '',
                                                                                 aprvdLprice: '',
-                                                                                pcdId: '255',
-                                                                                priceId: '48',
+                                                                                pcdId: pdet[index].pcdId,
+                                                                                priceId: widget.priceChangeApprovel.pchReqId,
                                                                                 reason: selectedresons[index],
                                                                                 status: 'A',
-                                                                                userId: '46')));
+                                                                                userId: widget.user.usrId)));
                                                                       },
                                                                       child: const Text(
                                                                           'Proceed'),
@@ -722,11 +721,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             approval: ApprovePriceChangeinModel(
                                                                                 aprvdHprice: '',
                                                                                 aprvdLprice: '',
-                                                                                pcdId: '252',
+                                                                                pcdId: pdet[index].pcdId,
                                                                                 priceId: widget.priceChangeApprovel.pchId,
                                                                                 reason: selectedresons[index],
                                                                                 status: 'R',
-                                                                                userId: '46')));
+                                                                                userId: widget.user.usrId)));
                                                                         log(jsonEncode(ApprovePriceChangeinModel(
                                                                             aprvdHprice:
                                                                                 '',

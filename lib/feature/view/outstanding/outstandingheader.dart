@@ -40,12 +40,14 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
         outIn: OutStandingHeaderModel(
             area: '',
             customer: '',
-            fromDate: '01-01-2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '04-04-2024',
-            userID: /* widget.user.usrId */ '1')));
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            userID: widget.user.usrId)));
     super.initState();
   }
 
@@ -158,13 +160,14 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                       outIn: OutStandingHeaderModel(
                                           area: '',
                                           customer: '',
-                                          fromDate: '01-01-2023',
+                                          fromDate:
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                           outlet: '',
                                           route: '',
                                           subArea: '',
-                                          toDate: '04-04-2024',
-                                          userID: /* widget.user.usrId */
-                                              '1'),
+                                          toDate:
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                          userID: widget.user.usrId),
                                     ),
                                   );
                             },

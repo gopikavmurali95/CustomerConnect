@@ -144,18 +144,18 @@ class _LoadCompletedState extends State<LoadCompleted> {
                           context
                               .read<LoadingHeaderBloc>()
                               .add(const ClearLoadingHeadderEvent());
-                          context.read<LoadingHeaderBloc>().add(
-                              GetLoadingHeaderEvent(
-                                  searchQuery: '',
-                                  loadingin: LoadingHeaderInModel(
-                                      userId: widget.user.usrId,
-                                      fromDate: '01-01-2024',
-                                      toDate:
-                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                      mode: 'LD',
-                                      area: '',
-                                      route: '',
-                                      subArea: '')));
+                          context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
+                              searchQuery: '',
+                              loadingin: LoadingHeaderInModel(
+                                  userId: widget.user.usrId,
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  toDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  mode: 'LD',
+                                  area: '',
+                                  route: '',
+                                  subArea: '')));
                         },
                         child: const Icon(
                           Icons.close,
