@@ -89,7 +89,9 @@ class PromotionCustomerList extends StatelessWidget {
                                 style: subTitleTextStyle(),
                               ), */
                               Text(
-                                '${promocustomer[index].cusType} | ${promocustomer[index].promotionCustomerModelClass} | ${promocustomer[index].areaName}',
+                                '${promocustomer[index].cusType} | '
+                                    '${promocustomer[index].promotionCustomerModelClass} | '
+                                    '${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
                               )
                             ],
@@ -105,10 +107,13 @@ class PromotionCustomerList extends StatelessWidget {
                       ],
                     );
                   }),
-          promotionCustomerFailed: () => Center(
-            child: Text(
-              'No Data Available',
-              style: kfontstyle(),
+          promotionCustomerFailed: () => SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Text(
+                'No Data Available',
+                style: kfontstyle(),
+              ),
             ),
           ),
         );

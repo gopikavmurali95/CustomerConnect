@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
@@ -247,45 +246,73 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
           ),
         ),
       ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Assigned Customers',
-                    style: countHeading(),
-                  ),
-                  BlocBuilder<SpecialPriceCustomersBloc,
-                      SpecialPriceCustomersState>(
-                    builder: (context, state) {
-                      return Text(
-                        state.when(
-                          getSpecialPriceCustomers: (spCustomers) =>
-                              spCustomers == null
-                                  ? '0'
-                                  : spCustomers.length.toString(),
-                          specialPriceCustomersFailedState: () => '0',
-                        ),
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const  Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshSpecialPricingCustomerScreen(context,widget.user),
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Assigned Customers',
                         style: countHeading(),
-                      );
-                    },
+                      ),
+                      BlocBuilder<SpecialPriceCustomersBloc,
+                          SpecialPriceCustomersState>(
+                        builder: (context, state) {
+                          return Text(
+                            state.when(
+                              getSpecialPriceCustomers: (spCustomers) =>
+                                  spCustomers == null
+                                      ? '0'
+                                      : spCustomers.length.toString(),
+                              specialPriceCustomersFailedState: () => '0',
+                            ),
+                            style: countHeading(),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const SPCustomerList(),
+              ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            const SPCustomerList(),
-          ],
+          ),
         ),
       ),
     );
   }
 }
+
+Future<void> _onRefreshSpecialPricingCustomerScreen(BuildContext context,LoginUserModel model) async
+{
+  context.read<SpecialPriceCustomersBloc>().add(const ClearSpecialPriceCustomer());
+  context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
+      userID: model.usrId!,
+      fromDate:
+      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+      todate:
+      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+      searchQuery: ''
+  ));
+
+  // context.read<SpecialPriceDetailsBloc>().add(const ClearSpecialriceDetailsEvent());
+  // context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(
+  //     prhID: '',
+  //     searchQuery: ''));
+}
+

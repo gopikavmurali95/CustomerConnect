@@ -216,46 +216,63 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
           ),
         ),
       ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Assigned Customers',
-                      style: countHeading(),
-                    ),
-                    BlocBuilder<PromotionCustomerBloc, PromotionCustomerState>(
-                      builder: (context, state) {
-                        return Text(
-                          state.when(
-                            getPromotionCustomer: (promotioncust) =>
-                                promotioncust == null
-                                    ? '0'
-                                    : promotioncust.length.toString(),
-                            promotionCustomerFailed: () => '0',
-                          ),
-                          style: countHeading(),
-                        );
-                      },
-                    ),
-                  ],
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const  Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshPromotionCustomerScreen(context,widget.promotion),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+         // width: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Assigned Customers',
+                        style: countHeading(),
+                      ),
+                      BlocBuilder<PromotionCustomerBloc, PromotionCustomerState>(
+                        builder: (context, state) {
+                          return Text(
+                            state.when(
+                              getPromotionCustomer: (promotioncust) =>
+                                  promotioncust == null
+                                      ? '0'
+                                      : promotioncust.length.toString(),
+                              promotionCustomerFailed: () => '0',
+                            ),
+                            style: countHeading(),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const PromotionCustomerList(),
-            ],
+                const SizedBox(
+                  height: 15,
+                ),
+                const PromotionCustomerList(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+
+
+Future<void> _onRefreshPromotionCustomerScreen(BuildContext context,PromotionHeaderModel model) async
+{
+  context.read<PromotionDetailsBloc>().add(const ClearPromotionDetails());
+  context.read<PromotionDetailsBloc>().add(const GetPromotionDetailsEvent(id: ''));
+
+  context.read<PromotionCustomerBloc>().add(const ClearOromotionCustomer());
+  context.read<PromotionCustomerBloc>().add(const GetPromotionCustomerEvent(id: '', searchQuery: ''));
 }

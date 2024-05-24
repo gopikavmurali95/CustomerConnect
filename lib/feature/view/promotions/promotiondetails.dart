@@ -44,268 +44,299 @@ class PromotionDetails extends StatelessWidget {
         //   child:
         // ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshPromotionDetailScreen(context, promotion),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
-                SizedBox(
-                  height: 55,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
+                  child: Column(
                     children: [
                       SizedBox(
+                        height: 55,
+                        width: double.infinity,
                         child: Row(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CircleAvatar(
-                              backgroundColor: const Color(0xffB3DAF7),
-                              child: Center(
-                                child: Text(
-                                  promotion.pName!.split('').toList()[0],
-                                  style: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                            SizedBox(
+                              child: Row(
+                                //crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: const Color(0xffB3DAF7),
+                                    child: Center(
+                                      child: Text(
+                                        promotion.pName!.split('').toList()[0],
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 15.w,
+                                  ),
+                                  Column(
+                                    //mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        promotion.pName ?? '',
+                                        style: blueTextStyle(),
+                                      ),
+                                      Text(
+                                        promotion.dateRange ?? '',
+                                        style: subTextStyle(),
+                                      ),
+                                      Text(
+                                        promotion.pCode ?? '',
+                                        style: subTextStyle(),
+                                      )
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                            SizedBox(
-                              width: 15.w,
-                            ),
-                            Column(
-                              //mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  promotion.pName ?? '',
-                                  style: blueTextStyle(),
-                                ),
-                                Text(
-                                  promotion.dateRange ?? '',
-                                  style: subTextStyle(),
-                                ),
-                                Text(
-                                  promotion.pCode ?? '',
-                                  style: subTextStyle(),
-                                )
-                              ],
-                            ),
+                            GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<PromotionCustomerBloc>()
+                                    .add(const ClearOromotionCustomer());
+                                context.read<PromotionCustomerBloc>().add(
+                                    GetPromotionCustomerEvent(
+                                        id: promotion.qid ?? '',
+                                        searchQuery: ''));
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PromotionCustomer(
+                                              promotion: promotion,
+                                            )));
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Customers',
+                                    style: TextStyle(fontSize: 10.sp),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  const Icon(
+                                    Icons.keyboard_arrow_right,
+                                    size: 18,
+                                  )
+                                ],
+                              ),
+                            )
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       GestureDetector(
                         onTap: () {
                           context
-                              .read<PromotionCustomerBloc>()
-                              .add(const ClearOromotionCustomer());
-                          context.read<PromotionCustomerBloc>().add(
-                              GetPromotionCustomerEvent(
-                                  id: promotion.qid ?? '', searchQuery: ''));
-                          Navigator.pushReplacement(
+                              .read<QualificationGroupBloc>()
+                              .add(const ClearGroupData());
+                          context.read<QualificationGroupBloc>().add(
+                              GetGroupWiseDataEvent(
+                                  id: promotion.qid ?? '',
+                                  mode: " ",
+                                  searchQuery: ''));
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PromotionCustomer(
+                                  builder: (context) => QualificationGroup(
                                         promotion: promotion,
                                       )));
                         },
-                        child: Row(
-                          children: [
-                            Text(
-                              'Customers',
-                              style: TextStyle(fontSize: 10.sp),
+                        child: Container(
+                          height: 62,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(0, 0),
+                                blurStyle: BlurStyle.normal,
+                                spreadRadius: 0.4,
+                              ),
+                            ],
+                            // border: Border.all(
+                            //     color: Colors.grey.withOpacity(0.1))),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Qualification Group',
+                                      style: kfontstyle(fontSize: 11.sp),
+                                    ),
+                                    Text(
+                                      promotion.qCode!,
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'View Items',
+                                      style: kfontstyle(fontSize: 11.sp),
+                                    ),
+                                    const Icon(Icons.keyboard_arrow_right)
+                                  ],
+                                )
+                              ],
                             ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            const Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 18,
-                            )
-                          ],
+                          ),
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context
+                              .read<QualificationGroupBloc>()
+                              .add(const ClearGroupData());
+                          context.read<QualificationGroupBloc>().add(
+                              GetGroupWiseDataEvent(
+                                  id: promotion.aid!,
+                                  mode: " ",
+                                  searchQuery: ''));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AssignmentGroup(
+                                        promotion: promotion,
+                                      )));
+                        },
+                        child: Container(
+                          height: 62,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                blurRadius: 1,
+                                offset: const Offset(0, 0),
+                                blurStyle: BlurStyle.normal,
+                                spreadRadius: 0.4,
+                              ),
+                            ],
+                            // border: Border.all(
+                            //     color: Colors.grey.withOpacity(0.1))),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Assignment Group',
+                                      style: kfontstyle(fontSize: 11.sp),
+                                    ),
+                                    Text(
+                                      promotion.aCode ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'View Items',
+                                      style: kfontstyle(fontSize: 11.sp),
+                                    ),
+                                    const Icon(Icons.keyboard_arrow_right)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(
                   height: 10.h,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    context
-                        .read<QualificationGroupBloc>()
-                        .add(const ClearGroupData());
-                    context.read<QualificationGroupBloc>().add(
-                        GetGroupWiseDataEvent(
-                            id: promotion.qid ?? '',
-                            mode: " ",
-                            searchQuery: ''));
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QualificationGroup(
-                                  promotion: promotion,
-                                )));
-                  },
-                  child: Container(
-                    height: 62,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 1,
-                          offset: const Offset(0, 0),
-                          blurStyle: BlurStyle.normal,
-                          spreadRadius: 0.4,
+                Container(
+                  width: double.infinity,
+                  height: 30,
+                  color: Colors.grey.shade200,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Min Qua. Qty",
+                          style: boxHeading(),
+                        ),
+                        Text(
+                          "Max Qua. Qty",
+                          style: boxHeading(),
+                        ),
+                        Text(
+                          "Ass. Qty",
+                          style: boxHeading(),
                         ),
                       ],
-                      // border: Border.all(
-                      //     color: Colors.grey.withOpacity(0.1))),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Qualification Group',
-                                style: kfontstyle(fontSize: 11.sp),
-                              ),
-                              Text(
-                                promotion.qCode!,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'View Items',
-                                style: kfontstyle(fontSize: 11.sp),
-                              ),
-                              const Icon(Icons.keyboard_arrow_right)
-                            ],
-                          )
-                        ],
-                      ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context
-                        .read<QualificationGroupBloc>()
-                        .add(const ClearGroupData());
-                    context.read<QualificationGroupBloc>().add(
-                        GetGroupWiseDataEvent(
-                            id: promotion.aid!, mode: " ", searchQuery: ''));
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AssignmentGroup(
-                                  promotion: promotion,
-                                )));
-                  },
-                  child: Container(
-                    height: 62,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 1,
-                          offset: const Offset(0, 0),
-                          blurStyle: BlurStyle.normal,
-                          spreadRadius: 0.4,
-                        ),
-                      ],
-                      // border: Border.all(
-                      //     color: Colors.grey.withOpacity(0.1))),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Assignment Group',
-                                style: kfontstyle(fontSize: 11.sp),
-                              ),
-                              Text(
-                                promotion.aCode ?? '',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'View Items',
-                                style: kfontstyle(fontSize: 11.sp),
-                              ),
-                              const Icon(Icons.keyboard_arrow_right)
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                const PromotionDetailsList()
               ],
             ),
           ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Container(
-            width: double.infinity,
-            height: 30,
-            color: Colors.grey.shade200,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Min Qua. Qty",
-                    style: boxHeading(),
-                  ),
-                  Text(
-                    "Max Qua. Qty",
-                    style: boxHeading(),
-                  ),
-                  Text(
-                    "Ass. Qty",
-                    style: boxHeading(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const Expanded(child: PromotionDetailsList())
-        ],
+        ),
       ),
     );
+  }
+
+  Future<void> _onRefreshPromotionDetailScreen(
+      BuildContext context, PromotionHeaderModel model) async {
+    context.read<QualificationGroupBloc>().add(const ClearGroupData());
+    context.read<QualificationGroupBloc>().add(const GetGroupWiseDataEvent(
+          id: '',
+          mode: '',
+          searchQuery: '',
+        ));
+
+    context.read<PromotionCustomerBloc>().add(const ClearOromotionCustomer());
+    context
+        .read<PromotionCustomerBloc>()
+        .add(const GetPromotionCustomerEvent(id: '', searchQuery: ''));
   }
 }
