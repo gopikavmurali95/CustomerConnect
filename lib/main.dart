@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/domain/notification/firebasenotificatio
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
@@ -458,6 +459,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<LoadReqApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ApprovalCountsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

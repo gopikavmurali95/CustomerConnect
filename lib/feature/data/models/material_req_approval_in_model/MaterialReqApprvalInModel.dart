@@ -1,21 +1,25 @@
 import 'dart:convert';
 
-MaterialReqApprovalInModel materialReqApprvalInModelFromJson(String str) => MaterialReqApprovalInModel.fromJson(json.decode(str));
-String materialReqApprvalInModelToJson(MaterialReqApprovalInModel data) => json.encode(data.toJson());
+MaterialReqApprovalInModel materialReqApprvalInModelFromJson(String str) =>
+    MaterialReqApprovalInModel.fromJson(json.decode(str));
+String materialReqApprvalInModelToJson(MaterialReqApprovalInModel data) =>
+    json.encode(data.toJson());
+
 class MaterialReqApprovalInModel {
   MaterialReqApprovalInModel({
-      this.mrdID, 
-      this.prdID, 
-      this.reqHUOM, 
-      this.reqLUOM, 
-      this.requestedHQty, 
-      this.requestedLQty, 
-      this.hqty, 
-      this.lqty, 
-      this.userId, 
-      this.reqID, 
-      this.mode, 
-      this.warehouse,});
+    this.mrdID,
+    this.prdID,
+    this.reqHUOM,
+    this.reqLUOM,
+    this.requestedHQty,
+    this.requestedLQty,
+    this.hqty,
+    this.lqty,
+    this.userId,
+    this.reqID,
+    this.mode,
+    this.warehouse,
+  });
 
   MaterialReqApprovalInModel.fromJson(dynamic json) {
     mrdID = json['mrd_ID'];
@@ -60,5 +64,4 @@ class MaterialReqApprovalInModel {
     map['Warehouse'] = warehouse;
     return map;
   }
-
 }

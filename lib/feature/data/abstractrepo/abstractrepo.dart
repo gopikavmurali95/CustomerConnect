@@ -1,4 +1,5 @@
 import 'package:customer_connect/core/failures/failures.dart';
+import 'package:customer_connect/feature/data/models/approval_count_model/approval_count_model.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/approve_price_change_model/approve_price_change_model.dart';
 import 'package:customer_connect/feature/data/models/approve_price_changein_model/approve_price_changein_model.dart';
@@ -471,25 +472,28 @@ abstract class IMaterialReqHeaderRepo {
       materialreqdetailList(String reqId);
 
   Future<Either<MainFailures, MaterialReqApprovalOutModel>> materialApproval(
-      MaterialReqApprovalInModel approval
-      );
+      MaterialReqApprovalInModel approval);
   Future<Either<MainFailures, MaterialReqrejectionOutModel>> materialRejection(
-      MaterialReqRejectionInModel approval
-      );
+      MaterialReqRejectionInModel approval);
 }
 
 abstract class IGetAllAvailableRoutesRepo {
   Future<Either<MainFailures, List<CuSInsRotList>>> getallRoutes();
 }
 
-abstract class ILoadRequestHeaderRepo
-{
-  Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(String userId);
-  Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(String reqId);
+abstract class ILoadRequestHeaderRepo {
+  Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(
+      String userId);
+  Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(
+      String reqId);
 }
 
-abstract class ILoadRequestApprovalRepo
-{
-  Future<Either<MainFailures, LoadRequestApprovalOutModel>>
-  loadApproval(LoadReqInApprovalModel   loadapprove);
+abstract class ILoadRequestApprovalRepo {
+  Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadApproval(
+      LoadReqInApprovalModel loadapprove);
+}
+
+abstract class IApprovalCountsRepo {
+  Future<Either<MainFailures, ApprovalCountModel>> approvalsCount(
+      String userID);
 }

@@ -11,27 +11,26 @@ import '../../../data/abstractrepo/abstractrepo.dart';
 part 'material_req_rejection_event.dart';
 part 'material_req_rejection_state.dart';
 part 'material_req_rejection_bloc.freezed.dart';
+
 @injectable
-class MaterialReqRejectionBloc extends Bloc<MaterialReqRejectionEvent, MaterialReqRejectionState> {
+class MaterialReqRejectionBloc
+    extends Bloc<MaterialReqRejectionEvent, MaterialReqRejectionState> {
   final IMaterialReqHeaderRepo materialreqrejectRepo;
 
-  MaterialReqRejectionBloc(this.materialreqrejectRepo) :
-        super(MaterialReqRejectionState.initial()) {
+  MaterialReqRejectionBloc(this.materialreqrejectRepo)
+      : super(MaterialReqRejectionState.initial()) {
     on<MaterialreqrejectionSuccessevent>((event, emit) async {
-
-      Either<MainFailures,MaterialReqrejectionOutModel> reject =
+      Either<MainFailures, MaterialReqrejectionOutModel> reject =
           await materialreqrejectRepo.materialRejection(event.approvalInModel);
       emit(reject.fold((l) => const MaterialReqRejectFailedState(),
-              (r) => MaterialReqRejectSuccessState(response: r)));
+          (r) => MaterialReqRejectSuccessState(response: r)));
 
       on<MaterialreqRejectionLoadingevent>((event, emit) {
         emit(const MaterialReqLoadingState());
       });
       on<MaterialReqRejecetionClearevent>((event, emit) {
         emit(const MaterialReqRejectSuccessState(response: null));
-
       });
-
     });
   }
 }
