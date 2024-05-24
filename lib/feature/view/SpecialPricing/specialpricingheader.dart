@@ -82,7 +82,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                       const Duration(
                         milliseconds: 500,
                       ),
-                      () async {
+                          () async {
                         context
                             .read<SpecialPriceHeaderBloc>()
                             .add(const ClearSpecialPriceEvent());
@@ -153,46 +153,81 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //SizedBox(width: 05,),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 25.0, right: 20, top: 10, bottom: 10),
-                child: Text(
-                  "All",
-                  style: countHeading(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20.0, right: 20, top: 10, bottom: 10),
-                child: BlocBuilder<SpecialPriceHeaderBloc,
-                    SpecialPriceHeaderState>(
-                  builder: (context, state) {
-                    return state.when(
-                      getSpecialPriceHeaderState: (spPrice) => spPrice == null
-                          ? const SizedBox()
-                          : Text(
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const  Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshSpecialPricingCustomerScreen(context,widget.user),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //SizedBox(width: 05,),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 25.0, right: 20, top: 10, bottom: 10),
+                      child: Text(
+                        "All",
+                        style: countHeading(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20.0, right: 20, top: 10, bottom: 10),
+                      child: BlocBuilder<SpecialPriceHeaderBloc,
+                          SpecialPriceHeaderState>(
+                        builder: (context, state) {
+                          return state.when(
+                            getSpecialPriceHeaderState: (spPrice) =>
+                            spPrice == null
+                                ? const SizedBox()
+                                : Text(
                               spPrice.length.toString(),
                               style: countHeading(),
                             ),
-                      speciaPriceHeaderFailedState: () => const Text('0'),
-                    );
-                  },
+                            speciaPriceHeaderFailedState: () => const Text('0'),
+                          );
+                        },
+                      ),
+                    ),
+                    // SizedBox(width: ,),
+                  ],
                 ),
-              ),
-              // SizedBox(width: ,),
-            ],
+                SpPrHeaderList(
+                  user: widget.user,
+                ),
+              ],
+            ),
           ),
-          SpPrHeaderList(
-            user: widget.user,
-          ),
-        ],
+        ),
       ),
     );
   }
+  Future<void> _onRefreshSpecialPricingCustomerScreen(BuildContext context,LoginUserModel model) async
+  {
+    context.read<SpecialPriceHeaderBloc>().add(const ClearSpecialPriceEvent());
+    context.read<SpecialPriceHeaderBloc>().add(GetSpecialPriceHeaderEvent(
+        spPriceInparas:  SpecialPriceHeaderModel(
+            area: '',
+            customer: '',
+            fromDate: '01-01-2023',
+            mode: '',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '01-05-2024',
+            userId: widget.user.usrId),
+        searchQuery: ''));
+
+  }
 }
+
+
+
+
+
