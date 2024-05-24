@@ -547,7 +547,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    ARHeaderListWidget(),
+                    const ARHeaderListWidget(),
                     SizedBox(
                       height: 10.sp,
                     )

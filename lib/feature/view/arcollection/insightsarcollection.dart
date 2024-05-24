@@ -566,64 +566,75 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                   ),
                 ),
               ),
-              RefreshIndicator(
-                triggerMode: RefreshIndicatorTriggerMode.anywhere,
-                color: const Color.fromARGB(255, 181, 218, 245),
-                displacement: BorderSide.strokeAlignCenter,
-                onRefresh: () => _onRefreshArHeader(context),
-                child: SingleChildScrollView(
-                  // controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //SizedBox(width: 05,),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 0),
-                            child: Text(
-                              "All",
-                              style: countHeading(),
+              Expanded(
+                child: RefreshIndicator(
+                  triggerMode: RefreshIndicatorTriggerMode.anywhere,
+                  color: const Color.fromARGB(255, 181, 218, 245),
+                  displacement: BorderSide.strokeAlignCenter,
+                  onRefresh: () => _onRefreshArHeader(context),
+                  child: SingleChildScrollView(
+                    // controller: _scrollController,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //SizedBox(width: 05,),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20.0, right: 20, top: 0),
+                              child: Text(
+                                "All",
+                                style: countHeading(),
+                              ),
                             ),
-                          ),
-                          BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
-                            builder: (context, state) {
-                              return state.when(
-                                getArHeadersState: (headers, totals) =>
-                                    headers == null
-                                        ? Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 20.0, right: 20, top: 0),
-                                            child: Text(
-                                              "0",
-                                              style: countHeading(),
+                            BlocBuilder<CusInsArHeaderBloc,
+                                CusInsArHeaderState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getArHeadersState: (headers, totals) =>
+                                      headers == null
+                                          ? Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0,
+                                                  right: 20,
+                                                  top: 0),
+                                              child: Text(
+                                                "0",
+                                                style: countHeading(),
+                                              ),
+                                            )
+                                          : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0,
+                                                  right: 20,
+                                                  top: 0),
+                                              child: Text(
+                                                "${headers.length}",
+                                                style: countHeading(),
+                                              ),
                                             ),
-                                          )
-                                        : Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 20.0, right: 20, top: 0),
-                                            child: Text(
-                                              "${headers.length}",
-                                              style: countHeading(),
-                                            ),
-                                          ),
-                                getArHeadersFailedState: () => Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20, top: 0),
-                                  child: Text(
-                                    "0",
-                                    style: countHeading(),
+                                  getArHeadersFailedState: () => Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20.0, right: 20, top: 0),
+                                    child: Text(
+                                      "0",
+                                      style: countHeading(),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                          // SizedBox(width: ,),
-                        ],
-                      ),
-                    ],
+                                );
+                              },
+                            ),
+                            // SizedBox(width: ,),
+                          ],
+                        ),
+                        const InsightArListWidget(),
+                        SizedBox(
+                          height: 10.sp,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -635,10 +646,6 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                 controller: _scrollController,
                 child: const InsightArListWidget(),
               )), */
-              const InsightArListWidget(),
-              SizedBox(
-                height: 10.sp,
-              )
             ],
           );
         },

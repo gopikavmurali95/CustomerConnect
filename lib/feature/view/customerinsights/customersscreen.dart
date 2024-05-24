@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
@@ -33,9 +34,9 @@ class _CustomersScrenState extends State<CustomersScren> {
     _customerSearchCtrl.clear();
     _routeIDCtrl.clear();
 
-    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
-    context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
     context.read<GetAllRouteBloc>().add(const ClearAllRouteEvent());
+    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
+    context.read<CustomersListBlocBloc>().add(const RestCustomersEvent());
 
     super.initState();
   }
@@ -173,12 +174,8 @@ class _CustomersScrenState extends State<CustomersScren> {
                                             );
                                           }).toList(),
                                           onChanged: (value) {
-                                            context
-                                                .read<CustomersListBlocBloc>()
-                                                .add(
-                                                    const ClearCustomersEvent());
-                                            // log(value!);
                                             _routeIDCtrl.text = value!;
+                                            log(value);
 
                                             if (value != '-1' ||
                                                 value.isNotEmpty) {
@@ -198,11 +195,12 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                       searchQuery: ''));
                                             } else if (value == '-1' ||
                                                 value.isEmpty) {
-                                              _routeIDCtrl.clear();
+                                              // _routeIDCtrl.clear();
+
                                               context
                                                   .read<CustomersListBlocBloc>()
                                                   .add(
-                                                      const ClearCustomersEvent());
+                                                      const RestCustomersEvent());
                                             }
                                           },
                                         ),
@@ -337,6 +335,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                           CustomersListBlocState>(
                         listener: (context, state) {
                           state.when(
+                            customersResetState: () {},
                             getCustomersSstate: (customers) {
                               if (isSearchLoading == true) {
                                 isSearchLoading = false;
@@ -352,6 +351,14 @@ class _CustomersScrenState extends State<CustomersScren> {
                             CustomersListBlocState>(
                           builder: (context, state) {
                             return state.when(
+                              customersResetState: () => Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20, top: 5),
+                                child: Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
+                              ),
                               getCustomersSstate: (customers) =>
                                   customers == null
                                       ? Padding(
@@ -392,18 +399,9 @@ class _CustomersScrenState extends State<CustomersScren> {
                     builder: (context, state) {
                       return SizedBox(
                           height: MediaQuery.of(context).size.height,
-                          child: _routeIDCtrl.text.isEmpty ||
-                                  _routeIDCtrl.text == '-1'
-                              ? Padding(
-                                  padding: const EdgeInsets.only(top: 250),
-                                  child: Text(
-                                    'Select a Route',
-                                    style: kfontstyle(),
-                                  ),
-                                )
-                              : CustomersListingWidget(
-                                  user: widget.user,
-                                ));
+                          child: CustomersListingWidget(
+                            user: widget.user,
+                          ));
                     },
                   )
                 ],

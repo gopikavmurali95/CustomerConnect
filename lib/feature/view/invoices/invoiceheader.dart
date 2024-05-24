@@ -125,7 +125,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                           customer: '',
                                           customerOutlet: '',
                                           fromDate:
-                                              '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                           invoiceType: '',
                                           invoiceWith: '',
                                           paymentType: '',
@@ -163,7 +163,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                             customer: '',
                                             customerOutlet: '',
                                             fromDate:
-                                                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                             toDate:
                                                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                             invoiceType: '',

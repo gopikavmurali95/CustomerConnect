@@ -18,6 +18,13 @@ class CustomersListingWidget extends StatelessWidget {
       child: BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
         builder: (context, state) {
           return state.when(
+            customersResetState: () => Padding(
+              padding: const EdgeInsets.only(top: 250),
+              child: Text(
+                'Select a Route',
+                style: kfontstyle(),
+              ),
+            ),
             getCustomersSstate: (customers) => customers == null
                 ? ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
@@ -30,11 +37,10 @@ class CustomersListingWidget extends StatelessWidget {
                     itemCount: 10)
                 : customers.isEmpty
                     ? SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 250),
+                        height: MediaQuery.of(context).size.height / 1.2,
+                        child: Center(
                           child: Text(
-                            'No Data Found',
+                            'No Data found',
                             style: kfontstyle(),
                           ),
                         ),
@@ -143,10 +149,13 @@ class CustomersListingWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: customers.length),
-            getcustomersFailedState: () => Center(
-              child: Text(
-                'No Data Available',
-                style: kfontstyle(),
+            getcustomersFailedState: () => SizedBox(
+              // height: MediaQuery.of(context).size.height / 1.5,
+              child: Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
               ),
             ),
           );
