@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/widgets/qualificationgrouplist.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QualificationGroup extends StatefulWidget {
-  const QualificationGroup({super.key});
+  final PromotionHeaderModel promotion;
+  const QualificationGroup({super.key, required this.promotion});
 
   @override
   State<QualificationGroup> createState() => _QualificationGroupState();
@@ -43,7 +45,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
           ),
         ),
         title: Text(
-          "Special Pricing",
+          "Qualification Group",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -65,7 +67,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  'FG',
+                                  widget.promotion.pName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -81,15 +83,15 @@ class _QualificationGroupState extends State<QualificationGroup> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Free Good Promotion',
+                                  widget.promotion.pName!,
                                   style: blueTextStyle(),
                                 ),
                                 Text(
-                                  '21 Feb 2021 to 24 Feb 2021',
+                                  widget.promotion.dateRange!,
                                   style: subTextStyle(),
                                 ),
                                 Text(
-                                  'PR10021',
+                                  widget.promotion.pCode!,
                                   style: subTextStyle(),
                                 )
                               ],
@@ -107,7 +109,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
-                      ' 10023',
+                      widget.promotion.qCode!,
                       style: kfontstyle(
                           fontSize: 13.sp, fontWeight: FontWeight.w500),
                     )
@@ -138,6 +140,9 @@ class _QualificationGroupState extends State<QualificationGroup> {
                             milliseconds: 200,
                           ),
                           () async {
+                            context
+                                .read<QualificationGroupBloc>()
+                                .add(const ClearGroupData());
                             context.read<QualificationGroupBloc>().add(
                                 GetGroupWiseDataEvent(
                                     id: "1",

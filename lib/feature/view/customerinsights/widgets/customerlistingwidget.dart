@@ -29,13 +29,19 @@ class CustomersListingWidget extends StatelessWidget {
                         ),
                     itemCount: 10)
                 : customers.isEmpty
-                    ? Center(
-                        child: Text(
-                          'No Data Found',
-                          style: kfontstyle(),
+                    ? SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 250),
+                          child: Text(
+                            'No Data Found',
+                            style: kfontstyle(),
+                          ),
                         ),
                       )
                     : ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
                         itemBuilder: (context, index) => InkWell(
                               onTap: () {
                                 Navigator.push(

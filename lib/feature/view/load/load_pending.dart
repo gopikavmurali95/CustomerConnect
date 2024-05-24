@@ -40,7 +40,8 @@ class _LoadPendingState extends State<LoadPending> {
     super.initState();
   }
 
-  Future<void> _onRefreshLoadin() async {
+  Future<void> _onRefreshLoadin(BuildContext context) async {
+    _loadPendingSearchCtrl.clear();
     context.read<LoadingHeaderBloc>().add(const ClearLoadingHeadderEvent());
     context.read<LoadingHeaderBloc>().add(GetLoadingHeaderEvent(
         searchQuery: '',
@@ -190,61 +191,66 @@ class _LoadPendingState extends State<LoadPending> {
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: _onRefreshLoadin,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        onRefresh: () => _onRefreshLoadin(context),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
               children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Pending",
-                    style: countHeading(),
-                  ),
-                ),
-                BlocBuilder<LoadingHeaderBloc, LoadingHeaderState>(
-                  builder: (context, state) {
-                    return state.when(
-                      getloadingHeaderState: (loadingheaders) =>
-                          loadingheaders != null
-                              ? Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20, top: 10),
-                                  child: Text(
-                                    "${loadingheaders.length}",
-                                    style: countHeading(),
-                                  ),
-                                )
-                              : Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20, top: 10),
-                                  child: Text(
-                                    "0",
-                                    style: countHeading(),
-                                  ),
-                                ),
-                      loadingHeaderFailedState: () => Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20.0, right: 20, top: 10),
-                        child: Text(
-                          "0",
-                          style: countHeading(),
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //SizedBox(width: 05,),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child: Text(
+                        "Pending",
+                        style: countHeading(),
                       ),
-                    );
-                  },
+                    ),
+                    BlocBuilder<LoadingHeaderBloc, LoadingHeaderState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getloadingHeaderState: (loadingheaders) =>
+                              loadingheaders != null
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, right: 20, top: 10),
+                                      child: Text(
+                                        "${loadingheaders.length}",
+                                        style: countHeading(),
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, right: 20, top: 10),
+                                      child: Text(
+                                        "0",
+                                        style: countHeading(),
+                                      ),
+                                    ),
+                          loadingHeaderFailedState: () => Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, right: 20, top: 10),
+                            child: Text(
+                              "0",
+                              style: countHeading(),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    // SizedBox(width: ,),
+                  ],
                 ),
-                // SizedBox(width: ,),
+                PendingList(
+                  user: widget.user,
+                ),
               ],
             ),
-            Expanded(
-                child: PendingList(
-              user: widget.user,
-            )),
-          ],
+          ),
         ),
       ),
     );

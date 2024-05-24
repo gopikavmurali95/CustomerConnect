@@ -38,6 +38,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
+import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_status_model/dispute_approval_status_model.dart';
@@ -300,6 +301,11 @@ abstract class ICusProtionRepo {
 
 abstract class IQualificationGroupRepo {
   Future<Either<MainFailures, List<QualificationGroupModel>>> getGroupItems(
+      String iD, String mode);
+}
+
+abstract class ICusInsightGroupRepo {
+  Future<Either<MainFailures, List<CustomerInsightGroupModel>>> getGroupItems(
       String iD, String mode);
 }
 

@@ -34,12 +34,14 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
             userID: widget.user.usrId,
             area: '',
             customer: '',
-            fromDate: '01/01/2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'PC',
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '26/03/2024'),
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'),
         searchQuery: ''));
 
     super.initState();
@@ -98,19 +100,20 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                       context
                           .read<PickingHeaderBloc>()
                           .add(const ClearPickingevent());
-                      context.read<PickingHeaderBloc>().add(
-                          GetpickingHeaderEvent(
-                              pickingHeadIn: PickingInModel(
-                                  area: '',
-                                  customer: '',
-                                  fromDate: '01-01-2023',
-                                  mode: 'PC',
-                                  outlet: '',
-                                  route: '',
-                                  subArea: '',
-                                  toDate: '06-04-2024',
-                                  userID: widget.user.usrId),
-                              searchQuery: value.trim()));
+                      context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+                          pickingHeadIn: PickingInModel(
+                              area: '',
+                              customer: '',
+                              fromDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              mode: 'PC',
+                              outlet: '',
+                              route: '',
+                              subArea: '',
+                              toDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              userID: widget.user.usrId),
+                          searchQuery: value.trim()));
                     },
                   );
                 },
@@ -148,12 +151,14 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                                               userID: widget.user.usrId,
                                               area: '',
                                               customer: '',
-                                              fromDate: '01-01-2023',
+                                              fromDate:
+                                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                               mode: 'PC',
                                               outlet: '',
                                               route: '',
                                               subArea: '',
-                                              toDate: '26-03-2024'),
+                                              toDate:
+                                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'),
                                           searchQuery: ''),
                                     );
                               },
@@ -184,51 +189,76 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //SizedBox(width: 05,),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: Text(
-                    "Completed",
-                    style: countHeading(),
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshPicking(context),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //SizedBox(width: 05,),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                    child: Text(
+                      "Completed",
+                      style: countHeading(),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                  child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
-                    builder: (context, state) {
-                      return state.when(
-                        getPickingHeaderState: (count) => count != null
-                            ? Text(
-                                "${count.length}",
-                                style: countHeading(),
-                              )
-                            : Text(
-                                "0",
-                                style: countHeading(),
-                              ),
-                        pickingheaderFailedState: () => Text(
-                          "0",
-                          style: countHeading(),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                    child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getPickingHeaderState: (count) => count != null
+                              ? Text(
+                                  "${count.length}",
+                                  style: countHeading(),
+                                )
+                              : Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
+                          pickingheaderFailedState: () => Text(
+                            "0",
+                            style: countHeading(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-                // SizedBox(width: ,),
-              ],
-            ),
-            const Completed(),
-          ],
+                  // SizedBox(width: ,),
+                ],
+              ),
+              const Completed(),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshPicking(BuildContext context) async {
+    _pickingCompletedSearchCtrl.clear();
+    context.read<PickingHeaderBloc>().add(const ClearPickingevent());
+    context.read<PickingHeaderBloc>().add(GetpickingHeaderEvent(
+        pickingHeadIn: PickingInModel(
+            userID: widget.user.usrId,
+            area: '',
+            customer: '',
+            fromDate: '01-01-2023',
+            mode: 'PC',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate: '26-03-2024'),
+        searchQuery: ''));
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

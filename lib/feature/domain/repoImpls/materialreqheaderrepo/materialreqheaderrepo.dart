@@ -9,7 +9,7 @@ import 'package:customer_connect/feature/data/models/material_req_header_model/M
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
+
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 import '../../../../constants/fonts.dart';
@@ -18,10 +18,8 @@ import '../../../../core/api/endpoints.dart';
 @LazySingleton(as: IMaterialReqHeaderRepo)
 class MaterialReqRepo implements IMaterialReqHeaderRepo {
   @override
-  Future<
-      Either<MainFailures, List<MaterialReqHeaderModel>>> materialreqheaderList(
-      String userId) async
-  {
+  Future<Either<MainFailures, List<MaterialReqHeaderModel>>>
+      materialreqheaderList(String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + materialReqHeaderUrl),
@@ -45,11 +43,9 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
     }
   }
 
-
   @override
-  Future<
-      Either<MainFailures, List<MaterialReqDetailModel>>> materialreqdetailList(
-      String reqId) async {
+  Future<Either<MainFailures, List<MaterialReqDetailModel>>>
+      materialreqdetailList(String reqId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + materialReqDetailUrl),
@@ -74,8 +70,8 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
   }
 
   @override
-  Future<Either<MainFailures, MaterialReqApprovalOutModel>>
-  materialApproval(MaterialReqApprovalInModel approval) async {
+  Future<Either<MainFailures, MaterialReqApprovalOutModel>> materialApproval(
+      MaterialReqApprovalInModel approval) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + materialReqApprovalUrl),
@@ -99,8 +95,8 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
   }
 
   @override
-  Future<Either<MainFailures, MaterialReqrejectionOutModel>>
-  materialRejection(MaterialReqRejectionInModel approval) async {
+  Future<Either<MainFailures, MaterialReqrejectionOutModel>> materialRejection(
+      MaterialReqRejectionInModel approval) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + materialReqRejectionUrl),
@@ -121,8 +117,5 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
       log('Approve error $e');
       return left(const MainFailures.serverfailure());
     }
-    // TODO: implement materialRejection
-    throw UnimplementedError();
   }
-
 }

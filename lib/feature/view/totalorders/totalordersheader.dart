@@ -181,24 +181,30 @@ class _TotalOrdersState extends State<TotalOrders> {
               BlocBuilder<TotalOrdersHeaderBloc, TotalOrdersHeaderState>(
                 builder: (context, state) {
                   return state.when(
-                    getTotalOrderState: (totalOrders) => totalOrders == null
-                        ? Text(
-                            "0",
-                            style: countHeading(),
-                          )
-                        : Padding(
+                      getTotalOrderState: (totalOrders) => Padding(
                             padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 10),
+                              left: 20.0,
+                              right: 20,
+                              top: 10,
+                            ),
                             child: Text(
-                              totalOrders.length.toString(),
+                              totalOrders == null
+                                  ? "0"
+                                  : totalOrders.length.toString(),
                               style: countHeading(),
                             ),
                           ),
-                    totalOrdersFailedState: () => Text(
-                      "0",
-                      style: countHeading(),
-                    ),
-                  );
+                      totalOrdersFailedState: () => Padding(
+                            padding: const EdgeInsets.only(
+                              left: 20.0,
+                              right: 20,
+                              top: 10,
+                            ),
+                            child: Text(
+                              "0",
+                              style: countHeading(),
+                            ),
+                          ));
                 },
               ),
               // SizedBox(width: ,),

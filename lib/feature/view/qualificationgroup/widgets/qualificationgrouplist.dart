@@ -68,10 +68,10 @@ class QualificationGroupList extends StatelessWidget {
                                     groupdata[index].prdName ?? '',
                                     style: subTitleTextStyle(),
                                   ),
-                                  Text(
+                                  /* Text(
                                     'Offer Packs',
                                     style: subTitleTextStyle(),
-                                  ),
+                                  ), */
                                   const Divider()
                                 ],
                               );

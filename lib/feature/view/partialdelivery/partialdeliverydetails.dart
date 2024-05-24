@@ -1,5 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PArtialDeliveryDetails extends StatefulWidget {

@@ -3,7 +3,6 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/imagepreveiewscreen.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -297,99 +296,11 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
           SizedBox(
             height: 15.h,
           ),
-          const ARDetailInvoiceWidget()
+          ARDetailInvoiceWidget(
+            arheader: widget.arheader,
+          )
         ],
       ),
     );
   }
 }
-/* Column(
-              children: [
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Mode :',
-                          style: kfontstyle(fontSize: 12.sp),
-                        ),
-                        SizedBox(
-                          width: 3.w,
-                        ),
-                        Text(
-                          'Cheque',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      width: 40.w,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Bank :',
-                          style: kfontstyle(fontSize: 12.sp),
-                        ),
-                        SizedBox(
-                          width: 3.w,
-                        ),
-                        Text(
-                          'NBD',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Cheque # :',
-                          style: kfontstyle(fontSize: 12.sp),
-                        ),
-                        SizedBox(
-                          width: 3.w,
-                        ),
-                        Text(
-                          '123456',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      width: 40.w,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Cheque Date :',
-                          style: kfontstyle(fontSize: 12.sp),
-                        ),
-                        SizedBox(
-                          width: 3.w,
-                        ),
-                        Text(
-                          'Cheque',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ), */

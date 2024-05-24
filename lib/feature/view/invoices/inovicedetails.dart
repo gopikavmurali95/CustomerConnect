@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 // import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
@@ -14,8 +15,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class InvoiceDetailScreen extends StatefulWidget {
   final bool isfromUser;
   final InvoiceHeaderModel invoiceheader;
+  final LoginUserModel user;
   const InvoiceDetailScreen(
-      {super.key, required this.isfromUser, required this.invoiceheader});
+      {super.key,
+      required this.isfromUser,
+      required this.invoiceheader,
+      required this.user});
 
   @override
   State<InvoiceDetailScreen> createState() => _InvoiceDetailScreenState();
@@ -338,7 +343,11 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
           SizedBox(
             width: 15.h,
           ),
-          const Expanded(child: InvoiceDetailListWidget())
+          Expanded(
+              child: InvoiceDetailListWidget(
+            invoiceheader: widget.invoiceheader,
+            user: widget.user,
+          ))
         ],
       ),
       bottomNavigationBar: SizedBox(

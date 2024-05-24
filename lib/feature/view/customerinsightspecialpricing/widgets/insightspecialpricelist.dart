@@ -19,12 +19,15 @@ class InsightSpecialPriceList extends StatelessWidget {
           return state.when(
             getCusSpPriceHeadersState: (headers) => headers == null
                 ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
                     itemBuilder: (context, index) =>
                         ShimmerContainers(height: 60.h, width: double.infinity),
                     separatorBuilder: (context, index) => const SizedBox(),
                     itemCount: 10)
                 : headers.isEmpty
-                    ? Center(
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 250),
                         child: Text(
                           'No Data Found',
                           style: kfontstyle(),
@@ -44,8 +47,9 @@ class InsightSpecialPriceList extends StatelessWidget {
                               InkWell(
                                 onTap: () {
                                   context.read<SpecialPriceDetailsBloc>().add(
-                                      const GetSpecialPriceDetailsEvent(
-                                          prhID: "1", searchQuery: ''));
+                                      GetSpecialPriceDetailsEvent(
+                                          prhID: headers[index].prhId!,
+                                          searchQuery: ''));
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -124,7 +128,8 @@ class InsightSpecialPriceList extends StatelessWidget {
                           );
                         },
                       ),
-            cusSpPriceHeaderFailedState: () => Center(
+            cusSpPriceHeaderFailedState: () => Padding(
+              padding: const EdgeInsets.only(top: 250),
               child: Text(
                 'No Data Available',
                 style: kfontstyle(),

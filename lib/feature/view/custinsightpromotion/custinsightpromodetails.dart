@@ -3,9 +3,10 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
+import 'package:customer_connect/feature/view/cusinsighassignmentgroup/cusinsighassignmentgroup.dart';
+import 'package:customer_connect/feature/view/cusinsightqualificationgroup/cusinsightqualificationgroup.dart';
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
-import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -149,7 +150,7 @@ class _CustInsightPromotionDetailsState
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  'FG',
+                                  widget.header.pName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -165,15 +166,15 @@ class _CustInsightPromotionDetailsState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Free Good Promotion',
+                                  widget.header.pName!,
                                   style: blueTextStyle(),
                                 ),
                                 Text(
-                                  '21 Feb 2021 to 24 Feb 2021',
+                                  widget.header.dateRange!,
                                   style: subTextStyle(),
                                 ),
                                 Text(
-                                  'PR10021',
+                                  widget.header.pCode!,
                                   style: subTextStyle(),
                                 )
                               ],
@@ -190,15 +191,19 @@ class _CustInsightPromotionDetailsState
                 GestureDetector(
                   onTap: () {
                     context
-                        .read<QualificationGroupBloc>()
-                        .add(const ClearGroupData());
-                    context.read<QualificationGroupBloc>().add(
-                        const GetGroupWiseDataEvent(
-                            id: "1", mode: " ", searchQuery: ''));
+                        .read<CustomerInsightGroupBloc>()
+                        .add(const CustomerInsightGroupEvent.clearGroupData());
+                    context.read<CustomerInsightGroupBloc>().add(
+                        CustomerInsightGroupEvent.getGroupWiseDataEvent(
+                            id: widget.customer.cusId!,
+                            mode: '',
+                            searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QualificationGroup()));
+                            builder: (context) => CusInsightQualificationGroup(
+                                  header: widget.header,
+                                )));
                   },
                   child: Container(
                     height: 62,
@@ -228,20 +233,23 @@ class _CustInsightPromotionDetailsState
                             children: [
                               Text(
                                 'Qualification Group',
-                                style: kfontstyle(fontSize: 12.sp),
+                                style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
-                                '10023',
+                                widget.header.qCode ?? '',
                                 style: kfontstyle(
-                                    fontSize: 13.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                          const Row(
+                          Row(
                             children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
+                              Text(
+                                'View Items',
+                                style: kfontstyle(fontSize: 11.sp),
+                              ),
+                              const Icon(Icons.keyboard_arrow_right)
                             ],
                           )
                         ],
@@ -255,15 +263,19 @@ class _CustInsightPromotionDetailsState
                 GestureDetector(
                   onTap: () {
                     context
-                        .read<QualificationGroupBloc>()
-                        .add(const ClearGroupData());
-                    context.read<QualificationGroupBloc>().add(
-                        const GetGroupWiseDataEvent(
-                            id: "1", mode: "", searchQuery: ''));
+                        .read<CustomerInsightGroupBloc>()
+                        .add(const CustomerInsightGroupEvent.clearGroupData());
+                    context.read<CustomerInsightGroupBloc>().add(
+                        CustomerInsightGroupEvent.getGroupWiseDataEvent(
+                            id: widget.customer.cusId!,
+                            mode: 'A',
+                            searchQuery: ''));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QualificationGroup()));
+                            builder: (context) => CusInsightAssignmentGroup(
+                                  header: widget.header,
+                                )));
                   },
                   child: Container(
                     height: 62,
@@ -284,7 +296,7 @@ class _CustInsightPromotionDetailsState
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                          horizontal: 10, vertical: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -293,20 +305,23 @@ class _CustInsightPromotionDetailsState
                             children: [
                               Text(
                                 'Assignment Group',
-                                style: kfontstyle(fontSize: 12.sp),
+                                style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
-                                '10025',
+                                widget.header.aCode ?? '',
                                 style: kfontstyle(
-                                    fontSize: 13.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                          const Row(
+                          Row(
                             children: [
-                              Text('View Items'),
-                              Icon(Icons.keyboard_arrow_right)
+                              Text(
+                                'View Items',
+                                style: kfontstyle(fontSize: 11.sp),
+                              ),
+                              const Icon(Icons.keyboard_arrow_right)
                             ],
                           )
                         ],

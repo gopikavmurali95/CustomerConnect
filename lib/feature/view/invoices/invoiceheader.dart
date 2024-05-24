@@ -36,7 +36,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             customer: '',
             customerOutlet: '',
             fromDate:
-                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             invoiceType: '',
@@ -81,161 +81,179 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
-                child: TextFormField(
-                  controller: _invoiceHeaderSearchCtrl,
-
-                  onChanged: (value) {
-                    if (debounce?.isActive ?? false) debounce!.cancel();
-                    debounce = Timer(
-                      const Duration(
-                        milliseconds: 500,
-                      ),
-                      () async {
-                        context.read<InvoiceHeaderBloc>().add(InvoiceHeaderSuccessEvent(
-                            invheaderin: InvoiceHeaderInparas(
-                                area: '',
-                                customer: '',
-                                customerOutlet: '',
-                                fromDate:
-                                    '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
-                                invoiceType: '',
-                                invoiceWith: '',
-                                paymentType: '',
-                                route: '',
-                                subArea: '',
-                                toDate:
-                                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                userId: widget.user.usrId),
-                            searchQuery: value.trim()));
-                      },
-                    );
-                  },
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        size: 20,
-                      ),
-                      hintText: "Search here..",
-                      hintStyle: kfontstyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.normal),
-                      isDense: true,
-                      counterText: "",
-                      contentPadding: const EdgeInsets.all(15.0),
-                      filled: true,
-                      fillColor: Colors.white,
-                      suffix: InkWell(
-                        onTap: () {
-                          _invoiceHeaderSearchCtrl.clear();
-                          context.read<InvoiceHeaderBloc>().add(
-                              InvoiceHeaderSuccessEvent(
-                                  invheaderin: InvoiceHeaderInparas(
-                                      area: '',
-                                      customer: '',
-                                      customerOutlet: '',
-                                      fromDate:
-                                          '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
-                                      toDate:
-                                          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                      invoiceType: '',
-                                      invoiceWith: '',
-                                      paymentType: '',
-                                      route: '',
-                                      subArea: '',
-                                      userId: widget.user.usrId),
-                                  searchQuery: ''));
-                        },
-                        child: const Icon(
-                          Icons.close,
-                          size: 14,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshInvoice(context),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey.shade200),
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none)),
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  maxLength: 20,
-                  // controller: _locationNameTextController,
-                )),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              //SizedBox(width: 05,),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: Text(
-                  "All invoices",
-                  style: countHeading(),
+                          boxShadow: const [
+                            BoxShadow(
+                                // ignore: use_full_hex_values_for_flutter_colors
+                                color: Color(0xff00000050),
+                                blurRadius: 0.4,
+                                spreadRadius: 0.4)
+                          ]),
+                      child: TextFormField(
+                        controller: _invoiceHeaderSearchCtrl,
+
+                        onChanged: (value) {
+                          if (debounce?.isActive ?? false) debounce!.cancel();
+                          debounce = Timer(
+                            const Duration(
+                              milliseconds: 500,
+                            ),
+                            () async {
+                              context.read<InvoiceHeaderBloc>().add(
+                                  InvoiceHeaderSuccessEvent(
+                                      invheaderin: InvoiceHeaderInparas(
+                                          area: '',
+                                          customer: '',
+                                          customerOutlet: '',
+                                          fromDate:
+                                              '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                          invoiceType: '',
+                                          invoiceWith: '',
+                                          paymentType: '',
+                                          route: '',
+                                          subArea: '',
+                                          toDate:
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                          userId: widget.user.usrId),
+                                      searchQuery: value.trim()));
+                            },
+                          );
+                        },
+                        decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              size: 20,
+                            ),
+                            hintText: "Search here..",
+                            hintStyle: kfontstyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.normal),
+                            isDense: true,
+                            counterText: "",
+                            contentPadding: const EdgeInsets.all(15.0),
+                            filled: true,
+                            fillColor: Colors.white,
+                            suffix: InkWell(
+                              onTap: () {
+                                _invoiceHeaderSearchCtrl.clear();
+                                context.read<InvoiceHeaderBloc>().add(
+                                    InvoiceHeaderSuccessEvent(
+                                        invheaderin: InvoiceHeaderInparas(
+                                            area: '',
+                                            customer: '',
+                                            customerOutlet: '',
+                                            fromDate:
+                                                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                            toDate:
+                                                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                            invoiceType: '',
+                                            invoiceWith: '',
+                                            paymentType: '',
+                                            route: '',
+                                            subArea: '',
+                                            userId: widget.user.usrId),
+                                        searchQuery: ''));
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                size: 14,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide.none)),
+                        textAlign: TextAlign.start,
+                        maxLines: 1,
+                        maxLength: 20,
+                        // controller: _locationNameTextController,
+                      )),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                child: BlocListener<InvoiceHeaderBloc, InvoiceHeaderState>(
-                  listener: (context, state) {
-                    state.when(
-                      invoiceHeaderSuccessState: (invheader) {
-                        if (invheader != null) {
-                          context
-                              .read<InvoiceTotalCubit>()
-                              .getInvTotal(invheader);
-                        }
-                      },
-                      invoiceHeaderFailedState: () {},
-                    );
-                  },
-                  child: BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
-                    builder: (context, state) {
-                      return state.when(
-                        invoiceHeaderSuccessState: (invheader) =>
-                            invheader == null
-                                ? const SizedBox()
-                                : Text(
-                                    // "80",
-                                    invheader.length.toString(),
-                                    style: countHeading(),
-                                  ),
-                        invoiceHeaderFailedState: () => Center(
-                          child: Text(
-                            '0',
-                            style: kfontstyle(),
-                          ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //SizedBox(width: 05,),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child: Text(
+                        "All invoices",
+                        style: countHeading(),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child:
+                          BlocListener<InvoiceHeaderBloc, InvoiceHeaderState>(
+                        listener: (context, state) {
+                          state.when(
+                            invoiceHeaderSuccessState: (invheader) {
+                              if (invheader != null) {
+                                context
+                                    .read<InvoiceTotalCubit>()
+                                    .getInvTotal(invheader);
+                              }
+                            },
+                            invoiceHeaderFailedState: () {},
+                          );
+                        },
+                        child:
+                            BlocBuilder<InvoiceHeaderBloc, InvoiceHeaderState>(
+                          builder: (context, state) {
+                            return state.when(
+                              invoiceHeaderSuccessState: (invheader) =>
+                                  invheader == null
+                                      ? const SizedBox()
+                                      : Text(
+                                          // "80",
+                                          invheader.length.toString(),
+                                          style: countHeading(),
+                                        ),
+                              invoiceHeaderFailedState: () => Center(
+                                child: Text(
+                                  '0',
+                                  style: kfontstyle(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                    // SizedBox(width: ,),
+                  ],
                 ),
-              ),
-              // SizedBox(width: ,),
-            ],
+                SizedBox(
+                  height: 10.h,
+                ),
+                InvoiceHeaderListWidget(
+                  isfromUser: widget.isfromUser,
+                  user: widget.user,
+                )
+              ],
+            ),
           ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Expanded(
-              child: InvoiceHeaderListWidget(
-            isfromUser: widget.isfromUser,
-          ))
-        ],
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(boxShadow: [
@@ -280,5 +298,27 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshInvoice(BuildContext context) async {
+    _invoiceHeaderSearchCtrl.clear();
+    context.read<InvoiceTotalCubit>().getInvTotal([]);
+    context.read<InvoiceHeaderBloc>().add(InvoiceHeaderSuccessEvent(
+        invheaderin: InvoiceHeaderInparas(
+            area: '',
+            customer: '',
+            customerOutlet: '',
+            fromDate:
+                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            invoiceType: '',
+            invoiceWith: '',
+            paymentType: '',
+            route: '',
+            subArea: '',
+            userId: widget.user.usrId),
+        searchQuery: ''));
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

@@ -487,71 +487,103 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //SizedBox(width: 05,),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20.0, right: 20, top: 0),
-                        child: Text(
-                          "All",
-                          style: countHeading(),
+            child: RefreshIndicator(
+              triggerMode: RefreshIndicatorTriggerMode.anywhere,
+              color: const Color.fromARGB(255, 181, 218, 245),
+              displacement: BorderSide.strokeAlignCenter,
+              onRefresh: () => _onRefreshArHeader(context),
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //SizedBox(width: 05,),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20.0, right: 20, top: 0),
+                          child: Text(
+                            "All",
+                            style: countHeading(),
+                          ),
                         ),
-                      ),
-                      BlocBuilder<ArHeaderBloc, ArHeaderState>(
-                        builder: (context, state) {
-                          return state.when(
-                            arHeaderSuccessState: (artotal, arHeaders) =>
-                                arHeaders == null
-                                    ? Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 20.0, right: 20, top: 0),
-                                        child: Text(
-                                          "0",
-                                          style: countHeading(),
+                        BlocBuilder<ArHeaderBloc, ArHeaderState>(
+                          builder: (context, state) {
+                            return state.when(
+                              arHeaderSuccessState: (artotal, arHeaders) =>
+                                  arHeaders == null
+                                      ? Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0, right: 20, top: 0),
+                                          child: Text(
+                                            "0",
+                                            style: countHeading(),
+                                          ),
+                                        )
+                                      : Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0, right: 20, top: 0),
+                                          child: Text(
+                                            "${arHeaders.length}",
+                                            style: countHeading(),
+                                          ),
                                         ),
-                                      )
-                                    : Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 20.0, right: 20, top: 0),
-                                        child: Text(
-                                          "${arHeaders.length}",
-                                          style: countHeading(),
-                                        ),
-                                      ),
-                            arHeaderFailedState: () => Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 20.0, right: 20, top: 0),
-                              child: Text(
-                                "0",
-                                style: countHeading(),
+                              arHeaderFailedState: () => Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20, top: 0),
+                                child: Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
-                      // SizedBox(width: ,),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  const ARHeaderListWidget(),
-                  SizedBox(
-                    height: 10.sp,
-                  )
-                ],
+                            );
+                          },
+                        ),
+                        // SizedBox(width: ,),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    ARHeaderListWidget(),
+                    SizedBox(
+                      height: 10.sp,
+                    )
+                  ],
+                ),
               ),
             ),
           )
         ],
       ),
     );
+  }
+
+  Future<void> _onRefreshArHeader(BuildContext context) async {
+    _arHeaderSearchCtrl = TextEditingController();
+    _arHeaderSearchCtrl.clear();
+    context.read<ArScrollCtrlCubit>().onInit();
+    _scrollController.addListener(_scrollListener);
+    context.read<ArHeaderBloc>().add(const ClearArHeaderEvent());
+    context.read<ArHeaderBloc>().add(
+          GetArHeaderData(
+            arIn: ArTotalInModel(
+                userId: widget.user.usrId,
+                fromDate:
+                    '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                toDate:
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                area: '',
+                customer: '',
+                outlet: '',
+                route: '',
+                subArea: ''),
+            searchQuery: '',
+          ),
+        );
+    await Future.delayed(const Duration(seconds: 2));
   }
 }
 

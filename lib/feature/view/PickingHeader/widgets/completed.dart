@@ -38,6 +38,7 @@ class Completed extends StatelessWidget {
                       ),
                     )
                   : ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.only(
                         left: 05, right: 05,
                         top: 10,
@@ -124,8 +125,11 @@ class Completed extends StatelessWidget {
                         );
                       },
                     ),
-          pickingheaderFailedState: () => const Center(
-            child: Text("No data available"),
+          pickingheaderFailedState: () => SizedBox(
+            height: MediaQuery.of(context).size.height / 1.5,
+            child: const Center(
+              child: Text("No data available"),
+            ),
           ),
         );
       },

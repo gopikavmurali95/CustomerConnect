@@ -18,15 +18,17 @@ class InsightArListWidget extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             getArHeadersState: (headers, totals) => headers == null
-                ? ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) =>
-                        ShimmerContainers(height: 60.h, width: double.infinity),
-                    separatorBuilder: (context, index) => Divider(
-                          color: Colors.grey[300],
-                        ),
-                    itemCount: 10)
+                ? Expanded(
+                    child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
+                  )
                 : headers.isEmpty
                     ? Center(
                         child: Text(
