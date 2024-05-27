@@ -81,9 +81,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'MO86764',
-                            style: TextStyle(
-                              fontSize: 13.sp,
+                            '${widget.todaysdelivery.orderId}',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
                               color: const Color(0xff2C6B9E),
                               fontWeight: FontWeight.w600,
                             ),
@@ -91,18 +91,18 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                           Row(
                             children: [
                               Text(
-                                'A025206 - ',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
+                                '${widget.todaysdelivery.cusCode} - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  'Tromp, Muller and Mitchell',
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
+                                  '${widget.todaysdelivery.cusName}',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
                                       color: const Color(0xff413434)),
                                 ),
                               ),
@@ -111,14 +111,14 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                           Row(
                             children: [
                               Text(
-                                '199525 - ',
-                                style: TextStyle(
-                                    fontSize: 12.sp,
+                                '${widget.todaysdelivery.cusOutCode} - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
-                                  'Carrefour Hypermarket',
+                                  '${widget.todaysdelivery.cusOutName}',
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontSize: 13.sp),
                                 ),
@@ -126,9 +126,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                             ],
                           ),
                           Text(
-                            'Route 101 | Salesman 101 | 16 May 2023 | 10:35',
+                            '${widget.todaysdelivery.rotName} | ${widget.todaysdelivery.salesman} | ${widget.todaysdelivery.date} | ${widget.todaysdelivery.time}',
                             style:
-                                TextStyle(fontSize: 10.sp, color: Colors.grey),
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -143,7 +143,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Text(
-                              'DE',
+                              '${widget.todaysdelivery.status}',
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   color: const Color(0xff413434)),
@@ -270,6 +270,39 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
               child: TodaysDeliveryDetailsList(
             delivery: widget.todaysdelivery,
           )),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Sub Total',
+                      style: kfontstyle(fontSize: 12.sp),
+                    ),
+                    Text(
+                      widget.todaysdelivery.subTotal ?? '',
+                      style: kfontstyle(fontSize: 12.sp),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'VAT',
+                      style: kfontstyle(fontSize: 12.sp),
+                    ),
+                    Text(
+                      widget.todaysdelivery.vat ?? '',
+                      style: kfontstyle(fontSize: 12.sp),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: SizedBox(
@@ -283,11 +316,11 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
             children: [
               Text(
                 'Total Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w400),
               ),
               Text(
                 'AED ${widget.todaysdelivery.grandTotal}',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
               )
             ],
           ),

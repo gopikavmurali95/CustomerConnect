@@ -109,7 +109,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                               ),
                                                             ),
                                                             SizedBox(
-                                                              width: 60.h,
+                                                              width: 70.h,
                                                             ),
                                                             Column(
                                                               children: [
@@ -145,7 +145,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                               ],
                                                             ),
                                                             SizedBox(
-                                                              width: 30.h,
+                                                              width: 20.h,
                                                             ),
                                                             Column(
                                                               children: [

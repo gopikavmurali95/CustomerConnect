@@ -27,6 +27,8 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
   @override
   void initState() {
     _totalOrderDetailSearchCtrl.clear();
+    context.read<TotalOrdersDetailsBloc>().add(GetTotalOrdersDetailsEvent(
+        userID: widget.user.usrId!, searchQuery: ''));
     super.initState();
   }
 
@@ -136,49 +138,10 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              // Text(
-                              //   'CR | Route 101 | 16 May 2023 | 10:35',
-                              //   style: kfontstyle(
-                              //       fontSize: 10.sp, color: Colors.grey),
-                              // ),
-                              Text(
-                                widget.totalorders.status ?? '',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.totalorders.rotName ?? '',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.totalorders.date ?? '',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.totalorders.time ?? '',
-                                style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
-                              ),
-                            ],
+                          Text(
+                            '${widget.totalorders.rotName} | ${widget.totalorders.date} | ${widget.totalorders.time}',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -187,13 +150,13 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                       height: 14.h,
                       width: 30.w,
                       decoration: BoxDecoration(
-                          color: widget.totalorders.ordType == 'O'
-                              ? const Color(0xffe3f7e2)
-                              : const Color(0xfff7f4e2),
+                          color: widget.totalorders.status == 'C'
+                              ? const Color(0xfff7f4e2)
+                              : const Color(0xffe3f7e2),
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          widget.totalorders.ordType ?? '',
+                          widget.totalorders.status ?? '',
                           style: kfontstyle(
                               fontSize: 10.sp, color: const Color(0xff413434)),
                         ),

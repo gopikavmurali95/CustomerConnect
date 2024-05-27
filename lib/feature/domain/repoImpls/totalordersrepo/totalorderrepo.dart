@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -21,7 +22,7 @@ class TotalOrderRepo implements ITotalOrdersRepo {
       final response = await http.post(Uri.parse(baseUrl + totalordersurl),
           body: ordersIn.toJson());
       if (response.statusCode == 200) {
-        // logger.w('response: ${response.body}');
+        log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> totalordersdata = json['result'];
         List<TotalOrdersModel> orders = totalordersdata
