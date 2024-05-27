@@ -270,7 +270,8 @@ class InvoiceDetailListWidget extends StatelessWidget {
                     Flexible(
                       flex: 2,
                       fit: FlexFit.tight,
-                      child: Text('Subtotal', style: boxHeading()),
+                      child: Text('Subtotal',
+                          textAlign: TextAlign.center, style: boxHeading()),
                     ),
                   ],
                 ),
@@ -340,7 +341,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                       fit: FlexFit.tight,
                                       child: Text(
                                         typewiseinvoice[index].subTotal ?? '',
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.end,
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w400),

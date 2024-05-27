@@ -288,8 +288,8 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                   return Text(
                     state.amount,
                     // "0",
-                    style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                    style: kfontstyle(
+                        fontSize: 11.sp, fontWeight: FontWeight.w600),
                   );
                 },
               )

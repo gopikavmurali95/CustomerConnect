@@ -382,7 +382,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                   Text(
                     widget.invoiceheader.grandTotal ?? '',
                     style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),
