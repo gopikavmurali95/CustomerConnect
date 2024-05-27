@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customertransactionwidget.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/otheroptionswidget.dart';
@@ -34,6 +35,14 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
     context.read<CusProfileBloc>().add(const ClearProfileEvent());
     context.read<CusProfileBloc>().add(GetCusProfileEvent(
         userID: widget.user.usrId ?? '', cusID: widget.customer.cusId ?? ''));
+
+    context.read<CusInsTrnCountBloc>().add(GettrnCountsEvent(
+        userId: widget.user.usrId ?? '',
+        cusId: widget.customer.cusId ?? '',
+        fDate: _fromdatectrl.text =
+            '1-${DateTime.now().month}-${DateTime.now().year}',
+        toDate: _todatectrl.text =
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'));
     super.initState();
   }
 
@@ -59,170 +68,194 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
           style: appHeading(),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        color: const Color(0xfffee8e0),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              '${widget.customer.cusCode} - ',
-                              style: kfontstyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff2C6B9E),
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                overflow: TextOverflow.ellipsis,
-                                widget.customer.cusName ?? "",
+      body: RefreshIndicator.adaptive(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshCusIns(context),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          color: const Color(0xfffee8e0),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '${widget.customer.cusCode} - ',
                                 style: kfontstyle(
-                                    fontSize: 12.sp,
+                                  fontSize: 12.sp,
+                                  color: const Color(0xff2C6B9E),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  widget.customer.cusName ?? "",
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '${widget.customer.headerCode} - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
                                     color: const Color(0xff413434)),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '${widget.customer.headerCode} - ',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff413434)),
-                            ),
-                            Expanded(
-                              child: Text(
-                                widget.customer.headerName ?? "",
-                                overflow: TextOverflow.ellipsis,
-                                style: kfontstyle(fontSize: 12.sp),
+                              Expanded(
+                                child: Text(
+                                  widget.customer.headerName ?? "",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: kfontstyle(fontSize: 12.sp),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
-                          style:
-                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              CustomerTraansactionWidget(
-                user: widget.user,
-                customer: widget.customer,
-                fromdatectrl: _fromdatectrl,
-                todatectrl: _todatectrl,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Other Options  ",
-                    style: countHeading(),
-                  ),
-                ],
-              ),
-              OtherOptionsWidget(
-                user: widget.user,
-                customer: widget.customer,
-                fromdatectrl: _fromdatectrl,
-                todatectrl: _todatectrl,
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Profile Details",
-                    style: countHeading(),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => EditProfileScreen(
-                              user: widget.user,
-                              customer: widget.customer,
-                            ),
-                          ));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        gradient: const LinearGradient(
-                          colors: [Color(0xff99bedb), Color(0xff62a5d6)],
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 8),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/svg/edit.svg',
-                              height: 12.h,
-                            ),
-                            SizedBox(
-                              width: 6.w,
-                            ),
-                            Text(
-                              'Edit Profile',
-                              style: kfontstyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
+                            ],
+                          ),
+                          Text(
+                            '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                          ),
+                        ],
                       ),
                     ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              const ProfileInfoWidget(),
-              SizedBox(
-                height: 10.h,
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                CustomerTraansactionWidget(
+                  user: widget.user,
+                  customer: widget.customer,
+                  fromdatectrl: _fromdatectrl,
+                  todatectrl: _todatectrl,
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Other Options  ",
+                      style: countHeading(),
+                    ),
+                  ],
+                ),
+                OtherOptionsWidget(
+                  user: widget.user,
+                  customer: widget.customer,
+                  fromdatectrl: _fromdatectrl,
+                  todatectrl: _todatectrl,
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Profile Details",
+                      style: countHeading(),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditProfileScreen(
+                                user: widget.user,
+                                customer: widget.customer,
+                              ),
+                            ));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: const LinearGradient(
+                            colors: [Color(0xff99bedb), Color(0xff62a5d6)],
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 8),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                'assets/svg/edit.svg',
+                                height: 12.h,
+                              ),
+                              SizedBox(
+                                width: 6.w,
+                              ),
+                              Text(
+                                'Edit Profile',
+                                style: kfontstyle(
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                const ProfileInfoWidget(),
+                SizedBox(
+                  height: 10.h,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshCusIns(BuildContext context) async {
+    // _fromdatectrl.text = '1-${DateTime.now().month}-${DateTime.now().year}';
+    // _todatectrl.text =
+    //     '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+
+    context.read<CusProfileBloc>().add(const ClearProfileEvent());
+    context.read<CusProfileBloc>().add(GetCusProfileEvent(
+        userID: widget.user.usrId ?? '', cusID: widget.customer.cusId ?? ''));
+
+    context.read<CusInsTrnCountBloc>().add(GettrnCountsEvent(
+        userId: widget.user.usrId ?? '',
+        cusId: widget.customer.cusId ?? '',
+        fDate: _fromdatectrl.text,
+        toDate: _todatectrl.text));
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

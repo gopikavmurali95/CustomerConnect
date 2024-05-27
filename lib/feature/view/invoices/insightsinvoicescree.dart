@@ -398,7 +398,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           blurStyle: BlurStyle.outer,
                           offset: Offset(3, 3))
                     ]),
-                    height: 40.h,
+                    height: 30.h,
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -408,7 +408,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           Text(
                             'Total Invoice Amount',
                             style: TextStyle(
-                                fontSize: 15.sp, fontWeight: FontWeight.w400),
+                                fontSize: 11.sp, fontWeight: FontWeight.w400),
                           ),
                           BlocBuilder<CusInvTotalCounterCubit,
                               CusInvTotalCounterState>(
@@ -416,7 +416,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                               return Text(
                                 state.amount,
                                 style: TextStyle(
-                                    fontSize: 15.sp,
+                                    fontSize: 11.sp,
                                     fontWeight: FontWeight.w600),
                               );
                             },
