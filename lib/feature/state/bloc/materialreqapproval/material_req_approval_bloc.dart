@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/models/material_req_approval_in_model/MaterialReqApprvalInModel.dart';
@@ -19,8 +21,10 @@ class MaterialReqApprovalBloc
   MaterialReqApprovalBloc(this.materialReqApprovalRepo)
       : super(MaterialReqApprovalState.initial()) {
     on<MaterialReqApprovalSuccessEvent>((event, emit) async {
+      log("in approval bloc");
       Either<MainFailures, MaterialReqApprovalOutModel> approve =
           await materialReqApprovalRepo.materialApproval(event.approvalInModel);
+
       emit(approve.fold((l) => const MaterialReqApprovalFailedState(),
           (r) => MaterialReqApprovalSuccessState(response: r)));
     });

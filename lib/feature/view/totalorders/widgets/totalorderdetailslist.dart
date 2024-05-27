@@ -69,7 +69,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                           context)
                                                                       .size
                                                                       .width /
-                                                                  2,
+                                                                  2.1,
                                                               child: Column(
                                                                 crossAxisAlignment:
                                                                     CrossAxisAlignment

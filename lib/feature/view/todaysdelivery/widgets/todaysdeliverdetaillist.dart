@@ -64,6 +64,8 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             SizedBox(
                                               // color: Colors.teal,
@@ -87,7 +89,7 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: 200.w,
+                                                    width: 180.w,
                                                     child: Text(
                                                       invdetails[index]
                                                               .prhName ??
@@ -110,48 +112,58 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                   fontWeight: FontWeight.w400),
                                             ), */
                                             SizedBox(
-                                              width: 70.h,
+                                              width: 60.w,
                                             ),
-                                            Column(
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                Visibility(
-                                                  visible:
-                                                      invdetails[index].hUom ==
+                                                Column(
+                                                  children: [
+                                                    Visibility(
+                                                      visible: invdetails[index]
+                                                                      .hUom ==
                                                                   null ||
                                                               invdetails[index]
                                                                   .hUom!
                                                                   .isEmpty
                                                           ? false
                                                           : true,
-                                                  child: Text(
-                                                    invdetails[index].hUom ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 5.h,
-                                                ),
-                                                Visibility(
-                                                  visible:
-                                                      invdetails[index].lUom ==
+                                                      child: Text(
+                                                        invdetails[index]
+                                                                .hUom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 10.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 5.h,
+                                                    ),
+                                                    Visibility(
+                                                      visible: invdetails[index]
+                                                                      .lUom ==
                                                                   null ||
                                                               invdetails[index]
                                                                   .lUom!
                                                                   .isEmpty
                                                           ? false
                                                           : true,
-                                                  child: Text(
-                                                    invdetails[index].lUom ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
+                                                      child: Text(
+                                                        invdetails[index]
+                                                                .lUom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 10.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
