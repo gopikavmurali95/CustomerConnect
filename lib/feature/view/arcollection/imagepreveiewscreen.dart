@@ -8,6 +8,7 @@ class ArImagePreviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // log(arheader.image ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

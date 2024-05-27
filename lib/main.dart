@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
@@ -124,8 +125,23 @@ void main() async {
         options: DefaultFirebaseOptions.currentPlatform);
 
     await PushNotificationService().initialize();
-    FirebaseMessaging.onBackgroundMessage(
-        PushNotificationService().backgroundHandler);
+
+    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
+    if (Platform.isAndroid || Platform.isIOS) {
+      FirebaseMessaging? messaging;
+      messaging = FirebaseMessaging.instance;
+      await messaging.requestPermission();
+      if (Platform.isAndroid) {
+        await FirebaseMessaging.instance.setAutoInitEnabled(true);
+      }
+    }
   } catch (e) {
     log('Error initializing Firebase: $e');
   }

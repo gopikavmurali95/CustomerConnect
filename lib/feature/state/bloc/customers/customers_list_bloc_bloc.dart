@@ -41,5 +41,9 @@ class CustomersListBlocBloc
     on<ClearCustomersEvent>((event, emit) {
       emit(const GetCustomersSstate(customers: null));
     });
+
+    on<RestCustomersEvent>((event, emit) {
+      emit(const CustomersResetState());
+    });
   }
 }

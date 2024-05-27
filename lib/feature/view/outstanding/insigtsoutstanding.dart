@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart
 import 'package:customer_connect/feature/view/outstanding/widgets/insightoutstandinglist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -110,13 +111,12 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshInsghtsOutStandingScreen(context,widget.user),
-
+        onRefresh: () =>
+            _onRefreshInsghtsOutStandingScreen(context, widget.user),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
-
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: BlocBuilder<ArScrollCtrlCubit, ArScrollCtrlState>(
@@ -124,8 +124,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                 return Column(
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                       child: Row(
                         children: [
                           Container(
@@ -139,7 +139,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             width: 10.w,
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height,
+                            // height: 55.h,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -153,7 +153,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    Expanded(
+                                    SizedBox(
+                                      width: 200.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
                                         widget.customer.cusName ?? "",
@@ -172,7 +173,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                           fontSize: 11.sp,
                                           color: const Color(0xff413434)),
                                     ),
-                                    Expanded(
+                                    SizedBox(
+                                      width: 150.w,
                                       child: Text(
                                         widget.customer.headerName ?? "",
                                         overflow: TextOverflow.ellipsis,
@@ -183,8 +185,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                 ),
                                 Text(
                                   '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
-                                  style:
-                                      kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                  style: kfontstyle(
+                                      fontSize: 10.sp, color: Colors.grey),
                                 ),
                               ],
                             ),
@@ -193,15 +195,16 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 0),
                       child: Column(
                         children: [
                           Container(
                               height: 40,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  border: Border.all(color: Colors.grey.shade200),
+                                  border:
+                                      Border.all(color: Colors.grey.shade200),
                                   borderRadius: BorderRadius.circular(10.0),
                                   boxShadow: const [
                                     BoxShadow(
@@ -213,15 +216,15 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                               child: TextFormField(
                                 controller: _cusOutstandSearchCtrl,
                                 onChanged: (value) {
-                                  if (debounce?.isActive ?? false) debounce!.cancel();
+                                  if (debounce?.isActive ?? false)
+                                    debounce!.cancel();
                                   debounce = Timer(
                                     const Duration(
                                       milliseconds: 500,
                                     ),
                                     () async {
-                                      context
-                                          .read<CusOutStandingBloc>()
-                                          .add(const ClearCusOutStandingEvent());
+                                      context.read<CusOutStandingBloc>().add(
+                                          const ClearCusOutStandingEvent());
                                       context.read<CusOutStandingBloc>().add(
                                             GetCusOutstandingEvent(
                                               searchQuery: value.trim(),
@@ -229,8 +232,10 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                   cusId: widget.customer.cusId,
                                                   userId: widget.user.usrId,
                                                   area: '',
-                                                  fromDate: widget.fromdatectrl.text,
-                                                  toDate: widget.todatectrl.text,
+                                                  fromDate:
+                                                      widget.fromdatectrl.text,
+                                                  toDate:
+                                                      widget.todatectrl.text,
                                                   route: '',
                                                   subArea: ''),
                                             ),
@@ -244,29 +249,40 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                       size: 20,
                                     ),
                                     suffix: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(height: 5.h),
                                         Expanded(
                                           child: IconButton(
                                             onPressed: () {
                                               _cusOutstandSearchCtrl.clear();
-                                              context.read<CusOutStandingBloc>().add(
-                                                  const ClearCusOutStandingEvent());
-                                              context.read<CusOutStandingBloc>().add(
+                                              context
+                                                  .read<CusOutStandingBloc>()
+                                                  .add(
+                                                      const ClearCusOutStandingEvent());
+                                              context
+                                                  .read<CusOutStandingBloc>()
+                                                  .add(
                                                     GetCusOutstandingEvent(
                                                       searchQuery: '',
-                                                      outIn: CusOutStandingInModel(
-                                                          cusId:
-                                                              widget.customer.cusId,
-                                                          userId: widget.user.usrId,
-                                                          area: '',
-                                                          fromDate: widget
-                                                              .fromdatectrl.text,
-                                                          toDate:
-                                                              widget.todatectrl.text,
-                                                          route: '',
-                                                          subArea: ''),
+                                                      outIn:
+                                                          CusOutStandingInModel(
+                                                              cusId:
+                                                                  widget.customer
+                                                                      .cusId,
+                                                              userId:
+                                                                  widget.user
+                                                                      .usrId,
+                                                              area: '',
+                                                              fromDate: widget
+                                                                  .fromdatectrl
+                                                                  .text,
+                                                              toDate: widget
+                                                                  .todatectrl
+                                                                  .text,
+                                                              route: '',
+                                                              subArea: ''),
                                                     ),
                                                   );
                                             },
@@ -289,7 +305,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                         borderSide: BorderSide.none)),
                                 textAlign: TextAlign.start,
                                 maxLines: 1,
@@ -303,19 +320,23 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             visible: state.isOnTop,
                             child: Column(
                               children: [
-                                BlocConsumer<CusOutStandingBloc, CusOutStandingState>(
+                                BlocConsumer<CusOutStandingBloc,
+                                    CusOutStandingState>(
                                   listener: (context, state) {
                                     state.when(
-                                      getCusOutStandingState: (counts, headers) {
+                                      getCusOutStandingState:
+                                          (counts, headers) {
                                         if (counts != null) {
-                                          if (int.parse(counts.dueCount ?? '') > 0) {
-                                            pievalues.add(
-                                                int.parse(counts.overDueCount ?? ''));
-                                          }
-                                          if (int.parse(counts.overDueCount ?? '') >
+                                          if (int.parse(counts.dueCount ?? '') >
                                               0) {
-                                            pievalues.add(
-                                                int.parse(counts.overDueCount ?? ''));
+                                            pievalues.add(int.parse(
+                                                counts.overDueCount ?? ''));
+                                          }
+                                          if (int.parse(
+                                                  counts.overDueCount ?? '') >
+                                              0) {
+                                            pievalues.add(int.parse(
+                                                counts.overDueCount ?? ''));
                                           }
                                         }
                                       },
@@ -324,8 +345,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                   },
                                   builder: (context, state) {
                                     return state.when(
-                                      getCusOutStandingState: (counts, headers) =>
-                                          counts == null
+                                      getCusOutStandingState:
+                                          (counts, headers) => counts == null
                                               ? ShimmerContainers(
                                                   height: 110.h,
                                                   width: double.infinity,
@@ -334,23 +355,29 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.center,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.spaceBetween,
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     pievalues.length > 1
                                                         ? SizedBox(
                                                             width: 110.w,
                                                             height: 110.h,
                                                             child: PieChart(
-                                                              bgColor:
-                                                                  Colors.transparent,
-                                                              usePercentValues: false,
+                                                              bgColor: Colors
+                                                                  .transparent,
+                                                              usePercentValues:
+                                                                  false,
                                                               centerTextColor:
                                                                   Colors.blue,
-                                                              centerTextSize: 11,
-                                                              drawCenterText: true,
-                                                              drawHoleEnabled: true,
+                                                              centerTextSize:
+                                                                  11,
+                                                              drawCenterText:
+                                                                  true,
+                                                              drawHoleEnabled:
+                                                                  true,
                                                               holeRadius: 20,
-                                                              entryLabelTextSize: 10,
+                                                              entryLabelTextSize:
+                                                                  10,
                                                               transparentCircleRadius:
                                                                   27,
                                                               entryLabelColor:
@@ -365,15 +392,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                           List.of(
                                                                         [
                                                                           PieEntry(
-                                                                              counts.dueCount ??
-                                                                                  '',
-                                                                              double.parse(counts.dueCount ??
-                                                                                  '0')),
+                                                                              counts.dueCount ?? '',
+                                                                              double.parse(counts.dueCount ?? '0')),
                                                                           PieEntry(
-                                                                              counts.overDueCount ??
-                                                                                  '',
-                                                                              double.parse(counts.overDueCount ??
-                                                                                  '0')),
+                                                                              counts.overDueCount ?? '',
+                                                                              double.parse(counts.overDueCount ?? '0')),
                                                                         ],
                                                                       ),
                                                                     )
@@ -387,29 +410,29 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                             : Stack(
                                                                 children: [
                                                                   CircleAvatar(
-                                                                    radius: 50.h,
-                                                                    backgroundColor: pievalues[
-                                                                                0] ==
-                                                                            int.parse(
-                                                                                counts.dueCount ??
-                                                                                    '')
+                                                                    radius:
+                                                                        50.h,
+                                                                    backgroundColor: pievalues[0] ==
+                                                                            int.parse(counts.dueCount ??
+                                                                                '')
                                                                         ? outstandingcolorslist[
                                                                             0]
                                                                         : outstandingcolorslist[
                                                                             1],
-                                                                    child: Center(
+                                                                    child:
+                                                                        Center(
                                                                       child:
                                                                           CircleAvatar(
-                                                                        radius: 23.h,
+                                                                        radius:
+                                                                            23.h,
                                                                         backgroundColor:
-                                                                            Colors
-                                                                                .white30,
-                                                                        child: Center(
+                                                                            Colors.white30,
+                                                                        child:
+                                                                            Center(
                                                                           child:
                                                                               CircleAvatar(
                                                                             backgroundColor:
-                                                                                Colors
-                                                                                    .white,
+                                                                                Colors.white,
                                                                             radius:
                                                                                 16.h,
                                                                           ),
@@ -420,11 +443,12 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                   Positioned(
                                                                       top: 50,
                                                                       right: 15,
-                                                                      child: Text(
+                                                                      child:
+                                                                          Text(
                                                                         '${pievalues[0]}',
                                                                         style: kfontstyle(
-                                                                            color: Colors
-                                                                                .white),
+                                                                            color:
+                                                                                Colors.white),
                                                                       ))
                                                                 ],
                                                               ),
@@ -434,9 +458,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                     Expanded(
                                                       child: Column(
                                                         mainAxisAlignment:
-                                                            MainAxisAlignment.start,
+                                                            MainAxisAlignment
+                                                                .start,
                                                         crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Column(
                                                             mainAxisAlignment:
@@ -446,7 +472,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                               Text(
                                                                 'Total Outstanding',
                                                                 style: kfontstyle(
-                                                                    fontSize: 10.sp),
+                                                                    fontSize:
+                                                                        10.sp),
                                                               ),
                                                               SizedBox(
                                                                 width: 20.w,
@@ -454,7 +481,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                               Text(
                                                                 '${counts.totCount}/${counts.totAmount}',
                                                                 style: kfontstyle(
-                                                                    fontSize: 13.sp,
+                                                                    fontSize:
+                                                                        13.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500),
@@ -505,17 +533,18 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                       children: [
                         //SizedBox(width: 05,),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 20, top: 0),
+                          padding: const EdgeInsets.only(
+                              left: 20.0, right: 20, top: 0),
                           child: Text(
                             "Outstanding invoices",
                             style: countHeading(),
                           ),
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 20, top: 0),
-                          child: BlocBuilder<CusOutStandingBloc, CusOutStandingState>(
+                          padding: const EdgeInsets.only(
+                              left: 20.0, right: 20, top: 0),
+                          child: BlocBuilder<CusOutStandingBloc,
+                              CusOutStandingState>(
                             builder: (context, state) {
                               return state.when(
                                 getCusOutStandingState: (counts, headers) =>
@@ -542,10 +571,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                     SizedBox(
                       height: 8.h,
                     ),
-                    Expanded(
-                        child: SingleChildScrollView(
-                            controller: _scrollController,
-                            child: const InsightsOutstandingList())),
+                    const InsightsOutstandingList(),
                     SizedBox(
                       height: 8.h,
                     )
@@ -559,20 +585,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
     );
   }
 
-  Future<void> _onRefreshInsghtsOutStandingScreen(BuildContext context,LoginUserModel model) async
-  {
+  Future<void> _onRefreshInsghtsOutStandingScreen(
+      BuildContext context, LoginUserModel model) async {
     context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
     context.read<CusOutStandingBloc>().add(GetCusOutstandingEvent(
-      searchQuery: '', outIn: CusOutStandingInModel(
-        cusId: widget.customer.cusId,
-        userId: widget.user.usrId,
-        area: '',
-        fromDate: widget.fromdatectrl.text,
-        toDate: widget.todatectrl.text,
-        route: '',
-        subArea: ''), ));
-
+          searchQuery: '',
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: '',
+              subArea: ''),
+        ));
   }
 }
-
-

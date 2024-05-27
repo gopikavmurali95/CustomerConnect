@@ -1,8 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +18,8 @@ class SalesOrdersListingWidget extends StatelessWidget {
           return state.when(
             getsalesOrdersState: (orders) => orders == null
                 ? ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) =>
                         ShimmerContainers(height: 50.h, width: double.infinity),
                     separatorBuilder: (context, index) => SizedBox(
@@ -48,56 +50,63 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 10.w,
                                 ),
-                                SizedBox(
-                                  // height: 55.h,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        orders[index].orderId ?? '',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff2C6B9E),
-                                          fontWeight: FontWeight.w600,
+                                      SizedBox(
+                                        // height: 55.h,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              orders[index].orderId ?? '',
+                                              style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff2C6B9E),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            Text(
+                                              "${orders[index].cusCode} - ${orders[index].cusName}",
+                                              overflow: TextOverflow.ellipsis,
+                                              style:
+                                                  kfontstyle(fontSize: 11.sp),
+                                            ),
+                                            Text(
+                                              '${orders[index].date} | ${orders[index].time}',
+                                              style: kfontstyle(
+                                                  fontSize: 10.sp,
+                                                  color: Colors.grey),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Text(
-                                        '${orders[index].date} | ${orders[index].time}',
-                                        style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            color: Colors.grey),
-                                      ),
+                                      Container(
+                                        height: 14.h,
+                                        width: 30.w,
+                                        decoration: BoxDecoration(
+                                            color: /* index % 2 == 0
+                                        ? */
+                                                const Color(
+                                                    0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Center(
+                                          child: Text(
+                                            orders[index].status ?? '',
+                                            style: kfontstyle(
+                                              fontSize: 10.sp,
+                                              color: const Color(0xff413434),
+                                            ),
+                                          ),
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      height: 14.h,
-                                      width: 30.w,
-                                      decoration: BoxDecoration(
-                                          color: /* index % 2 == 0
-                                          ? */
-                                              const Color(
-                                                  0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Center(
-                                        child: Text(
-                                          orders[index].status ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            color: const Color(0xff413434),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )
                               ],
                             ),
                         separatorBuilder: (context, index) => Divider(

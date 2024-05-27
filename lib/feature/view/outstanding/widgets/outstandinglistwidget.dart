@@ -153,7 +153,7 @@ class OutstandingListWidget extends StatelessWidget {
                             ),
                         itemCount: headers.length),
             outstandingFailedState: () => SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
                 child: Text(
                   'No Data Available',

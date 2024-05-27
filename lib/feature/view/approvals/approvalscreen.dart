@@ -17,9 +17,7 @@ import 'package:customer_connect/feature/view/pricechangeapproval/pricechangehea
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -115,24 +113,25 @@ class ApprovalScreen extends StatelessWidget {
                                   ApprovalCountsState>(
                                 builder: (context, state) {
                                   return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
-                                              '0',
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            )
-                                          : Text(
-                                              count.pendingPriceChangeApproval!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.pendingPriceChangeApproval ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
                                       getApprovalCountsFailed: () => Text(
                                             '0',
                                             style: kfontstyle(

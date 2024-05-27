@@ -1,6 +1,7 @@
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
 import 'package:customer_connect/main.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
@@ -12,8 +13,9 @@ class PushNotificationService {
 
   /// when app is in the foreground
   static Future<void> onTapNotification(NotificationResponse? response) async {
-    if (PushNotificationService._context == null || response?.payload == null)
+    if (PushNotificationService._context == null || response?.payload == null) {
       return;
+    }
     LoginUserModel? user = await getuserdata();
 
     Navigator.of(PushNotificationService._context!).push(MaterialPageRoute(
@@ -149,19 +151,33 @@ int getUniqueIntegerFromDateTime() {
   return adjustedInt;
 }
 
+@pragma('vm:entry-point')
 Future<void> backgroundHandler(RemoteMessage message) async {
-  if (message.messageId != null) {
-    FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
-    var androidi = const AndroidInitializationSettings(
-      "@mipmap/ic_launcher",
-    );
+  // FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
+  // var androidi = const AndroidInitializationSettings(
+  //   "@mipmap/ic_launcher",
+  // );
 
-    var ios = const DarwinInitializationSettings();
-    var inisettings = InitializationSettings(android: androidi, iOS: ios);
-    groupNotifications(flp);
+  // var ios = const DarwinInitializationSettings();
+  // var inisettings = InitializationSettings(android: androidi, iOS: ios);
+  // await flp.initialize(inisettings);
+  // groupNotifications(flp);
 
-    await flp.initialize(inisettings);
-    log('Handling a background message ${message.messageId}');
-    await PushNotificationService().shownotification(message);
-  }
+  FirebaseMessaging.onBackgroundMessage((message) async {
+    log("_messaging onBackgroundMessage: $message");
+    await Future.delayed(const Duration(seconds: 1));
+  });
+  // if (message.messageId != null) {
+  //   log('Handling a background message ${message.messageId}');
+  //   await PushNotificationService().shownotification(message);
+  // }
+}
+
+@pragma('vm:entry-point')
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  log("Handling a background message: ${message.messageId}");
 }

@@ -22,7 +22,7 @@ class MaterialReqApprovalBloc
       Either<MainFailures, MaterialReqApprovalOutModel> approve =
           await materialReqApprovalRepo.materialApproval(event.approvalInModel);
       emit(approve.fold((l) => const MaterialReqApprovalFailedState(),
-          (r) => const MaterialReqApprovalSuccessState(response: null)));
+          (r) => MaterialReqApprovalSuccessState(response: r)));
     });
 
     on<MaterialReqApprovalLoadingEvent>((event, emit) {
