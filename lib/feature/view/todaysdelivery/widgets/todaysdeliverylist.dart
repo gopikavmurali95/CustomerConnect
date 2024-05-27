@@ -19,18 +19,15 @@ class TodaysDeliveryList extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             getTodaysDeliveryState: (delivery) => delivery == null
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => ShimmerContainers(
-                            height: 60.h, width: double.infinity),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10),
-                  )
+                ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        ShimmerContainers(height: 60.h, width: double.infinity),
+                    separatorBuilder: (context, index) => Divider(
+                          color: Colors.grey[300],
+                        ),
+                    itemCount: 10)
                 : ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -109,7 +106,7 @@ class TodaysDeliveryList extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      '${delivery[index].salesman} | ${delivery[index].rotName} | ${delivery[index].date} | ${delivery[index].time}',
+                                      '${delivery[index].rotName} | ${delivery[index].salesman} | ${delivery[index].date} | ${delivery[index].time}',
                                       style: kfontstyle(
                                           fontSize: 10.sp, color: Colors.grey),
                                     ),
@@ -120,9 +117,9 @@ class TodaysDeliveryList extends StatelessWidget {
                                 height: 14.h,
                                 width: 30.w,
                                 decoration: BoxDecoration(
-                                    color: index % 2 == 0
-                                        ? const Color(0xffe3f7e2)
-                                        : const Color(0xfff7f4e2),
+                                    color: delivery[index].status == 'C'
+                                        ? const Color(0xfff7f4e2)
+                                        : const Color(0xffe3f7e2),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                   child: Text(
