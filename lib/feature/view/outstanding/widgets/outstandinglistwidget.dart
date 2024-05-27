@@ -152,10 +152,13 @@ class OutstandingListWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: headers.length),
-            outstandingFailedState: () => Center(
-              child: Text(
-                'No Data Available',
-                style: kfontstyle(),
+            outstandingFailedState: () => SizedBox(
+              height: MediaQuery.of(context).size.height / 1.5,
+              child: Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
               ),
             ),
           );

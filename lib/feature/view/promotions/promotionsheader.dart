@@ -12,7 +12,6 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -180,216 +179,246 @@ class _PromotionHeaderState extends State<PromotionHeader> {
           ),
         ),
       ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: BlocBuilder<PromotionHeaderBloc, PromotionHeaderState>(
-              builder: (context, state) {
-                return state.when(
-                  getPromotionsHeader: (promoheader) => promoheader == null
-                      ? ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) => ShimmerContainers(
-                              height: 60.h, width: double.infinity),
-                          separatorBuilder: (context, index) => Divider(
-                                color: Colors.grey[300],
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshPromotionHeaderScreen(context, widget.user),
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: BlocBuilder<PromotionHeaderBloc, PromotionHeaderState>(
+                builder: (context, state) {
+                  return state.when(
+                    getPromotionsHeader: (promoheader) => promoheader == null
+                        ? ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => ShimmerContainers(
+                                height: 60.h, width: double.infinity),
+                            separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey[300],
+                                ),
+                            itemCount: 10)
+                        : Column(
+                            children: [
+                              SizedBox(
+                                height: 25.h,
                               ),
-                          itemCount: 10)
-                      : Column(
-                          children: [
-                            SizedBox(
-                              height: 25.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'All promotions',
-                                  style: countHeading(),
-                                ),
-                                Text(
-                                  promoheader.length.toString(),
-                                  style: countHeading(),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: promoheader.length,
-                                itemBuilder: (context, index) {
-                                  return Column(
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          context
-                                              .read<PromotionCustomerBloc>()
-                                              .add(
-                                                  const ClearOromotionCustomer());
-                                          context
-                                              .read<PromotionCustomerBloc>()
-                                              .add(GetPromotionCustomerEvent(
-                                                  id: promoheader[index].qid ??
-                                                      '',
-                                                  searchQuery: ''));
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PromotionCustomer(
-                                                        promotion:
-                                                            promoheader[index],
-                                                      )));
-                                        },
-                                        child: SizedBox(
-                                          //color: Colors.red,
-                                          height: 60,
-                                          width: double.infinity,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              SizedBox(
-                                                child: Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundColor:
-                                                          const Color(
-                                                              0xffB3DAF7),
-                                                      child: Center(
-                                                        child: Text(
-                                                          promoheader[index]
-                                                                      .pName ==
-                                                                  null
-                                                              ? 'D'
-                                                              : promoheader[
-                                                                      index]
-                                                                  .pName!
-                                                                  .split('')
-                                                                  .toList()[0],
-                                                          style: TextStyle(
-                                                              fontSize: 14.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 15.w,
-                                                    ),
-                                                    Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          '${promoheader[index].pName}',
-                                                          style:
-                                                              blueTextStyle(),
-                                                        ),
-                                                        Text(
-                                                          '${promoheader[index].dateRange}',
-                                                          style: subTextStyle(),
-                                                        ),
-                                                        Text(
-                                                          '${promoheader[index].pCode}',
-                                                          style: subTextStyle(),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  context
-                                                      .read<
-                                                          PromotionDetailsBloc>()
-                                                      .add(
-                                                          const ClearPromotionDetails());
-                                                  context
-                                                      .read<
-                                                          PromotionDetailsBloc>()
-                                                      .add(
-                                                          GetPromotionDetailsEvent(
-                                                              id: promoheader[
-                                                                          index]
-                                                                      .aid ??
-                                                                  ''));
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              PromotionDetails(
-                                                                promotion:
-                                                                    promoheader[
-                                                                        index],
-                                                              )));
-                                                },
-                                                child: SizedBox(
-                                                  height: 20.h,
-                                                  // width: 65.w,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'All promotions',
+                                    style: countHeading(),
+                                  ),
+                                  Text(
+                                    promoheader.length.toString(),
+                                    style: countHeading(),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              ListView.builder(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: promoheader.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            context
+                                                .read<PromotionCustomerBloc>()
+                                                .add(
+                                                    const ClearOromotionCustomer());
+                                            context
+                                                .read<PromotionCustomerBloc>()
+                                                .add(GetPromotionCustomerEvent(
+                                                    id: promoheader[index]
+                                                            .qid ??
+                                                        '',
+                                                    searchQuery: ''));
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PromotionCustomer(
+                                                          promotion:
+                                                              promoheader[
+                                                                  index],
+                                                        )));
+                                          },
+                                          child: SizedBox(
+                                            //color: Colors.red,
+                                            height: 60,
+                                            width: double.infinity,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                SizedBox(
                                                   child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
                                                     children: [
-                                                      Text(
-                                                        'Details',
-                                                        style: TextStyle(
-                                                            fontSize: 10.sp),
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            const Color(
+                                                                0xffB3DAF7),
+                                                        child: Center(
+                                                          child: Text(
+                                                            promoheader[index]
+                                                                        .pName ==
+                                                                    null
+                                                                ? 'D'
+                                                                : promoheader[
+                                                                        index]
+                                                                    .pName!
+                                                                    .split('')
+                                                                    .toList()[0],
+                                                            style: TextStyle(
+                                                                fontSize: 14.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
                                                       ),
                                                       SizedBox(
-                                                        width: 5.w,
+                                                        width: 15.w,
                                                       ),
-                                                      const Icon(
-                                                        Icons
-                                                            .keyboard_arrow_right,
-                                                        size: 18,
-                                                      )
+                                                      Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            '${promoheader[index].pName}',
+                                                            style:
+                                                                blueTextStyle(),
+                                                          ),
+                                                          Text(
+                                                            '${promoheader[index].dateRange}',
+                                                            style:
+                                                                subTextStyle(),
+                                                          ),
+                                                          Text(
+                                                            '${promoheader[index].pCode}',
+                                                            style:
+                                                                subTextStyle(),
+                                                          )
+                                                        ],
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
-                                              )
-                                            ],
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    context
+                                                        .read<
+                                                            PromotionDetailsBloc>()
+                                                        .add(
+                                                            const ClearPromotionDetails());
+                                                    context
+                                                        .read<
+                                                            PromotionDetailsBloc>()
+                                                        .add(GetPromotionDetailsEvent(
+                                                            id: promoheader[
+                                                                        index]
+                                                                    .aid ??
+                                                                ''));
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                PromotionDetails(
+                                                                  promotion:
+                                                                      promoheader[
+                                                                          index],
+                                                                )));
+                                                  },
+                                                  child: SizedBox(
+                                                    height: 20.h,
+                                                    // width: 65.w,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      children: [
+                                                        Text(
+                                                          'Details',
+                                                          style: TextStyle(
+                                                              fontSize: 10.sp),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 5.w,
+                                                        ),
+                                                        const Icon(
+                                                          Icons
+                                                              .keyboard_arrow_right,
+                                                          size: 18,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Divider(
-                                        color: Colors.grey.shade300,
-                                      )
-                                    ],
-                                  );
-                                })
-                          ],
+                                        Divider(
+                                          color: Colors.grey.shade300,
+                                        )
+                                      ],
+                                    );
+                                  })
+                            ],
+                          ),
+                    promotionHeaderFailed: () => SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                      child: Center(
+                        child: Text(
+                          'No Data Available',
+                          style: kfontstyle(),
                         ),
-                  promotionHeaderFailed: () => SizedBox(
-                    height: 500.h,
-                    child: Center(
-                      child: Text(
-                        'No Data Available',
-                        style: kfontstyle(),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshPromotionHeaderScreen(
+      BuildContext context, LoginUserModel model) async {
+    context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
+    context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
+          searchQuery: '',
+          promotionInparas: PromotionHeaderInParas(
+              area: '',
+              cusOutlet: '',
+              customer: '',
+              fromDate:
+                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+              route: '',
+              subArea: '',
+              toDate:
+                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+              userId: widget.user.usrId),
+        ));
   }
 }

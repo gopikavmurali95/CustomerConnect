@@ -10,25 +10,26 @@ import '../../../data/abstractrepo/abstractrepo.dart';
 part 'load_req_approval_event.dart';
 part 'load_req_approval_state.dart';
 part 'load_req_approval_bloc.freezed.dart';
+
 @injectable
-class LoadReqApprovalBloc extends Bloc<LoadReqApprovalEvent, LoadReqApprovalState> {
+class LoadReqApprovalBloc
+    extends Bloc<LoadReqApprovalEvent, LoadReqApprovalState> {
   final ILoadRequestApprovalRepo loadReqApprovalRepo;
 
-  LoadReqApprovalBloc(this.loadReqApprovalRepo) : super(LoadReqApprovalState.initial()) {
-    on<ApprovloadReqEvent>((event, emit) async{
-      Either<MainFailures,LoadRequestApprovalOutModel> aprove =
-      await loadReqApprovalRepo.loadApproval(event.approval);
+  LoadReqApprovalBloc(this.loadReqApprovalRepo)
+      : super(LoadReqApprovalState.initial()) {
+    on<ApprovloadReqEvent>((event, emit) async {
+      Either<MainFailures, LoadRequestApprovalOutModel> aprove =
+          await loadReqApprovalRepo.loadApproval(event.approval);
       emit(aprove.fold((l) => const LoadReqApprovalFailedState(),
-              (r) => LoadReqApprovalSuccessState(response: r)));
+          (r) => LoadReqApprovalSuccessState(response: r)));
       // TODO: implement event handler
     });
     on<ApprovLoadingReqEvent>((event, emit) {
       emit(const LoadReqApprovalLoadingState());
-
     });
     on<ClearLoadReqApprovalEvent>((event, emit) {
       emit(const LoadReqApprovalSuccessState(response: null));
-
-    } );
+    });
   }
 }

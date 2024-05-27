@@ -42,7 +42,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
                 fromDate:
-                    '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                    '${DateTime.now().day - 3}-${DateTime.now().month}-${DateTime.now().year}',
                 toDate:
                     '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',

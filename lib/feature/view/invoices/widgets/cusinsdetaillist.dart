@@ -165,7 +165,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
+                                            horizontal: 10),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,

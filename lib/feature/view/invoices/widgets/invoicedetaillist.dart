@@ -60,7 +60,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) => Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                        horizontal: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -70,7 +70,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width /
-                                                  2,
+                                                  1.8,
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -243,7 +243,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
               color: const Color(0xfff5f5f5),
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 0, top: 10, bottom: 10),
+                    left: 10, right: 0, top: 10, bottom: 10),
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -289,7 +289,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 0, top: 10, bottom: 10),
+                                  left: 20, right: 10, top: 10, bottom: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,

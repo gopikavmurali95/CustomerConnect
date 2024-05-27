@@ -218,3 +218,12 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
     );
   }
 }
+
+
+
+Future<void> _onRefreshLoadRequestHeaderScreen(BuildContext context,LoginUserModel model) async
+{
+  context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
+  context.read<LoadReqHeaderBloc>().add(const LoadreqSuccessEvent(userId: ''));
+
+}

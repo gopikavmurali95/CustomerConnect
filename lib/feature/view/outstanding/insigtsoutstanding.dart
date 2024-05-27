@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart
 import 'package:customer_connect/feature/view/outstanding/widgets/insightoutstandinglist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -112,7 +113,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshOutStanding(context),
+        onRefresh: () =>
+            _onRefreshInsghtsOutStandingScreen(context, widget.user),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
@@ -136,7 +138,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                           SizedBox(
                             width: 10.w,
                           ),
-                          Expanded(
+                          SizedBox(
+                            // height: 55.h,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -150,7 +153,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    Expanded(
+                                    SizedBox(
+                                      width: 200.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
                                         widget.customer.cusName ?? "",
@@ -169,7 +173,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                           fontSize: 11.sp,
                                           color: const Color(0xff413434)),
                                     ),
-                                    Expanded(
+                                    SizedBox(
+                                      width: 150.w,
                                       child: Text(
                                         widget.customer.headerName ?? "",
                                         overflow: TextOverflow.ellipsis,
@@ -566,9 +571,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                     SizedBox(
                       height: 8.h,
                     ),
-                    SingleChildScrollView(
-                        controller: _scrollController,
-                        child: const InsightsOutstandingList()),
+                    const InsightsOutstandingList(),
                     SizedBox(
                       height: 8.h,
                     )
@@ -582,25 +585,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
     );
   }
 
-  Future<void> _onRefreshOutStanding(BuildContext context) async {
-    pievalues.clear();
-    _cusOutstandSearchCtrl.clear();
-    context.read<ArScrollCtrlCubit>().onInit();
-    _scrollController.addListener(_scrollListener);
+  Future<void> _onRefreshInsghtsOutStandingScreen(
+      BuildContext context, LoginUserModel model) async {
     context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
-    context.read<CusOutStandingBloc>().add(
-          GetCusOutstandingEvent(
-            searchQuery: '',
-            outIn: CusOutStandingInModel(
-                cusId: widget.customer.cusId,
-                userId: widget.user.usrId,
-                area: '',
-                fromDate: widget.fromdatectrl.text,
-                toDate: widget.todatectrl.text,
-                route: '',
-                subArea: ''),
-          ),
-        );
-    await Future.delayed(const Duration(seconds: 2));
+    context.read<CusOutStandingBloc>().add(GetCusOutstandingEvent(
+          searchQuery: '',
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: '',
+              subArea: ''),
+        ));
   }
 }

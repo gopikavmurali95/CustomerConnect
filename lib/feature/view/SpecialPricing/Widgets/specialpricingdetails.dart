@@ -272,191 +272,223 @@ class _SpecialPricingState extends State<SpecialPricing> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 30,
-            color: Colors.grey.shade200,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const  Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshSpecialPricingDetailScreen(context,widget.user),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 110),
-                  child: Text(
-                    "Items",
-                    style: boxHeading(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 42),
-                  child: Text(
-                    "UOM",
-                    style: boxHeading(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Std Price",
-                    style: boxHeading(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Spcl Price",
-                    style: boxHeading(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          BlocBuilder<SpecialPriceDetailsBloc, SpecialPriceDetailsState>(
-            builder: (context, state) {
-              return state.when(
-                getSpecialPriceDetailsState: (spPrice) => spPrice == null
-                    ? Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: ListView.separated(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) =>
-                                  ShimmerContainers(
-                                      height: 60.h, width: double.infinity),
-                              separatorBuilder: (context, index) => Divider(
-                                    color: Colors.grey[300],
-                                  ),
-                              itemCount: 10),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 30,
+                  color: Colors.grey.shade200,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 110),
+                        child: Text(
+                          "Items",
+                          style: boxHeading(),
                         ),
-                      )
-                    : Expanded(
-                        child: ListView.separated(
-                          itemCount: spPrice.length,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          // shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 42),
+                        child: Text(
+                          "UOM",
+                          style: boxHeading(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          "Std Price",
+                          style: boxHeading(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          "Spcl Price",
+                          style: boxHeading(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                BlocBuilder<SpecialPriceDetailsBloc, SpecialPriceDetailsState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getSpecialPriceDetailsState: (spPrice) => spPrice == null
+                          ? SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: ListView.separated(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) =>
+                                        ShimmerContainers(
+                                            height: 60.h, width: double.infinity),
+                                    separatorBuilder: (context, index) => Divider(
+                                          color: Colors.grey[300],
+                                        ),
+                                    itemCount: 10),
+                              ),
+                            )
+                          : SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                            child: ListView.separated(
+                              itemCount: spPrice.length,
+                              // physics: const NeverScrollableScrollPhysics(),
+                              // shrinkWrap: true,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15.0, top: 2),
-                                      child: Container(
-                                        //height: 55,
-                                        width: 180,
-                                        color: Colors.white,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 15.0, top: 2),
+                                          child: Container(
+                                            //height: 55,
+                                            width: 180,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(spPrice[index].prdCode ?? '',
+                                                    style: loadTextStyle()),
+                                                Text(
+                                                  spPrice[index].prdName ?? '',
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                                Text(
+                                                  spPrice[index].prdDescription ??
+                                                      '',
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
                                           children: [
-                                            Text(spPrice[index].prdCode ?? '',
-                                                style: loadTextStyle()),
                                             Text(
-                                              spPrice[index].prdName ?? '',
+                                              spPrice[index].uom ?? '',
                                               style: subTitleTextStyle(),
                                             ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
                                             Text(
-                                              spPrice[index].prdDescription ??
-                                                  '',
+                                              spPrice[index].uom ?? '',
                                               style: subTitleTextStyle(),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          spPrice[index].uom ?? '',
-                                          style: subTitleTextStyle(),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 2.0),
+                                          child: Column(
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            // crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                spPrice[index].stdPrice ?? '',
+                                                style: subTitleTextStyle(),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                spPrice[index].stdPrice ?? '',
+                                                style: subTitleTextStyle(),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        const SizedBox(
-                                          height: 5,
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 5, right: 20.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                spPrice[index].specialPrice ?? '',
+                                                style: subTitleTextStyle(),
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                spPrice[index].specialPrice ?? '',
+                                                style: subTitleTextStyle(),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Text(
-                                          spPrice[index].uom ?? '',
-                                          style: subTitleTextStyle(),
-                                        ),
+                                        //  SizedBox(width: 0,)
                                       ],
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 2.0),
-                                      child: Column(
-                                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        // crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            spPrice[index].stdPrice ?? '',
-                                            style: subTitleTextStyle(),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            spPrice[index].stdPrice ?? '',
-                                            style: subTitleTextStyle(),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 5, right: 20.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            spPrice[index].specialPrice ?? '',
-                                            style: subTitleTextStyle(),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            spPrice[index].specialPrice ?? '',
-                                            style: subTitleTextStyle(),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    //  SizedBox(width: 0,)
+                                    //  Divider(),
                                   ],
-                                ),
-                                //  Divider(),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const Padding(
-                              padding: EdgeInsets.only(left: 0.0, right: 0),
-                              child: Divider(),
-                            );
-                          },
+                                );
+                              },
+                              separatorBuilder: (BuildContext context, int index) {
+                                return const Padding(
+                                  padding: EdgeInsets.only(left: 0.0, right: 0),
+                                  child: Divider(),
+                                );
+                              },
+                            ),
+                          ),
+                      specialPriceDetailsFailedState: () => SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: Center(
+                          child: Text(
+                            'NoData Available',
+                            style: kfontstyle(),
+                          ),
                         ),
                       ),
-                specialPriceDetailsFailedState: () => Center(
-                  child: Text(
-                    'NoData Available',
-                    style: kfontstyle(),
-                  ),
+                    );
+                  },
                 ),
-              );
-            },
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
+  Future<void> _onRefreshSpecialPricingDetailScreen(BuildContext context,LoginUserModel model) async
+  {
+    context.read<SpecialPriceDetailsBloc>().add(const ClearSpecialriceDetailsEvent());
+    context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(prhID: '', searchQuery: ''
+        // userID: model.usrId!,
+        // fromDate:
+        // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        // todate:
+        // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        // searchQuery: ''
+    ));
+
+  }
+
+
 }

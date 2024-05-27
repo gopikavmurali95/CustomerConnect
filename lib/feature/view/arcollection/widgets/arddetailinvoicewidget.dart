@@ -145,6 +145,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                     ardetails[index]
                                                             .amountPaid ??
                                                         "",
+                                                    textAlign: TextAlign.end,
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: Colors.black),

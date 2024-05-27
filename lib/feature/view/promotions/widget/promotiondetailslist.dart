@@ -28,7 +28,7 @@ class PromotionDetailsList extends StatelessWidget {
                       itemCount: 10),
                 )
               : ListView.builder(
-                  //physics: const NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: prodetails.length,
                   itemBuilder: (context, index) {
@@ -52,10 +52,13 @@ class PromotionDetailsList extends StatelessWidget {
                       ],
                     );
                   }),
-          promotionDetailsFailed: () => Center(
-            child: Text(
-              'No Data Available',
-              style: kfontstyle(),
+          promotionDetailsFailed: () => SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Text(
+                'No Data Available',
+                style: kfontstyle(),
+              ),
             ),
           ),
         );
@@ -63,3 +66,4 @@ class PromotionDetailsList extends StatelessWidget {
     );
   }
 }
+

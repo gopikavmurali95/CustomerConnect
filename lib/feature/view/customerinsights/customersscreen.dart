@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
@@ -9,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_b
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -138,20 +138,20 @@ class _CustomersScrenState extends State<CustomersScren> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 10),
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                                color: Colors.grey.shade200),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                  color: Color(0xff00000050),
-                                                  blurRadius: 0.4,
-                                                  spreadRadius: 0.4)
-                                            ]),
-                                        child: DropdownButtonFormField(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                  color: Colors.grey.shade200),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                    color: Color(0xff00000050),
+                                                    blurRadius: 0.4,
+                                                    spreadRadius: 0.4)
+                                              ]),
+                                          child: /* DropdownButtonFormField(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10),
                                           dropdownColor: Colors.white,
@@ -203,8 +203,79 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                       const RestCustomersEvent());
                                             }
                                           },
-                                        ),
-                                      ),
+                                        ), */
+                                              Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child: Theme(
+                                              data: ThemeData(
+                                                  canvasColor: Colors.white),
+                                              child:
+                                                  DropdownSearch<CuSInsRotList>(
+                                                popupProps:
+                                                    const PopupProps.menu(
+                                                        showSearchBox: true,
+                                                        menuProps: MenuProps(
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                        )),
+                                                dropdownDecoratorProps:
+                                                    const DropDownDecoratorProps(
+                                                  dropdownSearchDecoration:
+                                                      InputDecoration(
+                                                          border:
+                                                              InputBorder.none),
+                                                ),
+                                                items: routes,
+                                                // asyncItems: (String filter) =>
+                                                //     getData(filter),
+                                                selectedItem: routes[0],
+                                                itemAsString:
+                                                    (CuSInsRotList u) =>
+                                                        u.rotName ?? '',
+                                                onChanged:
+                                                    (CuSInsRotList? data) {
+                                                  _routeIDCtrl.text =
+                                                      data!.rotId!;
+                                                  // log/(value);
+
+                                                  if (data.rotId! != '-1' ||
+                                                      data.rotId!.isNotEmpty) {
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            const ClearCustomersEvent());
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            GetCustomersEvent(
+                                                                userId: widget
+                                                                        .user
+                                                                        .usrId ??
+                                                                    '',
+                                                                area: '',
+                                                                subarea: '',
+                                                                route:
+                                                                    data.rotId!,
+                                                                searchQuery:
+                                                                    ''));
+                                                  } else if (data.rotId! ==
+                                                          '-1' ||
+                                                      data.rotId!.isEmpty) {
+                                                    // _routeIDCtrl.clear();
+
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            const RestCustomersEvent());
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          )),
                                     ),
                               getAllRoutesFailedState: () => Padding(
                                 padding:

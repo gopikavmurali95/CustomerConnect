@@ -149,13 +149,11 @@ class CustomersListingWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: customers.length),
-            getcustomersFailedState: () => SizedBox(
-              // height: MediaQuery.of(context).size.height / 1.5,
-              child: Center(
-                child: Text(
-                  'No Data Available',
-                  style: kfontstyle(),
-                ),
+            getcustomersFailedState: () => Padding(
+              padding: const EdgeInsets.only(top: 250),
+              child: Text(
+                'No Data Available',
+                style: kfontstyle(),
               ),
             ),
           );

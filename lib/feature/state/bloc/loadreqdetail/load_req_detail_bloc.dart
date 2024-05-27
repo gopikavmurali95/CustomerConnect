@@ -10,18 +10,18 @@ import '../../../data/models/load_req_detail_model/LoadReqDetailModel.dart';
 part 'load_req_detail_event.dart';
 part 'load_req_detail_state.dart';
 part 'load_req_detail_bloc.freezed.dart';
+
 @injectable
 class LoadReqDetailBloc extends Bloc<LoadReqDetailEvent, LoadReqDetailState> {
   final ILoadRequestHeaderRepo loadreqdetRepo;
 
   LoadReqDetailBloc(this.loadreqdetRepo) : super(LoadReqDetailState.initial()) {
-
-    on<GetloadreqdetailEvent>((event, emit) async{
+    on<GetloadreqdetailEvent>((event, emit) async {
       Either<MainFailures, List<LoadReqDetailModel>> details =
-      await loadreqdetRepo.loadreqdetailList(event.reqId);
+          await loadreqdetRepo.loadreqdetailList(event.reqId);
 
       emit(details.fold((l) => const LoadreqDetailFailedState(),
-              (r) => LoadreqDetailSuccessState(details: r)));
+          (r) => LoadreqDetailSuccessState(details: r)));
     });
 
     on<ClearLodReqDetailEvent>((event, emit) {

@@ -3,15 +3,15 @@ part of 'material_req_rejection_bloc.dart';
 @freezed
 class MaterialReqRejectionState with _$MaterialReqRejectionState {
   const factory MaterialReqRejectionState.materialReqRejectSuccessState(
-  {required MaterialReqrejectionOutModel? response  }
-      ) =
-  MaterialReqRejectSuccessState;
+          {required MaterialReqrejectionOutModel? response}) =
+      MaterialReqRejectSuccessState;
 
   const factory MaterialReqRejectionState.materialReqRejectFailedState() =
-  MaterialReqRejectFailedState;
+      MaterialReqRejectFailedState;
 
-  const factory MaterialReqRejectionState.materialReqLoadingState() = MaterialReqLoadingState;
+  const factory MaterialReqRejectionState.materialReqLoadingState() =
+      MaterialReqLoadingState;
   factory MaterialReqRejectionState.initial() =>
-      const MaterialReqRejectionState.materialReqRejectSuccessState(response: null);
-
+      const MaterialReqRejectionState.materialReqRejectSuccessState(
+          response: null);
 }

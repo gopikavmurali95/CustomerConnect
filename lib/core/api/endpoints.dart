@@ -104,4 +104,4 @@ const loadReqDetailUrl = 'InventoryApproval/LoadRequestApprovalDetails';
 const loadReqApprovalUrl = 'InventoryApproval/PostLoadReqApproval';
 const materialReqRejectionUrl = 'InventoryApproval/PostMaterialReqReject';
 const materialReqApprovalUrl = 'InventoryApproval/PostMaterialReqApproval';
-
+const approvalCountUrl = 'InventoryApproval/SelectPendingStatusCounts';

@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 part 'load_transfer_approval_event.dart';
 part 'load_transfer_approval_state.dart';
 part 'load_transfer_approval_bloc.freezed.dart';
+
 @injectable
 class LoadTransferApprovalBloc
     extends Bloc<LoadTransferApprovalEvent, LoadTransferApprovalState> {

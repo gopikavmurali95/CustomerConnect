@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
@@ -65,7 +66,7 @@ class ApprovalScreen extends StatelessWidget {
                             .add(const ClearPriceChangeHeader());
                         context
                             .read<PriceChangeHeaderBloc>()
-                            .add(const GetPriceChangeHeaderEvent(rotID: '46'));
+                            .add(GetPriceChangeHeaderEvent(rotID: user.usrId!));
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -102,9 +103,44 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Price Change",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Price Change",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.pendingPriceChangeApproval ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -157,9 +193,45 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Partial Delivery",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Partial Delivery",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count
+                                                      .pendingPartialDeliveryHeader!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -219,9 +291,47 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Scheduled Return",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Scheduled Return",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingPriceChangeApproval!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -274,9 +384,44 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Return",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Return",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.pendingReturnHeader!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -335,9 +480,45 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Dispute Request",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Dispute Request",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count
+                                                      .pendingDisputeNoteReqHeader!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -390,9 +571,44 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Credit Note",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Credit Note",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingCreditNoteReqHeader!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -453,9 +669,44 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Asset Adding",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Asset Adding",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingAssetAddReqHeader!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -508,9 +759,46 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Asset Removal",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Asset Removal",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: headTextStyle(),
+                                ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count
+                                                      .pendingAssetRemovalReqHeader!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -573,9 +861,43 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "VanTo Van",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Van To Van",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.pendingVanToVanHeader!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -629,9 +951,44 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Load Transfer",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Load Transfer",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) =>
+                                          count == null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.pendingLodTransRequest!,
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -691,9 +1048,43 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Journey Plan",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Journey Plan",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingJurneyPlanSeqApprvl!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -754,6 +1145,39 @@ class ApprovalScreen extends StatelessWidget {
                                   "Field Service Invoice",
                                   style: headTextStyle(),
                                 ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingAssetAddReqHeader!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -813,9 +1237,43 @@ class ApprovalScreen extends StatelessWidget {
                               SizedBox(
                                 width: 8.w,
                               ),
-                              Text(
-                                "Materail Request",
-                                style: headTextStyle(),
+                              Expanded(
+                                child: Text(
+                                  "Material Request",
+                                  style: headTextStyle(),
+                                ),
+                              ),
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingMaterialReqApproval!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),
@@ -876,6 +1334,39 @@ class ApprovalScreen extends StatelessWidget {
                                   "Load Request",
                                   style: headTextStyle(),
                                 ),
+                              ),
+
+                              BlocBuilder<ApprovalCountsBloc,
+                                  ApprovalCountsState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getApprovalsCount: (count) => count ==
+                                              null
+                                          ? Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            )
+                                          : Text(
+                                              count.pendingLoadRequestHeader!,
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ),
+                                      getApprovalCountsFailed: () => Text(
+                                            '0',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black87,
+                                            ),
+                                          ));
+                                },
                               )
                             ],
                           ),

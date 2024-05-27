@@ -136,7 +136,7 @@ class InsightArListWidget extends StatelessWidget {
                                         child: Center(
                                           child: Text(
                                             textAlign: TextAlign.center,
-                                            headers[index].payType ?? '',
+                                            headers[index].payMode ?? '',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434)),

@@ -77,8 +77,8 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
           Uri.parse(approvalBaseUrl + materialReqApprovalUrl),
           body: approval.toJson());
 
+      log(response.body);
       if (response.statusCode == 200) {
-        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final status = MaterialReqApprovalOutModel.fromJson(json["result"][0]);
         return right(status);

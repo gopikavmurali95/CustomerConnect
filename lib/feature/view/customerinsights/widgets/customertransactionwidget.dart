@@ -35,8 +35,8 @@ class _CustomerTraansactionWidgetState
     context.read<CusInsTrnCountBloc>().add(GettrnCountsEvent(
         userId: widget.user.usrId ?? '',
         cusId: widget.customer.cusId ?? '',
-        fDate: '01-01-2023',
-        toDate: '26-03-2024'));
+        fDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text));
     super.initState();
   }
 
@@ -119,11 +119,29 @@ class _CustomerTraansactionWidgetState
                                           ),
                                           Expanded(
                                             child: CupertinoDatePicker(
-                                              initialDateTime: DateTime.now(),
+                                              initialDateTime: DateTime(
+                                                DateTime.now().year,
+                                                DateTime.now().month,
+                                                1,
+                                              ),
                                               maximumDate: DateTime.now(),
                                               onDateTimeChanged: (value) {
                                                 widget.fromdatectrl.text =
                                                     "${value.day}-${value.month}-${value.year}";
+
+                                                context
+                                                    .read<CusInsTrnCountBloc>()
+                                                    .add(GettrnCountsEvent(
+                                                        userId:
+                                                            widget.user.usrId ??
+                                                                '',
+                                                        cusId: widget.customer
+                                                                .cusId ??
+                                                            '',
+                                                        fDate: widget
+                                                            .fromdatectrl.text,
+                                                        toDate: widget
+                                                            .todatectrl.text));
                                                 setState(() {});
                                               },
                                               use24hFormat: true,
