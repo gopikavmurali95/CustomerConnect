@@ -398,7 +398,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           blurStyle: BlurStyle.outer,
                           offset: Offset(3, 3))
                     ]),
-                    height: 40.h,
+                    height: 30.h,
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),

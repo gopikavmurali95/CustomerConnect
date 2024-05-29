@@ -317,12 +317,12 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                   Text(
                     'Total Amount',
                     style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
+                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w500),
                   ),
                   Text(
                     'AED ${widget.invoice.grandTotal}',
                     style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),

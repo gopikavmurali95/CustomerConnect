@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -630,28 +629,28 @@ class _MaterialRequestDetailScreenState
                                                                                         reqLUOM: details[index].reqLUOM,
                                                                                         requestedHQty: details[index].requestedHQty,
                                                                                         requestedLQty: details[index].requestedLQty,
-                                                                                        hqty: '1',
-                                                                                        lqty: "1",
+                                                                                        hqty: details[index].adjustedHQty,
+                                                                                        lqty: details[index].adjustedLQty,
                                                                                         userId: widget.user.usrId,
                                                                                         reqID: widget.materialrequest.mrhID,
                                                                                         mode: 'A',
-                                                                                        warehouse: widget.materialrequest.warName,
+                                                                                        warehouse: widget.materialrequest.mrhWarID,
                                                                                       )),
                                                                                     );
-                                                                                log(jsonEncode(MaterialReqApprovalInModel(
-                                                                                  mrdID: details[index].mrdID,
-                                                                                  prdID: details[index].prdID,
-                                                                                  reqHUOM: details[index].reqHUOM,
-                                                                                  reqLUOM: details[index].reqLUOM,
-                                                                                  requestedHQty: details[index].requestedHQty,
-                                                                                  requestedLQty: details[index].requestedLQty,
-                                                                                  hqty: '1',
-                                                                                  lqty: "1",
-                                                                                  userId: widget.user.usrId,
-                                                                                  reqID: widget.materialrequest.mrhID,
-                                                                                  mode: 'A',
-                                                                                  warehouse: widget.materialrequest.warName,
-                                                                                )));
+                                                                                // log(jsonEncode(MaterialReqApprovalInModel(
+                                                                                //   mrdID: details[index].mrdID,
+                                                                                //   prdID: details[index].prdID,
+                                                                                //   reqHUOM: details[index].reqHUOM,
+                                                                                //   reqLUOM: details[index].reqLUOM,
+                                                                                //   requestedHQty: details[index].requestedHQty,
+                                                                                //   requestedLQty: details[index].requestedLQty,
+                                                                                //   hqty: '1',
+                                                                                //   lqty: "1",
+                                                                                //   userId: widget.user.usrId,
+                                                                                //   reqID: widget.materialrequest.mrhID,
+                                                                                //   mode: 'A',
+                                                                                //   warehouse: widget.materialrequest.warName,
+                                                                                // )));
 
                                                                                 Navigator.pop(context);
                                                                               },
@@ -726,14 +725,20 @@ class _MaterialRequestDetailScreenState
                                                                                 setState(() {});
                                                                                 context.read<MaterialReqApprovalBloc>().add(
                                                                                       MaterialReqApprovalSuccessEvent(
-                                                                                          // approvalIn: VanToVanApprovalInParas(
-                                                                                          //     vvdId: details[index].vvdId,
-                                                                                          //     hqty: details[index].vvdHQty,
-                                                                                          //     lqty: details[index].vvdLQty,
-                                                                                          //     status: 'R',
-                                                                                          //     userID: '49',
-                                                                                          //     reqID: widget.vanToVanHeader.vvhId),
-                                                                                          approvalInModel: MaterialReqApprovalInModel()),
+                                                                                          approvalInModel: MaterialReqApprovalInModel(
+                                                                                        mrdID: details[index].mrdID,
+                                                                                        prdID: details[index].prdID,
+                                                                                        reqHUOM: details[index].reqHUOM,
+                                                                                        reqLUOM: details[index].reqLUOM,
+                                                                                        requestedHQty: details[index].requestedHQty,
+                                                                                        requestedLQty: details[index].requestedLQty,
+                                                                                        hqty: '1',
+                                                                                        lqty: "1",
+                                                                                        userId: widget.user.usrId,
+                                                                                        reqID: widget.materialrequest.mrhID,
+                                                                                        mode: 'A',
+                                                                                        warehouse: widget.materialrequest.warName,
+                                                                                      )),
                                                                                     );
 
                                                                                 Navigator.pop(context);
@@ -743,12 +748,6 @@ class _MaterialRequestDetailScreenState
                                                                           ],
                                                                         ),
                                                                       );
-
-                                                                      /* context
-                                                                                                                                                                                                                              .read<
-                                                                                                                                                                                                                                  AapprovalOrRejectRadioCubit>()
-                                                                                                                                                                                                                              .changeApprovalStatus(
-                                                                                                                                                                                                                                  statuslist[index]); */
                                                                     },
                                                                   ),
                                                                   Text(
@@ -763,285 +762,6 @@ class _MaterialRequestDetailScreenState
                                                         );
                                                       },
                                                     ),
-
-                                                    // BlocBuilder<AapprovalOrRejectRadioCubit,
-                                                    //     AapprovalOrRejectRadioState>(
-                                                    //   builder: (context, state) {
-                                                    //     return AbsorbPointer(
-                                                    //       absorbing: details[index]
-                                                    //           .radApprovalStatus!
-                                                    //           .isNotEmpty
-                                                    //           ? true
-                                                    //           : false,
-                                                    //       child: Row(
-                                                    //         children: [
-                                                    //           Transform.scale(
-                                                    //             scale: 0.8,
-                                                    //             child: Row(
-                                                    //               children: [
-                                                    //                 Radio(
-                                                    //                   fillColor:
-                                                    //                   MaterialStateProperty
-                                                    //                       .resolveWith<
-                                                    //                       Color>((Set<
-                                                    //                       MaterialState>
-                                                    //                   states) {
-                                                    //                     return (statuslist[
-                                                    //                     index] ==
-                                                    //                         true)
-                                                    //                         ? const Color(
-                                                    //                         0xff0075ff)
-                                                    //                         : Colors.grey;
-                                                    //                   }),
-                                                    //                   /* activeColor: isselected == true
-                                                    //                                                                                                                     ? const Color(0xff0075ff)
-                                                    //                                                                                                                     : Colors.grey, */
-                                                    //                   value: statuslist[
-                                                    //                   index] ==
-                                                    //                       null
-                                                    //                       ? false
-                                                    //                       : statuslist[
-                                                    //                   index] ==
-                                                    //                       true
-                                                    //                       ? true
-                                                    //                       : false,
-                                                    //                   groupValue: true,
-                                                    //                   onChanged: (value) {
-                                                    //                     if (selectedresons[
-                                                    //                     index] ==
-                                                    //                         '-1') {
-                                                    //                       showCupertinoDialog(
-                                                    //                         context: context,
-                                                    //                         builder: (context) =>
-                                                    //                             CupertinoAlertDialog(
-                                                    //                               title:
-                                                    //                               const Text(
-                                                    //                                   'Alert'),
-                                                    //                               content: const Text(
-                                                    //                                   "Plese select a reason"),
-                                                    //                               actions: [
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                   },
-                                                    //                                   child:
-                                                    //                                   const Text(
-                                                    //                                       'Ok'),
-                                                    //                                 ),
-                                                    //                               ],
-                                                    //                             ),
-                                                    //                       );
-                                                    //                     } else {
-                                                    //                       showCupertinoDialog(
-                                                    //                         context: context,
-                                                    //                         builder: (context) =>
-                                                    //                             CupertinoAlertDialog(
-                                                    //                               title:
-                                                    //                               const Text(
-                                                    //                                   'Alert'),
-                                                    //                               content: const Text(
-                                                    //                                   "Do you Want to Approve this product"),
-                                                    //                               actions: [
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     setState(
-                                                    //                                             () {});
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                   },
-                                                    //                                   child: const Text(
-                                                    //                                       'Cancel'),
-                                                    //                                 ),
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     statuslist[
-                                                    //                                     index] =
-                                                    //                                     true;
-                                                    //                                     loadingCount =
-                                                    //                                     0;
-                                                    //                                     setState(
-                                                    //                                             () {});
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                     context
-                                                    //                                         .read<
-                                                    //                                         ApproveReturnProductBloc>()
-                                                    //                                         .add(
-                                                    //                                         const AddApprovalLoadingEvent());
-                                                    //
-                                                    //                                     // context
-                                                    //                                     //     .read<
-                                                    //                                     //     ApproveReturnProductBloc>()
-                                                    //                                     //     .add(
-                                                    //                                     //   ApproveProductEvent(
-                                                    //                                     //     approval: ReturnApproveInModel(radId: details[index].radId, reason: selectedresons[index], status: 'A',
-                                                    //                                     //         returnID: widget.returnApprovel.rahId, userID: '45'),
-                                                    //                                     //   ),
-                                                    //                                     // );
-                                                    //                                   },
-                                                    //                                   child: const Text(
-                                                    //                                       'Proceed'),
-                                                    //                                 ),
-                                                    //                               ],
-                                                    //                             ),
-                                                    //                       );
-                                                    //                     }
-                                                    //
-                                                    //                     /*  context
-                                                    //                                                                                       .read<
-                                                    //                                                                                           AapprovalOrRejectRadioCubit>()
-                                                    //                                                                                       .changeApprovalStatus(
-                                                    //                                                                                           statuslist[index]); */
-                                                    //                   },
-                                                    //                 ),
-                                                    //                 Text(
-                                                    //                   'Approve',
-                                                    //                   style: kfontstyle(),
-                                                    //                 )
-                                                    //               ],
-                                                    //             ),
-                                                    //           ),
-                                                    //           Transform.scale(
-                                                    //             scale: 0.8,
-                                                    //             child: Row(
-                                                    //               children: [
-                                                    //                 Radio(
-                                                    //                   fillColor:
-                                                    //                   MaterialStateProperty
-                                                    //                       .resolveWith<
-                                                    //                       Color>((Set<
-                                                    //                       MaterialState>
-                                                    //                   states) {
-                                                    //                     return (statuslist[
-                                                    //                     index] !=
-                                                    //                         null &&
-                                                    //                         !statuslist[
-                                                    //                         index]!)
-                                                    //                         ? const Color(
-                                                    //                         0xff0075ff)
-                                                    //                         : Colors.grey;
-                                                    //                   }),
-                                                    //                   /*  activeColor: isselected == false
-                                                    //                                                                                                                     ? const Color(0xff0075ff)
-                                                    //                                                                                                                     : Colors.grey, */
-                                                    //                   value: statuslist[
-                                                    //                   index] ==
-                                                    //                       null
-                                                    //                       ? true
-                                                    //                       : statuslist[
-                                                    //                   index] ==
-                                                    //                       true
-                                                    //                       ? true
-                                                    //                       : false,
-                                                    //                   groupValue: false,
-                                                    //                   onChanged: (value) {
-                                                    //                     if (selectedresons[
-                                                    //                     index] ==
-                                                    //                         '-1') {
-                                                    //                       showCupertinoDialog(
-                                                    //                         context: context,
-                                                    //                         builder: (context) =>
-                                                    //                             CupertinoAlertDialog(
-                                                    //                               title:
-                                                    //                               const Text(
-                                                    //                                   'Alert'),
-                                                    //                               content: const Text(
-                                                    //                                   "Plese select a reason"),
-                                                    //                               actions: [
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                   },
-                                                    //                                   child:
-                                                    //                                   const Text(
-                                                    //                                       'Ok'),
-                                                    //                                 ),
-                                                    //                               ],
-                                                    //                             ),
-                                                    //                       );
-                                                    //                     } else {
-                                                    //                       showCupertinoDialog(
-                                                    //                         context: context,
-                                                    //                         builder: (context) =>
-                                                    //                             CupertinoAlertDialog(
-                                                    //                               title:
-                                                    //                               const Text(
-                                                    //                                   'Alert'),
-                                                    //                               content: const Text(
-                                                    //                                   "Do you Want to Reject this product"),
-                                                    //                               actions: [
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     setState(
-                                                    //                                             () {});
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                   },
-                                                    //                                   child: const Text(
-                                                    //                                       'Cancel'),
-                                                    //                                 ),
-                                                    //                                 TextButton(
-                                                    //                                   onPressed:
-                                                    //                                       () {
-                                                    //                                     statuslist[
-                                                    //                                     index] =
-                                                    //                                     false;
-                                                    //
-                                                    //                                     loadingCount =
-                                                    //                                     0;
-                                                    //                                     setState(
-                                                    //                                             () {});
-                                                    //                                     Navigator.pop(
-                                                    //                                         context);
-                                                    //                                     context
-                                                    //                                         .read<
-                                                    //                                         ApproveReturnProductBloc>()
-                                                    //                                         .add(
-                                                    //                                         const AddApprovalLoadingEvent());
-                                                    //                                     context
-                                                    //                                         .read<
-                                                    //                                         ApproveReturnProductBloc>()
-                                                    //                                         .add(
-                                                    //                                       ApproveProductEvent(
-                                                    //                                         approval: ReturnApproveInModel(radId: details[index].radId, reason: selectedresons[index], status: 'R',
-                                                    //                                             returnID: widget.returnApprovel.rahId, userID: '45'),
-                                                    //                                       ),
-                                                    //                                     );
-                                                    //                                   },
-                                                    //                                   child: const Text(
-                                                    //                                       'Proceed'),
-                                                    //                                 ),
-                                                    //                               ],
-                                                    //                             ),
-                                                    //                       );
-                                                    //                     }
-                                                    //
-                                                    //                     /* context
-                                                    //                                                                                       .read<
-                                                    //                                                                                           AapprovalOrRejectRadioCubit>()
-                                                    //                                                                                       .changeApprovalStatus(
-                                                    //                                                                                           statuslist[index]); */
-                                                    //                   },
-                                                    //                 ),
-                                                    //                 Text(
-                                                    //                   'Reject',
-                                                    //                   style: kfontstyle(),
-                                                    //                 )
-                                                    //               ],
-                                                    //             ),
-                                                    //           )
-                                                    //         ],
-                                                    //       ),
-                                                    //     );
-                                                    //   },
-                                                    // )
                                                   ],
                                                 )
                                               ],
