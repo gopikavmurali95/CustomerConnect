@@ -212,13 +212,46 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                   canvasColor: Colors.white),
                                               child:
                                                   DropdownSearch<CuSInsRotList>(
-                                                popupProps:
-                                                    const PopupProps.menu(
-                                                        showSearchBox: true,
-                                                        menuProps: MenuProps(
-                                                          backgroundColor:
-                                                              Colors.white,
-                                                        )),
+                                                popupProps: PopupProps.menu(
+                                                    showSearchBox: true,
+                                                    searchFieldProps:
+                                                        TextFieldProps(
+                                                      showCursor: true,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText:
+                                                            'Search route',
+                                                        hintStyle: kfontstyle(),
+                                                        border:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    menuProps: const MenuProps(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                    )),
                                                 dropdownDecoratorProps:
                                                     const DropDownDecoratorProps(
                                                   dropdownSearchDecoration:
@@ -470,9 +503,11 @@ class _CustomersScrenState extends State<CustomersScren> {
                   //removed media query
                   BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
                     builder: (context, state) {
-                      return CustomersListingWidget(
+                      return SizedBox(
+                          // height: MediaQuery.of(context).size.height,
+                          child: CustomersListingWidget(
                         user: widget.user,
-                      );
+                      ));
                     },
                   )
                 ],

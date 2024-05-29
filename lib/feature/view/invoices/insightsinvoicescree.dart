@@ -408,7 +408,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           Text(
                             'Total Invoice Amount',
                             style: TextStyle(
-                                fontSize: 11.sp, fontWeight: FontWeight.w400),
+                                fontSize: 12.sp, fontWeight: FontWeight.w400),
                           ),
                           BlocBuilder<CusInvTotalCounterCubit,
                               CusInvTotalCounterState>(
@@ -416,7 +416,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                               return Text(
                                 state.amount,
                                 style: TextStyle(
-                                    fontSize: 11.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w600),
                               );
                             },

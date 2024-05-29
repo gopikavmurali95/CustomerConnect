@@ -53,7 +53,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
         children: [
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: BlocBuilder<ReturnApprovalHeaderBloc,
                 ReturnApprovalHeaderState>(
               builder: (context, state) {
@@ -91,14 +91,13 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                 },
                                 child: Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: const Color(0xffDB95B5),
-                                      child: Image.asset(
-                                        'assets/images/ar_li.png',
-                                        height: 20.h,
-                                        width: 20.w,
-                                      ),
+                                    Container(
+                                      height: 50,
+                                      width: 10,
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xfffee8e0),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                     ),
                                     SizedBox(
                                       width: 10.w,
@@ -158,17 +157,30 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                             ),
                                           ),
                                           Container(
-                                            height: 10.h,
-                                            width: 10.h,
+                                            // height: 10.h,
+                                            // width: 20.h,
                                             decoration: BoxDecoration(
                                               color: headers[index]
                                                       .rahApprovalStatus!
                                                       .isEmpty
-                                                  ? Colors.red
-                                                  : Colors.green,
+                                                  ? Colors.red[100]
+                                                  : Colors.green[100],
                                               borderRadius:
                                                   BorderRadius.circular(
                                                 10,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 3),
+                                              child: Text(
+                                                headers[index]
+                                                        .rahApprovalStatus ??
+                                                    '',
+                                                style:
+                                                    kfontstyle(fontSize: 9.sp),
                                               ),
                                             ),
                                           )

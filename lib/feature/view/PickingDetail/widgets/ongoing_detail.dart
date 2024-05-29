@@ -35,7 +35,7 @@ class OngoingDetail extends StatelessWidget {
                       child: Text('No Data Found'),
                     )
                   : ListView.separated(
-                      itemCount: 4,
+                      itemCount: pdetailList.length,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
@@ -47,7 +47,7 @@ class OngoingDetail extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(left: 15.0, top: 2),
                                   child: Container(
-                                    height: 55,
+                                    // height: 55,
                                     width: 200,
                                     color: Colors.white,
                                     child: Column(

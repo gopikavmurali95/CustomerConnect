@@ -351,7 +351,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                             )
                           // scrolling enabled
                           : SizedBox(
-                              height: MediaQuery.of(context).size.height,
+                              // height: MediaQuery.of(context).size.height,
                               child: ListView.separated(
                                 itemCount: spPrice.length,
                                 physics: const NeverScrollableScrollPhysics(),
@@ -401,30 +401,17 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                                 spPrice[index].uom ?? '',
                                                 style: subTitleTextStyle(),
                                               ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              Text(
-                                                spPrice[index].uom ?? '',
-                                                style: subTitleTextStyle(),
-                                              ),
                                             ],
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                right: 2.0),
+                                                right: 17.0),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  spPrice[index].stdPrice ?? '',
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                                const SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
+                                                  textAlign: TextAlign.end,
                                                   spPrice[index].stdPrice ?? '',
                                                   style: subTitleTextStyle(),
                                                 ),
@@ -433,20 +420,13 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 5, right: 20.0),
+                                                left: 5, right: 10.0),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  spPrice[index].specialPrice ??
-                                                      '',
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                                const SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
+                                                  textAlign: TextAlign.end,
                                                   spPrice[index].specialPrice ??
                                                       '',
                                                   style: subTitleTextStyle(),
@@ -472,7 +452,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               ),
                             ),
                       specialPriceDetailsFailedState: () => SizedBox(
-                        height: MediaQuery.of(context).size.height,
+                        height: MediaQuery.of(context).size.height / 1.4,
                         child: Center(
                           child: Text(
                             'NoData Available',
@@ -496,14 +476,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
     context
         .read<SpecialPriceDetailsBloc>()
         .add(const ClearSpecialriceDetailsEvent());
-    context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(
-        prhID: '', searchQuery: ''
-        // userID: model.usrId!,
-        // fromDate:
-        // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-        // todate:
-        // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-        // searchQuery: ''
-        ));
+    context.read<SpecialPriceDetailsBloc>().add(GetSpecialPriceDetailsEvent(
+        prhID: widget.spPrice.prhId ?? '', searchQuery: ''));
   }
 }

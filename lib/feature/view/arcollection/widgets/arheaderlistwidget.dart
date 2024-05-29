@@ -162,10 +162,13 @@ class ARHeaderListWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: arHeaders.length),
-            arHeaderFailedState: () => Center(
-              child: Text(
-                'No Data Available',
-                style: kfontstyle(),
+            arHeaderFailedState: () => SizedBox(
+              height: MediaQuery.of(context).size.height / 1.4,
+              child: Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
               ),
             ),
           );
