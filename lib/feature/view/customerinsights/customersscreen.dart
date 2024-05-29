@@ -466,13 +466,13 @@ class _CustomersScrenState extends State<CustomersScren> {
                   SizedBox(
                     height: 10.h,
                   ),
+
+                  //removed media query
                   BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
                     builder: (context, state) {
-                      return SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          child: CustomersListingWidget(
-                            user: widget.user,
-                          ));
+                      return CustomersListingWidget(
+                        user: widget.user,
+                      );
                     },
                   )
                 ],

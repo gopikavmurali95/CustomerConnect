@@ -49,7 +49,7 @@ class _DisputeNoteApprovalHEaderScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Dispute request",
           style: appHeading(),
         ),
       ),

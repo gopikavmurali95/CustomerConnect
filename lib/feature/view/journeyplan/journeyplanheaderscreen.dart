@@ -51,7 +51,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
           ),
         ),
         title: Text(
-          "Approvals",
+          "Journey plan ",
           style: appHeading(),
         ),
       ),

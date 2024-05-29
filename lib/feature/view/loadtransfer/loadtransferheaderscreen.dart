@@ -47,7 +47,7 @@ class _LoadTransferApprovalHeaderScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Load transfer",
           style: appHeading(),
         ),
       ),

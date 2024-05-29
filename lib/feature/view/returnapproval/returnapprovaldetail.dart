@@ -76,7 +76,7 @@ class _ReturnApprovalDetailScreenState
           ),
         ),
         title: Text(
-          "Approval Detail",
+          "Return Detail",
           style: appHeading(),
         ),
       ),

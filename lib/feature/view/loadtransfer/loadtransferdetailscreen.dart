@@ -88,7 +88,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
           ),
         ),
         title: Text(
-          "Approval Detail",
+          "Load transfer detail",
           style: appHeading(),
         ),
       ),

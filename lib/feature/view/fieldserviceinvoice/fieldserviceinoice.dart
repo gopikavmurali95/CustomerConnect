@@ -29,7 +29,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Invoice Approval",
+          "Field Service",
           style: appHeading(),
         ),
       ),

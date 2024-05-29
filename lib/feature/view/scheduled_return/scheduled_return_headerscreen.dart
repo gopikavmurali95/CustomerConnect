@@ -48,7 +48,7 @@ class _ScheduledReturnHEaderScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Scheduled return",
           style: appHeading(),
         ),
       ),

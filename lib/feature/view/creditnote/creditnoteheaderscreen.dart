@@ -45,7 +45,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
           ),
         ),
         title: Text(
-          "Approvals",
+          "Credit note",
           style: appHeading(),
         ),
       ),

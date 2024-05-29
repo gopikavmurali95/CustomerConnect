@@ -52,7 +52,7 @@ class _AssetRemovalApprovalScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Asset removal",
           style: appHeading(),
         ),
       ),

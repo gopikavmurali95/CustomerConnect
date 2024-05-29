@@ -62,7 +62,7 @@ class _AssetAddingApprovalHeaderScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Asset Adding",
           style: appHeading(),
         ),
       ),

@@ -46,7 +46,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           ),
         ),
         title: Text(
-          "Load Request Header",
+          "Load Request",
           style: appHeading(),
         ),
       ),
@@ -219,11 +219,8 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   }
 }
 
-
-
-Future<void> _onRefreshLoadRequestHeaderScreen(BuildContext context,LoginUserModel model) async
-{
+Future<void> _onRefreshLoadRequestHeaderScreen(
+    BuildContext context, LoginUserModel model) async {
   context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
   context.read<LoadReqHeaderBloc>().add(const LoadreqSuccessEvent(userId: ''));
-
 }

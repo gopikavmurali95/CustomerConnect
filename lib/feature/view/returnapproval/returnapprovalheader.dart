@@ -45,7 +45,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
           ),
         ),
         title: Text(
-          "Approvals  ",
+          "Return",
           style: appHeading(),
         ),
       ),
