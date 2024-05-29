@@ -252,12 +252,14 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
             userID: widget.user.usrId,
             area: '',
             customer: '',
-            fromDate: '01-01-2023',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             mode: 'PC',
             outlet: '',
             route: '',
             subArea: '',
-            toDate: '26-03-2024'),
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'),
         searchQuery: ''));
     await Future.delayed(const Duration(seconds: 2));
   }

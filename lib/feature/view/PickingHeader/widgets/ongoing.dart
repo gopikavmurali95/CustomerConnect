@@ -43,6 +43,7 @@ class OnGoing extends StatelessWidget {
                         top: 10,
                         //  bottom: 10
                       ),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: pickingOut.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -54,7 +55,7 @@ class OnGoing extends StatelessWidget {
                                 onTap: () {
                                   context
                                       .read<PickingdetailBloc>()
-                                      .add(ClearPickingDetailevent());
+                                      .add(const ClearPickingDetailevent());
                                   context.read<PickingdetailBloc>().add(
                                       PickingDetailSuccess(
                                           pickingID:
