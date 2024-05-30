@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_b
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,9 +34,9 @@ class _CustomersScrenState extends State<CustomersScren> {
     _customerSearchCtrl.clear();
     _routeIDCtrl.clear();
 
-    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
-    context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
     context.read<GetAllRouteBloc>().add(const ClearAllRouteEvent());
+    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
+    context.read<CustomersListBlocBloc>().add(const RestCustomersEvent());
 
     super.initState();
   }
@@ -137,20 +138,20 @@ class _CustomersScrenState extends State<CustomersScren> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 10),
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                                color: Colors.grey.shade200),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                  color: Color(0xff00000050),
-                                                  blurRadius: 0.4,
-                                                  spreadRadius: 0.4)
-                                            ]),
-                                        child: DropdownButtonFormField(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                  color: Colors.grey.shade200),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                    color: Color(0xff00000050),
+                                                    blurRadius: 0.4,
+                                                    spreadRadius: 0.4)
+                                              ]),
+                                          child: /* DropdownButtonFormField(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10),
                                           dropdownColor: Colors.white,
@@ -173,12 +174,8 @@ class _CustomersScrenState extends State<CustomersScren> {
                                             );
                                           }).toList(),
                                           onChanged: (value) {
-                                            context
-                                                .read<CustomersListBlocBloc>()
-                                                .add(
-                                                    const ClearCustomersEvent());
-                                            // log(value!);
                                             _routeIDCtrl.text = value!;
+                                            log(value);
 
                                             if (value != '-1' ||
                                                 value.isNotEmpty) {
@@ -198,15 +195,120 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                       searchQuery: ''));
                                             } else if (value == '-1' ||
                                                 value.isEmpty) {
-                                              _routeIDCtrl.clear();
+                                              // _routeIDCtrl.clear();
+
                                               context
                                                   .read<CustomersListBlocBloc>()
                                                   .add(
-                                                      const ClearCustomersEvent());
+                                                      const RestCustomersEvent());
                                             }
                                           },
-                                        ),
-                                      ),
+                                        ), */
+                                              Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child: Theme(
+                                              data: ThemeData(
+                                                  canvasColor: Colors.white),
+                                              child:
+                                                  DropdownSearch<CuSInsRotList>(
+                                                popupProps: PopupProps.menu(
+                                                    showSearchBox: true,
+                                                    searchFieldProps:
+                                                        TextFieldProps(
+                                                      showCursor: true,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText:
+                                                            'Search route',
+                                                        hintStyle: kfontstyle(),
+                                                        border:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                        focusedBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                        enabledBorder:
+                                                            UnderlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200]!),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    menuProps: const MenuProps(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                    )),
+                                                dropdownDecoratorProps:
+                                                    const DropDownDecoratorProps(
+                                                  dropdownSearchDecoration:
+                                                      InputDecoration(
+                                                          border:
+                                                              InputBorder.none),
+                                                ),
+                                                items: routes,
+                                                // asyncItems: (String filter) =>
+                                                //     getData(filter),
+                                                selectedItem: routes[0],
+                                                itemAsString:
+                                                    (CuSInsRotList u) =>
+                                                        u.rotName ?? '',
+                                                onChanged:
+                                                    (CuSInsRotList? data) {
+                                                  _routeIDCtrl.text =
+                                                      data!.rotId!;
+                                                  // log/(value);
+
+                                                  if (data.rotId! != '-1' ||
+                                                      data.rotId!.isNotEmpty) {
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            const ClearCustomersEvent());
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            GetCustomersEvent(
+                                                                userId: widget
+                                                                        .user
+                                                                        .usrId ??
+                                                                    '',
+                                                                area: '',
+                                                                subarea: '',
+                                                                route:
+                                                                    data.rotId!,
+                                                                searchQuery:
+                                                                    ''));
+                                                  } else if (data.rotId! ==
+                                                          '-1' ||
+                                                      data.rotId!.isEmpty) {
+                                                    // _routeIDCtrl.clear();
+
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            const RestCustomersEvent());
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          )),
                                     ),
                               getAllRoutesFailedState: () => Padding(
                                 padding:
@@ -337,6 +439,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                           CustomersListBlocState>(
                         listener: (context, state) {
                           state.when(
+                            customersResetState: () {},
                             getCustomersSstate: (customers) {
                               if (isSearchLoading == true) {
                                 isSearchLoading = false;
@@ -352,6 +455,14 @@ class _CustomersScrenState extends State<CustomersScren> {
                             CustomersListBlocState>(
                           builder: (context, state) {
                             return state.when(
+                              customersResetState: () => Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0, right: 20, top: 5),
+                                child: Text(
+                                  "0",
+                                  style: countHeading(),
+                                ),
+                              ),
                               getCustomersSstate: (customers) =>
                                   customers == null
                                       ? Padding(
@@ -388,22 +499,15 @@ class _CustomersScrenState extends State<CustomersScren> {
                   SizedBox(
                     height: 10.h,
                   ),
+
+                  //removed media query
                   BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
                     builder: (context, state) {
                       return SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          child: _routeIDCtrl.text.isEmpty ||
-                                  _routeIDCtrl.text == '-1'
-                              ? Padding(
-                                  padding: const EdgeInsets.only(top: 250),
-                                  child: Text(
-                                    'Select a Route',
-                                    style: kfontstyle(),
-                                  ),
-                                )
-                              : CustomersListingWidget(
-                                  user: widget.user,
-                                ));
+                          // height: MediaQuery.of(context).size.height,
+                          child: CustomersListingWidget(
+                        user: widget.user,
+                      ));
                     },
                   )
                 ],

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/models/material_req_approval_in_model/MaterialReqApprvalInModel.dart';
@@ -11,17 +13,20 @@ import '../../../data/models/material_req_approval_out_model/MaterialReqApproval
 part 'material_req_approval_event.dart';
 part 'material_req_approval_state.dart';
 part 'material_req_approval_bloc.freezed.dart';
-@injectable
-class MaterialReqApprovalBloc extends Bloc<MaterialReqApprovalEvent, MaterialReqApprovalState> {
 
+@injectable
+class MaterialReqApprovalBloc
+    extends Bloc<MaterialReqApprovalEvent, MaterialReqApprovalState> {
   final IMaterialReqHeaderRepo materialReqApprovalRepo;
-  MaterialReqApprovalBloc(this.materialReqApprovalRepo) :
-        super(MaterialReqApprovalState.initial()) {
+  MaterialReqApprovalBloc(this.materialReqApprovalRepo)
+      : super(MaterialReqApprovalState.initial()) {
     on<MaterialReqApprovalSuccessEvent>((event, emit) async {
-      Either<MainFailures,MaterialReqApprovalOutModel> approve =
-      await materialReqApprovalRepo.materialApproval(event.approvalInModel);
+      log("in approval bloc");
+      Either<MainFailures, MaterialReqApprovalOutModel> approve =
+          await materialReqApprovalRepo.materialApproval(event.approvalInModel);
+
       emit(approve.fold((l) => const MaterialReqApprovalFailedState(),
-              (r) => const MaterialReqApprovalSuccessState(response: null)));
+          (r) => MaterialReqApprovalSuccessState(response: r)));
     });
 
     on<MaterialReqApprovalLoadingEvent>((event, emit) {
@@ -29,7 +34,6 @@ class MaterialReqApprovalBloc extends Bloc<MaterialReqApprovalEvent, MaterialReq
     });
     on<MaterialReqApprovalClearEvent>((event, emit) {
       emit(const MaterialReqApprovalSuccessState(response: null));
-
     });
   }
 }

@@ -88,7 +88,7 @@ class _ScheduledReturnDetailScreenState
           ),
         ),
         title: Text(
-          "Approval Detail",
+          "Scheduled return detail",
           style: appHeading(),
         ),
       ),
@@ -402,6 +402,9 @@ class _ScheduledReturnDetailScreenState
                                                 )
                                               ],
                                             ),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
                                             Column(
                                               children: [
                                                 Row(
@@ -462,11 +465,16 @@ class _ScheduledReturnDetailScreenState
                                                                         width:
                                                                             80,
                                                                       )
-                                                                    : SizedBox(
-                                                                        // height: 30.h,
-                                                                        // width: MediaQuery.of(context).size.width / 3,
+                                                                    : Transform
+                                                                        .scale(
+                                                                        scale:
+                                                                            .8,
                                                                         child:
                                                                             DropdownButtonFormField(
+                                                                          isExpanded:
+                                                                              true,
+                                                                          // elevation:
+                                                                          //     16,
                                                                           dropdownColor:
                                                                               Colors.white,
                                                                           value:
@@ -474,8 +482,12 @@ class _ScheduledReturnDetailScreenState
                                                                           style:
                                                                               kfontstyle(color: Colors.black),
                                                                           decoration:
-                                                                              const InputDecoration(
-                                                                            border:
+                                                                              InputDecoration(
+                                                                            filled:
+                                                                                true,
+                                                                            fillColor:
+                                                                                Colors.grey[100],
+                                                                            border: /* OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey[100]!)) */
                                                                                 InputBorder.none,
                                                                           ),
                                                                           items:
@@ -485,7 +497,7 @@ class _ScheduledReturnDetailScreenState
                                                                               child: Text(
                                                                                 overflow: TextOverflow.ellipsis,
                                                                                 item.rsnName ?? '',
-                                                                                style: kfontstyle(fontSize: 9.sp),
+                                                                                style: kfontstyle(fontSize: 10.sp),
                                                                               ),
                                                                             );
                                                                           }).toList(),
@@ -567,37 +579,48 @@ class _ScheduledReturnDetailScreenState
                                                                         width: double
                                                                             .infinity,
                                                                       )
-                                                                    : DropdownButtonFormField(
-                                                                        dropdownColor:
-                                                                            Colors.white,
-                                                                        value: availableroutes[0]
-                                                                            .rotId,
-                                                                        style: kfontstyle(
-                                                                            color:
-                                                                                Colors.black),
-                                                                        decoration:
-                                                                            const InputDecoration(
-                                                                          border:
-                                                                              InputBorder.none,
+                                                                    : Transform
+                                                                        .scale(
+                                                                        // height:
+                                                                        //     35.h,
+                                                                        scale:
+                                                                            0.8,
+                                                                        child:
+                                                                            DropdownButtonFormField(
+                                                                          isExpanded:
+                                                                              true,
+                                                                          dropdownColor:
+                                                                              Colors.white,
+                                                                          value:
+                                                                              availableroutes[0].rotId,
+                                                                          style:
+                                                                              kfontstyle(color: Colors.black),
+                                                                          decoration:
+                                                                              InputDecoration(
+                                                                            filled:
+                                                                                true,
+                                                                            fillColor:
+                                                                                Colors.grey[100],
+                                                                            border:
+                                                                                InputBorder.none,
+                                                                          ),
+                                                                          items:
+                                                                              availableroutes.map((RouteModel item) {
+                                                                            return DropdownMenuItem(
+                                                                              value: item.rotId,
+                                                                              child: Text(
+                                                                                overflow: TextOverflow.ellipsis,
+                                                                                item.rotName ?? '',
+                                                                                style: kfontstyle(fontSize: 10.sp),
+                                                                              ),
+                                                                            );
+                                                                          }).toList(),
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            selectedRoute[index] =
+                                                                                value ?? '-1';
+                                                                          },
                                                                         ),
-                                                                        items: availableroutes.map((RouteModel
-                                                                            item) {
-                                                                          return DropdownMenuItem(
-                                                                            value:
-                                                                                item.rotId,
-                                                                            child:
-                                                                                Text(
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              item.rotName ?? '',
-                                                                              style: kfontstyle(fontSize: 9.sp),
-                                                                            ),
-                                                                          );
-                                                                        }).toList(),
-                                                                        onChanged:
-                                                                            (value) {
-                                                                          selectedRoute[index] =
-                                                                              value ?? '-1';
-                                                                        },
                                                                       ),
                                                                 getRoutesFailedState:
                                                                     () =>

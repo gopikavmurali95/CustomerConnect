@@ -52,7 +52,7 @@ class _AssetRemovalApprovalScreenState
           ),
         ),
         title: Text(
-          "Approvals",
+          "Asset removal",
           style: appHeading(),
         ),
       ),
@@ -72,7 +72,7 @@ class _AssetRemovalApprovalScreenState
               );
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: BlocBuilder<AssetRemovelRequestHeaderBloc,
                   AssetRemovelRequestHeaderState>(
                 builder: (context, state) {
@@ -115,32 +115,15 @@ class _AssetRemovalApprovalScreenState
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10),
-                                                child: CircleAvatar(
-                                                  radius: 20,
-                                                  backgroundColor:
-                                                      const Color(0xffDB95B5),
-                                                  child: ClipOval(
-                                                    child: SizedBox.fromSize(
-                                                      size:
-                                                          MediaQuery.of(context)
-                                                              .size,
-                                                      child: Image.network(
-                                                        headers[index].image ??
-                                                            '',
-                                                        height: 20.h,
-                                                        width: 20.w,
-                                                        fit: BoxFit.cover,
-                                                        errorBuilder: (context,
-                                                                error,
-                                                                stackTrace) =>
-                                                            const SizedBox(),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
+                                              Container(
+                                                height: 50,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xfffee8e0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
                                               ),
                                               SizedBox(
                                                 width: 10.w,

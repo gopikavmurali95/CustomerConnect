@@ -25,163 +25,164 @@ class SpPrHeaderList extends StatelessWidget {
         return state.when(
           getSpecialPriceHeaderState: (spHeader) => spHeader == null
               ? SizedBox(
-            height: MediaQuery.of(context).size.height,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => ShimmerContainers(
-                          height: 60.h, width: double.infinity),
-                      separatorBuilder: (context, index) => Divider(
-                            color: Colors.grey[300],
-                          ),
-                      itemCount: 10),
-                ),
-              )
+                  height: MediaQuery.of(context).size.height,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
+                  ),
+                )
               : SizedBox(
-            height: MediaQuery.of(context).size.height,
-                child: ListView.builder(
-                  // padding: const EdgeInsets.only(
-                  //   left: 20, right: 10,
-                  //   //top: 10,
-                  //   //  bottom: 10
-                  // ),
-                  itemCount: spHeader.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        SizedBox(
-                          //color: Colors.red,
-                          height: 50,
-                          width: double.infinity,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(left: 20.0, right: 10),
-                            child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor:
-                                            const Color(0xffB3DAF7),
-                                        child: Center(
-                                          child: Text(
-                                            spHeader[index]
-                                                .prhName!
-                                                .split('')
-                                                .toList()[0],
-                                            style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
+                  height: MediaQuery.of(context).size.height,
+                  child: ListView.builder(
+                    // padding: const EdgeInsets.only(
+                    //   left: 20, right: 10,
+                    //   //top: 10,
+                    //   //  bottom: 10
+                    // ),
+                    itemCount: spHeader.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          SizedBox(
+                            //color: Colors.red,
+                            // height: 50,
+                            width: double.infinity,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20.0, right: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundColor:
+                                              const Color(0xffB3DAF7),
+                                          child: Center(
+                                            child: Text(
+                                              spHeader[index]
+                                                  .prhName!
+                                                  .split('')
+                                                  .toList()[0],
+                                              style: TextStyle(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 15.w,
-                                      ),
+                                        SizedBox(
+                                          width: 15.w,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        SpecialPricingCustomer(
+                                                          user: user,
+                                                          spPrice:
+                                                              spHeader[index],
+                                                        )));
+                                          },
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                width: 200.w,
+                                                child: Text(
+                                                  '${spHeader[index].prhName}',
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: blueTextStyle(),
+                                                ),
+                                              ),
+                                              Text(
+                                                '${spHeader[index].startDate} To ${spHeader[index].endDate}',
+                                                style: subTextStyle(),
+                                              ),
+                                              Text(
+                                                '${spHeader[index].prhCode}',
+                                                style: subTextStyle(),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
                                       GestureDetector(
                                         onTap: () {
+                                          context
+                                              .read<SpecialPriceDetailsBloc>()
+                                              .add(
+                                                  const ClearSpecialriceDetailsEvent());
+                                          context
+                                              .read<SpecialPriceDetailsBloc>()
+                                              .add(GetSpecialPriceDetailsEvent(
+                                                  prhID:
+                                                      spHeader[index].prhId ??
+                                                          '',
+                                                  searchQuery: ''));
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      SpecialPricingCustomer(
+                                                      SpecialPricing(
                                                         user: user,
                                                         spPrice:
                                                             spHeader[index],
                                                       )));
                                         },
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 200.w,
-                                              child: Text(
-                                                '${spHeader[index].prhName}',
-                                                overflow:
-                                                    TextOverflow.ellipsis,
-                                                style: blueTextStyle(),
-                                              ),
-                                            ),
-                                            Text(
-                                              '${spHeader[index].startDate} To ${spHeader[index].endDate}',
-                                              style: subTextStyle(),
-                                            ),
-                                            Text(
-                                              '${spHeader[index].prhCode}',
-                                              style: subTextStyle(),
-                                            )
-                                          ],
+                                        child: Text(
+                                          'Details',
+                                          style: TextStyle(fontSize: 10.sp),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        context
-                                            .read<SpecialPriceDetailsBloc>()
-                                            .add(
-                                                const ClearSpecialriceDetailsEvent());
-                                        context
-                                            .read<SpecialPriceDetailsBloc>()
-                                            .add(GetSpecialPriceDetailsEvent(
-                                                prhID:
-                                                    spHeader[index].prhId ??
-                                                        '',
-                                                searchQuery: ''));
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SpecialPricing(
-                                                      user: user,
-                                                      spPrice:
-                                                          spHeader[index],
-                                                    )));
-                                      },
-                                      child: Text(
-                                        'Details',
-                                        style: TextStyle(fontSize: 10.sp),
+                                      SizedBox(
+                                        width: 5.w,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 5.w,
-                                    ),
-                                    const Icon(
-                                      Icons.keyboard_arrow_right,
-                                      size: 18,
-                                    )
-                                  ],
-                                )
-                              ],
+                                      const Icon(
+                                        Icons.keyboard_arrow_right,
+                                        size: 18,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 0, right: 0, top: 0
-                                  // top: 10,bottom: 10
-                                  ),
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                          ),
-                        )
-                      ],
-                    );
-                  },
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 0, right: 0, top: 0
+                                    // top: 10,bottom: 10
+                                    ),
+                            child: Divider(
+                              color: Colors.grey.shade300,
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
                 ),
-              ),
           speciaPriceHeaderFailedState: () => SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Center(

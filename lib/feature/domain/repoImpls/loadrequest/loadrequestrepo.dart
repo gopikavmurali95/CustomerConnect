@@ -10,16 +10,16 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/api/endpoints.dart';
 import '../../../data/abstractrepo/abstractrepo.dart';
 import 'package:http/http.dart' as http;
+
 @LazySingleton(as: ILoadRequestHeaderRepo)
-class LoadRequestHeaderRepo implements ILoadRequestHeaderRepo
-{
+class LoadRequestHeaderRepo implements ILoadRequestHeaderRepo {
   @override
-  Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(String userId)
-  async{
+  Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(
+      String userId) async {
     try {
-      final response = await http.post(Uri.parse(approvalBaseUrl+ loadReqHeaderUrl),
-        body: {"UserId": userId}
-      );
+      final response = await http.post(
+          Uri.parse(approvalBaseUrl + loadReqHeaderUrl),
+          body: {"UserId": userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> loadreqheaderdata = json['result'];
@@ -40,8 +40,8 @@ class LoadRequestHeaderRepo implements ILoadRequestHeaderRepo
   }
 
   @override
-  Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(String reqId) async{
-
+  Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(
+      String reqId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + loadReqDetailUrl),

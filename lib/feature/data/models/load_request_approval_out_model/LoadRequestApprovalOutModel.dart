@@ -1,10 +1,14 @@
 import 'dart:convert';
 
-LoadRequestApprovalOutModel loadRequestApprovalOutModelFromJson(String str) => LoadRequestApprovalOutModel.fromJson(json.decode(str));
-String loadRequestApprovalOutModelToJson(LoadRequestApprovalOutModel data) => json.encode(data.toJson());
+LoadRequestApprovalOutModel loadRequestApprovalOutModelFromJson(String str) =>
+    LoadRequestApprovalOutModel.fromJson(json.decode(str));
+String loadRequestApprovalOutModelToJson(LoadRequestApprovalOutModel data) =>
+    json.encode(data.toJson());
+
 class LoadRequestApprovalOutModel {
   LoadRequestApprovalOutModel({
-      this.status,});
+    this.status,
+  });
 
   LoadRequestApprovalOutModel.fromJson(dynamic json) {
     status = json['Status'];
@@ -16,5 +20,4 @@ class LoadRequestApprovalOutModel {
     map['Status'] = status;
     return map;
   }
-
 }

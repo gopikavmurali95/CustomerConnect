@@ -26,7 +26,7 @@ TextStyle appHeading() {
 
 TextStyle countHeading() {
   return GoogleFonts.poppins(
-      fontSize: 13,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }

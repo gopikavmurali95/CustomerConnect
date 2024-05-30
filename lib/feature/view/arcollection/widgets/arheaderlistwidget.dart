@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
@@ -35,6 +37,7 @@ class ARHeaderListWidget extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, index) => InkWell(
                               onTap: () {
+                                log(arHeaders[index].arhId ?? '');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -112,7 +115,7 @@ class ARHeaderListWidget extends StatelessWidget {
                                           ],
                                         ),
                                         Text(
-                                          '${arHeaders[index].arhPayType?.trim()} | Route ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
+                                          '${arHeaders[index].arhPayMode?.trim()} | Route ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
                                               color: Colors.grey),
@@ -159,10 +162,13 @@ class ARHeaderListWidget extends StatelessWidget {
                               color: Colors.grey[300],
                             ),
                         itemCount: arHeaders.length),
-            arHeaderFailedState: () => Center(
-              child: Text(
-                'No Data Available',
-                style: kfontstyle(),
+            arHeaderFailedState: () => SizedBox(
+              height: MediaQuery.of(context).size.height / 1.4,
+              child: Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
               ),
             ),
           );

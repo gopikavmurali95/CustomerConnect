@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
+import 'package:customer_connect/feature/view/assignmentgroup/assignmentgroup.dart';
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
@@ -45,9 +46,9 @@ class PromotionDetails extends StatelessWidget {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshPromotionDetailScreen(context,promotion),
+        onRefresh: () => _onRefreshPromotionDetailScreen(context, promotion),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
@@ -85,7 +86,8 @@ class PromotionDetails extends StatelessWidget {
                                   ),
                                   Column(
                                     //mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         promotion.pName ?? '',
@@ -111,7 +113,8 @@ class PromotionDetails extends StatelessWidget {
                                     .add(const ClearOromotionCustomer());
                                 context.read<PromotionCustomerBloc>().add(
                                     GetPromotionCustomerEvent(
-                                        id: promotion.qid ?? '', searchQuery: ''));
+                                        id: promotion.qid ?? '',
+                                        searchQuery: ''));
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
@@ -154,7 +157,9 @@ class PromotionDetails extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>  QualificationGroup(promotion: promotion,)));
+                                  builder: (context) => QualificationGroup(
+                                        promotion: promotion,
+                                      )));
                         },
                         child: Container(
                           height: 62,
@@ -187,7 +192,7 @@ class PromotionDetails extends StatelessWidget {
                                       style: kfontstyle(fontSize: 11.sp),
                                     ),
                                     Text(
-                                      '10023',
+                                      promotion.qCode!,
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w500),
@@ -217,12 +222,16 @@ class PromotionDetails extends StatelessWidget {
                               .read<QualificationGroupBloc>()
                               .add(const ClearGroupData());
                           context.read<QualificationGroupBloc>().add(
-                              const GetGroupWiseDataEvent(
-                                  id: "1", mode: " ", searchQuery: ''));
+                              GetGroupWiseDataEvent(
+                                  id: promotion.aid!,
+                                  mode: " ",
+                                  searchQuery: ''));
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => QualificationGroup(promotion: promotion)));
+                                  builder: (context) => AssignmentGroup(
+                                        promotion: promotion,
+                                      )));
                         },
                         child: Container(
                           height: 62,
@@ -255,7 +264,7 @@ class PromotionDetails extends StatelessWidget {
                                       style: kfontstyle(fontSize: 11.sp),
                                     ),
                                     Text(
-                                      promotion.id ?? '',
+                                      promotion.aCode ?? '',
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w500),
@@ -316,19 +325,18 @@ class PromotionDetails extends StatelessWidget {
     );
   }
 
-
-  Future<void> _onRefreshPromotionDetailScreen(BuildContext context,PromotionHeaderModel model) async
-  {
+  Future<void> _onRefreshPromotionDetailScreen(
+      BuildContext context, PromotionHeaderModel model) async {
     context.read<QualificationGroupBloc>().add(const ClearGroupData());
     context.read<QualificationGroupBloc>().add(const GetGroupWiseDataEvent(
-      id: '',
-      mode: '',
-      searchQuery: '',));
+          id: '',
+          mode: '',
+          searchQuery: '',
+        ));
 
     context.read<PromotionCustomerBloc>().add(const ClearOromotionCustomer());
-    context.read<PromotionCustomerBloc>().add(const GetPromotionCustomerEvent(
-        id: '',
-        searchQuery: ''));
+    context
+        .read<PromotionCustomerBloc>()
+        .add(const GetPromotionCustomerEvent(id: '', searchQuery: ''));
   }
 }
-

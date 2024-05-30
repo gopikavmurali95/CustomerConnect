@@ -47,7 +47,7 @@ class FieldServiceInvoiceDetailsState
           ),
         ),
         title: Text(
-          "Invoice Approval",
+          "Field service detail",
           style: appHeading(),
         ),
       ),

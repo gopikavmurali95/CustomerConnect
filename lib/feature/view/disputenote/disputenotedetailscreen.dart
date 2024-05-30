@@ -62,7 +62,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
           ),
         ),
         title: Text(
-          "Approval Detail",
+          "Dispute request detail",
           style: appHeading(),
         ),
       ),

@@ -3,13 +3,13 @@ part of 'material_req_rejection_bloc.dart';
 @freezed
 class MaterialReqRejectionEvent with _$MaterialReqRejectionEvent {
   const factory MaterialReqRejectionEvent.materialreqrejectionSuccessevent(
-      {required MaterialReqRejectionInModel approvalInModel}) =
-  MaterialreqrejectionSuccessevent;
+          {required MaterialReqRejectionInModel approvalInModel}) =
+      MaterialreqrejectionSuccessevent;
 
   const factory MaterialReqRejectionEvent.materialreqRejectionLoadingevent() =
-  MaterialreqRejectionLoadingevent;
+      MaterialreqRejectionLoadingevent;
 
   const factory MaterialReqRejectionEvent.materialReqRejecetionClearevent() =
-  MaterialReqRejecetionClearevent;
+      MaterialReqRejecetionClearevent;
   const factory MaterialReqRejectionEvent.started() = _Started;
 }

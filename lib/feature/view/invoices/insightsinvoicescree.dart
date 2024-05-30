@@ -7,9 +7,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/insightinvoicelistwidget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -400,7 +398,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           blurStyle: BlurStyle.outer,
                           offset: Offset(3, 3))
                     ]),
-                    height: 40.h,
+                    height: 30.h,
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -410,7 +408,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           Text(
                             'Total Invoice Amount',
                             style: TextStyle(
-                                fontSize: 15.sp, fontWeight: FontWeight.w400),
+                                fontSize: 12.sp, fontWeight: FontWeight.w400),
                           ),
                           BlocBuilder<CusInvTotalCounterCubit,
                               CusInvTotalCounterState>(
@@ -418,7 +416,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                               return Text(
                                 state.amount,
                                 style: TextStyle(
-                                    fontSize: 15.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w600),
                               );
                             },

@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -83,7 +84,9 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                     SizedBox(
                                       width: 10.w,
                                     ),
-                                    Expanded(
+                                    Flexible(
+                                      flex: 4,
+                                      fit: FlexFit.tight,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -212,6 +215,9 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(
+                                      width: 12.w,
+                                    ),
                                     Column(
                                       children: [
                                         Text(
@@ -255,7 +261,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                           itemCount: invheader.length),
                     ),
           invoiceHeaderFailedState: () => SizedBox(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height / 1.5,
             child: Center(
               child: Text(
                 'No Data Available',

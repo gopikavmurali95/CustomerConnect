@@ -67,14 +67,18 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                   ),
                   trailing: Container(
                       height: 25,
-                      width: 60,
+                      width: 60.w,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: const Color(0xffECEFBE)),
                       child: Center(
-                          child: Text(
-                        widget.loadingheader.status ?? '',
-                        style: const TextStyle(fontSize: 10),
+                          child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        child: Text(
+                          widget.loadingheader.status ?? '',
+                          style: kfontstyle(fontSize: 10.sp),
+                        ),
                       )))),
               Padding(
                 padding:

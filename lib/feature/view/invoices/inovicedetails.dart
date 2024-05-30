@@ -81,7 +81,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 Row(
@@ -302,7 +302,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -382,7 +382,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                   Text(
                     widget.invoiceheader.grandTotal ?? '',
                     style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600),
                   )
                 ],
               ),

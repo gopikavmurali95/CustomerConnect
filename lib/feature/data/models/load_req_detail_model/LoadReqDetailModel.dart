@@ -1,26 +1,30 @@
 import 'dart:convert';
 
-LoadReqDetailModel loadReqDetailModelFromJson(String str) => LoadReqDetailModel.fromJson(json.decode(str));
-String loadReqDetailModelToJson(LoadReqDetailModel data) => json.encode(data.toJson());
+LoadReqDetailModel loadReqDetailModelFromJson(String str) =>
+    LoadReqDetailModel.fromJson(json.decode(str));
+String loadReqDetailModelToJson(LoadReqDetailModel data) =>
+    json.encode(data.toJson());
+
 class LoadReqDetailModel {
   LoadReqDetailModel({
-      this.lrdID, 
-      this.lrdPrdID, 
-      this.prdCode, 
-      this.prdName, 
-      this.lrdHQty, 
-      this.lrdLQty, 
-      this.prdNameArabic, 
-      this.lrdLUOM, 
-      this.lrdHUOM, 
-      this.lrdTotalQty, 
-      this.lrdApvHQty, 
-      this.lrdApvLQty, 
-      this.lrdApvHUOM, 
-      this.lrdApvLUOM, 
-      this.lrdApvTotalQty, 
-      this.createdDate, 
-      this.status,});
+    this.lrdID,
+    this.lrdPrdID,
+    this.prdCode,
+    this.prdName,
+    this.lrdHQty,
+    this.lrdLQty,
+    this.prdNameArabic,
+    this.lrdLUOM,
+    this.lrdHUOM,
+    this.lrdTotalQty,
+    this.lrdApvHQty,
+    this.lrdApvLQty,
+    this.lrdApvHUOM,
+    this.lrdApvLUOM,
+    this.lrdApvTotalQty,
+    this.createdDate,
+    this.status,
+  });
 
   LoadReqDetailModel.fromJson(dynamic json) {
     lrdID = json['lrd_ID'];
@@ -80,5 +84,4 @@ class LoadReqDetailModel {
     map['Status'] = status;
     return map;
   }
-
 }

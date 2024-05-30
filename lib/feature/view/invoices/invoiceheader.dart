@@ -125,7 +125,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                           customer: '',
                                           customerOutlet: '',
                                           fromDate:
-                                              '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                           invoiceType: '',
                                           invoiceWith: '',
                                           paymentType: '',
@@ -163,7 +163,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                                             customer: '',
                                             customerOutlet: '',
                                             fromDate:
-                                                '${DateTime.now().day - 1}-${DateTime.now().month}-${DateTime.now().year}',
+                                                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                             toDate:
                                                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                             invoiceType: '',
@@ -288,8 +288,8 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                   return Text(
                     state.amount,
                     // "0",
-                    style:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                    style: kfontstyle(
+                        fontSize: 11.sp, fontWeight: FontWeight.w600),
                   );
                 },
               )

@@ -10,4 +10,7 @@ class CustomersListBlocEvent with _$CustomersListBlocEvent {
       required String searchQuery}) = GetCustomersEvent;
   const factory CustomersListBlocEvent.clearCustomersEvent() =
       ClearCustomersEvent;
+
+  const factory CustomersListBlocEvent.restCustomersEvent() =
+      RestCustomersEvent;
 }

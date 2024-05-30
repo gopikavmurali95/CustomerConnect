@@ -60,7 +60,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) => Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                        horizontal: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -70,7 +70,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width /
-                                                  2,
+                                                  1.8,
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -243,7 +243,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
               color: const Color(0xfff5f5f5),
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 0, top: 10, bottom: 10),
+                    left: 10, right: 0, top: 10, bottom: 10),
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -270,7 +270,8 @@ class InvoiceDetailListWidget extends StatelessWidget {
                     Flexible(
                       flex: 2,
                       fit: FlexFit.tight,
-                      child: Text('Subtotal', style: boxHeading()),
+                      child: Text('Subtotal',
+                          textAlign: TextAlign.center, style: boxHeading()),
                     ),
                   ],
                 ),
@@ -289,7 +290,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 0, top: 10, bottom: 10),
+                                  left: 20, right: 10, top: 10, bottom: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -340,7 +341,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                       fit: FlexFit.tight,
                                       child: Text(
                                         typewiseinvoice[index].subTotal ?? '',
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.end,
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w400),

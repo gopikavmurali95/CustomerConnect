@@ -1,10 +1,14 @@
 import 'dart:convert';
 
-MaterialReqrejectionOutModel materialReqrejectionOutModelFromJson(String str) => MaterialReqrejectionOutModel.fromJson(json.decode(str));
-String materialReqrejectionOutModelToJson(MaterialReqrejectionOutModel data) => json.encode(data.toJson());
+MaterialReqrejectionOutModel materialReqrejectionOutModelFromJson(String str) =>
+    MaterialReqrejectionOutModel.fromJson(json.decode(str));
+String materialReqrejectionOutModelToJson(MaterialReqrejectionOutModel data) =>
+    json.encode(data.toJson());
+
 class MaterialReqrejectionOutModel {
   MaterialReqrejectionOutModel({
-      this.status,});
+    this.status,
+  });
 
   MaterialReqrejectionOutModel.fromJson(dynamic json) {
     status = json['Status'];
@@ -16,5 +20,4 @@ class MaterialReqrejectionOutModel {
     map['Status'] = status;
     return map;
   }
-
 }

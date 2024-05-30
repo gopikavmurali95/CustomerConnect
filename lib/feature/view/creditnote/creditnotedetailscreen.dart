@@ -62,7 +62,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
           ),
         ),
         title: Text(
-          "Approval Detail",
+          "Credit note detail",
           style: appHeading(),
         ),
       ),

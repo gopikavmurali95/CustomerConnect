@@ -3,6 +3,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
+import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
@@ -400,6 +401,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
+                          context
+                              .read<ApprovalCountsBloc>()
+                              .add(const ClearApprovalCounts());
+                          context.read<ApprovalCountsBloc>().add(
+                              GetApprovalsCountEvent(
+                                  userID: widget.user.usrId ?? ''));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

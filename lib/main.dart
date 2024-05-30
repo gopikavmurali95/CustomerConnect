@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/domain/notification/firebasenotificatio
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
@@ -123,8 +125,23 @@ void main() async {
         options: DefaultFirebaseOptions.currentPlatform);
 
     await PushNotificationService().initialize();
-    FirebaseMessaging.onBackgroundMessage(
-        PushNotificationService().backgroundHandler);
+
+    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
+    if (Platform.isAndroid || Platform.isIOS) {
+      FirebaseMessaging? messaging;
+      messaging = FirebaseMessaging.instance;
+      await messaging.requestPermission();
+      if (Platform.isAndroid) {
+        await FirebaseMessaging.instance.setAutoInitEnabled(true);
+      }
+    }
   } catch (e) {
     log('Error initializing Firebase: $e');
   }
@@ -458,6 +475,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<LoadReqApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ApprovalCountsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

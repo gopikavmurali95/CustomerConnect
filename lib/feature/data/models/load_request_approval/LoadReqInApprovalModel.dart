@@ -1,21 +1,25 @@
 import 'dart:convert';
 
-LoadReqInApprovalModel loadReqInApprovalModelFromJson(String str) => LoadReqInApprovalModel.fromJson(json.decode(str));
-String loadReqInApprovalModelToJson(LoadReqInApprovalModel data) => json.encode(data.toJson());
+LoadReqInApprovalModel loadReqInApprovalModelFromJson(String str) =>
+    LoadReqInApprovalModel.fromJson(json.decode(str));
+String loadReqInApprovalModelToJson(LoadReqInApprovalModel data) =>
+    json.encode(data.toJson());
+
 class LoadReqInApprovalModel {
   LoadReqInApprovalModel({
-      this.lrdPrdID, 
-      this.lrdHQty, 
-      this.lrdLQty, 
-      this.lrdLUOM, 
-      this.lrdHUOM, 
-      this.lrdTotalQty, 
-      this.txtApvHQty, 
-      this.txtApvLQty, 
-      this.lrdID, 
-      this.userId, 
-      this.reqID, 
-      this.rotID,});
+    this.lrdPrdID,
+    this.lrdHQty,
+    this.lrdLQty,
+    this.lrdLUOM,
+    this.lrdHUOM,
+    this.lrdTotalQty,
+    this.txtApvHQty,
+    this.txtApvLQty,
+    this.lrdID,
+    this.userId,
+    this.reqID,
+    this.rotID,
+  });
 
   LoadReqInApprovalModel.fromJson(dynamic json) {
     lrdPrdID = json['lrd_prd_ID'];
@@ -60,5 +64,4 @@ class LoadReqInApprovalModel {
     map['RotID'] = rotID;
     return map;
   }
-
 }

@@ -90,7 +90,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                             height: MediaQuery.of(context).size.height - 50.h,
                             child: SingleChildScrollView(
                               physics: const AlwaysScrollableScrollPhysics(),
-                              child: ListView.separated(
+                              child: ListView.builder(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (context, index) => Column(
@@ -145,6 +145,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                     ardetails[index]
                                                             .amountPaid ??
                                                         "",
+                                                    textAlign: TextAlign.end,
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: Colors.black),
@@ -163,8 +164,6 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                           )
                                         ],
                                       ),
-                                  separatorBuilder: (context, index) =>
-                                      const SizedBox(),
                                   itemCount: ardetails.length),
                             ),
                           ),
