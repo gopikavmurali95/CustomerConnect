@@ -19,6 +19,7 @@ import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +43,7 @@ List<ApprovalResonModel> availableresons = [];
 
 List<RouteModel> availableroutes = [];
 int _approvedCount = 0;
-int _totalcount = 0;
+// int _totalcount = 0;
 String selectedRoute = '-1';
 List<ScheduledReturnPrdModel?> approvedProducts = [];
 
@@ -247,7 +248,7 @@ class _ScheduledReturnDetailScreenState
                             if (details != null) {
                               // Navigator.pop(context);
 
-                              _totalcount = details.length;
+                              // _totalcount = details.length;
 
                               approvedProducts = List.generate(
                                   details.length, (index) => null);
@@ -704,7 +705,7 @@ class _ScheduledReturnDetailScreenState
                     ),
                   ),
                   SizedBox(
-                    height: 80.h,
+                    height: 40.h,
                     width: double.infinity,
                     child: Column(
                       children: [
@@ -741,8 +742,18 @@ class _ScheduledReturnDetailScreenState
                           ),
                         ), */
 
-                        widget.scheduledreturn.status == "Pending"
+                        /* widget.scheduledreturn.status == "Pending"
                             ? Expanded(
+                                child: 
+                              )
+                            : /* const SizedBox(height: ,) */ const Spacer(), */
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
                                 child: BlocConsumer<RouteForScCubit,
                                     RouteForScState>(
                                   listener: (context, state) {
@@ -788,7 +799,7 @@ class _ScheduledReturnDetailScreenState
                                                   : Padding(
                                                       padding: const EdgeInsets
                                                           .symmetric(
-                                                          horizontal: 20),
+                                                          horizontal: 0),
                                                       child:
                                                           DropdownButtonFormField(
                                                         isExpanded: true,
@@ -858,37 +869,6 @@ class _ScheduledReturnDetailScreenState
                                               const SizedBox(),
                                         ));
                                   },
-                                ),
-                              )
-                            : /* const SizedBox(height: ,) */ const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                fit: FlexFit.tight,
-                                child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color:
-                                      widget.scheduledreturn.status == 'Pending'
-                                          ? Colors.red.shade300
-                                          : Colors.grey[300],
-                                  onPressed: () {
-                                    if (widget.scheduledreturn.status ==
-                                        'Pending') {
-                                      Navigator.pop(context);
-                                    }
-                                  },
-                                  child: Text(
-                                    'Cancel',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
                                 ),
                               ),
                               SizedBox(

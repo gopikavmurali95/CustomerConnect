@@ -11,11 +11,11 @@ ApprovePriceChangeinModel _$ApprovePriceChangeinModelFromJson(
     ApprovePriceChangeinModel(
       priceId: json['PriceID'] as String?,
       userId: json['UserId'] as String?,
-      pcdId: json['pcd_ID'] as String?,
-      reason: json['Reason'] as String?,
-      status: json['Status'] as String?,
-      aprvdHprice: json['aprvdHprice'] as String?,
-      aprvdLprice: json['aprvdLprice'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : PriceChangePrdModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ApprovePriceChangeinModelToJson(
@@ -23,9 +23,5 @@ Map<String, dynamic> _$ApprovePriceChangeinModelToJson(
     <String, dynamic>{
       'PriceID': instance.priceId,
       'UserId': instance.userId,
-      'pcd_ID': instance.pcdId,
-      'Reason': instance.reason,
-      'Status': instance.status,
-      'aprvdHprice': instance.aprvdHprice,
-      'aprvdLprice': instance.aprvdLprice,
+      'products': instance.products,
     };

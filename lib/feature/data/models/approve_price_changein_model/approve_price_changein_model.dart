@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/data/models/price_change_prd_model/price_change_prd_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'approve_price_changein_model.g.dart';
@@ -8,23 +9,12 @@ class ApprovePriceChangeinModel {
   String? priceId;
   @JsonKey(name: 'UserId')
   String? userId;
-  @JsonKey(name: 'pcd_ID')
-  String? pcdId;
-  @JsonKey(name: 'Reason')
-  String? reason;
-  @JsonKey(name: 'Status')
-  String? status;
-  String? aprvdHprice;
-  String? aprvdLprice;
+  List<PriceChangePrdModel?>? products;
 
   ApprovePriceChangeinModel({
     this.priceId,
     this.userId,
-    this.pcdId,
-    this.reason,
-    this.status,
-    this.aprvdHprice,
-    this.aprvdLprice,
+    this.products,
   });
 
   factory ApprovePriceChangeinModel.fromJson(Map<String, dynamic> json) {

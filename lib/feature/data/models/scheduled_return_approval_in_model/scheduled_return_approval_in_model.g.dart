@@ -13,8 +13,9 @@ ScheduledReturnApprovalInModel _$ScheduledReturnApprovalInModelFromJson(
       returnId: json['ReturnID'] as String?,
       routeId: json['RouteId'] as String?,
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) =>
-              ScheduledReturnPrdModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e == null
+              ? null
+              : ScheduledReturnPrdModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
