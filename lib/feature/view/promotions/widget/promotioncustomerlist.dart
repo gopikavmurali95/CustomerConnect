@@ -90,8 +90,8 @@ class PromotionCustomerList extends StatelessWidget {
                               ), */
                               Text(
                                 '${promocustomer[index].cusType} | '
-                                    '${promocustomer[index].promotionCustomerModelClass} | '
-                                    '${promocustomer[index].areaName}',
+                                '${promocustomer[index].promotionCustomerModelClass} | '
+                                '${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
                               )
                             ],

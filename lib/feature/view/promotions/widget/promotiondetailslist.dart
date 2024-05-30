@@ -66,4 +66,3 @@ class PromotionDetailsList extends StatelessWidget {
     );
   }
 }
-

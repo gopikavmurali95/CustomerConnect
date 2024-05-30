@@ -101,18 +101,21 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + approveScReturnUrl), body: {
-        "JSONString": jsonEncode([
-          {
-            "rrd_ID": approve.rrdId,
-            "Reason": approve.reason,
-            "Status": approve.status
-          }
-        ]),
+        "JSONString": jsonEncode(
+          approve.products,
+        ),
         "UserId": approve.userId,
         "ReturnID": approve.returnId,
         "RouteId": approve.routeId
       });
-
+      log({
+        "JSONString": jsonEncode(
+          approve.products,
+        ),
+        "UserId": approve.userId,
+        "ReturnID": approve.returnId,
+        "RouteId": approve.routeId
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -29,7 +29,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Invoice Approval",
+          "Field Service",
           style: appHeading(),
         ),
       ),
@@ -37,7 +37,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
         children: [
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: BlocBuilder<FieldServiceHeaderBloc, FieldServiceHeaderState>(
               builder: (context, state) {
                 return state.when(
@@ -69,14 +69,13 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                 },
                                 child: Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: const Color(0xffDB95B5),
-                                      child: Image.asset(
-                                        'assets/images/ar_li.png',
-                                        height: 20.h,
-                                        width: 20.w,
-                                      ),
+                                    Container(
+                                      height: 50,
+                                      width: 10,
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xfffee8e0),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                     ),
                                     SizedBox(
                                       width: 10.w,

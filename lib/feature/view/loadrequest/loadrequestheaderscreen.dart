@@ -46,7 +46,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           ),
         ),
         title: Text(
-          "Load Request Header",
+          "Load Request",
           style: appHeading(),
         ),
       ),
@@ -54,7 +54,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
         children: [
           Expanded(
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: BlocBuilder<LoadReqHeaderBloc, LoadReqHeaderState>(
               builder: (context, state) {
                 return state.when(
@@ -92,14 +92,13 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                 },
                                 child: Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: const Color(0xffDB95B5),
-                                      child: Image.asset(
-                                        'assets/images/ar_li.png',
-                                        height: 20.h,
-                                        width: 20.w,
-                                      ),
+                                    Container(
+                                      height: 50,
+                                      width: 10,
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xfffee8e0),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                     ),
                                     SizedBox(
                                       width: 10.w,
@@ -219,11 +218,8 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   }
 }
 
-
-
-Future<void> _onRefreshLoadRequestHeaderScreen(BuildContext context,LoginUserModel model) async
-{
+Future<void> _onRefreshLoadRequestHeaderScreen(
+    BuildContext context, LoginUserModel model) async {
   context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
   context.read<LoadReqHeaderBloc>().add(const LoadreqSuccessEvent(userId: ''));
-
 }

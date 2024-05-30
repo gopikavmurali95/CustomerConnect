@@ -258,33 +258,70 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                       state.when(
                                         getVanToVanApproval: (response) {
                                           if (response != null) {
-                                            // Navigator.pop(context);
+                                            // x
+
+                                            if (loadingCount == 1) {
+                                              loadingCount = 0;
+                                              Navigator.pop(context);
+                                              showCupertinoDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    CupertinoAlertDialog(
+                                                  title: const Text('Alert'),
+                                                  content: Text(
+                                                      response.status ?? ''),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        _approvedCount++;
+                                                        context
+                                                            .read<
+                                                                VanToVanDetailsBloc>()
+                                                            .add(
+                                                              GetVanToVanDetailEvent(
+                                                                  reqID: details[
+                                                                              index]
+                                                                          .vvdId ??
+                                                                      ''),
+                                                            );
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child:
+                                                          const Text('Proceed'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+
+                                              // showCupertinoDialog(
+                                              //   context: context,
+                                              //   builder: (context) =>
+                                              //       CupertinoAlertDialog(
+                                              //     title: const Text('Alert'),
+                                              //     content: Text(
+                                              //         response.status ?? ''),
+                                              //     actions: [
+                                              //       TextButton(
+                                              //         onPressed: () {
+                                              //           _approvedCount++;
+                                              //           context
+                                              //               .read<
+                                              //                   VanToVanDetailsBloc>()
+                                              //               .add(
+                                              //                   const GetVanToVanDetailEvent(
+                                              //                       reqID:
+                                              //                           '10'));
+                                              //           Navigator.pop(context);
+                                              //         },
+                                              //         child:
+                                              //             const Text('Proceed'),
+                                              //       ),
+                                              //     ],
+                                              //   ),
+                                              // );
+                                            }
                                             // if (isApproval) {
-                                            showCupertinoDialog(
-                                              context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
-                                                title: const Text('Alert'),
-                                                content:
-                                                    Text(response.status ?? ''),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      _approvedCount++;
-                                                      context
-                                                          .read<
-                                                              VanToVanDetailsBloc>()
-                                                          .add(
-                                                              const GetVanToVanDetailEvent(
-                                                                  reqID: '10'));
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child:
-                                                        const Text('Proceed'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
+
                                             // }
                                           }
                                         },

@@ -93,7 +93,7 @@ class InsightInvoiceListWidget extends StatelessWidget {
                                           height: 6.h,
                                         ),
                                         Text(
-                                          '${headers[index].invoiceNo} | ${headers[index].time}',
+                                          '${headers[index].date} | ${headers[index].time}',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
                                               color: Colors.grey),

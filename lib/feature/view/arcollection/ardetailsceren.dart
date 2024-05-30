@@ -30,7 +30,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log(widget.arheader.arhId ?? '');
+    log(widget.arheader.image ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
