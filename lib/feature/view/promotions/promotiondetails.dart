@@ -154,7 +154,7 @@ class PromotionDetails extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const QualificationGroup()));
+                                  builder: (context) =>  QualificationGroup(promotion: promotion,)));
                         },
                         child: Container(
                           height: 62,
@@ -222,7 +222,7 @@ class PromotionDetails extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const QualificationGroup()));
+                                  builder: (context) => QualificationGroup(promotion: promotion)));
                         },
                         child: Container(
                           height: 62,
