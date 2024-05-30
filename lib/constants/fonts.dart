@@ -12,7 +12,7 @@ TextStyle boxHeading() {
 
 TextStyle blueTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 14,
+      fontSize: 13,
       fontWeight: FontWeight.w500,
       color: const Color(0xff2C6B9E));
 }
@@ -40,7 +40,7 @@ TextStyle statusTextStyle() {
 
 TextStyle subTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 8.sp, //fontWeight: FontWeight.w500,
+      fontSize: 9.sp, //fontWeight: FontWeight.w500,
       color: Colors.grey);
 }
 

@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -181,9 +182,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const Color.fromARGB(255, 181, 218, 245),
+        color: const  Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshPromotionHeaderScreen(context, widget.user),
+        onRefresh: () => _onRefreshPromotionHeaderScreen(context,widget.user),
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -209,8 +210,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                 height: 25.h,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'All promotions',
@@ -241,8 +241,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                             context
                                                 .read<PromotionCustomerBloc>()
                                                 .add(GetPromotionCustomerEvent(
-                                                    id: promoheader[index]
-                                                            .qid ??
+                                                    id: promoheader[index].qid ??
                                                         '',
                                                     searchQuery: ''));
                                             Navigator.push(
@@ -251,76 +250,82 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     builder: (context) =>
                                                         PromotionCustomer(
                                                           promotion:
-                                                              promoheader[
-                                                                  index],
+                                                              promoheader[index],
                                                         )));
                                           },
                                           child: SizedBox(
                                             //color: Colors.red,
-                                            height: 60,
+                                            //height: 60,
                                             width: double.infinity,
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                  MainAxisAlignment.spaceBetween,
                                               children: [
                                                 SizedBox(
-                                                  child: Row(
-                                                    children: [
-                                                      CircleAvatar(
-                                                        backgroundColor:
-                                                            const Color(
-                                                                0xffB3DAF7),
-                                                        child: Center(
-                                                          child: Text(
-                                                            promoheader[index]
-                                                                        .pName ==
-                                                                    null
-                                                                ? 'D'
-                                                                : promoheader[
-                                                                        index]
-                                                                    .pName!
-                                                                    .split('')
-                                                                    .toList()[0],
-                                                            style: TextStyle(
-                                                                fontSize: 14.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Colors
-                                                                    .white),
+
+                                                  child: Expanded(
+
+                                                    child: Row(
+                                                      children: [
+                                                        CircleAvatar(
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0xffB3DAF7),
+                                                          child: Center(
+                                                            child: Text(
+                                                              promoheader[index]
+                                                                          .pName ==
+                                                                      null
+                                                                  ? 'D'
+                                                                  : promoheader[
+                                                                          index]
+                                                                      .pName!
+                                                                      .split('')
+                                                                      .toList()[0],
+                                                              style: TextStyle(
+                                                                  fontSize: 14.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color:
+                                                                      Colors.white),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 15.w,
-                                                      ),
-                                                      Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            '${promoheader[index].pName}',
-                                                            style:
-                                                                blueTextStyle(),
-                                                          ),
-                                                          Text(
-                                                            '${promoheader[index].dateRange}',
-                                                            style:
-                                                                subTextStyle(),
-                                                          ),
-                                                          Text(
-                                                            '${promoheader[index].pCode}',
-                                                            style:
-                                                                subTextStyle(),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ],
+                                                        SizedBox(
+                                                          width: 15.w,
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 200.w,
+                                                              child: Text(
+                                                                '${promoheader[index].prmName}',
+                                                                overflow: TextOverflow.ellipsis,
+                                                                maxLines:2,
+
+                                                                style:
+                                                                    blueTextStyle(),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              '${promoheader[index].dateRange}',
+                                                              style: subTextStyle(),
+                                                            ),
+                                                            Text(
+                                                              '${promoheader[index].pName} | ${promoheader[index].pCode}',
+                                                              style: subTextStyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                                 GestureDetector(
@@ -333,11 +338,12 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     context
                                                         .read<
                                                             PromotionDetailsBloc>()
-                                                        .add(GetPromotionDetailsEvent(
-                                                            id: promoheader[
-                                                                        index]
-                                                                    .aid ??
-                                                                ''));
+                                                        .add(
+                                                            GetPromotionDetailsEvent(
+                                                                id: promoheader[
+                                                                            index]
+                                                                        .aid ??
+                                                                    ''));
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
@@ -403,22 +409,23 @@ class _PromotionHeaderState extends State<PromotionHeader> {
     );
   }
 
-  Future<void> _onRefreshPromotionHeaderScreen(
-      BuildContext context, LoginUserModel model) async {
+  Future<void> _onRefreshPromotionHeaderScreen(BuildContext context,LoginUserModel model) async
+  {
     context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
     context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
-          searchQuery: '',
-          promotionInparas: PromotionHeaderInParas(
-              area: '',
-              cusOutlet: '',
-              customer: '',
-              fromDate:
-                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-              route: '',
-              subArea: '',
-              toDate:
-                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-              userId: widget.user.usrId),
-        ));
+      searchQuery: '',
+      promotionInparas: PromotionHeaderInParas(
+          area: '',
+          cusOutlet: '',
+          customer: '',
+          fromDate:
+          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+          route: '',
+          subArea: '',
+          toDate:
+          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+          userId: widget.user.usrId),));
+
   }
 }
+

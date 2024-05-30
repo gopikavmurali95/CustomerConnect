@@ -17,6 +17,7 @@ PromotionHeaderModel _$PromotionHeaderModelFromJson(
       aCode: json['ACode'] as String?,
       qid: json['QID'] as String?,
       aid: json['AID'] as String?,
+      prmName: json['PrmName'] as String?,
     );
 
 Map<String, dynamic> _$PromotionHeaderModelToJson(
@@ -30,4 +31,5 @@ Map<String, dynamic> _$PromotionHeaderModelToJson(
       'ACode': instance.aCode,
       'QID': instance.qid,
       'AID': instance.aid,
+      'PrmName': instance.prmName,
     };

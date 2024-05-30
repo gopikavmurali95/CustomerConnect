@@ -85,7 +85,7 @@ class _MaterialRequestHeaderScreenState
                                         Divider(
                                           color: Colors.grey[300],
                                         ),
-                                    itemCount: 10),
+                                    itemCount: headers!.length),
                               )
                             : ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
