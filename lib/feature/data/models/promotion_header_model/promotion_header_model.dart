@@ -20,6 +20,8 @@ class PromotionHeaderModel {
   String? qid;
   @JsonKey(name: 'AID')
   String? aid;
+  @JsonKey(name: 'PrmName')
+  String? prmName;
 
   PromotionHeaderModel({
     this.id,
@@ -30,6 +32,7 @@ class PromotionHeaderModel {
     this.aCode,
     this.qid,
     this.aid,
+    this.prmName,
   });
 
   factory PromotionHeaderModel.fromJson(Map<String, dynamic> json) {

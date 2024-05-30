@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -257,7 +258,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                           },
                                           child: SizedBox(
                                             //color: Colors.red,
-                                            height: 60,
+                                            //height: 60,
                                             width: double.infinity,
                                             child: Row(
                                               mainAxisAlignment:
@@ -265,62 +266,72 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                       .spaceBetween,
                                               children: [
                                                 SizedBox(
-                                                  child: Row(
-                                                    children: [
-                                                      CircleAvatar(
-                                                        backgroundColor:
-                                                            const Color(
-                                                                0xffB3DAF7),
-                                                        child: Center(
-                                                          child: Text(
-                                                            promoheader[index]
-                                                                        .pName ==
-                                                                    null
-                                                                ? 'D'
-                                                                : promoheader[
-                                                                        index]
-                                                                    .pName!
-                                                                    .split('')
-                                                                    .toList()[0],
-                                                            style: TextStyle(
-                                                                fontSize: 14.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Colors
-                                                                    .white),
+                                                  child: Expanded(
+                                                    child: Row(
+                                                      children: [
+                                                        CircleAvatar(
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0xffB3DAF7),
+                                                          child: Center(
+                                                            child: Text(
+                                                              promoheader[index]
+                                                                          .pName ==
+                                                                      null
+                                                                  ? 'D'
+                                                                  : promoheader[
+                                                                          index]
+                                                                      .pName!
+                                                                      .split('')
+                                                                      .toList()[0],
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      14.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 15.w,
-                                                      ),
-                                                      Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            '${promoheader[index].pName}',
-                                                            style:
-                                                                blueTextStyle(),
-                                                          ),
-                                                          Text(
-                                                            '${promoheader[index].dateRange}',
-                                                            style:
-                                                                subTextStyle(),
-                                                          ),
-                                                          Text(
-                                                            '${promoheader[index].pCode}',
-                                                            style:
-                                                                subTextStyle(),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ],
+                                                        SizedBox(
+                                                          width: 15.w,
+                                                        ),
+                                                        Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 200.w,
+                                                              child: Text(
+                                                                '${promoheader[index].prmName}',
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                maxLines: 2,
+                                                                style:
+                                                                    blueTextStyle(),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              '${promoheader[index].dateRange}',
+                                                              style:
+                                                                  subTextStyle(),
+                                                            ),
+                                                            Text(
+                                                              '${promoheader[index].pName} | ${promoheader[index].pCode}',
+                                                              style:
+                                                                  subTextStyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                                 GestureDetector(

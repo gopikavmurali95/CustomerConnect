@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_header_model/load_transfer_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_in_model/load_transfer_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_product_model/load_transfer_product_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
@@ -30,6 +31,7 @@ class LoadTransferDetailScreen extends StatefulWidget {
 List<String> selectedresons = [];
 List<bool?> statuslist = [];
 bool isLoading = false;
+List<LoadTransferProductModel?> approvedProducts = [];
 
 int _responsecount = 0;
 int loadingCount = 0;
@@ -176,14 +178,16 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                   state.when(
                     getLoadTransferDetailState: (details) {
                       if (details != null) {
-                        _totalCount = details.length;
+                        // _totalCount = details.length;
                         /*  context.read<ApprovalReasonsBloc>().add(
                                   const GetApprovalReasonsEvent(rsnType: 'rsnType')); */
                         if (statuslist.length != details.length) {
+                          approvedProducts =
+                              List.generate(details.length, (index) => null);
                           statuslist.clear();
 
-                          statuslist =
-                              List.generate(details.length, (index) => null);
+                          statuslist /* length = details.length; */
+                              = List.generate(details.length, (index) => null);
                         }
 
                         /* for (int i = 0; i < details.length; i++) {
@@ -444,66 +448,17 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                 : false,
                                                         groupValue: true,
                                                         onChanged: (value) {
-                                                          showCupertinoDialog(
-                                                            context: context,
-                                                            builder: (context) =>
-                                                                CupertinoAlertDialog(
-                                                              title: const Text(
-                                                                  'Alert'),
-                                                              content: const Text(
-                                                                  "Do you Want to Approve this product"),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    setState(
-                                                                        () {});
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    statuslist[
-                                                                            index] =
-                                                                        true;
-                                                                    loadingCount =
-                                                                        0;
-                                                                    setState(
-                                                                        () {});
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    context
-                                                                        .read<
-                                                                            LoadTransferApprovalBloc>()
-                                                                        .add(
-                                                                            const AddLoadTransferLoadingEvent());
-
-                                                                    context
-                                                                        .read<
-                                                                            LoadTransferApprovalBloc>()
-                                                                        .add(
-                                                                          ApproveLoadtransferEvent(
-                                                                            approve:
-                                                                                LoadTransferApprovalInModel(
-                                                                              ldrId: details[index].ldrId,
-                                                                              reqId: widget.header.ltrId,
-                                                                              status: 'A',
-                                                                              userId: /* widget.user.usrId */
-                                                                                  '48',
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Proceed'),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
+                                                          statuslist[index] =
+                                                              true;
+                                                          loadingCount = 0;
+                                                          setState(() {});
+                                                          approvedProducts[
+                                                                  index] =
+                                                              LoadTransferProductModel(
+                                                                  ldrId: details[
+                                                                          index]
+                                                                      .ldrId,
+                                                                  status: 'A');
                                                         },
                                                       ),
                                                       Text(
@@ -547,67 +502,17 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                 : false,
                                                         groupValue: false,
                                                         onChanged: (value) {
-                                                          showCupertinoDialog(
-                                                            context: context,
-                                                            builder: (context) =>
-                                                                CupertinoAlertDialog(
-                                                              title: const Text(
-                                                                  'Alert'),
-                                                              content: const Text(
-                                                                  "Do you Want to Reject this product"),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    setState(
-                                                                        () {});
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    statuslist[
-                                                                            index] =
-                                                                        false;
-
-                                                                    loadingCount =
-                                                                        0;
-                                                                    setState(
-                                                                        () {});
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    context
-                                                                        .read<
-                                                                            LoadTransferApprovalBloc>()
-                                                                        .add(
-                                                                            const AddLoadTransferLoadingEvent());
-
-                                                                    context
-                                                                        .read<
-                                                                            LoadTransferApprovalBloc>()
-                                                                        .add(
-                                                                          ApproveLoadtransferEvent(
-                                                                            approve:
-                                                                                LoadTransferApprovalInModel(
-                                                                              ldrId: details[index].ldrId,
-                                                                              reqId: widget.header.ltrId,
-                                                                              status: 'R',
-                                                                              userId: /* widget.user.usrId */
-                                                                                  '48',
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                  },
-                                                                  child: const Text(
-                                                                      'Proceed'),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
+                                                          statuslist[index] =
+                                                              true;
+                                                          loadingCount = 0;
+                                                          setState(() {});
+                                                          approvedProducts[
+                                                                  index] =
+                                                              LoadTransferProductModel(
+                                                                  ldrId: details[
+                                                                          index]
+                                                                      .ldrId,
+                                                                  status: 'R');
 
                                                           /* context
                                                                                                                                 .read<
@@ -646,7 +551,120 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                     ),
                   );
                 },
-              ))
+              )),
+              SizedBox(
+                height: 40.h,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Flexible(
+                              flex: 1, fit: FlexFit.tight, child: SizedBox()),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              color:
+                                  widget.header.ltrApprovalStatus == 'Pending'
+                                      ? Colors.green.shade300
+                                      : Colors.grey[300],
+                              onPressed: () {
+                                if (widget.header.ltrApprovalStatus ==
+                                    'Pending') {
+                                  if (approvedProducts.contains(null)) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Please make sure you have approved or rejected all the products"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Do you Want to Proceed"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+                                              setState(() {});
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      LoadTransferApprovalBloc>()
+                                                  .add(
+                                                      const AddLoadTransferLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      LoadTransferApprovalBloc>()
+                                                  .add(ApproveLoadtransferEvent(
+                                                    approve:
+                                                        LoadTransferApprovalInModel(
+                                                      products:
+                                                          approvedProducts,
+                                                      reqId:
+                                                          widget.header.ltrId,
+                                                      userId: /* widget.user.usrId */
+                                                          '48',
+                                                    ),
+                                                  ));
+                                            },
+                                            child: const Text('Proceed'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: Text(
+                                'Approve',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

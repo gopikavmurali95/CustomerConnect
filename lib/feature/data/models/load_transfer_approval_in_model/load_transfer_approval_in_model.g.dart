@@ -9,8 +9,11 @@ part of 'load_transfer_approval_in_model.dart';
 LoadTransferApprovalInModel _$LoadTransferApprovalInModelFromJson(
         Map<String, dynamic> json) =>
     LoadTransferApprovalInModel(
-      ldrId: json['ldr_ID'] as String?,
-      status: json['Status'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : LoadTransferProductModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       userId: json['UserId'] as String?,
       reqId: json['ReqID'] as String?,
     );
@@ -18,8 +21,7 @@ LoadTransferApprovalInModel _$LoadTransferApprovalInModelFromJson(
 Map<String, dynamic> _$LoadTransferApprovalInModelToJson(
         LoadTransferApprovalInModel instance) =>
     <String, dynamic>{
-      'ldr_ID': instance.ldrId,
-      'Status': instance.status,
+      'products': instance.products,
       'UserId': instance.userId,
       'ReqID': instance.reqId,
     };

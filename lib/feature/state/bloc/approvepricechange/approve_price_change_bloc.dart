@@ -24,7 +24,7 @@ class ApprovePriceChangeBloc
           (r) => GetPriceChangeApprovalState(approval: r)));
     });
     on<AddApprovalLoadinEvent>((event, emit) {
-      const ApproveLoadingState();
+      emit(const ApproveLoadingState());
     });
   }
 }
