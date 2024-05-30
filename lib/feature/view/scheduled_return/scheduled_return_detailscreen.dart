@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -5,6 +6,7 @@ import 'package:customer_connect/feature/data/models/approval_reson_model/approv
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/scheduled_return_prd_model/scheduled_return_prd_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
@@ -41,7 +43,8 @@ List<ApprovalResonModel> availableresons = [];
 List<RouteModel> availableroutes = [];
 int _approvedCount = 0;
 int _totalcount = 0;
-List<String> selectedRoute = [];
+String selectedRoute = '-1';
+List<ScheduledReturnPrdModel?> approvedProducts = [];
 
 class _ScheduledReturnDetailScreenState
     extends State<ScheduledReturnDetailScreen> {
@@ -65,6 +68,7 @@ class _ScheduledReturnDetailScreenState
 
   @override
   Widget build(BuildContext context) {
+    log(jsonEncode(approvedProducts));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -74,13 +78,13 @@ class _ScheduledReturnDetailScreenState
         leading: IconButton(
           onPressed: () {
             log(_approvedCount.toString());
-            if (_approvedCount != 0 && _approvedCount != _totalcount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else {
-              Navigator.pop(context);
-            }
+            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
+            //   Future.delayed(const Duration(microseconds: 100), () {
+            //     showPopAlert(context);
+            //   });
+            // } else {
+            Navigator.pop(context);
+            // }
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -106,15 +110,18 @@ class _ScheduledReturnDetailScreenState
         },
         child: PopScope(
           canPop:
-              /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ false,
+              /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
           onPopInvoked: (didPop) {
-            if (_approvedCount != 0 && _approvedCount != _totalcount) {
+            context.read<SchduledReturnHeaderBloc>().add(
+                const GetAllScheduledReturnHeadersEvent(
+                    userID: /* widget.user.usrId ?? */ '62'));
+            /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
               Future.delayed(const Duration(microseconds: 100), () {
                 showPopAlert(context);
               });
             } else {
               context.read<NavigatetoBackCubit>().popFromScreen(true);
-            }
+            } */
           },
           child: BlocConsumer<SchduledReturnApprovalBloc,
               SchduledReturnApprovalState>(
@@ -239,7 +246,11 @@ class _ScheduledReturnDetailScreenState
                           getScheduledReturnDetailState: (details) {
                             if (details != null) {
                               // Navigator.pop(context);
+
                               _totalcount = details.length;
+
+                              approvedProducts = List.generate(
+                                  details.length, (index) => null);
                               statuslist.clear();
                               context
                                   .read<RouteForScCubit>()
@@ -251,8 +262,7 @@ class _ScheduledReturnDetailScreenState
                               context.read<ApprovalReasonsBloc>().add(
                                   const GetApprovalReasonsEvent(
                                       rsnType: 'rsnType'));
-                              selectedRoute = List.generate(
-                                  details.length, (index) => '-1');
+                              selectedRoute = '-1';
 
                               for (int i = 0; i < details.length; i++) {
                                 if (details[i].status!.isNotEmpty) {
@@ -454,60 +464,64 @@ class _ScheduledReturnDetailScreenState
                                                         builder:
                                                             (context, state) {
                                                           return state.when(
-                                                            getApprovalResonsState:
-                                                                (resons) => resons ==
-                                                                            null ||
-                                                                        availableresons
-                                                                            .isEmpty
-                                                                    ? const ShimmerContainers(
-                                                                        height:
-                                                                            30,
-                                                                        width:
-                                                                            80,
-                                                                      )
-                                                                    : Transform
-                                                                        .scale(
-                                                                        scale:
-                                                                            .8,
+                                                            getApprovalResonsState: (resons) => resons ==
+                                                                        null ||
+                                                                    availableresons
+                                                                        .isEmpty
+                                                                ? const ShimmerContainers(
+                                                                    height: 30,
+                                                                    width: 80,
+                                                                  )
+                                                                : DropdownButtonFormField(
+                                                                    isExpanded:
+                                                                        true,
+                                                                    // elevation:
+                                                                    //     16,
+                                                                    dropdownColor:
+                                                                        Colors
+                                                                            .white,
+                                                                    value: availableresons[0]
+                                                                            .rsnId ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        color: Colors
+                                                                            .black),
+                                                                    decoration:
+                                                                        const InputDecoration(
+                                                                      // filled:
+                                                                      //     true,
+                                                                      // fillColor:
+                                                                      //     Colors
+                                                                      //         .grey[100],
+                                                                      border: /* OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey[100]!)) */
+                                                                          InputBorder
+                                                                              .none,
+                                                                    ),
+                                                                    items: availableresons.map(
+                                                                        (ApprovalResonModel
+                                                                            item) {
+                                                                      return DropdownMenuItem(
+                                                                        value: item
+                                                                            .rsnId,
                                                                         child:
-                                                                            DropdownButtonFormField(
-                                                                          isExpanded:
-                                                                              true,
-                                                                          // elevation:
-                                                                          //     16,
-                                                                          dropdownColor:
-                                                                              Colors.white,
-                                                                          value:
-                                                                              availableresons[0].rsnId ?? '',
+                                                                            Text(
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          item.rsnName ??
+                                                                              '',
                                                                           style:
-                                                                              kfontstyle(color: Colors.black),
-                                                                          decoration:
-                                                                              InputDecoration(
-                                                                            filled:
-                                                                                true,
-                                                                            fillColor:
-                                                                                Colors.grey[100],
-                                                                            border: /* OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey[100]!)) */
-                                                                                InputBorder.none,
-                                                                          ),
-                                                                          items:
-                                                                              availableresons.map((ApprovalResonModel item) {
-                                                                            return DropdownMenuItem(
-                                                                              value: item.rsnId,
-                                                                              child: Text(
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                item.rsnName ?? '',
-                                                                                style: kfontstyle(fontSize: 10.sp),
-                                                                              ),
-                                                                            );
-                                                                          }).toList(),
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            selectedresons[index] =
-                                                                                value ?? '';
-                                                                          },
+                                                                              kfontstyle(fontSize: 10.sp),
                                                                         ),
-                                                                      ),
+                                                                      );
+                                                                    }).toList(),
+                                                                    onChanged:
+                                                                        (value) {
+                                                                      selectedresons[
+                                                                              index] =
+                                                                          value ??
+                                                                              '';
+                                                                    },
+                                                                  ),
                                                             getReasonsFailedState:
                                                                 () =>
                                                                     const SizedBox(),
@@ -515,362 +529,159 @@ class _ScheduledReturnDetailScreenState
                                                         },
                                                       ),
                                                     ),
-                                                    SizedBox(
-                                                      width: 10.w,
-                                                    ),
-                                                    Expanded(
-                                                      child: BlocConsumer<
-                                                          RouteForScCubit,
-                                                          RouteForScState>(
-                                                        listener:
-                                                            (context, state) {
-                                                          state.when(
-                                                            getAllRoutesForScReturnState:
-                                                                (routes) {
-                                                              availableroutes
-                                                                  .clear();
+                                                    // SizedBox(
+                                                    //   width: 10.w,
+                                                    // ),
 
-                                                              availableroutes =
-                                                                  [
-                                                                RouteModel(
-                                                                    rotId: '-1',
-                                                                    rotName:
-                                                                        'Select a Route')
-                                                              ];
-
-                                                              if (routes !=
-                                                                  null) {
-                                                                availableroutes
-                                                                    .addAll(
-                                                                        routes);
-                                                              }
-                                                            },
-                                                            getRoutesFailedState:
-                                                                () {
-                                                              availableroutes
-                                                                  .clear();
-
-                                                              availableroutes =
-                                                                  [
-                                                                RouteModel(
-                                                                    rotId: '-1',
-                                                                    rotName:
-                                                                        'No Routes Available, Please try again laterss')
-                                                              ];
-                                                            },
-                                                          );
-                                                        },
-                                                        builder:
-                                                            (context, state) {
-                                                          return Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                horizontal: 0,
-                                                              ),
-                                                              child: state.when(
-                                                                getAllRoutesForScReturnState: (routes) => routes ==
-                                                                            null ||
-                                                                        availableroutes
-                                                                            .isEmpty
-                                                                    ? const ShimmerContainers(
-                                                                        height:
-                                                                            30,
-                                                                        width: double
-                                                                            .infinity,
-                                                                      )
-                                                                    : Transform
-                                                                        .scale(
-                                                                        // height:
-                                                                        //     35.h,
-                                                                        scale:
-                                                                            0.8,
-                                                                        child:
-                                                                            DropdownButtonFormField(
-                                                                          isExpanded:
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      children: [
+                                                        BlocBuilder<
+                                                            AapprovalOrRejectRadioCubit,
+                                                            AapprovalOrRejectRadioState>(
+                                                          builder:
+                                                              (context, state) {
+                                                            return AbsorbPointer(
+                                                              absorbing: details[
+                                                                          index]
+                                                                      .status!
+                                                                      .isNotEmpty
+                                                                  ? true
+                                                                  : false,
+                                                              child: Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? const Color(0xff0075ff)
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          /* activeColor: isselected == true
+                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                            : Colors.grey, */
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
                                                                               true,
-                                                                          dropdownColor:
-                                                                              Colors.white,
-                                                                          value:
-                                                                              availableroutes[0].rotId,
-                                                                          style:
-                                                                              kfontstyle(color: Colors.black),
-                                                                          decoration:
-                                                                              InputDecoration(
-                                                                            filled:
-                                                                                true,
-                                                                            fillColor:
-                                                                                Colors.grey[100],
-                                                                            border:
-                                                                                InputBorder.none,
-                                                                          ),
-                                                                          items:
-                                                                              availableroutes.map((RouteModel item) {
-                                                                            return DropdownMenuItem(
-                                                                              value: item.rotId,
-                                                                              child: Text(
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                item.rotName ?? '',
-                                                                                style: kfontstyle(fontSize: 10.sp),
-                                                                              ),
-                                                                            );
-                                                                          }).toList(),
                                                                           onChanged:
                                                                               (value) {
-                                                                            selectedRoute[index] =
-                                                                                value ?? '-1';
+                                                                            if (selectedresons[index] ==
+                                                                                '-1') {
+                                                                              showCupertinoDialog(
+                                                                                context: context,
+                                                                                builder: (context) => CupertinoAlertDialog(
+                                                                                  title: const Text('Alert'),
+                                                                                  content: const Text("Plese select a reason"),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: const Text('Ok'),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              statuslist[index] = true;
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "A",
+                                                                              );
+                                                                            }
                                                                           },
                                                                         ),
-                                                                      ),
-                                                                getRoutesFailedState:
-                                                                    () =>
-                                                                        const SizedBox(),
-                                                              ));
-                                                        },
-                                                      ),
-                                                    ),
+                                                                        Text(
+                                                                          'Approve',
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] != null && !statuslist[index]!)
+                                                                                ? const Color(0xff0075ff)
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          /*  activeColor: isselected == false
+                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                            : Colors.grey, */
+                                                                          value: statuslist[index] == null
+                                                                              ? true
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            if (selectedresons[index] ==
+                                                                                '-1') {
+                                                                              showCupertinoDialog(
+                                                                                context: context,
+                                                                                builder: (context) => CupertinoAlertDialog(
+                                                                                  title: const Text('Alert'),
+                                                                                  content: const Text("Plese select a reason"),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: const Text('Ok'),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              statuslist[index] = false;
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "R",
+                                                                              );
+                                                                            }
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          'Reject',
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ],
+                                                    )
                                                   ],
                                                 ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    BlocBuilder<
-                                                        AapprovalOrRejectRadioCubit,
-                                                        AapprovalOrRejectRadioState>(
-                                                      builder:
-                                                          (context, state) {
-                                                        return AbsorbPointer(
-                                                          absorbing: details[
-                                                                      index]
-                                                                  .status!
-                                                                  .isNotEmpty
-                                                              ? true
-                                                              : false,
-                                                          child: Row(
-                                                            children: [
-                                                              Transform.scale(
-                                                                scale: 0.8,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Radio(
-                                                                      fillColor: MaterialStateProperty.resolveWith<
-                                                                          Color>((Set<
-                                                                              MaterialState>
-                                                                          states) {
-                                                                        return (statuslist[index] ==
-                                                                                true)
-                                                                            ? const Color(0xff0075ff)
-                                                                            : Colors.grey;
-                                                                      }),
-                                                                      /* activeColor: isselected == true
-                                                                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                                                                            : Colors.grey, */
-                                                                      value: statuslist[index] ==
-                                                                              null
-                                                                          ? false
-                                                                          : statuslist[index] == true
-                                                                              ? true
-                                                                              : false,
-                                                                      groupValue:
-                                                                          true,
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        if (selectedresons[index] ==
-                                                                                '-1' ||
-                                                                            selectedRoute[index] ==
-                                                                                '-1') {
-                                                                          showCupertinoDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder: (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                              title: const Text('Alert'),
-                                                                              content: const Text("Plese select a reason and route"),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: const Text('Ok'),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          );
-                                                                        } else {
-                                                                          showCupertinoDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder: (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                              title: const Text('Alert'),
-                                                                              content: const Text("Do you Want to Approve this product"),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    setState(() {});
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: const Text('Cancel'),
-                                                                                ),
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    statuslist[index] = true;
-                                                                                    loadingCount = 0;
-                                                                                    setState(() {});
-                                                                                    Navigator.pop(context);
-                                                                                    context.read<SchduledReturnApprovalBloc>().add(const AddScheduledReturnApprovalLoadingEvent());
-
-                                                                                    context.read<SchduledReturnApprovalBloc>().add(
-                                                                                          APProveOrRejectScheduledReturnEvent(
-                                                                                            approve: ScheduledReturnApprovalInModel(
-                                                                                              reason: selectedresons[index],
-                                                                                              returnId: widget.scheduledreturn.rrhId,
-                                                                                              routeId: selectedRoute[index],
-                                                                                              rrdId: details[index].rrdId,
-                                                                                              status: 'A',
-                                                                                              userId: widget.user.usrId,
-                                                                                            ),
-                                                                                          ),
-                                                                                        );
-                                                                                  },
-                                                                                  child: const Text('Proceed'),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          );
-                                                                        }
-
-                                                                        /*  context
-                                                                                                                                              .read<
-                                                                                                                                                  AapprovalOrRejectRadioCubit>()
-                                                                                                                                              .changeApprovalStatus(
-                                                                                                                                                  statuslist[index]); */
-                                                                      },
-                                                                    ),
-                                                                    Text(
-                                                                      'Approve',
-                                                                      style:
-                                                                          kfontstyle(),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Transform.scale(
-                                                                scale: 0.8,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Radio(
-                                                                      fillColor: MaterialStateProperty.resolveWith<
-                                                                          Color>((Set<
-                                                                              MaterialState>
-                                                                          states) {
-                                                                        return (statuslist[index] != null &&
-                                                                                !statuslist[index]!)
-                                                                            ? const Color(0xff0075ff)
-                                                                            : Colors.grey;
-                                                                      }),
-                                                                      /*  activeColor: isselected == false
-                                                                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                                                                            : Colors.grey, */
-                                                                      value: statuslist[index] ==
-                                                                              null
-                                                                          ? true
-                                                                          : statuslist[index] == true
-                                                                              ? true
-                                                                              : false,
-                                                                      groupValue:
-                                                                          false,
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        if (selectedresons[index] ==
-                                                                                '-1' ||
-                                                                            selectedRoute[index] ==
-                                                                                '-1') {
-                                                                          showCupertinoDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder: (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                              title: const Text('Alert'),
-                                                                              content: const Text("Plese select a reason and route"),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: const Text('Ok'),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          );
-                                                                        } else {
-                                                                          showCupertinoDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder: (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                              title: const Text('Alert'),
-                                                                              content: const Text("Do you Want to Reject this product"),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    setState(() {});
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: const Text('Cancel'),
-                                                                                ),
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    statuslist[index] = false;
-
-                                                                                    loadingCount = 0;
-                                                                                    setState(() {});
-                                                                                    Navigator.pop(context);
-                                                                                    context.read<SchduledReturnApprovalBloc>().add(const AddScheduledReturnApprovalLoadingEvent());
-
-                                                                                    context.read<SchduledReturnApprovalBloc>().add(
-                                                                                          APProveOrRejectScheduledReturnEvent(
-                                                                                            approve: ScheduledReturnApprovalInModel(
-                                                                                              reason: selectedresons[index],
-                                                                                              returnId: widget.scheduledreturn.rrhId,
-                                                                                              routeId: selectedRoute[index],
-                                                                                              rrdId: details[index].rrdId,
-                                                                                              status: 'R',
-                                                                                              userId: widget.user.usrId,
-                                                                                            ),
-                                                                                          ),
-                                                                                        );
-                                                                                  },
-                                                                                  child: const Text('Proceed'),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          );
-                                                                        }
-
-                                                                        /* context
-                                                                                                                                              .read<
-                                                                                                                                                  AapprovalOrRejectRadioCubit>()
-                                                                                                                                              .changeApprovalStatus(
-                                                                                                                                                  statuslist[index]); */
-                                                                      },
-                                                                    ),
-                                                                    Text(
-                                                                      'Reject',
-                                                                      style:
-                                                                          kfontstyle(),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ],
-                                                )
                                               ],
                                             )
                                           ],
@@ -890,6 +701,321 @@ class _ScheduledReturnDetailScreenState
                           ),
                         );
                       },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 80.h,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        /*  Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          child: TextFormField(
+                            controller: _remarksctrls,
+                            enabled: widget.disputenote.status == 'Pending'
+                                ? true
+                                : false,
+                            decoration: InputDecoration(
+                              hintText: 'Remarks',
+                              hintStyle: kfontstyle(
+                                fontSize: 12.sp,
+                                color: widget.disputenote.status == 'Pending'
+                                    ? Colors.red.shade300
+                                    : Colors.grey,
+                              ),
+                              border: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey[300]!),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey[300]!),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey[300]!),
+                              ),
+                            ),
+                          ),
+                        ), */
+
+                        widget.scheduledreturn.status == "Pending"
+                            ? Expanded(
+                                child: BlocConsumer<RouteForScCubit,
+                                    RouteForScState>(
+                                  listener: (context, state) {
+                                    state.when(
+                                      getAllRoutesForScReturnState: (routes) {
+                                        availableroutes.clear();
+
+                                        availableroutes = [
+                                          RouteModel(
+                                              rotId: '-1',
+                                              rotName: 'Select a Route')
+                                        ];
+
+                                        if (routes != null) {
+                                          availableroutes.addAll(routes);
+                                        }
+                                      },
+                                      getRoutesFailedState: () {
+                                        availableroutes.clear();
+
+                                        availableroutes = [
+                                          RouteModel(
+                                              rotId: '-1',
+                                              rotName:
+                                                  'No Routes Available, Please try again laters')
+                                        ];
+                                      },
+                                    );
+                                  },
+                                  builder: (context, state) {
+                                    return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 0,
+                                        ),
+                                        child: state.when(
+                                          getAllRoutesForScReturnState:
+                                              (routes) => routes == null ||
+                                                      availableroutes.isEmpty
+                                                  ? const ShimmerContainers(
+                                                      height: 30,
+                                                      width: double.infinity,
+                                                    )
+                                                  : Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 20),
+                                                      child:
+                                                          DropdownButtonFormField(
+                                                        isExpanded: true,
+                                                        dropdownColor:
+                                                            Colors.white,
+                                                        value:
+                                                            availableroutes[0]
+                                                                .rotId,
+                                                        style: kfontstyle(
+                                                            color:
+                                                                Colors.black),
+                                                        menuMaxHeight:
+                                                            MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width,
+                                                        decoration:
+                                                            InputDecoration(
+                                                                contentPadding:
+                                                                    const EdgeInsets
+                                                                        .symmetric(
+                                                                  horizontal:
+                                                                      10,
+                                                                ),
+                                                                // filled: true,
+                                                                // fillColor: Colors.grey[100],
+                                                                border:
+                                                                    UnderlineInputBorder(
+                                                                  borderSide: BorderSide(
+                                                                      color: Colors
+                                                                              .grey[
+                                                                          200]!),
+                                                                ),
+                                                                enabledBorder: UnderlineInputBorder(
+                                                                    borderSide: BorderSide(
+                                                                        color: Colors.grey[
+                                                                            200]!)),
+                                                                focusedBorder: UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                            color:
+                                                                                Colors.grey[200]!))),
+                                                        items: availableroutes
+                                                            .map((RouteModel
+                                                                item) {
+                                                          return DropdownMenuItem(
+                                                            value: item.rotId,
+                                                            child: Text(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              item.rotName ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      10.sp),
+                                                            ),
+                                                          );
+                                                        }).toList(),
+                                                        onChanged: (value) {
+                                                          selectedRoute =
+                                                              value ?? '-1';
+                                                        },
+                                                      ),
+                                                    ),
+                                          getRoutesFailedState: () =>
+                                              const SizedBox(),
+                                        ));
+                                  },
+                                ),
+                              )
+                            : /* const SizedBox(height: ,) */ const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
+                                child: MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  color:
+                                      widget.scheduledreturn.status == 'Pending'
+                                          ? Colors.red.shade300
+                                          : Colors.grey[300],
+                                  onPressed: () {
+                                    if (widget.scheduledreturn.status ==
+                                        'Pending') {
+                                      Navigator.pop(context);
+                                    }
+                                  },
+                                  child: Text(
+                                    'Cancel',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
+                                child: MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  color:
+                                      widget.scheduledreturn.status == 'Pending'
+                                          ? Colors.green.shade300
+                                          : Colors.grey[300],
+                                  onPressed: () {
+                                    if (widget.scheduledreturn.status ==
+                                        'Pending') {
+                                      if (selectedRoute != '-1') {
+                                        if (approvedProducts.contains(null)) {
+                                          showCupertinoDialog(
+                                            context: context,
+                                            builder: (context) =>
+                                                CupertinoAlertDialog(
+                                              title: const Text('Alert'),
+                                              content: const Text(
+                                                  "Please make sure you have approved or rejected all the products"),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        } else {
+                                          showCupertinoDialog(
+                                            context: context,
+                                            builder: (context) =>
+                                                CupertinoAlertDialog(
+                                              title: const Text('Alert'),
+                                              content: const Text(
+                                                  "Do you Want to Proceed"),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    loadingCount = 0;
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            SchduledReturnApprovalBloc>()
+                                                        .add(
+                                                            const AddScheduledReturnApprovalLoadingEvent());
+
+                                                    context
+                                                        .read<
+                                                            SchduledReturnApprovalBloc>()
+                                                        .add(
+                                                          APProveOrRejectScheduledReturnEvent(
+                                                            approve:
+                                                                ScheduledReturnApprovalInModel(
+                                                              returnId: widget
+                                                                  .scheduledreturn
+                                                                  .rrhId,
+                                                              routeId:
+                                                                  selectedRoute,
+                                                              products:
+                                                                  approvedProducts,
+                                                              userId: widget
+                                                                  .user.usrId,
+                                                            ),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: const Text('Proceed'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }
+                                      } else {
+                                        showCupertinoDialog(
+                                          context: context,
+                                          builder: (context) =>
+                                              CupertinoAlertDialog(
+                                            title: const Text('Alert'),
+                                            content: const Text(
+                                                "Please make sure you have selected a route"),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                    }
+                                  },
+                                  child: Text(
+                                    'Approve',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],

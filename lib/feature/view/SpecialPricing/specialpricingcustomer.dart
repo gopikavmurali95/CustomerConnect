@@ -248,9 +248,10 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshSpecialPricingCustomerScreen(context,widget.user),
+        onRefresh: () =>
+            _onRefreshSpecialPricingCustomerScreen(context, widget.user),
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -298,21 +299,21 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
   }
 }
 
-Future<void> _onRefreshSpecialPricingCustomerScreen(BuildContext context,LoginUserModel model) async
-{
-  context.read<SpecialPriceCustomersBloc>().add(const ClearSpecialPriceCustomer());
+Future<void> _onRefreshSpecialPricingCustomerScreen(
+    BuildContext context, LoginUserModel model) async {
+  context
+      .read<SpecialPriceCustomersBloc>()
+      .add(const ClearSpecialPriceCustomer());
   context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
       userID: model.usrId!,
       fromDate:
-      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
       todate:
-      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-      searchQuery: ''
-  ));
+          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+      searchQuery: ''));
 
   // context.read<SpecialPriceDetailsBloc>().add(const ClearSpecialriceDetailsEvent());
   // context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(
   //     prhID: '',
   //     searchQuery: ''));
 }
-

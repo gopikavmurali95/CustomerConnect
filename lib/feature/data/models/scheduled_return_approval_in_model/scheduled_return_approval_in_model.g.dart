@@ -12,9 +12,10 @@ ScheduledReturnApprovalInModel _$ScheduledReturnApprovalInModelFromJson(
       userId: json['UserId'] as String?,
       returnId: json['ReturnID'] as String?,
       routeId: json['RouteId'] as String?,
-      rrdId: json['rrd_ID'] as String?,
-      reason: json['Reason'] as String?,
-      status: json['Status'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) =>
+              ScheduledReturnPrdModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ScheduledReturnApprovalInModelToJson(
@@ -23,7 +24,5 @@ Map<String, dynamic> _$ScheduledReturnApprovalInModelToJson(
       'UserId': instance.userId,
       'ReturnID': instance.returnId,
       'RouteId': instance.routeId,
-      'rrd_ID': instance.rrdId,
-      'Reason': instance.reason,
-      'Status': instance.status,
+      'products': instance.products,
     };

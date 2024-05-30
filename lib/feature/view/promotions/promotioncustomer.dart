@@ -218,12 +218,13 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshPromotionCustomerScreen(context,widget.promotion),
+        onRefresh: () =>
+            _onRefreshPromotionCustomerScreen(context, widget.promotion),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
-         // width: double.infinity,
+          // width: double.infinity,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -236,7 +237,8 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                         'Assigned Customers',
                         style: countHeading(),
                       ),
-                      BlocBuilder<PromotionCustomerBloc, PromotionCustomerState>(
+                      BlocBuilder<PromotionCustomerBloc,
+                          PromotionCustomerState>(
                         builder: (context, state) {
                           return Text(
                             state.when(
@@ -266,13 +268,15 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
   }
 }
 
-
-
-Future<void> _onRefreshPromotionCustomerScreen(BuildContext context,PromotionHeaderModel model) async
-{
+Future<void> _onRefreshPromotionCustomerScreen(
+    BuildContext context, PromotionHeaderModel model) async {
   context.read<PromotionDetailsBloc>().add(const ClearPromotionDetails());
-  context.read<PromotionDetailsBloc>().add(const GetPromotionDetailsEvent(id: ''));
+  context
+      .read<PromotionDetailsBloc>()
+      .add(const GetPromotionDetailsEvent(id: ''));
 
   context.read<PromotionCustomerBloc>().add(const ClearOromotionCustomer());
-  context.read<PromotionCustomerBloc>().add(const GetPromotionCustomerEvent(id: '', searchQuery: ''));
+  context
+      .read<PromotionCustomerBloc>()
+      .add(const GetPromotionCustomerEvent(id: '', searchQuery: ''));
 }

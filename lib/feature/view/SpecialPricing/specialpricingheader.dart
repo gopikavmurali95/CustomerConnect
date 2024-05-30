@@ -82,7 +82,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                       const Duration(
                         milliseconds: 500,
                       ),
-                          () async {
+                      () async {
                         context
                             .read<SpecialPriceHeaderBloc>()
                             .add(const ClearSpecialPriceEvent());
@@ -159,9 +159,10 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshSpecialPricingCustomerScreen(context,widget.user),
+        onRefresh: () =>
+            _onRefreshSpecialPricingCustomerScreen(context, widget.user),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
@@ -188,12 +189,12 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                         builder: (context, state) {
                           return state.when(
                             getSpecialPriceHeaderState: (spPrice) =>
-                            spPrice == null
-                                ? const SizedBox()
-                                : Text(
-                              spPrice.length.toString(),
-                              style: countHeading(),
-                            ),
+                                spPrice == null
+                                    ? const SizedBox()
+                                    : Text(
+                                        spPrice.length.toString(),
+                                        style: countHeading(),
+                                      ),
                             speciaPriceHeaderFailedState: () => const Text('0'),
                           );
                         },
@@ -212,11 +213,12 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
       ),
     );
   }
-  Future<void> _onRefreshSpecialPricingCustomerScreen(BuildContext context,LoginUserModel model) async
-  {
+
+  Future<void> _onRefreshSpecialPricingCustomerScreen(
+      BuildContext context, LoginUserModel model) async {
     context.read<SpecialPriceHeaderBloc>().add(const ClearSpecialPriceEvent());
     context.read<SpecialPriceHeaderBloc>().add(GetSpecialPriceHeaderEvent(
-        spPriceInparas:  SpecialPriceHeaderModel(
+        spPriceInparas: SpecialPriceHeaderModel(
             area: '',
             customer: '',
             fromDate: '01-01-2023',
@@ -227,11 +229,5 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
             toDate: '01-05-2024',
             userId: widget.user.usrId),
         searchQuery: ''));
-
   }
 }
-
-
-
-
-
