@@ -1,3 +1,4 @@
+import 'package:customer_connect/feature/data/models/scheduled_return_prd_model/scheduled_return_prd_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'scheduled_return_approval_in_model.g.dart';
@@ -10,20 +11,13 @@ class ScheduledReturnApprovalInModel {
   String? returnId;
   @JsonKey(name: 'RouteId')
   String? routeId;
-  @JsonKey(name: 'rrd_ID')
-  String? rrdId;
-  @JsonKey(name: 'Reason')
-  String? reason;
-  @JsonKey(name: 'Status')
-  String? status;
+  List<ScheduledReturnPrdModel?>? products;
 
   ScheduledReturnApprovalInModel({
     this.userId,
     this.returnId,
     this.routeId,
-    this.rrdId,
-    this.reason,
-    this.status,
+    this.products,
   });
 
   factory ScheduledReturnApprovalInModel.fromJson(Map<String, dynamic> json) {
