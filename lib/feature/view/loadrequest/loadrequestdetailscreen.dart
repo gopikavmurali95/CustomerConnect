@@ -338,8 +338,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                 Column(
                                                   children: [
                                                     Text(
-                                                      "jsnjhx"
-                                                      //details[index].adjustedHQty
+
+                                                      "${details[index].lrdPrdID}"
                                                       ,
                                                       style: kfontstyle(
                                                           fontSize: 12.sp,
@@ -352,8 +352,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                       height: 10.h,
                                                     ),
                                                     Text(
-                                                      "absxb"
-                                                      //details[index].adjustedLQty
+
+                                                      '${details[index].lrdApvHQty}'
                                                       ,
                                                       style: kfontstyle(
                                                           fontSize: 12.sp,

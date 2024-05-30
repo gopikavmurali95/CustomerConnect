@@ -306,7 +306,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                             SizedBox(
                                                               width: 200.w,
                                                               child: Text(
-                                                                '${promoheader[index].pName}',
+                                                                '${promoheader[index].prmName}',
                                                                 overflow: TextOverflow.ellipsis,
                                                                 maxLines:2,
 
