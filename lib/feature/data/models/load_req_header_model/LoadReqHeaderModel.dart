@@ -6,24 +6,25 @@ String loadReqHeaderModelToJson(LoadReqHeaderModel data) =>
     json.encode(data.toJson());
 
 class LoadReqHeaderModel {
-  LoadReqHeaderModel({
-    this.lrhID,
-    this.lrhNumber,
-    this.lrhUsrID,
-    this.usrName,
-    this.usrArabicName,
-    this.createdDate,
-    this.lrhLoadReqDate,
-    this.lrhUdpID,
-    this.status,
-    this.rotName,
-    this.rotCode,
-    this.rotArabicName,
-    this.lrhRemarks,
-    this.stagingIntegStatus,
-    this.stagingIntegRemarks,
-    this.stagingIntegTime,
-  });
+  LoadReqHeaderModel(
+      {this.lrhID,
+      this.lrhNumber,
+      this.lrhUsrID,
+      this.usrName,
+      this.usrArabicName,
+      this.createdDate,
+      this.lrhLoadReqDate,
+      this.lrhUdpID,
+      this.status,
+      this.rotName,
+      this.rotCode,
+      this.rotArabicName,
+      this.lrhRemarks,
+      this.stagingIntegStatus,
+      this.stagingIntegRemarks,
+      this.stagingIntegTime,
+      this.rotID,
+      this.userID});
 
   LoadReqHeaderModel.fromJson(dynamic json) {
     lrhID = json['lrh_ID'];
@@ -42,6 +43,8 @@ class LoadReqHeaderModel {
     stagingIntegStatus = json['StagingIntegStatus'];
     stagingIntegRemarks = json['StagingIntegRemarks'];
     stagingIntegTime = json['StagingIntegTime'];
+    stagingIntegTime = json['rotID'];
+    stagingIntegTime = json['UserID'];
   }
   String? lrhID;
   String? lrhNumber;
@@ -59,6 +62,8 @@ class LoadReqHeaderModel {
   String? stagingIntegStatus;
   String? stagingIntegRemarks;
   String? stagingIntegTime;
+  String? userID;
+  String? rotID;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -78,6 +83,8 @@ class LoadReqHeaderModel {
     map['StagingIntegStatus'] = stagingIntegStatus;
     map['StagingIntegRemarks'] = stagingIntegRemarks;
     map['StagingIntegTime'] = stagingIntegTime;
+    map['rotID'] = stagingIntegTime;
+    map['UserID'] = stagingIntegTime;
     return map;
   }
 }

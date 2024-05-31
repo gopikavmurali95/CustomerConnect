@@ -21,6 +21,8 @@ mixin _$LoadReqApprovalEvent {
     required TResult Function(LoadReqInApprovalModel approval)
         approvloadReqEvent,
     required TResult Function() approvLoadingReqEvent,
+    required TResult Function(LoadReqInApprovalModel approval)
+        rejectLoadRequestEvent,
     required TResult Function() clearLoadReqApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,6 +30,7 @@ mixin _$LoadReqApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult? Function()? approvLoadingReqEvent,
+    TResult? Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult? Function()? clearLoadReqApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +38,7 @@ mixin _$LoadReqApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult Function()? approvLoadingReqEvent,
+    TResult Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult Function()? clearLoadReqApprovalEvent,
     required TResult orElse(),
   }) =>
@@ -44,6 +48,8 @@ mixin _$LoadReqApprovalEvent {
     required TResult Function(ApprovloadReqEvent value) approvloadReqEvent,
     required TResult Function(ApprovLoadingReqEvent value)
         approvLoadingReqEvent,
+    required TResult Function(RejectLoadRequestEvent value)
+        rejectLoadRequestEvent,
     required TResult Function(ClearLoadReqApprovalEvent value)
         clearLoadReqApprovalEvent,
   }) =>
@@ -52,6 +58,7 @@ mixin _$LoadReqApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult? Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult? Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult? Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
   }) =>
@@ -60,6 +67,7 @@ mixin _$LoadReqApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
     required TResult orElse(),
@@ -155,6 +163,8 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
     required TResult Function(LoadReqInApprovalModel approval)
         approvloadReqEvent,
     required TResult Function() approvLoadingReqEvent,
+    required TResult Function(LoadReqInApprovalModel approval)
+        rejectLoadRequestEvent,
     required TResult Function() clearLoadReqApprovalEvent,
   }) {
     return approvloadReqEvent(approval);
@@ -165,6 +175,7 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult? Function()? approvLoadingReqEvent,
+    TResult? Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult? Function()? clearLoadReqApprovalEvent,
   }) {
     return approvloadReqEvent?.call(approval);
@@ -175,6 +186,7 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult Function()? approvLoadingReqEvent,
+    TResult Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult Function()? clearLoadReqApprovalEvent,
     required TResult orElse(),
   }) {
@@ -190,6 +202,8 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
     required TResult Function(ApprovloadReqEvent value) approvloadReqEvent,
     required TResult Function(ApprovLoadingReqEvent value)
         approvLoadingReqEvent,
+    required TResult Function(RejectLoadRequestEvent value)
+        rejectLoadRequestEvent,
     required TResult Function(ClearLoadReqApprovalEvent value)
         clearLoadReqApprovalEvent,
   }) {
@@ -201,6 +215,7 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult? Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult? Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult? Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
   }) {
@@ -212,6 +227,7 @@ class _$ApprovloadReqEventImpl implements ApprovloadReqEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
     required TResult orElse(),
@@ -278,6 +294,8 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
     required TResult Function(LoadReqInApprovalModel approval)
         approvloadReqEvent,
     required TResult Function() approvLoadingReqEvent,
+    required TResult Function(LoadReqInApprovalModel approval)
+        rejectLoadRequestEvent,
     required TResult Function() clearLoadReqApprovalEvent,
   }) {
     return approvLoadingReqEvent();
@@ -288,6 +306,7 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult? Function()? approvLoadingReqEvent,
+    TResult? Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult? Function()? clearLoadReqApprovalEvent,
   }) {
     return approvLoadingReqEvent?.call();
@@ -298,6 +317,7 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult Function()? approvLoadingReqEvent,
+    TResult Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult Function()? clearLoadReqApprovalEvent,
     required TResult orElse(),
   }) {
@@ -313,6 +333,8 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
     required TResult Function(ApprovloadReqEvent value) approvloadReqEvent,
     required TResult Function(ApprovLoadingReqEvent value)
         approvLoadingReqEvent,
+    required TResult Function(RejectLoadRequestEvent value)
+        rejectLoadRequestEvent,
     required TResult Function(ClearLoadReqApprovalEvent value)
         clearLoadReqApprovalEvent,
   }) {
@@ -324,6 +346,7 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult? Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult? Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult? Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
   }) {
@@ -335,6 +358,7 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
     required TResult orElse(),
@@ -348,6 +372,165 @@ class _$ApprovLoadingReqEventImpl implements ApprovLoadingReqEvent {
 
 abstract class ApprovLoadingReqEvent implements LoadReqApprovalEvent {
   const factory ApprovLoadingReqEvent() = _$ApprovLoadingReqEventImpl;
+}
+
+/// @nodoc
+abstract class _$$RejectLoadRequestEventImplCopyWith<$Res> {
+  factory _$$RejectLoadRequestEventImplCopyWith(
+          _$RejectLoadRequestEventImpl value,
+          $Res Function(_$RejectLoadRequestEventImpl) then) =
+      __$$RejectLoadRequestEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LoadReqInApprovalModel approval});
+}
+
+/// @nodoc
+class __$$RejectLoadRequestEventImplCopyWithImpl<$Res>
+    extends _$LoadReqApprovalEventCopyWithImpl<$Res,
+        _$RejectLoadRequestEventImpl>
+    implements _$$RejectLoadRequestEventImplCopyWith<$Res> {
+  __$$RejectLoadRequestEventImplCopyWithImpl(
+      _$RejectLoadRequestEventImpl _value,
+      $Res Function(_$RejectLoadRequestEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? approval = null,
+  }) {
+    return _then(_$RejectLoadRequestEventImpl(
+      approval: null == approval
+          ? _value.approval
+          : approval // ignore: cast_nullable_to_non_nullable
+              as LoadReqInApprovalModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RejectLoadRequestEventImpl implements RejectLoadRequestEvent {
+  const _$RejectLoadRequestEventImpl({required this.approval});
+
+  @override
+  final LoadReqInApprovalModel approval;
+
+  @override
+  String toString() {
+    return 'LoadReqApprovalEvent.rejectLoadRequestEvent(approval: $approval)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RejectLoadRequestEventImpl &&
+            (identical(other.approval, approval) ||
+                other.approval == approval));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, approval);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RejectLoadRequestEventImplCopyWith<_$RejectLoadRequestEventImpl>
+      get copyWith => __$$RejectLoadRequestEventImplCopyWithImpl<
+          _$RejectLoadRequestEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoadReqInApprovalModel approval)
+        approvloadReqEvent,
+    required TResult Function() approvLoadingReqEvent,
+    required TResult Function(LoadReqInApprovalModel approval)
+        rejectLoadRequestEvent,
+    required TResult Function() clearLoadReqApprovalEvent,
+  }) {
+    return rejectLoadRequestEvent(approval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
+    TResult? Function()? approvLoadingReqEvent,
+    TResult? Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
+    TResult? Function()? clearLoadReqApprovalEvent,
+  }) {
+    return rejectLoadRequestEvent?.call(approval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
+    TResult Function()? approvLoadingReqEvent,
+    TResult Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
+    TResult Function()? clearLoadReqApprovalEvent,
+    required TResult orElse(),
+  }) {
+    if (rejectLoadRequestEvent != null) {
+      return rejectLoadRequestEvent(approval);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApprovloadReqEvent value) approvloadReqEvent,
+    required TResult Function(ApprovLoadingReqEvent value)
+        approvLoadingReqEvent,
+    required TResult Function(RejectLoadRequestEvent value)
+        rejectLoadRequestEvent,
+    required TResult Function(ClearLoadReqApprovalEvent value)
+        clearLoadReqApprovalEvent,
+  }) {
+    return rejectLoadRequestEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ApprovloadReqEvent value)? approvloadReqEvent,
+    TResult? Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult? Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
+    TResult? Function(ClearLoadReqApprovalEvent value)?
+        clearLoadReqApprovalEvent,
+  }) {
+    return rejectLoadRequestEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApprovloadReqEvent value)? approvloadReqEvent,
+    TResult Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
+    TResult Function(ClearLoadReqApprovalEvent value)?
+        clearLoadReqApprovalEvent,
+    required TResult orElse(),
+  }) {
+    if (rejectLoadRequestEvent != null) {
+      return rejectLoadRequestEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RejectLoadRequestEvent implements LoadReqApprovalEvent {
+  const factory RejectLoadRequestEvent(
+          {required final LoadReqInApprovalModel approval}) =
+      _$RejectLoadRequestEventImpl;
+
+  LoadReqInApprovalModel get approval;
+  @JsonKey(ignore: true)
+  _$$RejectLoadRequestEventImplCopyWith<_$RejectLoadRequestEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -395,6 +578,8 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
     required TResult Function(LoadReqInApprovalModel approval)
         approvloadReqEvent,
     required TResult Function() approvLoadingReqEvent,
+    required TResult Function(LoadReqInApprovalModel approval)
+        rejectLoadRequestEvent,
     required TResult Function() clearLoadReqApprovalEvent,
   }) {
     return clearLoadReqApprovalEvent();
@@ -405,6 +590,7 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult? Function()? approvLoadingReqEvent,
+    TResult? Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult? Function()? clearLoadReqApprovalEvent,
   }) {
     return clearLoadReqApprovalEvent?.call();
@@ -415,6 +601,7 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoadReqInApprovalModel approval)? approvloadReqEvent,
     TResult Function()? approvLoadingReqEvent,
+    TResult Function(LoadReqInApprovalModel approval)? rejectLoadRequestEvent,
     TResult Function()? clearLoadReqApprovalEvent,
     required TResult orElse(),
   }) {
@@ -430,6 +617,8 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
     required TResult Function(ApprovloadReqEvent value) approvloadReqEvent,
     required TResult Function(ApprovLoadingReqEvent value)
         approvLoadingReqEvent,
+    required TResult Function(RejectLoadRequestEvent value)
+        rejectLoadRequestEvent,
     required TResult Function(ClearLoadReqApprovalEvent value)
         clearLoadReqApprovalEvent,
   }) {
@@ -441,6 +630,7 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult? Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult? Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult? Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
   }) {
@@ -452,6 +642,7 @@ class _$ClearLoadReqApprovalEventImpl implements ClearLoadReqApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApprovloadReqEvent value)? approvloadReqEvent,
     TResult Function(ApprovLoadingReqEvent value)? approvLoadingReqEvent,
+    TResult Function(RejectLoadRequestEvent value)? rejectLoadRequestEvent,
     TResult Function(ClearLoadReqApprovalEvent value)?
         clearLoadReqApprovalEvent,
     required TResult orElse(),

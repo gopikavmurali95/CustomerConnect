@@ -24,7 +24,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
     context
         .read<LoadReqHeaderBloc>()
-        .add(const LoadreqSuccessEvent(userId: ''));
+        .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? ''));
     super.initState();
   }
 
@@ -86,6 +86,8 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                     itemCount: 10),
                               )
                             : ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
                                       onTap: () {
@@ -177,40 +179,47 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                     ],
                                                   ),
                                                 ),
-                                                // Container(
-                                                //   decoration: BoxDecoration(
-                                                //     color: headers[index].ltrApprovalStatus!
-                                                //         .isEmpty ||
-                                                //         headers[index].ltrApprovalStatus !=
-                                                //             'Action Taken'
-                                                //         ? headers[index].ltrApprovalStatus ==
-                                                //         'Rejected'
-                                                //         ? Colors.red[300]
-                                                //         : const Color(0xfff7f4e2)
-                                                //         : const Color(0xffe3f7e2),
-                                                //     borderRadius:
-                                                //     BorderRadius.circular(
-                                                //       20,
-                                                //     ),
-                                                //   ),
-                                                //   child: Padding(
-                                                //     padding:
-                                                //     const EdgeInsets.symmetric(
-                                                //         horizontal: 8,
-                                                //         vertical: 5),
-                                                //     child: Text(
-                                                //       headers[index].ltrApprovalStatus ??
-                                                //           '',
-                                                //       style: kfontstyle(
-                                                //           fontSize: 10.sp,
-                                                //           fontWeight: FontWeight.w400,
-                                                //           color: headers[index].ltrApprovalStatus ==
-                                                //               'Rejected'
-                                                //               ? Colors.white54
-                                                //               : Colors.black54),
-                                                //     ),
-                                                //   ),
-                                                // )
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: headers[index]
+                                                                .status!
+                                                                .isEmpty ||
+                                                            headers[index]
+                                                                    .status !=
+                                                                'Approved'
+                                                        ? headers[index]
+                                                                    .status ==
+                                                                'Rejected'
+                                                            ? Colors.red[300]
+                                                            : const Color(
+                                                                0xfff7f4e2)
+                                                        : const Color(
+                                                            0xffe3f7e2),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      20,
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8,
+                                                        vertical: 5),
+                                                    child: Text(
+                                                      headers[index].status ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: headers[index]
+                                                                      .status ==
+                                                                  'Rejected'
+                                                              ? Colors.white54
+                                                              : Colors.black54),
+                                                    ),
+                                                  ),
+                                                )
                                               ],
                                             ),
                                           ),

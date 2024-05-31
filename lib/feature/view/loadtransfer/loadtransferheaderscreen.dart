@@ -160,7 +160,7 @@ class _LoadTransferApprovalHeaderScreenState
                                                           .isEmpty ||
                                                       headers[index]
                                                               .ltrApprovalStatus !=
-                                                          'Action Taken'
+                                                          'Approved'
                                                   ? headers[index]
                                                               .ltrApprovalStatus ==
                                                           'Rejected'

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -13,13 +12,12 @@ import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schd
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -69,7 +67,6 @@ class _ScheduledReturnDetailScreenState
 
   @override
   Widget build(BuildContext context) {
-    log(jsonEncode(approvedProducts));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -950,7 +947,8 @@ class _ScheduledReturnDetailScreenState
                                                               products:
                                                                   approvedProducts,
                                                               userId: widget
-                                                                  .user.usrId,
+                                                                  .scheduledreturn
+                                                                  .userID,
                                                             ),
                                                           ),
                                                         );
@@ -984,7 +982,7 @@ class _ScheduledReturnDetailScreenState
                                     }
                                   },
                                   child: Text(
-                                    'Approve',
+                                    'Confirm',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w500,

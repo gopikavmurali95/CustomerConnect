@@ -43,6 +43,14 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve) async {
     try {
+      log({
+        "JSONString": jsonEncode([
+          {
+            "jps_ID": approve.jpsId,
+          }
+        ]),
+        "UserId": approve.userId,
+      }.toString());
       final response = await http.post(
           Uri.parse(approvalBaseUrl + journeyPlanApprovalApproval),
           body: {
@@ -82,6 +90,15 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
         ]),
         "UserId": approve.userId,
       });
+
+      log({
+        "JSONString": jsonEncode([
+          {
+            "jps_ID": approve.jpsId,
+          }
+        ]),
+        "UserId": approve.userId,
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

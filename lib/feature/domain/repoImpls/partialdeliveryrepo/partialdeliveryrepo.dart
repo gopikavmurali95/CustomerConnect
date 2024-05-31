@@ -22,6 +22,7 @@ class PartialDeliveryRepo implements IPartialDeliveryRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + partialDeliverHeaderUrl),
           body: {"UserID": userID});
+      // log(response.body);
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

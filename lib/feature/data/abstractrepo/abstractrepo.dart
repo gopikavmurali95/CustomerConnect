@@ -403,6 +403,9 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
   Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>>
       invoiceApprovalRepo(String reqID, String userID);
+
+  Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>> invoiceReject(
+      String reqID, String userID);
 }
 
 abstract class IPartialDeliveryRepo {
@@ -496,6 +499,8 @@ abstract class ILoadRequestHeaderRepo {
 
 abstract class ILoadRequestApprovalRepo {
   Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadApproval(
+      LoadReqInApprovalModel loadapprove);
+  Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
       LoadReqInApprovalModel loadapprove);
 }
 

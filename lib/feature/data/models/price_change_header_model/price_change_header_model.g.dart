@@ -22,6 +22,8 @@ PriceChangeHeaderModel _$PriceChangeHeaderModelFromJson(
       createdDate: json['CreatedDate'] as String?,
       type: json['Type'] as String?,
       pchApprovalStatus: json['pch_ApprovalStatus'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$PriceChangeHeaderModelToJson(
@@ -40,4 +42,6 @@ Map<String, dynamic> _$PriceChangeHeaderModelToJson(
       'CreatedDate': instance.createdDate,
       'Type': instance.type,
       'pch_ApprovalStatus': instance.pchApprovalStatus,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

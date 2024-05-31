@@ -22,9 +22,7 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
           .post(Uri.parse(approvalBaseUrl + vanToVanApprovalUrl), body: {
         "UserId": approveIn.userID,
         "ReqID": approveIn.reqID,
-        "JSONString": jsonEncode([
-          {approveIn.products}
-        ])
+        "JSONString": jsonEncode(approveIn.products)
       });
 
       if (response.statusCode == 200) {

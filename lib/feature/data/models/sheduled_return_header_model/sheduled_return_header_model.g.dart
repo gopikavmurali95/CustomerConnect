@@ -19,6 +19,8 @@ SheduledReturnHeaderModel _$SheduledReturnHeaderModelFromJson(
       rrhReturnType: json['rrh_ReturnType'] as String?,
       createdDate: json['CreatedDate'] as String?,
       status: json['Status'] as String?,
+      userID: json['UserID'] as String?,
+      rotID: json['rotID'] as String?,
     );
 
 Map<String, dynamic> _$SheduledReturnHeaderModelToJson(
@@ -34,4 +36,6 @@ Map<String, dynamic> _$SheduledReturnHeaderModelToJson(
       'rrh_ReturnType': instance.rrhReturnType,
       'CreatedDate': instance.createdDate,
       'Status': instance.status,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

@@ -24,6 +24,8 @@ FieldServiceInvoiceHeaderModel _$FieldServiceInvoiceHeaderModelFromJson(
       sahSubTotal: json['sah_SubTotal'] as String?,
       sahVat: json['sah_VAT'] as String?,
       sahGrandTotal: json['sah_GrandTotal'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$FieldServiceInvoiceHeaderModelToJson(
@@ -44,4 +46,6 @@ Map<String, dynamic> _$FieldServiceInvoiceHeaderModelToJson(
       'sah_SubTotal': instance.sahSubTotal,
       'sah_VAT': instance.sahVat,
       'sah_GrandTotal': instance.sahGrandTotal,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

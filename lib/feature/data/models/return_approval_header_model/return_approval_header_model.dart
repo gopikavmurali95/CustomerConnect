@@ -28,6 +28,10 @@ class ReturnApprovalHeaderModel {
   String? createdDate;
   @JsonKey(name: 'rah_ApprovalStatus')
   String? rahApprovalStatus;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
   ReturnApprovalHeaderModel({
     this.cusCode,
@@ -42,6 +46,8 @@ class ReturnApprovalHeaderModel {
     this.mode,
     this.createdDate,
     this.rahApprovalStatus,
+    this.userID,
+    this.rotID
   });
 
   factory ReturnApprovalHeaderModel.fromJson(Map<String, dynamic> json) {

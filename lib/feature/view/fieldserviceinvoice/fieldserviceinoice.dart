@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
+import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinvoicedetails.dart';
 // import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinvoicedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -59,13 +60,15 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                       : ListView.separated(
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
-                                  /*Navigator.push(
+                                  Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const FieldServiceInvoiceDetails(),
+                                          FieldServiceInvoiceDetails(
+                                        header: headers[index],
+                                      ),
                                     ),
-                                  );*/
+                                  );
                                 },
                                 child: Row(
                                   children: [

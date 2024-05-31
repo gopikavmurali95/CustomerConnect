@@ -3,14 +3,14 @@ import 'dart:developer';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_header_model/load_transfer_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_in_model/load_transfer_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_prd_model/load_transfer_prd_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_product_model/load_transfer_product_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
-import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class LoadTransferDetailScreen extends StatefulWidget {
       _LoadTransferDetailScreenState();
 }
 
-List<String> selectedresons = [];
+List<dynamic> selectedresons = [];
 List<bool?> statuslist = [];
 bool isLoading = false;
 List<LoadTransferProductModel?> approvedProducts = [];
@@ -37,23 +37,7 @@ int _responsecount = 0;
 int loadingCount = 0;
 int _approvedCount = 0;
 int _totalCount = 0;
-_showPopAlert(BuildContext context) {
-  showCupertinoDialog(
-    context: context,
-    builder: (context) => CupertinoAlertDialog(
-      title: const Text('Alert'),
-      content: const Text("Please approve or reject all the items"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Ok'),
-        ),
-      ],
-    ),
-  );
-}
+List<LoadTransferPrdModel?> _loadprducts = [];
 
 class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
   @override
@@ -79,13 +63,15 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            if (_approvedCount != 0 && _approvedCount != _totalCount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else {
-              context.read<NavigatetoBackCubit>().popFromScreen(true);
-            }
+            // if (_approvedCount != 0 && _approvedCount != _totalCount) {
+            //   Future.delayed(const Duration(microseconds: 100), () {
+            //     showPopAlert(context);
+            //   });
+            // } else {
+            //   context.read<NavigatetoBackCubit>().popFromScreen(true);
+            // }
+
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -99,21 +85,21 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
       ),
       body: PopScope(
         canPop:
-            /* _approvedCount == 0 || _approvedCount == _totalCount ? true : */ false,
+            /* _approvedCount == 0 || _approvedCount == _totalCount ? true : */ true,
         onPopInvoked: (didPop) {
-          if (_approvedCount != 0 && _approvedCount != _totalCount) {
-            context.read<LoadTransferHeaderBloc>().add(
-                const GetAllLoadTransferHeadersEvent(
-                    userID: /* widget.user.usrId?? */ '48'));
+          // if (_approvedCount != 0 && _approvedCount != _totalCount) {
+          context.read<LoadTransferHeaderBloc>().add(
+              GetAllLoadTransferHeadersEvent(
+                  userID: widget.header.userID ?? ''));
 
-            Future.delayed(const Duration(microseconds: 100), () {
-              showPopAlert(context);
-            });
-          } else {
-            log("$_approvedCount / $_totalCount");
-            context.read<NavigatetoBackCubit>().popFromScreen(true);
-            return;
-          }
+          //   Future.delayed(const Duration(microseconds: 100), () {
+          //     showPopAlert(context);
+          //   });
+          // } else {
+          //   log("$_approvedCount / $_totalCount");
+          //   context.read<NavigatetoBackCubit>().popFromScreen(true);
+          //   return;
+          // }
         },
         child: BlocListener<NavigatetoBackCubit, NavigatetoBackState>(
           listener: (context, state) {
@@ -127,431 +113,492 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
           },
           child: Column(
             children: [
-              Container(
-                height: 30.h,
-                width: double.infinity,
-                color: const Color(0xfff5f5f5),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Item',
-                        style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'UOM',
-                            style: kfontstyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black54),
-                          ),
-                          SizedBox(
-                            width: 40.w,
-                          ),
-                          Text(
-                            'Qty',
-                            style: kfontstyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black54),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
               Expanded(
-                  child: BlocConsumer<LoadTransferDetailBloc,
-                      LoadTransferDetailState>(
-                listener: (context, state) {
-                  state.when(
-                    getLoadTransferDetailState: (details) {
-                      if (details != null) {
-                        // _totalCount = details.length;
-                        /*  context.read<ApprovalReasonsBloc>().add(
-                                  const GetApprovalReasonsEvent(rsnType: 'rsnType')); */
-                        if (statuslist.length != details.length) {
-                          approvedProducts =
-                              List.generate(details.length, (index) => null);
-                          statuslist.clear();
-
-                          statuslist /* length = details.length; */
-                              = List.generate(details.length, (index) => null);
-                        }
-
-                        /* for (int i = 0; i < details.length; i++) {
-                                if (details[i].ap!.isNotEmpty) {
-                                  if (details[i].radApprovalStatus == 'A') {
-                                    statuslist[i] = true;
-                                  } else {
-                                    statuslist[i] = false;
-                                  }
-                                }
-                              } */
-                      }
-                    },
-                    loadTransferDetailFailedState: () {},
-                  );
-                },
-                builder: (context, state) {
-                  return state.when(
-                    getLoadTransferDetailState: (details) => details == null
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 0),
-                            child: ListView.separated(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) =>
-                                    ShimmerContainers(
-                                        height: 60.h, width: double.infinity),
-                                separatorBuilder: (context, index) => Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                itemCount: 10),
-                          )
-                        : ListView.separated(
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) => BlocListener<
-                                LoadTransferApprovalBloc,
-                                LoadTransferApprovalState>(
-                              listener: (context, state) {
-                                state.when(
-                                  approveLoadTransferState: (response) {
-                                    if (response != null) {
-                                      if (_responsecount == 0) {
-                                        _approvedCount += 1;
-                                        _responsecount = 1;
-                                      }
-                                      Navigator.pop(context);
-                                      isLoading = false;
-
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: const Text('Alert'),
-                                          content: Text("${response.status}"),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  loadTransferApprovalLoadingState: () {
-                                    if (loadingCount == 0) {
-                                      loadingCount = 1;
-                                      _responsecount = 0;
-
-                                      showCupertinoModalPopup(
-                                          context: context,
-                                          barrierDismissible: false,
-                                          builder: (context) => SizedBox(
-                                                height: MediaQuery.of(context)
-                                                    .size
-                                                    .height,
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                child: const PopScope(
-                                                  canPop: true,
-                                                  child:
-                                                      CupertinoActivityIndicator(
-                                                    animating: true,
-                                                    color: Colors.red,
-                                                    radius: 30,
-                                                  ),
-                                                ),
-                                              ));
-                                    }
-                                  },
-                                  loadTransferApprovalFailedState: () {
-                                    log(loadingCount.toString());
-                                    if (_responsecount == 0) {
-                                      // _approvedCount = 5;
-                                      // _approvedCount++;
-                                      statuslist[index] = null;
-                                      _responsecount = 1;
-                                    }
-
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Something Went Wrong, please Try again later"),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                details[index].prdCode ?? '',
-                                                style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  color:
-                                                      const Color(0xff7b70ac),
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              Text(
-                                                details[index].prdName ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  details[index]
-                                                          .ldrOffloadHuom ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
-                                                ),
-                                                SizedBox(
-                                                  height: 10.h,
-                                                ),
-                                                Text(
-                                                  details[index]
-                                                          .ldrOffloadLuom ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 50.w,
-                                            ),
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  details[index]
-                                                          .ldrBalanceHQty ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
-                                                ),
-                                                SizedBox(
-                                                  height: 10.h,
-                                                ),
-                                                Text(
-                                                  details[index]
-                                                          .ldrBalanceLQty ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        BlocBuilder<AapprovalOrRejectRadioCubit,
-                                            AapprovalOrRejectRadioState>(
-                                          builder: (context, state) {
-                                            return Row(
-                                              children: [
-                                                Transform.scale(
-                                                  scale: 0.8,
-                                                  child: Row(
-                                                    children: [
-                                                      Radio(
-                                                        fillColor:
-                                                            MaterialStateProperty
-                                                                .resolveWith<
-                                                                    Color>((Set<
-                                                                        MaterialState>
-                                                                    states) {
-                                                          return (statuslist[
-                                                                      index] ==
-                                                                  true)
-                                                              ? const Color(
-                                                                  0xff0075ff)
-                                                              : Colors.grey;
-                                                        }),
-                                                        /* activeColor: isselected == true
-                                                                                                                                                              ? const Color(0xff0075ff)
-                                                                                                                                                              : Colors.grey, */
-                                                        value: statuslist[
-                                                                    index] ==
-                                                                null
-                                                            ? false
-                                                            : statuslist[
-                                                                        index] ==
-                                                                    true
-                                                                ? true
-                                                                : false,
-                                                        groupValue: true,
-                                                        onChanged: (value) {
-                                                          statuslist[index] =
-                                                              true;
-                                                          loadingCount = 0;
-                                                          setState(() {});
-                                                          approvedProducts[
-                                                                  index] =
-                                                              LoadTransferProductModel(
-                                                                  ldrId: details[
-                                                                          index]
-                                                                      .ldrId,
-                                                                  status: 'A');
-                                                        },
-                                                      ),
-                                                      Text(
-                                                        'Approve',
-                                                        style: kfontstyle(),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                                Transform.scale(
-                                                  scale: 0.8,
-                                                  child: Row(
-                                                    children: [
-                                                      Radio(
-                                                        fillColor:
-                                                            MaterialStateProperty
-                                                                .resolveWith<
-                                                                    Color>((Set<
-                                                                        MaterialState>
-                                                                    states) {
-                                                          return (statuslist[
-                                                                          index] !=
-                                                                      null &&
-                                                                  !statuslist[
-                                                                      index]!)
-                                                              ? const Color(
-                                                                  0xff0075ff)
-                                                              : Colors.grey;
-                                                        }),
-                                                        /*  activeColor: isselected == false
-                                                                                                                                                              ? const Color(0xff0075ff)
-                                                                                                                                                              : Colors.grey, */
-                                                        value: statuslist[
-                                                                    index] ==
-                                                                null
-                                                            ? true
-                                                            : statuslist[
-                                                                        index] ==
-                                                                    true
-                                                                ? true
-                                                                : false,
-                                                        groupValue: false,
-                                                        onChanged: (value) {
-                                                          statuslist[index] =
-                                                              true;
-                                                          loadingCount = 0;
-                                                          setState(() {});
-                                                          approvedProducts[
-                                                                  index] =
-                                                              LoadTransferProductModel(
-                                                                  ldrId: details[
-                                                                          index]
-                                                                      .ldrId,
-                                                                  status: 'R');
-
-                                                          /* context
-                                                                                                                                .read<
-                                                                                                                                    AapprovalOrRejectRadioCubit>()
-                                                                                                                                .changeApprovalStatus(
-                                                                                                                                    statuslist[index]); */
-                                                        },
-                                                      ),
-                                                      Text(
-                                                        'Reject',
-                                                        style: kfontstyle(),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            );
-                                          },
-                                        )
-                                      ],
-                                    )
-                                  ],
+                child: Column(
+                  children: [
+                    Container(
+                      height: 30.h,
+                      width: double.infinity,
+                      color: const Color(0xfff5f5f5),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Item',
+                              style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black54),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  'UOM',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black54),
                                 ),
-                              ),
-                            ),
-                            separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                            itemCount: details.length,
-                          ),
-                    loadTransferDetailFailedState: () => Center(
-                      child: Text(
-                        'No Data Available',
-                        style: kfontstyle(),
+                                SizedBox(
+                                  width: 40.w,
+                                ),
+                                Text(
+                                  'Qty',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black54),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  );
-                },
-              )),
+                    Expanded(
+                        child: BlocConsumer<LoadTransferDetailBloc,
+                            LoadTransferDetailState>(
+                      listener: (context, state) {
+                        state.when(
+                          getLoadTransferDetailState: (details) {
+                            if (details != null) {
+                              _totalCount = details.length;
+
+                              _loadprducts = List.generate(
+                                  details.length, (index) => null);
+                              /*  context.read<ApprovalReasonsBloc>().add(
+                                        const GetApprovalReasonsEvent(rsnType: 'rsnType')); */
+                              if (statuslist.length != details.length) {
+                                statuslist.clear();
+
+                                statuslist = List.generate(
+                                    details.length, (index) => null);
+                              }
+
+                              /* for (int i = 0; i < details.length; i++) {
+                                      if (details[i].ap!.isNotEmpty) {
+                                        if (details[i].radApprovalStatus == 'A') {
+                                          statuslist[i] = true;
+                                        } else {
+                                          statuslist[i] = false;
+                                        }
+                                      }
+                                    } */
+                            }
+                          },
+                          loadTransferDetailFailedState: () {},
+                        );
+                      },
+                      builder: (context, state) {
+                        return state.when(
+                          getLoadTransferDetailState: (details) => details ==
+                                  null
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 0),
+                                  child: ListView.separated(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          ShimmerContainers(
+                                              height: 60.h,
+                                              width: double.infinity),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                      itemCount: 10),
+                                )
+                              : ListView.separated(
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) => BlocListener<
+                                      LoadTransferApprovalBloc,
+                                      LoadTransferApprovalState>(
+                                    listener: (context, state) {
+                                      state.when(
+                                        approveLoadTransferState: (response) {
+                                          if (response != null) {
+                                            if (_responsecount == 0) {
+                                              _approvedCount += 1;
+                                              _responsecount = 1;
+                                            }
+                                            Navigator.pop(context);
+                                            isLoading = false;
+
+                                            showCupertinoDialog(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoAlertDialog(
+                                                title: const Text('Alert'),
+                                                content:
+                                                    Text("${response.status}"),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        loadTransferApprovalLoadingState: () {
+                                          if (loadingCount == 0) {
+                                            loadingCount = 1;
+                                            _responsecount = 0;
+
+                                            showCupertinoModalPopup(
+                                                context: context,
+                                                barrierDismissible: false,
+                                                builder: (context) => SizedBox(
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .height,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      child: const PopScope(
+                                                        canPop: true,
+                                                        child:
+                                                            CupertinoActivityIndicator(
+                                                          animating: true,
+                                                          color: Colors.red,
+                                                          radius: 30,
+                                                        ),
+                                                      ),
+                                                    ));
+                                          }
+                                        },
+                                        loadTransferApprovalFailedState: () {
+                                          log(loadingCount.toString());
+                                          if (_responsecount == 0) {
+                                            // _approvedCount = 5;
+                                            // _approvedCount++;
+                                            statuslist[index] = null;
+                                            _responsecount = 1;
+                                          }
+
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                          showCupertinoDialog(
+                                            context: context,
+                                            builder: (context) =>
+                                                CupertinoAlertDialog(
+                                              title: const Text('Alert'),
+                                              content: const Text(
+                                                  "Something Went Wrong, please Try again later"),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      details[index].prdCode ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        color: const Color(
+                                                            0xff7b70ac),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      details[index].prdName ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.black54),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Text(
+                                                        details[index]
+                                                                .ldrOffloadHuom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10.h,
+                                                      ),
+                                                      Text(
+                                                        details[index]
+                                                                .ldrOffloadLuom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    width: 50.w,
+                                                  ),
+                                                  Column(
+                                                    children: [
+                                                      Text(
+                                                        details[index]
+                                                                .ldrBalanceHQty ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10.h,
+                                                      ),
+                                                      Text(
+                                                        details[index]
+                                                                .ldrBalanceLQty ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              BlocBuilder<
+                                                  AapprovalOrRejectRadioCubit,
+                                                  AapprovalOrRejectRadioState>(
+                                                builder: (context, state) {
+                                                  return Row(
+                                                    children: [
+                                                      Transform.scale(
+                                                        scale: 0.8,
+                                                        child: Row(
+                                                          children: [
+                                                            Radio(
+                                                              fillColor: MaterialStateProperty
+                                                                  .resolveWith<
+                                                                      Color>((Set<
+                                                                          MaterialState>
+                                                                      states) {
+                                                                return (statuslist[
+                                                                            index] ==
+                                                                        true)
+                                                                    ? const Color(
+                                                                        0xff0075ff)
+                                                                    : Colors
+                                                                        .grey;
+                                                              }),
+                                                              /* activeColor: isselected == true
+                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                    : Colors.grey, */
+                                                              value: statuslist[
+                                                                          index] ==
+                                                                      null
+                                                                  ? false
+                                                                  : statuslist[
+                                                                              index] ==
+                                                                          true
+                                                                      ? true
+                                                                      : false,
+                                                              groupValue: true,
+                                                              onChanged:
+                                                                  (value) {
+                                                                /*  showCupertinoDialog(
+                                                                  context: context,
+                                                                  builder: (context) =>
+                                                                      CupertinoAlertDialog(
+                                                                    title: const Text(
+                                                                        'Alert'),
+                                                                    content: const Text(
+                                                                        "Do you Want to Approve this product"),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          setState(
+                                                                              () {});
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child: const Text(
+                                                                            'Cancel'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                         
+                                                                        },
+                                                                        child: const Text(
+                                                                            'Proceed'),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ); */
+                                                                statuslist[
+                                                                        index] =
+                                                                    true;
+                                                                loadingCount =
+                                                                    0;
+                                                                setState(() {});
+
+                                                                _loadprducts[
+                                                                        index] =
+                                                                    LoadTransferPrdModel(
+                                                                        ldrId: details[index]
+                                                                            .ldrId,
+                                                                        status:
+                                                                            "A");
+                                                              },
+                                                            ),
+                                                            Text(
+                                                              'Approve',
+                                                              style:
+                                                                  kfontstyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Transform.scale(
+                                                        scale: 0.8,
+                                                        child: Row(
+                                                          children: [
+                                                            Radio(
+                                                              fillColor: MaterialStateProperty
+                                                                  .resolveWith<
+                                                                      Color>((Set<
+                                                                          MaterialState>
+                                                                      states) {
+                                                                return (statuslist[index] !=
+                                                                            null &&
+                                                                        !statuslist[
+                                                                            index]!)
+                                                                    ? const Color(
+                                                                        0xff0075ff)
+                                                                    : Colors
+                                                                        .grey;
+                                                              }),
+                                                              /*  activeColor: isselected == false
+                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                    : Colors.grey, */
+                                                              value: statuslist[
+                                                                          index] ==
+                                                                      null
+                                                                  ? true
+                                                                  : statuslist[
+                                                                              index] ==
+                                                                          true
+                                                                      ? true
+                                                                      : false,
+                                                              groupValue: false,
+                                                              onChanged:
+                                                                  (value) {
+                                                                statuslist[
+                                                                        index] =
+                                                                    false;
+
+                                                                loadingCount =
+                                                                    0;
+                                                                setState(() {});
+
+                                                                _loadprducts[
+                                                                        index] =
+                                                                    LoadTransferPrdModel(
+                                                                        ldrId: details[index]
+                                                                            .ldrId,
+                                                                        status:
+                                                                            "R");
+                                                              },
+                                                            ),
+                                                            Text(
+                                                              'Reject',
+                                                              style:
+                                                                  kfontstyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  );
+                                                },
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  separatorBuilder: (context, index) => Divider(
+                                    color: Colors.grey[300],
+                                  ),
+                                  itemCount: details.length,
+                                ),
+                          loadTransferDetailFailedState: () => Center(
+                            child: Text(
+                              'No Data Available',
+                              style: kfontstyle(),
+                            ),
+                          ),
+                        );
+                      },
+                    ))
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 40.h,
                 width: double.infinity,
@@ -580,7 +627,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                               onPressed: () {
                                 if (widget.header.ltrApprovalStatus ==
                                     'Pending') {
-                                  if (approvedProducts.contains(null)) {
+                                  if (_loadprducts.contains(null)) {
                                     showCupertinoDialog(
                                       context: context,
                                       builder: (context) =>
@@ -620,7 +667,6 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                               loadingCount = 0;
                                               setState(() {});
                                               Navigator.pop(context);
-
                                               context
                                                   .read<
                                                       LoadTransferApprovalBloc>()
@@ -630,17 +676,19 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                               context
                                                   .read<
                                                       LoadTransferApprovalBloc>()
-                                                  .add(ApproveLoadtransferEvent(
-                                                    approve:
-                                                        LoadTransferApprovalInModel(
-                                                      products:
-                                                          approvedProducts,
-                                                      reqId:
-                                                          widget.header.ltrId,
-                                                      userId: /* widget.user.usrId */
-                                                          '48',
+                                                  .add(
+                                                    ApproveLoadtransferEvent(
+                                                      approve:
+                                                          LoadTransferApprovalInModel(
+                                                        products: _loadprducts,
+                                                        reqId:
+                                                            widget.header.ltrId,
+                                                        userId: widget.header
+                                                                .userID ??
+                                                            '',
+                                                      ),
                                                     ),
-                                                  ));
+                                                  );
                                             },
                                             child: const Text('Proceed'),
                                           ),
@@ -651,7 +699,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                 }
                               },
                               child: Text(
-                                'Approve',
+                                'Confirm',
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

@@ -36,25 +36,30 @@ class DisputeNoteHeaderModel {
   String? status;
   @JsonKey(name: 'Image')
   String? image;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  DisputeNoteHeaderModel({
-    this.drhId,
-    this.cusCode,
-    this.cusName,
-    this.rotName,
-    this.rotCode,
-    this.drhRotId,
-    this.drhTransId,
-    this.usrName,
-    this.drhAmount,
-    this.drhDisputeType,
-    this.transTime,
-    this.drhOtherInfo,
-    this.disputeType,
-    this.drhRemarks,
-    this.status,
-    this.image,
-  });
+  DisputeNoteHeaderModel(
+      {this.drhId,
+      this.cusCode,
+      this.cusName,
+      this.rotName,
+      this.rotCode,
+      this.drhRotId,
+      this.drhTransId,
+      this.usrName,
+      this.drhAmount,
+      this.drhDisputeType,
+      this.transTime,
+      this.drhOtherInfo,
+      this.disputeType,
+      this.drhRemarks,
+      this.status,
+      this.image,
+      this.rotID,
+      this.userID});
 
   factory DisputeNoteHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$DisputeNoteHeaderModelFromJson(json);

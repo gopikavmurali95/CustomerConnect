@@ -34,24 +34,29 @@ class FieldServiceInvoiceHeaderModel {
   String? sahVat;
   @JsonKey(name: 'sah_GrandTotal')
   String? sahGrandTotal;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  FieldServiceInvoiceHeaderModel({
-    this.sahId,
-    this.cusCode,
-    this.cusName,
-    this.rotCode,
-    this.rotName,
-    this.transTime,
-    this.usrName,
-    this.sjhNumber,
-    this.snrCode,
-    this.status,
-    this.sahTotal,
-    this.sahDiscount,
-    this.sahSubTotal,
-    this.sahVat,
-    this.sahGrandTotal,
-  });
+  FieldServiceInvoiceHeaderModel(
+      {this.sahId,
+      this.cusCode,
+      this.cusName,
+      this.rotCode,
+      this.rotName,
+      this.transTime,
+      this.usrName,
+      this.sjhNumber,
+      this.snrCode,
+      this.status,
+      this.sahTotal,
+      this.sahDiscount,
+      this.sahSubTotal,
+      this.sahVat,
+      this.sahGrandTotal,
+      this.rotID,
+      this.userID});
 
   factory FieldServiceInvoiceHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$FieldServiceInvoiceHeaderModelFromJson(json);

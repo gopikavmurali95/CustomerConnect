@@ -12,7 +12,7 @@ LoadTransferApprovalInModel _$LoadTransferApprovalInModelFromJson(
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : LoadTransferProductModel.fromJson(e as Map<String, dynamic>))
+              : LoadTransferPrdModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       userId: json['UserId'] as String?,
       reqId: json['ReqID'] as String?,

@@ -18,6 +18,8 @@ PartialDeliveryHeaderModel _$PartialDeliveryHeaderModelFromJson(
       type: json['Type'] as String?,
       createdDate: json['CreatedDate'] as String?,
       dahApprovalStatus: json['dah_ApprovalStatus'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$PartialDeliveryHeaderModelToJson(
@@ -32,4 +34,6 @@ Map<String, dynamic> _$PartialDeliveryHeaderModelToJson(
       'Type': instance.type,
       'CreatedDate': instance.createdDate,
       'dah_ApprovalStatus': instance.dahApprovalStatus,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

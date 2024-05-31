@@ -18,16 +18,21 @@ class VanToVanHeaderModel {
   String? createdDate;
   @JsonKey(name: 'Approval_Status')
   String? approvalStatus;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  VanToVanHeaderModel({
-    this.vvhId,
-    this.vvhTransId,
-    this.vvhFromRot,
-    this.vvhToRot,
-    this.status,
-    this.createdDate,
-    this.approvalStatus,
-  });
+  VanToVanHeaderModel(
+      {this.vvhId,
+      this.vvhTransId,
+      this.vvhFromRot,
+      this.vvhToRot,
+      this.status,
+      this.createdDate,
+      this.approvalStatus,
+      this.rotID,
+      this.userID});
 
   factory VanToVanHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$VanToVanHeaderModelFromJson(json);

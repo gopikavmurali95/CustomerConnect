@@ -1,4 +1,5 @@
 const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+const approvalBaseUrl = 'http://sfa-muom.dev-ts.online/WS/';
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
 const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
@@ -56,7 +57,6 @@ const pricechangeheaderurl = 'PriceChangeApproval/PriceChangeHeader';
 const priceChamgeDetailsUrl = 'PriceChangeApproval/PriceChangeDetail';
 const returnApprovalsHeaderUrl = 'ReturnApproval/GetReturnReqHeader';
 const returnApprovalsDetailUrl = 'ReturnApproval/GetReturnReqDetail';
-const approvalBaseUrl = 'http://sfa-muom.dev-ts.online/WS/';
 const approvalReasonUrl = 'ReturnApproval/GetReasonFromDrop';
 const priceChangeReasonUrl = 'PriceChangeApproval/GetReason';
 const approveReturnProductUrl = 'ReturnApproval/PostReturnRequestApproval';

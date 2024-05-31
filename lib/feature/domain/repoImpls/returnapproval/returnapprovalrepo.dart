@@ -98,19 +98,14 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
 
   @override
   Future<Either<MainFailures, ReturnApproveOutModel>> approveReturnProduct(
+
       ReturnApproveInModel approveIn) async {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + approveReturnProductUrl), body: {
         "ReturnID": approveIn.returnID,
         "UserId": approveIn.userID,
-        "JSONString": jsonEncode([
-          {
-            "rad_ID": approveIn.radId,
-            "Reason": approveIn.reason,
-            "Status": approveIn.status
-          }
-        ])
+        "JSONString": jsonEncode(approveIn.products)
       });
 
       if (response.statusCode == 200) {

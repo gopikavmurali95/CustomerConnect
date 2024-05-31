@@ -17,7 +17,45 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
       LoadReqInApprovalModel approval) async {
     try {
       final response = await http
-          .post(Uri.parse(approvalBaseUrl + loadReqApprovalUrl), body: {});
+          .post(Uri.parse(approvalBaseUrl + loadReqApprovalUrl), body: {
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "RotID": approval.rotID
+      });
+      if (response.statusCode == 200) {
+        log('Approve Response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final approve = LoadRequestApprovalOutModel.fromJson(json["result"][0]);
+        // Map<String, dynamic> json = jsonDecode(response.body);
+        // final List<dynamic> headerdata = json['result'];
+        // List<LoadRequestApprovalOutModel> approvals = headerdata
+        //     .map<LoadRequestApprovalOutModel>(
+        //         (json) => LoadRequestApprovalOutModel.fromJson(json))
+        //     .toList();
+        return right(approve);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      log("Asset Adding error resp $e");
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
+      LoadReqInApprovalModel loadapprove) async {
+    try {
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + loadReqApprovalUrl), body: {
+        "JSONString": jsonEncode(loadapprove.products),
+        "UserId": loadapprove.userId,
+        "ReqID": loadapprove.reqID,
+        "RotID": loadapprove.rotID
+      });
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

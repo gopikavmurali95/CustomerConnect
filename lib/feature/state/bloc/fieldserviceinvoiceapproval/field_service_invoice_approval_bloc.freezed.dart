@@ -20,6 +20,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String reqID, String userID)
         getFieldServiceInvoiceApproval,
+    required TResult Function(String reqID, String userID) invoiceRejectEvent,
     required TResult Function() fieldServiceLoadingEvent,
     required TResult Function() clearFieldServiceInoiveApproval,
   }) =>
@@ -28,6 +29,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(String reqID, String userID)? invoiceRejectEvent,
     TResult? Function()? fieldServiceLoadingEvent,
     TResult? Function()? clearFieldServiceInoiveApproval,
   }) =>
@@ -36,6 +38,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult Function(String reqID, String userID)? invoiceRejectEvent,
     TResult Function()? fieldServiceLoadingEvent,
     TResult Function()? clearFieldServiceInoiveApproval,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetFieldServiceInvoiceApprovalEvent value)
         getFieldServiceInvoiceApproval,
+    required TResult Function(InvoiceRejectEvent value) invoiceRejectEvent,
     required TResult Function(FieldServiceInvoicLoadingEvent value)
         fieldServiceLoadingEvent,
     required TResult Function(ClearFieldServiceInoiveApproval value)
@@ -55,6 +59,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult? Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult? Function(ClearFieldServiceInoiveApproval value)?
@@ -65,6 +70,7 @@ mixin _$FieldServiceInvoiceApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult Function(ClearFieldServiceInoiveApproval value)?
@@ -176,6 +182,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String reqID, String userID)
         getFieldServiceInvoiceApproval,
+    required TResult Function(String reqID, String userID) invoiceRejectEvent,
     required TResult Function() fieldServiceLoadingEvent,
     required TResult Function() clearFieldServiceInoiveApproval,
   }) {
@@ -187,6 +194,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(String reqID, String userID)? invoiceRejectEvent,
     TResult? Function()? fieldServiceLoadingEvent,
     TResult? Function()? clearFieldServiceInoiveApproval,
   }) {
@@ -198,6 +206,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult Function(String reqID, String userID)? invoiceRejectEvent,
     TResult Function()? fieldServiceLoadingEvent,
     TResult Function()? clearFieldServiceInoiveApproval,
     required TResult orElse(),
@@ -213,6 +222,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(GetFieldServiceInvoiceApprovalEvent value)
         getFieldServiceInvoiceApproval,
+    required TResult Function(InvoiceRejectEvent value) invoiceRejectEvent,
     required TResult Function(FieldServiceInvoicLoadingEvent value)
         fieldServiceLoadingEvent,
     required TResult Function(ClearFieldServiceInoiveApproval value)
@@ -226,6 +236,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult? Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult? Function(ClearFieldServiceInoiveApproval value)?
@@ -239,6 +250,7 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult Function(ClearFieldServiceInoiveApproval value)?
@@ -264,6 +276,176 @@ abstract class GetFieldServiceInvoiceApprovalEvent
   _$$GetFieldServiceInvoiceApprovalEventImplCopyWith<
           _$GetFieldServiceInvoiceApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InvoiceRejectEventImplCopyWith<$Res> {
+  factory _$$InvoiceRejectEventImplCopyWith(_$InvoiceRejectEventImpl value,
+          $Res Function(_$InvoiceRejectEventImpl) then) =
+      __$$InvoiceRejectEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String reqID, String userID});
+}
+
+/// @nodoc
+class __$$InvoiceRejectEventImplCopyWithImpl<$Res>
+    extends _$FieldServiceInvoiceApprovalEventCopyWithImpl<$Res,
+        _$InvoiceRejectEventImpl>
+    implements _$$InvoiceRejectEventImplCopyWith<$Res> {
+  __$$InvoiceRejectEventImplCopyWithImpl(_$InvoiceRejectEventImpl _value,
+      $Res Function(_$InvoiceRejectEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reqID = null,
+    Object? userID = null,
+  }) {
+    return _then(_$InvoiceRejectEventImpl(
+      reqID: null == reqID
+          ? _value.reqID
+          : reqID // ignore: cast_nullable_to_non_nullable
+              as String,
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvoiceRejectEventImpl implements InvoiceRejectEvent {
+  const _$InvoiceRejectEventImpl({required this.reqID, required this.userID});
+
+  @override
+  final String reqID;
+  @override
+  final String userID;
+
+  @override
+  String toString() {
+    return 'FieldServiceInvoiceApprovalEvent.invoiceRejectEvent(reqID: $reqID, userID: $userID)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvoiceRejectEventImpl &&
+            (identical(other.reqID, reqID) || other.reqID == reqID) &&
+            (identical(other.userID, userID) || other.userID == userID));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reqID, userID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvoiceRejectEventImplCopyWith<_$InvoiceRejectEventImpl> get copyWith =>
+      __$$InvoiceRejectEventImplCopyWithImpl<_$InvoiceRejectEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String reqID, String userID)
+        getFieldServiceInvoiceApproval,
+    required TResult Function(String reqID, String userID) invoiceRejectEvent,
+    required TResult Function() fieldServiceLoadingEvent,
+    required TResult Function() clearFieldServiceInoiveApproval,
+  }) {
+    return invoiceRejectEvent(reqID, userID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String reqID, String userID)?
+        getFieldServiceInvoiceApproval,
+    TResult? Function(String reqID, String userID)? invoiceRejectEvent,
+    TResult? Function()? fieldServiceLoadingEvent,
+    TResult? Function()? clearFieldServiceInoiveApproval,
+  }) {
+    return invoiceRejectEvent?.call(reqID, userID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String reqID, String userID)?
+        getFieldServiceInvoiceApproval,
+    TResult Function(String reqID, String userID)? invoiceRejectEvent,
+    TResult Function()? fieldServiceLoadingEvent,
+    TResult Function()? clearFieldServiceInoiveApproval,
+    required TResult orElse(),
+  }) {
+    if (invoiceRejectEvent != null) {
+      return invoiceRejectEvent(reqID, userID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetFieldServiceInvoiceApprovalEvent value)
+        getFieldServiceInvoiceApproval,
+    required TResult Function(InvoiceRejectEvent value) invoiceRejectEvent,
+    required TResult Function(FieldServiceInvoicLoadingEvent value)
+        fieldServiceLoadingEvent,
+    required TResult Function(ClearFieldServiceInoiveApproval value)
+        clearFieldServiceInoiveApproval,
+  }) {
+    return invoiceRejectEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetFieldServiceInvoiceApprovalEvent value)?
+        getFieldServiceInvoiceApproval,
+    TResult? Function(InvoiceRejectEvent value)? invoiceRejectEvent,
+    TResult? Function(FieldServiceInvoicLoadingEvent value)?
+        fieldServiceLoadingEvent,
+    TResult? Function(ClearFieldServiceInoiveApproval value)?
+        clearFieldServiceInoiveApproval,
+  }) {
+    return invoiceRejectEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetFieldServiceInvoiceApprovalEvent value)?
+        getFieldServiceInvoiceApproval,
+    TResult Function(InvoiceRejectEvent value)? invoiceRejectEvent,
+    TResult Function(FieldServiceInvoicLoadingEvent value)?
+        fieldServiceLoadingEvent,
+    TResult Function(ClearFieldServiceInoiveApproval value)?
+        clearFieldServiceInoiveApproval,
+    required TResult orElse(),
+  }) {
+    if (invoiceRejectEvent != null) {
+      return invoiceRejectEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvoiceRejectEvent implements FieldServiceInvoiceApprovalEvent {
+  const factory InvoiceRejectEvent(
+      {required final String reqID,
+      required final String userID}) = _$InvoiceRejectEventImpl;
+
+  String get reqID;
+  String get userID;
+  @JsonKey(ignore: true)
+  _$$InvoiceRejectEventImplCopyWith<_$InvoiceRejectEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -311,6 +493,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String reqID, String userID)
         getFieldServiceInvoiceApproval,
+    required TResult Function(String reqID, String userID) invoiceRejectEvent,
     required TResult Function() fieldServiceLoadingEvent,
     required TResult Function() clearFieldServiceInoiveApproval,
   }) {
@@ -322,6 +505,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(String reqID, String userID)? invoiceRejectEvent,
     TResult? Function()? fieldServiceLoadingEvent,
     TResult? Function()? clearFieldServiceInoiveApproval,
   }) {
@@ -333,6 +517,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult Function(String reqID, String userID)? invoiceRejectEvent,
     TResult Function()? fieldServiceLoadingEvent,
     TResult Function()? clearFieldServiceInoiveApproval,
     required TResult orElse(),
@@ -348,6 +533,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(GetFieldServiceInvoiceApprovalEvent value)
         getFieldServiceInvoiceApproval,
+    required TResult Function(InvoiceRejectEvent value) invoiceRejectEvent,
     required TResult Function(FieldServiceInvoicLoadingEvent value)
         fieldServiceLoadingEvent,
     required TResult Function(ClearFieldServiceInoiveApproval value)
@@ -361,6 +547,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult? Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult? Function(ClearFieldServiceInoiveApproval value)?
@@ -374,6 +561,7 @@ class _$FieldServiceInvoicLoadingEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult Function(ClearFieldServiceInoiveApproval value)?
@@ -438,6 +626,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String reqID, String userID)
         getFieldServiceInvoiceApproval,
+    required TResult Function(String reqID, String userID) invoiceRejectEvent,
     required TResult Function() fieldServiceLoadingEvent,
     required TResult Function() clearFieldServiceInoiveApproval,
   }) {
@@ -449,6 +638,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(String reqID, String userID)? invoiceRejectEvent,
     TResult? Function()? fieldServiceLoadingEvent,
     TResult? Function()? clearFieldServiceInoiveApproval,
   }) {
@@ -460,6 +650,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String reqID, String userID)?
         getFieldServiceInvoiceApproval,
+    TResult Function(String reqID, String userID)? invoiceRejectEvent,
     TResult Function()? fieldServiceLoadingEvent,
     TResult Function()? clearFieldServiceInoiveApproval,
     required TResult orElse(),
@@ -475,6 +666,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult map<TResult extends Object?>({
     required TResult Function(GetFieldServiceInvoiceApprovalEvent value)
         getFieldServiceInvoiceApproval,
+    required TResult Function(InvoiceRejectEvent value) invoiceRejectEvent,
     required TResult Function(FieldServiceInvoicLoadingEvent value)
         fieldServiceLoadingEvent,
     required TResult Function(ClearFieldServiceInoiveApproval value)
@@ -488,6 +680,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult? Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult? Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult? Function(ClearFieldServiceInoiveApproval value)?
@@ -501,6 +694,7 @@ class _$ClearFieldServiceInoiveApprovalImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetFieldServiceInvoiceApprovalEvent value)?
         getFieldServiceInvoiceApproval,
+    TResult Function(InvoiceRejectEvent value)? invoiceRejectEvent,
     TResult Function(FieldServiceInvoicLoadingEvent value)?
         fieldServiceLoadingEvent,
     TResult Function(ClearFieldServiceInoiveApproval value)?

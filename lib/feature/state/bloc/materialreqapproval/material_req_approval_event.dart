@@ -9,6 +9,10 @@ class MaterialReqApprovalEvent with _$MaterialReqApprovalEvent {
   const factory MaterialReqApprovalEvent.materialReqApprovalLoadingEvent() =
       MaterialReqApprovalLoadingEvent;
 
+  const factory MaterialReqApprovalEvent.metarialRequestRejectEvent(
+          {required MaterialReqRejectionInModel reject}) =
+      MetarialRequestRejectEvent;
+
   const factory MaterialReqApprovalEvent.materialReqApprovalClearEvent() =
       MaterialReqApprovalClearEvent;
   const factory MaterialReqApprovalEvent.started() = _Started;

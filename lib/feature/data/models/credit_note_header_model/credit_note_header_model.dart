@@ -30,22 +30,27 @@ class CreditNoteHeaderModel {
   String? cnhCreditType;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  CreditNoteHeaderModel({
-    this.cnhId,
-    this.cusCode,
-    this.cusName,
-    this.rotName,
-    this.rotCode,
-    this.usrName,
-    this.cnhNumber,
-    this.createdDate,
-    this.cnhAmount,
-    this.cnhSubTotal,
-    this.cnhVat,
-    this.cnhCreditType,
-    this.status,
-  });
+  CreditNoteHeaderModel(
+      {this.cnhId,
+      this.cusCode,
+      this.cusName,
+      this.rotName,
+      this.rotCode,
+      this.usrName,
+      this.cnhNumber,
+      this.createdDate,
+      this.cnhAmount,
+      this.cnhSubTotal,
+      this.cnhVat,
+      this.cnhCreditType,
+      this.status,
+      this.rotID,
+      this.userID});
 
   factory CreditNoteHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$CreditNoteHeaderModelFromJson(json);
