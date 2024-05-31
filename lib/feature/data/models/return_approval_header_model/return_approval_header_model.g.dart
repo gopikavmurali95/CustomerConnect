@@ -21,6 +21,8 @@ ReturnApprovalHeaderModel _$ReturnApprovalHeaderModelFromJson(
       mode: json['Mode'] as String?,
       createdDate: json['CreatedDate'] as String?,
       rahApprovalStatus: json['rah_ApprovalStatus'] as String?,
+      userID: json['UserID'] as String?,
+      rotID: json['rotID'] as String?,
     );
 
 Map<String, dynamic> _$ReturnApprovalHeaderModelToJson(
@@ -38,4 +40,6 @@ Map<String, dynamic> _$ReturnApprovalHeaderModelToJson(
       'Mode': instance.mode,
       'CreatedDate': instance.createdDate,
       'rah_ApprovalStatus': instance.rahApprovalStatus,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

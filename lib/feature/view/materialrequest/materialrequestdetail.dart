@@ -446,6 +446,22 @@ class _MaterialRequestDetailScreenState
                                                                   MainAxisAlignment
                                                                       .end,
                                                               children: [
+                                                                Text(
+                                                                  details[index]
+                                                                          .reqHUOM ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black54),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10.w,
+                                                                ),
                                                                 Flexible(
                                                                     flex: 2,
                                                                     fit: FlexFit
@@ -488,14 +504,22 @@ class _MaterialRequestDetailScreenState
                                                                         );
                                                                       },
                                                                     )),
-                                                                Flexible(
-                                                                  flex: 2,
-                                                                  fit: FlexFit
-                                                                      .tight,
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 20.w,
-                                                                  ),
+                                                                const Spacer(),
+                                                                Text(
+                                                                  details[index]
+                                                                          .reqLUOM ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black54),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10.w,
                                                                 ),
                                                                 Flexible(
                                                                     flex: 2,
@@ -573,7 +597,7 @@ class _MaterialRequestDetailScreenState
                 ),
               ),
               SizedBox(
-                height: 40.h,
+                height: MediaQuery.of(context).size.width * 0.15,
                 width: double.infinity,
                 child: Column(
                   children: [
@@ -585,6 +609,7 @@ class _MaterialRequestDetailScreenState
                             flex: 1,
                             fit: FlexFit.tight,
                             child: MaterialButton(
+                              height: 30.h,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -655,6 +680,7 @@ class _MaterialRequestDetailScreenState
                             flex: 1,
                             fit: FlexFit.tight,
                             child: MaterialButton(
+                              height: 30.h,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -697,8 +723,7 @@ class _MaterialRequestDetailScreenState
                                                       .materialrequest.userID,
                                                   reqID: widget
                                                       .materialrequest.mrhID,
-                                                  mode: widget
-                                                      .materialrequest.status,
+                                                  mode: "A",
                                                   warehouse: widget
                                                       .materialrequest.mrhWarID,
                                                 )),
@@ -713,7 +738,7 @@ class _MaterialRequestDetailScreenState
                                 );
                               },
                               child: Text(
-                                'Confirm',
+                                'Approve',
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

@@ -4,11 +4,13 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'field_service_invoice_approval_event.dart';
 part 'field_service_invoice_approval_state.dart';
 part 'field_service_invoice_approval_bloc.freezed.dart';
 
+@injectable
 class FieldServiceInvoiceApprovalBloc extends Bloc<
     FieldServiceInvoiceApprovalEvent, FieldServiceInvoiceApprovalState> {
   final IFieldServiceInvoiceApprovalRepo invAprovalRepo;
@@ -19,6 +21,18 @@ class FieldServiceInvoiceApprovalBloc extends Bloc<
           await invAprovalRepo.invoiceApprovalRepo(event.reqID, event.userID);
       emit(approve.fold((l) => const FieldServiceInvoiceApprovalFailed(),
           (r) => GetFieldServiceInvoiceApprovalState(approval: r)));
+    });
+
+    on<InvoiceRejectEvent>((event, emit) async {
+      Either<MainFailures, FieldServiceInvoiceApprovalModel> approve =
+          await invAprovalRepo.invoiceReject(event.reqID, event.userID);
+      emit(approve.fold((l) => const FieldServiceInvoiceApprovalFailed(),
+          (r) => GetFieldServiceInvoiceApprovalState(approval: r)));
+    });
+
+    on<FieldServiceInvoicLoadingEvent>((event, emit) {
+      emit(const FieldServiceInvoiceApprovalState
+          .fieldServiceInvoiceLoadingState());
     });
   }
 }

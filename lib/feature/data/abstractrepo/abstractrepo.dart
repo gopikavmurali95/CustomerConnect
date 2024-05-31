@@ -401,6 +401,9 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
   Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>>
       invoiceApprovalRepo(String reqID, String userID);
+
+  Future<Either<MainFailures, FieldServiceInvoiceApprovalModel>> invoiceReject(
+      String reqID, String userID);
 }
 
 abstract class IPartialDeliveryRepo {

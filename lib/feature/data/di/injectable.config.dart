@@ -172,8 +172,10 @@ import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_
     as _i139;
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart'
     as _i140;
-import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart'
     as _i141;
+import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart'
+    as _i142;
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart'
     as _i50;
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart'
@@ -556,8 +558,11 @@ extension GetItInjectableX on _i1.GetIt {
         gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
     gh.factory<_i140.FieldServiceHeaderBloc>(() => _i140.FieldServiceHeaderBloc(
         gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
-    gh.factory<_i141.GetAllRouteBloc>(
-        () => _i141.GetAllRouteBloc(gh<_i3.IGetAllAvailableRoutesRepo>()));
+    gh.factory<_i141.FieldServiceInvoiceApprovalBloc>(() =>
+        _i141.FieldServiceInvoiceApprovalBloc(
+            gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
+    gh.factory<_i142.GetAllRouteBloc>(
+        () => _i142.GetAllRouteBloc(gh<_i3.IGetAllAvailableRoutesRepo>()));
     return this;
   }
 }
