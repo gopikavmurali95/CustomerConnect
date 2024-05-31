@@ -113,6 +113,99 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
           },
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      color: const Color(0xfffee8e0),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.header.ltrReqNo ?? '',
+                                style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  color: const Color(0xff2C6B9E),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    "${widget.header.rotName} - ",
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff2C6B9E)),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      widget.header.usrName ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          color: const Color(0xff413434)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                widget.header.createdDate ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: widget.header.ltrApprovalStatus!.isEmpty ||
+                                    widget.header.ltrApprovalStatus !=
+                                        'Approved'
+                                ? widget.header.ltrApprovalStatus == 'Rejected'
+                                    ? Colors.red[300]
+                                    : const Color(0xfff7f4e2)
+                                : const Color(0xffe3f7e2),
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 5),
+                            child: Text(
+                              widget.header.ltrApprovalStatus ?? '',
+                              style: kfontstyle(
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: widget.header.ltrApprovalStatus ==
+                                          'Rejected'
+                                      ? Colors.white54
+                                      : Colors.black54),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ]),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               Expanded(
                 child: Column(
                   children: [

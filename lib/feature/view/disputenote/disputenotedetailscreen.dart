@@ -78,6 +78,101 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        color: const Color(0xfffee8e0),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.disputenote.drhTransId ?? '',
+                                style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  color: const Color(0xff2C6B9E),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${widget.disputenote.cusCode} - ',
+                                    style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      color: const Color(0xff2C6B9E),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      widget.disputenote.cusName ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          color: const Color(0xff413434)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                widget.disputenote.transTime ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: widget.disputenote.status!.isEmpty ||
+                                    widget.disputenote.status != 'Approved'
+                                ? widget.disputenote.status == 'Rejected'
+                                    ? Colors.red[300]
+                                    : const Color(0xfff7f4e2)
+                                : const Color(0xffe3f7e2),
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 5),
+                            child: Text(
+                              widget.disputenote.status ?? '',
+                              style: kfontstyle(
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: widget.disputenote.status == 'Rejected'
+                                      ? Colors.white54
+                                      : Colors.black54),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              color: Colors.grey[200],
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
             Expanded(
               child:
                   BlocConsumer<DisputeNoteDetailBloc, DisputeNoteDetailState>(

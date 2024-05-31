@@ -95,7 +95,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                '${pChange[index].vvhToRot}',
+                                                '${pChange[index].vvhTransId}',
                                                 style: kfontstyle(
                                                   fontSize: 12.sp,
                                                   color:

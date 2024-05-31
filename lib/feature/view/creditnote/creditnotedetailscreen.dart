@@ -154,6 +154,99 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
           builder: (context, state) {
             return Column(
               children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          color: const Color(0xfffee8e0),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.creditNote.cnhNumber ?? '',
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff2C6B9E),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${widget.creditNote.cusCode} - ',
+                                      style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xff2C6B9E),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        overflow: TextOverflow.ellipsis,
+                                        widget.creditNote.cusName ?? '',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  widget.creditNote.createdDate ?? '',
+                                  style: kfontstyle(
+                                      fontSize: 10.sp, color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: widget.creditNote.status!.isEmpty ||
+                                      widget.creditNote.status != 'Action Taken'
+                                  ? widget.creditNote.status == 'Rejected'
+                                      ? Colors.red[300]
+                                      : const Color(0xfff7f4e2)
+                                  : const Color(0xffe3f7e2),
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 5),
+                              child: Text(
+                                widget.creditNote.status ?? '',
+                                style: kfontstyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        widget.creditNote.status == 'Rejected'
+                                            ? Colors.white54
+                                            : Colors.black54),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: Colors.grey[200],
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
                 Container(
                   height: 30.h,
                   width: double.infinity,

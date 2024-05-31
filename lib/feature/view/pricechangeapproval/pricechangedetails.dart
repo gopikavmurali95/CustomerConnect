@@ -16,6 +16,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -111,6 +112,95 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
           },
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          color: const Color(0xfffee8e0),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${widget.priceChangeApprovel.pchReqId}',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              color: const Color(0xff2C6B9E),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '${widget.priceChangeApprovel.cusCode} - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  "${widget.priceChangeApprovel.cusName}",
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            '${widget.priceChangeApprovel.createdDate} ',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      // height: 10.h,
+                      // width: 10.h,
+                      decoration: BoxDecoration(
+                        color: widget.priceChangeApprovel.pchApprovalStatus! ==
+                                "Pending"
+                            ? const Color(0xfff7f4e2)
+                            : widget.priceChangeApprovel.pchApprovalStatus! ==
+                                    "Action Taken"
+                                ? const Color(0xffe3f7e2)
+                                : Colors.red[300],
+                        borderRadius: BorderRadius.circular(
+                          10,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 3),
+                        child: Text(
+                          widget.priceChangeApprovel.pchApprovalStatus ?? '',
+                          style: kfontstyle(fontSize: 8.sp),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
               BlocListener<ApprovePriceChangeBloc, ApprovePriceChangeState>(
                 listener: (context, state) {
                   state.when(
@@ -218,7 +308,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     color: Colors.black54),
                               ),
                               SizedBox(
-                                width: 200.w,
+                                width: 120.w,
                               ),
                               Row(
                                 children: [
@@ -230,10 +320,30 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                         color: Colors.black54),
                                   ),
                                   SizedBox(
-                                    width: 40.w,
+                                    width: 5.w,
                                   ),
                                   Text(
                                     'Qty',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black54),
+                                  ),
+                                  SizedBox(
+                                    width: 8.w,
+                                  ),
+                                  Text(
+                                    'Std.Price',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black54),
+                                  ),
+                                  SizedBox(
+                                    width: 8.w,
+                                  ),
+                                  Text(
+                                    'C.Price',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w400,
@@ -340,6 +450,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                               // ),
                                               Column(
                                                 children: [
+                                                  SizedBox(
+                                                    height: 5.w,
+                                                  ),
                                                   Text(
                                                     pdet[index].pcdHigherUom ??
                                                         '',
@@ -348,6 +461,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: Colors.black54),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5.w,
                                                   ),
                                                   Text(
                                                     pdet[index].pcdLowerUom ??
@@ -361,10 +477,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: 50.w,
+                                                width: 20.w,
                                               ),
                                               Column(
                                                 children: [
+                                                  SizedBox(
+                                                    height: 5.w,
+                                                  ),
                                                   Text(
                                                     pdet[index].pcdHigherQty ??
                                                         '',
@@ -373,6 +492,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: Colors.black54),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5.w,
                                                   ),
                                                   Text(
                                                     pdet[index].pcdLowerQty ??
@@ -385,6 +507,124 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                   )
                                                 ],
                                               ),
+                                              SizedBox(
+                                                width: 20.w,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 5.w,
+                                                  ),
+                                                  Text(
+                                                    pdet[index].pcdStdHPrice ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5.w,
+                                                  ),
+                                                  Text(
+                                                    pdet[index].pcdStdLPrice ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 20.w,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 40.w,
+                                                        height: 20.h,
+                                                        child: TextFormField(
+                                                          cursorHeight: 10.h,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                          style: kfontstyle(
+                                                              fontSize: 10.sp),
+                                                          controller:
+                                                              TextEditingController(
+                                                            text: pdet[index]
+                                                                .pcdChangedHPrice,
+                                                          ),
+                                                          onChanged: (value) {
+                                                            pdet[index]
+                                                                    .pcdChangedHPrice =
+                                                                value;
+                                                            _procechangeapproved[index] = PriceChangePrdModel(
+                                                                aprvdHprice: pdet[
+                                                                        index]
+                                                                    .pcdChangedHPrice,
+                                                                aprvdLprice: pdet[
+                                                                        index]
+                                                                    .pcdChangedLprice,
+                                                                pcdId:
+                                                                    pdet[index]
+                                                                        .pcdId,
+                                                                reason:
+                                                                    selectedresons[
+                                                                        index],
+                                                                status: "A");
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 40.w,
+                                                        height: 20.h,
+                                                        child: TextFormField(
+                                                          cursorHeight: 10.h,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                          style: kfontstyle(
+                                                              fontSize: 10.sp),
+                                                          controller:
+                                                              TextEditingController(
+                                                            text: pdet[index]
+                                                                .pcdChangedLprice,
+                                                          ),
+                                                          onChanged: (value) {
+                                                            pdet[index]
+                                                                    .pcdChangedLprice =
+                                                                value;
+                                                            _procechangeapproved[index] = PriceChangePrdModel(
+                                                                aprvdHprice: pdet[
+                                                                        index]
+                                                                    .pcdChangedHPrice,
+                                                                aprvdLprice: pdet[
+                                                                        index]
+                                                                    .pcdChangedLprice,
+                                                                pcdId:
+                                                                    pdet[index]
+                                                                        .pcdId,
+                                                                reason:
+                                                                    selectedresons[
+                                                                        index],
+                                                                status: 'A');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              )
                                             ],
                                           ),
                                           Row(
@@ -487,6 +727,118 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                   },
                                                 ),
                                               ),
+                                              /*  Row(
+                                                        children: [
+                                                          Expanded(
+                                                            // width: MediaQuery.of(
+                                                            //         context)
+                                                            //     .size
+                                                            //     .width,
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Text(
+                                                                  details[index]
+                                                                          .reqHUOM ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black54),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10.w,
+                                                                ),
+                                                                /* Flexible(
+                                                                    flex: 2,
+                                                                    fit: FlexFit
+                                                                        .tight,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .number,
+                                                                      controller:
+                                                                          TextEditingController(
+                                                                        text: details[index]
+                                                                            .adjustedHQty,
+                                                                      ),
+                                                                      style: kfontstyle(
+                                                                          fontSize:
+                                                                              13.sp),
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        details[index].adjustedHQty =
+                                                                            value;
+                                                                        _materialreqproducts[index] =
+                                                                            MatrialAprReqPrdModel(
+                                                                          mrdId:
+                                                                              details[index].mrdID,
+                                                                          prdId:
+                                                                              details[index].prdID,
+                                                                          reqHuom:
+                                                                              details[index].reqHUOM,
+                                                                          reqLuom:
+                                                                              details[index].reqLUOM,
+                                                                          requestedHQty:
+                                                                              details[index].requestedHQty,
+                                                                          requestedLQty:
+                                                                              details[index].requestedLQty,
+                                                                          hqty:
+                                                                              details[index].adjustedHQty,
+                                                                          lqty:
+                                                                              details[index].adjustedLQty,
+                                                                        );
+                                                                      },
+                                                                    )),
+                                                                const Spacer(),
+                                                                Text(
+                                                                  details[index]
+                                                                          .reqLUOM ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black54),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10.w,
+                                                                ),
+                                                                Flexible(
+                                                                    flex: 2,
+                                                                    fit: FlexFit
+                                                                        .tight,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .number,
+                                                                      controller:
+                                                                          TextEditingController(
+                                                                        text: pdet[index]
+                                                                            .pcdChangedLprice
+                                                                            ,
+                                                                      ),
+                                                                      onChanged:
+                                                                          (value) {
+                                                                     
+                                                                      },
+                                                                    )),
+                                                              ],
+                                                            ), */
+                                                          ),
+                                                        ],
+                                                      ), */
                                               BlocBuilder<
                                                   AapprovalOrRejectRadioCubit,
                                                   AapprovalOrRejectRadioState>(
@@ -569,10 +921,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     _procechangeapproved[index] = PriceChangePrdModel(
                                                                         aprvdHprice:
                                                                             pdet[index]
-                                                                                .maxHigherlimit,
+                                                                                .pcdChangedHPrice,
                                                                         aprvdLprice:
                                                                             pdet[index]
-                                                                                .maxLowerlimit,
+                                                                                .pcdChangedLprice,
                                                                         pcdId: pdet[index]
                                                                             .pcdId,
                                                                         reason: selectedresons[
@@ -658,19 +1010,20 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         0;
                                                                     setState(
                                                                         () {});
+
                                                                     _procechangeapproved[index] = PriceChangePrdModel(
                                                                         aprvdHprice:
                                                                             pdet[index]
-                                                                                .maxHigherlimit,
+                                                                                .pcdChangedHPrice,
                                                                         aprvdLprice:
                                                                             pdet[index]
-                                                                                .maxLowerlimit,
+                                                                                .pcdChangedLprice,
                                                                         pcdId: pdet[index]
                                                                             .pcdId,
                                                                         reason: selectedresons[
                                                                             index],
                                                                         status:
-                                                                            "A");
+                                                                            "R");
                                                                   }
                                                                 },
                                                               ),

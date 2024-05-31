@@ -104,6 +104,93 @@ class _ReturnApprovalDetailScreenState
           },
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          color: const Color(0xfffee8e0),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.returnApprovel.ithRequestNumber ?? '',
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff2C6B9E),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${widget.returnApprovel.cusCode} - ',
+                                      style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xff2C6B9E),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        overflow: TextOverflow.ellipsis,
+                                        widget.returnApprovel.cusName ?? '',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  widget.returnApprovel.createdDate ?? '',
+                                  style: kfontstyle(
+                                      fontSize: 10.sp, color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            // height: 10.h,
+                            // width: 20.h,
+                            decoration: BoxDecoration(
+                              color: widget
+                                      .returnApprovel.rahApprovalStatus!.isEmpty
+                                  ? Colors.red[100]
+                                  : Colors.green[100],
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 3),
+                              child: Text(
+                                widget.returnApprovel.rahApprovalStatus ?? '',
+                                style: kfontstyle(fontSize: 9.sp),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
               Container(
                 height: 30.h,
                 width: double.infinity,

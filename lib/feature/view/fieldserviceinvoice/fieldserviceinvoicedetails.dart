@@ -55,6 +55,98 @@ class FieldServiceInvoiceDetailsState
       ),
       body: Column(
         children: [
+          Row(
+            children: [
+              Container(
+                height: 50,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: const Color(0xfffee8e0),
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.header.sjhNumber ?? '',
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              color: const Color(0xff2C6B9E),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '${widget.header.cusCode} - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  widget.header.cusName ?? '',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            widget.header.transTime ?? '',
+                            style:
+                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: widget.header.status!.isEmpty ||
+                                widget.header.status != 'Action Taken'
+                            ? widget.header.status == 'Rejected'
+                                ? Colors.red[300]
+                                : const Color(0xfff7f4e2)
+                            : const Color(0xffe3f7e2),
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        child: Text(
+                          widget.header.status ?? '',
+                          style: kfontstyle(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w400,
+                              color: widget.header.status == 'Rejected'
+                                  ? Colors.white54
+                                  : Colors.black54),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
           Container(
             height: 30.h,
             width: double.infinity,
