@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_header_model/load_transfer_approval_header_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_approval_in_model/load_transfer_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/load_transfer_prd_model/load_transfer_prd_model.dart';
+import 'package:customer_connect/feature/data/models/load_transfer_product_model/load_transfer_product_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferapproval/load_transfer_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_transfer_detail_bloc.dart';
@@ -13,7 +14,6 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,9 +28,10 @@ class LoadTransferDetailScreen extends StatefulWidget {
       _LoadTransferDetailScreenState();
 }
 
-List<String> selectedresons = [];
+List<dynamic> selectedresons = [];
 List<bool?> statuslist = [];
 bool isLoading = false;
+List<LoadTransferProductModel?> approvedProducts = [];
 
 int _responsecount = 0;
 int loadingCount = 0;

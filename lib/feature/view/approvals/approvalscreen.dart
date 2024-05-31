@@ -1231,7 +1231,7 @@ class ApprovalScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 5),
                                 child: Image.asset(
-                                  "assets/images/jp.png",
+                                  "assets/images/mr.png",
                                   height: 17.h,
                                 ),
                               ),
@@ -1321,7 +1321,7 @@ class ApprovalScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 5),
                                 child: Image.asset(
-                                  "assets/images/fs.png",
+                                  "assets/images/lr.png",
                                   height: 18.3.h,
                                 ),
                               ),

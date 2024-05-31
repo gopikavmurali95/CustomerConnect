@@ -22,27 +22,8 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
           .post(Uri.parse(approvalBaseUrl + vanToVanApprovalUrl), body: {
         "UserId": approveIn.userID,
         "ReqID": approveIn.reqID,
-        "JSONString": jsonEncode([
-          {
-            "vvd_ID": approveIn.vvdId,
-            "HQTY": approveIn.hqty,
-            "LQTY": approveIn.lqty,
-            "Status": approveIn.status
-          }
-        ])
+        "JSONString": jsonEncode(approveIn.products)
       });
-      log({
-        "UserId": approveIn.userID,
-        "ReqID": approveIn.reqID,
-        "JSONString": jsonEncode([
-          {
-            "vvd_ID": approveIn.vvdId,
-            "HQTY": approveIn.hqty,
-            "LQTY": approveIn.lqty,
-            "Status": approveIn.status
-          }
-        ])
-      }.toString());
 
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
