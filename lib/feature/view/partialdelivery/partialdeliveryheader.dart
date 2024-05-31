@@ -80,7 +80,10 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const PArtialDeliveryDetails(),
+                                          PArtialDeliveryDetails(
+                                        user: widget.user,
+                                        header: header[index],
+                                      ),
                                     ),
                                   );
                                 },

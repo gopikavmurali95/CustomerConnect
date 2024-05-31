@@ -79,7 +79,9 @@ import 'package:customer_connect/feature/data/models/notification_replay_out_mod
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
-import 'package:customer_connect/feature/data/models/partial_delivery_detail/partial_delivery_detail.dart';
+import 'package:customer_connect/feature/data/models/partial_delivery_approval_model/partial_delivery_approval_model.dart';
+import 'package:customer_connect/feature/data/models/partial_delivery_approval_outparas_model/partial_delivery_approval_outparas_model.dart';
+import 'package:customer_connect/feature/data/models/partial_delivery_details_model/partial_delivery_details_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_header_model/partial_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_reason_model/partial_delivery_reason_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
@@ -409,12 +411,14 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 abstract class IPartialDeliveryRepo {
   Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
       partialDeliveryList(String userID);
-  Future<Either<MainFailures, List<PartialDeliveryDetail>>> priceChangeDetails(
-      String reqID);
+  Future<Either<MainFailures, List<PartialDeliveryDetailsModel>>>
+      partialDeliveryDetails(String reqID);
   Future<Either<MainFailures, List<PartialDeliveryReasonModel>>>
       getPartialDeliveryReasons(
     String rsnType,
   );
+  Future<Either<MainFailures, PartialDeliveryApprovalOutparasModel>>
+      approvePartialDelivery(PartialDeliveryApprovalModel approveIn);
 }
 
 abstract class IVanToVanApprovalRepo {

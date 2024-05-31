@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+// import 'package:customer_connect/feature/state/bloc/PartialDeliveryReasons/partial_delivery_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
@@ -58,7 +59,10 @@ import 'package:customer_connect/feature/state/bloc/notificationlisting/notifica
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/partialdeliverydetail/partial_delivery_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
+
+import 'package:customer_connect/feature/state/bloc/partialdeliverydetailsbloc/partial_delivery_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
@@ -395,6 +399,15 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<PartialDeliveryHeaderBloc>(),
         ),
         BlocProvider(
+          create: (context) => getit<PartialDeliveryDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PartialDeliveryReasonBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PartialDeliveryApprovalBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<RouteForScCubit>(),
         ),
         BlocProvider(
@@ -480,9 +493,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<ApprovalCountsBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getit<PartialDeliveryDetailBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<PartialDeliveryReasonCubit>(),
