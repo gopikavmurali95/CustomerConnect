@@ -1,24 +1,19 @@
+import 'package:customer_connect/feature/data/models/return_approval_product/ReturnApprovalProductModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'return_approve_in_model.g.dart';
 
 @JsonSerializable()
 class ReturnApproveInModel {
-  @JsonKey(name: 'rad_ID')
-  String? radId;
-  @JsonKey(name: 'Reason')
-  String? reason;
-  @JsonKey(name: 'Status')
-  String? status;
+
   @JsonKey(name: 'UserId')
   String? userID;
   @JsonKey(name: 'ReturnID')
   String? returnID;
+  List<ReturnApprovalProductModel?>? products;
 
   ReturnApproveInModel({
-    this.radId,
-    this.reason,
-    this.status,
+    this.products,
     this.userID,
     this.returnID,
   });

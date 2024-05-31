@@ -16,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../data/models/return_approval_product/ReturnApprovalProductModel.dart';
+
 class ReturnApprovalDetailScreen extends StatefulWidget {
   final ReturnApprovalHeaderModel returnApprovel;
   final LoginUserModel user;
@@ -29,6 +31,7 @@ class ReturnApprovalDetailScreen extends StatefulWidget {
 
 List<String> selectedresons = [];
 List<bool?> statuslist = [];
+List<ReturnApprovalProductModel?> _returnProducts =[];
 bool isLoading = false;
 
 int loadingCount = 0;
@@ -159,6 +162,9 @@ class _ReturnApprovalDetailScreenState
                     getReturnApprovelDetailState: (details) {
                       if (details != null) {
                         _totalCount = details.length;
+                        _returnProducts =List.generate(details.length,
+                                (index) => null
+                        );
                         context.read<ApprovalReasonsBloc>().add(
                             const GetApprovalReasonsEvent(rsnType: 'rsnType'));
                         statuslist.clear();
@@ -591,17 +597,17 @@ class _ReturnApprovalDetailScreenState
                                                                             () {});
                                                                         Navigator.pop(
                                                                             context);
-                                                                        context
-                                                                            .read<ApproveReturnProductBloc>()
-                                                                            .add(const AddApprovalLoadingEvent());
-
-                                                                        context
-                                                                            .read<ApproveReturnProductBloc>()
-                                                                            .add(
-                                                                              ApproveProductEvent(
-                                                                                approval: ReturnApproveInModel(radId: details[index].radId, reason: selectedresons[index], status: 'A', returnID: widget.returnApprovel.rahId, userID: '45'),
-                                                                              ),
-                                                                            );
+                                                                        // context
+                                                                        //     .read<ApproveReturnProductBloc>()
+                                                                        //     .add(const AddApprovalLoadingEvent());
+                                                                        //
+                                                                        // context
+                                                                        //     .read<ApproveReturnProductBloc>()
+                                                                        //     .add(
+                                                                        //       // ApproveProductEvent(
+                                                                        //       //   approval: ReturnApproveInModel(radId: details[index].radId, reason: selectedresons[index], status: 'A', returnID: widget.returnApprovel.rahId, userID: '45'),
+                                                                        //       // ),
+                                                                        //     );
                                                                       },
                                                                       child: const Text(
                                                                           'Proceed'),

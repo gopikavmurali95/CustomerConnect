@@ -9,9 +9,10 @@ part of 'return_approve_in_model.dart';
 ReturnApproveInModel _$ReturnApproveInModelFromJson(
         Map<String, dynamic> json) =>
     ReturnApproveInModel(
-      radId: json['rad_ID'] as String?,
-      reason: json['Reason'] as String?,
-      status: json['Status'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map(
+              (e) => e == null ? null : ReturnApprovalProductModel.fromJson(e))
+          .toList(),
       userID: json['UserId'] as String?,
       returnID: json['ReturnID'] as String?,
     );
@@ -19,9 +20,7 @@ ReturnApproveInModel _$ReturnApproveInModelFromJson(
 Map<String, dynamic> _$ReturnApproveInModelToJson(
         ReturnApproveInModel instance) =>
     <String, dynamic>{
-      'rad_ID': instance.radId,
-      'Reason': instance.reason,
-      'Status': instance.status,
       'UserId': instance.userID,
       'ReturnID': instance.returnID,
+      'products': instance.products,
     };
