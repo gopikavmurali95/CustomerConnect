@@ -30,7 +30,6 @@ class PromotionHeaderInParas {
     this.route,
     this.customer,
     this.cusOutlet,
-
   });
 
   factory PromotionHeaderInParas.fromJson(Map<String, dynamic> json) {
