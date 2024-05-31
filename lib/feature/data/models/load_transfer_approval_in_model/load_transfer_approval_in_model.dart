@@ -1,21 +1,18 @@
+import 'package:customer_connect/feature/data/models/load_transfer_prd_model/load_transfer_prd_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'load_transfer_approval_in_model.g.dart';
 
 @JsonSerializable()
 class LoadTransferApprovalInModel {
-  @JsonKey(name: 'ldr_ID')
-  String? ldrId;
-  @JsonKey(name: 'Status')
-  String? status;
+  List<LoadTransferPrdModel?>? products;
   @JsonKey(name: 'UserId')
   String? userId;
   @JsonKey(name: 'ReqID')
   String? reqId;
 
   LoadTransferApprovalInModel({
-    this.ldrId,
-    this.status,
+    this.products,
     this.userId,
     this.reqId,
   });

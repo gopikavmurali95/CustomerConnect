@@ -21,6 +21,8 @@ mixin _$MaterialReqApprovalEvent {
     required TResult Function(MaterialReqApprovalInModel approvalInModel)
         materialReqApprovalSuccessEvent,
     required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
     required TResult Function() materialReqApprovalClearEvent,
     required TResult Function() started,
   }) =>
@@ -30,6 +32,8 @@ mixin _$MaterialReqApprovalEvent {
     TResult? Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult? Function()? materialReqApprovalClearEvent,
     TResult? Function()? started,
   }) =>
@@ -39,6 +43,8 @@ mixin _$MaterialReqApprovalEvent {
     TResult Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult Function()? materialReqApprovalClearEvent,
     TResult Function()? started,
     required TResult orElse(),
@@ -50,6 +56,8 @@ mixin _$MaterialReqApprovalEvent {
         materialReqApprovalSuccessEvent,
     required TResult Function(MaterialReqApprovalLoadingEvent value)
         materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
     required TResult Function(MaterialReqApprovalClearEvent value)
         materialReqApprovalClearEvent,
     required TResult Function(_Started value) started,
@@ -61,6 +69,8 @@ mixin _$MaterialReqApprovalEvent {
         materialReqApprovalSuccessEvent,
     TResult? Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult? Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult? Function(_Started value)? started,
@@ -72,6 +82,8 @@ mixin _$MaterialReqApprovalEvent {
         materialReqApprovalSuccessEvent,
     TResult Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult Function(_Started value)? started,
@@ -173,6 +185,8 @@ class _$MaterialReqApprovalSuccessEventImpl
     required TResult Function(MaterialReqApprovalInModel approvalInModel)
         materialReqApprovalSuccessEvent,
     required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
     required TResult Function() materialReqApprovalClearEvent,
     required TResult Function() started,
   }) {
@@ -185,6 +199,8 @@ class _$MaterialReqApprovalSuccessEventImpl
     TResult? Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult? Function()? materialReqApprovalClearEvent,
     TResult? Function()? started,
   }) {
@@ -197,6 +213,8 @@ class _$MaterialReqApprovalSuccessEventImpl
     TResult Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult Function()? materialReqApprovalClearEvent,
     TResult Function()? started,
     required TResult orElse(),
@@ -214,6 +232,8 @@ class _$MaterialReqApprovalSuccessEventImpl
         materialReqApprovalSuccessEvent,
     required TResult Function(MaterialReqApprovalLoadingEvent value)
         materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
     required TResult Function(MaterialReqApprovalClearEvent value)
         materialReqApprovalClearEvent,
     required TResult Function(_Started value) started,
@@ -228,6 +248,8 @@ class _$MaterialReqApprovalSuccessEventImpl
         materialReqApprovalSuccessEvent,
     TResult? Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult? Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult? Function(_Started value)? started,
@@ -242,6 +264,8 @@ class _$MaterialReqApprovalSuccessEventImpl
         materialReqApprovalSuccessEvent,
     TResult Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult Function(_Started value)? started,
@@ -313,6 +337,8 @@ class _$MaterialReqApprovalLoadingEventImpl
     required TResult Function(MaterialReqApprovalInModel approvalInModel)
         materialReqApprovalSuccessEvent,
     required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
     required TResult Function() materialReqApprovalClearEvent,
     required TResult Function() started,
   }) {
@@ -325,6 +351,8 @@ class _$MaterialReqApprovalLoadingEventImpl
     TResult? Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult? Function()? materialReqApprovalClearEvent,
     TResult? Function()? started,
   }) {
@@ -337,6 +365,8 @@ class _$MaterialReqApprovalLoadingEventImpl
     TResult Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult Function()? materialReqApprovalClearEvent,
     TResult Function()? started,
     required TResult orElse(),
@@ -354,6 +384,8 @@ class _$MaterialReqApprovalLoadingEventImpl
         materialReqApprovalSuccessEvent,
     required TResult Function(MaterialReqApprovalLoadingEvent value)
         materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
     required TResult Function(MaterialReqApprovalClearEvent value)
         materialReqApprovalClearEvent,
     required TResult Function(_Started value) started,
@@ -368,6 +400,8 @@ class _$MaterialReqApprovalLoadingEventImpl
         materialReqApprovalSuccessEvent,
     TResult? Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult? Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult? Function(_Started value)? started,
@@ -382,6 +416,8 @@ class _$MaterialReqApprovalLoadingEventImpl
         materialReqApprovalSuccessEvent,
     TResult Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult Function(_Started value)? started,
@@ -398,6 +434,181 @@ abstract class MaterialReqApprovalLoadingEvent
     implements MaterialReqApprovalEvent {
   const factory MaterialReqApprovalLoadingEvent() =
       _$MaterialReqApprovalLoadingEventImpl;
+}
+
+/// @nodoc
+abstract class _$$MetarialRequestRejectEventImplCopyWith<$Res> {
+  factory _$$MetarialRequestRejectEventImplCopyWith(
+          _$MetarialRequestRejectEventImpl value,
+          $Res Function(_$MetarialRequestRejectEventImpl) then) =
+      __$$MetarialRequestRejectEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MaterialReqRejectionInModel reject});
+}
+
+/// @nodoc
+class __$$MetarialRequestRejectEventImplCopyWithImpl<$Res>
+    extends _$MaterialReqApprovalEventCopyWithImpl<$Res,
+        _$MetarialRequestRejectEventImpl>
+    implements _$$MetarialRequestRejectEventImplCopyWith<$Res> {
+  __$$MetarialRequestRejectEventImplCopyWithImpl(
+      _$MetarialRequestRejectEventImpl _value,
+      $Res Function(_$MetarialRequestRejectEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reject = null,
+  }) {
+    return _then(_$MetarialRequestRejectEventImpl(
+      reject: null == reject
+          ? _value.reject
+          : reject // ignore: cast_nullable_to_non_nullable
+              as MaterialReqRejectionInModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MetarialRequestRejectEventImpl implements MetarialRequestRejectEvent {
+  const _$MetarialRequestRejectEventImpl({required this.reject});
+
+  @override
+  final MaterialReqRejectionInModel reject;
+
+  @override
+  String toString() {
+    return 'MaterialReqApprovalEvent.metarialRequestRejectEvent(reject: $reject)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MetarialRequestRejectEventImpl &&
+            (identical(other.reject, reject) || other.reject == reject));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reject);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MetarialRequestRejectEventImplCopyWith<_$MetarialRequestRejectEventImpl>
+      get copyWith => __$$MetarialRequestRejectEventImplCopyWithImpl<
+          _$MetarialRequestRejectEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MaterialReqApprovalInModel approvalInModel)
+        materialReqApprovalSuccessEvent,
+    required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
+    required TResult Function() materialReqApprovalClearEvent,
+    required TResult Function() started,
+  }) {
+    return metarialRequestRejectEvent(reject);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MaterialReqApprovalInModel approvalInModel)?
+        materialReqApprovalSuccessEvent,
+    TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
+    TResult? Function()? materialReqApprovalClearEvent,
+    TResult? Function()? started,
+  }) {
+    return metarialRequestRejectEvent?.call(reject);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MaterialReqApprovalInModel approvalInModel)?
+        materialReqApprovalSuccessEvent,
+    TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
+    TResult Function()? materialReqApprovalClearEvent,
+    TResult Function()? started,
+    required TResult orElse(),
+  }) {
+    if (metarialRequestRejectEvent != null) {
+      return metarialRequestRejectEvent(reject);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MaterialReqApprovalSuccessEvent value)
+        materialReqApprovalSuccessEvent,
+    required TResult Function(MaterialReqApprovalLoadingEvent value)
+        materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
+    required TResult Function(MaterialReqApprovalClearEvent value)
+        materialReqApprovalClearEvent,
+    required TResult Function(_Started value) started,
+  }) {
+    return metarialRequestRejectEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MaterialReqApprovalSuccessEvent value)?
+        materialReqApprovalSuccessEvent,
+    TResult? Function(MaterialReqApprovalLoadingEvent value)?
+        materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
+    TResult? Function(MaterialReqApprovalClearEvent value)?
+        materialReqApprovalClearEvent,
+    TResult? Function(_Started value)? started,
+  }) {
+    return metarialRequestRejectEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MaterialReqApprovalSuccessEvent value)?
+        materialReqApprovalSuccessEvent,
+    TResult Function(MaterialReqApprovalLoadingEvent value)?
+        materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
+    TResult Function(MaterialReqApprovalClearEvent value)?
+        materialReqApprovalClearEvent,
+    TResult Function(_Started value)? started,
+    required TResult orElse(),
+  }) {
+    if (metarialRequestRejectEvent != null) {
+      return metarialRequestRejectEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MetarialRequestRejectEvent implements MaterialReqApprovalEvent {
+  const factory MetarialRequestRejectEvent(
+          {required final MaterialReqRejectionInModel reject}) =
+      _$MetarialRequestRejectEventImpl;
+
+  MaterialReqRejectionInModel get reject;
+  @JsonKey(ignore: true)
+  _$$MetarialRequestRejectEventImplCopyWith<_$MetarialRequestRejectEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -446,6 +657,8 @@ class _$MaterialReqApprovalClearEventImpl
     required TResult Function(MaterialReqApprovalInModel approvalInModel)
         materialReqApprovalSuccessEvent,
     required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
     required TResult Function() materialReqApprovalClearEvent,
     required TResult Function() started,
   }) {
@@ -458,6 +671,8 @@ class _$MaterialReqApprovalClearEventImpl
     TResult? Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult? Function()? materialReqApprovalClearEvent,
     TResult? Function()? started,
   }) {
@@ -470,6 +685,8 @@ class _$MaterialReqApprovalClearEventImpl
     TResult Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult Function()? materialReqApprovalClearEvent,
     TResult Function()? started,
     required TResult orElse(),
@@ -487,6 +704,8 @@ class _$MaterialReqApprovalClearEventImpl
         materialReqApprovalSuccessEvent,
     required TResult Function(MaterialReqApprovalLoadingEvent value)
         materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
     required TResult Function(MaterialReqApprovalClearEvent value)
         materialReqApprovalClearEvent,
     required TResult Function(_Started value) started,
@@ -501,6 +720,8 @@ class _$MaterialReqApprovalClearEventImpl
         materialReqApprovalSuccessEvent,
     TResult? Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult? Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult? Function(_Started value)? started,
@@ -515,6 +736,8 @@ class _$MaterialReqApprovalClearEventImpl
         materialReqApprovalSuccessEvent,
     TResult Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult Function(_Started value)? started,
@@ -574,6 +797,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(MaterialReqApprovalInModel approvalInModel)
         materialReqApprovalSuccessEvent,
     required TResult Function() materialReqApprovalLoadingEvent,
+    required TResult Function(MaterialReqRejectionInModel reject)
+        metarialRequestRejectEvent,
     required TResult Function() materialReqApprovalClearEvent,
     required TResult Function() started,
   }) {
@@ -586,6 +811,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult? Function()? materialReqApprovalLoadingEvent,
+    TResult? Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult? Function()? materialReqApprovalClearEvent,
     TResult? Function()? started,
   }) {
@@ -598,6 +825,8 @@ class _$StartedImpl implements _Started {
     TResult Function(MaterialReqApprovalInModel approvalInModel)?
         materialReqApprovalSuccessEvent,
     TResult Function()? materialReqApprovalLoadingEvent,
+    TResult Function(MaterialReqRejectionInModel reject)?
+        metarialRequestRejectEvent,
     TResult Function()? materialReqApprovalClearEvent,
     TResult Function()? started,
     required TResult orElse(),
@@ -615,6 +844,8 @@ class _$StartedImpl implements _Started {
         materialReqApprovalSuccessEvent,
     required TResult Function(MaterialReqApprovalLoadingEvent value)
         materialReqApprovalLoadingEvent,
+    required TResult Function(MetarialRequestRejectEvent value)
+        metarialRequestRejectEvent,
     required TResult Function(MaterialReqApprovalClearEvent value)
         materialReqApprovalClearEvent,
     required TResult Function(_Started value) started,
@@ -629,6 +860,8 @@ class _$StartedImpl implements _Started {
         materialReqApprovalSuccessEvent,
     TResult? Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult? Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult? Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult? Function(_Started value)? started,
@@ -643,6 +876,8 @@ class _$StartedImpl implements _Started {
         materialReqApprovalSuccessEvent,
     TResult Function(MaterialReqApprovalLoadingEvent value)?
         materialReqApprovalLoadingEvent,
+    TResult Function(MetarialRequestRejectEvent value)?
+        metarialRequestRejectEvent,
     TResult Function(MaterialReqApprovalClearEvent value)?
         materialReqApprovalClearEvent,
     TResult Function(_Started value)? started,

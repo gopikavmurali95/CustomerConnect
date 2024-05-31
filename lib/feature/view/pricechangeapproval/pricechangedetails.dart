@@ -12,7 +12,7 @@ import 'package:customer_connect/feature/state/bloc/pricechangedetails/price_cha
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +116,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   state.when(
                     getPriceChangeApprovalState: (response) {
                       if (response != null) {
-                        // Navigator.pop(context);
+                        Navigator.pop(context);
                         isLoading = false;
                         if (response.mode == '1') {
                           showCupertinoDialog(
@@ -797,8 +797,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                           priceId: widget
                                                               .priceChangeApprovel
                                                               .pchId,
-                                                          userId:
-                                                              widget.user.usrId,
+                                                          userId: widget
+                                                              .priceChangeApprovel
+                                                              .userID,
                                                           products:
                                                               _procechangeapproved),
                                                     ),
@@ -813,7 +814,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 }
                               },
                               child: Text(
-                                'Approve',
+                                'Confirm',
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

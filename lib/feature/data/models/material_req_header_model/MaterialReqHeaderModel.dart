@@ -6,21 +6,22 @@ String materialReqHeaderModelToJson(MaterialReqHeaderModel data) =>
     json.encode(data.toJson());
 
 class MaterialReqHeaderModel {
-  MaterialReqHeaderModel({
-    this.mrhID,
-    this.mrhNumber,
-    this.mrhStrID,
-    this.strName,
-    this.mrhWarID,
-    this.warName,
-    this.mrhExpDate,
-    this.createdDate,
-    this.mrhRemarks,
-    this.mrhStatus,
-    this.status,
-    this.mrhIsReOrder,
-    this.mrhIntegrationStatus,
-  });
+  MaterialReqHeaderModel(
+      {this.mrhID,
+      this.mrhNumber,
+      this.mrhStrID,
+      this.strName,
+      this.mrhWarID,
+      this.warName,
+      this.mrhExpDate,
+      this.createdDate,
+      this.mrhRemarks,
+      this.mrhStatus,
+      this.status,
+      this.mrhIsReOrder,
+      this.mrhIntegrationStatus,
+      this.rotID,
+      this.userID});
 
   MaterialReqHeaderModel.fromJson(dynamic json) {
     mrhID = json['mrh_ID'];
@@ -36,6 +37,8 @@ class MaterialReqHeaderModel {
     status = json['Status'];
     mrhIsReOrder = json['mrh_IsReOrder'];
     mrhIntegrationStatus = json['mrh_IntegrationStatus'];
+    mrhIntegrationStatus = json['rotID'];
+    userID = json['UserID'];
   }
   String? mrhID;
   String? mrhNumber;
@@ -50,6 +53,8 @@ class MaterialReqHeaderModel {
   String? status;
   String? mrhIsReOrder;
   String? mrhIntegrationStatus;
+  String? userID;
+  String? rotID;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -66,6 +71,8 @@ class MaterialReqHeaderModel {
     map['Status'] = status;
     map['mrh_IsReOrder'] = mrhIsReOrder;
     map['mrh_IntegrationStatus'] = mrhIntegrationStatus;
+    map['rotID'] = mrhIntegrationStatus;
+    map['UserID'] = userID;
     return map;
   }
 }

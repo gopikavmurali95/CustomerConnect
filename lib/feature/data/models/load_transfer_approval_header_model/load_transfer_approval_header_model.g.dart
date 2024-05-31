@@ -20,6 +20,8 @@ LoadTransferApprovalHeaderModel _$LoadTransferApprovalHeaderModelFromJson(
       ltrType: json['ltr_Type'] as String?,
       ltrRemarks: json['ltr_Remarks'] as String?,
       ltrApprovalStatus: json['ltr_ApprovalStatus'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$LoadTransferApprovalHeaderModelToJson(
@@ -36,4 +38,6 @@ Map<String, dynamic> _$LoadTransferApprovalHeaderModelToJson(
       'ltr_Type': instance.ltrType,
       'ltr_Remarks': instance.ltrRemarks,
       'ltr_ApprovalStatus': instance.ltrApprovalStatus,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

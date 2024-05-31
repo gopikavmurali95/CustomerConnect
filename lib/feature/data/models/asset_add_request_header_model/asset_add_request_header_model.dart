@@ -38,26 +38,31 @@ class AssetAddRequestHeaderModel {
   String? astCode;
   @JsonKey(name: 'Image')
   String? image;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  AssetAddRequestHeaderModel({
-    this.aahId,
-    this.aahAstId,
-    this.aahSlno,
-    this.aahName,
-    this.aahRsnId,
-    this.aahRemarks,
-    this.aahCusId,
-    this.aahUdpId,
-    this.astName,
-    this.cusCode,
-    this.cusName,
-    this.createdDate,
-    this.rotCode,
-    this.route,
-    this.rsnName,
-    this.astCode,
-    this.image,
-  });
+  AssetAddRequestHeaderModel(
+      {this.aahId,
+      this.aahAstId,
+      this.aahSlno,
+      this.aahName,
+      this.aahRsnId,
+      this.aahRemarks,
+      this.aahCusId,
+      this.aahUdpId,
+      this.astName,
+      this.cusCode,
+      this.cusName,
+      this.createdDate,
+      this.rotCode,
+      this.route,
+      this.rsnName,
+      this.astCode,
+      this.image,
+      this.rotID,
+      this.userID});
 
   factory AssetAddRequestHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$AssetAddRequestHeaderModelFromJson(json);

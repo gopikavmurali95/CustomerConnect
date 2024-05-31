@@ -85,7 +85,7 @@ class _MaterialRequestHeaderScreenState
                                         Divider(
                                           color: Colors.grey[300],
                                         ),
-                                    itemCount: headers!.length),
+                                    itemCount: 10),
                               )
                             : ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -178,16 +178,38 @@ class _MaterialRequestHeaderScreenState
                                                   ),
                                                 ),
                                                 Container(
-                                                  height: 10.h,
-                                                  width: 10.h,
+                                                  // height: 10.h,
+                                                  // width: 10.h,
                                                   decoration: BoxDecoration(
-                                                    color: Colors.blue,
-                                                    // headers[index].rahApprovalStatus!.isEmpty
-                                                    //     ? Colors.red
-                                                    //     : Colors.green,
+                                                    color: headers[index]
+                                                                .status!
+                                                                .isEmpty ||
+                                                            headers[index]
+                                                                    .status !=
+                                                                'A'
+                                                        ? headers[index]
+                                                                    .status !=
+                                                                'AH'
+                                                            ? Colors.red[300]
+                                                            : const Color(
+                                                                0xfff7f4e2)
+                                                        : const Color(
+                                                            0xffe3f7e2),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                       10,
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 10,
+                                                        vertical: 3),
+                                                    child: Text(
+                                                      headers[index].status ??
+                                                          "",
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp),
                                                     ),
                                                   ),
                                                 )

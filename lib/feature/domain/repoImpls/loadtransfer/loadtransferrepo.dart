@@ -73,23 +73,13 @@ class LoadTransferApprovalRepo implements ILoadTransferApprovalRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + loadTransferApprovalUrl), body: {
-        "JSONString": jsonEncode([
-          {
-            "ldr_ID": approve.ldrId,
-            "Status": approve.status,
-          }
-        ]),
+        "JSONString": jsonEncode(approve.products),
         "UserId": approve.userId,
         "ReqID": approve.reqId,
       });
 
       log({
-        "JSONString": jsonEncode([
-          {
-            "ldr_ID": approve.ldrId,
-            "Status": approve.status,
-          }
-        ]),
+        "JSONString": jsonEncode(approve.products),
         "UserId": approve.userId,
         "ReqID": approve.reqId,
       }.toString());

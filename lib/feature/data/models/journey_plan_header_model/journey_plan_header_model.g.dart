@@ -19,6 +19,8 @@ JourneyPlanHeaderModel _$JourneyPlanHeaderModelFromJson(
       cusCode: json['cus_Code'] as String?,
       rsnName: json['rsn_Name'] as String?,
       status: json['Status'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$JourneyPlanHeaderModelToJson(
@@ -34,4 +36,6 @@ Map<String, dynamic> _$JourneyPlanHeaderModelToJson(
       'cus_Code': instance.cusCode,
       'rsn_Name': instance.rsnName,
       'Status': instance.status,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

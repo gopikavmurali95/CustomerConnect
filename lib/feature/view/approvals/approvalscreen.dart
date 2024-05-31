@@ -1099,7 +1099,8 @@ class ApprovalScreen extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         context.read<FieldServiceHeaderBloc>().add(
-                            const GetAllFieldServiceHeadersEvent(userId: '64'));
+                            GetAllFieldServiceHeadersEvent(
+                                userId: user.usrId ?? ''));
                         Navigator.push(
                           context,
                           MaterialPageRoute(

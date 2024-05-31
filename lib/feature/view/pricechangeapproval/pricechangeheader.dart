@@ -1,7 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -138,16 +138,30 @@ class PriceChangeHeader extends StatelessWidget {
                                           ),
                                         ),
                                         Container(
-                                          height: 10.h,
-                                          width: 10.h,
+                                          // height: 10.h,
+                                          // width: 10.h,
                                           decoration: BoxDecoration(
                                             color: pChange[index]
-                                                    .pchApprovalStatus!
-                                                    .isEmpty
-                                                ? Colors.red
-                                                : Colors.green,
+                                                        .pchApprovalStatus! ==
+                                                    "Pending"
+                                                ? const Color(0xfff7f4e2)
+                                                : pChange[index]
+                                                            .pchApprovalStatus! ==
+                                                        "Action Taken"
+                                                    ? const Color(0xffe3f7e2)
+                                                    : Colors.red[300],
                                             borderRadius: BorderRadius.circular(
                                               10,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 5, vertical: 3),
+                                            child: Text(
+                                              pChange[index]
+                                                      .pchApprovalStatus ??
+                                                  '',
+                                              style: kfontstyle(fontSize: 8.sp),
                                             ),
                                           ),
                                         )

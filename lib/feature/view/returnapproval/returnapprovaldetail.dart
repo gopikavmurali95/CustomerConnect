@@ -8,8 +8,7 @@ import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_re
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
-import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,13 +61,15 @@ class _ReturnApprovalDetailScreenState
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            if (_approvedCount != 0 && _approvedCount != _totalCount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else {
-              context.read<NavigatetoBackCubit>().popFromScreen(true);
-            }
+            // if (_approvedCount != 0 && _approvedCount != _totalCount) {
+            //   Future.delayed(const Duration(microseconds: 100), () {
+            //     showPopAlert(context);
+            //   });
+            // } else {
+            //   context.read<NavigatetoBackCubit>().popFromScreen(true);
+            // }
+
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -92,18 +93,11 @@ class _ReturnApprovalDetailScreenState
           );
         },
         child: PopScope(
-          canPop: false,
+          canPop: true,
           onPopInvoked: (didPop) {
-            if (_approvedCount != 0 && _approvedCount != _totalCount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else {
-              context.read<ReturnApprovalHeaderBloc>().add(
-                  const GetReturnApprovalHeaders(
-                      rotID: /*  widget.user.usrId ?? */ '45'));
-              context.read<NavigatetoBackCubit>().popFromScreen(true);
-            }
+            context.read<ReturnApprovalHeaderBloc>().add(
+                const GetReturnApprovalHeaders(
+                    rotID: /*  widget.user.usrId ?? */ '45'));
           },
           child: Column(
             children: [

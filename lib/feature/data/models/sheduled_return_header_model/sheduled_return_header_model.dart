@@ -24,19 +24,24 @@ class SheduledReturnHeaderModel {
   String? createdDate;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  SheduledReturnHeaderModel({
-    this.cusCode,
-    this.cusName,
-    this.rrhInvId,
-    this.rrhRequestNumber,
-    this.usrName,
-    this.rrhId,
-    this.rrhType,
-    this.rrhReturnType,
-    this.createdDate,
-    this.status,
-  });
+  SheduledReturnHeaderModel(
+      {this.cusCode,
+      this.cusName,
+      this.rrhInvId,
+      this.rrhRequestNumber,
+      this.usrName,
+      this.rrhId,
+      this.rrhType,
+      this.rrhReturnType,
+      this.createdDate,
+      this.status,
+      this.userID,
+      this.rotID});
 
   factory SheduledReturnHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$SheduledReturnHeaderModelFromJson(json);

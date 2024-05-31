@@ -26,6 +26,8 @@ AssetAddRequestHeaderModel _$AssetAddRequestHeaderModelFromJson(
       rsnName: json['rsn_Name'] as String?,
       astCode: json['ast_Code'] as String?,
       image: json['Image'] as String?,
+      rotID: json['rotID'] as String?,
+      userID: json['UserID'] as String?,
     );
 
 Map<String, dynamic> _$AssetAddRequestHeaderModelToJson(
@@ -48,4 +50,6 @@ Map<String, dynamic> _$AssetAddRequestHeaderModelToJson(
       'rsn_Name': instance.rsnName,
       'ast_Code': instance.astCode,
       'Image': instance.image,
+      'UserID': instance.userID,
+      'rotID': instance.rotID,
     };

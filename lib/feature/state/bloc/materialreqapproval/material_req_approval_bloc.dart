@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/models/material_req_approval_in_model/MaterialReqApprvalInModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
+import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -28,7 +30,16 @@ class MaterialReqApprovalBloc
       emit(approve.fold((l) => const MaterialReqApprovalFailedState(),
           (r) => MaterialReqApprovalSuccessState(response: r)));
     });
+    on<MetarialRequestRejectEvent>((event, emit) async {
+      log("in approval bloc");
+      Either<MainFailures, MaterialReqrejectionOutModel> approve =
+          await materialReqApprovalRepo.materialRejection(event.reject);
 
+      emit(approve.fold(
+          (l) => const MaterialReqApprovalFailedState(),
+          (r) => MaterialReqApprovalSuccessState(
+              response: MaterialReqApprovalOutModel(status: r.status))));
+    });
     on<MaterialReqApprovalLoadingEvent>((event, emit) {
       emit(const MaterialReqApprovalLoadingState());
     });

@@ -22,18 +22,23 @@ class PartialDeliveryHeaderModel {
   String? createdDate;
   @JsonKey(name: 'dah_ApprovalStatus')
   String? dahApprovalStatus;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  PartialDeliveryHeaderModel({
-    this.dahId,
-    this.orderId,
-    this.expectedDelDate,
-    this.cusCode,
-    this.cusName,
-    this.rotName,
-    this.type,
-    this.createdDate,
-    this.dahApprovalStatus,
-  });
+  PartialDeliveryHeaderModel(
+      {this.dahId,
+      this.orderId,
+      this.expectedDelDate,
+      this.cusCode,
+      this.cusName,
+      this.rotName,
+      this.type,
+      this.createdDate,
+      this.dahApprovalStatus,
+      this.rotID,
+      this.userID});
 
   factory PartialDeliveryHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$PartialDeliveryHeaderModelFromJson(json);

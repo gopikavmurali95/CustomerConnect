@@ -40,27 +40,32 @@ class AssetRemovalRequestHeaderModel {
   String? arqAscId;
   @JsonKey(name: 'Image')
   String? image;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  AssetRemovalRequestHeaderModel({
-    this.arqId,
-    this.arqRemarks,
-    this.arqStatus,
-    this.astCode,
-    this.astName,
-    this.rsnName,
-    this.rsnType,
-    this.cusCode,
-    this.cusName,
-    this.atmCode,
-    this.atmName,
-    this.createdDate,
-    this.rotCode,
-    this.route,
-    this.arqAstId,
-    this.arqCusId,
-    this.arqAscId,
-    this.image,
-  });
+  AssetRemovalRequestHeaderModel(
+      {this.arqId,
+      this.arqRemarks,
+      this.arqStatus,
+      this.astCode,
+      this.astName,
+      this.rsnName,
+      this.rsnType,
+      this.cusCode,
+      this.cusName,
+      this.atmCode,
+      this.atmName,
+      this.createdDate,
+      this.rotCode,
+      this.route,
+      this.arqAstId,
+      this.arqCusId,
+      this.arqAscId,
+      this.image,
+      this.rotID,
+      this.userID});
 
   factory AssetRemovalRequestHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$AssetRemovalRequestHeaderModelFromJson(json);

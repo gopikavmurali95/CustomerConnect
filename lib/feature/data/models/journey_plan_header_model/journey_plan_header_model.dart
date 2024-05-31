@@ -24,19 +24,24 @@ class JourneyPlanHeaderModel {
   String? rsnName;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'UserID')
+  String? userID;
+  @JsonKey(name: 'rotID')
+  String? rotID;
 
-  JourneyPlanHeaderModel({
-    this.jpsId,
-    this.jpsPrevSeq,
-    this.jpsCurrentSeq,
-    this.createdDate,
-    this.rotCode,
-    this.route,
-    this.cusName,
-    this.cusCode,
-    this.rsnName,
-    this.status,
-  });
+  JourneyPlanHeaderModel(
+      {this.jpsId,
+      this.jpsPrevSeq,
+      this.jpsCurrentSeq,
+      this.createdDate,
+      this.rotCode,
+      this.route,
+      this.cusName,
+      this.cusCode,
+      this.rsnName,
+      this.status,
+      this.rotID,
+      this.userID});
 
   factory JourneyPlanHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$JourneyPlanHeaderModelFromJson(json);

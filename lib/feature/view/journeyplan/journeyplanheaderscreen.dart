@@ -166,31 +166,6 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                       ),
                                                     ],
                                                   ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        '${headers[index].cusCode} - ',
-                                                        style: kfontstyle(
-                                                          fontSize: 12.sp,
-                                                          color: const Color(
-                                                              0xff2C6B9E),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Text(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          headers[index]
-                                                                  .cusName ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              color: const Color(
-                                                                  0xff413434)),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
                                                   Text(
                                                     '${headers[index].rotCode} |${headers[index].createdDate}',
                                                     style: kfontstyle(
@@ -312,7 +287,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                       return Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .end,
+                                                                .start,
                                                         children: [
                                                           Transform.scale(
                                                             scale: 0.8,
@@ -373,7 +348,14 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                               setState(() {});
                                                                               context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                              context.read<JoureyPlanApprovalBloc>().add(ApproveJourneyPlanEvent(approve: JourneyPlanApprovalInModel(jpsId: headers[index].jpsId, userId: widget.user.usrId)));
+                                                                              context.read<JoureyPlanApprovalBloc>().add(
+                                                                                    ApproveJourneyPlanEvent(
+                                                                                      approve: JourneyPlanApprovalInModel(
+                                                                                        jpsId: headers[index].jpsId,
+                                                                                        userId: headers[index].userID,
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
 
                                                                               Navigator.pop(context);
                                                                             },
@@ -454,7 +436,14 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                               setState(() {});
                                                                               context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                              context.read<JoureyPlanApprovalBloc>().add(RejectaJOurneyPlanEvent(reject: JourneyPlanApprovalInModel(jpsId: headers[index].jpsId, userId: widget.user.usrId)));
+                                                                              context.read<JoureyPlanApprovalBloc>().add(
+                                                                                    RejectaJOurneyPlanEvent(
+                                                                                      reject: JourneyPlanApprovalInModel(
+                                                                                        jpsId: headers[index].jpsId,
+                                                                                        userId: headers[index].userID,
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
 
                                                                               Navigator.pop(context);
                                                                             },
@@ -490,6 +479,36 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                           ],
                                         ),
                                       ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color:
+                                              headers[index].status!.isEmpty ||
+                                                      headers[index].status !=
+                                                          'Approved'
+                                                  ? headers[index].status ==
+                                                          'Rejected'
+                                                      ? Colors.red[300]
+                                                      : const Color(0xfff7f4e2)
+                                                  : const Color(0xffe3f7e2),
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8, vertical: 5),
+                                          child: Text(
+                                            headers[index].status ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 8.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: headers[index].status ==
+                                                        'Rejected'
+                                                    ? Colors.white54
+                                                    : Colors.black54),
+                                          ),
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),

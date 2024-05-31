@@ -182,9 +182,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
       ),
       body: RefreshIndicator(
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
-        color: const  Color.fromARGB(255, 181, 218, 245),
+        color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshPromotionHeaderScreen(context,widget.user),
+        onRefresh: () => _onRefreshPromotionHeaderScreen(context, widget.user),
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -210,7 +210,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                 height: 25.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'All promotions',
@@ -241,7 +242,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                             context
                                                 .read<PromotionCustomerBloc>()
                                                 .add(GetPromotionCustomerEvent(
-                                                    id: promoheader[index].qid ??
+                                                    id: promoheader[index]
+                                                            .qid ??
                                                         '',
                                                     searchQuery: ''));
                                             Navigator.push(
@@ -250,7 +252,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     builder: (context) =>
                                                         PromotionCustomer(
                                                           promotion:
-                                                              promoheader[index],
+                                                              promoheader[
+                                                                  index],
                                                         )));
                                           },
                                           child: SizedBox(
@@ -259,12 +262,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                             width: double.infinity,
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 SizedBox(
-
                                                   child: Expanded(
-
                                                     child: Row(
                                                       children: [
                                                         CircleAvatar(
@@ -283,12 +285,13 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                                       .split('')
                                                                       .toList()[0],
                                                               style: TextStyle(
-                                                                  fontSize: 14.sp,
+                                                                  fontSize:
+                                                                      14.sp,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  color:
-                                                                      Colors.white),
+                                                                  color: Colors
+                                                                      .white),
                                                             ),
                                                           ),
                                                         ),
@@ -307,20 +310,23 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                               width: 200.w,
                                                               child: Text(
                                                                 '${promoheader[index].prmName}',
-                                                                overflow: TextOverflow.ellipsis,
-                                                                maxLines:2,
-
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                maxLines: 2,
                                                                 style:
                                                                     blueTextStyle(),
                                                               ),
                                                             ),
                                                             Text(
                                                               '${promoheader[index].dateRange}',
-                                                              style: subTextStyle(),
+                                                              style:
+                                                                  subTextStyle(),
                                                             ),
                                                             Text(
                                                               '${promoheader[index].pName} | ${promoheader[index].pCode}',
-                                                              style: subTextStyle(),
+                                                              style:
+                                                                  subTextStyle(),
                                                             )
                                                           ],
                                                         ),
@@ -338,12 +344,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     context
                                                         .read<
                                                             PromotionDetailsBloc>()
-                                                        .add(
-                                                            GetPromotionDetailsEvent(
-                                                                id: promoheader[
-                                                                            index]
-                                                                        .aid ??
-                                                                    ''));
+                                                        .add(GetPromotionDetailsEvent(
+                                                            id: promoheader[
+                                                                        index]
+                                                                    .aid ??
+                                                                ''));
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
@@ -409,23 +414,22 @@ class _PromotionHeaderState extends State<PromotionHeader> {
     );
   }
 
-  Future<void> _onRefreshPromotionHeaderScreen(BuildContext context,LoginUserModel model) async
-  {
+  Future<void> _onRefreshPromotionHeaderScreen(
+      BuildContext context, LoginUserModel model) async {
     context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
     context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
-      searchQuery: '',
-      promotionInparas: PromotionHeaderInParas(
-          area: '',
-          cusOutlet: '',
-          customer: '',
-          fromDate:
-          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-          route: '',
-          subArea: '',
-          toDate:
-          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-          userId: widget.user.usrId),));
-
+          searchQuery: '',
+          promotionInparas: PromotionHeaderInParas(
+              area: '',
+              cusOutlet: '',
+              customer: '',
+              fromDate:
+                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+              route: '',
+              subArea: '',
+              toDate:
+                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+              userId: widget.user.usrId),
+        ));
   }
 }
-

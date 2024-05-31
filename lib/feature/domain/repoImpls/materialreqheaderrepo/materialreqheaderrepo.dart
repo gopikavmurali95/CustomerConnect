@@ -73,9 +73,21 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
   Future<Either<MainFailures, MaterialReqApprovalOutModel>> materialApproval(
       MaterialReqApprovalInModel approval) async {
     try {
-      final response = await http.post(
-          Uri.parse(approvalBaseUrl + materialReqApprovalUrl),
-          body: approval.toJson());
+      log({
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "Mode": approval.mode,
+        "Warehouse": approval.warehouse
+      }.toString());
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + materialReqApprovalUrl), body: {
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "Mode": approval.mode,
+        "Warehouse": approval.warehouse
+      });
 
       log(response.body);
       if (response.statusCode == 200) {
@@ -98,10 +110,19 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
   Future<Either<MainFailures, MaterialReqrejectionOutModel>> materialRejection(
       MaterialReqRejectionInModel approval) async {
     try {
-      final response = await http.post(
-          Uri.parse(approvalBaseUrl + materialReqRejectionUrl),
-          body: approval.toJson());
-
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + materialReqRejectionUrl), body: {
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "Remark": approval.remark,
+      });
+      log({
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "Remark": approval.remark,
+      }.toString());
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

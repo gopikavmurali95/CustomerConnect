@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/data/models/van_to_van_header_model/van
 import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
