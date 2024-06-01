@@ -17,7 +17,7 @@ class CusItemsBloc extends Bloc<CusItemsEvent, CusItemsState> {
     on<GetItemsEvent>((event, emit) async {
       List<CusItemsModel> searcheditems = [];
       Either<MainFailures, List<CusItemsModel>> items =
-          await itemsRepo.getCusItems("event.cus", event.route);
+          await itemsRepo.getCusItems(event.cusID, event.route);
 
       emit(
         items.fold(
