@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -109,47 +112,25 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                 state.when(
                   getPartialDeliveryApprovalState: (response) {
                     if (response != null) {
-                      // Navigator.pop(context);
+                      Navigator.pop(context);
                       isLoading = false;
-                      if (response.status == '1') {
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: const Text('Alert'),
-                            content: Text(
-                                "Product Status Update ${response.status} "),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        statuslist =
-                            List.generate(_totalcount, (index) => null);
-                        setState(() {});
-                        // Navigator.pop(context);
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: const Text('Alert'),
-                            content: Text(
-                                "Product Status Update ${response.status} ,Try Again"),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
+
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content:
+                              Text("Product Status Update ${response.status} "),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Ok'),
+                            ),
+                          ],
+                        ),
+                      );
                     }
                   },
                   partialDeliveryApprovalLoading: () {
@@ -714,12 +695,16 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            color: widget.header.dahApprovalStatus == 'Pending'
-                                ? Colors.green.shade300
-                                : Colors.grey[300],
+                            color:
+                                widget.header.dahApprovalStatus == 'Pending' ||
+                                        widget.header.dahApprovalStatus!.isEmpty
+                                    ? Colors.green.shade300
+                                    : Colors.grey[300],
                             onPressed: () {
+                              log(jsonEncode(_partialdeliveryapproved));
                               if (widget.header.dahApprovalStatus ==
-                                  'Pending') {
+                                      'Pending' ||
+                                  widget.header.dahApprovalStatus!.isEmpty) {
                                 if (_partialdeliveryapproved.contains(null)) {
                                   showCupertinoDialog(
                                     context: context,
@@ -771,6 +756,8 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                 .add(GetPartialDeliveryApprovalEvent(
                                                     approvalin:
                                                         PartialDeliveryApprovalModel(
+                                                            products:
+                                                                _partialdeliveryapproved,
                                                             returnId: widget
                                                                 .header.dahId,
                                                             userId: widget

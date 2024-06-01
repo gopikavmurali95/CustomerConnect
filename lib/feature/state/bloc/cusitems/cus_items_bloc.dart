@@ -17,7 +17,7 @@ class CusItemsBloc extends Bloc<CusItemsEvent, CusItemsState> {
     on<GetItemsEvent>((event, emit) async {
       List<CusItemsModel> searcheditems = [];
       Either<MainFailures, List<CusItemsModel>> items =
-          await itemsRepo.getCusItems(event.route);
+          await itemsRepo.getCusItems("event.cus", event.route);
 
       emit(
         items.fold(
@@ -41,7 +41,7 @@ class CusItemsBloc extends Bloc<CusItemsEvent, CusItemsState> {
       );
     });
     on<ClearItemsEvent>((event, emit) {
-      const GetCusItemsState(items: null);
+      emit(const GetCusItemsState(items: null));
     });
   }
 }

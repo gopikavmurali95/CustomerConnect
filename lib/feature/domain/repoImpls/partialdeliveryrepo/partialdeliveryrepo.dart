@@ -105,7 +105,11 @@ class PartialDeliveryRepo implements IPartialDeliveryRepo {
         "UserID": approveIn.userId,
         "JSONString": jsonEncode(approveIn.products)
       });
-
+      log({
+        "ReturnID": approveIn.returnId,
+        "UserID": approveIn.userId,
+        "JSONString": jsonEncode(approveIn.products)
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

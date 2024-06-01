@@ -216,6 +216,7 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                             ),
                             ListView.separated(
                               itemCount: detail.length,
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (BuildContext context, int index) {
                                 return Column(

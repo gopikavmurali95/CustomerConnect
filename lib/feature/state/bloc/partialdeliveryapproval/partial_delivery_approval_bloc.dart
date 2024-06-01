@@ -24,8 +24,7 @@ class PartialDeliveryApprovalBloc
           (r) => GetPartialDeliveryApprovalState(approvals: r)));
     });
     on<PartialDeliveryLoadingEvent>((event, emit) {
-      emit(const PartialDeliveryApprovalState.getPartialDeliveryApprovalState(
-          approvals: null));
+      emit(const PartialDeliveryApprovalLoading());
     });
   }
 }

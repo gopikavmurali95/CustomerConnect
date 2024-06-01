@@ -37,7 +37,7 @@ class CustomerItemListWidget extends StatelessWidget {
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
                               // height: 55.h,
@@ -52,15 +52,22 @@ class CustomerItemListWidget extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  Text(
-                                    items[index].prdName ?? '',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black54),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    child: Text(
+                                      items[index].prdName ?? '',
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.black54),
+                                    ),
                                   ),
                                 ],
                               ),
+                            ),
+                            SizedBox(
+                              width: 30.h,
                             ),
                             Row(
                               children: [
@@ -73,9 +80,8 @@ class CustomerItemListWidget extends StatelessWidget {
                                           fontWeight: FontWeight.w400,
                                           color: Colors.black54),
                                     ),
-                                    /* SizedBox(
-                                  height: 10.h,
-                                ),
+
+                                    /* 
                                 Text(
                                   'Pc',
                                   style: kfontstyle(
@@ -86,12 +92,13 @@ class CustomerItemListWidget extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(
-                                  width: 50.w,
+                                  width: 30.h,
                                 ),
                                 Column(
                                   children: [
                                     Text(
                                       items[index].pldPrice ?? "",
+                                      overflow: TextOverflow.ellipsis,
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w400,

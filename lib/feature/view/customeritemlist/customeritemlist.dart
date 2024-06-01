@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -29,21 +30,26 @@ class _CustomerItemListState extends State<CustomerItemList> {
   void initState() {
     _cusItemSearchCtrl.clear();
     context.read<CusItemsBloc>().add(const ClearItemsEvent());
-    context.read<CusItemsBloc>().add(
-        GetItemsEvent(route: widget.customer.rotId ?? '', searchQuery: ''));
+    context.read<CusItemsBloc>().add(GetItemsEvent(
+        cusID: widget.customer.cusId ?? '',
+        route: widget.customer.rotId ?? '',
+        searchQuery: ''));
     super.initState();
   }
 
   Future<void> _onRefreshLoadin(BuildContext context) async {
     _cusItemSearchCtrl.clear();
     context.read<CusItemsBloc>().add(const ClearItemsEvent());
-    context.read<CusItemsBloc>().add(
-        GetItemsEvent(route: widget.customer.rotId ?? '', searchQuery: ''));
+    context.read<CusItemsBloc>().add(GetItemsEvent(
+        cusID: widget.customer.cusId ?? '',
+        route: widget.customer.rotId ?? '',
+        searchQuery: ''));
     await Future.delayed(const Duration(seconds: 2));
   }
 
   @override
   Widget build(BuildContext context) {
+    log(widget.customer.rotId ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -108,7 +114,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 200.w,
+                                      width: 160.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
                                         widget.customer.cusName ?? "",
@@ -128,7 +134,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                           color: const Color(0xff413434)),
                                     ),
                                     SizedBox(
-                                      width: 150.w,
+                                      width: 200.w,
                                       child: Text(
                                         widget.customer.headerName ?? "",
                                         overflow: TextOverflow.ellipsis,
@@ -179,6 +185,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                   .read<CusItemsBloc>()
                                   .add(const ClearItemsEvent());
                               context.read<CusItemsBloc>().add(GetItemsEvent(
+                                  cusID: widget.customer.cusId ?? '',
                                   route: widget.customer.rotId ?? '',
                                   searchQuery: value.trim()));
                             },
@@ -202,6 +209,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                           .add(const ClearItemsEvent());
                                       context.read<CusItemsBloc>().add(
                                             GetItemsEvent(
+                                                cusID:
+                                                    widget.customer.cusId ?? '',
                                                 route:
                                                     widget.customer.rotId ?? '',
                                                 searchQuery: ''),

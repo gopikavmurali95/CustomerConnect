@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String route, String searchQuery) getItemsEvent,
+    required TResult Function(String cusID, String route, String searchQuery)
+        getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String route, String searchQuery)? getItemsEvent,
+    TResult? Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String route, String searchQuery)? getItemsEvent,
+    TResult Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
   }) =>
@@ -80,7 +83,7 @@ abstract class _$$GetItemsEventImplCopyWith<$Res> {
           _$GetItemsEventImpl value, $Res Function(_$GetItemsEventImpl) then) =
       __$$GetItemsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String route, String searchQuery});
+  $Res call({String cusID, String route, String searchQuery});
 }
 
 /// @nodoc
@@ -94,10 +97,15 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? cusID = null,
     Object? route = null,
     Object? searchQuery = null,
   }) {
     return _then(_$GetItemsEventImpl(
+      cusID: null == cusID
+          ? _value.cusID
+          : cusID // ignore: cast_nullable_to_non_nullable
+              as String,
       route: null == route
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
@@ -113,8 +121,11 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetItemsEventImpl implements GetItemsEvent {
-  const _$GetItemsEventImpl({required this.route, required this.searchQuery});
+  const _$GetItemsEventImpl(
+      {required this.cusID, required this.route, required this.searchQuery});
 
+  @override
+  final String cusID;
   @override
   final String route;
   @override
@@ -122,7 +133,7 @@ class _$GetItemsEventImpl implements GetItemsEvent {
 
   @override
   String toString() {
-    return 'CusItemsEvent.getItemsEvent(route: $route, searchQuery: $searchQuery)';
+    return 'CusItemsEvent.getItemsEvent(cusID: $cusID, route: $route, searchQuery: $searchQuery)';
   }
 
   @override
@@ -130,13 +141,14 @@ class _$GetItemsEventImpl implements GetItemsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetItemsEventImpl &&
+            (identical(other.cusID, cusID) || other.cusID == cusID) &&
             (identical(other.route, route) || other.route == route) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, route, searchQuery);
+  int get hashCode => Object.hash(runtimeType, cusID, route, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +159,33 @@ class _$GetItemsEventImpl implements GetItemsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String route, String searchQuery) getItemsEvent,
+    required TResult Function(String cusID, String route, String searchQuery)
+        getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
-    return getItemsEvent(route, searchQuery);
+    return getItemsEvent(cusID, route, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String route, String searchQuery)? getItemsEvent,
+    TResult? Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
-    return getItemsEvent?.call(route, searchQuery);
+    return getItemsEvent?.call(cusID, route, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String route, String searchQuery)? getItemsEvent,
+    TResult Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
   }) {
     if (getItemsEvent != null) {
-      return getItemsEvent(route, searchQuery);
+      return getItemsEvent(cusID, route, searchQuery);
     }
     return orElse();
   }
@@ -209,9 +224,11 @@ class _$GetItemsEventImpl implements GetItemsEvent {
 
 abstract class GetItemsEvent implements CusItemsEvent {
   const factory GetItemsEvent(
-      {required final String route,
+      {required final String cusID,
+      required final String route,
       required final String searchQuery}) = _$GetItemsEventImpl;
 
+  String get cusID;
   String get route;
   String get searchQuery;
   @JsonKey(ignore: true)
@@ -257,7 +274,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String route, String searchQuery) getItemsEvent,
+    required TResult Function(String cusID, String route, String searchQuery)
+        getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
     return clearItemsEvent();
@@ -266,7 +284,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String route, String searchQuery)? getItemsEvent,
+    TResult? Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
     return clearItemsEvent?.call();
@@ -275,7 +294,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String route, String searchQuery)? getItemsEvent,
+    TResult Function(String cusID, String route, String searchQuery)?
+        getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
   }) {
