@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
@@ -488,9 +489,10 @@ class FieldServiceInvoiceDetailsState
                         actions: [
                           TextButton(
                             onPressed: () {
-                              context.read<FIeldServiceDetailBloc>().add(
-                                  GetAllFieldServiceDetailEvent(
-                                      reqId: widget.header.sahId ?? ''));
+                              context.read<FieldServiceHeaderBloc>().add(
+                                  GetAllFieldServiceHeadersEvent(
+                                      userId: widget.header.userID ?? ''));
+                              Navigator.pop(context);
                               Navigator.pop(context);
                             },
                             child: const Text('Proceed'),

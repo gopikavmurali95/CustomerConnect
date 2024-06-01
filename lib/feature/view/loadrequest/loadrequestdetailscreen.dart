@@ -7,12 +7,10 @@ import 'package:customer_connect/feature/data/models/load_req_header_model/LoadR
 import 'package:customer_connect/feature/data/models/load_req_prd_model/load_req_prd_model.dart';
 import 'package:customer_connect/feature/data/models/load_request_approval/LoadReqInApprovalModel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-// import 'package:customer_connect/feature/data/models/return_approval_header_model/return_approval_header_model.dart';
-// import 'package:customer_connect/feature/data/models/return_approve_in_model/return_approve_in_model.dart';
-// import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../data/models/load_request_approval_out_model/LoadRequestApprovalOutModel.dart';
 // import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 
 class LoadReqDetailscreen extends StatefulWidget {
@@ -633,6 +630,155 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                     ), */
                                             /*  ],
                                                 ) */
+
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  // width: MediaQuery.of(
+                                                  //         context)
+                                                  //     .size
+                                                  //     .width,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        details[index]
+                                                                .lrdHUOM ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 10.w,
+                                                      ),
+                                                      Flexible(
+                                                          flex: 2,
+                                                          fit: FlexFit.tight,
+                                                          child: TextFormField(
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            controller:
+                                                                TextEditingController(
+                                                              text: details[
+                                                                      index]
+                                                                  .lrdApvHQty,
+                                                            ),
+                                                            style: kfontstyle(
+                                                                fontSize:
+                                                                    13.sp),
+                                                            onChanged: (value) {
+                                                              details[index]
+                                                                      .lrdApvLQty =
+                                                                  value;
+                                                              _loadproducts[
+                                                                      index] =
+                                                                  LoadReqPrdModel(
+                                                                lrdHQty: details[
+                                                                        index]
+                                                                    .lrdLQty,
+                                                                lrdHuom: details[
+                                                                        index]
+                                                                    .lrdHUOM,
+                                                                lrdId: details[
+                                                                        index]
+                                                                    .lrdID,
+                                                                lrdLQty: details[
+                                                                        index]
+                                                                    .lrdLQty,
+                                                                lrdLuom: details[
+                                                                        index]
+                                                                    .lrdLUOM,
+                                                                lrdPrdId: details[
+                                                                        index]
+                                                                    .lrdPrdID,
+                                                                lrdTotalQty: details[
+                                                                        index]
+                                                                    .lrdTotalQty,
+                                                                txtApvHQty: details[
+                                                                        index]
+                                                                    .lrdApvHQty,
+                                                                txtApvLQty: details[
+                                                                        index]
+                                                                    .lrdApvLQty,
+                                                              );
+                                                            },
+                                                          )),
+                                                      const Spacer(),
+                                                      Text(
+                                                        details[index]
+                                                                .lrdLUOM ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 10.w,
+                                                      ),
+                                                      Flexible(
+                                                        flex: 2,
+                                                        fit: FlexFit.tight,
+                                                        child: TextFormField(
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .number,
+                                                          controller:
+                                                              TextEditingController(
+                                                            text: details[index]
+                                                                .lrdApvLQty,
+                                                          ),
+                                                          onChanged: (value) {
+                                                            details[index]
+                                                                    .lrdApvLQty =
+                                                                value;
+                                                            _loadproducts[
+                                                                    index] =
+                                                                LoadReqPrdModel(
+                                                              lrdHQty:
+                                                                  details[index]
+                                                                      .lrdLQty,
+                                                              lrdHuom:
+                                                                  details[index]
+                                                                      .lrdHUOM,
+                                                              lrdId:
+                                                                  details[index]
+                                                                      .lrdID,
+                                                              lrdLQty:
+                                                                  details[index]
+                                                                      .lrdLQty,
+                                                              lrdLuom:
+                                                                  details[index]
+                                                                      .lrdLUOM,
+                                                              lrdPrdId:
+                                                                  details[index]
+                                                                      .lrdPrdID,
+                                                              lrdTotalQty:
+                                                                  details[index]
+                                                                      .lrdTotalQty,
+                                                              txtApvHQty:
+                                                                  details[index]
+                                                                      .lrdApvHQty,
+                                                              txtApvLQty:
+                                                                  details[index]
+                                                                      .lrdApvLQty,
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            )
                                           ],
                                         ),
                                       ),
@@ -660,210 +806,285 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 40.h,
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+            BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
+              listener: (context, state) {
+                state.when(
+                  loadReqApprovalSuccessState: (response) {
+                    if (response != null) {
+                      Navigator.pop(context);
+                      // if (isApproval) {
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content: Text(response.status ?? ''),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                context.read<LoadReqHeaderBloc>().add(
+                                    LoadreqSuccessEvent(
+                                        userId: widget.user.usrId ?? ''));
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Proceed'),
                             ),
-                            color: widget.loadrequest.status == 'Pending'
-                                ? Colors.red.shade300
-                                : Colors.grey[300],
+                          ],
+                        ),
+                      );
+                      // }
+                    }
+                  },
+                  loadReqApprovalFailedState: () {
+                    Navigator.pop(context);
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (context) => CupertinoAlertDialog(
+                        title: const Text('Alert'),
+                        content: const Text(
+                            "something went wrong, please try again later"),
+                        actions: [
+                          TextButton(
                             onPressed: () {
-                              log(jsonEncode(LoadReqInApprovalModel(
-                                  products: _loadproducts,
-                                  reqID: widget.loadrequest.lrhID,
-                                  rotID: widget.loadrequest.rotID,
-                                  userId: widget.user.usrId)));
-                              if (widget.loadrequest.status == 'Pending') {
-                                if (_loadproducts.contains(null)) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          "Please make sure you have approved or rejected all the products"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: const Text('Ok'),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text("Do you Want to Proceed"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            loadingCount = 0;
-
-                                            Navigator.pop(context);
-
-                                            context
-                                                .read<LoadReqApprovalBloc>()
-                                                .add(
-                                                    const ApprovLoadingReqEvent());
-
-                                            context
-                                                .read<LoadReqApprovalBloc>()
-                                                .add(
-                                                  ApprovloadReqEvent(
-                                                    approval:
-                                                        LoadReqInApprovalModel(
-                                                            products:
-                                                                _loadproducts,
-                                                            reqID: widget
-                                                                .loadrequest
-                                                                .lrhID,
-                                                            rotID: widget
-                                                                .loadrequest
-                                                                .rotID,
-                                                            userId: widget
-                                                                .loadrequest
-                                                                .userID),
-                                                  ),
-                                                );
-                                          },
-                                          child: const Text('Proceed'),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              }
+                              context.read<LoadReqDetailBloc>().add(
+                                  GetloadreqdetailEvent(
+                                      reqId: widget.loadrequest.lrhID ?? ""));
+                              Navigator.pop(context);
                             },
-                            child: Text(
-                              'Reject',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  loadReqApprovalLoadingState: () {
+                    showCupertinoModalPopup(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: const PopScope(
+                                canPop: true,
+                                child: CupertinoActivityIndicator(
+                                  animating: true,
+                                  color: Colors.red,
+                                  radius: 30,
+                                ),
+                              ),
+                            ));
+                  },
+                );
+              },
+              child: SizedBox(
+                height: 40.h,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              color: widget.loadrequest.status == 'Pending'
+                                  ? Colors.red.shade300
+                                  : Colors.grey[300],
+                              onPressed: () {
+                                log(jsonEncode(LoadReqInApprovalModel(
+                                    products: _loadproducts,
+                                    reqID: widget.loadrequest.lrhID,
+                                    rotID: widget.loadrequest.rotID,
+                                    userId: widget.user.usrId)));
+                                if (widget.loadrequest.status == 'Pending') {
+                                  if (_loadproducts.contains(null)) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Please make sure you have approved or rejected all the products"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Do you Want to Proceed"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                      const ApprovLoadingReqEvent());
+
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                    ApprovloadReqEvent(
+                                                      approval:
+                                                          LoadReqInApprovalModel(
+                                                              products:
+                                                                  _loadproducts,
+                                                              reqID: widget
+                                                                  .loadrequest
+                                                                  .lrhID,
+                                                              rotID: widget
+                                                                  .loadrequest
+                                                                  .rotID,
+                                                              userId: widget
+                                                                  .loadrequest
+                                                                  .userID),
+                                                    ),
+                                                  );
+                                            },
+                                            child: const Text('Proceed'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: Text(
+                                'Reject',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            color: widget.loadrequest.status == 'Pending'
-                                ? Colors.green.shade300
-                                : Colors.grey[300],
-                            onPressed: () {
-                              if (widget.loadrequest.status == 'Pending') {
-                                if (_loadproducts.contains(null)) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          "Please make sure you have approved or rejected all the products"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: const Text('Ok'),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text("Do you Want to Proceed"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            loadingCount = 0;
-
-                                            Navigator.pop(context);
-
-                                            context
-                                                .read<LoadReqApprovalBloc>()
-                                                .add(
-                                                    const ApprovLoadingReqEvent());
-
-                                            context
-                                                .read<LoadReqApprovalBloc>()
-                                                .add(ApprovloadReqEvent(
-                                                    approval:
-                                                        LoadReqInApprovalModel(
-                                                            products:
-                                                                _loadproducts,
-                                                            reqID: widget
-                                                                .loadrequest
-                                                                .lrhID,
-                                                            rotID: widget
-                                                                .loadrequest
-                                                                .rotID,
-                                                            userId: widget
-                                                                .loadrequest
-                                                                .userID)));
-                                          },
-                                          child: const Text('Proceed'),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              }
-                            },
-                            child: Text(
-                              'Approve',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            ),
+                          SizedBox(
+                            width: 10.w,
                           ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                          Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              color: widget.loadrequest.status == 'Pending'
+                                  ? Colors.green.shade300
+                                  : Colors.grey[300],
+                              onPressed: () {
+                                if (widget.loadrequest.status == 'Pending') {
+                                  if (_loadproducts.contains(null)) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Please make sure you have approved or rejected all the products"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Do you Want to Proceed"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                      const ApprovLoadingReqEvent());
+
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(ApprovloadReqEvent(
+                                                      approval:
+                                                          LoadReqInApprovalModel(
+                                                              products:
+                                                                  _loadproducts,
+                                                              reqID: widget
+                                                                  .loadrequest
+                                                                  .lrhID,
+                                                              rotID: widget
+                                                                  .loadrequest
+                                                                  .rotID,
+                                                              userId: widget
+                                                                  .loadrequest
+                                                                  .userID)));
+                                            },
+                                            child: const Text('Proceed'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: Text(
+                                'Approve',
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],

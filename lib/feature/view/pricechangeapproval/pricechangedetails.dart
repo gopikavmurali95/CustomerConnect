@@ -218,6 +218,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
+                                    context.read<PriceChangeHeaderBloc>().add(
+                                        GetPriceChangeHeaderEvent(
+                                            rotID: widget.user.usrId!));
+                                    Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
                                   child: const Text('Ok'),
