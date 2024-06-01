@@ -43,8 +43,8 @@ class LoadReqHeaderModel {
     stagingIntegStatus = json['StagingIntegStatus'];
     stagingIntegRemarks = json['StagingIntegRemarks'];
     stagingIntegTime = json['StagingIntegTime'];
-    stagingIntegTime = json['rotID'];
-    stagingIntegTime = json['UserID'];
+    rotID = json['rotID'];
+    userID = json['UserID'];
   }
   String? lrhID;
   String? lrhNumber;
@@ -83,8 +83,8 @@ class LoadReqHeaderModel {
     map['StagingIntegStatus'] = stagingIntegStatus;
     map['StagingIntegRemarks'] = stagingIntegRemarks;
     map['StagingIntegTime'] = stagingIntegTime;
-    map['rotID'] = stagingIntegTime;
-    map['UserID'] = stagingIntegTime;
+    map['rotID'] = rotID;
+    map['UserID'] = userID;
     return map;
   }
 }

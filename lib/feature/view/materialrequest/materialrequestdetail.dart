@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/data/models/material_req_rejection_in_m
 import 'package:customer_connect/feature/data/models/matrial_apr_req_prd_model/matrial_apr_req_prd_model.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
@@ -105,8 +106,9 @@ class _MaterialRequestDetailScreenState
             //     showPopAlert(context);
             //   });
             // } else {
-            //   // context.read<MaterialReqHeadBloc>().add(
-            //   //     MaterialHeadSuccessEvent(userId: widget.user.usrId ?? ''));
+            context
+                .read<MaterialReqHeadBloc>()
+                .add(MaterialHeadSuccessEvent(userId: widget.user.usrId ?? ''));
             //   log("$_approvedCount , $_totalcount");
             //   context.read<NavigatetoBackCubit>().popFromScreen(true);
             // }
@@ -129,6 +131,7 @@ class _MaterialRequestDetailScreenState
                               actions: [
                                 TextButton(
                                   onPressed: () {
+                                    Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
                                   child: const Text('Ok'),

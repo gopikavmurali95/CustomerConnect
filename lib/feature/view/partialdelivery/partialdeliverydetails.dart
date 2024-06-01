@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:customer_connect/constants/fonts.dart';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -63,7 +60,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    log(jsonEncode(_partialdeliveryapproved));
+    // log(jsonEncode(_partialdeliveryapproved));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

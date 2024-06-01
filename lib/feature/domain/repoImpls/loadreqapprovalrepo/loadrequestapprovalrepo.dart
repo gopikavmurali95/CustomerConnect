@@ -23,6 +23,12 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         "ReqID": approval.reqID,
         "RotID": approval.rotID
       });
+      log({
+        "JSONString": jsonEncode(approval.products),
+        "UserId": approval.userId,
+        "ReqID": approval.reqID,
+        "RotID": approval.rotID
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -56,6 +62,12 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         "ReqID": loadapprove.reqID,
         "RotID": loadapprove.rotID
       });
+      log({
+        "JSONString": jsonEncode(loadapprove.products),
+        "UserId": loadapprove.userId,
+        "ReqID": loadapprove.reqID,
+        "RotID": loadapprove.rotID
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
