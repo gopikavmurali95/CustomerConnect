@@ -211,22 +211,22 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   color: Colors.black54),
                             ),
                             SizedBox(
-                              width: 200.w,
+                              width: 135.w,
                             ),
                             Row(
                               children: [
                                 Text(
-                                  'UOM',
+                                  'Ord.Qty',
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black54),
                                 ),
                                 SizedBox(
-                                  width: 40.w,
+                                  width: 55.w,
                                 ),
                                 Text(
-                                  'Qty',
+                                  'Del.Qty',
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
