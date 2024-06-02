@@ -111,8 +111,8 @@ class _ScheduledReturnDetailScreenState
               /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
           onPopInvoked: (didPop) {
             context.read<SchduledReturnHeaderBloc>().add(
-                const GetAllScheduledReturnHeadersEvent(
-                    userID: /* widget.user.usrId ?? */ '62'));
+                GetAllScheduledReturnHeadersEvent(
+                    userID: widget.user.usrId ?? ''));
             /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
               Future.delayed(const Duration(microseconds: 100), () {
                 showPopAlert(context);
@@ -138,15 +138,13 @@ class _ScheduledReturnDetailScreenState
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
+                              Navigator.pop(context);
                             },
                             child: const Text('Ok'),
                           ),
                         ],
                       ),
                     );
-                    context.read<SchduledReturnHeaderBloc>().add(
-                        const GetAllScheduledReturnHeadersEvent(
-                            userID: /* widget.user.usrId ?? */ '62'));
                   }
                 },
                 schduledReturnApprovalFailedState: () {

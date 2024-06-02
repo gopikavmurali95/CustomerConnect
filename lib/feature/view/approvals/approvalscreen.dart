@@ -50,1340 +50,1359 @@ class ApprovalScreen extends StatelessWidget {
           style: appHeading(),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        context
-                            .read<PriceChangeHeaderBloc>()
-                            .add(const ClearPriceChangeHeader());
-                        context
-                            .read<PriceChangeHeaderBloc>()
-                            .add(GetPriceChangeHeaderEvent(rotID: user.usrId!));
-                        Navigator.push(
+      body: RefreshIndicator(
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshApprovals(context, user),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          context
+                              .read<PriceChangeHeaderBloc>()
+                              .add(const ClearPriceChangeHeader());
+                          context.read<PriceChangeHeaderBloc>().add(
+                              GetPriceChangeHeaderEvent(rotID: user.usrId!));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PriceChangeHeader(
+                                        user: user,
+                                      )));
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/pc.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Price Change",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingPriceChangeApproval ??
+                                                    '',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PriceChangeHeader(
-                                      user: user,
-                                    )));
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/pc.png",
-                                  height: 17.h,
-                                ),
+                              builder: (context) => PartialDeliveryHeader(
+                                user: user,
                               ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Price Change",
-                                  style: headTextStyle(),
-                                ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count.pendingPriceChangeApproval ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PartialDeliveryHeader(
-                              user: user,
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8),
-                                child: Image.asset(
-                                  "assets/images/pd.png",
-                                  height: 17.h,
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8),
+                                  child: Image.asset(
+                                    "assets/images/pd.png",
+                                    height: 17.h,
+                                  ),
                                 ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Partial Delivery",
-                                  style: headTextStyle(),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
+                                Expanded(
+                                  child: Text(
+                                    "Partial Delivery",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
 
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingPartialDeliveryHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
                                                 ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ScheduledReturnHEaderScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/sr.png",
-                                  height: 17.5.h,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Scheduled Return",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: headTextStyle(),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingPartialDeliveryHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
                                               '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            )
-                                          : Text(
-                                              count.pendingPriceChangeApproval!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ReturnApprovalHeader(
-                              user: user,
+                                            ));
+                                  },
+                                )
+                              ],
                             ),
                           ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/rtn.png",
-                                  height: 17.h,
-                                ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Return",
-                                  style: headTextStyle(),
-                                ),
-                              ),
-
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count.pendingReturnHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    DisputeNoteApprovalHEaderScreen(
-                                      user: user,
-                                    )));
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/dr.png",
-                                  height: 17.h,
+                              builder: (context) => ScheduledReturnHEaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/sr.png",
+                                    height: 17.5.h,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Dispute Request",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: headTextStyle(),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingDisputeNoteReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                Expanded(
+                                  child: Text(
+                                    "Scheduled Return",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5.w,
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
                                                 ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreditNoteHeaderScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/cr.png",
-                                  height: 17.h,
-                                ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Credit Note",
-                                  style: headTextStyle(),
-                                ),
-                              ),
-
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
-                                              '0',
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            )
-                                          : Text(
-                                              count.pendingCreditNoteReqHeader!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                AssetAddingApprovalHeaderScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/aa.png",
-                                  height: 17.2.h,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Asset Adding",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: headTextStyle(),
-                                ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
-                                              '0',
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            )
-                                          : Text(
-                                              count.pendingAssetAddReqHeader!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AssetRemovalApprovalScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/ar2.png",
-                                  height: 17.h,
-                                ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Asset Removal",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: headTextStyle(),
-                                ),
-                              ),
-
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingAssetRemovalReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                              )
+                                            : Text(
+                                                count.pendingReturnRequestSc!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
                                                 ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        context
-                            .read<VanToVanHeaderBloc>()
-                            .add(const getVanToVanHeaderEvent(userID: '48'));
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VanToVanApprovalHeader(
-                              user: user,
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReturnApprovalHeader(
+                                user: user,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/vv.png",
-                                  height: 17.2.h,
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/rtn.png",
+                                    height: 17.h,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Van To Van",
-                                  style: headTextStyle(),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count.pendingVanToVanHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                Expanded(
+                                  child: Text(
+                                    "Return",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
                                                 ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                LoadTransferApprovalHeaderScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/lt.png",
-                                  height: 15.5.h,
-                                ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Load Transfer",
-                                  style: headTextStyle(),
-                                ),
-                              ),
-
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) =>
-                                          count == null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count.pendingLodTransRequest!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                              )
+                                            : Text(
+                                                count.pendingReturnHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
                                                 ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => JourneyPlanHeaderScreen(
-                              user: user,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/jp.png",
-                                  height: 17.h,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Journey Plan",
-                                  style: headTextStyle(),
-                                ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
                                               '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            )
-                                          : Text(
-                                              count.pendingJurneyPlanSeqApprvl!,
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DisputeNoteApprovalHEaderScreen(
+                                        user: user,
+                                      )));
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/dr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Dispute Request",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingDisputeNoteReqHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        context
-                            .read<FieldServiceHeaderBloc>()
-                            .add(const ClearFieldServiceHeaderEvent());
-                        context.read<FieldServiceHeaderBloc>().add(
-                            GetAllFieldServiceHeadersEvent(
-                                userId: user.usrId ?? ''));
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FieldServiceInvoiceHeader(
-                              user: user,
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreditNoteHeaderScreen(
+                                user: user,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/fs.png",
-                                  height: 18.3.h,
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/cr.png",
+                                    height: 17.h,
+                                  ),
                                 ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  "Field Service Invoice",
-                                  style: headTextStyle(),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
+                                Expanded(
+                                  child: Text(
+                                    "Credit Note",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
 
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingCreditNoteReqHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
                                               '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            )
-                                          : Text(
-                                              count.pendingAssetAddReqHeader!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MaterialRequestHeaderScreen(
-                              user: user,
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  AssetAddingApprovalHeaderScreen(
+                                user: user,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        // height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/mr.png",
-                                  height: 17.h,
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/aa.png",
+                                    height: 17.2.h,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Material Request",
-                                  style: headTextStyle(),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
+                                Expanded(
+                                  child: Text(
+                                    "Asset Adding",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingAssetAddReqHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
                                               '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            )
-                                          : Text(
-                                              count.pendingMaterialReqApproval!,
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        context.read<FieldServiceHeaderBloc>().add(
-                            const GetAllFieldServiceHeadersEvent(userId: '64'));
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoadRequestHeaderScreen(
-                              user: user,
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AssetRemovalApprovalScreen(
+                                user: user,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        //height: 50,
-                        // width: MediaQuery.of(context).size.width / 2,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  spreadRadius: 1,
-                                  blurRadius: 1)
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Image.asset(
-                                  "assets/images/lr.png",
-                                  height: 18.3.h,
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/ar2.png",
+                                    height: 17.h,
+                                  ),
                                 ),
-                              ),
-                              // fit: BoxFit.scaleDown,),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  "Load Request",
-                                  style: headTextStyle(),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
                                 ),
-                              ),
+                                Expanded(
+                                  child: Text(
+                                    "Asset Removal",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
 
-                              BlocBuilder<ApprovalCountsBloc,
-                                  ApprovalCountsState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getApprovalsCount: (count) => count ==
-                                              null
-                                          ? Text(
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingAssetRemovalReqHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
                                               '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            )
-                                          : Text(
-                                              count.pendingLoadRequestHeader!,
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          context
+                              .read<VanToVanHeaderBloc>()
+                              .add(const getVanToVanHeaderEvent(userID: '48'));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VanToVanApprovalHeader(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/vv.png",
+                                    height: 17.2.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Van To Van",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingVanToVanHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
                                               style: kfontstyle(
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87,
                                               ),
-                                            ),
-                                      getApprovalCountsFailed: () => Text(
-                                            '0',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black87,
-                                            ),
-                                          ));
-                                },
-                              )
-                            ],
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  LoadTransferApprovalHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/lt.png",
+                                    height: 15.5.h,
+                                  ),
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Load Transfer",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingLodTransRequest!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => JourneyPlanHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/jp.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Journey Plan",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingJurneyPlanSeqApprvl!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          context
+                              .read<FieldServiceHeaderBloc>()
+                              .add(const ClearFieldServiceHeaderEvent());
+                          context.read<FieldServiceHeaderBloc>().add(
+                              GetAllFieldServiceHeadersEvent(
+                                  userId: user.usrId ?? ''));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FieldServiceInvoiceHeader(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/fs.png",
+                                    height: 18.3.h,
+                                  ),
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    "Field Service Invoice",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingAssetAddReqHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MaterialRequestHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Material Request",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingMaterialReqApproval!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          context.read<FieldServiceHeaderBloc>().add(
+                              const GetAllFieldServiceHeadersEvent(
+                                  userId: '64'));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoadRequestHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/lr.png",
+                                    height: 18.3.h,
+                                  ),
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    "Load Request",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingLoadRequestHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> _onRefreshApprovals(
+      BuildContext context, LoginUserModel model) async {
+    context
+        .read<ApprovalCountsBloc>()
+        .add(GetApprovalsCountEvent(userID: user.usrId ?? ''));
+
+    await Future.delayed(const Duration(seconds: 2));
   }
 }

@@ -81,9 +81,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
           //     showPopAlert(context);
           //   });
           // } else {
-          //   context
-          //       .read<VanToVanHeaderBloc>()
-          //       .add(const getVanToVanHeaderEvent(userID: '49'));
+          context
+              .read<VanToVanHeaderBloc>()
+              .add(getVanToVanHeaderEvent(userID: widget.user.usrId ?? ''));
           //   context.read<NavigatetoBackCubit>().popFromScreen(true);
           // }
 
@@ -371,16 +371,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                     TextButton(
                                                       onPressed: () {
                                                         _approvedCount++;
-                                                        context
-                                                            .read<
-                                                                VanToVanDetailsBloc>()
-                                                            .add(
-                                                              GetVanToVanDetailEvent(
-                                                                  reqID: details[
-                                                                              index]
-                                                                          .vvdId ??
-                                                                      ''),
-                                                            );
+
+                                                        Navigator.pop(context);
                                                         Navigator.pop(context);
                                                       },
                                                       child:

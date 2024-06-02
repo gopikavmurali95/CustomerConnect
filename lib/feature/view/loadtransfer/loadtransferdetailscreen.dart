@@ -335,6 +335,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
+                                                      Navigator.pop(context);
                                                     },
                                                     child: const Text('Ok'),
                                                   ),
