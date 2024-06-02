@@ -125,6 +125,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
+                                Navigator.pop(context);
                               },
                               child: const Text('Ok'),
                             ),

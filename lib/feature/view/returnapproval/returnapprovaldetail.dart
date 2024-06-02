@@ -98,9 +98,9 @@ class _ReturnApprovalDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
-            context.read<ReturnApprovalHeaderBloc>().add(
-                const GetReturnApprovalHeaders(
-                    rotID: /*  widget.user.usrId ?? */ '45'));
+            context
+                .read<ReturnApprovalHeaderBloc>()
+                .add(GetReturnApprovalHeaders(rotID: widget.user.usrId ?? ''));
           },
           child: Column(
             children: [
@@ -305,6 +305,7 @@ class _ReturnApprovalDetailScreenState
                                             actions: [
                                               TextButton(
                                                 onPressed: () {
+                                                  Navigator.pop(context);
                                                   Navigator.pop(context);
                                                 },
                                                 child: const Text('Ok'),
