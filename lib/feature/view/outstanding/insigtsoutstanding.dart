@@ -59,7 +59,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                 area: '',
                 fromDate: widget.fromdatectrl.text,
                 toDate: widget.todatectrl.text,
-                route: '',
+                route: widget.customer.rotId,
                 subArea: ''),
           ),
         );
