@@ -76,6 +76,7 @@ import 'package:customer_connect/feature/state/bloc/qualification_group/qualific
 import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
@@ -496,6 +497,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<PartialDeliveryReasonCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SalesOrderDetailsBloc>(),
         ),
       ],
       child: ScreenUtilInit(

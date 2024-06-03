@@ -33,22 +33,21 @@ class ReturnApprovalHeaderModel {
   @JsonKey(name: 'rotID')
   String? rotID;
 
-  ReturnApprovalHeaderModel({
-    this.cusCode,
-    this.cusName,
-    this.rotName,
-    this.rotCode,
-    this.ithRequestNumber,
-    this.ustName,
-    this.rahId,
-    this.cshCode,
-    this.cshName,
-    this.mode,
-    this.createdDate,
-    this.rahApprovalStatus,
-    this.userID,
-    this.rotID
-  });
+  ReturnApprovalHeaderModel(
+      {this.cusCode,
+      this.cusName,
+      this.rotName,
+      this.rotCode,
+      this.ithRequestNumber,
+      this.ustName,
+      this.rahId,
+      this.cshCode,
+      this.cshName,
+      this.mode,
+      this.createdDate,
+      this.rahApprovalStatus,
+      this.userID,
+      this.rotID});
 
   factory ReturnApprovalHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$ReturnApprovalHeaderModelFromJson(json);

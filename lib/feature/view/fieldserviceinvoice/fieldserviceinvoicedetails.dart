@@ -694,5 +694,4 @@ class FieldServiceInvoiceDetailsState
       ),
     );
   }
-}
-/*  */
+} /*  */
