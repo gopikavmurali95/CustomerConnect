@@ -23,9 +23,9 @@ SalesOrderDetailsModel _$SalesOrderDetailsModelFromJson(
       rotName: json['rot_Name'] as String?,
       rotId: json['rot_ID'] as String?,
       status: json['Status'] as String?,
-      subTotal: (json['SubTotal'] as num?)?.toInt(),
-      vat: (json['VAT'] as num?)?.toInt(),
-      grandTotal: (json['GrandTotal'] as num?)?.toInt(),
+      subTotal: json['SubTotal'] as String?,
+      vat: json['VAT'] as String?,
+      grandTotal: json['GrandTotal'] as String?,
     );
 
 Map<String, dynamic> _$SalesOrderDetailsModelToJson(

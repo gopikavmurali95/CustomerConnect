@@ -33,11 +33,11 @@ class SalesOrderDetailsModel {
   @JsonKey(name: 'Status')
   String? status;
   @JsonKey(name: 'SubTotal')
-  int? subTotal;
+  String? subTotal;
   @JsonKey(name: 'VAT')
-  int? vat;
+  String? vat;
   @JsonKey(name: 'GrandTotal')
-  int? grandTotal;
+  String? grandTotal;
 
   SalesOrderDetailsModel({
     this.ordId,

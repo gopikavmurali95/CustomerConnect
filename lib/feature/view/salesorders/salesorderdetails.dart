@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/sales_order_details_inparas_model/sales_order_details_inparas_model.dart';
 import 'package:customer_connect/feature/data/models/sales_orders_model/sales_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart';
+import 'package:customer_connect/feature/view/salesorders/widget/salesorderdetailslist.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -296,10 +297,9 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
           SizedBox(
             width: 15.h,
           ),
-          /* Expanded(
-              child: TotalOrderDetailsList(
-            totalorders: widget.totalorders,
-          )), */
+          Expanded(
+              child: SalesOrderDetailsList(
+                  salesorders: widget.salesorders, user: widget.user)),
         ],
       ),
       bottomNavigationBar: SizedBox(
