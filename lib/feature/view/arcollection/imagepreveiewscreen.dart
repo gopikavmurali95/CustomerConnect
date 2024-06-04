@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,7 @@ class ArImagePreviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // log(arheader.image ?? '');
+    log("imagesss ${arheader.image!.split(',').toList()[0]}");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,31 +34,36 @@ class ArImagePreviewScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: PageView.builder(
-              itemCount: 1,
-              itemBuilder: (context, index) => Image.network(
-                arheader.image ?? '',
-                fit: BoxFit.cover,
-                width: double.infinity,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  }
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
+            child: arheader.image == null
+                ? const Center(
+                    child: Text('Image loading Failed'),
+                  )
+                : PageView.builder(
+                    itemCount: arheader.image?.split(',').toList().length,
+                    itemBuilder: (context, index) => Image.network(
+                      arheader.image!.split(',').toList()[index],
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) =>
+                          const SizedBox(
+                              child: Center(
+                        child: Text('Image loading Failed'),
+                      )),
                     ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) => const SizedBox(
-                    child: Center(
-                  child: Text('Image loading Failed'),
-                )),
-              ),
-            ),
+                  ),
           )
         ],
       ),

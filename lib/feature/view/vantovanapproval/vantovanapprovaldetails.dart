@@ -192,7 +192,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
               width: double.infinity,
               color: const Color(0xfff5f5f5),
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -253,7 +253,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                   return state.when(
                     getVanToVanDetailsState: (details) => details == null
                         ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 0),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -268,7 +268,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                         : ListView.separated(
                             itemBuilder: (context, index) => Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Column(
                                 children: [
                                   Row(
@@ -297,6 +297,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                             ),
                                           ],
                                         ),
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
                                       ),
                                       Row(
                                         children: [

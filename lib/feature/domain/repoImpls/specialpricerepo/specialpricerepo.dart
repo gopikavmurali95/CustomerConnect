@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -19,8 +20,11 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
       getSpecialPrice(SpecialPriceHeaderModel specialPriceIn) async {
     var logger = Logger();
     try {
-      final response =
-          await http.post(Uri.parse(baseUrl + specialpriceheaderurl));
+      final response = await http.post(
+          Uri.parse(baseUrl + specialpriceheaderurl),
+          body: specialPriceIn.toJson());
+
+      log(specialPriceIn.toJson().toString());
       if (response.statusCode == 200) {
         logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

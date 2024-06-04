@@ -188,7 +188,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   return state.when(
                     getDisputeNoteDetailState: (details) => details == null
                         ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 0),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -205,7 +205,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                             // physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) => Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Column(
                                 children: [
                                   Row(

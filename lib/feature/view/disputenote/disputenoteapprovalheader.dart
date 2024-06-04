@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
@@ -17,6 +18,12 @@ class DisputeNoteApprovalHEaderScreen extends StatefulWidget {
   State<DisputeNoteApprovalHEaderScreen> createState() =>
       _DisputeNoteApprovalHEaderScreenState();
 }
+
+List<ApprovalStatusFilterModel> ddfilterFieldsDisputeNote = [
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
+  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
+  ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
+];
 
 class _DisputeNoteApprovalHEaderScreenState
     extends State<DisputeNoteApprovalHEaderScreen> {
@@ -62,6 +69,47 @@ class _DisputeNoteApprovalHEaderScreenState
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButtonFormField(
+                  value: ddfilterFieldsDisputeNote[0].mode,
+                  dropdownColor: Colors.white,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                  ),
+                  items: ddfilterFieldsDisputeNote
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e.mode,
+                          child: Text(e.statusName),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {},
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
