@@ -1,8 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
-import 'package:customer_connect/feature/view/totalorders/totalorderdetails.dart';
+import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SalesOrdersListingWidget extends StatelessWidget {
-  const SalesOrdersListingWidget({super.key});
+  final LoginUserModel user;
+  const SalesOrdersListingWidget({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -42,31 +42,11 @@ class SalesOrdersListingWidget extends StatelessWidget {
                         itemBuilder: (context, index) => GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => TotalOrderDetails(
-                                          totalorders: TotalOrdersModel(
-                                              cshCode: orders[index].cshCode,
-                                              cshId: orders[index].cshId,
-                                              cshName: orders[index].cshName,
-                                              cusCode: orders[index].cusCode,
-                                              cusId: orders[index].cusId,
-                                              cusName: orders[index].cusName,
-                                              date: orders[index].date,
-                                              grandTotal:
-                                                  orders[index].grandTotal,
-                                              ordId: orders[index].ordId,
-                                              ordType: '',
-                                              orderId: orders[index].orderId,
-                                              rotCode: orders[index].rotCode,
-                                              rotId: orders[index].rotId,
-                                              rotName: orders[index].rotName,
-                                              status: orders[index].status,
-                                              subTotal: orders[index].subTotal,
-                                              time: orders[index].time,
-                                              vat: orders[index].vat),
-                                          user: LoginUserModel())),
-                                );
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SalesOrderDetails(
+                                            user: user,
+                                            salesorders: orders[index])));
                               },
                               child: Row(
                                 children: [

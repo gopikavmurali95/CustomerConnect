@@ -114,3 +114,4 @@ const loadReqApprovalUrl = 'InventoryApproval/PostLoadReqApproval';
 const materialReqRejectionUrl = 'InventoryApproval/PostMaterialReqReject';
 const materialReqApprovalUrl = 'InventoryApproval/PostMaterialReqApproval';
 const approvalCountUrl = 'InventoryApproval/SelectPendingStatusCounts';
+const salesOrderDetailsUrl = 'CusInsightSalesOrder/SelectSalesOrders';

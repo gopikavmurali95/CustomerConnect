@@ -102,6 +102,8 @@ import 'package:customer_connect/feature/data/models/return_approve_in_model/ret
 import 'package:customer_connect/feature/data/models/return_approve_out_model/return_approve_out_model.dart';
 import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
+import 'package:customer_connect/feature/data/models/sales_order_details_inparas_model/sales_order_details_inparas_model.dart';
+import 'package:customer_connect/feature/data/models/sales_order_details_model/sales_order_details_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
@@ -244,6 +246,8 @@ abstract class ICusProfileRepo {
 abstract class ISalesOrdersRepo {
   Future<Either<MainFailures, List<SalesOrdersModel>>> getSalesOrders(
       SalesOrdersInModel salesIn);
+      Future<Either<MainFailures, List<SalesOrderDetailsModel>>> getSalesOrderdetails(
+      SalesOrderDetailsInparasModel salesInparas);
 }
 
 abstract class ICusOutstandingRepo {

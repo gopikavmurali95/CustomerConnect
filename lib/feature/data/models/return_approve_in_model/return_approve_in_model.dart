@@ -5,7 +5,6 @@ part 'return_approve_in_model.g.dart';
 
 @JsonSerializable()
 class ReturnApproveInModel {
-
   @JsonKey(name: 'UserId')
   String? userID;
   @JsonKey(name: 'ReturnID')

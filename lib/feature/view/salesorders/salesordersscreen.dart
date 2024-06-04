@@ -300,9 +300,11 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                 SizedBox(
                   height: 10.h,
                 ),
-                const SizedBox(
+                SizedBox(
                     // height: MediaQuery.of(context).size.height,
-                    child: SalesOrdersListingWidget())
+                    child: SalesOrdersListingWidget(
+                  user: widget.user,
+                ))
               ],
             ),
           ),

@@ -1,12 +1,16 @@
 import 'dart:convert';
 
-ReturnApprovalProductModel returnApprovalProductModelFromJson(String str) => ReturnApprovalProductModel.fromJson(json.decode(str));
-String returnApprovalProductModelToJson(ReturnApprovalProductModel data) => json.encode(data.toJson());
+ReturnApprovalProductModel returnApprovalProductModelFromJson(String str) =>
+    ReturnApprovalProductModel.fromJson(json.decode(str));
+String returnApprovalProductModelToJson(ReturnApprovalProductModel data) =>
+    json.encode(data.toJson());
+
 class ReturnApprovalProductModel {
   ReturnApprovalProductModel({
-      this.radID, 
-      this.reason, 
-      this.status,});
+    this.radID,
+    this.reason,
+    this.status,
+  });
 
   ReturnApprovalProductModel.fromJson(dynamic json) {
     radID = json['rad_ID'];
@@ -24,5 +28,4 @@ class ReturnApprovalProductModel {
     map['Status'] = status;
     return map;
   }
-
 }
