@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DisputeNoteHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getDisputeNoteHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getDisputeNoteHeadersEvent,
     required TResult Function() clearDisputeNoteHEaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult? Function()? clearDisputeNoteHEaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult Function()? clearDisputeNoteHEaderEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetDisputeNoteHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetDisputeNoteHeadersEventImpl) then) =
       __$$GetDisputeNoteHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,21 @@ class __$$GetDisputeNoteHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetDisputeNoteHeadersEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -118,14 +131,19 @@ class __$$GetDisputeNoteHeadersEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetDisputeNoteHeadersEventImpl implements GetDisputeNoteHeadersEvent {
-  const _$GetDisputeNoteHeadersEventImpl({required this.userID});
+  const _$GetDisputeNoteHeadersEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'DisputeNoteHeaderEvent.getDisputeNoteHeadersEvent(userID: $userID)';
+    return 'DisputeNoteHeaderEvent.getDisputeNoteHeadersEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -133,11 +151,14 @@ class _$GetDisputeNoteHeadersEventImpl implements GetDisputeNoteHeadersEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetDisputeNoteHeadersEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +170,33 @@ class _$GetDisputeNoteHeadersEventImpl implements GetDisputeNoteHeadersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getDisputeNoteHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getDisputeNoteHeadersEvent,
     required TResult Function() clearDisputeNoteHEaderEvent,
   }) {
-    return getDisputeNoteHeadersEvent(userID);
+    return getDisputeNoteHeadersEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult? Function()? clearDisputeNoteHEaderEvent,
   }) {
-    return getDisputeNoteHeadersEvent?.call(userID);
+    return getDisputeNoteHeadersEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult Function()? clearDisputeNoteHEaderEvent,
     required TResult orElse(),
   }) {
     if (getDisputeNoteHeadersEvent != null) {
-      return getDisputeNoteHeadersEvent(userID);
+      return getDisputeNoteHeadersEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -216,10 +240,14 @@ class _$GetDisputeNoteHeadersEventImpl implements GetDisputeNoteHeadersEvent {
 }
 
 abstract class GetDisputeNoteHeadersEvent implements DisputeNoteHeaderEvent {
-  const factory GetDisputeNoteHeadersEvent({required final String userID}) =
-      _$GetDisputeNoteHeadersEventImpl;
+  const factory GetDisputeNoteHeadersEvent(
+      {required final String userID,
+      required final String mode,
+      required final String searchQuery}) = _$GetDisputeNoteHeadersEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetDisputeNoteHeadersEventImplCopyWith<_$GetDisputeNoteHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -267,7 +295,8 @@ class _$ClearDisputeNoteHEaderEventImpl implements ClearDisputeNoteHEaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getDisputeNoteHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getDisputeNoteHeadersEvent,
     required TResult Function() clearDisputeNoteHEaderEvent,
   }) {
     return clearDisputeNoteHEaderEvent();
@@ -276,7 +305,8 @@ class _$ClearDisputeNoteHEaderEventImpl implements ClearDisputeNoteHEaderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult? Function()? clearDisputeNoteHEaderEvent,
   }) {
     return clearDisputeNoteHEaderEvent?.call();
@@ -285,7 +315,8 @@ class _$ClearDisputeNoteHEaderEventImpl implements ClearDisputeNoteHEaderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getDisputeNoteHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getDisputeNoteHeadersEvent,
     TResult Function()? clearDisputeNoteHEaderEvent,
     required TResult orElse(),
   }) {

@@ -20,7 +20,6 @@ class DisputeNoteHeaderBloc
       Either<MainFailures, List<DisputeNoteHeaderModel>> header =
           await disputeNoteApprovalRepo
               .getDisputeNoteApprovalHeaders(event.userID);
-
       emit(
         header.fold(
           (l) => const DisputeNoteHeaderFailedState(),

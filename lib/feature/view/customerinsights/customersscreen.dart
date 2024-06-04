@@ -347,7 +347,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                             if (debounce?.isActive ?? false) debounce!.cancel();
                             debounce = Timer(
                               const Duration(
-                                milliseconds: 500,
+                                milliseconds: 1500,
                               ),
                               () async {
                                 if (_routeIDCtrl.text != '-1') {
