@@ -214,7 +214,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                       width: double.infinity,
                       color: const Color(0xfff5f5f5),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -292,8 +292,8 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                           getLoadTransferDetailState: (details) => details ==
                                   null
                               ? Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   child: ListView.separated(
                                       physics:
                                           const NeverScrollableScrollPhysics(),
@@ -406,7 +406,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
+                                          horizontal: 10),
                                       child: Column(
                                         children: [
                                           Row(
@@ -441,6 +441,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     ),
                                                   ],
                                                 ),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
                                               ),
                                               Row(
                                                 children: [

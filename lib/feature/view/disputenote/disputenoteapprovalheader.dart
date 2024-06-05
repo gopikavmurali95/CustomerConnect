@@ -1,10 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +20,12 @@ class DisputeNoteApprovalHEaderScreen extends StatefulWidget {
       _DisputeNoteApprovalHEaderScreenState();
 }
 
+List<ApprovalStatusFilterModel> ddfilterFieldsDisputeNote = [
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
+  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
+  ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
+];
+
 class _DisputeNoteApprovalHEaderScreenState
     extends State<DisputeNoteApprovalHEaderScreen> {
   @override
@@ -26,9 +34,8 @@ class _DisputeNoteApprovalHEaderScreenState
         .read<DisputeNoteHeaderBloc>()
         .add(const ClearDisputeNoteHEaderEvent());
 
-    context
-        .read<DisputeNoteHeaderBloc>()
-        .add(GetDisputeNoteHeadersEvent(userID: widget.user.usrId ?? ''));
+    context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
+        userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
     super.initState();
   }
 
@@ -62,6 +69,147 @@ class _DisputeNoteApprovalHEaderScreenState
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Card(
+                child: Container(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: .5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextFormField(
+                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: 'Search here..',
+                      suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.clear,
+                            size: 10.sp,
+                          )),
+                      prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                            .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                    onChanged: (value) {},
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 3.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Card(
+                child: Container(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: .5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: DropdownButtonFormField(
+                    elevation: 0,
+                    value: ddfilterFieldsDisputeNote[0].mode,
+                    dropdownColor: Colors.white,
+                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                            .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                    items: ddfilterFieldsDisputeNote
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e.mode,
+                            child: Text(e.statusName),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {},
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Pending Approvals",
+                    style: countHeading(),
+                  ),
+                  BlocBuilder<DisputeNoteHeaderBloc, DisputeNoteHeaderState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.when(
+                          getDisputeNoteHeaderState: (headers) =>
+                              headers == null ? "0" : headers.length.toString(),
+                          disputeNoteHeaderFailedState: () => "0",
+                        ),
+                        style: countHeading(),
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),

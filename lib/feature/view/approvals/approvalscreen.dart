@@ -1173,7 +1173,8 @@ class ApprovalScreen extends StatelessWidget {
                                                 ),
                                               )
                                             : Text(
-                                                count.pendingAssetAddReqHeader!,
+                                                count
+                                                    .pendingInvoiceApprovalHeader!,
                                                 style: kfontstyle(
                                                   fontSize: 11.sp,
                                                   fontWeight: FontWeight.w500,
@@ -1300,8 +1301,8 @@ class ApprovalScreen extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           context.read<FieldServiceHeaderBloc>().add(
-                              const GetAllFieldServiceHeadersEvent(
-                                  userId: '64'));
+                              GetAllFieldServiceHeadersEvent(
+                                  userId: user.usrId ?? ''));
                           Navigator.push(
                             context,
                             MaterialPageRoute(

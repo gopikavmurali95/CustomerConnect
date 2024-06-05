@@ -125,7 +125,7 @@ class TotalOrderList extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                   child: Text(
-                                    header[index].status ?? '',
+                                    getstatus(header[index].status ?? ''),
                                     style: kfontstyle(
                                         fontSize: 10.sp,
                                         color: const Color(0xff413434)),
@@ -156,5 +156,15 @@ class TotalOrderList extends StatelessWidget {
         },
       ),
     );
+  }
+
+  getstatus(String status) {
+    String s = status.toUpperCase().toLowerCase().startsWith('q')
+        ? "QN"
+        : status.toUpperCase().toLowerCase().startsWith('o')
+            ? "SO"
+            : status.split('').toList()[0];
+
+    return s;
   }
 }

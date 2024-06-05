@@ -28,7 +28,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
   void initState() {
     _totalOrderDetailSearchCtrl.clear();
     context.read<TotalOrdersDetailsBloc>().add(GetTotalOrdersDetailsEvent(
-        userID: widget.user.usrId!, searchQuery: ''));
+        userID: widget.totalorders.ordId ?? '', searchQuery: ''));
     super.initState();
   }
 

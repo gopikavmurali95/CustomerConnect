@@ -55,17 +55,17 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
             children: [
               ListTile(
                   title: Text(
-                    "M086765",
+                    widget.loadingheader.transactionCode ?? '',
                     style: blueTextStyle(),
                   ),
                   subtitle: RichText(
                       text: TextSpan(
-                          text: "Route  101 |",
+                          text: "${widget.loadingheader.rotCode} | ",
                           style: subTitleTextStyle(),
                           children: [
                         TextSpan(
-                            text: "16 June 2023 |", style: subTitleTextStyle()),
-                        TextSpan(text: "10.30", style: subTitleTextStyle())
+                            text: "${widget.loadingheader.date} |",
+                            style: subTitleTextStyle()),
                       ])),
                   trailing: Container(
                       height: 25,
