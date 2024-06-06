@@ -16,12 +16,26 @@ class DisputeNoteDetailBloc
   final IDisputeNoteApprovalRepo disputeNoteApprovalRepo;
   DisputeNoteDetailBloc(this.disputeNoteApprovalRepo)
       : super(DisputeNoteDetailState.initial()) {
+    List<DisputeNoteDetailModel> searcheditems = [];
     on<GetDisputeNoteDetailEvent>((event, emit) async {
       Either<MainFailures, List<DisputeNoteDetailModel>> details =
           await disputeNoteApprovalRepo.getDisputeApprovalDetails(event.reqId);
 
-      emit(details.fold((l) => const GetdisputenoteDetailFailedState(),
-          (r) => GetDisputeNoteDetailState(details: r)));
+      emit(details.fold((l) => const GetdisputenoteDetailFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.invoiceId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.transTime!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetDisputeNoteDetailState(
+            details: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearDisputeNoteDetailEvent>((event, emit) {
       emit(const GetDisputeNoteDetailState(details: null));

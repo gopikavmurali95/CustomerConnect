@@ -17,10 +17,28 @@ class CreditNoteDetailBloc
   CreditNoteDetailBloc(this.creditNoteApprovalRepo)
       : super(CreditNoteDetailState.initial()) {
     on<GetCreditNoteDetailsEvent>((event, emit) async {
+      List<CreditNoteDetailModel> searcheditems = [];
       Either<MainFailures, List<CreditNoteDetailModel>> details =
           await creditNoteApprovalRepo.getCreditApprovalDetails(event.reqId);
-      emit(details.fold((l) => const CreditNoteDetailFailedState(),
-          (r) => GetCreditNoteDetailState(details: r)));
+      emit(details.fold((l) => const CreditNoteDetailFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                element.invInvoiceId!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.prdName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.transTime!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetCreditNoteDetailState(
+            details: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
 
     on<ClearCreditNoteDetailEvent>((event, emit) {

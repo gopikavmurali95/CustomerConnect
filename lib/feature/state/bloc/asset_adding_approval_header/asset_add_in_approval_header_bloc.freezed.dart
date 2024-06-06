@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AssetAddInApprovalHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId)
+    required TResult Function(String userId, String searchQuery)
         getallAssetAddingRequestHeadersEvent,
     required TResult Function() clearAllAssetAddRequestHeadersState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult? Function()? clearAllAssetAddRequestHeadersState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult Function()? clearAllAssetAddRequestHeadersState,
     required TResult orElse(),
   }) =>
@@ -91,7 +93,7 @@ abstract class _$$GetallAssetAddingRequestHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetallAssetAddingRequestHeadersEventImpl) then) =
       __$$GetallAssetAddingRequestHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId});
+  $Res call({String userId, String searchQuery});
 }
 
 /// @nodoc
@@ -108,11 +110,16 @@ class __$$GetallAssetAddingRequestHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetallAssetAddingRequestHeadersEventImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -122,14 +129,17 @@ class __$$GetallAssetAddingRequestHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetallAssetAddingRequestHeadersEventImpl
     implements GetallAssetAddingRequestHeadersEvent {
-  const _$GetallAssetAddingRequestHeadersEventImpl({required this.userId});
+  const _$GetallAssetAddingRequestHeadersEventImpl(
+      {required this.userId, required this.searchQuery});
 
   @override
   final String userId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'AssetAddInApprovalHeaderEvent.getallAssetAddingRequestHeadersEvent(userId: $userId)';
+    return 'AssetAddInApprovalHeaderEvent.getallAssetAddingRequestHeadersEvent(userId: $userId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -137,11 +147,13 @@ class _$GetallAssetAddingRequestHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetallAssetAddingRequestHeadersEventImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -154,31 +166,33 @@ class _$GetallAssetAddingRequestHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId)
+    required TResult Function(String userId, String searchQuery)
         getallAssetAddingRequestHeadersEvent,
     required TResult Function() clearAllAssetAddRequestHeadersState,
   }) {
-    return getallAssetAddingRequestHeadersEvent(userId);
+    return getallAssetAddingRequestHeadersEvent(userId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult? Function()? clearAllAssetAddRequestHeadersState,
   }) {
-    return getallAssetAddingRequestHeadersEvent?.call(userId);
+    return getallAssetAddingRequestHeadersEvent?.call(userId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult Function()? clearAllAssetAddRequestHeadersState,
     required TResult orElse(),
   }) {
     if (getallAssetAddingRequestHeadersEvent != null) {
-      return getallAssetAddingRequestHeadersEvent(userId);
+      return getallAssetAddingRequestHeadersEvent(userId, searchQuery);
     }
     return orElse();
   }
@@ -224,10 +238,11 @@ class _$GetallAssetAddingRequestHeadersEventImpl
 abstract class GetallAssetAddingRequestHeadersEvent
     implements AssetAddInApprovalHeaderEvent {
   const factory GetallAssetAddingRequestHeadersEvent(
-          {required final String userId}) =
+          {required final String userId, required final String searchQuery}) =
       _$GetallAssetAddingRequestHeadersEventImpl;
 
   String get userId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetallAssetAddingRequestHeadersEventImplCopyWith<
           _$GetallAssetAddingRequestHeadersEventImpl>
@@ -276,7 +291,7 @@ class _$ClearAllRequestHeadersStateImpl implements ClearAllRequestHeadersState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId)
+    required TResult Function(String userId, String searchQuery)
         getallAssetAddingRequestHeadersEvent,
     required TResult Function() clearAllAssetAddRequestHeadersState,
   }) {
@@ -286,7 +301,8 @@ class _$ClearAllRequestHeadersStateImpl implements ClearAllRequestHeadersState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult? Function()? clearAllAssetAddRequestHeadersState,
   }) {
     return clearAllAssetAddRequestHeadersState?.call();
@@ -295,7 +311,8 @@ class _$ClearAllRequestHeadersStateImpl implements ClearAllRequestHeadersState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getallAssetAddingRequestHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getallAssetAddingRequestHeadersEvent,
     TResult Function()? clearAllAssetAddRequestHeadersState,
     required TResult orElse(),
   }) {

@@ -17,6 +17,7 @@ class AssetRemovelRequestHeaderBloc extends Bloc<AssetRemovelRequestHeaderEvent,
   AssetRemovelRequestHeaderBloc(this.assetRemovalRequestRepo)
       : super(AssetRemovelRequestHeaderState.initial()) {
     on<GetAllAssetRemovalHeadersEvent>((event, emit) async {
+      List<AssetRemovalRequestHeaderModel> searcheditems = [];
       Either<MainFailures, List<AssetRemovalRequestHeaderModel>> headers =
           await assetRemovalRequestRepo
               .getAssetRemovalApprovalHeaders(event.userID);
@@ -24,7 +25,29 @@ class AssetRemovelRequestHeaderBloc extends Bloc<AssetRemovelRequestHeaderEvent,
       emit(
         headers.fold(
           (l) => const AssetRemovalRequestHeaderFailedState(),
-          (r) => GetAssetRemovalRequestHEadersState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.astCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.astName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetAssetRemovalRequestHEadersState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

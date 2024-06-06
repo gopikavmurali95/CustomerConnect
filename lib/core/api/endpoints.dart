@@ -1,9 +1,17 @@
 //Development
- const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
- const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+
+const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 //Demo
 //const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 //const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
+//const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+//const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+
+//Demo
+// const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
+// const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
+
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
 const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
@@ -113,3 +121,8 @@ const materialReqRejectionUrl = 'InventoryApproval/PostMaterialReqReject';
 const materialReqApprovalUrl = 'InventoryApproval/PostMaterialReqApproval';
 const approvalCountUrl = 'InventoryApproval/SelectPendingStatusCounts';
 const salesOrderDetailsUrl = 'CusInsightSalesOrder/SelectSalesOrders';
+const inventoryReconfirmHeaderUrl = 'CusOperation/InventoryReconfirm';
+const inventoryReconfirmDetailUrl = 'CusOperation/InventoryReconfirmDetails';
+const inventoryReconfirmResonurl =
+    'CusOperation/GetReasonForInventoryReconfirm';
+const inventoryReconfirmApprovalUrl = 'InventoryReconfirmApproval';

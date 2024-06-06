@@ -17,13 +17,32 @@ class DisputeNoteHeaderBloc
   DisputeNoteHeaderBloc(this.disputeNoteApprovalRepo)
       : super(DisputeNoteHeaderState.initial()) {
     on<GetDisputeNoteHeadersEvent>((event, emit) async {
+      List<DisputeNoteHeaderModel> searcheditems = [];
       Either<MainFailures, List<DisputeNoteHeaderModel>> header =
           await disputeNoteApprovalRepo
               .getDisputeNoteApprovalHeaders(event.userID);
       emit(
         header.fold(
           (l) => const DisputeNoteHeaderFailedState(),
-          (r) => GetDisputeNoteHeaderState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.drhTransId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetDisputeNoteHeaderState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

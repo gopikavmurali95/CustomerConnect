@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadTransferHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllLoadTransferHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllLoadTransferHeadersEvent,
     required TResult Function() clearLoadtransferHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult? Function()? clearLoadtransferHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult Function()? clearLoadtransferHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllLoadTransferHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllLoadTransferHeadersEventImpl) then) =
       __$$GetAllLoadTransferHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,21 @@ class __$$GetAllLoadTransferHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllLoadTransferHeadersEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +132,19 @@ class __$$GetAllLoadTransferHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllLoadTransferHeadersEventImpl
     implements GetAllLoadTransferHeadersEvent {
-  const _$GetAllLoadTransferHeadersEventImpl({required this.userID});
+  const _$GetAllLoadTransferHeadersEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadTransferHeaderEvent.getAllLoadTransferHeadersEvent(userID: $userID)';
+    return 'LoadTransferHeaderEvent.getAllLoadTransferHeadersEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +152,14 @@ class _$GetAllLoadTransferHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllLoadTransferHeadersEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +172,33 @@ class _$GetAllLoadTransferHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllLoadTransferHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllLoadTransferHeadersEvent,
     required TResult Function() clearLoadtransferHeaderEvent,
   }) {
-    return getAllLoadTransferHeadersEvent(userID);
+    return getAllLoadTransferHeadersEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult? Function()? clearLoadtransferHeaderEvent,
   }) {
-    return getAllLoadTransferHeadersEvent?.call(userID);
+    return getAllLoadTransferHeadersEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult Function()? clearLoadtransferHeaderEvent,
     required TResult orElse(),
   }) {
     if (getAllLoadTransferHeadersEvent != null) {
-      return getAllLoadTransferHeadersEvent(userID);
+      return getAllLoadTransferHeadersEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -219,10 +243,15 @@ class _$GetAllLoadTransferHeadersEventImpl
 
 abstract class GetAllLoadTransferHeadersEvent
     implements LoadTransferHeaderEvent {
-  const factory GetAllLoadTransferHeadersEvent({required final String userID}) =
+  const factory GetAllLoadTransferHeadersEvent(
+          {required final String userID,
+          required final String mode,
+          required final String searchQuery}) =
       _$GetAllLoadTransferHeadersEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllLoadTransferHeadersEventImplCopyWith<
           _$GetAllLoadTransferHeadersEventImpl>
@@ -272,7 +301,8 @@ class _$ClearLoadtransferHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllLoadTransferHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllLoadTransferHeadersEvent,
     required TResult Function() clearLoadtransferHeaderEvent,
   }) {
     return clearLoadtransferHeaderEvent();
@@ -281,7 +311,8 @@ class _$ClearLoadtransferHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult? Function()? clearLoadtransferHeaderEvent,
   }) {
     return clearLoadtransferHeaderEvent?.call();
@@ -290,7 +321,8 @@ class _$ClearLoadtransferHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllLoadTransferHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllLoadTransferHeadersEvent,
     TResult Function()? clearLoadtransferHeaderEvent,
     required TResult orElse(),
   }) {

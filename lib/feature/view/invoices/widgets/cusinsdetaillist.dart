@@ -40,29 +40,21 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) => Padding(
-                                  padding: const EdgeInsets.only(left: 20),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Column(
                                     children: [
                                       Row(
                                         children: [
                                           SizedBox(
                                             // color: Colors.teal,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                1.86,
+                                            width: MediaQuery.of(context).size.width / 1.86,
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
                                                   details[index].prdCode ?? '',
-                                                  style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color:
-                                                        const Color(0xff2C6B9E),
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
+                                                  style: loadTextStyle()
                                                 ),
                                                 Text(
                                                     details[index].prdName ??
@@ -220,65 +212,65 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                     : Column(
                         children: [
                           Container(
-                            height: 30.h,
+                            height: 35.h,
                             width: double.infinity,
                             color: const Color(0xfff5f5f5),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
+                                  horizontal: 10, vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Type',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w400,
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      'Type',
+                                      style: boxHeading()
                                     ),
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        'value',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 15.h,
-                                      ),
-                                      Text(
-                                        'Discount',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 15.h,
-                                      ),
-                                      Text(
-                                        'Vat',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 15.h,
-                                      ),
-                                      Text(
-                                        'Subtotal',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit
+                                    .tight,
+                                    child: Text(
+                                      'Value',
+                                      style: boxHeading()
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   width: 20.h,
+                                  // ),
+                                  Flexible(
+                                    flex:1,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      'Discount',
+                                      style:boxHeading()
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10.h,
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: Text(
+                                      'Vat',
+                                      style:boxHeading()
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   width: 20.h,
+                                  // ),
+                                  Flexible(
+                                    fit: FlexFit.tight,
+                                    flex: 0,
+                                    child: Text(
+                                      'Subtotal',
+                                      style: boxHeading()
+                                    ),
                                   ),
                                 ],
                               ),
@@ -289,21 +281,21 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) => Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 10),
+                                        horizontal: 10, vertical: 10),
                                     child: Row(
                                       // mainAxisAlignment:
                                       //     MainAxisAlignment.spaceBetween,
                                       children: [
                                         Flexible(
-                                            flex: 2,
+                                            flex: 1,
                                             fit: FlexFit.tight,
                                             child:
-                                                Text(types[index].type ?? '')),
+                                                Text(types[index].type ?? '',style: subTitleTextStyle(),)),
                                         Flexible(
                                             flex: 1,
                                             fit: FlexFit.tight,
                                             child:
-                                                Text(types[index].value ?? '')),
+                                                Text(types[index].value ?? '',style: subTitleTextStyle(),)),
                                         /*  SizedBox(
                                           width: 20.h,
                                         ), */
@@ -311,7 +303,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             flex: 1,
                                             fit: FlexFit.tight,
                                             child: Text(
-                                                types[index].discount ?? '')),
+                                                types[index].discount ?? '',style: subTitleTextStyle(),)),
                                         /*  SizedBox(
                                           width: 20.h,
                                         ), */
@@ -319,7 +311,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             flex: 1,
                                             fit: FlexFit.tight,
                                             child:
-                                                Text(types[index].vat ?? '')),
+                                                Text(types[index].vat ?? '',style: subTitleTextStyle(),)),
                                         SizedBox(
                                           width: 5.h,
                                         ),
@@ -327,7 +319,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             flex: 0,
                                             fit: FlexFit.tight,
                                             child: Text(
-                                                types[index].subTotal ?? '')),
+                                                types[index].subTotal ?? '',style: subTitleTextStyle(),)),
                                       ],
                                     ),
                                   ),

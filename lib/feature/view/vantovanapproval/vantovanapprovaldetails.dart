@@ -81,14 +81,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
           //     showPopAlert(context);
           //   });
           // } else {
-          context
-              .read<VanToVanHeaderBloc>()
-              .add(getVanToVanHeaderEvent(userID: widget.user.usrId ?? ''));
+
           //   context.read<NavigatetoBackCubit>().popFromScreen(true);
           // }
 
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
-              userID: widget.vanToVanHeader.userID ?? ''));
+              userID: widget.vanToVanHeader.userID ?? '',
+              mode: 'NULL',
+              searchQuery: ''));
         },
         child: Column(
           children: [

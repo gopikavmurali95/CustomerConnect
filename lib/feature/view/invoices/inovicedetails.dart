@@ -307,7 +307,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'items',
+                    'Items',
                     style: boxHeading(),
                   ),
                   Row(
@@ -321,7 +321,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         width: 20.h,
                       ),
                       Text(
-                        'Uom',
+                        'UOM',
                         style: boxHeading(),
                       ),
                       SizedBox(

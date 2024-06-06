@@ -47,7 +47,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
       appBar: AppBar(
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
-        titleSpacing: 0.5,
+        titleSpacing: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -58,7 +58,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          "Invoice Detail",
+          "Invoice Details",
           style: appHeading(),
         ),
         actions: [
@@ -75,7 +75,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 Row(
@@ -86,18 +86,14 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                         children: [
                           Text(
                             widget.invoice.invoiceNo ?? '',
-                            style: TextStyle(
-                              fontSize: 13.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: blueTextStyle()
                           ),
                           Row(
                             children: [
                               Text(
                                 '${widget.customer.cusCode} ',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
                               ),
@@ -105,9 +101,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
                                   widget.customer.cusName ?? '',
-                                  style: TextStyle(
-                                      fontSize: 13.sp,
-                                      color: const Color(0xff413434)),
+                                  style: subTitleTextStyle()
                                 ),
                               ),
                             ],
@@ -116,15 +110,13 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                             children: [
                               Text(
                                 '${widget.customer.headerCode} - ',
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff413434)),
+                                style: subTitleTextStyle()
                               ),
                               Expanded(
                                 child: Text(
                                   widget.customer.headerName ?? '',
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 13.sp),
+                                  style: subTitleTextStyle()
                                 ),
                               ),
                             ],
@@ -253,12 +245,12 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'items',
+                    'Items',
                     style: boxHeading(),
                   ),
                   const Spacer(),
@@ -274,7 +266,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                           width: 15.h,
                         ), */
                         Text(
-                          'Uom',
+                          'UOM',
                           style: boxHeading(),
                         ),
                         /*  SizedBox(
@@ -317,12 +309,12 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                   Text(
                     'Total Amount',
                     style:
-                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w500),
+                        bottomTextStyle()
                   ),
                   Text(
                     'AED ${widget.invoice.grandTotal}',
                     style:
-                        TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600),
+                      bottomTotalAmountStyle()
                   )
                 ],
               ),
