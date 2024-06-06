@@ -27,15 +27,11 @@ class InventoryReconfirmDetailBloc
           (r) {
             searchedItems = r
                 .where((element) =>
-                    element.iahId!
+                    (element.prdCode ?? '')
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||
-                    element.prdCode!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.prdName!
+                    (element.prdName ?? '')
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()))

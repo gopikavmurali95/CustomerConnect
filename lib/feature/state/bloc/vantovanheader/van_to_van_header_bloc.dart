@@ -19,7 +19,8 @@ class VanToVanHeaderBloc
     on<getVanToVanHeaderEvent>((event, emit) async {
       List<VanToVanHeaderModel> searcheditems = [];
       Either<MainFailures, List<VanToVanHeaderModel>> headers =
-          await vantovanheader.getVanToVanApprovalHeader(event.userID);
+          await vantovanheader.getVanToVanApprovalHeader(
+              event.userID, event.mode);
 
       emit(
         headers.fold(

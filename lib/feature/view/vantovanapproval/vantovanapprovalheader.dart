@@ -24,7 +24,7 @@ Timer? debounce;
 TextEditingController _vanToVanHSearchCtrl = TextEditingController();
 String _selectedMode = 'NULL';
 List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'NULL'),
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Approved", mode: 'AT'),
   ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
 ];
@@ -203,6 +203,14 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                         .toList(),
                     onChanged: (value) {
                       _selectedMode = value!;
+                      context
+                          .read<VanToVanHeaderBloc>()
+                          .add(const ClearVanToVanHeaderEvent());
+                      context.read<VanToVanHeaderBloc>().add(
+                          getVanToVanHeaderEvent(
+                              userID: widget.user.usrId ?? '',
+                              mode: value,
+                              searchQuery: ''));
                     },
                   ),
                 ),
@@ -288,6 +296,8 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                                         index],
                                                                 user:
                                                                     widget.user,
+                                                                currentMode:
+                                                                    _selectedMode,
                                                               )));
                                                 },
                                                 child: Row(

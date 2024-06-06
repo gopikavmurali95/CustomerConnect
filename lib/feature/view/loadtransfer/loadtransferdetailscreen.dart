@@ -20,8 +20,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LoadTransferDetailScreen extends StatefulWidget {
   final LoginUserModel user;
   final LoadTransferApprovalHeaderModel header;
+  final String currentMode;
   const LoadTransferDetailScreen(
-      {super.key, required this.user, required this.header});
+      {super.key,
+      required this.user,
+      required this.header,
+      required this.currentMode});
 
   @override
   State<LoadTransferDetailScreen> createState() =>
@@ -91,7 +95,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
           context.read<LoadTransferHeaderBloc>().add(
               GetAllLoadTransferHeadersEvent(
                   userID: widget.header.userID ?? '',
-                  mode: "P",
+                  mode: widget.currentMode,
                   searchQuery: ""));
 
           //   Future.delayed(const Duration(microseconds: 100), () {

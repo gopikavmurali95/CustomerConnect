@@ -19,20 +19,21 @@ class LoadTransferHeaderBloc
     on<GetAllLoadTransferHeadersEvent>((event, emit) async {
       List<LoadTransferApprovalHeaderModel> searcheditems = [];
       Either<MainFailures, List<LoadTransferApprovalHeaderModel>> headers =
-          await loadTransferApprovalRepo.getLoadTransferHeaders(event.userID);
+          await loadTransferApprovalRepo.getLoadTransferHeaders(
+              event.userID, event.mode);
 
       emit(headers.fold((l) => const LoadTransferHeaderFailedState(), (r) {
         searcheditems = r
             .where((element) =>
-                element.ltrReqNo!
+                (element.ltrReqNo ?? '')
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.rotName!
+                (element.rotName ?? '')
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.usrName!
+                (element.usrName ?? "")
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))

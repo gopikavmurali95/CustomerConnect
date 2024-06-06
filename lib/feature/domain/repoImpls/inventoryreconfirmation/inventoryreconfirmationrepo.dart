@@ -51,7 +51,6 @@ class InventoryReconfirmationRepo
       final response = await http.post(
           Uri.parse(approvalBaseUrl + inventoryReconfirmDetailUrl),
           body: {"ReqID": reqId});
-
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
@@ -79,7 +78,6 @@ class InventoryReconfirmationRepo
       final response = await http.post(
         Uri.parse(approvalBaseUrl + inventoryReconfirmResonurl),
       );
-
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> reasondata = json['result'];
@@ -112,9 +110,8 @@ class InventoryReconfirmationRepo
             "ReqID": approve.reqId,
             "JSONString": jsonEncode(approve.products)
           });
-
+      log('Approve Response: ${response.body}');
       if (response.statusCode == 200) {
-        log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final approve =
             InventoryReconfirmApprovalRespModel.fromJson(json["result"][0]);

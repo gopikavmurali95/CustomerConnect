@@ -312,6 +312,8 @@ class _InventoryReconfirmHeadersScreenState
                                                                                 inventory[index],
                                                                             user:
                                                                                 widget.user,
+                                                                            currentMode:
+                                                                                _selectedMode,
                                                                           )));
                                                         },
                                                         child: Row(

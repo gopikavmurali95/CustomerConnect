@@ -17,11 +17,11 @@ import 'package:injectable/injectable.dart';
 class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
   @override
   Future<Either<MainFailures, List<CreditNoteHeaderModel>>>
-      getCreditNoteApprovalHeaders(String userID) async {
+      getCreditNoteApprovalHeaders(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + creditNoteApprovalHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

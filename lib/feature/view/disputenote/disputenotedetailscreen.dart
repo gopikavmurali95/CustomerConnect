@@ -17,8 +17,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DisputeNoteDetailScreen extends StatefulWidget {
   final LoginUserModel user;
   final DisputeNoteHeaderModel disputenote;
+  final String currentMode;
   const DisputeNoteDetailScreen(
-      {super.key, required this.user, required this.disputenote});
+      {super.key,
+      required this.user,
+      required this.disputenote,
+      required this.currentMode});
 
   @override
   State<DisputeNoteDetailScreen> createState() =>
@@ -77,7 +81,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
               .add(const ClearDisputeNoteHEaderEvent()); */
 
           context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
-              userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+              userID: widget.user.usrId ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
         },
         child: Column(
           children: [
