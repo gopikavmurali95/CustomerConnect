@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_note_header_model/dispute_note_header_model.dart';
@@ -24,6 +26,9 @@ class DisputeNoteDetailScreen extends StatefulWidget {
 }
 
 TextEditingController _remarksctrls = TextEditingController();
+Timer? debounce;
+
+TextEditingController _disputedetailCtrl = TextEditingController();
 
 class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
   @override
@@ -32,9 +37,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
     context
         .read<DisputeNoteDetailBloc>()
         .add(const ClearDisputeNoteDetailEvent());
-    context
-        .read<DisputeNoteDetailBloc>()
-        .add(GetDisputeNoteDetailEvent(reqId: widget.disputenote.drhId ?? ''));
+    context.read<DisputeNoteDetailBloc>().add(GetDisputeNoteDetailEvent(
+        reqId: widget.disputenote.drhId ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -72,9 +76,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
               .read<DisputeNoteHeaderBloc>()
               .add(const ClearDisputeNoteHEaderEvent()); */
 
-          context
-              .read<DisputeNoteHeaderBloc>()
-              .add(GetDisputeNoteHeadersEvent(userID: widget.user.usrId ?? ''));
+          context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
+              userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
         },
         child: Column(
           children: [
@@ -170,6 +173,93 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
             Divider(
               color: Colors.grey[200],
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Card(
+                child: Container(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: .5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextFormField(
+                    controller: _disputedetailCtrl,
+                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: 'Search here..',
+                      suffix: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                                onPressed: () {
+                                  if (_disputedetailCtrl.text.isNotEmpty) {
+                                    _disputedetailCtrl.clear();
+                                    context
+                                        .read<DisputeNoteDetailBloc>()
+                                        .add(GetDisputeNoteDetailEvent(
+                                          searchQuery: '',
+                                          reqId: widget.disputenote.drhId ?? '',
+                                        ));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.clear,
+                                  size: 10.sp,
+                                )),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          )
+                        ],
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 14.sp,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                                .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ), () async {
+                        context.read<DisputeNoteDetailBloc>().add(
+                            GetDisputeNoteDetailEvent(
+                                searchQuery: value.trim(),
+                                reqId: widget.disputenote.drhId ?? ''));
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ),
             SizedBox(
               height: 5.h,
             ),
@@ -200,76 +290,89 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                     ),
                                 itemCount: 10),
                           )
-                        : ListView.separated(
-                            shrinkWrap: true,
-                            // physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                        : details.isEmpty
+                            ? Center(
+                                child: Text(
+                                  'No Data Available',
+                                  style: kfontstyle(),
+                                ),
+                              )
+                            : ListView.separated(
+                                shrinkWrap: true,
+                                // physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Column(
                                     children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              details[index].invoiceId ?? '',
-                                              style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff7b70ac),
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  details[index].invoiceId ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff7b70ac),
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  details[index].transTime ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Colors.black54),
+                                                ),
+                                                Text(
+                                                  "AED ${details[index].invoiceAmount}",
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            Text(
-                                              details[index].transTime ?? '',
-                                              style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black54),
-                                            ),
-                                            Text(
-                                              "AED ${details[index].invoiceAmount}",
-                                              style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(15)),
-                                            color: Color(0xfff7f4e2)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 8, vertical: 5),
-                                          child: Text(
-                                            'AED ${details[index].drdInvoiceBalance}',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
                                           ),
-                                        ),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(15)),
+                                                color: Color(0xfff7f4e2)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 5),
+                                              child: Text(
+                                                'AED ${details[index].drdInvoiceBalance}',
+                                                style: kfontstyle(
+                                                    fontSize: 10.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
+                                separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey[300],
+                                ),
+                                itemCount: details.length,
                               ),
-                            ),
-                            separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                            itemCount: details.length,
-                          ),
                     getdisputenoteDetailFailedState: () => Center(
                       child: Text(
                         'No Data Available',

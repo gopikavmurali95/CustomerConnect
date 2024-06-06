@@ -51,6 +51,11 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_header_model/inventory_reconfirm_header_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_reason_model/inventory_reconfirm_reason_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -246,8 +251,8 @@ abstract class ICusProfileRepo {
 abstract class ISalesOrdersRepo {
   Future<Either<MainFailures, List<SalesOrdersModel>>> getSalesOrders(
       SalesOrdersInModel salesIn);
-      Future<Either<MainFailures, List<SalesOrderDetailsModel>>> getSalesOrderdetails(
-      SalesOrderDetailsInparasModel salesInparas);
+  Future<Either<MainFailures, List<SalesOrderDetailsModel>>>
+      getSalesOrderdetails(SalesOrderDetailsInparasModel salesInparas);
 }
 
 abstract class ICusOutstandingRepo {
@@ -512,4 +517,16 @@ abstract class ILoadRequestApprovalRepo {
 abstract class IApprovalCountsRepo {
   Future<Either<MainFailures, ApprovalCountModel>> approvalsCount(
       String userID);
+}
+
+abstract class IinvetoryReconfirmationApprovalRepo {
+  Future<Either<MainFailures, List<InventoryReconfirmHeaderModel>>>
+      getInventoryReconfirmHeaders(String mode);
+  Future<Either<MainFailures, List<InventoryReconfirmDetailModel>>>
+      getinventoryReconfirmDetail(String reqId);
+
+  Future<Either<MainFailures, InventoryReconfirmApprovalRespModel>>
+      inventoryReconfromApprove(InventoryReconfirmApproveInModel approve);
+  Future<Either<MainFailures, List<InventoryReconfirmReasonModel>>>
+      getinventoryReconfirmReasons();
 }

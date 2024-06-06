@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.da
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
+import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
@@ -826,9 +827,11 @@ class ApprovalScreen extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context
-                              .read<VanToVanHeaderBloc>()
-                              .add(const getVanToVanHeaderEvent(userID: '48'));
+                          context.read<VanToVanHeaderBloc>().add(
+                              getVanToVanHeaderEvent(
+                                  userID: user.usrId ?? '',
+                                  mode: "NULL",
+                                  searchQuery: ''));
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -1388,6 +1391,105 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.w,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  InventoryReconfirmHeadersScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Inventory Recon",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingMaterialReqApproval!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Expanded(child: SizedBox())
                   ],
                 ),
               ),

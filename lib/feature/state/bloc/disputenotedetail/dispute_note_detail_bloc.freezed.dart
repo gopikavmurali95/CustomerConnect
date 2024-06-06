@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DisputeNoteDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getDisputeNoteDetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getDisputeNoteDetailEvent,
     required TResult Function() clearDisputeNoteDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult? Function()? clearDisputeNoteDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult Function()? clearDisputeNoteDetailEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetDisputeNoteDetailEventImplCopyWith<$Res> {
           $Res Function(_$GetDisputeNoteDetailEventImpl) then) =
       __$$GetDisputeNoteDetailEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqId});
+  $Res call({String reqId, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,16 @@ class __$$GetDisputeNoteDetailEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetDisputeNoteDetailEventImpl(
       reqId: null == reqId
           ? _value.reqId
           : reqId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -118,14 +126,17 @@ class __$$GetDisputeNoteDetailEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetDisputeNoteDetailEventImpl implements GetDisputeNoteDetailEvent {
-  const _$GetDisputeNoteDetailEventImpl({required this.reqId});
+  const _$GetDisputeNoteDetailEventImpl(
+      {required this.reqId, required this.searchQuery});
 
   @override
   final String reqId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'DisputeNoteDetailEvent.getDisputeNoteDetailEvent(reqId: $reqId)';
+    return 'DisputeNoteDetailEvent.getDisputeNoteDetailEvent(reqId: $reqId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -133,11 +144,13 @@ class _$GetDisputeNoteDetailEventImpl implements GetDisputeNoteDetailEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetDisputeNoteDetailEventImpl &&
-            (identical(other.reqId, reqId) || other.reqId == reqId));
+            (identical(other.reqId, reqId) || other.reqId == reqId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqId);
+  int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +162,33 @@ class _$GetDisputeNoteDetailEventImpl implements GetDisputeNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getDisputeNoteDetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getDisputeNoteDetailEvent,
     required TResult Function() clearDisputeNoteDetailEvent,
   }) {
-    return getDisputeNoteDetailEvent(reqId);
+    return getDisputeNoteDetailEvent(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult? Function()? clearDisputeNoteDetailEvent,
   }) {
-    return getDisputeNoteDetailEvent?.call(reqId);
+    return getDisputeNoteDetailEvent?.call(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult Function()? clearDisputeNoteDetailEvent,
     required TResult orElse(),
   }) {
     if (getDisputeNoteDetailEvent != null) {
-      return getDisputeNoteDetailEvent(reqId);
+      return getDisputeNoteDetailEvent(reqId, searchQuery);
     }
     return orElse();
   }
@@ -216,10 +232,12 @@ class _$GetDisputeNoteDetailEventImpl implements GetDisputeNoteDetailEvent {
 }
 
 abstract class GetDisputeNoteDetailEvent implements DisputeNoteDetailEvent {
-  const factory GetDisputeNoteDetailEvent({required final String reqId}) =
-      _$GetDisputeNoteDetailEventImpl;
+  const factory GetDisputeNoteDetailEvent(
+      {required final String reqId,
+      required final String searchQuery}) = _$GetDisputeNoteDetailEventImpl;
 
   String get reqId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetDisputeNoteDetailEventImplCopyWith<_$GetDisputeNoteDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -267,7 +285,8 @@ class _$ClearDisputeNoteDetailEventImpl implements ClearDisputeNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getDisputeNoteDetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getDisputeNoteDetailEvent,
     required TResult Function() clearDisputeNoteDetailEvent,
   }) {
     return clearDisputeNoteDetailEvent();
@@ -276,7 +295,8 @@ class _$ClearDisputeNoteDetailEventImpl implements ClearDisputeNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult? Function()? clearDisputeNoteDetailEvent,
   }) {
     return clearDisputeNoteDetailEvent?.call();
@@ -285,7 +305,8 @@ class _$ClearDisputeNoteDetailEventImpl implements ClearDisputeNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getDisputeNoteDetailEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getDisputeNoteDetailEvent,
     TResult Function()? clearDisputeNoteDetailEvent,
     required TResult orElse(),
   }) {

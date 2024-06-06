@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VanToVanHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getVanToVanHeaderEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getVanToVanHeaderEvent,
     required TResult Function() clearVanToVanHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getVanToVanHeaderEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult? Function()? clearVanToVanHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getVanToVanHeaderEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult Function()? clearVanToVanHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -83,7 +86,7 @@ abstract class _$$getVanToVanHeaderEventImplCopyWith<$Res> {
           $Res Function(_$getVanToVanHeaderEventImpl) then) =
       __$$getVanToVanHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -100,11 +103,21 @@ class __$$getVanToVanHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$getVanToVanHeaderEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -113,14 +126,19 @@ class __$$getVanToVanHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$getVanToVanHeaderEventImpl implements getVanToVanHeaderEvent {
-  const _$getVanToVanHeaderEventImpl({required this.userID});
+  const _$getVanToVanHeaderEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'VanToVanHeaderEvent.getVanToVanHeaderEvent(userID: $userID)';
+    return 'VanToVanHeaderEvent.getVanToVanHeaderEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -128,11 +146,14 @@ class _$getVanToVanHeaderEventImpl implements getVanToVanHeaderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$getVanToVanHeaderEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -144,30 +165,33 @@ class _$getVanToVanHeaderEventImpl implements getVanToVanHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getVanToVanHeaderEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getVanToVanHeaderEvent,
     required TResult Function() clearVanToVanHeaderEvent,
   }) {
-    return getVanToVanHeaderEvent(userID);
+    return getVanToVanHeaderEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getVanToVanHeaderEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult? Function()? clearVanToVanHeaderEvent,
   }) {
-    return getVanToVanHeaderEvent?.call(userID);
+    return getVanToVanHeaderEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getVanToVanHeaderEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult Function()? clearVanToVanHeaderEvent,
     required TResult orElse(),
   }) {
     if (getVanToVanHeaderEvent != null) {
-      return getVanToVanHeaderEvent(userID);
+      return getVanToVanHeaderEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -207,10 +231,14 @@ class _$getVanToVanHeaderEventImpl implements getVanToVanHeaderEvent {
 }
 
 abstract class getVanToVanHeaderEvent implements VanToVanHeaderEvent {
-  const factory getVanToVanHeaderEvent({required final String userID}) =
-      _$getVanToVanHeaderEventImpl;
+  const factory getVanToVanHeaderEvent(
+      {required final String userID,
+      required final String mode,
+      required final String searchQuery}) = _$getVanToVanHeaderEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$getVanToVanHeaderEventImplCopyWith<_$getVanToVanHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -258,7 +286,8 @@ class _$ClearVanToVanHeaderEventImpl implements ClearVanToVanHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getVanToVanHeaderEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getVanToVanHeaderEvent,
     required TResult Function() clearVanToVanHeaderEvent,
   }) {
     return clearVanToVanHeaderEvent();
@@ -267,7 +296,8 @@ class _$ClearVanToVanHeaderEventImpl implements ClearVanToVanHeaderEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getVanToVanHeaderEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult? Function()? clearVanToVanHeaderEvent,
   }) {
     return clearVanToVanHeaderEvent?.call();
@@ -276,7 +306,8 @@ class _$ClearVanToVanHeaderEventImpl implements ClearVanToVanHeaderEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getVanToVanHeaderEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getVanToVanHeaderEvent,
     TResult Function()? clearVanToVanHeaderEvent,
     required TResult orElse(),
   }) {

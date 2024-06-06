@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_approval_in_model/asset_removal_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -21,6 +23,8 @@ class AssetRemovalApprovalScreen extends StatefulWidget {
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
+Timer? debounce;
+TextEditingController _assetRemovectrl = TextEditingController();
 
 class _AssetRemovalApprovalScreenState
     extends State<AssetRemovalApprovalScreen> {
@@ -29,9 +33,9 @@ class _AssetRemovalApprovalScreenState
     context
         .read<AssetRemovelRequestHeaderBloc>()
         .add(const ClearAssetRemovalHeaderEvent());
-    context
-        .read<AssetRemovelRequestHeaderBloc>()
-        .add(const GetAllAssetRemovalHeadersEvent(userID: '64'));
+    context.read<AssetRemovelRequestHeaderBloc>().add(
+        GetAllAssetRemovalHeadersEvent(
+            userID: widget.user.usrId ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -65,6 +69,124 @@ class _AssetRemovalApprovalScreenState
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Card(
+                child: Container(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: .5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextFormField(
+                    controller: _assetRemovectrl,
+                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: 'Search here..',
+                      suffix: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                                onPressed: () {
+                                  if (_assetRemovectrl.text.isNotEmpty) {
+                                    _assetRemovectrl.clear();
+
+                                    context
+                                        .read<AssetRemovelRequestHeaderBloc>()
+                                        .add(GetAllAssetRemovalHeadersEvent(
+                                            searchQuery: '',
+                                            userID: widget.user.usrId ?? ''));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.clear,
+                                  size: 10.sp,
+                                )),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          )
+                        ],
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 14.sp,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                                .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ), () async {
+                        context.read<AssetRemovelRequestHeaderBloc>().add(
+                            GetAllAssetRemovalHeadersEvent(
+                                userID: widget.user.usrId ?? '',
+                                searchQuery: value.trim()));
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Pending Approvals",
+                    style: countHeading(),
+                  ),
+                  BlocBuilder<AssetRemovelRequestHeaderBloc,
+                      AssetRemovelRequestHeaderState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.when(
+                          getAssetRemovalRequestHEadersState: (headers) =>
+                              headers == null ? "0" : headers.length.toString(),
+                          assetRemovalRequestHeaderFailedState: () => "0",
+                        ),
+                        style: countHeading(),
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
             Expanded(
                 child: BlocListener<AssetRemovelRequestHeaderBloc,
                     AssetRemovelRequestHeaderState>(
@@ -250,7 +372,7 @@ class _AssetRemovalApprovalScreenState
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
-                                                                                context.read<AssetRemovelRequestHeaderBloc>().add(const GetAllAssetRemovalHeadersEvent(userID: '64'));
+                                                                                context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
                                                                               child: const Text('Proceed'),
@@ -279,7 +401,7 @@ class _AssetRemovalApprovalScreenState
                                                                           TextButton(
                                                                             onPressed:
                                                                                 () {
-                                                                              context.read<AssetRemovelRequestHeaderBloc>().add(const GetAllAssetRemovalHeadersEvent(userID: '64'));
+                                                                              context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
                                                                               Navigator.pop(context);
                                                                             },
                                                                             child:

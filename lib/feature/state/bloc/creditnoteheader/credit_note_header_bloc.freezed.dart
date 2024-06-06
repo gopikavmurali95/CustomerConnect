@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CreditNoteHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllCreditNoteHeadersEvent,
+    required TResult Function(String userId, String searchQuery, String mode)
+        getAllCreditNoteHeadersEvent,
     required TResult Function() clearCreditNoteHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult? Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult? Function()? clearCreditNoteHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult Function()? clearCreditNoteHeadersEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllCreditNoteHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllCreditNoteHeadersEventImpl) then) =
       __$$GetAllCreditNoteHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId});
+  $Res call({String userId, String searchQuery, String mode});
 }
 
 /// @nodoc
@@ -105,11 +108,21 @@ class __$$GetAllCreditNoteHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? searchQuery = null,
+    Object? mode = null,
   }) {
     return _then(_$GetAllCreditNoteHeadersEventImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +132,19 @@ class __$$GetAllCreditNoteHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllCreditNoteHeadersEventImpl
     implements GetAllCreditNoteHeadersEvent {
-  const _$GetAllCreditNoteHeadersEventImpl({required this.userId});
+  const _$GetAllCreditNoteHeadersEventImpl(
+      {required this.userId, required this.searchQuery, required this.mode});
 
   @override
   final String userId;
+  @override
+  final String searchQuery;
+  @override
+  final String mode;
 
   @override
   String toString() {
-    return 'CreditNoteHeaderEvent.getAllCreditNoteHeadersEvent(userId: $userId)';
+    return 'CreditNoteHeaderEvent.getAllCreditNoteHeadersEvent(userId: $userId, searchQuery: $searchQuery, mode: $mode)';
   }
 
   @override
@@ -134,11 +152,14 @@ class _$GetAllCreditNoteHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllCreditNoteHeadersEventImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
+            (identical(other.mode, mode) || other.mode == mode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, searchQuery, mode);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +172,33 @@ class _$GetAllCreditNoteHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllCreditNoteHeadersEvent,
+    required TResult Function(String userId, String searchQuery, String mode)
+        getAllCreditNoteHeadersEvent,
     required TResult Function() clearCreditNoteHeadersEvent,
   }) {
-    return getAllCreditNoteHeadersEvent(userId);
+    return getAllCreditNoteHeadersEvent(userId, searchQuery, mode);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult? Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult? Function()? clearCreditNoteHeadersEvent,
   }) {
-    return getAllCreditNoteHeadersEvent?.call(userId);
+    return getAllCreditNoteHeadersEvent?.call(userId, searchQuery, mode);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult Function()? clearCreditNoteHeadersEvent,
     required TResult orElse(),
   }) {
     if (getAllCreditNoteHeadersEvent != null) {
-      return getAllCreditNoteHeadersEvent(userId);
+      return getAllCreditNoteHeadersEvent(userId, searchQuery, mode);
     }
     return orElse();
   }
@@ -218,10 +242,14 @@ class _$GetAllCreditNoteHeadersEventImpl
 }
 
 abstract class GetAllCreditNoteHeadersEvent implements CreditNoteHeaderEvent {
-  const factory GetAllCreditNoteHeadersEvent({required final String userId}) =
-      _$GetAllCreditNoteHeadersEventImpl;
+  const factory GetAllCreditNoteHeadersEvent(
+      {required final String userId,
+      required final String searchQuery,
+      required final String mode}) = _$GetAllCreditNoteHeadersEventImpl;
 
   String get userId;
+  String get searchQuery;
+  String get mode;
   @JsonKey(ignore: true)
   _$$GetAllCreditNoteHeadersEventImplCopyWith<
           _$GetAllCreditNoteHeadersEventImpl>
@@ -270,7 +298,8 @@ class _$ClearCreditNoteHeadersEventImpl implements ClearCreditNoteHeadersEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllCreditNoteHeadersEvent,
+    required TResult Function(String userId, String searchQuery, String mode)
+        getAllCreditNoteHeadersEvent,
     required TResult Function() clearCreditNoteHeadersEvent,
   }) {
     return clearCreditNoteHeadersEvent();
@@ -279,7 +308,8 @@ class _$ClearCreditNoteHeadersEventImpl implements ClearCreditNoteHeadersEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult? Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult? Function()? clearCreditNoteHeadersEvent,
   }) {
     return clearCreditNoteHeadersEvent?.call();
@@ -288,7 +318,8 @@ class _$ClearCreditNoteHeadersEventImpl implements ClearCreditNoteHeadersEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllCreditNoteHeadersEvent,
+    TResult Function(String userId, String searchQuery, String mode)?
+        getAllCreditNoteHeadersEvent,
     TResult Function()? clearCreditNoteHeadersEvent,
     required TResult orElse(),
   }) {

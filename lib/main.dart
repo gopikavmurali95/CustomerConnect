@@ -36,6 +36,9 @@ import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_no
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/inventoryreconfirmapproval/inventory_reconfirm_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/inventoryreconfirmdetail/inventory_reconfirm_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inventory_reconfirm_header_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
@@ -96,8 +99,10 @@ import 'package:customer_connect/feature/state/cubit/customersearch/customer_sea
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -125,6 +130,7 @@ import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 
+bool isLoadingProgress = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
@@ -500,6 +506,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<SalesOrderDetailsBloc>(),
+        ),
+        BlocProvider<ProgressIndicatorCubit>(
+          create: (context) => ProgressIndicatorCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InventoryReconfirmHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InventoryReconfirmReasonsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InventoryReconfirmApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<InventoryReconfirmDetailBloc>(),
         ),
       ],
       child: ScreenUtilInit(
