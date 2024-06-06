@@ -74,7 +74,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
 
           context
               .read<DisputeNoteHeaderBloc>()
-              .add(GetDisputeNoteHeadersEvent(userID: widget.user.usrId ?? ''));
+              .add(GetDisputeNoteHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
         },
         child: Column(
           children: [
