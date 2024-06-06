@@ -22,7 +22,7 @@ class LoadTransferApprovalHeaderScreen extends StatefulWidget {
 
 Timer? debounce;
 TextEditingController _vanLoadTransSearchCtrl = TextEditingController();
-String _selectedMode = 'NULL';
+String _selectedMode = 'P';
 List<ApprovalStatusFilterModel> ddfilterLoadTransfer = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
@@ -36,7 +36,7 @@ class _LoadTransferApprovalHeaderScreenState
         .read<LoadTransferHeaderBloc>()
         .add(const ClearLoadtransferHeaderEvent());
     context.read<LoadTransferHeaderBloc>().add(GetAllLoadTransferHeadersEvent(
-        userID: widget.user.usrId ?? '', mode: "P", searchQuery: "s"));
+        userID: widget.user.usrId ?? '', mode: "P", searchQuery: ""));
     super.initState();
   }
 
@@ -213,6 +213,15 @@ class _LoadTransferApprovalHeaderScreenState
                         .toList(),
                     onChanged: (value) {
                       _selectedMode = value!;
+
+                      context
+                          .read<LoadTransferHeaderBloc>()
+                          .add(const ClearLoadtransferHeaderEvent());
+                      context.read<LoadTransferHeaderBloc>().add(
+                          GetAllLoadTransferHeadersEvent(
+                              userID: widget.user.usrId ?? '',
+                              mode: value,
+                              searchQuery: ""));
                     },
                   ),
                 ),
@@ -287,6 +296,7 @@ class _LoadTransferApprovalHeaderScreenState
                                                 LoadTransferDetailScreen(
                                               header: headers[index],
                                               user: widget.user,
+                                              currentMode: _selectedMode,
                                             ),
                                           ),
                                         );

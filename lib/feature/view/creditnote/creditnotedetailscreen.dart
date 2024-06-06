@@ -17,8 +17,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CreditNoteDetailScreen extends StatefulWidget {
   final CreditNoteHeaderModel creditNote;
   final LoginUserModel user;
+  final String currentMode;
   const CreditNoteDetailScreen(
-      {super.key, required this.creditNote, required this.user});
+      {super.key,
+      required this.creditNote,
+      required this.user,
+      required this.currentMode});
 
   @override
   State<CreditNoteDetailScreen> createState() => _CreditNoteDetailScreenState();
@@ -72,7 +76,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
       body: PopScope(
         onPopInvoked: (didPop) {
           context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
-              userId: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+              userId: widget.user.usrId ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
         },
         child: BlocConsumer<CreditNoteApprovalAndRejectBloc,
             CreditNoteApprovalAndRejectState>(

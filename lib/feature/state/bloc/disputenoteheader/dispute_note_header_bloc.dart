@@ -19,8 +19,8 @@ class DisputeNoteHeaderBloc
     on<GetDisputeNoteHeadersEvent>((event, emit) async {
       List<DisputeNoteHeaderModel> searcheditems = [];
       Either<MainFailures, List<DisputeNoteHeaderModel>> header =
-          await disputeNoteApprovalRepo
-              .getDisputeNoteApprovalHeaders(event.userID);
+          await disputeNoteApprovalRepo.getDisputeNoteApprovalHeaders(
+              event.userID, event.mode);
       emit(
         header.fold(
           (l) => const DisputeNoteHeaderFailedState(),

@@ -25,5 +25,9 @@ class InventoryReconfirmApprovalBloc extends Bloc<
       emit(approve.fold((l) => const InventoryReconfirmApproveFailedState(),
           (r) => InventoryReconfirmApproveState(response: r)));
     });
+
+    on<InventoryReconfirmLoadingEvent>((event, emit) {
+      emit(const InventoryReconfirmApproveLoadingState());
+    });
   }
 }

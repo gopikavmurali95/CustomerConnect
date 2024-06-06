@@ -4,24 +4,6 @@ part 'inventory_reconfirm_detail_model.g.dart';
 
 @JsonSerializable()
 class InventoryReconfirmDetailModel {
-  @JsonKey(name: 'iah_ID')
-  String? iahId;
-  @JsonKey(name: 'iah_TransID')
-  String? iahTransId;
-  @JsonKey(name: 'iah_usr_ID')
-  String? iahUsrId;
-  @JsonKey(name: 'usr_Name')
-  String? usrName;
-  @JsonKey(name: 'rot_Code')
-  String? rotCode;
-  @JsonKey(name: 'rot_Name')
-  String? rotName;
-  @JsonKey(name: 'CreatedDate')
-  String? createdDate;
-  @JsonKey(name: 'iah_rot_ID')
-  String? iahRotId;
-  @JsonKey(name: 'iah_Status')
-  String? iahStatus;
   @JsonKey(name: 'iad_ID')
   String? iadId;
   @JsonKey(name: 'iad_prd_ID')
@@ -54,15 +36,6 @@ class InventoryReconfirmDetailModel {
   String? prdName;
 
   InventoryReconfirmDetailModel({
-    this.iahId,
-    this.iahTransId,
-    this.iahUsrId,
-    this.usrName,
-    this.rotCode,
-    this.rotName,
-    this.createdDate,
-    this.iahRotId,
-    this.iahStatus,
     this.iadId,
     this.iadPrdId,
     this.iadHigherQty,

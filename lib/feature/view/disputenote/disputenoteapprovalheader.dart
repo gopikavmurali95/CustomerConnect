@@ -11,9 +11,7 @@ import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_
 import 'package:customer_connect/feature/view/disputenote/disputenotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +26,7 @@ class DisputeNoteApprovalHEaderScreen extends StatefulWidget {
 
 List<ApprovalStatusFilterModel> ddfilterFieldsDisputeNote = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
+  ApprovalStatusFilterModel(statusName: "Approved", mode: 'AT'),
   ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
 ];
 
@@ -162,7 +160,7 @@ class _DisputeNoteApprovalHEaderScreenState
                         context.read<DisputeNoteHeaderBloc>().add(
                               GetDisputeNoteHeadersEvent(
                                   userID: widget.user.usrId ?? '',
-                                  mode: 'P',
+                                  mode: _selectedDisputeMode,
                                   searchQuery: value),
                             );
                       });
@@ -224,7 +222,19 @@ class _DisputeNoteApprovalHEaderScreenState
                           ),
                         )
                         .toList(),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      _selectedDisputeMode = value!;
+                      context
+                          .read<DisputeNoteHeaderBloc>()
+                          .add(const ClearDisputeNoteHEaderEvent());
+
+                      context.read<DisputeNoteHeaderBloc>().add(
+                            GetDisputeNoteHeadersEvent(
+                                userID: widget.user.usrId ?? '',
+                                mode: value,
+                                searchQuery: ''),
+                          );
+                    },
                   ),
                 ),
               ),
@@ -314,6 +324,8 @@ class _DisputeNoteApprovalHEaderScreenState
                                                   DisputeNoteDetailScreen(
                                                 disputenote: headers[index],
                                                 user: widget.user,
+                                                currentMode:
+                                                    _selectedDisputeMode,
                                               ),
                                             ),
                                           );

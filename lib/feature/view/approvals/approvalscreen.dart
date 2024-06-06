@@ -830,7 +830,7 @@ class ApprovalScreen extends StatelessWidget {
                           context.read<VanToVanHeaderBloc>().add(
                               getVanToVanHeaderEvent(
                                   userID: user.usrId ?? '',
-                                  mode: "NULL",
+                                  mode: "P",
                                   searchQuery: ''));
                           Navigator.push(
                             context,

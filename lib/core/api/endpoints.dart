@@ -125,4 +125,4 @@ const inventoryReconfirmHeaderUrl = 'CusOperation/InventoryReconfirm';
 const inventoryReconfirmDetailUrl = 'CusOperation/InventoryReconfirmDetails';
 const inventoryReconfirmResonurl =
     'CusOperation/GetReasonForInventoryReconfirm';
-const inventoryReconfirmApprovalUrl = 'InventoryReconfirmApproval';
+const inventoryReconfirmApprovalUrl = 'CusOperation/InventoryReconfirmApproval';

@@ -19,8 +19,8 @@ class CreditNoteHeaderBloc
     List<CreditNoteHeaderModel> searcheditems = [];
     on<GetAllCreditNoteHeadersEvent>((event, emit) async {
       Either<MainFailures, List<CreditNoteHeaderModel>> headers =
-          await creditNoteApprovalRepo
-              .getCreditNoteApprovalHeaders(event.userId);
+          await creditNoteApprovalRepo.getCreditNoteApprovalHeaders(
+              event.userId, event.mode);
 
       emit(
         headers.fold(
@@ -28,15 +28,15 @@ class CreditNoteHeaderBloc
           (r) {
             searcheditems = r
                 .where((element) =>
-                    element.cnhNumber!
+                    (element.cnhNumber ?? '')
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||
-                    element.cusCode!
+                    (element.cusCode ?? '')
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||
-                    element.cusName!
+                    (element.cusName ?? '')
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()))

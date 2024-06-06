@@ -213,6 +213,14 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                         .toList(),
                     onChanged: (value) {
                       _selectedMode = value!;
+                      context
+                          .read<CreditNoteHeaderBloc>()
+                          .add(const ClearCreditNoteHeadersEvent());
+                      context.read<CreditNoteHeaderBloc>().add(
+                          GetAllCreditNoteHeadersEvent(
+                              userId: widget.user.usrId ?? '',
+                              mode: _selectedMode,
+                              searchQuery: ''));
                     },
                   ),
                 ),
@@ -286,6 +294,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                                                 CreditNoteDetailScreen(
                                               creditNote: headers[index],
                                               user: widget.user,
+                                              currentMode: _selectedMode,
                                             ),
                                           ),
                                         );

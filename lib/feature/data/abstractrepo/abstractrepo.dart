@@ -363,7 +363,7 @@ abstract class IReturnApprovalRepo {
 
 abstract class IDisputeNoteApprovalRepo {
   Future<Either<MainFailures, List<DisputeNoteHeaderModel>>>
-      getDisputeNoteApprovalHeaders(String userID);
+      getDisputeNoteApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<DisputeNoteDetailModel>>>
       getDisputeApprovalDetails(String reqID);
@@ -379,7 +379,7 @@ abstract class IDisputeNoteApprovalRepo {
 
 abstract class ICreditNoteApprovalRepo {
   Future<Either<MainFailures, List<CreditNoteHeaderModel>>>
-      getCreditNoteApprovalHeaders(String userID);
+      getCreditNoteApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<CreditNoteDetailModel>>>
       getCreditApprovalDetails(String reqID);
@@ -433,7 +433,7 @@ abstract class IPartialDeliveryRepo {
 
 abstract class IVanToVanApprovalRepo {
   Future<Either<MainFailures, List<VanToVanHeaderModel>>>
-      getVanToVanApprovalHeader(String userID);
+      getVanToVanApprovalHeader(String userID, String mode);
 
   Future<Either<MainFailures, List<VanToVanDetailsModel>>>
       getVanToVanApprovalDetails(String reqID);
@@ -465,7 +465,7 @@ abstract class IAssetRemovalRequestRepo {
 
 abstract class ILoadTransferApprovalRepo {
   Future<Either<MainFailures, List<LoadTransferApprovalHeaderModel>>>
-      getLoadTransferHeaders(String userID);
+      getLoadTransferHeaders(String userID, String mode);
   Future<Either<MainFailures, List<LoadTransferDetailModel>>>
       getLoadTransferDetails(String reqID);
   Future<Either<MainFailures, LoadTransferApprovalOutModel>>
