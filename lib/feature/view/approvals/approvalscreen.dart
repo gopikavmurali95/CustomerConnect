@@ -1113,7 +1113,7 @@ class ApprovalScreen extends StatelessWidget {
                               .add(const ClearFieldServiceHeaderEvent());
                           context.read<FieldServiceHeaderBloc>().add(
                               GetAllFieldServiceHeadersEvent(
-                                  userId: user.usrId ?? ''));
+                                  userId: user.usrId ?? '', searchQuery: ''));
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -1305,7 +1305,7 @@ class ApprovalScreen extends StatelessWidget {
                         onTap: () {
                           context.read<FieldServiceHeaderBloc>().add(
                               GetAllFieldServiceHeadersEvent(
-                                  userId: user.usrId ?? ''));
+                                  userId: user.usrId ?? '', searchQuery: ''));
                           Navigator.push(
                             context,
                             MaterialPageRoute(

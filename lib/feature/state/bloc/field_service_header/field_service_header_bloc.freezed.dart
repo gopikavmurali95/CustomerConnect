@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FieldServiceHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllFieldServiceHeadersEvent,
+    required TResult Function(String userId, String searchQuery)
+        getAllFieldServiceHeadersEvent,
     required TResult Function() clearFieldServiceHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult? Function()? clearFieldServiceHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult Function()? clearFieldServiceHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllFieldServiceHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllFieldServiceHeadersEventImpl) then) =
       __$$GetAllFieldServiceHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId});
+  $Res call({String userId, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,16 @@ class __$$GetAllFieldServiceHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllFieldServiceHeadersEventImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +127,17 @@ class __$$GetAllFieldServiceHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllFieldServiceHeadersEventImpl
     implements GetAllFieldServiceHeadersEvent {
-  const _$GetAllFieldServiceHeadersEventImpl({required this.userId});
+  const _$GetAllFieldServiceHeadersEventImpl(
+      {required this.userId, required this.searchQuery});
 
   @override
   final String userId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'FieldServiceHeaderEvent.getAllFieldServiceHeadersEvent(userId: $userId)';
+    return 'FieldServiceHeaderEvent.getAllFieldServiceHeadersEvent(userId: $userId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +145,13 @@ class _$GetAllFieldServiceHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllFieldServiceHeadersEventImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +164,33 @@ class _$GetAllFieldServiceHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllFieldServiceHeadersEvent,
+    required TResult Function(String userId, String searchQuery)
+        getAllFieldServiceHeadersEvent,
     required TResult Function() clearFieldServiceHeaderEvent,
   }) {
-    return getAllFieldServiceHeadersEvent(userId);
+    return getAllFieldServiceHeadersEvent(userId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult? Function()? clearFieldServiceHeaderEvent,
   }) {
-    return getAllFieldServiceHeadersEvent?.call(userId);
+    return getAllFieldServiceHeadersEvent?.call(userId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult Function()? clearFieldServiceHeaderEvent,
     required TResult orElse(),
   }) {
     if (getAllFieldServiceHeadersEvent != null) {
-      return getAllFieldServiceHeadersEvent(userId);
+      return getAllFieldServiceHeadersEvent(userId, searchQuery);
     }
     return orElse();
   }
@@ -219,10 +235,12 @@ class _$GetAllFieldServiceHeadersEventImpl
 
 abstract class GetAllFieldServiceHeadersEvent
     implements FieldServiceHeaderEvent {
-  const factory GetAllFieldServiceHeadersEvent({required final String userId}) =
+  const factory GetAllFieldServiceHeadersEvent(
+          {required final String userId, required final String searchQuery}) =
       _$GetAllFieldServiceHeadersEventImpl;
 
   String get userId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllFieldServiceHeadersEventImplCopyWith<
           _$GetAllFieldServiceHeadersEventImpl>
@@ -272,7 +290,8 @@ class _$ClearFieldServiceHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getAllFieldServiceHeadersEvent,
+    required TResult Function(String userId, String searchQuery)
+        getAllFieldServiceHeadersEvent,
     required TResult Function() clearFieldServiceHeaderEvent,
   }) {
     return clearFieldServiceHeaderEvent();
@@ -281,7 +300,8 @@ class _$ClearFieldServiceHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult? Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult? Function()? clearFieldServiceHeaderEvent,
   }) {
     return clearFieldServiceHeaderEvent?.call();
@@ -290,7 +310,8 @@ class _$ClearFieldServiceHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getAllFieldServiceHeadersEvent,
+    TResult Function(String userId, String searchQuery)?
+        getAllFieldServiceHeadersEvent,
     TResult Function()? clearFieldServiceHeaderEvent,
     required TResult orElse(),
   }) {

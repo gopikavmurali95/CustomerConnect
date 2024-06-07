@@ -16,12 +16,25 @@ class LoadReqDetailBloc extends Bloc<LoadReqDetailEvent, LoadReqDetailState> {
   final ILoadRequestHeaderRepo loadreqdetRepo;
 
   LoadReqDetailBloc(this.loadreqdetRepo) : super(LoadReqDetailState.initial()) {
+
+    List<LoadReqDetailModel> searchlistitems = [];
     on<GetloadreqdetailEvent>((event, emit) async {
       Either<MainFailures, List<LoadReqDetailModel>> details =
           await loadreqdetRepo.loadreqdetailList(event.reqId);
 
       emit(details.fold((l) => const LoadreqDetailFailedState(),
-          (r) => LoadreqDetailSuccessState(details: r)));
+          (r) {
+          searchlistitems = r.where((element) =>
+          element.lrdID!
+              .toLowerCase().
+          toUpperCase().
+          contains(event.searchQuery.toUpperCase())||
+          element.prdName!.
+          toLowerCase().
+          toUpperCase().
+          contains(event.searchQuery.toUpperCase())).toList();
+          return  LoadreqDetailSuccessState(details: event.searchQuery.isEmpty ? r :searchlistitems);
+          }));
     });
 
     on<ClearLodReqDetailEvent>((event, emit) {

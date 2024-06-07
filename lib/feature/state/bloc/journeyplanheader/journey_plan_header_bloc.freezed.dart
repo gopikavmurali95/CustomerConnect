@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$JourneyPlanHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllJourneyPlanHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllJourneyPlanHeadersEvent,
     required TResult Function() clearJourneyPlanHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult? Function()? clearJourneyPlanHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult Function()? clearJourneyPlanHeadersEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllJourneyPlanHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllJourneyPlanHeadersEventImpl) then) =
       __$$GetAllJourneyPlanHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,21 @@ class __$$GetAllJourneyPlanHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllJourneyPlanHeadersEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +132,19 @@ class __$$GetAllJourneyPlanHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllJourneyPlanHeadersEventImpl
     implements GetAllJourneyPlanHeadersEvent {
-  const _$GetAllJourneyPlanHeadersEventImpl({required this.userID});
+  const _$GetAllJourneyPlanHeadersEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'JourneyPlanHeaderEvent.getAllJourneyPlanHeadersEvent(userID: $userID)';
+    return 'JourneyPlanHeaderEvent.getAllJourneyPlanHeadersEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +152,14 @@ class _$GetAllJourneyPlanHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllJourneyPlanHeadersEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +172,33 @@ class _$GetAllJourneyPlanHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllJourneyPlanHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllJourneyPlanHeadersEvent,
     required TResult Function() clearJourneyPlanHeadersEvent,
   }) {
-    return getAllJourneyPlanHeadersEvent(userID);
+    return getAllJourneyPlanHeadersEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult? Function()? clearJourneyPlanHeadersEvent,
   }) {
-    return getAllJourneyPlanHeadersEvent?.call(userID);
+    return getAllJourneyPlanHeadersEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult Function()? clearJourneyPlanHeadersEvent,
     required TResult orElse(),
   }) {
     if (getAllJourneyPlanHeadersEvent != null) {
-      return getAllJourneyPlanHeadersEvent(userID);
+      return getAllJourneyPlanHeadersEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -218,10 +242,14 @@ class _$GetAllJourneyPlanHeadersEventImpl
 }
 
 abstract class GetAllJourneyPlanHeadersEvent implements JourneyPlanHeaderEvent {
-  const factory GetAllJourneyPlanHeadersEvent({required final String userID}) =
-      _$GetAllJourneyPlanHeadersEventImpl;
+  const factory GetAllJourneyPlanHeadersEvent(
+      {required final String userID,
+      required final String mode,
+      required final String searchQuery}) = _$GetAllJourneyPlanHeadersEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllJourneyPlanHeadersEventImplCopyWith<
           _$GetAllJourneyPlanHeadersEventImpl>
@@ -271,7 +299,8 @@ class _$ClearJourneyPlanHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllJourneyPlanHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllJourneyPlanHeadersEvent,
     required TResult Function() clearJourneyPlanHeadersEvent,
   }) {
     return clearJourneyPlanHeadersEvent();
@@ -280,7 +309,8 @@ class _$ClearJourneyPlanHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult? Function()? clearJourneyPlanHeadersEvent,
   }) {
     return clearJourneyPlanHeadersEvent?.call();
@@ -289,7 +319,8 @@ class _$ClearJourneyPlanHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllJourneyPlanHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllJourneyPlanHeadersEvent,
     TResult Function()? clearJourneyPlanHeadersEvent,
     required TResult orElse(),
   }) {

@@ -19,11 +19,11 @@ import '../../../../core/api/endpoints.dart';
 class MaterialReqRepo implements IMaterialReqHeaderRepo {
   @override
   Future<Either<MainFailures, List<MaterialReqHeaderModel>>>
-      materialreqheaderList(String userId) async {
+      materialreqheaderList(String userId,String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + materialReqHeaderUrl),
-          body: {"userID": userId});
+          body: {"userID": userId,"Status_Value": mode});
       if (response.statusCode == 200) {
         logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

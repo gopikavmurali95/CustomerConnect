@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -17,6 +18,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../LoadInDetail/load_detail_completed.dart';
 
 // import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 
@@ -41,6 +44,11 @@ List<ApprovalResonModel> availableresons = [];
 int approvedCount = 0;
 
 List<LoadReqPrdModel?> _loadproducts = [];
+String _selectedloadrequestdetail = 'P';
+TextEditingController _apprvHQtyController = TextEditingController();
+TextEditingController _apprvLQtyController = TextEditingController();
+TextEditingController _loadreqdetailSearchController = TextEditingController();
+
 
 class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
   @override
@@ -49,7 +57,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
     loadingCount = 0;
     context.read<LoadReqDetailBloc>().add(const ClearLodReqDetailEvent());
     context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
-            reqId: widget.loadrequest.lrhID ?? '') //widget.user.usrId??''
+            reqId: widget.loadrequest.lrhID ?? '', searchQuery: '') //widget.user.usrId??''
         );
 
     super.initState();
@@ -74,7 +82,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
           ),
         ),
         title: Text(
-          "Load request Detail",
+          "Load request Details",
           style: appHeading(),
         ),
       ),
@@ -197,84 +205,93 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                     height: 5.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
+                    padding:
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                     child: Container(
-                        height: 40,
+                        height: 30,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: const [
                               BoxShadow(
+                                // ignore: use_full_hex_values_for_flutter_colors
                                   color: Color(0xff00000050),
                                   blurRadius: 0.4,
-                                  spreadRadius: 0.2)
+                                  spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
-                          //controller: _spPriceSearchCtrl,
+                          controller: _loadreqdetailSearchController,
                           onChanged: (value) {
+                            debounce = Timer(
+                                const Duration(
+                                  milliseconds: 500,
+                                ), () async {
+                              context.read<LoadReqDetailBloc>().add(
+                                  GetloadreqdetailEvent(
+
+                                      searchQuery:
+                                      _loadreqdetailSearchController.text, reqId: '', ));
+                            });
                             // if (debounce?.isActive ?? false) debounce!.cancel();
                             // debounce = Timer(
                             //   const Duration(
-                            //     milliseconds: 500,
+                            //     milliseconds: 200,
                             //   ),
                             //       () async {
-                            //     // context
-                            //     //     .read<SpecialPriceHeaderBloc>()
-                            //     //     .add(const ClearSpecialPriceEvent());
-                            //     // context.read<SpecialPriceHeaderBloc>().add(
-                            //     //     GetSpecialPriceHeaderEvent(
-                            //     //         spPriceInparas: SpecialPriceHeaderModel(
-                            //     //             area: '',
-                            //     //             customer: '',
-                            //     //             fromDate:
-                            //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                            //     //             mode: '',
-                            //     //             outlet: '',
-                            //     //             route: '',
-                            //     //             subArea: '',
-                            //     //             toDate:
-                            //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                            //     //             userId: widget.user.usrId),
-                            //     //         searchQuery: value.trim()));
+                            //     context
+                            //         .read<LoadingDetailBloc>()
+                            //         .add(const ClearLoadingDetailEvent());
+                            //     context.read<LoadingDetailBloc>().add(
+                            //         GetloadingDetailEvent(
+                            //             iD: widget.loadingheader.id ?? '',
+                            //             searchQuery: value));
                             //   },
                             // );
                           },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
                                 Icons.search,
-                                size: 20,
+                                size: 15,
                               ),
-                              suffix: InkWell(
-                                onTap: () {
-                                  // _spPriceSearchCtrl.clear();
-                                  // context
-                                  //     .read<SpecialPriceHeaderBloc>()
-                                  //     .add(const ClearSpecialPriceEvent());
-                                  // context.read<SpecialPriceHeaderBloc>().add(
-                                  //     GetSpecialPriceHeaderEvent(
-                                  //         spPriceInparas: SpecialPriceHeaderModel(
-                                  //             area: '',
-                                  //             customer: '',
-                                  //             fromDate:
-                                  //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                  //             mode: '',
-                                  //             outlet: '',
-                                  //             route: '',
-                                  //             subArea: '',
-                                  //             toDate:
-                                  //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                  //             userId: widget.user.usrId),
-                                  //         searchQuery: ''));
-                                },
-                                child: const Icon(
-                                  Icons.close,
-                                  size: 14,
-                                ),
+                              suffix: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5.h),
+                                  Expanded(
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (_loadreqdetailSearchController
+                                            .text.isNotEmpty) {
+                                          _loadreqdetailSearchController.clear();
+
+                                          context
+                                              .read<LoadReqDetailBloc>()
+                                              .add(const GetloadreqdetailEvent(
+                                              // mode: _selectedloadrequestdetail,
+                                              searchQuery: "", reqId: ''));
+                                        }
+                                        // _loadPendingSearchCtrl.clear();
+                                        // context
+                                        //     .read<LoadingDetailBloc>()
+                                        //     .add(const ClearLoadingDetailEvent());
+                                        // context.read<LoadingDetailBloc>().add(
+                                        //   GetloadingDetailEvent(
+                                        //       iD: widget.loadingheader.id ?? '',
+                                        //       searchQuery: ''),
+                                        // );
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        size: 15.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              hintText: "Search here..",
+                              hintText: "Search Items",
                               hintStyle: const TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.normal),
                               isDense: true,
@@ -282,15 +299,131 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                               contentPadding: const EdgeInsets.all(15.0),
                               filled: true,
                               fillColor: Colors.white,
+                              // suffix: InkWell(
+                              //   onTap: () {
+                              //     _loadPendingdetailsSearchCtrl.clear();
+                              //     context.read<LoadingHeaderBloc>().add(
+                              //         GetLoadingHeaderEvent(
+                              //             searchQuery: '',
+                              //             loadingin: LoadingHeaderInModel(
+                              //                 userId: widget.user.usrId,
+                              //                 fromDate: '01-01-2023',
+                              //                 toDate: '23-03-2024',
+                              //                 mode: 'DD',
+                              //                 area: '',
+                              //                 route: '',
+                              //                 subArea: '')));
+                              //   },
+                              //   child: const Icon(
+                              //     Icons.close,
+                              //     size: 14,
+                              //   ),
+                              // ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none)),
                           textAlign: TextAlign.start,
                           maxLines: 1,
-                          maxLength: 20,
+                          maxLength: 10,
                           // controller: _locationNameTextController,
                         )),
                   ),
+
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  //   child: Container(
+                  //       height: 40,
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           border: Border.all(color: Colors.grey.shade200),
+                  //           borderRadius: BorderRadius.circular(10.0),
+                  //           boxShadow: const [
+                  //             BoxShadow(
+                  //                 color: Color(0xff00000050),
+                  //                 blurRadius: 0.4,
+                  //                 spreadRadius: 0.2)
+                  //           ]),
+                  //       child: TextFormField(
+                  //         //controller: _spPriceSearchCtrl,
+                  //         onChanged: (value) {
+                  //           // if (debounce?.isActive ?? false) debounce!.cancel();
+                  //           // debounce = Timer(
+                  //           //   const Duration(
+                  //           //     milliseconds: 500,
+                  //           //   ),
+                  //           //       () async {
+                  //           //     // context
+                  //           //     //     .read<SpecialPriceHeaderBloc>()
+                  //           //     //     .add(const ClearSpecialPriceEvent());
+                  //           //     // context.read<SpecialPriceHeaderBloc>().add(
+                  //           //     //     GetSpecialPriceHeaderEvent(
+                  //           //     //         spPriceInparas: SpecialPriceHeaderModel(
+                  //           //     //             area: '',
+                  //           //     //             customer: '',
+                  //           //     //             fromDate:
+                  //           //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                  //           //     //             mode: '',
+                  //           //     //             outlet: '',
+                  //           //     //             route: '',
+                  //           //     //             subArea: '',
+                  //           //     //             toDate:
+                  //           //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                  //           //     //             userId: widget.user.usrId),
+                  //           //     //         searchQuery: value.trim()));
+                  //           //   },
+                  //           // );
+                  //         },
+                  //         decoration: InputDecoration(
+                  //             prefixIcon: const Icon(
+                  //               Icons.search,
+                  //               size: 20,
+                  //             ),
+                  //             suffix: InkWell(
+                  //               onTap: () {
+                  //                 // _spPriceSearchCtrl.clear();
+                  //                 // context
+                  //                 //     .read<SpecialPriceHeaderBloc>()
+                  //                 //     .add(const ClearSpecialPriceEvent());
+                  //                 // context.read<SpecialPriceHeaderBloc>().add(
+                  //                 //     GetSpecialPriceHeaderEvent(
+                  //                 //         spPriceInparas: SpecialPriceHeaderModel(
+                  //                 //             area: '',
+                  //                 //             customer: '',
+                  //                 //             fromDate:
+                  //                 //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                  //                 //             mode: '',
+                  //                 //             outlet: '',
+                  //                 //             route: '',
+                  //                 //             subArea: '',
+                  //                 //             toDate:
+                  //                 //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                  //                 //             userId: widget.user.usrId),
+                  //                 //         searchQuery: ''));
+                  //               },
+                  //               child: const Icon(
+                  //                 Icons.close,
+                  //                 size: 14,
+                  //               ),
+                  //             ),
+                  //             hintText: "Search here..",
+                  //             hintStyle: const TextStyle(
+                  //                 fontSize: 14,
+                  //                 color: Colors.grey,
+                  //                 fontWeight: FontWeight.normal),
+                  //             isDense: true,
+                  //             counterText: "",
+                  //             contentPadding: const EdgeInsets.all(15.0),
+                  //             filled: true,
+                  //             fillColor: Colors.white,
+                  //             border: OutlineInputBorder(
+                  //                 borderRadius: BorderRadius.circular(10.0),
+                  //                 borderSide: BorderSide.none)),
+                  //         textAlign: TextAlign.start,
+                  //         maxLines: 1,
+                  //         maxLength: 20,
+                  //         // controller: _locationNameTextController,
+                  //       )),
+                  // ),
                   SizedBox(height: 5.h,),
                   Container(
                     height: 30.h,
@@ -303,11 +436,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                         children: [
                           Text(
                             'Item',
-                            style: kfontstyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black54),
-                          ),
+                            style: boxHeading(),),
                           SizedBox(
                             width: 10.w,
                           ),
@@ -315,31 +444,25 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             children: [
                               Text(
                                 'UOM',
-                                style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
+                                style: boxHeading()
                               ),
                               SizedBox(
-                                width: 10.w,
+                                width: 30.w,
                               ),
                               Text(
                                 'Req Qty',
-                                style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
+                                style: boxHeading()
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                              ),
+                              Text(
+                                'Appr Qty',
+                                style: boxHeading()
                               ),
                               SizedBox(
                                 width: 10.w,
                               ),
-                              Text(
-                                'Appr Qty',
-                                style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
-                              )
                             ],
                           )
                         ],
@@ -397,7 +520,9 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                             ),
                                         itemCount: 10),
                                   ),
-                                )
+                                ) :details.isEmpty ? Center(
+                            child: Text("No Data Available",style: kfontstyle(),),
+                          )
                               : Expanded(
                                   child: ListView.separated(
 
@@ -527,8 +652,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                     children: [
                                                       Text(
                                                         details[index]
-                                                                .prdCode ??
-                                                            '',
+                                                                .prdCode ?? '',
                                                         style: kfontstyle(
                                                           fontSize: 12.sp,
                                                           color: const Color(
@@ -539,7 +663,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                       ),
                                                       SizedBox(
                                                         height: 40,
-                                                        width: MediaQuery.of(context).size.width/2,
+                                                        width: MediaQuery.of(context).size.width/3,
                                                         child: Text(
                                                           details[index].prdName ?? '',
                                                           style: kfontstyle(
@@ -552,46 +676,126 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  width: MediaQuery.of(context).size.width/2.8.w,
+                                                  width: MediaQuery.of(context).size.width/2.w,
                                                   child: Row(
                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
-                                                      Text(
-                                                        details[index].lrdHUOM ?? '',
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            details[index].lrdHUOM ?? '',
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                          SizedBox(height: 5.h,),
+                                                          Text(
+                                                            details[index].lrdLUOM ?? '',
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
                                                                 FontWeight
                                                                     .w400,
-                                                            color: Colors
-                                                                .black54),
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                        ],
                                                       ),
                                                       SizedBox(
-                                                        height: 10.h,
+                                                        height: 20.h,
                                                       ),
-                                                      Text(
-                                                       details[index].lrdLQty?? '',
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                           details[index].lrdHQty?? '',
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                          SizedBox(height: 5.h,),
+                                                          Text(
+                                                            details[index].lrdLQty?? '',
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
                                                                 FontWeight
                                                                     .w400,
-                                                            color: Colors
-                                                                .black54),
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      SizedBox(
-                                                        width: 5.w,
-                                                      ),
-                                                     SizedBox(
-                                                       height: 25,
-                                                       width: 40,
-                                                       child: TextFormField(
-                                                         decoration: InputDecoration(
-                                                           border: OutlineInputBorder(
 
-                                                           )
+                                                     Column(
+                                                       children: [
+                                                         SizedBox(
+                                                           height: 25,
+                                                           width: 80,
+                                                           child: TextFormField(
+                                                             controller: _apprvHQtyController,
+                                                             style: const TextStyle(
+                                                               fontSize: 9
+                                                             ),
+                                                             decoration: InputDecoration(
+                                                                 enabledBorder: const OutlineInputBorder(
+                                                                   borderSide: BorderSide(
+                                                                       color: Colors.black12, width: 1),
+                                                                 ),
+                                                                 focusedBorder: const OutlineInputBorder(
+                                                                   borderSide: BorderSide(
+                                                                       color: Colors.grey, width: 1.0),
+                                                                 ),
+                                                               fillColor: const Color(0xfff5f5f5),
+                                                               filled: true,
+                                                               border: OutlineInputBorder(
+
+                                                                 borderSide: const BorderSide(
+                                                                     color: Colors.red, width: 4),
+                                                                 borderRadius: BorderRadius.circular(5),
+
+                                                               )
+                                                             ),
+                                                           ),
                                                          ),
-                                                       ),
+                                                         SizedBox(height: 5.h,),
+                                                         SizedBox(
+                                                           height: 25,
+                                                           width: 80,
+                                                           child: TextFormField(
+                                                             controller: _apprvLQtyController,
+                                                             style: const TextStyle(
+                                                                 fontSize: 9
+                                                             ),
+                                                             decoration: InputDecoration(
+                                                                 enabledBorder: const OutlineInputBorder(
+                                                                   borderSide: BorderSide(
+                                                                       color: Colors.black12, width: 1),
+                                                                 ),
+                                                                 focusedBorder: const OutlineInputBorder(
+                                                                   borderSide: BorderSide(
+                                                                       color: Colors.grey, width: 1.0),
+                                                                 ),
+                                                                 fillColor: const Color(0xfff5f5f5),
+                                                                 filled: true,
+                                                                 border: OutlineInputBorder(
+
+                                                                   borderSide: const BorderSide(
+                                                                       color: Colors.red, width: 4),
+                                                                   borderRadius: BorderRadius.circular(5),
+
+                                                                 )
+                                                             ),
+                                                           ),
+                                                         ),
+                                                       ],
                                                      )
                                                     ],
                                                   ),
@@ -1021,7 +1225,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                               onPressed: () {
                                 context.read<LoadReqHeaderBloc>().add(
                                     LoadreqSuccessEvent(
-                                        userId: widget.user.usrId ?? ''));
+                                        userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
@@ -1046,7 +1250,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             onPressed: () {
                               context.read<LoadReqDetailBloc>().add(
                                   GetloadreqdetailEvent(
-                                      reqId: widget.loadrequest.lrhID ?? ""));
+                                      reqId: widget.loadrequest.lrhID ?? "", searchQuery: ''));
                               Navigator.pop(context);
                             },
                             child: const Text('Ok'),
@@ -1296,6 +1500,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
     context.read<LoadReqDetailBloc>().add(const ClearLodReqDetailEvent());
     context
         .read<LoadReqDetailBloc>()
-        .add(GetloadreqdetailEvent(reqId: widget.loadrequest.lrhID ?? ''));
+        .add(GetloadreqdetailEvent(reqId: widget.loadrequest.lrhID ?? '', searchQuery: ''));
   }
 }

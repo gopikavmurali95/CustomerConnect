@@ -58,7 +58,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          "Invoice Details",
+          "Invoice Detail",
           style: appHeading(),
         ),
         actions: [
@@ -86,26 +86,19 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                         children: [
                           Text(
                             widget.invoice.invoiceNo ?? '',
-                            style: blueTextStyle()
-                          ),
+                            style: blueTextStyle()),
                           Row(
                             children: [
                               Text(
                                 '${widget.customer.cusCode} ',
-                                style: TextStyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
+                                style: TextStyle(fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),),),
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
                                   widget.customer.cusName ?? '',
                                   style: subTitleTextStyle()
-                                ),
-                              ),
-                            ],
-                          ),
+                                ),),],),
                           Row(
                             children: [
                               Text(

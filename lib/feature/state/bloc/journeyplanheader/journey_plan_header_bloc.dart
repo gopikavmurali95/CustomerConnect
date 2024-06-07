@@ -16,14 +16,24 @@ class JourneyPlanHeaderBloc
   final IJourneyPlanApprovalRepo journeyPlanApprovalRepo;
   JourneyPlanHeaderBloc(this.journeyPlanApprovalRepo)
       : super(JourneyPlanHeaderState.initial()) {
+    List<JourneyPlanHeaderModel> searchlistitems = [];
     on<GetAllJourneyPlanHeadersEvent>((event, emit) async {
       Either<MainFailures, List<JourneyPlanHeaderModel>> headers =
-          await journeyPlanApprovalRepo.getJourneyPlanHeaders(event.userID);
+          await journeyPlanApprovalRepo.getJourneyPlanHeaders(event.userID,event.mode);
 
       emit(
         headers.fold(
           (l) => const JourneyPlanHeadersFailedState(),
-          (r) => GetAllJourneyPlanHeadersState(headers: r),
+          (r) {
+            searchlistitems =
+                r.where((element) => element.jpsId!.
+                toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())||element.rotID!.toLowerCase().toUpperCase()
+                .contains(event.searchQuery.toUpperCase())||
+                element.userID!.toLowerCase().toUpperCase().contains(event.searchQuery.toUpperCase())).toList();
+            return GetAllJourneyPlanHeadersState(headers:event.searchQuery.isEmpty ? r : searchlistitems);
+          } ,
         ),
       );
     });
