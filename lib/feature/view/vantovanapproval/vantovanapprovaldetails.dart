@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
@@ -33,16 +35,18 @@ int _totalcount = 0;
 int _approvedCount = 0;
 List<VanToVanProductModel?> approvedProducts = [];
 
+Timer? debounce;
+TextEditingController _vantovanDetailCtrl = TextEditingController();
+
 class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
   @override
   void initState() {
     _totalcount = 0;
     _approvedCount = 0;
-
+    _vantovanDetailCtrl.clear();
     context.read<VanToVanDetailsBloc>().add(const clearVanToVanDetailEvent());
-    context
-        .read<VanToVanDetailsBloc>()
-        .add(GetVanToVanDetailEvent(reqID: widget.vanToVanHeader.vvhId ?? ''));
+    context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
+        reqID: widget.vanToVanHeader.vvhId ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -191,6 +195,85 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
             SizedBox(
               height: 5.h,
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                  controller: _vantovanDetailCtrl,
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search here..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (_vantovanDetailCtrl.text.isNotEmpty) {
+                                  _vantovanDetailCtrl.clear();
+
+                                  context
+                                      .read<VanToVanDetailsBloc>()
+                                      .add(const clearVanToVanDetailEvent());
+                                  context.read<VanToVanDetailsBloc>().add(
+                                      GetVanToVanDetailEvent(
+                                          reqID:
+                                              widget.vanToVanHeader.vvhId ?? '',
+                                          searchQuery: ''));
+                                }
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<VanToVanDetailsBloc>().add(
+                          GetVanToVanDetailEvent(
+                              reqID: widget.vanToVanHeader.vvhId ?? '',
+                              searchQuery: value));
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
             Container(
               height: 30.h,
               width: double.infinity,
@@ -269,225 +352,309 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                     ),
                                 itemCount: 10),
                           )
-                        : ListView.separated(
-                            itemBuilder: (context, index) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                        : details.isEmpty
+                            ? Center(
+                                child: Text(
+                                  'No Data Available',
+                                  style: kfontstyle(),
+                                ),
+                              )
+                            : ListView.separated(
+                                itemBuilder: (context, index) => Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Column(
                                     children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              details[index].prdCode ?? ' ',
-                                              style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff7b70ac),
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            Text(
-                                              details[index].prdName ?? ' ',
-                                              style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black54),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10.w,
-                                      ),
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Column(
-                                            children: [
-                                              Text(
-                                                details[index].vvdHuom ?? '',
-                                                style: kfontstyle(
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  details[index].prdCode ?? ' ',
+                                                  style: kfontstyle(
                                                     fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Text(
-                                                details[index].vvdLuom ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
-                                            ],
+                                                    color:
+                                                        const Color(0xff7b70ac),
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  details[index].prdName ?? ' ',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Colors.black54),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                           SizedBox(
-                                            width: 50.w,
+                                            width: 10.w,
                                           ),
-                                          Column(
+                                          Row(
                                             children: [
-                                              Text(
-                                                details[index].vvdHQty ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    details[index].vvdHuom ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  Text(
+                                                    details[index].vvdLuom ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
+                                                ],
                                               ),
                                               SizedBox(
-                                                height: 10.h,
+                                                width: 50.w,
                                               ),
-                                              Text(
-                                                details[index].vvdLQty ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    details[index].vvdHQty ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  Text(
+                                                    details[index].vvdLQty ??
+                                                        '',
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
+                                                ],
+                                              )
                                             ],
                                           )
                                         ],
-                                      )
-                                    ],
-                                  ),
-                                  BlocConsumer<VanToVanApprovalBloc,
-                                      VanToVanApprovalState>(
-                                    listener: (context, state) {
-                                      state.when(
-                                        getVanToVanApproval: (response) {
-                                          if (response != null) {
-                                            // x
+                                      ),
+                                      BlocConsumer<VanToVanApprovalBloc,
+                                          VanToVanApprovalState>(
+                                        listener: (context, state) {
+                                          state.when(
+                                            getVanToVanApproval: (response) {
+                                              if (response != null) {
+                                                // x
 
-                                            if (loadingCount == 1) {
-                                              loadingCount = 0;
+                                                if (loadingCount == 1) {
+                                                  loadingCount = 0;
+                                                  Navigator.pop(context);
+                                                  showCupertinoDialog(
+                                                    context: context,
+                                                    builder: (context) =>
+                                                        CupertinoAlertDialog(
+                                                      title:
+                                                          const Text('Alert'),
+                                                      content: Text(
+                                                          response.status ??
+                                                              ''),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () {
+                                                            _approvedCount++;
+
+                                                            Navigator.pop(
+                                                                context);
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: const Text(
+                                                              'Proceed'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+
+                                                  // showCupertinoDialog(
+                                                  //   context: context,
+                                                  //   builder: (context) =>
+                                                  //       CupertinoAlertDialog(
+                                                  //     title: const Text('Alert'),
+                                                  //     content: Text(
+                                                  //         response.status ?? ''),
+                                                  //     actions: [
+                                                  //       TextButton(
+                                                  //         onPressed: () {
+                                                  //           _approvedCount++;
+                                                  //           context
+                                                  //               .read<
+                                                  //                   VanToVanDetailsBloc>()
+                                                  //               .add(
+                                                  //                   const GetVanToVanDetailEvent(
+                                                  //                       reqID:
+                                                  //                           '10'));
+                                                  //           Navigator.pop(context);
+                                                  //         },
+                                                  //         child:
+                                                  //             const Text('Proceed'),
+                                                  //       ),
+                                                  //     ],
+                                                  //   ),
+                                                  // );
+                                                }
+                                                // if (isApproval) {
+
+                                                // }
+                                              }
+                                            },
+                                            vanToVanApprovalFailedstate: () {
                                               Navigator.pop(context);
                                               showCupertinoDialog(
-                                                context: context,
-                                                builder: (context) =>
-                                                    CupertinoAlertDialog(
-                                                  title: const Text('Alert'),
-                                                  content: Text(
-                                                      response.status ?? ''),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        _approvedCount++;
+                                                  context: context,
+                                                  builder:
+                                                      (context) =>
+                                                          CupertinoAlertDialog(
+                                                            title: const Text(
+                                                                'Alert'),
+                                                            content: const Text(
+                                                                "something went wrong, please try again later"),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
+                                                                      reqID: widget
+                                                                              .vanToVanHeader
+                                                                              .vvhId ??
+                                                                          '',
+                                                                      searchQuery:
+                                                                          ''));
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                        'Ok'),
+                                                              )
+                                                            ],
+                                                          ));
+                                            },
+                                            vanToVanApprovalLoadingState: () {
+                                              if (loadingCount == 0) {
+                                                loadingCount = 1;
 
-                                                        Navigator.pop(context);
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child:
-                                                          const Text('Proceed'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-
-                                              // showCupertinoDialog(
-                                              //   context: context,
-                                              //   builder: (context) =>
-                                              //       CupertinoAlertDialog(
-                                              //     title: const Text('Alert'),
-                                              //     content: Text(
-                                              //         response.status ?? ''),
-                                              //     actions: [
-                                              //       TextButton(
-                                              //         onPressed: () {
-                                              //           _approvedCount++;
-                                              //           context
-                                              //               .read<
-                                              //                   VanToVanDetailsBloc>()
-                                              //               .add(
-                                              //                   const GetVanToVanDetailEvent(
-                                              //                       reqID:
-                                              //                           '10'));
-                                              //           Navigator.pop(context);
-                                              //         },
-                                              //         child:
-                                              //             const Text('Proceed'),
-                                              //       ),
-                                              //     ],
-                                              //   ),
-                                              // );
-                                            }
-                                            // if (isApproval) {
-
-                                            // }
-                                          }
-                                        },
-                                        vanToVanApprovalFailedstate: () {
-                                          Navigator.pop(context);
-                                          showCupertinoDialog(
-                                              context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
-                                                    title: const Text('Alert'),
-                                                    content: const Text(
-                                                        "something went wrong, please try again later"),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          context
-                                                              .read<
-                                                                  VanToVanDetailsBloc>()
-                                                              .add(GetVanToVanDetailEvent(
-                                                                  reqID: widget
-                                                                          .vanToVanHeader
-                                                                          .vvhId ??
-                                                                      ''));
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text('Ok'),
-                                                      )
-                                                    ],
-                                                  ));
-                                        },
-                                        vanToVanApprovalLoadingState: () {
-                                          if (loadingCount == 0) {
-                                            loadingCount = 1;
-
-                                            showCupertinoModalPopup(
-                                                context: context,
-                                                barrierDismissible: false,
-                                                builder: (context) => SizedBox(
-                                                      height:
-                                                          MediaQuery.of(context)
+                                                showCupertinoModalPopup(
+                                                    context: context,
+                                                    barrierDismissible: false,
+                                                    builder: (context) =>
+                                                        SizedBox(
+                                                          height: MediaQuery.of(
+                                                                  context)
                                                               .size
                                                               .height,
-                                                      width:
-                                                          MediaQuery.of(context)
+                                                          width: MediaQuery.of(
+                                                                  context)
                                                               .size
                                                               .width,
-                                                      child: const PopScope(
-                                                          canPop: true,
-                                                          child:
-                                                              CupertinoActivityIndicator(
-                                                            animating: true,
-                                                            color: Colors.red,
-                                                            radius: 30,
-                                                          )),
-                                                    ));
-                                          }
+                                                          child: const PopScope(
+                                                              canPop: true,
+                                                              child:
+                                                                  CupertinoActivityIndicator(
+                                                                animating: true,
+                                                                color:
+                                                                    Colors.red,
+                                                                radius: 30,
+                                                              )),
+                                                        ));
+                                              }
+                                            },
+                                          );
                                         },
-                                      );
-                                    },
-                                    builder: (context, state) {
-                                      return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Transform.scale(
-                                            scale: 0.8,
-                                            child: Row(
-                                              children: [
-                                                Row(
+                                        builder: (context, state) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Transform.scale(
+                                                scale: 0.8,
+                                                child: Row(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Radio(
+                                                          fillColor:
+                                                              MaterialStateProperty
+                                                                  .resolveWith<
+                                                                          Color>(
+                                                                      (states) {
+                                                            return (statuslist[
+                                                                        index] ==
+                                                                    true)
+                                                                ? const Color(
+                                                                    0xff0075ff)
+                                                                : Colors.grey;
+                                                          }),
+                                                          value: statuslist[
+                                                                      index] ==
+                                                                  null
+                                                              ? false
+                                                              : statuslist[
+                                                                          index] ==
+                                                                      true
+                                                                  ? true
+                                                                  : false,
+                                                          groupValue: true,
+                                                          onChanged: (value) {
+                                                            statuslist[index] =
+                                                                true;
+                                                            loadingCount = 0;
+
+                                                            setState(() {});
+                                                            approvedProducts[
+                                                                    index] =
+                                                                VanToVanProductModel(
+                                                              vvdId:
+                                                                  details[index]
+                                                                      .vvdId,
+                                                              hqty:
+                                                                  details[index]
+                                                                      .vvdHQty,
+                                                              lqty:
+                                                                  details[index]
+                                                                      .vvdLQty,
+                                                              status: 'A',
+                                                            );
+                                                          },
+                                                        ),
+                                                        Text(
+                                                          'Approve',
+                                                          style: kfontstyle(),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Transform.scale(
+                                                scale: 0.8,
+                                                child: Row(
                                                   children: [
                                                     Radio(
                                                       fillColor:
@@ -496,8 +663,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                       Color>(
                                                                   (states) {
                                                         return (statuslist[
-                                                                    index] ==
-                                                                true)
+                                                                        index] !=
+                                                                    null &&
+                                                                !statuslist[
+                                                                    index]!)
                                                             ? const Color(
                                                                 0xff0075ff)
                                                             : Colors.grey;
@@ -505,17 +674,16 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                       value: statuslist[
                                                                   index] ==
                                                               null
-                                                          ? false
+                                                          ? true
                                                           : statuslist[index] ==
                                                                   true
                                                               ? true
                                                               : false,
-                                                      groupValue: true,
+                                                      groupValue: false,
                                                       onChanged: (value) {
                                                         statuslist[index] =
-                                                            true;
+                                                            false;
                                                         loadingCount = 0;
-
                                                         setState(() {});
                                                         approvedProducts[
                                                                 index] =
@@ -526,78 +694,29 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                               .vvdHQty,
                                                           lqty: details[index]
                                                               .vvdLQty,
-                                                          status: 'A',
+                                                          status: 'R',
                                                         );
                                                       },
                                                     ),
                                                     Text(
-                                                      'Approve',
+                                                      'Reject',
                                                       style: kfontstyle(),
                                                     )
                                                   ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Transform.scale(
-                                            scale: 0.8,
-                                            child: Row(
-                                              children: [
-                                                Radio(
-                                                  fillColor:
-                                                      MaterialStateProperty
-                                                          .resolveWith<Color>(
-                                                              (states) {
-                                                    return (statuslist[index] !=
-                                                                null &&
-                                                            !statuslist[index]!)
-                                                        ? const Color(
-                                                            0xff0075ff)
-                                                        : Colors.grey;
-                                                  }),
-                                                  value:
-                                                      statuslist[index] == null
-                                                          ? true
-                                                          : statuslist[index] ==
-                                                                  true
-                                                              ? true
-                                                              : false,
-                                                  groupValue: false,
-                                                  onChanged: (value) {
-                                                    statuslist[index] = false;
-                                                    loadingCount = 0;
-                                                    setState(() {});
-                                                    approvedProducts[index] =
-                                                        VanToVanProductModel(
-                                                      vvdId:
-                                                          details[index].vvdId,
-                                                      hqty: details[index]
-                                                          .vvdHQty,
-                                                      lqty: details[index]
-                                                          .vvdLQty,
-                                                      status: 'R',
-                                                    );
-                                                  },
                                                 ),
-                                                Text(
-                                                  'Reject',
-                                                  style: kfontstyle(),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      );
-                                    },
-                                  )
-                                ],
+                                              )
+                                            ],
+                                          );
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey[300],
+                                ),
+                                itemCount: details.length,
                               ),
-                            ),
-                            separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                            itemCount: details.length,
-                          ),
                     vanToVanDetailFailedState: () => Center(
                       child: Text(
                         'No Data Available',

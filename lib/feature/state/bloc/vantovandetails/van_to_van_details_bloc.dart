@@ -17,11 +17,25 @@ class VanToVanDetailsBloc
   VanToVanDetailsBloc(this.vantovandetails)
       : super(VanToVanDetailsState.initial()) {
     on<GetVanToVanDetailEvent>((event, emit) async {
+      List<VanToVanDetailsModel> searcheditems = [];
       Either<MainFailures, List<VanToVanDetailsModel>> details =
           await vantovandetails.getVanToVanApprovalDetails(event.reqID);
 
-      emit(details.fold((l) => const vanToVanDetailFailedState(),
-          (r) => getVanToVanDetailsState(details: r)));
+      emit(details.fold((l) => const vanToVanDetailFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                (element.prdCode ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.prdName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return getVanToVanDetailsState(
+            details: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<clearVanToVanDetailEvent>((event, emit) {
       emit(const getVanToVanDetailsState(details: null));

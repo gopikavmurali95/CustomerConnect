@@ -72,91 +72,88 @@ class _InventoryReconfirmHeadersScreenState
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextFormField(
-                    controller: _InventoryReConfirmHSearchCtrl,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search here..',
-                      suffix: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: IconButton(
-                                onPressed: () {
-                                  if (_InventoryReConfirmHSearchCtrl
-                                      .text.isNotEmpty) {
-                                    _InventoryReConfirmHSearchCtrl.clear();
-
-                                    context
-                                        .read<InventoryReconfirmHeaderBloc>()
-                                        .add(GetInventoryReconfirmHeadersEvent(
-                                            mode: _selectedMode,
-                                            searchQuery: ""));
-                                  }
-                                },
-                                icon: Icon(
-                                  Icons.clear,
-                                  size: 10.sp,
-                                )),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          )
-                        ],
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        size: 14.sp,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                                .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  /*  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: .5,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
                     ),
-                    onChanged: (value) {
-                      debounce = Timer(
-                          const Duration(
-                            milliseconds: 500,
-                          ), () async {
-                        context.read<InventoryReconfirmHeaderBloc>().add(
-                            GetInventoryReconfirmHeadersEvent(
-                                mode: _selectedMode,
-                                searchQuery:
-                                    _InventoryReConfirmHSearchCtrl.text));
-                      });
-                    },
+                  ], */
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextFormField(
+                  controller: _InventoryReConfirmHSearchCtrl,
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search here..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (_InventoryReConfirmHSearchCtrl
+                                    .text.isNotEmpty) {
+                                  _InventoryReConfirmHSearchCtrl.clear();
+
+                                  context
+                                      .read<InventoryReconfirmHeaderBloc>()
+                                      .add(GetInventoryReconfirmHeadersEvent(
+                                          mode: _selectedMode,
+                                          searchQuery: ""));
+                                }
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
                   ),
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<InventoryReconfirmHeaderBloc>().add(
+                          GetInventoryReconfirmHeadersEvent(
+                              mode: _selectedMode,
+                              searchQuery:
+                                  _InventoryReConfirmHSearchCtrl.text));
+                    });
+                  },
                 ),
               ),
             ),
@@ -164,22 +161,12 @@ class _InventoryReconfirmHeadersScreenState
               height: 3.h,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              child: ButtonTheme(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      maxHeight: 30.h,
+                      maxWidth: MediaQuery.of(context).size.width - 20),
                   child: DropdownButtonFormField(
                     elevation: 0,
                     value: ddfilterFieldsVanToVan[0].mode,
@@ -194,15 +181,15 @@ class _InventoryReconfirmHeadersScreenState
                                 .none  */
                           OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                     ),
                     items: ddfilterFieldsVanToVan
@@ -237,9 +224,23 @@ class _InventoryReconfirmHeadersScreenState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Pending Approvals",
-                    style: countHeading(),
+                  BlocBuilder<InventoryReconfirmHeaderBloc,
+                      InventoryReconfirmHeaderState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.when(
+                          getInventoryReconfirmHeaderState: (headers) =>
+                              _selectedMode == 'A'
+                                  ? "Pending Approvals"
+                                  : "Action taken requests",
+                          inventoryReconfirmheaderFailedState: () =>
+                              _selectedMode == 'A'
+                                  ? "Pending Approvals"
+                                  : "Action taken requests",
+                        ),
+                        style: countHeading(),
+                      );
+                    },
                   ),
                   BlocBuilder<InventoryReconfirmHeaderBloc,
                       InventoryReconfirmHeaderState>(

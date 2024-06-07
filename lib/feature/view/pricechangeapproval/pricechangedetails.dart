@@ -16,8 +16,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -105,7 +104,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
             //   });
             // } else {
             context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
-                rotID: widget.priceChangeApprovel.pchRotId!));
+                  rotID: widget.priceChangeApprovel.pchRotId!,
+                  /* mode: '',
+                searchQuery: '' */
+                ));
             // context.read<NavigatetoBackCubit>().popFromScreen(true);
             // }
           },
@@ -170,35 +172,70 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                         ],
                       ),
                     ),
-                    Container(
-                      // height: 10.h,
-                      // width: 10.h,
-                      decoration: BoxDecoration(
-                        color: widget.priceChangeApprovel.pchApprovalStatus! ==
-                                "Pending"
-                            ? const Color(0xfff7f4e2)
-                            : widget.priceChangeApprovel.pchApprovalStatus! ==
-                                    "Action Taken"
-                                ? const Color(0xffe3f7e2)
-                                : Colors.red[300],
-                        borderRadius: BorderRadius.circular(
-                          10,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 3),
-                        child: Text(
-                          widget.priceChangeApprovel.pchApprovalStatus ?? '',
-                          style: kfontstyle(fontSize: 8.sp),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
               SizedBox(
                 height: 5.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Card(
+                  child: Container(
+                    height: 30.h,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: .5,
+                          blurRadius: 5,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextFormField(
+                      style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        hintText: 'Search here..',
+                        suffixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.clear,
+                              size: 10.sp,
+                            )),
+                        prefixIcon: const Icon(Icons.search),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 10),
+                        border: /* InputBorder
+                            .none  */
+                            OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent),
+                        ),
+                      ),
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
               ),
               BlocListener<ApprovePriceChangeBloc, ApprovePriceChangeState>(
                 listener: (context, state) {
@@ -217,9 +254,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    context.read<PriceChangeHeaderBloc>().add(
-                                        GetPriceChangeHeaderEvent(
-                                            rotID: widget.user.usrId!));
+                                    context
+                                        .read<PriceChangeHeaderBloc>()
+                                        .add(GetPriceChangeHeaderEvent(
+                                          rotID: widget.user.usrId!,
+                                          /*  mode: '',
+                                            searchQuery: '' */
+                                        ));
 
                                     Navigator.pop(context);
                                     Navigator.pop(context);
@@ -301,55 +342,45 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                         width: double.infinity,
                         color: const Color(0xfff5f5f5),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
                           child: Row(
                             children: [
                               Text(
                                 'Item',
                                 style: kfontstyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 10.sp,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
                               SizedBox(
-                                width: 120.w,
+                                width: 140.w,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     'UOM',
                                     style: kfontstyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
                                         color: Colors.black54),
                                   ),
                                   SizedBox(
-                                    width: 5.w,
+                                    width: 18.w,
                                   ),
                                   Text(
-                                    'Qty',
+                                    'Req Price',
                                     style: kfontstyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
                                         color: Colors.black54),
                                   ),
                                   SizedBox(
-                                    width: 8.w,
+                                    width: 35.w,
                                   ),
                                   Text(
-                                    'Std.Price',
+                                    'Appr Price',
                                     style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black54),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Text(
-                                    'C.Price',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
                                         color: Colors.black54),
                                   )
@@ -377,7 +408,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     =
                                     List.generate(pdet.length, (index) => null);
 
-                                for (int i = 0; i < pdet.length; i++) {
+                                /* for (int i = 0; i < pdet.length; i++) {
                                   if (pdet[i].pcdApprovalStatus!.isNotEmpty) {
                                     if (pdet[i].pcdApprovalStatus == 'A') {
                                       statuslist[i] = true;
@@ -385,7 +416,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                       statuslist[i] = false;
                                     }
                                   }
-                                }
+                                } */
                               }
                             },
                             priceChangedetailsFailed: () {},
@@ -417,8 +448,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) => Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 20, right: 25),
+                                          left: 10, right: 10),
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
                                           Row(
                                             children: [
@@ -428,30 +461,20 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      pdet[index].prdCode ?? '',
-                                                      style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff7b70ac),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
+                                                        pdet[index].prdCode ??
+                                                            '',
+                                                        style: loadTextStyle()),
                                                     Text(
                                                       pdet[index].prdName ?? '',
-                                                      style: kfontstyle(
-                                                          fontSize: 12.sp,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color:
-                                                              Colors.black54),
+                                                      style:
+                                                          subTitleTextStyle(),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                              // SizedBox(
-                                              //   width: 145.w,
-                                              // ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
                                               Column(
                                                 children: [
                                                   SizedBox(
@@ -460,59 +483,20 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                   Text(
                                                     pdet[index].pcdHigherUom ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                   SizedBox(
-                                                    height: 5.w,
+                                                    height: 15.w,
                                                   ),
                                                   Text(
                                                     pdet[index].pcdLowerUom ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                    style: subTitleTextStyle(),
                                                   )
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: 20.w,
-                                              ),
-                                              Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 5.w,
-                                                  ),
-                                                  Text(
-                                                    pdet[index].pcdHigherQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5.w,
-                                                  ),
-                                                  Text(
-                                                    pdet[index].pcdLowerQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                width: 20.w,
+                                                width: 25.w,
                                               ),
                                               Column(
                                                 children: [
@@ -522,43 +506,96 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                   Text(
                                                     pdet[index].pcdStdHPrice ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                   SizedBox(
-                                                    height: 5.w,
+                                                    height: 15.w,
                                                   ),
                                                   Text(
                                                     pdet[index].pcdStdLPrice ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                    style: subTitleTextStyle(),
                                                   )
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: 20.w,
+                                                width: 25.w,
                                               ),
                                               Column(
                                                 children: [
+                                                  SizedBox(
+                                                    height: 5.h,
+                                                  ),
                                                   Row(
                                                     children: [
-                                                      SizedBox(
-                                                        width: 40.w,
+                                                      Container(
+                                                        width: 70.w,
                                                         height: 20.h,
+                                                        decoration: BoxDecoration(
+                                                            color: Colors
+                                                                .grey.shade300,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .grey)),
                                                         child: TextFormField(
-                                                          cursorHeight: 10.h,
+                                                          textAlign:
+                                                              TextAlign.right,
+                                                          cursorHeight: 12.h,
                                                           keyboardType:
                                                               TextInputType
                                                                   .number,
                                                           style: kfontstyle(
                                                               fontSize: 10.sp),
+                                                          decoration:
+                                                              InputDecoration(
+                                                            isDense: true,
+                                                            filled: true,
+                                                            fillColor: Colors
+                                                                .grey.shade300,
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    top: 8,
+                                                                    left: 5),
+                                                            border: /* InputBorder
+                            .none  */
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                          ),
                                                           controller:
                                                               TextEditingController(
                                                             text: pdet[index]
@@ -587,18 +624,79 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                       ),
                                                     ],
                                                   ),
+                                                  SizedBox(
+                                                    height: 5.h,
+                                                  ),
                                                   Row(
                                                     children: [
-                                                      SizedBox(
-                                                        width: 40.w,
+                                                      Container(
+                                                        width: 70.w,
                                                         height: 20.h,
+                                                        decoration: BoxDecoration(
+                                                            color: Colors
+                                                                .grey.shade300,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .grey)),
                                                         child: TextFormField(
-                                                          cursorHeight: 10.h,
+                                                          textAlign:
+                                                              TextAlign.right,
+                                                          cursorHeight: 12.h,
                                                           keyboardType:
                                                               TextInputType
                                                                   .number,
                                                           style: kfontstyle(
                                                               fontSize: 10.sp),
+                                                          decoration:
+                                                              InputDecoration(
+                                                            isDense: true,
+                                                            filled: true,
+                                                            fillColor: Colors
+                                                                .grey.shade300,
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    top: 8,
+                                                                    left: 5),
+                                                            border: /* InputBorder
+                            .none  */
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                      color: Colors
+                                                                          .transparent),
+                                                            ),
+                                                          ),
                                                           controller:
                                                               TextEditingController(
                                                             text: pdet[index]
@@ -631,232 +729,180 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                               )
                                             ],
                                           ),
+                                          SizedBox(
+                                            height: 8.h,
+                                          ),
                                           Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Expanded(
-                                                child: BlocConsumer<
-                                                    PriceChangeReasonsBloc,
-                                                    PriceChangeReasonsState>(
-                                                  listener: (context, state) {
-                                                    state.when(
-                                                      getPriceChangeReasons:
-                                                          (resons) {
-                                                        if (resons != null) {
-                                                          selectedresons
-                                                              .clear();
-
-                                                          availableresons
-                                                              .clear();
-                                                          availableresons = [
-                                                            PriceChangeReasonModel(
-                                                                rsnId: '-1',
-                                                                rsnName:
-                                                                    'Select reason',
-                                                                rsnType: 'null')
-                                                          ];
-
-                                                          selectedresons =
-                                                              List.generate(
-                                                                  pdet.length,
-                                                                  (index) =>
-                                                                      '-1');
-                                                          availableresons
-                                                              .addAll(resons);
-                                                        }
-                                                      },
-                                                      priceChangeReasonFailed:
-                                                          () {},
-                                                    );
-                                                  },
-                                                  builder: (context, state) {
-                                                    return state.when(
-                                                      getPriceChangeReasons:
-                                                          (resons) => resons ==
-                                                                      null ||
-                                                                  availableresons
-                                                                      .isEmpty
-                                                              ? const ShimmerContainers(
-                                                                  height: 30,
-                                                                  width: 80,
-                                                                )
-                                                              : SizedBox(
-                                                                  // height: 30.h,
-                                                                  // width: MediaQuery.of(context).size.width / 3,
-                                                                  child:
-                                                                      DropdownButtonFormField(
-                                                                    dropdownColor:
-                                                                        Colors
-                                                                            .white,
-                                                                    value: availableresons[0]
-                                                                            .rsnId ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        color: Colors
-                                                                            .black),
-                                                                    decoration:
-                                                                        const InputDecoration(
-                                                                      border: InputBorder
-                                                                          .none,
-                                                                    ),
-                                                                    items: availableresons.map(
-                                                                        (PriceChangeReasonModel
-                                                                            item) {
-                                                                      return DropdownMenuItem(
-                                                                        value: item
-                                                                            .rsnId,
-                                                                        child:
-                                                                            Text(
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          item.rsnName ??
-                                                                              '',
-                                                                          style:
-                                                                              kfontstyle(fontSize: 9.sp),
-                                                                        ),
-                                                                      );
-                                                                    }).toList(),
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      selectedresons[
-                                                                              index] =
-                                                                          value ??
-                                                                              '';
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                      priceChangeReasonFailed:
-                                                          () =>
-                                                              const SizedBox(),
-                                                    );
-                                                  },
-                                                ),
+                                              Text(
+                                                'Ord Qty : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
+                                                style: subTitleTextStyle(),
                                               ),
-                                              /*  Row(
-                                                        children: [
-                                                          Expanded(
-                                                            // width: MediaQuery.of(
-                                                            //         context)
-                                                            //     .size
-                                                            //     .width,
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Text(
-                                                                  details[index]
-                                                                          .reqHUOM ??
-                                                                      '',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .black54),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 10.w,
-                                                                ),
-                                                                /* Flexible(
-                                                                    flex: 2,
-                                                                    fit: FlexFit
-                                                                        .tight,
-                                                                    child:
-                                                                        TextFormField(
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .number,
-                                                                      controller:
-                                                                          TextEditingController(
-                                                                        text: details[index]
-                                                                            .adjustedHQty,
+                                              Text(
+                                                'Std Price : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
+                                                style: subTitleTextStyle(),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                          Transform.scale(
+                                            scale: .9,
+                                            origin: const Offset(450, 0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Expanded(
+                                                  child: BlocConsumer<
+                                                      PriceChangeReasonsBloc,
+                                                      PriceChangeReasonsState>(
+                                                    listener: (context, state) {
+                                                      state.when(
+                                                        getPriceChangeReasons:
+                                                            (resons) {
+                                                          if (resons != null) {
+                                                            selectedresons
+                                                                .clear();
+
+                                                            availableresons
+                                                                .clear();
+                                                            availableresons = [
+                                                              PriceChangeReasonModel(
+                                                                  rsnId: '-1',
+                                                                  rsnName:
+                                                                      'Select reason',
+                                                                  rsnType:
+                                                                      'null')
+                                                            ];
+
+                                                            selectedresons =
+                                                                List.generate(
+                                                                    pdet.length,
+                                                                    (index) =>
+                                                                        '-1');
+                                                            availableresons
+                                                                .addAll(resons);
+                                                          }
+                                                        },
+                                                        priceChangeReasonFailed:
+                                                            () {},
+                                                      );
+                                                    },
+                                                    builder: (context, state) {
+                                                      return state.when(
+                                                        getPriceChangeReasons:
+                                                            (resons) => resons ==
+                                                                        null ||
+                                                                    availableresons
+                                                                        .isEmpty
+                                                                ? const ShimmerContainers(
+                                                                    height: 30,
+                                                                    width: 80,
+                                                                  )
+                                                                : Transform
+                                                                    .scale(
+                                                                    scale: 0.8,
+                                                                    child: Card(
+                                                                      // height: 30.h,
+                                                                      // width: MediaQuery.of(context).size.width / 3,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            30.h,
+                                                                        // width: MediaQuery.of(context)
+                                                                        //         .size
+                                                                        //         .width /
+                                                                        //     3,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                              color: Colors.grey.withOpacity(0.3),
+                                                                              spreadRadius: .5,
+                                                                              blurRadius: 5,
+                                                                              offset: const Offset(0, 2),
+                                                                            ),
+                                                                          ],
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                        ),
+                                                                        child:
+                                                                            DropdownButtonFormField(
+                                                                          elevation:
+                                                                              0,
+                                                                          dropdownColor:
+                                                                              Colors.white,
+                                                                          value:
+                                                                              availableresons[0].rsnId ?? '',
+                                                                          style:
+                                                                              kfontstyle(color: Colors.black),
+                                                                          isExpanded:
+                                                                              true,
+                                                                          decoration:
+                                                                              InputDecoration(
+                                                                            filled:
+                                                                                true,
+                                                                            fillColor:
+                                                                                Colors.white,
+                                                                            contentPadding:
+                                                                                const EdgeInsets.symmetric(horizontal: 10),
+                                                                            border:
+                                                                                OutlineInputBorder(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              borderSide: const BorderSide(color: Colors.transparent),
+                                                                            ),
+                                                                            enabledBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              borderSide: const BorderSide(color: Colors.transparent),
+                                                                            ),
+                                                                            focusedBorder:
+                                                                                OutlineInputBorder(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              borderSide: const BorderSide(color: Colors.transparent),
+                                                                            ),
+                                                                          ),
+                                                                          items:
+                                                                              availableresons.map((PriceChangeReasonModel item) {
+                                                                            return DropdownMenuItem(
+                                                                              value: item.rsnId,
+                                                                              child: Text(
+                                                                                overflow: TextOverflow.ellipsis,
+                                                                                item.rsnName ?? '',
+                                                                                style: kfontstyle(fontSize: 10.sp),
+                                                                              ),
+                                                                            );
+                                                                          }).toList(),
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            selectedresons[index] =
+                                                                                value ?? '';
+                                                                          },
+                                                                        ),
                                                                       ),
-                                                                      style: kfontstyle(
-                                                                          fontSize:
-                                                                              13.sp),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        details[index].adjustedHQty =
-                                                                            value;
-                                                                        _materialreqproducts[index] =
-                                                                            MatrialAprReqPrdModel(
-                                                                          mrdId:
-                                                                              details[index].mrdID,
-                                                                          prdId:
-                                                                              details[index].prdID,
-                                                                          reqHuom:
-                                                                              details[index].reqHUOM,
-                                                                          reqLuom:
-                                                                              details[index].reqLUOM,
-                                                                          requestedHQty:
-                                                                              details[index].requestedHQty,
-                                                                          requestedLQty:
-                                                                              details[index].requestedLQty,
-                                                                          hqty:
-                                                                              details[index].adjustedHQty,
-                                                                          lqty:
-                                                                              details[index].adjustedLQty,
-                                                                        );
-                                                                      },
-                                                                    )),
-                                                                const Spacer(),
-                                                                Text(
-                                                                  details[index]
-                                                                          .reqLUOM ??
-                                                                      '',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .black54),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 10.w,
-                                                                ),
-                                                                Flexible(
-                                                                    flex: 2,
-                                                                    fit: FlexFit
-                                                                        .tight,
-                                                                    child:
-                                                                        TextFormField(
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .number,
-                                                                      controller:
-                                                                          TextEditingController(
-                                                                        text: pdet[index]
-                                                                            .pcdChangedLprice
-                                                                            ,
-                                                                      ),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                     
-                                                                      },
-                                                                    )),
-                                                              ],
-                                                            ), */
-                                                          ),
-                                                        ],
-                                                      ), */
-                                              BlocBuilder<
-                                                  AapprovalOrRejectRadioCubit,
-                                                  AapprovalOrRejectRadioState>(
-                                                builder: (context, state) {
-                                                  return AbsorbPointer(
-                                                    absorbing: pdet[index]
-                                                            .pcdApprovalStatus!
-                                                            .isNotEmpty
-                                                        ? true
-                                                        : false,
-                                                    child: Row(
+                                                                    ),
+                                                                  ),
+                                                        priceChangeReasonFailed:
+                                                            () =>
+                                                                const SizedBox(),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                BlocBuilder<
+                                                    AapprovalOrRejectRadioCubit,
+                                                    AapprovalOrRejectRadioState>(
+                                                  builder: (context, state) {
+                                                    return Row(
                                                       children: [
                                                         Transform.scale(
                                                           scale: 0.8,
+                                                          origin: const Offset(
+                                                              -120, 0),
                                                           child: Row(
                                                             children: [
                                                               Radio(
@@ -868,8 +914,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                   return (statuslist[
                                                                               index] ==
                                                                           true)
-                                                                      ? const Color(
-                                                                          0xff0075ff)
+                                                                      ? Colors
+                                                                          .green
+                                                                          .shade300
                                                                       : Colors
                                                                           .grey;
                                                                 }),
@@ -948,6 +995,8 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                         ),
                                                         Transform.scale(
                                                           scale: 0.8,
+                                                          origin: const Offset(
+                                                              -120, 0),
                                                           child: Row(
                                                             children: [
                                                               Radio(
@@ -960,8 +1009,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               null &&
                                                                           !statuslist[
                                                                               index]!)
-                                                                      ? const Color(
-                                                                          0xff0075ff)
+                                                                      ? Colors
+                                                                          .red
+                                                                          .shade300
                                                                       : Colors
                                                                           .grey;
                                                                 }),
@@ -1040,11 +1090,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                           ),
                                                         )
                                                       ],
-                                                    ),
-                                                  );
-                                                },
-                                              )
-                                            ],
+                                                    );
+                                                  },
+                                                )
+                                              ],
+                                            ),
                                           )
                                         ],
                                       ),

@@ -22,7 +22,7 @@ class VanToVanApprovalHeader extends StatefulWidget {
 
 Timer? debounce;
 TextEditingController _vanToVanHSearchCtrl = TextEditingController();
-String _selectedMode = 'NULL';
+String _selectedMode = 'P';
 List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Approved", mode: 'AT'),
@@ -61,90 +61,76 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextFormField(
-                    controller: _vanToVanHSearchCtrl,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search here..',
-                      suffix: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: IconButton(
-                                onPressed: () {
-                                  if (_vanToVanHSearchCtrl.text.isNotEmpty) {
-                                    _vanToVanHSearchCtrl.clear();
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                  controller: _vanToVanHSearchCtrl,
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search here..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (_vanToVanHSearchCtrl.text.isNotEmpty) {
+                                  _vanToVanHSearchCtrl.clear();
 
-                                    context.read<VanToVanHeaderBloc>().add(
-                                        getVanToVanHeaderEvent(
-                                            userID: widget.user.usrId ?? '',
-                                            mode: _selectedMode,
-                                            searchQuery: ''));
-                                  }
-                                },
-                                icon: Icon(
-                                  Icons.clear,
-                                  size: 10.sp,
-                                )),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          )
-                        ],
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        size: 14.sp,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                                .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
+                                  context.read<VanToVanHeaderBloc>().add(
+                                      getVanToVanHeaderEvent(
+                                          userID: widget.user.usrId ?? '',
+                                          mode: _selectedMode,
+                                          searchQuery: ''));
+                                }
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
                     ),
-                    onChanged: (value) {
-                      debounce = Timer(
-                          const Duration(
-                            milliseconds: 500,
-                          ), () async {
-                        context.read<VanToVanHeaderBloc>().add(
-                            getVanToVanHeaderEvent(
-                                userID: widget.user.usrId ?? '',
-                                mode: _selectedMode,
-                                searchQuery: value.trim()));
-                      });
-                    },
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
                   ),
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<VanToVanHeaderBloc>().add(
+                          getVanToVanHeaderEvent(
+                              userID: widget.user.usrId ?? '',
+                              mode: _selectedMode,
+                              searchQuery: value.trim()));
+                    });
+                  },
                 ),
               ),
             ),
@@ -152,67 +138,53 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
               height: 3.h,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: DropdownButtonFormField(
-                    elevation: 0,
-                    value: ddfilterFieldsVanToVan[0].mode,
-                    dropdownColor: Colors.white,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                                .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButtonFormField(
+                  elevation: 0,
+                  value: ddfilterFieldsVanToVan[0].mode,
+                  dropdownColor: Colors.white,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
-                    items: ddfilterFieldsVanToVan
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e.mode,
-                            child: Text(e.statusName),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) {
-                      _selectedMode = value!;
-                      context
-                          .read<VanToVanHeaderBloc>()
-                          .add(const ClearVanToVanHeaderEvent());
-                      context.read<VanToVanHeaderBloc>().add(
-                          getVanToVanHeaderEvent(
-                              userID: widget.user.usrId ?? '',
-                              mode: value,
-                              searchQuery: ''));
-                    },
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
                   ),
+                  items: ddfilterFieldsVanToVan
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e.mode,
+                          child: Text(e.statusName),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    _selectedMode = value!;
+                    context
+                        .read<VanToVanHeaderBloc>()
+                        .add(const ClearVanToVanHeaderEvent());
+                    context.read<VanToVanHeaderBloc>().add(
+                        getVanToVanHeaderEvent(
+                            userID: widget.user.usrId ?? '',
+                            mode: value,
+                            searchQuery: ''));
+                  },
                 ),
               ),
             ),
@@ -221,26 +193,38 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Pending Approvals",
-                    style: countHeading(),
-                  ),
-                  BlocBuilder<VanToVanHeaderBloc, VanToVanHeaderState>(
-                    builder: (context, state) {
-                      return Text(
+              child: BlocBuilder<VanToVanHeaderBloc, VanToVanHeaderState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.when(
+                          getVanToVanHeaderState: (headers) =>
+                              _selectedMode == "P"
+                                  ? "Pending Approvals"
+                                  : _selectedMode == "AT"
+                                      ? "Approved Requests"
+                                      : "Rejected Requests",
+                          vanToVanHeaderFailedstate: () => _selectedMode == "P"
+                              ? "Pending Approvals"
+                              : _selectedMode == "AT"
+                                  ? "Approved Requests"
+                                  : "Rejected Requests",
+                        ),
+                        style: countHeading(),
+                      ),
+                      Text(
                         state.when(
                           getVanToVanHeaderState: (headers) =>
                               headers == null ? "0" : headers.length.toString(),
                           vanToVanHeaderFailedstate: () => "0",
                         ),
                         style: countHeading(),
-                      );
-                    },
-                  )
-                ],
+                      )
+                    ],
+                  );
+                },
               ),
             ),
             SizedBox(
