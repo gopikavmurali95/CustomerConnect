@@ -71,7 +71,10 @@ class ApprovalScreen extends StatelessWidget {
                               .read<PriceChangeHeaderBloc>()
                               .add(const ClearPriceChangeHeader());
                           context.read<PriceChangeHeaderBloc>().add(
-                              GetPriceChangeHeaderEvent(rotID: user.usrId!));
+                              GetPriceChangeHeaderEvent(
+                                  rotID: user.usrId!,
+                                  mode: '',
+                                  searchQuery: ''));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

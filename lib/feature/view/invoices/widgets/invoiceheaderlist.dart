@@ -1,13 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-// import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-// import 'package:customer_connect/feature/widgets/shimmer.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -124,7 +120,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                   invheader[index].cusName ??
                                                       '',
                                                   style: kfontstyle(
-                                                      fontSize: 12.sp,
+                                                      fontSize: 11.sp,
                                                       color: const Color(
                                                           0xff413434)),
                                                 ),
@@ -137,14 +133,14 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                 invheader[index].cusOutCode ??
                                                     '',
                                                 style: kfontstyle(
-                                                    fontSize: 11.sp,
+                                                    fontSize: 10.sp,
                                                     color: const Color(
                                                         0xff413434)),
                                               ),
                                               Text(
                                                 ' - ',
                                                 style: kfontstyle(
-                                                    fontSize: 11.sp,
+                                                    fontSize: 10.sp,
                                                     color: const Color(
                                                         0xff413434)),
                                               ),
@@ -155,7 +151,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: kfontstyle(
-                                                      fontSize: 11.sp),
+                                                      fontSize: 10.sp),
                                                 ),
                                               ),
                                             ],
@@ -171,7 +167,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               Text(
                                                 invheader[index].payType ?? '',
                                                 style: kfontstyle(
-                                                    fontSize: 10.sp,
+                                                    fontSize: 9.sp,
                                                     color: Colors.grey),
                                               ),
                                               Text(
@@ -222,7 +218,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                       children: [
                                         Text(
                                           invheader[index].grandTotal ?? '',
-                                          style: kfontstyle(fontSize: 13.sp),
+                                          style: kfontstyle(fontSize: 11.sp),
                                         ),
                                         Container(
                                           height: 14.h,

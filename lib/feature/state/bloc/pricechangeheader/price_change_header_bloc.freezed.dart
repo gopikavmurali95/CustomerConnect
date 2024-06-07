@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PriceChangeHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getPriceChangeHeaderEvent,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getPriceChangeHeaderEvent,
     required TResult Function() clearPriceChangeHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult? Function()? clearPriceChangeHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult Function()? clearPriceChangeHeader,
     required TResult orElse(),
   }) =>
@@ -86,7 +89,7 @@ abstract class _$$GetPriceChangeHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetPriceChangeHeaderEventImpl) then) =
       __$$GetPriceChangeHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String rotID});
+  $Res call({String rotID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -103,11 +106,21 @@ class __$$GetPriceChangeHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? rotID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetPriceChangeHeaderEventImpl(
       rotID: null == rotID
           ? _value.rotID
           : rotID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -116,14 +129,19 @@ class __$$GetPriceChangeHeaderEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPriceChangeHeaderEventImpl implements GetPriceChangeHeaderEvent {
-  const _$GetPriceChangeHeaderEventImpl({required this.rotID});
+  const _$GetPriceChangeHeaderEventImpl(
+      {required this.rotID, required this.mode, required this.searchQuery});
 
   @override
   final String rotID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PriceChangeHeaderEvent.getPriceChangeHeaderEvent(rotID: $rotID)';
+    return 'PriceChangeHeaderEvent.getPriceChangeHeaderEvent(rotID: $rotID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -131,11 +149,14 @@ class _$GetPriceChangeHeaderEventImpl implements GetPriceChangeHeaderEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPriceChangeHeaderEventImpl &&
-            (identical(other.rotID, rotID) || other.rotID == rotID));
+            (identical(other.rotID, rotID) || other.rotID == rotID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rotID);
+  int get hashCode => Object.hash(runtimeType, rotID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +168,33 @@ class _$GetPriceChangeHeaderEventImpl implements GetPriceChangeHeaderEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getPriceChangeHeaderEvent,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getPriceChangeHeaderEvent,
     required TResult Function() clearPriceChangeHeader,
   }) {
-    return getPriceChangeHeaderEvent(rotID);
+    return getPriceChangeHeaderEvent(rotID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult? Function()? clearPriceChangeHeader,
   }) {
-    return getPriceChangeHeaderEvent?.call(rotID);
+    return getPriceChangeHeaderEvent?.call(rotID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult Function()? clearPriceChangeHeader,
     required TResult orElse(),
   }) {
     if (getPriceChangeHeaderEvent != null) {
-      return getPriceChangeHeaderEvent(rotID);
+      return getPriceChangeHeaderEvent(rotID, mode, searchQuery);
     }
     return orElse();
   }
@@ -212,10 +236,14 @@ class _$GetPriceChangeHeaderEventImpl implements GetPriceChangeHeaderEvent {
 }
 
 abstract class GetPriceChangeHeaderEvent implements PriceChangeHeaderEvent {
-  const factory GetPriceChangeHeaderEvent({required final String rotID}) =
-      _$GetPriceChangeHeaderEventImpl;
+  const factory GetPriceChangeHeaderEvent(
+      {required final String rotID,
+      required final String mode,
+      required final String searchQuery}) = _$GetPriceChangeHeaderEventImpl;
 
   String get rotID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetPriceChangeHeaderEventImplCopyWith<_$GetPriceChangeHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -263,7 +291,8 @@ class _$ClearPriceChangeHeaderImpl implements ClearPriceChangeHeader {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getPriceChangeHeaderEvent,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getPriceChangeHeaderEvent,
     required TResult Function() clearPriceChangeHeader,
   }) {
     return clearPriceChangeHeader();
@@ -272,7 +301,8 @@ class _$ClearPriceChangeHeaderImpl implements ClearPriceChangeHeader {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult? Function()? clearPriceChangeHeader,
   }) {
     return clearPriceChangeHeader?.call();
@@ -281,7 +311,8 @@ class _$ClearPriceChangeHeaderImpl implements ClearPriceChangeHeader {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getPriceChangeHeaderEvent,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getPriceChangeHeaderEvent,
     TResult Function()? clearPriceChangeHeader,
     required TResult orElse(),
   }) {

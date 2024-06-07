@@ -1,4 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
@@ -9,10 +10,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PriceChangeHeader extends StatelessWidget {
+class PriceChangeHeader extends StatefulWidget {
   final LoginUserModel user;
   const PriceChangeHeader({super.key, required this.user});
 
+  @override
+  State<PriceChangeHeader> createState() => _PriceChangeHeaderState();
+}
+
+List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
+  ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
+];
+
+class _PriceChangeHeaderState extends State<PriceChangeHeader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +36,7 @@ class PriceChangeHeader extends StatelessWidget {
           onPressed: () {
             context
                 .read<ApprovalCountsBloc>()
-                .add(GetApprovalsCountEvent(userID: user.usrId ?? ''));
+                .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -42,7 +53,7 @@ class PriceChangeHeader extends StatelessWidget {
         onPopInvoked: (didPop) {
           context
               .read<ApprovalCountsBloc>()
-              .add(GetApprovalsCountEvent(userID: user.usrId ?? ''));
+              .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
         },
         child: BlocBuilder<PriceChangeHeaderBloc, PriceChangeHeaderState>(
           builder: (context, state) {
@@ -62,9 +73,131 @@ class PriceChangeHeader extends StatelessWidget {
                       )
                     : Column(
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Card(
+                              child: Container(
+                                height: 30.h,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: .5,
+                                      blurRadius: 5,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  style: kfontstyle(
+                                      fontSize: 10.sp, color: Colors.black87),
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    hintText: 'Search here..',
+                                    suffixIcon: IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.clear,
+                                          size: 10.sp,
+                                        )),
+                                    prefixIcon: const Icon(Icons.search),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    border: /* InputBorder
+                            .none  */
+                                        OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                  ),
+                                  onChanged: (value) {},
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Card(
+                              child: Container(
+                                height: 30.h,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: .5,
+                                      blurRadius: 5,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: DropdownButtonFormField(
+                                  elevation: 0,
+                                  value: filterFieldsPriceChange[0].mode,
+                                  dropdownColor: Colors.white,
+                                  style: kfontstyle(
+                                      fontSize: 10.sp, color: Colors.black87),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    border: /* InputBorder
+                            .none  */
+                                        OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent),
+                                    ),
+                                  ),
+                                  items: filterFieldsPriceChange
+                                      .map(
+                                        (e) => DropdownMenuItem(
+                                          value: e.mode,
+                                          child: Text(e.statusName),
+                                        ),
+                                      )
+                                      .toList(),
+                                  onChanged: (value) {},
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
                           Expanded(
                               child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: ListView.separated(
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
@@ -79,7 +212,7 @@ class PriceChangeHeader extends StatelessWidget {
                                                     PriceChangeDetail(
                                                         priceChangeApprovel:
                                                             pChange[index],
-                                                        user: user)));
+                                                        user: widget.user)));
                                       },
                                       child: Row(
                                         children: [

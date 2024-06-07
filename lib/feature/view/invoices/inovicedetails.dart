@@ -94,14 +94,8 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.invoiceheader.invoiceNo ?? '',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          Text(widget.invoiceheader.invoiceNo ?? '',
+                              style: blueTextStyle()),
                           Row(
                             children: [
                               Text(
@@ -123,7 +117,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                                   overflow: TextOverflow.ellipsis,
                                   widget.invoiceheader.cusName ?? '',
                                   style: kfontstyle(
-                                      fontSize: 12.sp,
+                                      fontSize: 11.sp,
                                       color: const Color(0xff413434)),
                                 ),
                               ),
@@ -134,20 +128,20 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               Text(
                                 widget.invoiceheader.cusOutCode ?? '',
                                 style: kfontstyle(
-                                    fontSize: 11.sp,
+                                    fontSize: 10.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Text(
                                 ' - ',
                                 style: kfontstyle(
-                                    fontSize: 11.sp,
+                                    fontSize: 10.sp,
                                     color: const Color(0xff413434)),
                               ),
                               Expanded(
                                 child: Text(
                                   widget.invoiceheader.cusOutName ?? '',
                                   overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 11.sp),
+                                  style: kfontstyle(fontSize: 10.sp),
                                 ),
                               ),
                             ],
@@ -163,37 +157,37 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               Text(
                                 widget.invoiceheader.payType ?? '',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 ' | ',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 widget.invoiceheader.rotName ?? '',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 ' | ',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 widget.invoiceheader.date ?? '',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 ' | ',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                               Text(
                                 widget.invoiceheader.time ?? '',
                                 style: kfontstyle(
-                                    fontSize: 10.sp, color: Colors.grey),
+                                    fontSize: 9.sp, color: Colors.grey),
                               ),
                             ],
                           ),
@@ -318,14 +312,14 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 20.h,
+                        width: 25.h,
                       ),
                       Text(
                         'Uom',
                         style: boxHeading(),
                       ),
                       SizedBox(
-                        width: 20.h,
+                        width: 22.h,
                       ),
                       Text(
                         'Qty',

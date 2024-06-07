@@ -112,7 +112,9 @@ class _ScheduledReturnDetailScreenState
           onPopInvoked: (didPop) {
             context.read<SchduledReturnHeaderBloc>().add(
                 GetAllScheduledReturnHeadersEvent(
-                    userID: widget.user.usrId ?? ''));
+                    userID: widget.user.usrId ?? '',
+                    mode: '',
+                    searchQuery: ''));
             /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
               Future.delayed(const Duration(microseconds: 100), () {
                 showPopAlert(context);
@@ -293,14 +295,14 @@ class _ScheduledReturnDetailScreenState
                     width: double.infinity,
                     color: const Color(0xfff5f5f5),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             'Item',
                             style: kfontstyle(
-                                fontSize: 12.sp,
+                                fontSize: 10.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black54),
                           ),
@@ -312,7 +314,7 @@ class _ScheduledReturnDetailScreenState
                               Text(
                                 'UOM',
                                 style: kfontstyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 10.sp,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
@@ -322,7 +324,7 @@ class _ScheduledReturnDetailScreenState
                               Text(
                                 'Qty',
                                 style: kfontstyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 10.sp,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               )
@@ -397,7 +399,7 @@ class _ScheduledReturnDetailScreenState
                                       shrinkWrap: true,
                                       itemBuilder: (context, index) => Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
+                                            horizontal: 10),
                                         child: Column(
                                           children: [
                                             Row(

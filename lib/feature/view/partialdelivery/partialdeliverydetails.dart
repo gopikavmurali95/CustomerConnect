@@ -98,9 +98,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
           //     showPopAlert(context);
           //   });
           // } else {
-          context
-              .read<PartialDeliveryHeaderBloc>()
-              .add(GetPartialDeliveryHeaderEvent(userID: widget.user.usrId!));
+          context.read<PartialDeliveryHeaderBloc>().add(
+              GetPartialDeliveryHeaderEvent(
+                  userID: widget.user.usrId!, mode: '', searchQuery: ''));
           // context.read<NavigatetoBackCubit>().popFromScreen(true);
           // }
         },
@@ -236,7 +236,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               statuslist /* length = details.length; */
                                   = List.generate(pdet.length, (index) => null);
 
-                              for (int i = 0; i < pdet.length; i++) {
+                              /* for (int i = 0; i < pdet.length; i++) {
                                 if (widget
                                     .header.dahApprovalStatus!.isNotEmpty) {
                                   if (widget.header.dahApprovalStatus == 'A') {
@@ -245,7 +245,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                     statuslist[i] = false;
                                   }
                                 }
-                              }
+                              } */
                             }
                           },
                           partialDeliveryDetailsFailedState: () {},

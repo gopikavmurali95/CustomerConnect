@@ -1,7 +1,6 @@
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/picking_ongoing.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

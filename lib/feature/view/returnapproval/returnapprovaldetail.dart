@@ -98,9 +98,9 @@ class _ReturnApprovalDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
-            context
-                .read<ReturnApprovalHeaderBloc>()
-                .add(GetReturnApprovalHeaders(rotID: widget.user.usrId ?? ''));
+            context.read<ReturnApprovalHeaderBloc>().add(
+                GetReturnApprovalHeaders(
+                    rotID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
           },
           child: Column(
             children: [
