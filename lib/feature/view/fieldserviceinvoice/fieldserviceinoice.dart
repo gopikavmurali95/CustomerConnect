@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
@@ -9,9 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../LoadInDetail/load_detail_completed.dart';
+
 class FieldServiceInvoiceHeader extends StatelessWidget {
   final LoginUserModel user;
-  const FieldServiceInvoiceHeader({super.key, required this.user});
+  FieldServiceInvoiceHeader({super.key, required this.user});
+
+  final TextEditingController _fieldServiceSearchController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Field Service",
+          "Field Services",
           style: appHeading(),
         ),
       ),
@@ -43,6 +50,107 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+              child: Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade200),
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: const [
+                        BoxShadow(
+                            // ignore: use_full_hex_values_for_flutter_colors
+                            color: Color(0xff00000050),
+                            blurRadius: 0.4,
+                            spreadRadius: 0.4)
+                      ]),
+                  child: TextFormField(
+                    controller: _fieldServiceSearchController,
+                    onChanged: (value) {
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ), () async {
+                        context
+                            .read<FieldServiceHeaderBloc>()
+                            .add(GetAllFieldServiceHeadersEvent(
+                                //mode: _selectedMaterialReq,
+                                searchQuery: _fieldServiceSearchController.text,
+                                userId: ''));
+                      });
+                    },
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 15,
+                        ),
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  if (_fieldServiceSearchController
+                                      .text.isNotEmpty) {
+                                    _fieldServiceSearchController.clear();
+
+                                    context.read<FieldServiceHeaderBloc>().add(
+                                        const GetAllFieldServiceHeadersEvent(
+                                            searchQuery: "", userId: ''));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 13.sp,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        hintText: "Search Items",
+                        hintStyle: TextStyle(
+                            fontSize: 12.sp,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal),
+                        isDense: true,
+                        counterText: "",
+                        contentPadding: const EdgeInsets.all(15.0),
+                        filled: true,
+                        fillColor: Colors.white,
+                        // suffix: InkWell(
+                        //   onTap: () {
+                        //     _loadPendingdetailsSearchCtrl.clear();
+                        //     context.read<LoadingHeaderBloc>().add(
+                        //         GetLoadingHeaderEvent(
+                        //             searchQuery: '',
+                        //             loadingin: LoadingHeaderInModel(
+                        //                 userId: widget.user.usrId,
+                        //                 fromDate: '01-01-2023',
+                        //                 toDate: '23-03-2024',
+                        //                 mode: 'DD',
+                        //                 area: '',
+                        //                 route: '',
+                        //                 subArea: '')));
+                        //   },
+                        //   child: const Icon(
+                        //     Icons.close,
+                        //     size: 14,
+                        //   ),
+                        // ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none)),
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    maxLength: 20,
+                    // controller: _locationNameTextController,
+                  )),
+            ),
+            SizedBox(
+              height: 3.h,
+            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),

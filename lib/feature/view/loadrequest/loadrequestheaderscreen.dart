@@ -1,13 +1,15 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
-
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../../state/bloc/loadreqheader/load_req_header_bloc.dart';
+import '../LoadInDetail/load_detail_completed.dart';
 import 'loadrequestdetailscreen.dart';
 
 class LoadRequestHeaderScreen extends StatefulWidget {
@@ -19,13 +21,30 @@ class LoadRequestHeaderScreen extends StatefulWidget {
       _LoadRequestHeaderScreenState();
 }
 
+List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
+  ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
+  ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
+  ApprovalStatusFilterModel(mode: 'AL', statusName: 'All'),
+
+  ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
+
+];
+
+String _selectedloadrequest = 'P';
+TextEditingController _loadqSearchController = TextEditingController();
 class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
     context
         .read<LoadReqHeaderBloc>()
-        .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? ''));
+        .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+    context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
+      userId: widget.user.usrId??'',
+      mode: 'P', searchQuery: '',
+      // mode:'P',
+      // searchQuery:''
+    ));
     super.initState();
   }
 
@@ -70,6 +89,233 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
               child: Column(
                 children: [
                   Padding(
+                    padding:
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                    child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                // ignore: use_full_hex_values_for_flutter_colors
+                                  color: Color(0xff00000050),
+                                  blurRadius: 0.4,
+                                  spreadRadius: 0.4)
+                            ]),
+                        child: TextFormField(
+                          controller: _loadqSearchController,
+                          onChanged: (value) {
+                            debounce = Timer(
+                                const Duration(
+                                  milliseconds: 500,
+                                ), () async {
+                              context.read<LoadReqHeaderBloc>().add(
+                                  LoadreqSuccessEvent(
+                                      mode: _selectedloadrequest,
+                                      searchQuery:
+                                      _loadqSearchController.text, userId: ''));
+                            });
+
+                          },
+                          decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                size: 15,
+                              ),
+                              suffix: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5.h),
+                                  Expanded(
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (_loadqSearchController
+                                            .text.isNotEmpty) {
+                                          _loadqSearchController.clear();
+
+                                          context
+                                              .read<LoadReqHeaderBloc>()
+                                              .add(LoadreqSuccessEvent(
+                                              mode: _selectedloadrequest,
+                                              searchQuery: "", userId: ''));
+                                        }
+                                        // _loadPendingSearchCtrl.clear();
+                                        // context
+                                        //     .read<LoadingDetailBloc>()
+                                        //     .add(const ClearLoadingDetailEvent());
+                                        // context.read<LoadingDetailBloc>().add(
+                                        //   GetloadingDetailEvent(
+                                        //       iD: widget.loadingheader.id ?? '',
+                                        //       searchQuery: ''),
+                                        // );
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        size: 13.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              hintText: "Search Items",
+                              hintStyle: TextStyle(
+                                  fontSize: 12.sp,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.normal),
+                              isDense: true,
+                              counterText: "",
+                              contentPadding: const EdgeInsets.all(15.0),
+                              filled: true,
+                              fillColor: Colors.white,
+                              // suffix: InkWell(
+                              //   onTap: () {
+                              //     _loadPendingdetailsSearchCtrl.clear();
+                              //     context.read<LoadingHeaderBloc>().add(
+                              //         GetLoadingHeaderEvent(
+                              //             searchQuery: '',
+                              //             loadingin: LoadingHeaderInModel(
+                              //                 userId: widget.user.usrId,
+                              //                 fromDate: '01-01-2023',
+                              //                 toDate: '23-03-2024',
+                              //                 mode: 'DD',
+                              //                 area: '',
+                              //                 route: '',
+                              //                 subArea: '')));
+                              //   },
+                              //   child: const Icon(
+                              //     Icons.close,
+                              //     size: 14,
+                              //   ),
+                              // ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide.none)),
+                          textAlign: TextAlign.start,
+                          maxLines: 1,
+                          maxLength: 20,
+                          // controller: _locationNameTextController,
+                        )),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Card(
+                      child: Container(
+                        height: 40.h,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                // ignore: use_full_hex_values_for_flutter_colors
+                                  color: Color(0xff00000050),
+                                 // blurRadius: 0.2,
+                                  spreadRadius: 0.2)
+                            ]),
+                        // decoration: BoxDecoration(
+                        //   boxShadow: [
+                        //     BoxShadow(
+                        //       color: Colors.grey.withOpacity(0.2),
+                        //       spreadRadius: .5,
+                        //       blurRadius: 1,
+                        //       offset: const Offset(0, 2),
+                        //     ),
+                        //   ],
+                        //   borderRadius: BorderRadius.circular(10),
+                        // ),
+                        child: DropdownButtonFormField(
+                          //menuMaxHeight: 100,
+                          //padding: EdgeInsets.all(100),
+
+
+                          //elevation: 0,
+                          value: ddfilterLoadRequest[0].mode,
+                          // value: ddfilterFieldsDisputeNote[0].mode,
+                          dropdownColor: Colors.white,
+                          style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                          decoration: InputDecoration(
+
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 20,),
+                            border: /* InputBorder
+                                .none  */
+                            OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.transparent
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.transparent
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.transparent
+                              ),
+                            ),
+                          ),
+                          items: ddfilterLoadRequest
+                              .map(
+                                (e) => DropdownMenuItem(
+                              value: e.mode,
+                              child: Text(e.statusName),
+                            ),
+                          )
+                              .toList(),
+                          onChanged: (value) {
+                            _selectedloadrequest = value!;
+                            context
+                                .read<LoadReqHeaderBloc>()
+                                .add(const LoadreqClearEvent());
+
+                            context.read<LoadReqHeaderBloc>().add(
+                              LoadreqSuccessEvent(
+                                  searchQuery: '',
+                                  userId: widget.user.usrId?? '',
+                                  mode: value),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.h,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+
+                        Text(_selectedloadrequest == 'P' ? "Pending Requests " :
+                        _selectedloadrequest == 'A' ? "Approved Requests": "Rejected Requests",style: countHeading(),),
+                        BlocBuilder<LoadReqHeaderBloc, LoadReqHeaderState>(
+                          builder: (context, state) {
+                            return Text(
+                              state.when(
+                                loadReqheadSuccessState: (headers) =>
+                                headers == null ? "0" : headers.length.toString(),
+                                loadReqheadFailedState: () => "0",
+                              ),
+                              style: countHeading(),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 10.h,),
+                  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: BlocBuilder<LoadReqHeaderBloc, LoadReqHeaderState>(
                       builder: (context, state) {
@@ -91,7 +337,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                             color: Colors.grey[300],
                                           ),
                                       itemCount: 10),
-                                )
+                                ) :headers.isEmpty? Center(
+                            child: Text("No Data Available",style: kfontstyle(),),
+                          )
                               : ListView.separated(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
@@ -268,5 +516,5 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
 Future<void> _onRefreshLoadRequestHeaderScreen(
     BuildContext context, LoginUserModel model) async {
   context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
-  context.read<LoadReqHeaderBloc>().add(const LoadreqSuccessEvent(userId: ''));
+  context.read<LoadReqHeaderBloc>().add(const LoadreqSuccessEvent(userId: '', mode: '', searchQuery: ''));
 }

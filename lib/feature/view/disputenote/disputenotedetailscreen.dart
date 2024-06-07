@@ -574,7 +574,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                         getDisputeNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
                             : SizedBox(
-                                height: 80.h,
+                                height: 90.h,
                                 width: double.infinity,
                                 child: Column(
                                   children: [

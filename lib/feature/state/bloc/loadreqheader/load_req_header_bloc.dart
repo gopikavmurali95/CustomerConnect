@@ -17,11 +17,32 @@ class LoadReqHeaderBloc extends Bloc<LoadReqHeaderEvent, LoadReqHeaderState> {
 
   LoadReqHeaderBloc(this.loadReqstHeaderRepo)
       : super(LoadReqHeaderState.initial()) {
+    List<LoadReqHeaderModel> searchlist = [];
     on<LoadreqSuccessEvent>((event, emit) async {
       Either<MainFailures, List<LoadReqHeaderModel>> loadreqlist =
-          await loadReqstHeaderRepo.loadreqHeaderList(event.userId);
+          await loadReqstHeaderRepo.loadreqHeaderList(event.userId,event.mode);
       emit(loadreqlist.fold((l) => const LoadReqheadFailedState(),
-          (r) => LoadReqheadSuccessState(loadlist: r)));
+          (r) {
+            searchlist =  r
+              .where((element) =>
+          element.rotID!.
+          toLowerCase().
+          toUpperCase().
+          contains(event.searchQuery.toUpperCase()) ||
+              element.lrhNumber!.
+              toLowerCase().
+              toUpperCase().
+              contains(event.searchQuery.toUpperCase())||
+              element.userID!.
+          toLowerCase().
+          toUpperCase().
+          contains(event.searchQuery.toUpperCase())||
+              element.rotCode!
+              .toLowerCase().
+              toUpperCase().
+              contains(event.searchQuery.toUpperCase())).toList();
+          return  LoadReqheadSuccessState(loadlist: event.searchQuery.isEmpty ? r : searchlist);
+      }));
     });
     on<LoadreqClearEvent>((event, emit) {
       emit(const LoadReqheadSuccessState(loadlist: null));

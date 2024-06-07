@@ -21,7 +21,7 @@ class MaterialReqHeaderModel {
       this.mrhIsReOrder,
       this.mrhIntegrationStatus,
       this.rotID,
-      this.userID});
+      this.userID, });
 
   MaterialReqHeaderModel.fromJson(dynamic json) {
     mrhID = json['mrh_ID'];

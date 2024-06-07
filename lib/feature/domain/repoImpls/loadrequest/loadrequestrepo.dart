@@ -15,11 +15,11 @@ import 'package:http/http.dart' as http;
 class LoadRequestHeaderRepo implements ILoadRequestHeaderRepo {
   @override
   Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(
-      String userId) async {
+      String userId,String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + loadReqHeaderUrl),
-          body: {"UserId": userId});
+          body: {"UserId": userId,"Status_Value": mode});
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

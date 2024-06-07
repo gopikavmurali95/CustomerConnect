@@ -18,11 +18,32 @@ class MaterialReqHeadBloc
 
   MaterialReqHeadBloc(this.materialheadrepo)
       : super(MaterialReqHeadState.initial()) {
+    List<MaterialReqHeaderModel> searchlistitems =[];
     on<MaterialHeadSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqHeaderModel>> mheadlist =
-          await materialheadrepo.materialreqheaderList(event.userId);
+          await materialheadrepo.materialreqheaderList(event.userId,event.mode);
       emit(mheadlist.fold((l) => const MaterialreqheadFailed(),
-          (r) => Materialreqheadsuccess(materialheader: r)));
+          (r) {
+            searchlistitems =  r
+                .where((element) =>
+            element.userID!.
+            toLowerCase().
+            toUpperCase().
+            contains(event.searchQuery.toUpperCase()) ||
+                element.rotID!.
+                toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())||
+                element.userID!.
+                toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())||
+                element.mrhID!
+                    .toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())).toList();
+            return Materialreqheadsuccess(materialheader: event.searchQuery.isEmpty ?r : searchlistitems);
+          }));
     });
 
     on<MaterialReqHeadClearEvent>((event, emit) {
