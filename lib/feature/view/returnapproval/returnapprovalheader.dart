@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -23,6 +25,10 @@ List<ApprovalStatusFilterModel> filterFieldsReturn = [
   ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
 ];
 
+String _selectedeMode = 'P';
+TextEditingController _SearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
   @override
   void initState() {
@@ -30,7 +36,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
         .read<ReturnApprovalHeaderBloc>()
         .add(const ClearReturnHeaderState());
     context.read<ReturnApprovalHeaderBloc>().add(GetReturnApprovalHeaders(
-        rotID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+        rotID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
     super.initState();
   }
 
@@ -64,120 +70,6 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
         },
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextFormField(
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search here..',
-                      suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.clear,
-                            size: 10.sp,
-                          )),
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                            .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                    ),
-                    onChanged: (value) {},
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: DropdownButtonFormField(
-                    elevation: 0,
-                    value: filterFieldsReturn[0].mode,
-                    dropdownColor: Colors.white,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                            .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                    ),
-                    items: filterFieldsReturn
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e.mode,
-                            child: Text(e.statusName),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) {},
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -199,130 +91,363 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                     ),
                                 itemCount: 10),
                           )
-                        : ListView.separated(
-                            itemBuilder: (context, index) => GestureDetector(
-                                  onTap: () {
-                                    context
-                                        .read<NavigatetoBackCubit>()
-                                        .popFromScreen(false);
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ReturnApprovalDetailScreen(
-                                          returnApprovel: headers[index],
-                                          user: widget.user,
+                        : Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: Card(
+                                  child: Container(
+                                    height: 30.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          spreadRadius: .5,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 2),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 10,
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xfffee8e0),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                      ),
-                                      SizedBox(
-                                        width: 10.w,
-                                      ),
-                                      Expanded(
-                                        child: Row(
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: TextFormField(
+                                      controller: _SearchCtrl,
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          color: Colors.black87),
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        hintText: 'Search here..',
+                                        suffix: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    headers[index]
-                                                            .ithRequestNumber ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff2C6B9E),
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        '${headers[index].cusCode} - ',
-                                                        style: kfontstyle(
-                                                          fontSize: 11.sp,
-                                                          color: const Color(
-                                                              0xff2C6B9E),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Text(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          headers[index]
-                                                                  .cusName ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              color: const Color(
-                                                                  0xff413434)),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Text(
-                                                    headers[index]
-                                                            .createdDate ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.grey),
-                                                  ),
-                                                ],
-                                              ),
+                                              child: IconButton(
+                                                  onPressed: () {
+                                                    if (_SearchCtrl
+                                                        .text.isNotEmpty) {
+                                                      _SearchCtrl.clear();
+
+                                                      context
+                                                          .read<
+                                                              ReturnApprovalHeaderBloc>()
+                                                          .add(GetReturnApprovalHeaders(
+                                                              rotID: widget.user
+                                                                      .usrId ??
+                                                                  '',
+                                                              mode:
+                                                                  _selectedeMode,
+                                                              searchQuery: ''));
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.clear,
+                                                    size: 10.sp,
+                                                  )),
                                             ),
-                                            Container(
-                                              // height: 10.h,
-                                              // width: 20.h,
-                                              decoration: BoxDecoration(
-                                                color: headers[index]
-                                                        .rahApprovalStatus!
-                                                        .isEmpty
-                                                    ? Colors.red[100]
-                                                    : Colors.green[100],
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  10,
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 3),
-                                                child: Text(
-                                                  headers[index]
-                                                          .rahApprovalStatus ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 9.sp),
-                                                ),
-                                              ),
+                                            SizedBox(
+                                              height: 10.h,
                                             )
                                           ],
                                         ),
+                                        prefixIcon: Icon(
+                                          Icons.search,
+                                          size: 14.sp,
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                        border: /* InputBorder
+                                .none  */
+                                            OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
                                       ),
-                                    ],
+                                      onChanged: (value) {
+                                        debounce = Timer(
+                                            const Duration(
+                                              milliseconds: 500,
+                                            ), () async {
+                                          context
+                                              .read<ReturnApprovalHeaderBloc>()
+                                              .add(GetReturnApprovalHeaders(
+                                                  rotID:
+                                                      widget.user.usrId ?? '',
+                                                  mode: _selectedeMode,
+                                                  searchQuery: value));
+                                        });
+                                      },
+                                    ),
                                   ),
                                 ),
-                            separatorBuilder: (context, index) => Divider(
-                                  color: Colors.grey[300],
+                              ),
+                              SizedBox(
+                                height: 3.h,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: Card(
+                                  child: Container(
+                                    height: 30.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          spreadRadius: .5,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 2),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: DropdownButtonFormField(
+                                      elevation: 0,
+                                      value: filterFieldsReturn[0].mode,
+                                      dropdownColor: Colors.white,
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          color: Colors.black87),
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                        border: /* InputBorder
+                                .none  */
+                                            OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                      ),
+                                      items: filterFieldsReturn
+                                          .map(
+                                            (e) => DropdownMenuItem(
+                                              value: e.mode,
+                                              child: Text(e.statusName),
+                                            ),
+                                          )
+                                          .toList(),
+                                      onChanged: (value) {
+                                        _selectedeMode = value!;
+                                        context
+                                            .read<ReturnApprovalHeaderBloc>()
+                                            .add(
+                                                const ClearReturnHeaderState());
+                                        context
+                                            .read<ReturnApprovalHeaderBloc>()
+                                            .add(GetReturnApprovalHeaders(
+                                                rotID: widget.user.usrId ?? '',
+                                                mode: value,
+                                                searchQuery: ''));
+                                      },
+                                    ),
+                                  ),
                                 ),
-                            itemCount: headers.length),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      _selectedeMode == 'P'
+                                          ? 'Pending Approvals'
+                                          : 'Approved Requests',
+                                      style: countHeading(),
+                                    ),
+                                    Text(
+                                      headers.length.toString(),
+                                      style: countHeading(),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              Expanded(
+                                child: ListView.separated(
+                                    itemBuilder: (context, index) =>
+                                        GestureDetector(
+                                          onTap: () {
+                                            context
+                                                .read<NavigatetoBackCubit>()
+                                                .popFromScreen(false);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ReturnApprovalDetailScreen(
+                                                  returnApprovel:
+                                                      headers[index],
+                                                  user: widget.user,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xfffee8e0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
+                                              Expanded(
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            headers[index]
+                                                                    .ithRequestNumber ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                              fontSize: 12.sp,
+                                                              color: const Color(
+                                                                  0xff2C6B9E),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                '${headers[index].cusCode} - ',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      11.sp,
+                                                                  color: const Color(
+                                                                      0xff2C6B9E),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  headers[index]
+                                                                          .cusName ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff413434)),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Text(
+                                                            headers[index]
+                                                                    .createdDate ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                                fontSize: 10.sp,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // height: 10.h,
+                                                      // width: 20.h,
+                                                      decoration: BoxDecoration(
+                                                        color: headers[index]
+                                                                .rahApprovalStatus!
+                                                                .isEmpty
+                                                            ? Colors.red[100]
+                                                            : Colors.green[100],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          10,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 5,
+                                                                vertical: 3),
+                                                        child: Text(
+                                                          headers[index]
+                                                                  .rahApprovalStatus ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                              fontSize: 9.sp),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    separatorBuilder: (context, index) =>
+                                        Divider(
+                                          color: Colors.grey[300],
+                                        ),
+                                    itemCount: headers.length),
+                              ),
+                            ],
+                          ),
                     returnHeaderFailedstate: () => Center(
                       child: Text(
                         'No Data Available',

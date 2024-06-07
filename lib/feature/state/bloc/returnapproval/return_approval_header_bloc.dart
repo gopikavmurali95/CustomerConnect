@@ -19,14 +19,31 @@ class ReturnApprovalHeaderBloc
     on<GetReturnApprovalHeaders>(
       (event, emit) async {
         Either<MainFailures, List<ReturnApprovalHeaderModel>> headers =
-            await returnrepo.getReturnApprovalHeaders(event.rotID);
+            await returnrepo.getReturnApprovalHeaders(event.rotID, event.mode);
 
+        List<ReturnApprovalHeaderModel> searcheditems = [];
         emit(
           headers.fold(
-            (l) => const ReturnHeaderFailedstate(),
-            (r) => GetReturnApprovalHeadersState(
-              headers: r,
-            ),
+            (l) => const ReturnApprovalHeaderState.returnHeaderFailedstate(),
+            (r) {
+              searcheditems = r
+                  .where((element) =>
+                      element.rahId!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()) ||
+                      element.cusCode!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()) ||
+                      element.cusName!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()))
+                  .toList();
+              return GetReturnApprovalHeadersState(
+                  headers: event.searchQuery.isEmpty ? r : searcheditems);
+            },
           ),
         );
       },

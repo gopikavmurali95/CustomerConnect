@@ -19,9 +19,27 @@ class PriceChangeDetailsBloc
     on<GetPriceChangeDetailsEvent>((event, emit) async {
       Either<MainFailures, List<PriceChangeDetailsModel>> pdetails =
           await priceDetRepo.priceChangeDetails(event.pchID);
-      emit(pdetails.fold(
-          (l) => const PriceChangeDetailsState.priceChangedetailsFailed(),
-          (r) => GetPRiceChangeDetailsState(pcDetails: r)));
+      List<PriceChangeDetailsModel> searcheditems = [];
+      emit(
+        pdetails.fold(
+          (l) => const PriceChangedetailsFailed(),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.pcdPchId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetPRiceChangeDetailsState(
+                pcDetails: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearPriceChangeDetails>((event, emit) {
       emit(

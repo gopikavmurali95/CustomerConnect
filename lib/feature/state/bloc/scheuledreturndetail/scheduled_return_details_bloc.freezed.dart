@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ScheduledReturnDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllScheduledReturnDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllScheduledReturnDetailsEvent,
     required TResult Function() clearScheduledReturnDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult? Function()? clearScheduledReturnDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult Function()? clearScheduledReturnDetailsEvent,
     required TResult orElse(),
   }) =>
@@ -90,7 +93,7 @@ abstract class _$$GetAllScheduledReturnDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetAllScheduledReturnDetailsEventImpl) then) =
       __$$GetAllScheduledReturnDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqID});
+  $Res call({String reqID, String searchQuery});
 }
 
 /// @nodoc
@@ -107,11 +110,16 @@ class __$$GetAllScheduledReturnDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllScheduledReturnDetailsEventImpl(
       reqID: null == reqID
           ? _value.reqID
           : reqID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,14 +129,17 @@ class __$$GetAllScheduledReturnDetailsEventImplCopyWithImpl<$Res>
 
 class _$GetAllScheduledReturnDetailsEventImpl
     implements GetAllScheduledReturnDetailsEvent {
-  const _$GetAllScheduledReturnDetailsEventImpl({required this.reqID});
+  const _$GetAllScheduledReturnDetailsEventImpl(
+      {required this.reqID, required this.searchQuery});
 
   @override
   final String reqID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'ScheduledReturnDetailsEvent.getAllScheduledReturnDetailsEvent(reqID: $reqID)';
+    return 'ScheduledReturnDetailsEvent.getAllScheduledReturnDetailsEvent(reqID: $reqID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -136,11 +147,13 @@ class _$GetAllScheduledReturnDetailsEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllScheduledReturnDetailsEventImpl &&
-            (identical(other.reqID, reqID) || other.reqID == reqID));
+            (identical(other.reqID, reqID) || other.reqID == reqID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqID);
+  int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -153,30 +166,33 @@ class _$GetAllScheduledReturnDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllScheduledReturnDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllScheduledReturnDetailsEvent,
     required TResult Function() clearScheduledReturnDetailsEvent,
   }) {
-    return getAllScheduledReturnDetailsEvent(reqID);
+    return getAllScheduledReturnDetailsEvent(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult? Function()? clearScheduledReturnDetailsEvent,
   }) {
-    return getAllScheduledReturnDetailsEvent?.call(reqID);
+    return getAllScheduledReturnDetailsEvent?.call(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult Function()? clearScheduledReturnDetailsEvent,
     required TResult orElse(),
   }) {
     if (getAllScheduledReturnDetailsEvent != null) {
-      return getAllScheduledReturnDetailsEvent(reqID);
+      return getAllScheduledReturnDetailsEvent(reqID, searchQuery);
     }
     return orElse();
   }
@@ -222,9 +238,11 @@ class _$GetAllScheduledReturnDetailsEventImpl
 abstract class GetAllScheduledReturnDetailsEvent
     implements ScheduledReturnDetailsEvent {
   const factory GetAllScheduledReturnDetailsEvent(
-      {required final String reqID}) = _$GetAllScheduledReturnDetailsEventImpl;
+          {required final String reqID, required final String searchQuery}) =
+      _$GetAllScheduledReturnDetailsEventImpl;
 
   String get reqID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllScheduledReturnDetailsEventImplCopyWith<
           _$GetAllScheduledReturnDetailsEventImpl>
@@ -274,7 +292,8 @@ class _$ClearScheduledReturnDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllScheduledReturnDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllScheduledReturnDetailsEvent,
     required TResult Function() clearScheduledReturnDetailsEvent,
   }) {
     return clearScheduledReturnDetailsEvent();
@@ -283,7 +302,8 @@ class _$ClearScheduledReturnDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult? Function()? clearScheduledReturnDetailsEvent,
   }) {
     return clearScheduledReturnDetailsEvent?.call();
@@ -292,7 +312,8 @@ class _$ClearScheduledReturnDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllScheduledReturnDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllScheduledReturnDetailsEvent,
     TResult Function()? clearScheduledReturnDetailsEvent,
     required TResult orElse(),
   }) {

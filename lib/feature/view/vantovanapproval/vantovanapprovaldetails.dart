@@ -15,8 +15,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class VanToVanApprovalDetails extends StatefulWidget {
   final LoginUserModel user;
   final VanToVanHeaderModel vanToVanHeader;
+  final String currentMode;
   const VanToVanApprovalDetails(
-      {super.key, required this.user, required this.vanToVanHeader});
+      {super.key,
+      required this.user,
+      required this.vanToVanHeader,
+      required this.currentMode});
 
   @override
   State<VanToVanApprovalDetails> createState() =>
@@ -81,14 +85,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
           //     showPopAlert(context);
           //   });
           // } else {
-          context
-              .read<VanToVanHeaderBloc>()
-              .add(getVanToVanHeaderEvent(userID: widget.user.usrId ?? ''));
+
           //   context.read<NavigatetoBackCubit>().popFromScreen(true);
           // }
 
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
-              userID: widget.vanToVanHeader.userID ?? ''));
+              userID: widget.vanToVanHeader.userID ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
         },
         child: Column(
           children: [

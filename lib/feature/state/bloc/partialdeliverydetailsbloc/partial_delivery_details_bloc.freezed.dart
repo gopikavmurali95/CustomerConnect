@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PartialDeliveryDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getPartialDeliveryDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailsEvent,
     required TResult Function() clearPartialDeliveryDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult? Function()? clearPartialDeliveryDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult Function()? clearPartialDeliveryDetails,
     required TResult orElse(),
   }) =>
@@ -90,7 +93,7 @@ abstract class _$$GetPartialDeliveryDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetPartialDeliveryDetailsEventImpl) then) =
       __$$GetPartialDeliveryDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqID});
+  $Res call({String reqID, String searchQuery});
 }
 
 /// @nodoc
@@ -107,11 +110,16 @@ class __$$GetPartialDeliveryDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetPartialDeliveryDetailsEventImpl(
       reqID: null == reqID
           ? _value.reqID
           : reqID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,14 +129,17 @@ class __$$GetPartialDeliveryDetailsEventImplCopyWithImpl<$Res>
 
 class _$GetPartialDeliveryDetailsEventImpl
     implements GetPartialDeliveryDetailsEvent {
-  const _$GetPartialDeliveryDetailsEventImpl({required this.reqID});
+  const _$GetPartialDeliveryDetailsEventImpl(
+      {required this.reqID, required this.searchQuery});
 
   @override
   final String reqID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PartialDeliveryDetailsEvent.getPartialDeliveryDetailsEvent(reqID: $reqID)';
+    return 'PartialDeliveryDetailsEvent.getPartialDeliveryDetailsEvent(reqID: $reqID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -136,11 +147,13 @@ class _$GetPartialDeliveryDetailsEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPartialDeliveryDetailsEventImpl &&
-            (identical(other.reqID, reqID) || other.reqID == reqID));
+            (identical(other.reqID, reqID) || other.reqID == reqID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqID);
+  int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -153,30 +166,33 @@ class _$GetPartialDeliveryDetailsEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getPartialDeliveryDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailsEvent,
     required TResult Function() clearPartialDeliveryDetails,
   }) {
-    return getPartialDeliveryDetailsEvent(reqID);
+    return getPartialDeliveryDetailsEvent(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult? Function()? clearPartialDeliveryDetails,
   }) {
-    return getPartialDeliveryDetailsEvent?.call(reqID);
+    return getPartialDeliveryDetailsEvent?.call(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult Function()? clearPartialDeliveryDetails,
     required TResult orElse(),
   }) {
     if (getPartialDeliveryDetailsEvent != null) {
-      return getPartialDeliveryDetailsEvent(reqID);
+      return getPartialDeliveryDetailsEvent(reqID, searchQuery);
     }
     return orElse();
   }
@@ -221,10 +237,12 @@ class _$GetPartialDeliveryDetailsEventImpl
 
 abstract class GetPartialDeliveryDetailsEvent
     implements PartialDeliveryDetailsEvent {
-  const factory GetPartialDeliveryDetailsEvent({required final String reqID}) =
+  const factory GetPartialDeliveryDetailsEvent(
+          {required final String reqID, required final String searchQuery}) =
       _$GetPartialDeliveryDetailsEventImpl;
 
   String get reqID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetPartialDeliveryDetailsEventImplCopyWith<
           _$GetPartialDeliveryDetailsEventImpl>
@@ -273,7 +291,8 @@ class _$ClearPartialDeliveryDetailsImpl implements ClearPartialDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getPartialDeliveryDetailsEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailsEvent,
     required TResult Function() clearPartialDeliveryDetails,
   }) {
     return clearPartialDeliveryDetails();
@@ -282,7 +301,8 @@ class _$ClearPartialDeliveryDetailsImpl implements ClearPartialDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult? Function()? clearPartialDeliveryDetails,
   }) {
     return clearPartialDeliveryDetails?.call();
@@ -291,7 +311,8 @@ class _$ClearPartialDeliveryDetailsImpl implements ClearPartialDeliveryDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getPartialDeliveryDetailsEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailsEvent,
     TResult Function()? clearPartialDeliveryDetails,
     required TResult orElse(),
   }) {

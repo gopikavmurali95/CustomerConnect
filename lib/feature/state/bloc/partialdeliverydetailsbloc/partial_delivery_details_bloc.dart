@@ -19,9 +19,27 @@ class PartialDeliveryDetailsBloc
     on<GetPartialDeliveryDetailsEvent>((event, emit) async {
       Either<MainFailures, List<PartialDeliveryDetailsModel>> deliverydetails =
           await details.partialDeliveryDetails(event.reqID);
-      emit(deliverydetails.fold(
+      List<PartialDeliveryDetailsModel> searcheditems = [];
+      emit(
+        deliverydetails.fold(
           (l) => const PartialDeliveryDetailsFailedState(),
-          (r) => GetAllPartialDetliveryState(details: r)));
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetAllPartialDetliveryState(
+                details: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearPartialDeliveryDetails>((event, emit) {
       emit(const GetAllPartialDetliveryState(details: null));

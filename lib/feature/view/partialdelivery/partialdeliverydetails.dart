@@ -54,9 +54,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
     context
         .read<PartialDeliveryDetailsBloc>()
         .add(const ClearPartialDeliveryDetails());
-    context
-        .read<PartialDeliveryDetailsBloc>()
-        .add(GetPartialDeliveryDetailsEvent(reqID: widget.header.dahId!));
+    context.read<PartialDeliveryDetailsBloc>().add(
+        GetPartialDeliveryDetailsEvent(
+            reqID: widget.header.dahId!, searchQuery: ''));
 
     super.initState();
   }

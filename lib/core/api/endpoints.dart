@@ -115,3 +115,8 @@ const materialReqRejectionUrl = 'InventoryApproval/PostMaterialReqReject';
 const materialReqApprovalUrl = 'InventoryApproval/PostMaterialReqApproval';
 const approvalCountUrl = 'InventoryApproval/SelectPendingStatusCounts';
 const salesOrderDetailsUrl = 'CusInsightSalesOrder/SelectSalesOrders';
+const inventoryReconfirmHeaderUrl = 'CusOperation/InventoryReconfirm';
+const inventoryReconfirmDetailUrl = 'CusOperation/InventoryReconfirmDetails';
+const inventoryReconfirmResonurl =
+    'CusOperation/GetReasonForInventoryReconfirm';
+const inventoryReconfirmApprovalUrl = 'CusOperation/InventoryReconfirmApproval';

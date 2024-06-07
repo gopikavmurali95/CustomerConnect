@@ -17,11 +17,30 @@ class LoadTransferHeaderBloc
   LoadTransferHeaderBloc(this.loadTransferApprovalRepo)
       : super(LoadTransferHeaderState.initial()) {
     on<GetAllLoadTransferHeadersEvent>((event, emit) async {
+      List<LoadTransferApprovalHeaderModel> searcheditems = [];
       Either<MainFailures, List<LoadTransferApprovalHeaderModel>> headers =
-          await loadTransferApprovalRepo.getLoadTransferHeaders(event.userID);
+          await loadTransferApprovalRepo.getLoadTransferHeaders(
+              event.userID, event.mode);
 
-      emit(headers.fold((l) => const LoadTransferHeaderFailedState(),
-          (r) => GetAllLoadTransferHeadersState(headers: r)));
+      emit(headers.fold((l) => const LoadTransferHeaderFailedState(), (r) {
+        searcheditems = r
+            .where((element) =>
+                (element.ltrReqNo ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.rotName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.usrName ?? "")
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetAllLoadTransferHeadersState(
+            headers: event.searchQuery.isEmpty ? r : searcheditems);
+      }));
     });
     on<ClearLoadtransferHeaderEvent>((event, emit) {
       emit(const GetAllLoadTransferHeadersState(headers: null));

@@ -18,9 +18,32 @@ class PartialDeliveryHeaderBloc
       : super(PartialDeliveryHeaderState.initial()) {
     on<GetPartialDeliveryHeaderEvent>((event, emit) async {
       Either<MainFailures, List<PartialDeliveryHeaderModel>> headerData =
-          await partialDelivery.partialDeliveryList(event.userID);
-      emit(headerData.fold((l) => const GetPartialDeliveryFailed(),
-          (r) => GetPartialDeliveryState(pDelivey: r)));
+          await partialDelivery.partialDeliveryList(event.userID, event.mode);
+      List<PartialDeliveryHeaderModel> searcheditems = [];
+      emit(
+        headerData.fold(
+          (l) => const GetPartialDeliveryFailed(),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.dahId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetPartialDeliveryState(
+                pDelivey: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearPartialDeliveryHeaderEvent>((event, emit) {
       emit(const GetPartialDeliveryState(pDelivey: null));

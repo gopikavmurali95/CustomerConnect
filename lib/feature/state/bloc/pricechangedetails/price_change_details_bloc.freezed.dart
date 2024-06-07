@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PriceChangeDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pchID) getPriceChangeDetailsEvent,
+    required TResult Function(String pchID, String searchQuery)
+        getPriceChangeDetailsEvent,
     required TResult Function() clearPriceChangeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult? Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult? Function()? clearPriceChangeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult Function()? clearPriceChangeDetails,
     required TResult orElse(),
   }) =>
@@ -86,7 +89,7 @@ abstract class _$$GetPriceChangeDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetPriceChangeDetailsEventImpl) then) =
       __$$GetPriceChangeDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String pchID});
+  $Res call({String pchID, String searchQuery});
 }
 
 /// @nodoc
@@ -103,11 +106,16 @@ class __$$GetPriceChangeDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pchID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetPriceChangeDetailsEventImpl(
       pchID: null == pchID
           ? _value.pchID
           : pchID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -116,14 +124,17 @@ class __$$GetPriceChangeDetailsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPriceChangeDetailsEventImpl implements GetPriceChangeDetailsEvent {
-  const _$GetPriceChangeDetailsEventImpl({required this.pchID});
+  const _$GetPriceChangeDetailsEventImpl(
+      {required this.pchID, required this.searchQuery});
 
   @override
   final String pchID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PriceChangeDetailsEvent.getPriceChangeDetailsEvent(pchID: $pchID)';
+    return 'PriceChangeDetailsEvent.getPriceChangeDetailsEvent(pchID: $pchID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -131,11 +142,13 @@ class _$GetPriceChangeDetailsEventImpl implements GetPriceChangeDetailsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPriceChangeDetailsEventImpl &&
-            (identical(other.pchID, pchID) || other.pchID == pchID));
+            (identical(other.pchID, pchID) || other.pchID == pchID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pchID);
+  int get hashCode => Object.hash(runtimeType, pchID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +160,33 @@ class _$GetPriceChangeDetailsEventImpl implements GetPriceChangeDetailsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pchID) getPriceChangeDetailsEvent,
+    required TResult Function(String pchID, String searchQuery)
+        getPriceChangeDetailsEvent,
     required TResult Function() clearPriceChangeDetails,
   }) {
-    return getPriceChangeDetailsEvent(pchID);
+    return getPriceChangeDetailsEvent(pchID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult? Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult? Function()? clearPriceChangeDetails,
   }) {
-    return getPriceChangeDetailsEvent?.call(pchID);
+    return getPriceChangeDetailsEvent?.call(pchID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult Function()? clearPriceChangeDetails,
     required TResult orElse(),
   }) {
     if (getPriceChangeDetailsEvent != null) {
-      return getPriceChangeDetailsEvent(pchID);
+      return getPriceChangeDetailsEvent(pchID, searchQuery);
     }
     return orElse();
   }
@@ -212,10 +228,12 @@ class _$GetPriceChangeDetailsEventImpl implements GetPriceChangeDetailsEvent {
 }
 
 abstract class GetPriceChangeDetailsEvent implements PriceChangeDetailsEvent {
-  const factory GetPriceChangeDetailsEvent({required final String pchID}) =
-      _$GetPriceChangeDetailsEventImpl;
+  const factory GetPriceChangeDetailsEvent(
+      {required final String pchID,
+      required final String searchQuery}) = _$GetPriceChangeDetailsEventImpl;
 
   String get pchID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetPriceChangeDetailsEventImplCopyWith<_$GetPriceChangeDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -263,7 +281,8 @@ class _$ClearPriceChangeDetailsImpl implements ClearPriceChangeDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pchID) getPriceChangeDetailsEvent,
+    required TResult Function(String pchID, String searchQuery)
+        getPriceChangeDetailsEvent,
     required TResult Function() clearPriceChangeDetails,
   }) {
     return clearPriceChangeDetails();
@@ -272,7 +291,8 @@ class _$ClearPriceChangeDetailsImpl implements ClearPriceChangeDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult? Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult? Function()? clearPriceChangeDetails,
   }) {
     return clearPriceChangeDetails?.call();
@@ -281,7 +301,8 @@ class _$ClearPriceChangeDetailsImpl implements ClearPriceChangeDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pchID)? getPriceChangeDetailsEvent,
+    TResult Function(String pchID, String searchQuery)?
+        getPriceChangeDetailsEvent,
     TResult Function()? clearPriceChangeDetails,
     required TResult orElse(),
   }) {

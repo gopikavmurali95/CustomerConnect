@@ -72,11 +72,11 @@ class VanToVanApprovalRepo implements IVanToVanApprovalRepo {
 
   @override
   Future<Either<MainFailures, List<VanToVanHeaderModel>>>
-      getVanToVanApprovalHeader(String userID) async {
+      getVanToVanApprovalHeader(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + vanToVanHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -18,12 +18,12 @@ import 'package:http/http.dart' as http;
 class PriceChangeRepo implements IPriceChangeRepo {
   @override
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
-      String userId) async {
+      String userId, String mode) async {
     // var logger = Logger();
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + pricechangeheaderurl),
-          body: {"userID": userId});
+          body: {"userID": userId, "Status_Value": mode});
       if (response.statusCode == 200) {
         // logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -21,8 +21,27 @@ class ReturnApprovalDetailBloc
           await returnApprovalRepo.getReturnApprovalDetails(
               event.reqID, event.mode);
 
-      emit(details.fold((l) => const ReturnApprovalDetailFailedState(),
-          (r) => GetReturnApprovelDetailState(details: r)));
+      List<ReturnApprovalDetailModel> searcheditems = [];
+      emit(
+        details.fold(
+          (l) => const ReturnApprovalDetailFailedState(),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetReturnApprovelDetailState(
+                details: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearReturnDetailEvent>((event, emit) {
       emit(const GetReturnApprovelDetailState(details: null));

@@ -453,7 +453,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       width: 10.w,
                     ),
-                    Expanded(
+                    /* Expanded(
                       child: InkWell(
                         onTap: () {},
                         child: Container(
@@ -492,7 +492,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                    ),
+                    ), */
                   ],
                 ),
               ),

@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AssetRemovelRequestHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllAssetRemovalHeadersEvent,
+    required TResult Function(String userID, String searchQuery)
+        getAllAssetRemovalHeadersEvent,
     required TResult Function() clearAssetRemovalHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult? Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult? Function()? clearAssetRemovalHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult Function()? clearAssetRemovalHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -90,7 +93,7 @@ abstract class _$$GetAllAssetRemovalHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllAssetRemovalHeadersEventImpl) then) =
       __$$GetAllAssetRemovalHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String searchQuery});
 }
 
 /// @nodoc
@@ -107,11 +110,16 @@ class __$$GetAllAssetRemovalHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllAssetRemovalHeadersEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,14 +129,17 @@ class __$$GetAllAssetRemovalHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllAssetRemovalHeadersEventImpl
     implements GetAllAssetRemovalHeadersEvent {
-  const _$GetAllAssetRemovalHeadersEventImpl({required this.userID});
+  const _$GetAllAssetRemovalHeadersEventImpl(
+      {required this.userID, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'AssetRemovelRequestHeaderEvent.getAllAssetRemovalHeadersEvent(userID: $userID)';
+    return 'AssetRemovelRequestHeaderEvent.getAllAssetRemovalHeadersEvent(userID: $userID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -136,11 +147,13 @@ class _$GetAllAssetRemovalHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllAssetRemovalHeadersEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -153,30 +166,33 @@ class _$GetAllAssetRemovalHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllAssetRemovalHeadersEvent,
+    required TResult Function(String userID, String searchQuery)
+        getAllAssetRemovalHeadersEvent,
     required TResult Function() clearAssetRemovalHeaderEvent,
   }) {
-    return getAllAssetRemovalHeadersEvent(userID);
+    return getAllAssetRemovalHeadersEvent(userID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult? Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult? Function()? clearAssetRemovalHeaderEvent,
   }) {
-    return getAllAssetRemovalHeadersEvent?.call(userID);
+    return getAllAssetRemovalHeadersEvent?.call(userID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult Function()? clearAssetRemovalHeaderEvent,
     required TResult orElse(),
   }) {
     if (getAllAssetRemovalHeadersEvent != null) {
-      return getAllAssetRemovalHeadersEvent(userID);
+      return getAllAssetRemovalHeadersEvent(userID, searchQuery);
     }
     return orElse();
   }
@@ -221,10 +237,12 @@ class _$GetAllAssetRemovalHeadersEventImpl
 
 abstract class GetAllAssetRemovalHeadersEvent
     implements AssetRemovelRequestHeaderEvent {
-  const factory GetAllAssetRemovalHeadersEvent({required final String userID}) =
+  const factory GetAllAssetRemovalHeadersEvent(
+          {required final String userID, required final String searchQuery}) =
       _$GetAllAssetRemovalHeadersEventImpl;
 
   String get userID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllAssetRemovalHeadersEventImplCopyWith<
           _$GetAllAssetRemovalHeadersEventImpl>
@@ -274,7 +292,8 @@ class _$ClearAssetRemovalHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllAssetRemovalHeadersEvent,
+    required TResult Function(String userID, String searchQuery)
+        getAllAssetRemovalHeadersEvent,
     required TResult Function() clearAssetRemovalHeaderEvent,
   }) {
     return clearAssetRemovalHeaderEvent();
@@ -283,7 +302,8 @@ class _$ClearAssetRemovalHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult? Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult? Function()? clearAssetRemovalHeaderEvent,
   }) {
     return clearAssetRemovalHeaderEvent?.call();
@@ -292,7 +312,8 @@ class _$ClearAssetRemovalHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllAssetRemovalHeadersEvent,
+    TResult Function(String userID, String searchQuery)?
+        getAllAssetRemovalHeadersEvent,
     TResult Function()? clearAssetRemovalHeaderEvent,
     required TResult orElse(),
   }) {

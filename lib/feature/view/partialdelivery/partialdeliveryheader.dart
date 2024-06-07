@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -23,6 +25,10 @@ List<ApprovalStatusFilterModel> filterFieldsPartialDelivery = [
   ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
 ];
 
+String _selectedeMode = 'P';
+TextEditingController _SearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
   @override
   void initState() {
@@ -30,7 +36,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
         .read<PartialDeliveryHeaderBloc>()
         .add(const ClearPartialDeliveryHeaderEvent());
     context.read<PartialDeliveryHeaderBloc>().add(GetPartialDeliveryHeaderEvent(
-        userID: widget.user.usrId!, mode: '', searchQuery: ''));
+        userID: widget.user.usrId!, mode: 'P', searchQuery: ''));
     super.initState();
   }
 
@@ -67,120 +73,6 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
         },
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextFormField(
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      hintText: 'Search here..',
-                      suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.clear,
-                            size: 10.sp,
-                          )),
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                            .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                    ),
-                    onChanged: (value) {},
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: .5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: DropdownButtonFormField(
-                    elevation: 0,
-                    value: filterFieldsPartialDelivery[0].mode,
-                    dropdownColor: Colors.white,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
-                      border: /* InputBorder
-                            .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                    ),
-                    items: filterFieldsPartialDelivery
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e.mode,
-                            child: Text(e.statusName),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) {},
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -202,137 +94,378 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                     ),
                                 itemCount: 10),
                           )
-                        : ListView.separated(
-                            itemBuilder: (context, index) => GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            PArtialDeliveryDetails(
-                                          user: widget.user,
-                                          header: header[index],
+                        : Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: Card(
+                                  child: Container(
+                                    height: 30.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          spreadRadius: .5,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 2),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 10,
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xfffee8e0),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                      ),
-                                      SizedBox(
-                                        width: 10.w,
-                                      ),
-                                      Expanded(
-                                        child: Row(
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: TextFormField(
+                                      controller: _SearchCtrl,
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          color: Colors.black87),
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        hintText: 'Search here..',
+                                        suffix: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    header[index].orderId ?? '',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff2C6B9E),
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        '${header[index].cusCode} - ',
-                                                        style: kfontstyle(
-                                                          fontSize: 11.sp,
-                                                          color: const Color(
-                                                              0xff2C6B9E),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Text(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          header[index]
-                                                                  .cusName ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              color: const Color(
-                                                                  0xff413434)),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Text(
-                                                    header[index].createdDate ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.grey),
-                                                  ),
-                                                ],
-                                              ),
+                                              child: IconButton(
+                                                  onPressed: () {
+                                                    if (_SearchCtrl
+                                                        .text.isNotEmpty) {
+                                                      _SearchCtrl.clear();
+
+                                                      context
+                                                          .read<
+                                                              PartialDeliveryHeaderBloc>()
+                                                          .add(GetPartialDeliveryHeaderEvent(
+                                                              userID: widget
+                                                                  .user.usrId!,
+                                                              mode:
+                                                                  _selectedeMode,
+                                                              searchQuery: ''));
+                                                    }
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.clear,
+                                                    size: 10.sp,
+                                                  )),
                                             ),
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                color: header[index]
-                                                            .dahApprovalStatus!
-                                                            .isEmpty ||
-                                                        header[index]
-                                                                .dahApprovalStatus !=
-                                                            'Action Taken'
-                                                    ? header[index]
-                                                                .dahApprovalStatus ==
-                                                            'Rejected'
-                                                        ? Colors.red[300]
-                                                        : const Color(
-                                                            0xfff7f4e2)
-                                                    : const Color(0xffe3f7e2),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  20,
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 5),
-                                                child: Text(
-                                                  header[index]
-                                                          .dahApprovalStatus ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: header[index]
-                                                                  .dahApprovalStatus ==
-                                                              'Rejected'
-                                                          ? Colors.white54
-                                                          : Colors.black54),
-                                                ),
-                                              ),
+                                            SizedBox(
+                                              height: 10.h,
                                             )
                                           ],
                                         ),
+                                        prefixIcon: Icon(
+                                          Icons.search,
+                                          size: 14.sp,
+                                        ),
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                        border: /* InputBorder
+                                .none  */
+                                            OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
                                       ),
-                                    ],
+                                      onChanged: (value) {
+                                        debounce = Timer(
+                                            const Duration(
+                                              milliseconds: 500,
+                                            ), () async {
+                                          context
+                                              .read<PartialDeliveryHeaderBloc>()
+                                              .add(
+                                                  GetPartialDeliveryHeaderEvent(
+                                                      userID:
+                                                          widget.user.usrId!,
+                                                      mode: _selectedeMode,
+                                                      searchQuery: value));
+                                        });
+                                      },
+                                    ),
                                   ),
                                 ),
-                            separatorBuilder: (context, index) => Divider(
-                                  color: Colors.grey[300],
+                              ),
+                              SizedBox(
+                                height: 3.h,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: Card(
+                                  child: Container(
+                                    height: 30.h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          spreadRadius: .5,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 2),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: DropdownButtonFormField(
+                                      elevation: 0,
+                                      value:
+                                          filterFieldsPartialDelivery[0].mode,
+                                      dropdownColor: Colors.white,
+                                      style: kfontstyle(
+                                          fontSize: 10.sp,
+                                          color: Colors.black87),
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                        border: /* InputBorder
+                                .none  */
+                                            OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: const BorderSide(
+                                              color: Colors.transparent),
+                                        ),
+                                      ),
+                                      items: filterFieldsPartialDelivery
+                                          .map(
+                                            (e) => DropdownMenuItem(
+                                              value: e.mode,
+                                              child: Text(e.statusName),
+                                            ),
+                                          )
+                                          .toList(),
+                                      onChanged: (value) {
+                                        _selectedeMode = value!;
+                                        context
+                                            .read<PartialDeliveryHeaderBloc>()
+                                            .add(
+                                                const ClearPartialDeliveryHeaderEvent());
+                                        context
+                                            .read<PartialDeliveryHeaderBloc>()
+                                            .add(GetPartialDeliveryHeaderEvent(
+                                                userID: widget.user.usrId!,
+                                                mode: value,
+                                                searchQuery: ''));
+                                      },
+                                    ),
+                                  ),
                                 ),
-                            itemCount: header.length),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      _selectedeMode == 'P'
+                                          ? 'Pending Approvals'
+                                          : 'Approved Requests',
+                                      style: countHeading(),
+                                    ),
+                                    Text(
+                                      header.length.toString(),
+                                      style: countHeading(),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              Expanded(
+                                child: ListView.separated(
+                                    itemBuilder: (context, index) =>
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    PArtialDeliveryDetails(
+                                                  user: widget.user,
+                                                  header: header[index],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xfffee8e0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
+                                              Expanded(
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            header[index]
+                                                                    .orderId ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                              fontSize: 12.sp,
+                                                              color: const Color(
+                                                                  0xff2C6B9E),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                '${header[index].cusCode} - ',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      11.sp,
+                                                                  color: const Color(
+                                                                      0xff2C6B9E),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  header[index]
+                                                                          .cusName ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff413434)),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Text(
+                                                            header[index]
+                                                                    .createdDate ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                                fontSize: 10.sp,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        color: header[index]
+                                                                    .dahApprovalStatus!
+                                                                    .isEmpty ||
+                                                                header[index]
+                                                                        .dahApprovalStatus !=
+                                                                    'Action Taken'
+                                                            ? header[index]
+                                                                        .dahApprovalStatus ==
+                                                                    'Rejected'
+                                                                ? Colors
+                                                                    .red[300]
+                                                                : const Color(
+                                                                    0xfff7f4e2)
+                                                            : const Color(
+                                                                0xffe3f7e2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 8,
+                                                                vertical: 5),
+                                                        child: Text(
+                                                          header[index]
+                                                                  .dahApprovalStatus ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                              fontSize: 10.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: header[index]
+                                                                          .dahApprovalStatus ==
+                                                                      'Rejected'
+                                                                  ? Colors
+                                                                      .white54
+                                                                  : Colors
+                                                                      .black54),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    separatorBuilder: (context, index) =>
+                                        Divider(
+                                          color: Colors.grey[300],
+                                        ),
+                                    itemCount: header.length),
+                              ),
+                            ],
+                          ),
                     getPartialDeliveryFailed: () => Center(
                       child: Text(
                         'No Data Available',

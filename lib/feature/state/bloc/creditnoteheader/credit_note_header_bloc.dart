@@ -16,15 +16,34 @@ class CreditNoteHeaderBloc
   final ICreditNoteApprovalRepo creditNoteApprovalRepo;
   CreditNoteHeaderBloc(this.creditNoteApprovalRepo)
       : super(CreditNoteHeaderState.initial()) {
+    List<CreditNoteHeaderModel> searcheditems = [];
     on<GetAllCreditNoteHeadersEvent>((event, emit) async {
       Either<MainFailures, List<CreditNoteHeaderModel>> headers =
-          await creditNoteApprovalRepo
-              .getCreditNoteApprovalHeaders(event.userId);
+          await creditNoteApprovalRepo.getCreditNoteApprovalHeaders(
+              event.userId, event.mode);
 
       emit(
         headers.fold(
           (l) => const CreditNoteHeaderFailedState(),
-          (r) => GetCreditNoteHeadersState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    (element.cnhNumber ?? '')
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    (element.cusCode ?? '')
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    (element.cusName ?? '')
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetCreditNoteHeadersState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

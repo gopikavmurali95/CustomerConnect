@@ -60,7 +60,7 @@ class _ScheduledReturnDetailScreenState
         .add(const ClearScheduledReturnDetailsEvent());
     context.read<ScheduledReturnDetailsBloc>().add(
         GetAllScheduledReturnDetailsEvent(
-            reqID: widget.scheduledreturn.rrhId ?? ''));
+            reqID: widget.scheduledreturn.rrhId ?? '', searchQuery: ''));
 
     super.initState();
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -23,7 +25,20 @@ List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
   ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
 ];
 
+String _selectedPriceChangeMode = 'P';
+
+Timer? debounce;
+TextEditingController _priceChangeHeaderSearchCtrl = TextEditingController();
+
 class _PriceChangeHeaderState extends State<PriceChangeHeader> {
+  @override
+  void initState() {
+    context.read<PriceChangeHeaderBloc>().add(const ClearPriceChangeHeader());
+    context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
+        rotID: widget.user.usrId!, mode: 'P', searchQuery: ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,24 +106,55 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: TextFormField(
+                                  controller: _priceChangeHeaderSearchCtrl,
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.black87),
                                   decoration: InputDecoration(
                                     isDense: true,
                                     hintText: 'Search here..',
-                                    suffixIcon: IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.clear,
-                                          size: 10.sp,
-                                        )),
-                                    prefixIcon: const Icon(Icons.search),
+                                    suffix: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: IconButton(
+                                              onPressed: () {
+                                                if (_priceChangeHeaderSearchCtrl
+                                                    .text.isNotEmpty) {
+                                                  _priceChangeHeaderSearchCtrl
+                                                      .clear();
+
+                                                  context
+                                                      .read<
+                                                          PriceChangeHeaderBloc>()
+                                                      .add(GetPriceChangeHeaderEvent(
+                                                          rotID: widget
+                                                              .user.usrId!,
+                                                          mode:
+                                                              _selectedPriceChangeMode,
+                                                          searchQuery: ''));
+                                                }
+                                              },
+                                              icon: Icon(
+                                                Icons.clear,
+                                                size: 10.sp,
+                                              )),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        )
+                                      ],
+                                    ),
+                                    prefixIcon: Icon(
+                                      Icons.search,
+                                      size: 14.sp,
+                                    ),
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 10),
                                     border: /* InputBorder
-                            .none  */
+                                .none  */
                                         OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
@@ -125,7 +171,18 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                           color: Colors.transparent),
                                     ),
                                   ),
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    debounce = Timer(
+                                        const Duration(
+                                          milliseconds: 500,
+                                        ), () async {
+                                      context.read<PriceChangeHeaderBloc>().add(
+                                          GetPriceChangeHeaderEvent(
+                                              rotID: widget.user.usrId!,
+                                              mode: _selectedPriceChangeMode,
+                                              searchQuery: value));
+                                    });
+                                  },
                                 ),
                               ),
                             ),
@@ -162,7 +219,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 10),
                                     border: /* InputBorder
-                            .none  */
+                                .none  */
                                         OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: const BorderSide(
@@ -187,9 +244,41 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                         ),
                                       )
                                       .toList(),
-                                  onChanged: (value) {},
+                                  onChanged: (value) {
+                                    _selectedPriceChangeMode = value!;
+                                    context
+                                        .read<PriceChangeHeaderBloc>()
+                                        .add(const ClearPriceChangeHeader());
+
+                                    context.read<PriceChangeHeaderBloc>().add(
+                                        GetPriceChangeHeaderEvent(
+                                            rotID: widget.user.usrId!,
+                                            mode: value,
+                                            searchQuery: ''));
+                                  },
                                 ),
                               ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  _selectedPriceChangeMode == 'P'
+                                      ? 'Pending Approvals'
+                                      : 'Approved Requests',
+                                  style: countHeading(),
+                                ),
+                                Text(
+                                  pChange.length.toString(),
+                                  style: countHeading(),
+                                )
+                              ],
                             ),
                           ),
                           SizedBox(
@@ -210,9 +299,12 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     PriceChangeDetail(
-                                                        priceChangeApprovel:
-                                                            pChange[index],
-                                                        user: widget.user)));
+                                                      priceChangeApprovel:
+                                                          pChange[index],
+                                                      user: widget.user,
+                                                      currentMode:
+                                                          _selectedPriceChangeMode,
+                                                    )));
                                       },
                                       child: Row(
                                         children: [

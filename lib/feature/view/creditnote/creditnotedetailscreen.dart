@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/credit_note_header_model/credit_note_header_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
@@ -15,14 +17,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CreditNoteDetailScreen extends StatefulWidget {
   final CreditNoteHeaderModel creditNote;
   final LoginUserModel user;
+  final String currentMode;
   const CreditNoteDetailScreen(
-      {super.key, required this.creditNote, required this.user});
+      {super.key,
+      required this.creditNote,
+      required this.user,
+      required this.currentMode});
 
   @override
   State<CreditNoteDetailScreen> createState() => _CreditNoteDetailScreenState();
 }
 
 TextEditingController _remarksctrls = TextEditingController();
+TextEditingController _creditDetailtrls = TextEditingController();
+Timer? debounce;
 
 class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
   @override
@@ -32,9 +40,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
     context
         .read<CreditNoteDetailBloc>()
         .add(const ClearCreditNoteDetailEvent());
-    context
-        .read<CreditNoteDetailBloc>()
-        .add(GetCreditNoteDetailsEvent(reqId: widget.creditNote.cnhId ?? ''));
+    context.read<CreditNoteDetailBloc>().add(GetCreditNoteDetailsEvent(
+        reqId: widget.creditNote.cnhId ?? '', searchQuery: ''));
     super.initState();
   }
 
@@ -68,8 +75,10 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
-          context.read<CreditNoteHeaderBloc>().add(
-              GetAllCreditNoteHeadersEvent(userId: widget.user.usrId ?? ''));
+          context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
+              userId: widget.user.usrId ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
         },
         child: BlocConsumer<CreditNoteApprovalAndRejectBloc,
             CreditNoteApprovalAndRejectState>(
@@ -154,6 +163,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
           builder: (context, state) {
             return Column(
               children: [
+                SizedBox(
+                  height: 3.h,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
@@ -248,6 +260,99 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                 Divider(
                   color: Colors.grey[200],
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Card(
+                    child: Container(
+                      height: 30.h,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: .5,
+                            blurRadius: 5,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        controller: _creditDetailtrls,
+                        style:
+                            kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                        decoration: InputDecoration(
+                          isDense: true,
+                          hintText: 'Search here..',
+                          suffix: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: IconButton(
+                                    onPressed: () {
+                                      if (_creditDetailtrls.text.isNotEmpty) {
+                                        _creditDetailtrls.clear();
+
+                                        context
+                                            .read<CreditNoteDetailBloc>()
+                                            .add(GetCreditNoteDetailsEvent(
+                                                reqId:
+                                                    widget.creditNote.cnhId ??
+                                                        '',
+                                                searchQuery: ''));
+                                      }
+                                    },
+                                    icon: Icon(
+                                      Icons.clear,
+                                      size: 10.sp,
+                                    )),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              )
+                            ],
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            size: 14.sp,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10),
+                          border: /* InputBorder
+                                .none  */
+                              OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          debounce = Timer(
+                              const Duration(
+                                milliseconds: 500,
+                              ), () async {
+                            context.read<CreditNoteDetailBloc>().add(
+                                GetCreditNoteDetailsEvent(
+                                    reqId: widget.creditNote.cnhId ?? '',
+                                    searchQuery: value.trim()));
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 5.h,
                 ),
@@ -318,102 +423,122 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                         ),
                                     itemCount: 10),
                               )
-                            : ListView.separated(
-                                itemBuilder: (context, index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  details[index].invInvoiceId ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color:
-                                                        const Color(0xff7b70ac),
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  details[index].prdName ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Row(
+                            : details.isEmpty
+                                ? Center(
+                                    child: Text(
+                                      'No Data Available',
+                                      style: kfontstyle(),
+                                    ),
+                                  )
+                                : ListView.separated(
+                                    itemBuilder: (context, index) => Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Column(
-                                                children: [
-                                                  Text(
-                                                    details[index].huom ?? '',
-                                                    style: kfontstyle(
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      details[index]
+                                                              .invInvoiceId ??
+                                                          '',
+                                                      style: kfontstyle(
                                                         fontSize: 12.sp,
+                                                        color: const Color(
+                                                            0xff7b70ac),
                                                         fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      details[index].prdName ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color:
+                                                              Colors.black54),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Text(
+                                                        details[index].huom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10.h,
+                                                      ),
+                                                      Text(
+                                                        details[index].luom ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                    ],
                                                   ),
                                                   SizedBox(
-                                                    height: 10.h,
+                                                    width: 50.w,
                                                   ),
-                                                  Text(
-                                                    details[index].luom ?? '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                width: 50.w,
-                                              ),
-                                              Column(
-                                                children: [
-                                                  Text(
-                                                    details[index].crdHQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  Text(
-                                                    details[index].crdLQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                  Column(
+                                                    children: [
+                                                      Text(
+                                                        details[index]
+                                                                .crdHQty ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10.h,
+                                                      ),
+                                                      Text(
+                                                        details[index]
+                                                                .crdLQty ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
-                                              ),
+                                              )
                                             ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                separatorBuilder: (context, index) => Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                itemCount: details.length),
+                                          ),
+                                        ),
+                                    separatorBuilder: (context, index) =>
+                                        Divider(
+                                          color: Colors.grey[300],
+                                        ),
+                                    itemCount: details.length),
                         creditNoteDetailFailedState: () => Center(
                           child: Text(
                             'No Data Available',

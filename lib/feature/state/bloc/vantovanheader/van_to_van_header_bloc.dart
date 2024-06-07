@@ -17,15 +17,34 @@ class VanToVanHeaderBloc
   VanToVanHeaderBloc(this.vantovanheader)
       : super(VanToVanHeaderState.initial()) {
     on<getVanToVanHeaderEvent>((event, emit) async {
+      List<VanToVanHeaderModel> searcheditems = [];
       Either<MainFailures, List<VanToVanHeaderModel>> headers =
-          await vantovanheader.getVanToVanApprovalHeader(event.userID);
+          await vantovanheader.getVanToVanApprovalHeader(
+              event.userID, event.mode);
 
       emit(
         headers.fold(
           (l) => const VanToVanHeaderFailedstate(),
-          (r) => GettVanToVanHeaderState(
-            headers: r,
-          ),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.vvhTransId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.vvhFromRot!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.vvhToRot!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GettVanToVanHeaderState(
+              headers: event.searchQuery.isEmpty ? r : searcheditems,
+            );
+          },
         ),
       );
     });

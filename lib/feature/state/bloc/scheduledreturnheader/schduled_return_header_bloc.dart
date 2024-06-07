@@ -18,13 +18,32 @@ class SchduledReturnHeaderBloc
       : super(SchduledReturnHeaderState.initial()) {
     on<GetAllScheduledReturnHeadersEvent>((event, emit) async {
       Either<MainFailures, List<SheduledReturnHeaderModel>> headers =
-          await scheduledReturnApprovalRepo
-              .getScheduledReturnApprovalHeaders(event.userID);
+          await scheduledReturnApprovalRepo.getScheduledReturnApprovalHeaders(
+              event.userID, event.mode);
 
+      List<SheduledReturnHeaderModel> searcheditems = [];
       emit(
         headers.fold(
           (l) => const ScheduledRetunrHEadersFailedState(),
-          (r) => GetScheduledReturnHeadersState(headers: r),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.rrhId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetScheduledReturnHeadersState(
+                headers: event.searchQuery.isEmpty ? r : searcheditems);
+          },
         ),
       );
     });

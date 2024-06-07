@@ -15,11 +15,11 @@ import 'package:injectable/injectable.dart';
 class LoadTransferApprovalRepo implements ILoadTransferApprovalRepo {
   @override
   Future<Either<MainFailures, List<LoadTransferApprovalHeaderModel>>>
-      getLoadTransferHeaders(String userID) async {
+      getLoadTransferHeaders(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + loadTransferHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

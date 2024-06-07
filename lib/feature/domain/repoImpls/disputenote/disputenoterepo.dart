@@ -17,11 +17,11 @@ import 'package:injectable/injectable.dart';
 class DisputeNoteApprovalRepo implements IDisputeNoteApprovalRepo {
   @override
   Future<Either<MainFailures, List<DisputeNoteHeaderModel>>>
-      getDisputeNoteApprovalHeaders(String userID) async {
+      getDisputeNoteApprovalHeaders(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + disputeNoteApprovalHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

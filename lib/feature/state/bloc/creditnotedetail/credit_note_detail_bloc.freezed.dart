@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CreditNoteDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getCreditNoteDetailsEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getCreditNoteDetailsEvent,
     required TResult Function() clearCreditNoteDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult? Function()? clearCreditNoteDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult Function()? clearCreditNoteDetailEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetCreditNoteDetailsEventImplCopyWith<$Res> {
           $Res Function(_$GetCreditNoteDetailsEventImpl) then) =
       __$$GetCreditNoteDetailsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqId});
+  $Res call({String reqId, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,16 @@ class __$$GetCreditNoteDetailsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetCreditNoteDetailsEventImpl(
       reqId: null == reqId
           ? _value.reqId
           : reqId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -118,14 +126,17 @@ class __$$GetCreditNoteDetailsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCreditNoteDetailsEventImpl implements GetCreditNoteDetailsEvent {
-  const _$GetCreditNoteDetailsEventImpl({required this.reqId});
+  const _$GetCreditNoteDetailsEventImpl(
+      {required this.reqId, required this.searchQuery});
 
   @override
   final String reqId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'CreditNoteDetailEvent.getCreditNoteDetailsEvent(reqId: $reqId)';
+    return 'CreditNoteDetailEvent.getCreditNoteDetailsEvent(reqId: $reqId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -133,11 +144,13 @@ class _$GetCreditNoteDetailsEventImpl implements GetCreditNoteDetailsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCreditNoteDetailsEventImpl &&
-            (identical(other.reqId, reqId) || other.reqId == reqId));
+            (identical(other.reqId, reqId) || other.reqId == reqId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqId);
+  int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +162,33 @@ class _$GetCreditNoteDetailsEventImpl implements GetCreditNoteDetailsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getCreditNoteDetailsEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getCreditNoteDetailsEvent,
     required TResult Function() clearCreditNoteDetailEvent,
   }) {
-    return getCreditNoteDetailsEvent(reqId);
+    return getCreditNoteDetailsEvent(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult? Function()? clearCreditNoteDetailEvent,
   }) {
-    return getCreditNoteDetailsEvent?.call(reqId);
+    return getCreditNoteDetailsEvent?.call(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult Function()? clearCreditNoteDetailEvent,
     required TResult orElse(),
   }) {
     if (getCreditNoteDetailsEvent != null) {
-      return getCreditNoteDetailsEvent(reqId);
+      return getCreditNoteDetailsEvent(reqId, searchQuery);
     }
     return orElse();
   }
@@ -216,10 +232,12 @@ class _$GetCreditNoteDetailsEventImpl implements GetCreditNoteDetailsEvent {
 }
 
 abstract class GetCreditNoteDetailsEvent implements CreditNoteDetailEvent {
-  const factory GetCreditNoteDetailsEvent({required final String reqId}) =
-      _$GetCreditNoteDetailsEventImpl;
+  const factory GetCreditNoteDetailsEvent(
+      {required final String reqId,
+      required final String searchQuery}) = _$GetCreditNoteDetailsEventImpl;
 
   String get reqId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCreditNoteDetailsEventImplCopyWith<_$GetCreditNoteDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -267,7 +285,8 @@ class _$ClearCreditNoteDetailEventImpl implements ClearCreditNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getCreditNoteDetailsEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getCreditNoteDetailsEvent,
     required TResult Function() clearCreditNoteDetailEvent,
   }) {
     return clearCreditNoteDetailEvent();
@@ -276,7 +295,8 @@ class _$ClearCreditNoteDetailEventImpl implements ClearCreditNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult? Function()? clearCreditNoteDetailEvent,
   }) {
     return clearCreditNoteDetailEvent?.call();
@@ -285,7 +305,8 @@ class _$ClearCreditNoteDetailEventImpl implements ClearCreditNoteDetailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getCreditNoteDetailsEvent,
+    TResult Function(String reqId, String searchQuery)?
+        getCreditNoteDetailsEvent,
     TResult Function()? clearCreditNoteDetailEvent,
     required TResult orElse(),
   }) {

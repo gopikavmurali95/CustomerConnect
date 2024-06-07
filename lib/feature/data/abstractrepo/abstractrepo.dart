@@ -51,6 +51,11 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_header_model/inventory_reconfirm_header_model.dart';
+import 'package:customer_connect/feature/data/models/inventory_reconfirm_reason_model/inventory_reconfirm_reason_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_footer_model/invoice_details_footer_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
@@ -246,8 +251,8 @@ abstract class ICusProfileRepo {
 abstract class ISalesOrdersRepo {
   Future<Either<MainFailures, List<SalesOrdersModel>>> getSalesOrders(
       SalesOrdersInModel salesIn);
-      Future<Either<MainFailures, List<SalesOrderDetailsModel>>> getSalesOrderdetails(
-      SalesOrderDetailsInparasModel salesInparas);
+  Future<Either<MainFailures, List<SalesOrderDetailsModel>>>
+      getSalesOrderdetails(SalesOrderDetailsInparasModel salesInparas);
 }
 
 abstract class ICusOutstandingRepo {
@@ -330,7 +335,7 @@ abstract class INotificationRepo {
 
 abstract class IPriceChangeRepo {
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
-      String rotID);
+      String rotID, String mode);
   Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
       priceChangeDetails(String pchID);
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
@@ -343,7 +348,7 @@ abstract class IPriceChangeRepo {
 
 abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, List<ReturnApprovalHeaderModel>>>
-      getReturnApprovalHeaders(String rotID);
+      getReturnApprovalHeaders(String rotID, String mode);
   Future<Either<MainFailures, List<ReturnApprovalDetailModel>>>
       getReturnApprovalDetails(String reqID, String mode);
   Future<Either<MainFailures, List<ApprovalResonModel>>>
@@ -358,7 +363,7 @@ abstract class IReturnApprovalRepo {
 
 abstract class IDisputeNoteApprovalRepo {
   Future<Either<MainFailures, List<DisputeNoteHeaderModel>>>
-      getDisputeNoteApprovalHeaders(String userID);
+      getDisputeNoteApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<DisputeNoteDetailModel>>>
       getDisputeApprovalDetails(String reqID);
@@ -374,7 +379,7 @@ abstract class IDisputeNoteApprovalRepo {
 
 abstract class ICreditNoteApprovalRepo {
   Future<Either<MainFailures, List<CreditNoteHeaderModel>>>
-      getCreditNoteApprovalHeaders(String userID);
+      getCreditNoteApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<CreditNoteDetailModel>>>
       getCreditApprovalDetails(String reqID);
@@ -390,7 +395,7 @@ abstract class ICreditNoteApprovalRepo {
 
 abstract class IScheduledReturnApprovalRepo {
   Future<Either<MainFailures, List<SheduledReturnHeaderModel>>>
-      getScheduledReturnApprovalHeaders(String userID);
+      getScheduledReturnApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
       getScheduledReturnApprovalDetails(String reqID);
@@ -415,7 +420,7 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
 abstract class IPartialDeliveryRepo {
   Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
-      partialDeliveryList(String userID);
+      partialDeliveryList(String userID, String mode);
   Future<Either<MainFailures, List<PartialDeliveryDetailsModel>>>
       partialDeliveryDetails(String reqID);
   Future<Either<MainFailures, List<PartialDeliveryReasonModel>>>
@@ -428,7 +433,7 @@ abstract class IPartialDeliveryRepo {
 
 abstract class IVanToVanApprovalRepo {
   Future<Either<MainFailures, List<VanToVanHeaderModel>>>
-      getVanToVanApprovalHeader(String userID);
+      getVanToVanApprovalHeader(String userID, String mode);
 
   Future<Either<MainFailures, List<VanToVanDetailsModel>>>
       getVanToVanApprovalDetails(String reqID);
@@ -460,7 +465,7 @@ abstract class IAssetRemovalRequestRepo {
 
 abstract class ILoadTransferApprovalRepo {
   Future<Either<MainFailures, List<LoadTransferApprovalHeaderModel>>>
-      getLoadTransferHeaders(String userID);
+      getLoadTransferHeaders(String userID, String mode);
   Future<Either<MainFailures, List<LoadTransferDetailModel>>>
       getLoadTransferDetails(String reqID);
   Future<Either<MainFailures, LoadTransferApprovalOutModel>>
@@ -512,4 +517,16 @@ abstract class ILoadRequestApprovalRepo {
 abstract class IApprovalCountsRepo {
   Future<Either<MainFailures, ApprovalCountModel>> approvalsCount(
       String userID);
+}
+
+abstract class IinvetoryReconfirmationApprovalRepo {
+  Future<Either<MainFailures, List<InventoryReconfirmHeaderModel>>>
+      getInventoryReconfirmHeaders(String mode);
+  Future<Either<MainFailures, List<InventoryReconfirmDetailModel>>>
+      getinventoryReconfirmDetail(String reqId);
+
+  Future<Either<MainFailures, InventoryReconfirmApprovalRespModel>>
+      inventoryReconfromApprove(InventoryReconfirmApproveInModel approve);
+  Future<Either<MainFailures, List<InventoryReconfirmReasonModel>>>
+      getinventoryReconfirmReasons();
 }

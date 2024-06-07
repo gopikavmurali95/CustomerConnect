@@ -45,11 +45,11 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
 
   @override
   Future<Either<MainFailures, List<ReturnApprovalHeaderModel>>>
-      getReturnApprovalHeaders(String rotID) async {
+      getReturnApprovalHeaders(String rotID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + returnApprovalsHeaderUrl),
-          body: {"UserID": rotID});
+          body: {"UserID": rotID, "Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> returnheaderdata = json['result'];

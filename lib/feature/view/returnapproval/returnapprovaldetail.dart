@@ -49,7 +49,8 @@ class _ReturnApprovalDetailScreenState
         .add(const ClearReturnDetailEvent());
     context.read<ReturnApprovalDetailBloc>().add(GetReturnApprovalDetailEvennt(
         reqID: widget.returnApprovel.rahId ?? '',
-        mode: widget.returnApprovel.mode ?? ''));
+        mode: widget.returnApprovel.mode ?? '',
+        searchQuery: ''));
 
     super.initState();
   }
