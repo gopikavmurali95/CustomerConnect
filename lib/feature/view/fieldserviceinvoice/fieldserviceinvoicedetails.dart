@@ -491,7 +491,7 @@ class FieldServiceInvoiceDetailsState
                             onPressed: () {
                               context.read<FieldServiceHeaderBloc>().add(
                                   GetAllFieldServiceHeadersEvent(
-                                      userId: widget.header.userID ?? ''));
+                                      userId: widget.header.userID ?? '', searchQuery: ''));
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },

@@ -29,7 +29,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Text(
                       'Invoice No.',
-                      style: kfontstyle(fontSize: 10.sp, color: Colors.black),
+                      style: boxHeading(),
                     ),
                   ),
                   Flexible(
@@ -37,7 +37,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Text(
                       'Date',
-                      style: kfontstyle(fontSize: 10.sp, color: Colors.black),
+                      style: boxHeading(),
                     ),
                   ),
                   Flexible(
@@ -45,7 +45,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Text(
                       'Inv Amt',
-                      style: kfontstyle(fontSize: 10.sp, color: Colors.black),
+                      style: boxHeading(),
                     ),
                   ),
                   Flexible(
@@ -53,7 +53,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Text(
                       'Alct Amt',
-                      style: kfontstyle(fontSize: 10.sp, color: Colors.black),
+                      style: boxHeading(),
                     ),
                   ),
                 ],
@@ -109,9 +109,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                     ardetails[index]
                                                             .invoiceId ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.black),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                 ),
                                                 Flexible(
@@ -121,9 +119,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                     ardetails[index]
                                                             .invoicedOn ??
                                                         '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.black),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                 ),
                                                 Flexible(
@@ -133,9 +129,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                     ardetails[index]
                                                             .invoiceAmount ??
                                                         "",
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.black),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                 ),
                                                 Flexible(
@@ -146,9 +140,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                                                             .amountPaid ??
                                                         "",
                                                     textAlign: TextAlign.end,
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.black),
+                                                    style: subTitleTextStyle(),
                                                   ),
                                                 ),
                                               ],

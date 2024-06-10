@@ -1,12 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
-
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -78,27 +74,18 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    invdetails[index].prhCode ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      color: const Color(
-                                                          0xff2C6B9E),
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
+                                                      invdetails[index]
+                                                              .prhCode ??
+                                                          '',
+                                                      style: loadTextStyle()),
                                                   SizedBox(
                                                     width: 180.w,
                                                     child: Text(
-                                                      invdetails[index]
-                                                              .prhName ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                          fontSize: 10.sp,
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    ),
+                                                        invdetails[index]
+                                                                .prhName ??
+                                                            '',
+                                                        style:
+                                                            subTitleTextStyle()),
                                                   ),
                                                 ],
                                               ),
@@ -130,15 +117,11 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                           ? false
                                                           : true,
                                                       child: Text(
-                                                        invdetails[index]
-                                                                .hUom ??
-                                                            '',
-                                                        style: kfontstyle(
-                                                            fontSize: 10.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      ),
+                                                          invdetails[index]
+                                                                  .hUom ??
+                                                              '',
+                                                          style:
+                                                              subTitleTextStyle()),
                                                     ),
                                                     SizedBox(
                                                       height: 5.h,
@@ -153,15 +136,11 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                           ? false
                                                           : true,
                                                       child: Text(
-                                                        invdetails[index]
-                                                                .lUom ??
-                                                            '',
-                                                        style: kfontstyle(
-                                                            fontSize: 10.sp,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      ),
+                                                          invdetails[index]
+                                                                  .lUom ??
+                                                              '',
+                                                          style:
+                                                              subTitleTextStyle()),
                                                     ),
                                                   ],
                                                 ),
@@ -173,22 +152,16 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                             Column(
                                               children: [
                                                 Text(
-                                                  invdetails[index].hQty ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
+                                                    invdetails[index].hQty ??
+                                                        '',
+                                                    style: subTitleTextStyle()),
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
                                                 Text(
-                                                  invdetails[index].lQty ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
+                                                    invdetails[index].lQty ??
+                                                        '',
+                                                    style: subTitleTextStyle()),
                                               ],
                                             ),
                                           ],

@@ -17,11 +17,25 @@ class LoadTransferDetailBloc
   LoadTransferDetailBloc(this.loadTransferApprovalRepo)
       : super(LoadTransferDetailState.initial()) {
     on<GetAllLoadTransferDetailEvent>((event, emit) async {
+      List<LoadTransferDetailModel> searchedItems = [];
       Either<MainFailures, List<LoadTransferDetailModel>> details =
           await loadTransferApprovalRepo.getLoadTransferDetails(event.reqID);
 
-      emit(details.fold((l) => const LoadTransferDetailFailedState(),
-          (r) => GetLoadTransferDetailState(details: r)));
+      emit(details.fold((l) => const LoadTransferDetailFailedState(), (r) {
+        searchedItems = r
+            .where((element) =>
+                (element.prdCode ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.prdName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return GetLoadTransferDetailState(
+            details: event.searchQuery.isEmpty ? r : searchedItems);
+      }));
     });
     on<ClearLoadTransferDetailEvent>((event, emit) {
       emit(const GetLoadTransferDetailState(details: null));

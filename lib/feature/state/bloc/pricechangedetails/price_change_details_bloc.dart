@@ -26,7 +26,7 @@ class PriceChangeDetailsBloc
           (r) {
             searcheditems = r
                 .where((element) =>
-                    element.pcdPchId!
+                    element.prdCode!
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||

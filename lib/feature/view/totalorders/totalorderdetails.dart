@@ -80,26 +80,13 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.totalorders.orderId ?? '',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          Text(widget.totalorders.orderId ?? '',
+                              style: blueTextStyle()),
                           Row(
                             children: [
                               Text(
-                                widget.totalorders.cusCode ?? '',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Text(
-                                ' - ',
-                                style: kfontstyle(
+                                '${widget.totalorders.cusCode} - ',
+                                style: TextStyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
@@ -108,9 +95,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
                                   widget.totalorders.cusName ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
+                                  style: subTitleTextStyle(),
                                 ),
                               ),
                             ],
@@ -118,22 +103,14 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                           Row(
                             children: [
                               Text(
-                                widget.totalorders.cshCode ?? '',
-                                style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                              Text(
-                                ' - ',
-                                style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xff413434)),
+                                '${widget.totalorders.cshCode} - ',
+                                style: subTitleTextStyle(),
                               ),
                               Expanded(
                                 child: Text(
                                   widget.totalorders.cshName ?? '',
                                   overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 12.sp),
+                                  style: subTitleTextStyle(),
                                 ),
                               ),
                             ],
@@ -156,7 +133,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          widget.totalorders.status ?? '',
+                          getstatus(widget.totalorders.status ?? ''),
                           style: kfontstyle(
                               fontSize: 10.sp, color: const Color(0xff413434)),
                         ),
@@ -246,7 +223,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('items'),
+                  /* const ,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -259,7 +236,19 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                       ),
                       const Text('Qty'),
                     ],
-                  ),
+                  ), */
+                  Flexible(
+                      flex: 4,
+                      fit: FlexFit.tight,
+                      child: Text('items', style: boxHeading())),
+                  Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Text('UOM', style: boxHeading())),
+                  Flexible(
+                      flex: 0,
+                      fit: FlexFit.tight,
+                      child: Text('Qty', style: boxHeading()))
                 ],
               ),
             ),
@@ -284,16 +273,26 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
             children: [
               Text(
                 'Total Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
               Text(
                 widget.totalorders.grandTotal ?? '',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
               )
             ],
           ),
         ),
       ),
     );
+  }
+
+  getstatus(String status) {
+    String s = status.toUpperCase().toLowerCase().startsWith('q')
+        ? "QN"
+        : status.toUpperCase().toLowerCase().startsWith('o')
+            ? "SO"
+            : status.split('').toList()[0];
+
+    return s;
   }
 }

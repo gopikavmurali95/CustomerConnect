@@ -80,48 +80,29 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '${widget.todaysdelivery.orderId}',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          Text('${widget.todaysdelivery.orderId}',
+                              style: blueTextStyle()),
                           Row(
                             children: [
-                              Text(
-                                '${widget.todaysdelivery.cusCode} - ',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
+                              Text('${widget.todaysdelivery.cusCode} - ',
+                                  style: subTitleTextStyle()),
                               Expanded(
                                 child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  '${widget.todaysdelivery.cusName}',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
+                                    overflow: TextOverflow.ellipsis,
+                                    '${widget.todaysdelivery.cusName}',
+                                    style: subTitleTextStyle()),
                               ),
                             ],
                           ),
                           Row(
                             children: [
-                              Text(
-                                '${widget.todaysdelivery.cusOutCode} - ',
-                                style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    color: const Color(0xff413434)),
-                              ),
+                              Text('${widget.todaysdelivery.cusOutCode} - ',
+                                  style: subTitleTextStyle()),
                               Expanded(
                                 child: Text(
-                                  '${widget.todaysdelivery.cusOutName}',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 13.sp),
-                                ),
+                                    '${widget.todaysdelivery.cusOutName}',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: subTitleTextStyle()),
                               ),
                             ],
                           ),

@@ -145,55 +145,6 @@ class _SpecialPricingState extends State<SpecialPricing> {
                   ),
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.only(bottom: 10),
-              //   height: 60,
-              //   color: Colors.white,
-              //   child: ListTile(
-              //     onTap: () {
-              //       // Navigator.push(
-              //       //   context,
-              //       //   MaterialPageRoute(
-              //       //     builder: (context) => const LoadDetailPending(),
-              //       //   ),
-              //       // );
-              //     },
-              //     titleAlignment: ListTileTitleAlignment.center,
-              //     minVerticalPadding:5,
-              //     minLeadingWidth: 50,
-              //     //titleAlignment:ListTileTitleAlignment.center,
-              //     horizontalTitleGap: 10,
-              //     leading: Padding(
-              //       padding: const EdgeInsets.only(bottom:5.0,),
-              //       child: CircleAvatar(
-              //         radius: 30,
-              //         backgroundColor: const Color(0xffA4C8E9),
-              //         child: Image.asset(
-              //           "assets/images/listicon.png",
-              //           height: 20,
-              //         ),
-              //       ),
-              //     ),
-              //     title: Text(
-              //       "Special Pricing 0${1}",
-              //       style: blueTextStyle(),
-              //     ),
-              //     subtitle: Padding(
-              //         padding: const EdgeInsets.only(bottom: 10.0,),
-              //         child: Column(
-              //           mainAxisAlignment: MainAxisAlignment.start,
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text("21 Feb 2021 to 24 Feb 2024 ",style:subTitleTextStyle(),),
-              //             Text("PR12001",style: subTitleTextStyle(),)
-              //           ],
-              //         )
-              //     ),
-              //     trailing: Text("Customers >",style: TextStyle(
-              //         fontSize: 10,color: Colors.grey
-              //     ),),
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.only(
                     top: 5, left: 15.0, right: 15, bottom: 10),

@@ -25,6 +25,24 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
   @override
   void initState() {
     _todaysDeliverySearchCtrl.clear();
+    context.read<TodaysDeliveryHeaderBloc>().add(const ClearTodaysDelivery());
+    context.read<TodaysDeliveryHeaderBloc>().add(
+          GetTodaysDeliveryEvent(
+            todaysdelivery: TodaysDeliveryInParas(
+                area: '',
+                customer: '',
+                customerOutlet: '',
+                fromDate: 
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                mode: '',
+                route: '',
+                subArea: '',
+                toDate:
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                userId: widget.user.usrId),
+            searchQuery: '',
+          ),
+        );
     super.initState();
   }
 

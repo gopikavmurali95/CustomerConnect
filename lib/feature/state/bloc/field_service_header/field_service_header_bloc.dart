@@ -16,6 +16,7 @@ class FieldServiceHeaderBloc
   final IFieldServiceInvoiceApprovalRepo fieldServiceInvoiceApprovalRepo;
   FieldServiceHeaderBloc(this.fieldServiceInvoiceApprovalRepo)
       : super(FieldServiceHeaderState.initial()) {
+    List<FieldServiceInvoiceHeaderModel> searchlistitems = [];
     on<GetAllFieldServiceHeadersEvent>((event, emit) async {
       Either<MainFailures, List<FieldServiceInvoiceHeaderModel>> headers =
           await fieldServiceInvoiceApprovalRepo
@@ -24,7 +25,20 @@ class FieldServiceHeaderBloc
       emit(
         headers.fold(
           (l) => const FieldServiceInvoiceHeaderFailedState(),
-          (r) => GetFieldServiceInvoiceHEadersState(headers: r),
+          (r) {
+            {
+              searchlistitems = r.where((element) =>
+              element.userID!
+                  .toLowerCase().
+              toUpperCase().
+              contains(event.searchQuery.toUpperCase())||
+                  element.rotID!.
+                  toLowerCase().
+                  toUpperCase().
+                  contains(event.searchQuery.toUpperCase())).toList();
+              return  GetFieldServiceInvoiceHEadersState(headers: event.searchQuery.isEmpty ? r :searchlistitems);
+            }
+          },
         ),
       );
     });

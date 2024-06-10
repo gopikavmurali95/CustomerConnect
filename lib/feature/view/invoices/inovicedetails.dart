@@ -64,7 +64,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          "Invoice Detail",
+          "Invoice Details",
           style: appHeading(),
         ),
         actions: [
@@ -85,11 +85,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,97 +95,36 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           Row(
                             children: [
                               Text(
-                                widget.invoiceheader.cusCode ?? '',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Text(
-                                ' - ',
-                                style: kfontstyle(
+                                '${widget.invoiceheader.cusCode} ',
+                                style: TextStyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  widget.invoiceheader.cusName ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 11.sp,
-                                      color: const Color(0xff413434)),
-                                ),
+                                    overflow: TextOverflow.ellipsis,
+                                    widget.invoiceheader.cusName ?? '',
+                                    style: subTitleTextStyle()),
                               ),
                             ],
                           ),
                           Row(
                             children: [
-                              Text(
-                                widget.invoiceheader.cusOutCode ?? '',
-                                style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    color: const Color(0xff413434)),
-                              ),
-                              Text(
-                                ' - ',
-                                style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    color: const Color(0xff413434)),
-                              ),
+                              Text('${widget.invoiceheader.cusOutCode} - ',
+                                  style: subTitleTextStyle()),
                               Expanded(
                                 child: Text(
-                                  widget.invoiceheader.cusOutName ?? '',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: kfontstyle(fontSize: 10.sp),
-                                ),
+                                    widget.invoiceheader.cusOutName ?? '',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: subTitleTextStyle()),
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              // Text(
-                              //   'CR | Route 101 | 16 May 2023 | 10:35',
-                              //   style: kfontstyle(
-                              //       fontSize: 10.sp,
-                              //       color: Colors.grey),
-                              // ),
-                              Text(
-                                widget.invoiceheader.payType ?? '',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.invoiceheader.rotName ?? '',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.invoiceheader.date ?? '',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                ' | ',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                              Text(
-                                widget.invoiceheader.time ?? '',
-                                style: kfontstyle(
-                                    fontSize: 9.sp, color: Colors.grey),
-                              ),
-                            ],
+                          Text(
+                            '${widget.invoiceheader.invoiceType} | ${widget.invoiceheader.rotName} | ${widget.invoiceheader.date} | ${widget.invoiceheader.time}',
+                            style:
+                                TextStyle(fontSize: 10.sp, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -207,7 +142,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           child: Center(
                             child: Text(
                               widget.invoiceheader.invoiceType ?? '',
-                              style: kfontstyle(
+                              style: TextStyle(
                                   fontSize: 10.sp,
                                   color: const Color(0xff413434)),
                             ),
@@ -301,7 +236,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'items',
+                    'Items',
                     style: boxHeading(),
                   ),
                   Row(
@@ -315,7 +250,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         width: 25.h,
                       ),
                       Text(
-                        'Uom',
+                        'UOM',
                         style: boxHeading(),
                       ),
                       SizedBox(

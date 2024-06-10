@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadTransferDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllLoadTransferDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllLoadTransferDetailEvent,
     required TResult Function() clearLoadTransferDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult? Function()? clearLoadTransferDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult Function()? clearLoadTransferDetailEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllLoadTransferDetailEventImplCopyWith<$Res> {
           $Res Function(_$GetAllLoadTransferDetailEventImpl) then) =
       __$$GetAllLoadTransferDetailEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqID});
+  $Res call({String reqID, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,16 @@ class __$$GetAllLoadTransferDetailEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqID = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllLoadTransferDetailEventImpl(
       reqID: null == reqID
           ? _value.reqID
           : reqID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +127,17 @@ class __$$GetAllLoadTransferDetailEventImplCopyWithImpl<$Res>
 
 class _$GetAllLoadTransferDetailEventImpl
     implements GetAllLoadTransferDetailEvent {
-  const _$GetAllLoadTransferDetailEventImpl({required this.reqID});
+  const _$GetAllLoadTransferDetailEventImpl(
+      {required this.reqID, required this.searchQuery});
 
   @override
   final String reqID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadTransferDetailEvent.getAllLoadTransferDetailEvent(reqID: $reqID)';
+    return 'LoadTransferDetailEvent.getAllLoadTransferDetailEvent(reqID: $reqID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +145,13 @@ class _$GetAllLoadTransferDetailEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllLoadTransferDetailEventImpl &&
-            (identical(other.reqID, reqID) || other.reqID == reqID));
+            (identical(other.reqID, reqID) || other.reqID == reqID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqID);
+  int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +164,33 @@ class _$GetAllLoadTransferDetailEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllLoadTransferDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllLoadTransferDetailEvent,
     required TResult Function() clearLoadTransferDetailEvent,
   }) {
-    return getAllLoadTransferDetailEvent(reqID);
+    return getAllLoadTransferDetailEvent(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult? Function()? clearLoadTransferDetailEvent,
   }) {
-    return getAllLoadTransferDetailEvent?.call(reqID);
+    return getAllLoadTransferDetailEvent?.call(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult Function()? clearLoadTransferDetailEvent,
     required TResult orElse(),
   }) {
     if (getAllLoadTransferDetailEvent != null) {
-      return getAllLoadTransferDetailEvent(reqID);
+      return getAllLoadTransferDetailEvent(reqID, searchQuery);
     }
     return orElse();
   }
@@ -219,10 +235,12 @@ class _$GetAllLoadTransferDetailEventImpl
 
 abstract class GetAllLoadTransferDetailEvent
     implements LoadTransferDetailEvent {
-  const factory GetAllLoadTransferDetailEvent({required final String reqID}) =
-      _$GetAllLoadTransferDetailEventImpl;
+  const factory GetAllLoadTransferDetailEvent(
+      {required final String reqID,
+      required final String searchQuery}) = _$GetAllLoadTransferDetailEventImpl;
 
   String get reqID;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllLoadTransferDetailEventImplCopyWith<
           _$GetAllLoadTransferDetailEventImpl>
@@ -272,7 +290,8 @@ class _$ClearLoadTransferDetailEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID) getAllLoadTransferDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getAllLoadTransferDetailEvent,
     required TResult Function() clearLoadTransferDetailEvent,
   }) {
     return clearLoadTransferDetailEvent();
@@ -281,7 +300,8 @@ class _$ClearLoadTransferDetailEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult? Function()? clearLoadTransferDetailEvent,
   }) {
     return clearLoadTransferDetailEvent?.call();
@@ -290,7 +310,8 @@ class _$ClearLoadTransferDetailEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID)? getAllLoadTransferDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getAllLoadTransferDetailEvent,
     TResult Function()? clearLoadTransferDetailEvent,
     required TResult orElse(),
   }) {

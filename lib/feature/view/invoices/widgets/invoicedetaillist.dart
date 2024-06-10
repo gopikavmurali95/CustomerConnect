@@ -79,19 +79,13 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                       invdetails[index]
                                                               .prdCode ??
                                                           '',
-                                                      style: blueTextStyle()),
+                                                      style: loadTextStyle()),
                                                   SizedBox(
                                                     width: 200.w,
                                                     child: Text(
                                                       invdetails[index]
                                                               .prdName ??
                                                           '',
-                                                      //'Divella Farfalle farfalle pasta 500g Offer pack',
-                                                      /* style:  kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w400,
-                                                  ), */
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),
@@ -155,10 +149,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                 Text(
                                                   invdetails[index].higherQty ??
                                                       '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400),
+                                                  style: subTitleTextStyle(),
                                                 ),
                                                 SizedBox(
                                                   height: 5.h,
@@ -166,10 +157,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                 Text(
                                                   invdetails[index].lowerQty ??
                                                       '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400),
+                                                  style: subTitleTextStyle(),
                                                 ),
                                               ],
                                             ),
@@ -220,105 +208,134 @@ class InvoiceDetailListWidget extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            Container(
-              height: 30.h,
-              width: double.infinity,
-              color: const Color(0xfff5f5f5),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 10, right: 0, top: 10, bottom: 10),
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Flexible(
-                      flex: 3,
-                      fit: FlexFit.tight,
-                      child: Text('Type', style: boxHeading()),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      fit: FlexFit.tight,
-                      child: Text('value', style: boxHeading()),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      fit: FlexFit.tight,
-                      child: Text('Discount', style: boxHeading()),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Text('Vat', style: boxHeading()),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      fit: FlexFit.tight,
-                      child: Text('Subtotal',
-                          textAlign: TextAlign.center, style: boxHeading()),
-                    ),
-                  ],
-                ),
-              ),
-            ),
             BlocBuilder<InvoiceDetailsFooterBloc, InvoiceDetailsFooterState>(
               builder: (context, state) {
                 return state.when(
                   getTypeWiseInvoice: (typewiseinvoice) => typewiseinvoice ==
                           null
                       ? const SizedBox()
-                      : ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: typewiseinvoice.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 20, right: 10, top: 10, bottom: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Flexible(
-                                    flex: 3,
-                                    fit: FlexFit.tight,
-                                    // width: 115.w,
-                                    child: Text(
-                                      typewiseinvoice[index].type ?? '',
-                                      style: subTitleTextStyle(),
-                                    ),
-                                  ),
-                                  Flexible(
-                                      flex: 2,
-                                      fit: FlexFit.tight,
-                                      child: Text(
-                                          typewiseinvoice[index].value ?? '',
-                                          style: subTitleTextStyle())),
-                                  /* SizedBox(
-                                    width: 20.h,
-                                  ), */
-                                  Flexible(
-                                      flex: 2,
-                                      fit: FlexFit.tight,
-                                      child: Text(
-                                          typewiseinvoice[index].discount ?? '',
-                                          style: subTitleTextStyle())),
-                                  Flexible(
+                      : Column(
+                          children: [
+                            Container(
+                              height: 35.h,
+                              width: double.infinity,
+                              color: const Color(0xfff5f5f5),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
                                       flex: 1,
                                       fit: FlexFit.tight,
-                                      child: Text(
-                                          typewiseinvoice[index].vat ?? '',
-                                          style: subTitleTextStyle())),
-                                  Flexible(
-                                      flex: 2,
+                                      child: Text('Type', style: boxHeading()),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
                                       fit: FlexFit.tight,
-                                      child: Text(
-                                          typewiseinvoice[index].subTotal ?? '',
-                                          textAlign: TextAlign.end,
-                                          style: subTitleTextStyle())),
-                                ],
+                                      child: Text('Value', style: boxHeading()),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20.h,
+                                    // ),
+                                    Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child:
+                                          Text('Discount', style: boxHeading()),
+                                    ),
+                                    SizedBox(
+                                      width: 10.h,
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child: Text('Vat', style: boxHeading()),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20.h,
+                                    // ),
+                                    Flexible(
+                                      fit: FlexFit.tight,
+                                      flex: 0,
+                                      child:
+                                          Text('Subtotal', style: boxHeading()),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            );
-                          },
+                            ),
+                            ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 10),
+                                      child: Row(
+                                        // mainAxisAlignment:
+                                        //     MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                typewiseinvoice[index].type ??
+                                                    '',
+                                                style: subTitleTextStyle(),
+                                              )),
+                                          Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                typewiseinvoice[index].value ??
+                                                    '',
+                                                style: subTitleTextStyle(),
+                                              )),
+                                          /*  SizedBox(
+                                          width: 20.h,
+                                        ), */
+                                          Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                typewiseinvoice[index]
+                                                        .discount ??
+                                                    '',
+                                                style: subTitleTextStyle(),
+                                              )),
+                                          /*  SizedBox(
+                                          width: 20.h,
+                                        ), */
+                                          Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                typewiseinvoice[index].vat ??
+                                                    '',
+                                                style: subTitleTextStyle(),
+                                              )),
+                                          SizedBox(
+                                            width: 5.h,
+                                          ),
+                                          Flexible(
+                                              flex: 0,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                typewiseinvoice[index]
+                                                        .subTotal ??
+                                                    '',
+                                                style: subTitleTextStyle(),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                      height: 0.h,
+                                    ),
+                                itemCount: typewiseinvoice.length)
+                          ],
                         ),
                   typeWiseInvoiceFailedState: () => Center(
                     child: Text(

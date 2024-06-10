@@ -71,20 +71,14 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        widget.arheader.arhArNumber ?? '',
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          color: const Color(0xff2C6B9E),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      Text(widget.arheader.arhArNumber ?? '',
+                          style: blueTextStyle()),
                       Row(
                         children: [
                           Text(
                             '${widget.arheader.cshCode} - ',
                             style: TextStyle(
-                              fontSize: 12.sp,
+                              fontSize: 11.sp,
                               color: const Color(0xff2C6B9E),
                             ),
                           ),
@@ -92,9 +86,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                             child: Text(
                               overflow: TextOverflow.ellipsis,
                               widget.arheader.cshName ?? '',
-                              style: TextStyle(
-                                  fontSize: 13.sp,
-                                  color: const Color(0xff413434)),
+                              style: subTitleTextStyle(),
                             ),
                           ),
                         ],
@@ -103,15 +95,13 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                         children: [
                           Text(
                             '${widget.arheader.cusCode} - ',
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xff413434)),
+                            style: subTitleTextStyle(),
                           ),
                           Expanded(
                             child: Text(
                               widget.arheader.cusName ?? '',
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(fontSize: 13.sp),
+                              style: subTitleTextStyle(),
                             ),
                           ),
                         ],

@@ -82,7 +82,7 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                       )))),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                 child: Container(
                     height: 40,
                     decoration: BoxDecoration(

@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MaterialReqDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) materialReqDetailSuccessEvent,
+    required TResult Function(String reqId, String searchQuery)
+        materialReqDetailSuccessEvent,
     required TResult Function() materialDetailClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult? Function()? materialDetailClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult Function()? materialDetailClearEvent,
     required TResult orElse(),
   }) =>
@@ -86,7 +89,7 @@ abstract class _$$MaterialReqDetailSuccessEventImplCopyWith<$Res> {
           $Res Function(_$MaterialReqDetailSuccessEventImpl) then) =
       __$$MaterialReqDetailSuccessEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqId});
+  $Res call({String reqId, String searchQuery});
 }
 
 /// @nodoc
@@ -103,11 +106,16 @@ class __$$MaterialReqDetailSuccessEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$MaterialReqDetailSuccessEventImpl(
       reqId: null == reqId
           ? _value.reqId
           : reqId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -117,14 +125,17 @@ class __$$MaterialReqDetailSuccessEventImplCopyWithImpl<$Res>
 
 class _$MaterialReqDetailSuccessEventImpl
     implements MaterialReqDetailSuccessEvent {
-  const _$MaterialReqDetailSuccessEventImpl({required this.reqId});
+  const _$MaterialReqDetailSuccessEventImpl(
+      {required this.reqId, required this.searchQuery});
 
   @override
   final String reqId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'MaterialReqDetailEvent.materialReqDetailSuccessEvent(reqId: $reqId)';
+    return 'MaterialReqDetailEvent.materialReqDetailSuccessEvent(reqId: $reqId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -132,11 +143,13 @@ class _$MaterialReqDetailSuccessEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MaterialReqDetailSuccessEventImpl &&
-            (identical(other.reqId, reqId) || other.reqId == reqId));
+            (identical(other.reqId, reqId) || other.reqId == reqId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqId);
+  int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +162,33 @@ class _$MaterialReqDetailSuccessEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) materialReqDetailSuccessEvent,
+    required TResult Function(String reqId, String searchQuery)
+        materialReqDetailSuccessEvent,
     required TResult Function() materialDetailClearEvent,
   }) {
-    return materialReqDetailSuccessEvent(reqId);
+    return materialReqDetailSuccessEvent(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult? Function()? materialDetailClearEvent,
   }) {
-    return materialReqDetailSuccessEvent?.call(reqId);
+    return materialReqDetailSuccessEvent?.call(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult Function()? materialDetailClearEvent,
     required TResult orElse(),
   }) {
     if (materialReqDetailSuccessEvent != null) {
-      return materialReqDetailSuccessEvent(reqId);
+      return materialReqDetailSuccessEvent(reqId, searchQuery);
     }
     return orElse();
   }
@@ -214,10 +230,12 @@ class _$MaterialReqDetailSuccessEventImpl
 }
 
 abstract class MaterialReqDetailSuccessEvent implements MaterialReqDetailEvent {
-  const factory MaterialReqDetailSuccessEvent({required final String reqId}) =
-      _$MaterialReqDetailSuccessEventImpl;
+  const factory MaterialReqDetailSuccessEvent(
+      {required final String reqId,
+      required final String searchQuery}) = _$MaterialReqDetailSuccessEventImpl;
 
   String get reqId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$MaterialReqDetailSuccessEventImplCopyWith<
           _$MaterialReqDetailSuccessEventImpl>
@@ -266,7 +284,8 @@ class _$MaterialDetailClearEventImpl implements MaterialDetailClearEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) materialReqDetailSuccessEvent,
+    required TResult Function(String reqId, String searchQuery)
+        materialReqDetailSuccessEvent,
     required TResult Function() materialDetailClearEvent,
   }) {
     return materialDetailClearEvent();
@@ -275,7 +294,8 @@ class _$MaterialDetailClearEventImpl implements MaterialDetailClearEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult? Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult? Function()? materialDetailClearEvent,
   }) {
     return materialDetailClearEvent?.call();
@@ -284,7 +304,8 @@ class _$MaterialDetailClearEventImpl implements MaterialDetailClearEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? materialReqDetailSuccessEvent,
+    TResult Function(String reqId, String searchQuery)?
+        materialReqDetailSuccessEvent,
     TResult Function()? materialDetailClearEvent,
     required TResult orElse(),
   }) {

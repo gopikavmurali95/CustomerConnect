@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadReqHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) loadreqSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        loadreqSuccessEvent,
     required TResult Function() loadreqClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? loadreqSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult? Function()? loadreqClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? loadreqSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult Function()? loadreqClearEvent,
     required TResult orElse(),
   }) =>
@@ -80,7 +83,7 @@ abstract class _$$LoadreqSuccessEventImplCopyWith<$Res> {
           $Res Function(_$LoadreqSuccessEventImpl) then) =
       __$$LoadreqSuccessEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId});
+  $Res call({String userId, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -95,11 +98,21 @@ class __$$LoadreqSuccessEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$LoadreqSuccessEventImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -108,14 +121,19 @@ class __$$LoadreqSuccessEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadreqSuccessEventImpl implements LoadreqSuccessEvent {
-  const _$LoadreqSuccessEventImpl({required this.userId});
+  const _$LoadreqSuccessEventImpl(
+      {required this.userId, required this.mode, required this.searchQuery});
 
   @override
   final String userId;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadReqHeaderEvent.loadreqSuccessEvent(userId: $userId)';
+    return 'LoadReqHeaderEvent.loadreqSuccessEvent(userId: $userId, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -123,11 +141,14 @@ class _$LoadreqSuccessEventImpl implements LoadreqSuccessEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadreqSuccessEventImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -139,30 +160,33 @@ class _$LoadreqSuccessEventImpl implements LoadreqSuccessEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) loadreqSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        loadreqSuccessEvent,
     required TResult Function() loadreqClearEvent,
   }) {
-    return loadreqSuccessEvent(userId);
+    return loadreqSuccessEvent(userId, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? loadreqSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult? Function()? loadreqClearEvent,
   }) {
-    return loadreqSuccessEvent?.call(userId);
+    return loadreqSuccessEvent?.call(userId, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? loadreqSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult Function()? loadreqClearEvent,
     required TResult orElse(),
   }) {
     if (loadreqSuccessEvent != null) {
-      return loadreqSuccessEvent(userId);
+      return loadreqSuccessEvent(userId, mode, searchQuery);
     }
     return orElse();
   }
@@ -200,10 +224,14 @@ class _$LoadreqSuccessEventImpl implements LoadreqSuccessEvent {
 }
 
 abstract class LoadreqSuccessEvent implements LoadReqHeaderEvent {
-  const factory LoadreqSuccessEvent({required final String userId}) =
-      _$LoadreqSuccessEventImpl;
+  const factory LoadreqSuccessEvent(
+      {required final String userId,
+      required final String mode,
+      required final String searchQuery}) = _$LoadreqSuccessEventImpl;
 
   String get userId;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$LoadreqSuccessEventImplCopyWith<_$LoadreqSuccessEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -247,7 +275,8 @@ class _$LoadreqClearEventImpl implements LoadreqClearEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) loadreqSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        loadreqSuccessEvent,
     required TResult Function() loadreqClearEvent,
   }) {
     return loadreqClearEvent();
@@ -256,7 +285,8 @@ class _$LoadreqClearEventImpl implements LoadreqClearEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? loadreqSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult? Function()? loadreqClearEvent,
   }) {
     return loadreqClearEvent?.call();
@@ -265,7 +295,8 @@ class _$LoadreqClearEventImpl implements LoadreqClearEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? loadreqSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        loadreqSuccessEvent,
     TResult Function()? loadreqClearEvent,
     required TResult orElse(),
   }) {

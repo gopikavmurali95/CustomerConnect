@@ -5,7 +5,7 @@ import 'package:logger/web.dart';
 
 TextStyle boxHeading() {
   return GoogleFonts.poppins(
-      fontSize: 11,
+      fontSize: 10,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
@@ -56,7 +56,18 @@ TextStyle headTextStyle() {
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }
-
+TextStyle bottomTextStyle(){
+  return GoogleFonts.poppins(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w500
+  );
+}
+TextStyle bottomTotalAmountStyle(){
+  return GoogleFonts.poppins(
+      fontSize: 11.sp,
+      fontWeight: FontWeight.w600
+  );
+}
 const kfontstyle = GoogleFonts.poppins;
 TextStyle loadTextStyle() {
   return GoogleFonts.poppins(

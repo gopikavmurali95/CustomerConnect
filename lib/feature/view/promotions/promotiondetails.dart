@@ -189,21 +189,17 @@ class PromotionDetails extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Qualification Group',
-                                      style: kfontstyle(fontSize: 11.sp),
+                                      style: subTitleTextStyle(),
                                     ),
-                                    Text(
-                                      promotion.qCode!,
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500),
-                                    )
+                                    Text(promotion.qCode!,
+                                        style: countHeading())
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       'View Items',
-                                      style: kfontstyle(fontSize: 11.sp),
+                                      style: subTitleTextStyle(),
                                     ),
                                     const Icon(Icons.keyboard_arrow_right)
                                   ],
@@ -261,22 +257,16 @@ class PromotionDetails extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Assignment Group',
-                                      style: kfontstyle(fontSize: 11.sp),
+                                      style: subTitleTextStyle(),
                                     ),
-                                    Text(
-                                      promotion.aCode ?? '',
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500),
-                                    )
+                                    Text(promotion.aCode ?? '',
+                                        style: countHeading())
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Text(
-                                      'View Items',
-                                      style: kfontstyle(fontSize: 11.sp),
-                                    ),
+                                    Text('View Items',
+                                        style: subTitleTextStyle()),
                                     const Icon(Icons.keyboard_arrow_right)
                                   ],
                                 )

@@ -28,7 +28,7 @@ class SchduledReturnHeaderBloc
           (r) {
             searcheditems = r
                 .where((element) =>
-                    element.rrhId!
+                    element.rrhRequestNumber!
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||

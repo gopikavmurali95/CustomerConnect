@@ -79,26 +79,22 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
+                    // SizedBox(
+                    //   width: 10.w,
+                    // ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             widget.salesorders.orderId ?? '',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: blueTextStyle()
                           ),
                           Row(
                             children: [
@@ -120,10 +116,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
                                   widget.salesorders.cusName ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
+                                  style: subTitleTextStyle())
                               ),
                             ],
                           ),
@@ -272,22 +265,22 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('items'),
+                  Text('Items',style: boxHeading(),),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
-                      const Text('Uom'),
+                      Text('UOM',style: boxHeading(),),
                       SizedBox(
-                        width: 15.h,
+                        width: 20.h,
                       ),
-                      const Text('Qty'),
+                       Text('Qty',style: boxHeading(),),
                     ],
                   ),
                 ],
@@ -313,11 +306,11 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
             children: [
               Text(
                 'Total Amount',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                style: bottomTextStyle()
               ),
               Text(
                 widget.salesorders.grandTotal ?? '',
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                style: bottomTotalAmountStyle()
               )
             ],
           ),

@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoadReqDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getloadreqdetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getloadreqdetailEvent,
     required TResult Function() clearLodReqDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getloadreqdetailEvent,
+    TResult? Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult? Function()? clearLodReqDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getloadreqdetailEvent,
+    TResult Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult Function()? clearLodReqDetailEvent,
     required TResult orElse(),
   }) =>
@@ -83,7 +84,7 @@ abstract class _$$GetloadreqdetailEventImplCopyWith<$Res> {
           $Res Function(_$GetloadreqdetailEventImpl) then) =
       __$$GetloadreqdetailEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqId});
+  $Res call({String reqId, String searchQuery});
 }
 
 /// @nodoc
@@ -98,11 +99,16 @@ class __$$GetloadreqdetailEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reqId = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetloadreqdetailEventImpl(
       reqId: null == reqId
           ? _value.reqId
           : reqId // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -111,14 +117,17 @@ class __$$GetloadreqdetailEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetloadreqdetailEventImpl implements GetloadreqdetailEvent {
-  const _$GetloadreqdetailEventImpl({required this.reqId});
+  const _$GetloadreqdetailEventImpl(
+      {required this.reqId, required this.searchQuery});
 
   @override
   final String reqId;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'LoadReqDetailEvent.getloadreqdetailEvent(reqId: $reqId)';
+    return 'LoadReqDetailEvent.getloadreqdetailEvent(reqId: $reqId, searchQuery: $searchQuery)';
   }
 
   @override
@@ -126,11 +135,13 @@ class _$GetloadreqdetailEventImpl implements GetloadreqdetailEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetloadreqdetailEventImpl &&
-            (identical(other.reqId, reqId) || other.reqId == reqId));
+            (identical(other.reqId, reqId) || other.reqId == reqId) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqId);
+  int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -142,30 +153,31 @@ class _$GetloadreqdetailEventImpl implements GetloadreqdetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getloadreqdetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getloadreqdetailEvent,
     required TResult Function() clearLodReqDetailEvent,
   }) {
-    return getloadreqdetailEvent(reqId);
+    return getloadreqdetailEvent(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getloadreqdetailEvent,
+    TResult? Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult? Function()? clearLodReqDetailEvent,
   }) {
-    return getloadreqdetailEvent?.call(reqId);
+    return getloadreqdetailEvent?.call(reqId, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getloadreqdetailEvent,
+    TResult Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult Function()? clearLodReqDetailEvent,
     required TResult orElse(),
   }) {
     if (getloadreqdetailEvent != null) {
-      return getloadreqdetailEvent(reqId);
+      return getloadreqdetailEvent(reqId, searchQuery);
     }
     return orElse();
   }
@@ -205,10 +217,12 @@ class _$GetloadreqdetailEventImpl implements GetloadreqdetailEvent {
 }
 
 abstract class GetloadreqdetailEvent implements LoadReqDetailEvent {
-  const factory GetloadreqdetailEvent({required final String reqId}) =
-      _$GetloadreqdetailEventImpl;
+  const factory GetloadreqdetailEvent(
+      {required final String reqId,
+      required final String searchQuery}) = _$GetloadreqdetailEventImpl;
 
   String get reqId;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetloadreqdetailEventImplCopyWith<_$GetloadreqdetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -255,7 +269,8 @@ class _$ClearLodReqDetailEventImpl implements ClearLodReqDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqId) getloadreqdetailEvent,
+    required TResult Function(String reqId, String searchQuery)
+        getloadreqdetailEvent,
     required TResult Function() clearLodReqDetailEvent,
   }) {
     return clearLodReqDetailEvent();
@@ -264,7 +279,7 @@ class _$ClearLodReqDetailEventImpl implements ClearLodReqDetailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqId)? getloadreqdetailEvent,
+    TResult? Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult? Function()? clearLodReqDetailEvent,
   }) {
     return clearLodReqDetailEvent?.call();
@@ -273,7 +288,7 @@ class _$ClearLodReqDetailEventImpl implements ClearLodReqDetailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqId)? getloadreqdetailEvent,
+    TResult Function(String reqId, String searchQuery)? getloadreqdetailEvent,
     TResult Function()? clearLodReqDetailEvent,
     required TResult orElse(),
   }) {

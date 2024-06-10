@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -80,7 +78,7 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                       )))),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                 child: Container(
                     height: 40,
                     decoration: BoxDecoration(

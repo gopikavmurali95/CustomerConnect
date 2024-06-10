@@ -474,7 +474,7 @@ abstract class ILoadTransferApprovalRepo {
 
 abstract class IJourneyPlanApprovalRepo {
   Future<Either<MainFailures, List<JourneyPlanHeaderModel>>>
-      getJourneyPlanHeaders(String userID);
+      getJourneyPlanHeaders(String userID,String mode);
 
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve);
@@ -485,7 +485,7 @@ abstract class IJourneyPlanApprovalRepo {
 
 abstract class IMaterialReqHeaderRepo {
   Future<Either<MainFailures, List<MaterialReqHeaderModel>>>
-      materialreqheaderList(String userId);
+      materialreqheaderList(String userId,String mode);
 
   Future<Either<MainFailures, List<MaterialReqDetailModel>>>
       materialreqdetailList(String reqId);
@@ -502,7 +502,7 @@ abstract class IGetAllAvailableRoutesRepo {
 
 abstract class ILoadRequestHeaderRepo {
   Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(
-      String userId);
+      String userId,String mode);
   Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(
       String reqId);
 }

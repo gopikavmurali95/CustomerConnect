@@ -73,7 +73,7 @@ class _CustomersScrenState extends State<CustomersScren> {
           ),
         ),
         title: Text(
-          "Customers ",
+          "Customer",
           style: appHeading(),
         ),
       ),

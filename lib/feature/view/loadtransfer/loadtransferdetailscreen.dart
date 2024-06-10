@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -36,7 +37,8 @@ List<dynamic> selectedresons = [];
 List<bool?> statuslist = [];
 bool isLoading = false;
 List<LoadTransferProductModel?> approvedProducts = [];
-
+final _loadtransDetailCtrl = TextEditingController();
+Timer? debounce;
 int _responsecount = 0;
 int loadingCount = 0;
 int _approvedCount = 0;
@@ -51,9 +53,8 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
     context
         .read<LoadTransferDetailBloc>()
         .add(const ClearLoadTransferDetailEvent());
-    context
-        .read<LoadTransferDetailBloc>()
-        .add(GetAllLoadTransferDetailEvent(reqID: widget.header.ltrId ?? ''));
+    context.read<LoadTransferDetailBloc>().add(GetAllLoadTransferDetailEvent(
+        reqID: widget.header.ltrId ?? '', searchQuery: ""));
     super.initState();
   }
 
@@ -211,6 +212,83 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
               ),
               const SizedBox(
                 height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: SizedBox(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    controller: _loadtransDetailCtrl,
+                    style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: 'Search here..',
+                      suffix: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                                onPressed: () {
+                                  if (_loadtransDetailCtrl.text.isNotEmpty) {
+                                    _loadtransDetailCtrl.clear();
+                                    context.read<LoadTransferDetailBloc>().add(
+                                        const ClearLoadTransferDetailEvent());
+                                    context.read<LoadTransferDetailBloc>().add(
+                                        GetAllLoadTransferDetailEvent(
+                                            reqID: widget.header.ltrId ?? '',
+                                            searchQuery: ""));
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.clear,
+                                  size: 10.sp,
+                                )),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          )
+                        ],
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        size: 14.sp,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                              .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ), () async {
+                        context.read<LoadTransferDetailBloc>().add(
+                            GetAllLoadTransferDetailEvent(
+                                reqID: widget.header.ltrId ?? '',
+                                searchQuery: value.trim()));
+                      });
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 3.h,
               ),
               Expanded(
                 child: Column(

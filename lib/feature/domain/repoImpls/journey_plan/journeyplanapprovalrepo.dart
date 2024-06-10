@@ -15,11 +15,11 @@ import 'package:injectable/injectable.dart';
 class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
   @override
   Future<Either<MainFailures, List<JourneyPlanHeaderModel>>>
-      getJourneyPlanHeaders(String userID) async {
+      getJourneyPlanHeaders(String userID,String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + journeyPlanApprovalHeaders),
-          body: {"UserID": userID});
+          body: {"UserID": userID,"Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

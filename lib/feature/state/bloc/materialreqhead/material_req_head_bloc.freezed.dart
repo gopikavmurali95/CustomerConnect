@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MaterialReqHeadEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) materialHeadSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        materialHeadSuccessEvent,
     required TResult Function() materialReqHeadClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? materialHeadSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult? Function()? materialReqHeadClearEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? materialHeadSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult Function()? materialReqHeadClearEvent,
     required TResult orElse(),
   }) =>
@@ -86,7 +89,7 @@ abstract class _$$MaterialHeadSuccessEventImplCopyWith<$Res> {
           $Res Function(_$MaterialHeadSuccessEventImpl) then) =
       __$$MaterialHeadSuccessEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userId});
+  $Res call({String userId, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -103,11 +106,21 @@ class __$$MaterialHeadSuccessEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$MaterialHeadSuccessEventImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -116,14 +129,19 @@ class __$$MaterialHeadSuccessEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MaterialHeadSuccessEventImpl implements MaterialHeadSuccessEvent {
-  const _$MaterialHeadSuccessEventImpl({required this.userId});
+  const _$MaterialHeadSuccessEventImpl(
+      {required this.userId, required this.mode, required this.searchQuery});
 
   @override
   final String userId;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'MaterialReqHeadEvent.materialHeadSuccessEvent(userId: $userId)';
+    return 'MaterialReqHeadEvent.materialHeadSuccessEvent(userId: $userId, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -131,11 +149,14 @@ class _$MaterialHeadSuccessEventImpl implements MaterialHeadSuccessEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MaterialHeadSuccessEventImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(runtimeType, userId, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -147,30 +168,33 @@ class _$MaterialHeadSuccessEventImpl implements MaterialHeadSuccessEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) materialHeadSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        materialHeadSuccessEvent,
     required TResult Function() materialReqHeadClearEvent,
   }) {
-    return materialHeadSuccessEvent(userId);
+    return materialHeadSuccessEvent(userId, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? materialHeadSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult? Function()? materialReqHeadClearEvent,
   }) {
-    return materialHeadSuccessEvent?.call(userId);
+    return materialHeadSuccessEvent?.call(userId, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? materialHeadSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult Function()? materialReqHeadClearEvent,
     required TResult orElse(),
   }) {
     if (materialHeadSuccessEvent != null) {
-      return materialHeadSuccessEvent(userId);
+      return materialHeadSuccessEvent(userId, mode, searchQuery);
     }
     return orElse();
   }
@@ -212,10 +236,14 @@ class _$MaterialHeadSuccessEventImpl implements MaterialHeadSuccessEvent {
 }
 
 abstract class MaterialHeadSuccessEvent implements MaterialReqHeadEvent {
-  const factory MaterialHeadSuccessEvent({required final String userId}) =
-      _$MaterialHeadSuccessEventImpl;
+  const factory MaterialHeadSuccessEvent(
+      {required final String userId,
+      required final String mode,
+      required final String searchQuery}) = _$MaterialHeadSuccessEventImpl;
 
   String get userId;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$MaterialHeadSuccessEventImplCopyWith<_$MaterialHeadSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -263,7 +291,8 @@ class _$MaterialReqHeadClearEventImpl implements MaterialReqHeadClearEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) materialHeadSuccessEvent,
+    required TResult Function(String userId, String mode, String searchQuery)
+        materialHeadSuccessEvent,
     required TResult Function() materialReqHeadClearEvent,
   }) {
     return materialReqHeadClearEvent();
@@ -272,7 +301,8 @@ class _$MaterialReqHeadClearEventImpl implements MaterialReqHeadClearEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? materialHeadSuccessEvent,
+    TResult? Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult? Function()? materialReqHeadClearEvent,
   }) {
     return materialReqHeadClearEvent?.call();
@@ -281,7 +311,8 @@ class _$MaterialReqHeadClearEventImpl implements MaterialReqHeadClearEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? materialHeadSuccessEvent,
+    TResult Function(String userId, String mode, String searchQuery)?
+        materialHeadSuccessEvent,
     TResult Function()? materialReqHeadClearEvent,
     required TResult orElse(),
   }) {

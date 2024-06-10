@@ -195,9 +195,9 @@ import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_p
 import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart'
     as _i59;
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart'
-    as _i67;
-import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
     as _i66;
+import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
+    as _i67;
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i68;
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart'

@@ -28,7 +28,7 @@ class ReturnApprovalHeaderBloc
             (r) {
               searcheditems = r
                   .where((element) =>
-                      element.rahId!
+                      element.ithRequestNumber!
                           .toLowerCase()
                           .toUpperCase()
                           .contains(event.searchQuery.toUpperCase()) ||

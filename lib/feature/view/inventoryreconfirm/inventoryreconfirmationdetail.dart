@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -34,18 +35,17 @@ class InventoryReconfirmationDetailScreen extends StatefulWidget {
       _InventoryReconfirmationDetailScreenState();
 }
 
-List<InventoryReconfirmReasonModel> availableresons = [];
+List<InventoryReconfirmReasonModel> _availableresons = [];
 List<String> selectedresons = [];
 List<InventoryReconfirmPrdModel?> approvedProducts = [];
 List<bool?> statuslist = [];
+Timer? debounce;
+TextEditingController _inventoryDetailCtrl = TextEditingController();
 
 class _InventoryReconfirmationDetailScreenState
     extends State<InventoryReconfirmationDetailScreen> {
   @override
   void initState() {
-    context
-        .read<InventoryReconfirmReasonsCubit>()
-        .getinventoryReconfirmResons();
     context
         .read<InventoryReconfirmDetailBloc>()
         .add(const ClearInventoryReconfirmDetailEvent());
@@ -247,6 +247,87 @@ class _InventoryReconfirmationDetailScreenState
                 SizedBox(
                   height: 5.h,
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SizedBox(
+                    height: 30.h,
+                    width: MediaQuery.of(context).size.width,
+                    child: TextFormField(
+                      controller: _inventoryDetailCtrl,
+                      style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        hintText: 'Search here..',
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: IconButton(
+                                  onPressed: () {
+                                    if (_inventoryDetailCtrl.text.isNotEmpty) {
+                                      _inventoryDetailCtrl.clear();
+
+                                      context
+                                          .read<InventoryReconfirmDetailBloc>()
+                                          .add(
+                                              const ClearInventoryReconfirmDetailEvent());
+                                      context
+                                          .read<InventoryReconfirmDetailBloc>()
+                                          .add(GetInventoryReconfirmDetailEvent(
+                                              reqID: widget.header.iahId ?? '',
+                                              searchQuery: ''));
+                                    }
+                                  },
+                                  icon: Icon(
+                                    Icons.clear,
+                                    size: 10.sp,
+                                  )),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            )
+                          ],
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 14.sp,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 10),
+                        border: /* InputBorder
+                              .none  */
+                            OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                      ),
+                      onChanged: (value) {
+                        debounce = Timer(
+                            const Duration(
+                              milliseconds: 500,
+                            ), () async {
+                          context.read<InventoryReconfirmDetailBloc>().add(
+                              GetInventoryReconfirmDetailEvent(
+                                  reqID: widget.header.iahId ?? '',
+                                  searchQuery: value));
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
                 Container(
                   height: 30.h,
                   width: double.infinity,
@@ -321,6 +402,9 @@ class _InventoryReconfirmationDetailScreenState
                             // Navigator.pop(context);
 
                             // _totalcount = details.length;
+                            context
+                                .read<InventoryReconfirmReasonsCubit>()
+                                .getinventoryReconfirmResons();
 
                             approvedProducts =
                                 List.generate(details.length, (index) => null);
@@ -358,52 +442,65 @@ class _InventoryReconfirmationDetailScreenState
                                             ),
                                         itemCount: 10),
                                   )
-                                : ListView.separated(
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                : details.isEmpty
+                                    ? Center(
+                                        child: Text(
+                                          'No Data Available',
+                                          style: kfontstyle(),
+                                        ),
+                                      )
+                                    : ListView.separated(
+                                        shrinkWrap: true,
+                                        itemBuilder: (context, index) =>
+                                            Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20),
+                                          child: Column(
                                             children: [
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      details[index].prdCode ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff7b70ac),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      details[index].prdName ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                          fontSize: 12.sp,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color:
-                                                              Colors.black54),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
                                               Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  /* Column(
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          details[index]
+                                                                  .prdCode ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff7b70ac),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          details[index]
+                                                                  .prdName ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: Colors
+                                                                  .black54),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 30.w,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      /* Column(
                                                     children: [
                                                       Visibility(
                                                         visible: details[index]
@@ -511,390 +608,390 @@ class _InventoryReconfirmationDetailScreenState
                                                   SizedBox(
                                                     width: 35.w,
                                                   ), */
-                                                  //Short
-                                                  Column(
-                                                    children: [
-                                                      Visibility(
-                                                        visible: details[index]
-                                                                        .iadDescHuom ==
-                                                                    null ||
-                                                                details[index]
-                                                                    .iadDescHuom!
-                                                                    .isEmpty
-                                                            ? false
-                                                            : true,
-                                                        child: Text(
-                                                          details[index]
-                                                                  .iadDescHuom ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
+                                                      //Short
+                                                      Column(
+                                                        children: [
+                                                          Visibility(
+                                                            visible: details[index]
+                                                                            .iadDescHuom ==
+                                                                        null ||
+                                                                    details[index]
+                                                                        .iadDescHuom!
+                                                                        .isEmpty
+                                                                ? false
+                                                                : true,
+                                                            child: Text(
+                                                              details[index]
+                                                                      .iadDescHuom ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 10.h,
+                                                          ),
+                                                          Visibility(
+                                                            visible: details[index]
+                                                                            .iadDescLuom ==
+                                                                        null ||
+                                                                    details[index]
+                                                                        .iadDescLuom!
+                                                                        .isEmpty
+                                                                ? false
+                                                                : true,
+                                                            child: Text(
+                                                              details[index]
+                                                                      .iadDescLuom ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                       SizedBox(
-                                                        height: 10.h,
+                                                        width: 35.w,
                                                       ),
-                                                      Visibility(
-                                                        visible: details[index]
-                                                                        .iadDescLuom ==
-                                                                    null ||
-                                                                details[index]
-                                                                    .iadDescLuom!
-                                                                    .isEmpty
-                                                            ? false
-                                                            : true,
-                                                        child: Text(
-                                                          details[index]
-                                                                  .iadDescLuom ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    width: 35.w,
-                                                  ),
-                                                  Column(
-                                                    children: [
-                                                      Visibility(
-                                                        visible: details[index]
-                                                                        .iadDescHuom ==
-                                                                    null ||
-                                                                details[index]
-                                                                    .iadDescHuom!
-                                                                    .isEmpty
-                                                            ? false
-                                                            : true,
-                                                        child: Text(
-                                                          details[index]
-                                                                  .iadDescHQty ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 10.h,
-                                                      ),
-                                                      Visibility(
-                                                        visible: details[index]
-                                                                        .iadDescLuom ==
-                                                                    null ||
-                                                                details[index]
-                                                                    .iadDescLuom!
-                                                                    .isEmpty
-                                                            ? false
-                                                            : true,
-                                                        child: Text(
-                                                          details[index]
-                                                                  .iadDescLQty ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
+                                                      Column(
+                                                        children: [
+                                                          Visibility(
+                                                            visible: details[index]
+                                                                            .iadDescHuom ==
+                                                                        null ||
+                                                                    details[index]
+                                                                        .iadDescHuom!
+                                                                        .isEmpty
+                                                                ? false
+                                                                : true,
+                                                            child: Text(
+                                                              details[index]
+                                                                      .iadDescHQty ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 10.h,
+                                                          ),
+                                                          Visibility(
+                                                            visible: details[index]
+                                                                            .iadDescLuom ==
+                                                                        null ||
+                                                                    details[index]
+                                                                        .iadDescLuom!
+                                                                        .isEmpty
+                                                                ? false
+                                                                : true,
+                                                            child: Text(
+                                                              details[index]
+                                                                      .iadDescLQty ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
-                                                  ),
+                                                  )
                                                 ],
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 5.h,
-                                          ),
-                                          Column(
-                                            children: [
-                                              Row(
+                                              ),
+                                              SizedBox(
+                                                height: 5.h,
+                                              ),
+                                              Column(
                                                 children: [
-                                                  Expanded(
-                                                    child: BlocConsumer<
-                                                        InventoryReconfirmReasonsCubit,
-                                                        InventoryReconfirmReasonsState>(
-                                                      listener:
-                                                          (context, state) {
-                                                        state.when(
-                                                          getInventoryReconfirmResonsState:
-                                                              (resons) {
-                                                            if (resons !=
-                                                                null) {
-                                                              selectedresons
-                                                                  .clear();
-                                                              availableresons
-                                                                  .clear();
-                                                              availableresons =
-                                                                  [
-                                                                InventoryReconfirmReasonModel(
-                                                                  rsnId: '-1',
-                                                                  rsnName:
-                                                                      'Select reason',
-                                                                )
-                                                              ];
+                                                  Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: BlocConsumer<
+                                                            InventoryReconfirmReasonsCubit,
+                                                            InventoryReconfirmReasonsState>(
+                                                          listener:
+                                                              (context, state) {
+                                                            state.when(
+                                                              getInventoryReconfirmResonsState:
+                                                                  (resons) {
+                                                                if (resons !=
+                                                                    null) {
+                                                                  selectedresons
+                                                                      .clear();
+                                                                  _availableresons
+                                                                      .clear();
+                                                                  _availableresons =
+                                                                      [
+                                                                    InventoryReconfirmReasonModel(
+                                                                      rsnId:
+                                                                          '-1',
+                                                                      rsnName:
+                                                                          'Select reason',
+                                                                    )
+                                                                  ];
 
-                                                              selectedresons =
-                                                                  List.generate(
+                                                                  selectedresons = List.generate(
                                                                       details
                                                                           .length,
                                                                       (index) =>
                                                                           '-1');
 
-                                                              availableresons
-                                                                  .addAll(
-                                                                      resons);
-                                                            }
+                                                                  _availableresons
+                                                                      .addAll(
+                                                                          resons);
+                                                                }
+                                                              },
+                                                              inventoryReconfirmReasonsFailedState:
+                                                                  () {},
+                                                            );
                                                           },
-                                                          inventoryReconfirmReasonsFailedState:
-                                                              () {},
-                                                        );
-                                                      },
-                                                      builder:
-                                                          (context, state) {
-                                                        return state.when(
-                                                          getInventoryReconfirmResonsState:
-                                                              (resons) => resons ==
+                                                          builder:
+                                                              (context, state) {
+                                                            return state.when(
+                                                              getInventoryReconfirmResonsState: (resons) => resons ==
                                                                           null ||
-                                                                      availableresons
+                                                                      _availableresons
                                                                           .isEmpty
                                                                   ? const ShimmerContainers(
                                                                       height:
                                                                           30,
                                                                       width: 80,
                                                                     )
-                                                                  : Card(
-                                                                      surfaceTintColor:
-                                                                          Colors
-                                                                              .white,
-                                                                      color: Colors
-                                                                          .white,
-                                                                      shadowColor: Colors
-                                                                          .grey
-                                                                          .shade300,
+                                                                  : ConstrainedBox(
+                                                                      constraints:
+                                                                          BoxConstraints(
+                                                                        maxHeight:
+                                                                            30.h,
+                                                                      ),
                                                                       child:
-                                                                          SizedBox(
-                                                                        height:
-                                                                            35.h,
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                            horizontal:
+                                                                                5),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .symmetric(
-                                                                              horizontal: 5),
+                                                                            ButtonTheme(
+                                                                          alignedDropdown:
+                                                                              true,
                                                                           child:
-                                                                              ButtonTheme(
-                                                                            alignedDropdown:
+                                                                              DropdownButtonFormField(
+                                                                            isExpanded:
                                                                                 true,
-                                                                            child:
-                                                                                DropdownButtonFormField(
-                                                                              isExpanded: true,
-                                                                              // elevation:
-                                                                              //     16,
-                                                                              dropdownColor: Colors.white,
-                                                                              value: availableresons[0].rsnId ?? '',
-                                                                              style: kfontstyle(color: Colors.black),
-                                                                              decoration: const InputDecoration(
-                                                                                // filled:
-                                                                                //     true,
-                                                                                // fillColor:
-                                                                                //     Colors
-                                                                                //         .grey[100],
-                                                                                border: /* OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.grey[100]!)) */
-                                                                                    InputBorder.none,
+                                                                            elevation:
+                                                                                0,
+                                                                            value:
+                                                                                _availableresons[0].rsnId,
+                                                                            dropdownColor:
+                                                                                Colors.white,
+                                                                            style:
+                                                                                kfontstyle(fontSize: 8.sp, color: Colors.black87),
+                                                                            decoration:
+                                                                                InputDecoration(
+                                                                              filled: true,
+                                                                              fillColor: Colors.white,
+                                                                              contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                                                                              border: /* InputBorder
+                                                                                  .none  */
+                                                                                  OutlineInputBorder(
+                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                borderSide: BorderSide(color: Colors.grey.shade200),
                                                                               ),
-                                                                              items: availableresons.map((InventoryReconfirmReasonModel item) {
-                                                                                return DropdownMenuItem(
-                                                                                  value: item.rsnId,
-                                                                                  child: Text(
-                                                                                    overflow: TextOverflow.ellipsis,
-                                                                                    item.rsnName ?? '',
-                                                                                    style: kfontstyle(fontSize: 10.sp),
-                                                                                  ),
-                                                                                );
-                                                                              }).toList(),
-                                                                              onChanged: (value) {
-                                                                                selectedresons[index] = value ?? '';
-
-                                                                                if (statuslist[index] == false) {
-                                                                                  approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                    reason: selectedresons[index],
-                                                                                    iadId: details[index].iadId,
-                                                                                    status: "R",
-                                                                                  );
-                                                                                } else {
-                                                                                  approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                    reason: "",
-                                                                                    iadId: details[index].iadId,
-                                                                                    status: "A",
-                                                                                  );
-                                                                                }
-                                                                              },
+                                                                              enabledBorder: OutlineInputBorder(
+                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                borderSide: BorderSide(color: Colors.grey.shade200),
+                                                                              ),
+                                                                              focusedBorder: OutlineInputBorder(
+                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                borderSide: BorderSide(color: Colors.grey.shade200),
+                                                                              ),
                                                                             ),
+                                                                            items:
+                                                                                _availableresons.map((InventoryReconfirmReasonModel item) {
+                                                                              return DropdownMenuItem(
+                                                                                value: item.rsnId,
+                                                                                child: Text(
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  item.rsnName ?? '',
+                                                                                  style: kfontstyle(fontSize: 8.sp),
+                                                                                ),
+                                                                              );
+                                                                            }).toList(),
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              selectedresons[index] = value ?? '';
+
+                                                                              if (statuslist[index] == false) {
+                                                                                approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                  reason: selectedresons[index],
+                                                                                  iadId: details[index].iadId,
+                                                                                  status: "R",
+                                                                                );
+                                                                              } else {
+                                                                                approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                  reason: "",
+                                                                                  iadId: details[index].iadId,
+                                                                                  status: "A",
+                                                                                );
+                                                                              }
+                                                                            },
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                          inventoryReconfirmReasonsFailedState:
-                                                              () =>
-                                                                  const SizedBox(),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                  // SizedBox(
-                                                  //   width: 10.w,
-                                                  // ),
-
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      BlocBuilder<
-                                                          AapprovalOrRejectRadioCubit,
-                                                          AapprovalOrRejectRadioState>(
-                                                        builder:
-                                                            (context, state) {
-                                                          return Row(
-                                                            children: [
-                                                              Transform.scale(
-                                                                scale: 0.8,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Radio(
-                                                                      fillColor: MaterialStateProperty.resolveWith<
-                                                                          Color>((Set<
-                                                                              MaterialState>
-                                                                          states) {
-                                                                        return (statuslist[index] ==
-                                                                                true)
-                                                                            ? const Color(0xff0075ff)
-                                                                            : Colors.grey;
-                                                                      }),
-                                                                      /* activeColor: isselected == true
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                      value: statuslist[index] ==
-                                                                              null
-                                                                          ? false
-                                                                          : statuslist[index] == true
-                                                                              ? true
-                                                                              : false,
-                                                                      groupValue:
-                                                                          true,
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        statuslist[index] =
-                                                                            true;
-
-                                                                        setState(
-                                                                            () {});
-                                                                        approvedProducts[index] =
-                                                                            InventoryReconfirmPrdModel(
-                                                                          reason:
-                                                                              "",
-                                                                          iadId:
-                                                                              details[index].iadId,
-                                                                          status:
-                                                                              "A",
-                                                                        );
-                                                                      },
-                                                                    ),
-                                                                    Text(
-                                                                      'Approve',
-                                                                      style:
-                                                                          kfontstyle(),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                              Transform.scale(
-                                                                scale: 0.8,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Radio(
-                                                                      fillColor: MaterialStateProperty.resolveWith<
-                                                                          Color>((Set<
-                                                                              MaterialState>
-                                                                          states) {
-                                                                        return (statuslist[index] != null &&
-                                                                                !statuslist[index]!)
-                                                                            ? const Color(0xff0075ff)
-                                                                            : Colors.grey;
-                                                                      }),
-                                                                      /*  activeColor: isselected == false
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                      value: statuslist[index] ==
-                                                                              null
-                                                                          ? true
-                                                                          : statuslist[index] == true
-                                                                              ? true
-                                                                              : false,
-                                                                      groupValue:
-                                                                          false,
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        statuslist[index] =
-                                                                            false;
-
-                                                                        setState(
-                                                                            () {});
-                                                                        approvedProducts[index] =
-                                                                            InventoryReconfirmPrdModel(
-                                                                          reason:
-                                                                              selectedresons[index],
-                                                                          iadId:
-                                                                              details[index].iadId,
-                                                                          status:
-                                                                              "R",
-                                                                        );
-                                                                      },
-                                                                    ),
-                                                                    Text(
-                                                                      'Reject',
-                                                                      style:
-                                                                          kfontstyle(),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
-                                                          );
-                                                        },
+                                                              inventoryReconfirmReasonsFailedState:
+                                                                  () =>
+                                                                      const SizedBox(),
+                                                            );
+                                                          },
+                                                        ),
                                                       ),
+                                                      // SizedBox(
+                                                      //   width: 10.w,
+                                                      // ),
+
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? const Color(0xff0075ff)
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          /* activeColor: isselected == true
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              true,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            statuslist[index] =
+                                                                                true;
+
+                                                                            setState(() {});
+                                                                            approvedProducts[index] =
+                                                                                InventoryReconfirmPrdModel(
+                                                                              reason: "",
+                                                                              iadId: details[index].iadId,
+                                                                              status: "A",
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          'Approve',
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] != null && !statuslist[index]!)
+                                                                                ? const Color(0xff0075ff)
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          /*  activeColor: isselected == false
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                          value: statuslist[index] == null
+                                                                              ? true
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            statuslist[index] =
+                                                                                false;
+
+                                                                            setState(() {});
+                                                                            approvedProducts[index] =
+                                                                                InventoryReconfirmPrdModel(
+                                                                              reason: selectedresons[index],
+                                                                              iadId: details[index].iadId,
+                                                                              status: "R",
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          'Reject',
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          ),
+                                                        ],
+                                                      )
                                                     ],
-                                                  )
+                                                  ),
                                                 ],
-                                              ),
+                                              )
                                             ],
-                                          )
-                                        ],
+                                          ),
+                                        ),
+                                        separatorBuilder: (context, index) =>
+                                            Divider(
+                                          color: Colors.grey[300],
+                                        ),
+                                        itemCount: details.length,
                                       ),
-                                    ),
-                                    separatorBuilder: (context, index) =>
-                                        Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                    itemCount: details.length,
-                                  ),
                         inventoryReconfirmDetailFailedState: () => Center(
                           child: Text(
                             'No Data Available',

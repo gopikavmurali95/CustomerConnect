@@ -96,107 +96,103 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5),
-                                child: Card(
-                                  child: Container(
-                                    height: 30.h,
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      boxShadow: [
+                                child: Container(
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          color: Colors.grey.shade200),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      boxShadow: const [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          spreadRadius: .5,
-                                          blurRadius: 5,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: TextFormField(
-                                      controller: _SearchCtrl,
-                                      style: kfontstyle(
-                                          fontSize: 10.sp,
-                                          color: Colors.black87),
-                                      decoration: InputDecoration(
-                                        isDense: true,
-                                        hintText: 'Search here..',
-                                        suffix: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: IconButton(
-                                                  onPressed: () {
-                                                    if (_SearchCtrl
-                                                        .text.isNotEmpty) {
-                                                      _SearchCtrl.clear();
+                                            // ignore: use_full_hex_values_for_flutter_colors
+                                            color: Color(0xff00000050),
+                                            blurRadius: 0.4,
+                                            spreadRadius: 0.4)
+                                      ]),
+                                  child: TextFormField(
+                                    controller: _SearchCtrl,
+                                    style: kfontstyle(
+                                        fontSize: 10.sp, color: Colors.black87),
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      hintText: 'Search here..',
+                                      suffix: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  if (_SearchCtrl
+                                                      .text.isNotEmpty) {
+                                                    _SearchCtrl.clear();
 
-                                                      context
-                                                          .read<
-                                                              ReturnApprovalHeaderBloc>()
-                                                          .add(GetReturnApprovalHeaders(
-                                                              rotID: widget.user
-                                                                      .usrId ??
-                                                                  '',
-                                                              mode:
-                                                                  _selectedeMode,
-                                                              searchQuery: ''));
-                                                    }
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.clear,
-                                                    size: 10.sp,
-                                                  )),
-                                            ),
-                                            SizedBox(
-                                              height: 10.h,
-                                            )
-                                          ],
-                                        ),
-                                        prefixIcon: Icon(
-                                          Icons.search,
-                                          size: 14.sp,
-                                        ),
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 10),
-                                        border: /* InputBorder
-                                .none  */
-                                            OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
+                                                    context
+                                                        .read<
+                                                            ReturnApprovalHeaderBloc>()
+                                                        .add(
+                                                            GetReturnApprovalHeaders(
+                                                                rotID: widget
+                                                                        .user
+                                                                        .usrId ??
+                                                                    '',
+                                                                mode:
+                                                                    _selectedeMode,
+                                                                searchQuery:
+                                                                    ''));
+                                                  }
+                                                },
+                                                icon: Icon(
+                                                  Icons.clear,
+                                                  size: 10.sp,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            height: 10.h,
+                                          )
+                                        ],
                                       ),
-                                      onChanged: (value) {
-                                        debounce = Timer(
-                                            const Duration(
-                                              milliseconds: 500,
-                                            ), () async {
-                                          context
-                                              .read<ReturnApprovalHeaderBloc>()
-                                              .add(GetReturnApprovalHeaders(
-                                                  rotID:
-                                                      widget.user.usrId ?? '',
-                                                  mode: _selectedeMode,
-                                                  searchQuery: value));
-                                        });
-                                      },
+                                      prefixIcon: Icon(
+                                        Icons.search,
+                                        size: 14.sp,
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                      border: /* InputBorder
+                                                                .none  */
+                                          OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                      ),
                                     ),
+                                    onChanged: (value) {
+                                      debounce = Timer(
+                                          const Duration(
+                                            milliseconds: 500,
+                                          ), () async {
+                                        context
+                                            .read<ReturnApprovalHeaderBloc>()
+                                            .add(GetReturnApprovalHeaders(
+                                                rotID: widget.user.usrId ?? '',
+                                                mode: _selectedeMode,
+                                                searchQuery: value));
+                                      });
+                                    },
                                   ),
                                 ),
                               ),
@@ -206,77 +202,70 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5),
-                                child: Card(
-                                  child: Container(
-                                    height: 30.h,
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      boxShadow: [
+                                child: Container(
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          color: Colors.grey.shade200),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      boxShadow: const [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          spreadRadius: .5,
-                                          blurRadius: 5,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ],
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: DropdownButtonFormField(
-                                      elevation: 0,
-                                      value: filterFieldsReturn[0].mode,
-                                      dropdownColor: Colors.white,
-                                      style: kfontstyle(
-                                          fontSize: 10.sp,
-                                          color: Colors.black87),
-                                      decoration: InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 10),
-                                        border: /* InputBorder
-                                .none  */
-                                            OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: Colors.transparent),
-                                        ),
+                                            // ignore: use_full_hex_values_for_flutter_colors
+                                            color: Color(0xff00000050),
+                                            blurRadius: 0.4,
+                                            spreadRadius: 0.4)
+                                      ]),
+                                  child: DropdownButtonFormField(
+                                    elevation: 0,
+                                    value: filterFieldsReturn[0].mode,
+                                    dropdownColor: Colors.white,
+                                    style: kfontstyle(
+                                        fontSize: 10.sp, color: Colors.black87),
+                                    decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                      border: /* InputBorder
+                                                                .none  */
+                                          OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
                                       ),
-                                      items: filterFieldsReturn
-                                          .map(
-                                            (e) => DropdownMenuItem(
-                                              value: e.mode,
-                                              child: Text(e.statusName),
-                                            ),
-                                          )
-                                          .toList(),
-                                      onChanged: (value) {
-                                        _selectedeMode = value!;
-                                        context
-                                            .read<ReturnApprovalHeaderBloc>()
-                                            .add(
-                                                const ClearReturnHeaderState());
-                                        context
-                                            .read<ReturnApprovalHeaderBloc>()
-                                            .add(GetReturnApprovalHeaders(
-                                                rotID: widget.user.usrId ?? '',
-                                                mode: value,
-                                                searchQuery: ''));
-                                      },
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                      ),
                                     ),
+                                    items: filterFieldsReturn
+                                        .map(
+                                          (e) => DropdownMenuItem(
+                                            value: e.mode,
+                                            child: Text(e.statusName),
+                                          ),
+                                        )
+                                        .toList(),
+                                    onChanged: (value) {
+                                      _selectedeMode = value!;
+                                      context
+                                          .read<ReturnApprovalHeaderBloc>()
+                                          .add(const ClearReturnHeaderState());
+                                      context
+                                          .read<ReturnApprovalHeaderBloc>()
+                                          .add(GetReturnApprovalHeaders(
+                                              rotID: widget.user.usrId ?? '',
+                                              mode: value,
+                                              searchQuery: ''));
+                                    },
                                   ),
                                 ),
                               ),
@@ -322,6 +311,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                   returnApprovel:
                                                       headers[index],
                                                   user: widget.user,
+                                                  currentMode: _selectedeMode,
                                                 ),
                                               ),
                                             );
