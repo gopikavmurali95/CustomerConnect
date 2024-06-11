@@ -58,6 +58,7 @@ class _MaterialRequestDetailScreenState
           MaterialReqDetailSuccessEvent(
               reqId: widget.materialrequest.mrhID ?? '', searchQuery: ''),
         );
+    _materialreqdetailSerachController.clear();
 
     super.initState();
   }
@@ -313,7 +314,7 @@ class _MaterialRequestDetailScreenState
                               padding:
                               const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                               child: Container(
-                                  height: 40,
+                                  height: 30.h,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(color: Colors.grey.shade200),

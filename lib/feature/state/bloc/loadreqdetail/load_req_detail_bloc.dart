@@ -25,11 +25,11 @@ class LoadReqDetailBloc extends Bloc<LoadReqDetailEvent, LoadReqDetailState> {
       emit(details.fold((l) => const LoadreqDetailFailedState(),
           (r) {
           searchlistitems = r.where((element) =>
-          element.lrdID!
+          (element.lrdID??'')
               .toLowerCase().
           toUpperCase().
           contains(event.searchQuery.toUpperCase())||
-          element.prdName!.
+              (element.prdName??'').
           toLowerCase().
           toUpperCase().
           contains(event.searchQuery.toUpperCase())).toList();

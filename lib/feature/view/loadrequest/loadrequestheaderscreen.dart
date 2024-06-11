@@ -24,7 +24,7 @@ class LoadRequestHeaderScreen extends StatefulWidget {
 List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
   ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
-  ApprovalStatusFilterModel(mode: 'AL', statusName: 'All'),
+ // ApprovalStatusFilterModel(mode: 'AL', statusName: 'All'),
 
   ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
 
@@ -45,6 +45,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
       // mode:'P',
       // searchQuery:''
     ));
+    _loadqSearchController.clear();
     super.initState();
   }
 
@@ -92,7 +93,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                     padding:
                     const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                     child: Container(
-                        height: 40,
+                        height: 35.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
@@ -203,7 +204,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Card(
                       child: Container(
-                        height: 40.h,
+                        height: 35.h,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -292,27 +293,51 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                   SizedBox(height: 10.h,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        Text(_selectedloadrequest == 'P' ? "Pending Requests " :
-                        _selectedloadrequest == 'A' ? "Approved Requests": "Rejected Requests",style: countHeading(),),
-                        BlocBuilder<LoadReqHeaderBloc, LoadReqHeaderState>(
-                          builder: (context, state) {
-                            return Text(
+                    child: BlocBuilder<LoadReqHeaderBloc, LoadReqHeaderState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.when(loadReqheadSuccessState:
+                                  (loadList) => _selectedloadrequest == "P"
+                                  ? "Pending Approvals" :
+                                  _selectedloadrequest == "A" ?
+                                  "Approved Requests" : "Rejected Requests",
+                                  loadReqheadFailedState: () =>
+                                  _selectedloadrequest == "P"
+                                      ? "Pending Approvals" :
+                                  _selectedloadrequest == "A" ?
+                                  "Approved Requests" : "Rejected Requests",
+                                // getDisputeNoteHeaderState: (headers) =>
+                                // _selectedDisputeMode == "P"
+                                //     ? "Pending Approvals"
+                                //     : _selectedDisputeMode == "AT"
+                                //     ? "Approved Requests"
+                                //     : "Rejected Requests",
+                                // disputeNoteHeaderFailedState: () =>
+                                // _selectedDisputeMode == "P"
+                                //     ? "Pending Approvals"
+                                //     : _selectedDisputeMode == "AT"
+                                //     ? "Approved Requests"
+                                //     : "Rejected Requests",
+                              ),
+                              style: countHeading(),
+                            ),
+                            Text(
                               state.when(
                                 loadReqheadSuccessState: (headers) =>
                                 headers == null ? "0" : headers.length.toString(),
                                 loadReqheadFailedState: () => "0",
                               ),
                               style: countHeading(),
-                            );
-                          },
-                        )
-                      ],
+                            )
+                          ],
+                        );
+                      },
                     ),
                   ),
+
 
                   SizedBox(height: 10.h,),
                   Padding(

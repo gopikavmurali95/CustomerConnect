@@ -25,19 +25,19 @@ class MaterialReqDetailBloc
           {
             searchlistitems =  r
                 .where((element) =>
-            element.mrdID!.
+            (element.mrdID??'').
             toLowerCase().
             toUpperCase().
             contains(event.searchQuery.toUpperCase()) ||
-                element.prdName!.
+                (element.prdName??'').
                 toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())||
-                element.prdID!.
+                (element.prdID??'').
                 toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())||
-                element.prdCode!
+                (element.prdCode??'')
                     .toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())).toList();

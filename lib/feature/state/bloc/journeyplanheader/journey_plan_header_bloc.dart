@@ -29,9 +29,17 @@ class JourneyPlanHeaderBloc
                 r.where((element) => element.jpsId!.
                 toLowerCase().
                 toUpperCase().
-                contains(event.searchQuery.toUpperCase())||element.rotID!.toLowerCase().toUpperCase()
+                contains(event.searchQuery.toUpperCase())||
+                    element.jpsCurrentSeq!.
+                    toLowerCase().
+                    toUpperCase().
+                    contains(event.searchQuery.toUpperCase())||
+                    element.rotID!.toLowerCase().toUpperCase()
                 .contains(event.searchQuery.toUpperCase())||
-                element.userID!.toLowerCase().toUpperCase().contains(event.searchQuery.toUpperCase())).toList();
+                    element.rotCode!.toLowerCase().toUpperCase().contains(event.searchQuery.toUpperCase())||
+
+                element.cusCode!.toLowerCase().toUpperCase().
+                contains(event.searchQuery.toUpperCase())).toList();
             return GetAllJourneyPlanHeadersState(headers:event.searchQuery.isEmpty ? r : searchlistitems);
           } ,
         ),

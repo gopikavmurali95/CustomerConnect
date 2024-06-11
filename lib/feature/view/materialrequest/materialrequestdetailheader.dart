@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -23,9 +24,10 @@ class MaterialRequestHeaderScreen extends StatefulWidget {
       _MaterialRequestHeaderScreenState();
 }
 List<ApprovalStatusFilterModel> ddfilterMaterialReq = [
+
+  ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
   ApprovalStatusFilterModel(mode: 'AH', statusName: 'Approved and Hold'),
-  ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
 
 ];
@@ -38,18 +40,11 @@ class _MaterialRequestHeaderScreenState
   @override
   void initState() {
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
-    context
-        .read<MaterialReqHeadBloc>()
-        .add(MaterialHeadSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
     context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
         userId: widget.user.usrId??'',
       mode: 'P', searchQuery: '',
-      // mode:'P',
-      // searchQuery:''
     ));
-    // context.read<MaterialReqHeadBloc>().add(MaterialReqHeadEvent(
-    //     userID: widget.user.usrId ?? '',
-    //     mode: 'P', searchQuery: ''));
+   _materialReqSearchController.clear();
     super.initState();
   }
 
@@ -97,7 +92,7 @@ class _MaterialRequestHeaderScreenState
                     padding:
                     const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                     child: Container(
-                        height: 40,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
@@ -112,16 +107,19 @@ class _MaterialRequestHeaderScreenState
                         child: TextFormField(
                           controller: _materialReqSearchController,
                           onChanged: (value) {
+
                             debounce = Timer(
                                 const Duration(
                                   milliseconds: 500,
                                 ), () async {
-                              context.read<MaterialReqHeadBloc>().add(
-                                  MaterialHeadSuccessEvent(
-                                      mode: _selectedMaterialReq,
-                                      searchQuery: _materialReqSearchController.text, userId: ''));
-                            });
+                              context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
+                                userId: widget.user.usrId??'',
+                                mode: _selectedMaterialReq, searchQuery: _materialReqSearchController.text,
+                              ));
 
+                            });
+                         log(_materialReqSearchController.text);
+                         log(_selectedMaterialReq);
                           },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
@@ -206,7 +204,7 @@ class _MaterialRequestHeaderScreenState
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Card(
                       child: Container(
-                        height: 35.h,
+                        height: 30.h,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -280,26 +278,41 @@ class _MaterialRequestHeaderScreenState
                   SizedBox(height: 10.h,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        Text(_selectedMaterialReq == 'P' ? "Pending Requests " :
-                        _selectedMaterialReq == 'A' ? "Approved Requests": _selectedMaterialReq == 'AH' ?
-                        "Appoved and Hold Request" : "Reject",style: countHeading(),),
-                        BlocBuilder<MaterialReqHeadBloc, MaterialReqHeadState>(
-                          builder: (context, state) {
-                            return Text(
+                    child: BlocBuilder<MaterialReqHeadBloc, MaterialReqHeadState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.when(
+                                materialreqheadsuccess:
+                                  (materialheader) => _selectedMaterialReq == "P"
+                                  ? "Pending Approvals" :
+                                  _selectedMaterialReq == "A" ?
+                              "Approved Requests" : _selectedMaterialReq == "AH" ?
+                                  "Approved and Hold": "Rejected Requests",
+                                materialreqheadFailed: () =>
+                                _selectedMaterialReq == "P"
+                                    ? "Pending Approvals" :
+                                _selectedMaterialReq == "A" ?
+                                "Approved Requests" : _selectedMaterialReq == "AH" ?
+                                "Approved and Hold":"Rejected Requests",
+                                // materialreqheadsuccess: (materialheader) =>,
+                                // materialreqheadFailed: () =>,
+                              ),
+                              style: countHeading(),
+                            ),
+                            Text(
                               state.when(
                                 materialreqheadsuccess: (headers) =>
                                 headers == null ? "0" : headers.length.toString(),
                                 materialreqheadFailed: () => "0",
                               ),
                               style: countHeading(),
-                            );
-                          },
-                        )
-                      ],
+                            )
+                          ],
+                        );
+                      },
                     ),
                   ),
                   SizedBox(height: 10.h,),
@@ -494,13 +507,15 @@ class _MaterialRequestHeaderScreenState
         ),
       ),
     );
-  }
-}
 
-Future<void> _onRefreshMaterialReqHeaderScreen(
-    BuildContext context, LoginUserModel model) async {
-  context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
-  context
-      .read<MaterialReqHeadBloc>()
-      .add(MaterialHeadSuccessEvent(userId: model.usrId!, mode: '', searchQuery: ''));
+  }
+
+  Future<void> _onRefreshMaterialReqHeaderScreen(
+      BuildContext context, LoginUserModel model) async {
+    context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
+    context
+        .read<MaterialReqHeadBloc>()
+        .add(MaterialHeadSuccessEvent(userId: model.usrId!, mode: _selectedMaterialReq, searchQuery: ''));
+  }
+
 }
