@@ -981,8 +981,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               .grey;
                                                                     }),
                                                                     /* activeColor: isselected == true
-                                                                                                                                                                                                  ? const Color(0xff0075ff)
-                                                                                                                                                                                                  : Colors.grey, */
+                                                                                                             : Colors.grey, */
                                                                     value: statuslist[index] ==
                                                                             null
                                                                         ? false
