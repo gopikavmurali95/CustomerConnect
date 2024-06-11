@@ -19,39 +19,29 @@ class JourneyPlanHeaderBloc
     List<JourneyPlanHeaderModel> searchlistitems = [];
     on<GetAllJourneyPlanHeadersEvent>((event, emit) async {
       Either<MainFailures, List<JourneyPlanHeaderModel>> headers =
-          await journeyPlanApprovalRepo.getJourneyPlanHeaders(
-              event.userID, event.mode);
+          await journeyPlanApprovalRepo.getJourneyPlanHeaders(event.userID,event.mode);
 
       emit(
         headers.fold(
           (l) => const JourneyPlanHeadersFailedState(),
           (r) {
-            searchlistitems = r
-                .where((element) =>
-                    element.jpsId!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.jpsCurrentSeq!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.rotID!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.rotCode!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.cusCode!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()))
-                .toList();
-            return GetAllJourneyPlanHeadersState(
-                headers: event.searchQuery.isEmpty ? r : searchlistitems);
-          },
+            searchlistitems =
+                r.where((element) => element.jpsId!.
+                toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())||
+                    element.jpsCurrentSeq!.
+                    toLowerCase().
+                    toUpperCase().
+                    contains(event.searchQuery.toUpperCase())||
+                    element.rotID!.toLowerCase().toUpperCase()
+                .contains(event.searchQuery.toUpperCase())||
+                    element.rotCode!.toLowerCase().toUpperCase().contains(event.searchQuery.toUpperCase())||
+
+                element.cusCode!.toLowerCase().toUpperCase().
+                contains(event.searchQuery.toUpperCase())).toList();
+            return GetAllJourneyPlanHeadersState(headers:event.searchQuery.isEmpty ? r : searchlistitems);
+          } ,
         ),
       );
     });
