@@ -894,7 +894,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                           fillColor:
                                                                               MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                             return (statuslist[index] == true)
-                                                                                ? const Color(0xff0075ff)
+                                                                                ? Colors.green.shade300
                                                                                 : Colors.grey;
                                                                           }),
                                                                           /* activeColor: isselected == true
@@ -938,7 +938,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                           fillColor:
                                                                               MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                             return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? const Color(0xff0075ff)
+                                                                                ? Colors.red.shade300
                                                                                 : Colors.grey;
                                                                           }),
                                                                           /*  activeColor: isselected == false

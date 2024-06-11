@@ -1440,7 +1440,7 @@ class ApprovalScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Inventory Recon",
+                                    "Inventory Reconfirm",
                                     style: headTextStyle(),
                                   ),
                                 ),
@@ -1459,8 +1459,7 @@ class ApprovalScreen extends StatelessWidget {
                                                 ),
                                               )
                                             : Text(
-                                                count
-                                                    .pendingMaterialReqApproval!,
+                                                count.inventoryReconfirm ?? '0',
                                                 style: kfontstyle(
                                                   fontSize: 11.sp,
                                                   fontWeight: FontWeight.w500,
