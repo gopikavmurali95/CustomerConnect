@@ -35,6 +35,7 @@ Timer? debounce;
 class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
   @override
   void initState() {
+    _creditDetailtrls.clear();
     _remarksctrls = TextEditingController();
 
     context

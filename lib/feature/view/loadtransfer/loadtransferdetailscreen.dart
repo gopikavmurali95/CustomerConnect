@@ -48,6 +48,7 @@ List<LoadTransferPrdModel?> _loadprducts = [];
 class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
   @override
   void initState() {
+    _loadtransDetailCtrl.clear();
     _approvedCount = 0;
     _responsecount = 1;
     context

@@ -32,6 +32,7 @@ class _LoadTransferApprovalHeaderScreenState
     extends State<LoadTransferApprovalHeaderScreen> {
   @override
   void initState() {
+    _vanLoadTransSearchCtrl.clear();
     context
         .read<LoadTransferHeaderBloc>()
         .add(const ClearLoadtransferHeaderEvent());

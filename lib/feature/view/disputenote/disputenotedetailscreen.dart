@@ -37,6 +37,7 @@ TextEditingController _disputedetailCtrl = TextEditingController();
 class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
   @override
   void initState() {
+    _disputedetailCtrl.clear();
     _remarksctrls = TextEditingController();
     context
         .read<DisputeNoteDetailBloc>()
