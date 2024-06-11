@@ -20,33 +20,35 @@ class MaterialReqHeadBloc
 
   MaterialReqHeadBloc(this.materialheadrepo)
       : super(MaterialReqHeadState.initial()) {
-    List<MaterialReqHeaderModel> searchlistitems =[];
+    List<MaterialReqHeaderModel> searchlistitems = [];
     on<MaterialHeadSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqHeaderModel>> mheadlist =
-          await materialheadrepo.materialreqheaderList(event.userId,event.mode);
+          await materialheadrepo.materialreqheaderList(
+              event.userId, event.mode);
       log("searchquery in block${event.searchQuery}");
-      emit(mheadlist.fold((l) => const MaterialreqheadFailed(),
-          (r) {
-            searchlistitems =  r
-                .where((element) =>
-            (element.strName??'').
-                toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())||
-                (element.rotID??'').
-                toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())||
-                (element.mrhNumber??'').
-                toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())||
-                (element.warName??'')
-                    .toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())).toList();
-            return Materialreqheadsuccess(materialheader: event.searchQuery.isEmpty ? r : searchlistitems);
-          }));
+      emit(mheadlist.fold((l) => const MaterialreqheadFailed(), (r) {
+        searchlistitems = r
+            .where((element) =>
+                (element.strName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.rotID ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.mrhNumber ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.warName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return Materialreqheadsuccess(
+            materialheader: event.searchQuery.isEmpty ? r : searchlistitems);
+      }));
     });
 
     on<MaterialReqHeadClearEvent>((event, emit) {

@@ -32,6 +32,7 @@ class _AssetAddingApprovalHeaderScreenState
     extends State<AssetAddingApprovalHeaderScreen> {
   @override
   void initState() {
+    _assetAddCtrl.clear();
     loadingCount = 0;
     context
         .read<AssetAddInApprovalHeaderBloc>()

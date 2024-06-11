@@ -32,6 +32,7 @@ String _selectedMode = 'P';
 class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
   @override
   void initState() {
+    _creditNoteHSearch.clear();
     context
         .read<CreditNoteHeaderBloc>()
         .add(const ClearCreditNoteHeadersEvent());

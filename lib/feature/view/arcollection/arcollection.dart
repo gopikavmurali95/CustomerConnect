@@ -503,7 +503,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                         //SizedBox(width: 05,),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
+                              left: 10.0, right: 20, top: 0),
                           child: Text(
                             "All",
                             style: countHeading(),
@@ -524,7 +524,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                         )
                                       : Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 20.0, right: 20, top: 0),
+                                              left: 10.0, right: 10, top: 0),
                                           child: Text(
                                             "${arHeaders.length}",
                                             style: countHeading(),
@@ -532,7 +532,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                         ),
                               arHeaderFailedState: () => Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 0),
+                                    left: 10.0, right: 10, top: 0),
                                 child: Text(
                                   "0",
                                   style: countHeading(),
