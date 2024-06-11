@@ -571,7 +571,8 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                           Radio(
                                                                             fillColor:
                                                                                 MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                              return (statuslist[index] == true) ? Colors.green.shade300
+                                                                                  : Colors.grey;
                                                                             }),
                                                                             /* activeColor: isselected == true
                                                                                                                                                                                                                           ? const Color(0xff0075ff)
