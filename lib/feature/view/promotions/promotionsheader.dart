@@ -82,7 +82,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 15),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -180,7 +180,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
             SizedBox(

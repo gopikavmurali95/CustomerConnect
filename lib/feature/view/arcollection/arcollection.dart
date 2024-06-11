@@ -41,8 +41,8 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
           GetArHeaderData(
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
-                fromDate: '01-05-2024',
-                // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                fromDate:
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 toDate:
                     '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',

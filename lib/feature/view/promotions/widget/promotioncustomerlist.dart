@@ -97,7 +97,7 @@ class PromotionCustomerList extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 0),
+                              horizontal: 10, vertical: 0),
                           child: Divider(
                             color: Colors.grey.shade300,
                           ),

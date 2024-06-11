@@ -56,7 +56,7 @@ class PromotionDetails extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15),
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
                   child: Column(
                     children: [
                       SizedBox(
@@ -286,7 +286,7 @@ class PromotionDetails extends StatelessWidget {
                   height: 30,
                   color: Colors.grey.shade200,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

@@ -57,7 +57,7 @@ class SpPrHeaderList extends StatelessWidget {
                             width: double.infinity,
                             child: Padding(
                               padding:
-                                  const EdgeInsets.only(left: 20.0, right: 10),
+                                  const EdgeInsets.only(left: 10.0, right: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

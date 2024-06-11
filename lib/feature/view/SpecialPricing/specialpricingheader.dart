@@ -27,6 +27,21 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
   @override
   void initState() {
     _spPriceSearchCtrl.clear();
+    context.read<SpecialPriceHeaderBloc>().add(const ClearSpecialPriceEvent());
+    context.read<SpecialPriceHeaderBloc>().add(GetSpecialPriceHeaderEvent(
+        spPriceInparas: SpecialPriceHeaderModel(
+            area: '',
+            customer: '',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            mode: '',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            userId: widget.user.usrId),
+        searchQuery: ''));
     super.initState();
   }
 
@@ -61,7 +76,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 40),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -175,7 +190,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                     //SizedBox(width: 05,),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 25.0, right: 20, top: 10, bottom: 10),
+                          left: 10.0, right: 20, top: 10, bottom: 10),
                       child: Text(
                         "All",
                         style: countHeading(),
@@ -183,7 +198,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 20.0, right: 20, top: 10, bottom: 10),
+                          left: 20.0, right: 10, top: 10, bottom: 10),
                       child: BlocBuilder<SpecialPriceHeaderBloc,
                           SpecialPriceHeaderState>(
                         builder: (context, state) {
