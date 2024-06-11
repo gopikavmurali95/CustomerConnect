@@ -373,6 +373,8 @@ class _MaterialRequestHeaderScreenState
                                                           user: widget.user,
                                                           materialrequest:
                                                               headers[index],
+                                                          currentMode:
+                                                              _selectedMaterialReq,
                                                         )),
                                               );
                                             },

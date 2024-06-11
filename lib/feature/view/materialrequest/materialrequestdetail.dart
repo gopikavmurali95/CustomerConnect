@@ -24,8 +24,12 @@ class MaterialRequestDetailScreen extends StatefulWidget {
   //final ReturnApprovalHeaderModel returnApprovel;
   final MaterialReqHeaderModel materialrequest;
   final LoginUserModel user;
+  final String currentMode;
   const MaterialRequestDetailScreen(
-      {super.key, required this.user, required this.materialrequest});
+      {super.key,
+      required this.user,
+      required this.materialrequest,
+      required this.currentMode});
 
   @override
   State<MaterialRequestDetailScreen> createState() =>
@@ -108,13 +112,10 @@ class _MaterialRequestDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
-            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
             context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
-                userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                userId: widget.user.usrId ?? '',
+                mode: widget.currentMode,
+                searchQuery: widget.materialrequest.rotID ?? ''));
             //   log("$_approvedCount , $_totalcount");
             //   context.read<NavigatetoBackCubit>().popFromScreen(true);
             // }
@@ -343,7 +344,9 @@ class _MaterialRequestDetailScreenState
                                                 searchQuery:
                                                     _materialreqdetailSerachController
                                                         .text,
-                                                reqId: ''));
+                                                reqId: widget.materialrequest
+                                                        .mrhID ??
+                                                    ''));
                                       });
                                     },
                                     decoration: InputDecoration(
@@ -363,14 +366,14 @@ class _MaterialRequestDetailScreenState
                                                       .text.isNotEmpty) {
                                                     _materialreqdetailSerachController
                                                         .clear();
-
-                                                    context
-                                                        .read<
-                                                            MaterialReqDetailBloc>()
-                                                        .add(const MaterialReqDetailSuccessEvent(
+                                                    context.read<MaterialReqDetailBloc>().add(
+                                                        MaterialReqDetailSuccessEvent(
                                                             //mode: _selectedloadrequest,
                                                             searchQuery: "",
-                                                            reqId: ''));
+                                                            reqId: widget
+                                                                    .materialrequest
+                                                                    .mrhID ??
+                                                                ''));
                                                   }
                                                 },
                                                 icon: Icon(
@@ -475,6 +478,7 @@ class _MaterialRequestDetailScreenState
                                       _materialreqproducts = List.generate(
                                           materialdetail.length,
                                           (index) => null);
+                                      statuslist.clear();
 
                                       _totalcount = materialdetail.length;
 
@@ -531,421 +535,413 @@ class _MaterialRequestDetailScreenState
                                                         ),
                                                     itemCount: 10),
                                               )
-                                            : ListView.separated(
-                                                physics:
-                                                    const NeverScrollableScrollPhysics(),
-                                                shrinkWrap: true,
-                                                itemBuilder: (context, index) =>
-                                                    Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 10),
-                                                  child: Column(
-                                                    children: [
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
+                                            : details.isEmpty
+                                                ? Center(
+                                                    child: Text(
+                                                      "No data Available",
+                                                      style: kfontstyle(),
+                                                    ),
+                                                  )
+                                                : ListView.separated(
+                                                    physics:
+                                                        const NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: true,
+                                                    itemBuilder:
+                                                        (context, index) =>
+                                                            Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 10),
+                                                      child: Column(
                                                         children: [
-                                                          Expanded(
-                                                            child: Column(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                  details[index]
-                                                                          .prdCode ??
-                                                                      '',
-                                                                  style:
-                                                                      kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    color: const Color(
-                                                                        0xff7b70ac),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                                ),
-                                                                Text(
-                                                                  details[index]
-                                                                          .prdName ??
-                                                                      '',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .black54),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-
-                                                          SizedBox(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width /
-                                                                2.w,
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Column(
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     Text(
                                                                       details[index]
-                                                                              .reqHUOM ??
+                                                                              .prdCode ??
                                                                           '',
-                                                                      style: kfontstyle(
-                                                                          fontSize: 12
-                                                                              .sp,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black54),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          5.h,
-                                                                    ),
-                                                                    Text(
-                                                                      details[index]
-                                                                              .reqLUOM ??
-                                                                          '',
-                                                                      style: kfontstyle(
-                                                                          fontSize: 12
-                                                                              .sp,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black54),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 20.h,
-                                                                ),
-                                                                Column(
-                                                                  children: [
-                                                                    Text(
-                                                                      details[index]
-                                                                              .requestedHQty ??
-                                                                          '',
-                                                                      style: kfontstyle(
-                                                                          fontSize: 12
-                                                                              .sp,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black54),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          5.h,
-                                                                    ),
-                                                                    Text(
-                                                                      details[index]
-                                                                              .requestedLQty ??
-                                                                          '',
-                                                                      style: kfontstyle(
-                                                                          fontSize: 12
-                                                                              .sp,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.black54),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Column(
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      height:
-                                                                          25,
-                                                                      width: 80,
-                                                                      child:
-                                                                          TextFormField(
-                                                                        controller:
-                                                                            _apprvHQtymqController,
-                                                                        style: const TextStyle(
-                                                                            fontSize:
-                                                                                9),
-                                                                        decoration: InputDecoration(
-                                                                            enabledBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(color: Colors.black12, width: 1),
-                                                                            ),
-                                                                            focusedBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                                                                            ),
-                                                                            fillColor: const Color(0xfff5f5f5),
-                                                                            filled: true,
-                                                                            border: OutlineInputBorder(
-                                                                              borderSide: const BorderSide(color: Colors.red, width: 4),
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                            )),
+                                                                      style:
+                                                                          kfontstyle(
+                                                                        fontSize:
+                                                                            12.sp,
+                                                                        color: const Color(
+                                                                            0xff7b70ac),
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
                                                                       ),
                                                                     ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          5.h,
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          25,
-                                                                      width: 80,
-                                                                      child:
-                                                                          TextFormField(
-                                                                        controller:
-                                                                            _apprvLQtymqController,
-                                                                        style: const TextStyle(
-                                                                            fontSize:
-                                                                                9),
-                                                                        decoration: InputDecoration(
-                                                                            enabledBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(color: Colors.black12, width: 1),
-                                                                            ),
-                                                                            focusedBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                                                                            ),
-                                                                            fillColor: const Color(0xfff5f5f5),
-                                                                            filled: true,
-                                                                            border: OutlineInputBorder(
-                                                                              borderSide: const BorderSide(color: Colors.red, width: 4),
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                            )),
-                                                                      ),
+                                                                    Text(
+                                                                      details[index]
+                                                                              .prdName ??
+                                                                          '',
+                                                                      style: kfontstyle(
+                                                                          fontSize: 12
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Colors.black54),
                                                                     ),
                                                                   ],
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
+                                                                ),
+                                                              ),
 
+                                                              SizedBox(
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    2.w,
+                                                                child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Column(
+                                                                      children: [
+                                                                        Text(
+                                                                          details[index].reqHUOM ??
+                                                                              '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black54),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          height:
+                                                                              5.h,
+                                                                        ),
+                                                                        Text(
+                                                                          details[index].reqLUOM ??
+                                                                              '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black54),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          20.h,
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Text(
+                                                                          details[index].requestedHQty ??
+                                                                              '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black54),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          height:
+                                                                              5.h,
+                                                                        ),
+                                                                        Text(
+                                                                          details[index].requestedLQty ??
+                                                                              '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black54),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          height:
+                                                                              25,
+                                                                          width:
+                                                                              80,
+                                                                          child:
+                                                                              TextFormField(
+                                                                            controller:
+                                                                                _apprvHQtymqController,
+                                                                            style:
+                                                                                const TextStyle(fontSize: 9),
+                                                                            decoration: InputDecoration(
+                                                                                enabledBorder: const OutlineInputBorder(
+                                                                                  borderSide: BorderSide(color: Colors.black12, width: 1),
+                                                                                ),
+                                                                                focusedBorder: const OutlineInputBorder(
+                                                                                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                                                                                ),
+                                                                                fillColor: const Color(0xfff5f5f5),
+                                                                                filled: true,
+                                                                                border: OutlineInputBorder(
+                                                                                  borderSide: const BorderSide(color: Colors.red, width: 4),
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                )),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          height:
+                                                                              5.h,
+                                                                        ),
+                                                                        SizedBox(
+                                                                          height:
+                                                                              25,
+                                                                          width:
+                                                                              80,
+                                                                          child:
+                                                                              TextFormField(
+                                                                            controller:
+                                                                                _apprvLQtymqController,
+                                                                            style:
+                                                                                const TextStyle(fontSize: 9),
+                                                                            decoration: InputDecoration(
+                                                                                enabledBorder: const OutlineInputBorder(
+                                                                                  borderSide: BorderSide(color: Colors.black12, width: 1),
+                                                                                ),
+                                                                                focusedBorder: const OutlineInputBorder(
+                                                                                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                                                                                ),
+                                                                                fillColor: const Color(0xfff5f5f5),
+                                                                                filled: true,
+                                                                                border: OutlineInputBorder(
+                                                                                  borderSide: const BorderSide(color: Colors.red, width: 4),
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                )),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              ),
+
+                                                              // Row(
+                                                              //   children: [
+                                                              //     Column(
+                                                              //       children: [
+                                                              //         Text(
+                                                              //           details[index]
+                                                              //                   .reqHUOM ??
+                                                              //               '',
+                                                              //           style: kfontstyle(
+                                                              //               fontSize: 12
+                                                              //                   .sp,
+                                                              //               fontWeight:
+                                                              //                   FontWeight
+                                                              //                       .w400,
+                                                              //               color: Colors
+                                                              //                   .black54),
+                                                              //         ),
+                                                              //
+                                                              //         // SizedBox(
+                                                              //         //   height:
+                                                              //         //       10.h,
+                                                              //         // ),
+                                                              //         Text(
+                                                              //           details[index]
+                                                              //                   .reqLUOM ??
+                                                              //               '',
+                                                              //           style: kfontstyle(
+                                                              //               fontSize: 12
+                                                              //                   .sp,
+                                                              //               fontWeight:
+                                                              //                   FontWeight
+                                                              //                       .w400,
+                                                              //               color: Colors
+                                                              //                   .black54),
+                                                              //         ),
+                                                              //       ],
+                                                              //     ),
+                                                              //     SizedBox(
+                                                              //       width: 50.w,
+                                                              //     ),
+                                                              //     Column(
+                                                              //       children: [
+                                                              //         Text(
+                                                              //           details[index]
+                                                              //                   .requestedHQty ??
+                                                              //               '',
+                                                              //           style: kfontstyle(
+                                                              //               fontSize: 12
+                                                              //                   .sp,
+                                                              //               fontWeight:
+                                                              //                   FontWeight
+                                                              //                       .w400,
+                                                              //               color: Colors
+                                                              //                   .black54),
+                                                              //         ),
+                                                              //         SizedBox(
+                                                              //           height:
+                                                              //               10.h,
+                                                              //         ),
+                                                              //         Text(
+                                                              //           details[index]
+                                                              //                   .requestedLQty ??
+                                                              //               '',
+                                                              //           style: kfontstyle(
+                                                              //               fontSize: 12
+                                                              //                   .sp,
+                                                              //               fontWeight:
+                                                              //                   FontWeight
+                                                              //                       .w400,
+                                                              //               color: Colors
+                                                              //                   .black54),
+                                                              //         ),
+                                                              //       ],
+                                                              //     ),
+                                                              //   ],
+                                                              // )
+                                                            ],
+                                                          ),
                                                           // Row(
                                                           //   children: [
-                                                          //     Column(
-                                                          //       children: [
-                                                          //         Text(
-                                                          //           details[index]
-                                                          //                   .reqHUOM ??
-                                                          //               '',
-                                                          //           style: kfontstyle(
-                                                          //               fontSize: 12
-                                                          //                   .sp,
-                                                          //               fontWeight:
-                                                          //                   FontWeight
-                                                          //                       .w400,
-                                                          //               color: Colors
-                                                          //                   .black54),
-                                                          //         ),
+                                                          //     Expanded(
+                                                          //       // width: MediaQuery.of(
+                                                          //       //         context)
+                                                          //       //     .size
+                                                          //       //     .width,
+                                                          //       child: Row(
+                                                          //         mainAxisAlignment:
+                                                          //             MainAxisAlignment
+                                                          //                 .end,
+                                                          //         children: [
+                                                          //           Text(
+                                                          //             details[index]
+                                                          //                     .reqHUOM ??
+                                                          //                 '',
+                                                          //             style: kfontstyle(
+                                                          //                 fontSize:
+                                                          //                     12.sp,
+                                                          //                 fontWeight:
+                                                          //                     FontWeight
+                                                          //                         .w400,
+                                                          //                 color: Colors
+                                                          //                     .black54),
+                                                          //           ),
+                                                          //           SizedBox(
+                                                          //             width: 10.w,
+                                                          //           ),
+                                                          //           Flexible(
+                                                          //               flex: 2,
+                                                          //               fit: FlexFit
+                                                          //                   .tight,
+                                                          //               child:
+                                                          //                   TextFormField(
+                                                          //                 keyboardType:
+                                                          //                     TextInputType
+                                                          //                         .number,
+                                                          //                 controller:
+                                                          //                     TextEditingController(
+                                                          //                   text: details[index]
+                                                          //                       .adjustedHQty,
+                                                          //                 ),
+                                                          //                 style: kfontstyle(
+                                                          //                     fontSize:
+                                                          //                         13.sp),
+                                                          //                 onChanged:
+                                                          //                     (value) {
+                                                          //                   details[index].adjustedHQty =
+                                                          //                       value;
+                                                          //                   _materialreqproducts[index] =
+                                                          //                       MatrialAprReqPrdModel(
+                                                          //                     mrdId:
+                                                          //                         details[index].mrdID,
+                                                          //                     prdId:
+                                                          //                         details[index].prdID,
+                                                          //                     reqHuom:
+                                                          //                         details[index].reqHUOM,
+                                                          //                     reqLuom:
+                                                          //                         details[index].reqLUOM,
+                                                          //                     requestedHQty:
+                                                          //                         details[index].requestedHQty,
+                                                          //                     requestedLQty:
+                                                          //                         details[index].requestedLQty,
+                                                          //                     hqty:
+                                                          //                         details[index].adjustedHQty,
+                                                          //                     lqty:
+                                                          //                         details[index].adjustedLQty,
+                                                          //                   );
+                                                          //                 },
+                                                          //               )),
+                                                          //           const Spacer(),
+                                                          //           Text(
+                                                          //             details[index]
+                                                          //                     .reqLUOM ??
+                                                          //                 '',
+                                                          //             style: kfontstyle(
+                                                          //                 fontSize:
+                                                          //                     12.sp,
+                                                          //                 fontWeight:
+                                                          //                     FontWeight
+                                                          //                         .w400,
+                                                          //                 color: Colors
+                                                          //                     .black54),
+                                                          //           ),
+                                                          //           SizedBox(
+                                                          //             width: 10.w,
+                                                          //           ),
+                                                          //           Flexible(
+                                                          //               flex: 2,
+                                                          //               fit: FlexFit
+                                                          //                   .tight,
+                                                          //               child:
+                                                          //                   TextFormField(
+                                                          //                 keyboardType:
+                                                          //                     TextInputType
+                                                          //                         .number,
+                                                          //                 controller:
+                                                          //                     TextEditingController(
+                                                          //                   text: details[index]
+                                                          //                       .adjustedLQty,
+                                                          //                 ),
+                                                          //                 onChanged:
+                                                          //                     (value) {
+                                                          //                   details[index].adjustedLQty =
+                                                          //                       value;
                                                           //
-                                                          //         // SizedBox(
-                                                          //         //   height:
-                                                          //         //       10.h,
-                                                          //         // ),
-                                                          //         Text(
-                                                          //           details[index]
-                                                          //                   .reqLUOM ??
-                                                          //               '',
-                                                          //           style: kfontstyle(
-                                                          //               fontSize: 12
-                                                          //                   .sp,
-                                                          //               fontWeight:
-                                                          //                   FontWeight
-                                                          //                       .w400,
-                                                          //               color: Colors
-                                                          //                   .black54),
-                                                          //         ),
-                                                          //       ],
-                                                          //     ),
-                                                          //     SizedBox(
-                                                          //       width: 50.w,
-                                                          //     ),
-                                                          //     Column(
-                                                          //       children: [
-                                                          //         Text(
-                                                          //           details[index]
-                                                          //                   .requestedHQty ??
-                                                          //               '',
-                                                          //           style: kfontstyle(
-                                                          //               fontSize: 12
-                                                          //                   .sp,
-                                                          //               fontWeight:
-                                                          //                   FontWeight
-                                                          //                       .w400,
-                                                          //               color: Colors
-                                                          //                   .black54),
-                                                          //         ),
-                                                          //         SizedBox(
-                                                          //           height:
-                                                          //               10.h,
-                                                          //         ),
-                                                          //         Text(
-                                                          //           details[index]
-                                                          //                   .requestedLQty ??
-                                                          //               '',
-                                                          //           style: kfontstyle(
-                                                          //               fontSize: 12
-                                                          //                   .sp,
-                                                          //               fontWeight:
-                                                          //                   FontWeight
-                                                          //                       .w400,
-                                                          //               color: Colors
-                                                          //                   .black54),
-                                                          //         ),
-                                                          //       ],
+                                                          //                   _materialreqproducts[index] =
+                                                          //                       MatrialAprReqPrdModel(
+                                                          //                     mrdId:
+                                                          //                         details[index].mrdID,
+                                                          //                     prdId:
+                                                          //                         details[index].prdID,
+                                                          //                     reqHuom:
+                                                          //                         details[index].reqHUOM,
+                                                          //                     reqLuom:
+                                                          //                         details[index].reqLUOM,
+                                                          //                     requestedHQty:
+                                                          //                         details[index].requestedHQty,
+                                                          //                     requestedLQty:
+                                                          //                         details[index].requestedLQty,
+                                                          //                     hqty:
+                                                          //                         details[index].adjustedHQty,
+                                                          //                     lqty:
+                                                          //                         details[index].adjustedLQty,
+                                                          //                   );
+                                                          //                 },
+                                                          //               )),
+                                                          //         ],
+                                                          //       ),
                                                           //     ),
                                                           //   ],
                                                           // )
                                                         ],
                                                       ),
-                                                      // Row(
-                                                      //   children: [
-                                                      //     Expanded(
-                                                      //       // width: MediaQuery.of(
-                                                      //       //         context)
-                                                      //       //     .size
-                                                      //       //     .width,
-                                                      //       child: Row(
-                                                      //         mainAxisAlignment:
-                                                      //             MainAxisAlignment
-                                                      //                 .end,
-                                                      //         children: [
-                                                      //           Text(
-                                                      //             details[index]
-                                                      //                     .reqHUOM ??
-                                                      //                 '',
-                                                      //             style: kfontstyle(
-                                                      //                 fontSize:
-                                                      //                     12.sp,
-                                                      //                 fontWeight:
-                                                      //                     FontWeight
-                                                      //                         .w400,
-                                                      //                 color: Colors
-                                                      //                     .black54),
-                                                      //           ),
-                                                      //           SizedBox(
-                                                      //             width: 10.w,
-                                                      //           ),
-                                                      //           Flexible(
-                                                      //               flex: 2,
-                                                      //               fit: FlexFit
-                                                      //                   .tight,
-                                                      //               child:
-                                                      //                   TextFormField(
-                                                      //                 keyboardType:
-                                                      //                     TextInputType
-                                                      //                         .number,
-                                                      //                 controller:
-                                                      //                     TextEditingController(
-                                                      //                   text: details[index]
-                                                      //                       .adjustedHQty,
-                                                      //                 ),
-                                                      //                 style: kfontstyle(
-                                                      //                     fontSize:
-                                                      //                         13.sp),
-                                                      //                 onChanged:
-                                                      //                     (value) {
-                                                      //                   details[index].adjustedHQty =
-                                                      //                       value;
-                                                      //                   _materialreqproducts[index] =
-                                                      //                       MatrialAprReqPrdModel(
-                                                      //                     mrdId:
-                                                      //                         details[index].mrdID,
-                                                      //                     prdId:
-                                                      //                         details[index].prdID,
-                                                      //                     reqHuom:
-                                                      //                         details[index].reqHUOM,
-                                                      //                     reqLuom:
-                                                      //                         details[index].reqLUOM,
-                                                      //                     requestedHQty:
-                                                      //                         details[index].requestedHQty,
-                                                      //                     requestedLQty:
-                                                      //                         details[index].requestedLQty,
-                                                      //                     hqty:
-                                                      //                         details[index].adjustedHQty,
-                                                      //                     lqty:
-                                                      //                         details[index].adjustedLQty,
-                                                      //                   );
-                                                      //                 },
-                                                      //               )),
-                                                      //           const Spacer(),
-                                                      //           Text(
-                                                      //             details[index]
-                                                      //                     .reqLUOM ??
-                                                      //                 '',
-                                                      //             style: kfontstyle(
-                                                      //                 fontSize:
-                                                      //                     12.sp,
-                                                      //                 fontWeight:
-                                                      //                     FontWeight
-                                                      //                         .w400,
-                                                      //                 color: Colors
-                                                      //                     .black54),
-                                                      //           ),
-                                                      //           SizedBox(
-                                                      //             width: 10.w,
-                                                      //           ),
-                                                      //           Flexible(
-                                                      //               flex: 2,
-                                                      //               fit: FlexFit
-                                                      //                   .tight,
-                                                      //               child:
-                                                      //                   TextFormField(
-                                                      //                 keyboardType:
-                                                      //                     TextInputType
-                                                      //                         .number,
-                                                      //                 controller:
-                                                      //                     TextEditingController(
-                                                      //                   text: details[index]
-                                                      //                       .adjustedLQty,
-                                                      //                 ),
-                                                      //                 onChanged:
-                                                      //                     (value) {
-                                                      //                   details[index].adjustedLQty =
-                                                      //                       value;
-                                                      //
-                                                      //                   _materialreqproducts[index] =
-                                                      //                       MatrialAprReqPrdModel(
-                                                      //                     mrdId:
-                                                      //                         details[index].mrdID,
-                                                      //                     prdId:
-                                                      //                         details[index].prdID,
-                                                      //                     reqHuom:
-                                                      //                         details[index].reqHUOM,
-                                                      //                     reqLuom:
-                                                      //                         details[index].reqLUOM,
-                                                      //                     requestedHQty:
-                                                      //                         details[index].requestedHQty,
-                                                      //                     requestedLQty:
-                                                      //                         details[index].requestedLQty,
-                                                      //                     hqty:
-                                                      //                         details[index].adjustedHQty,
-                                                      //                     lqty:
-                                                      //                         details[index].adjustedLQty,
-                                                      //                   );
-                                                      //                 },
-                                                      //               )),
-                                                      //         ],
-                                                      //       ),
-                                                      //     ),
-                                                      //   ],
-                                                      // )
-                                                    ],
+                                                    ),
+                                                    separatorBuilder:
+                                                        (context, index) =>
+                                                            Divider(
+                                                      color: Colors.grey[300],
+                                                    ),
+                                                    itemCount: details.length,
                                                   ),
-                                                ),
-                                                separatorBuilder:
-                                                    (context, index) => Divider(
-                                                  color: Colors.grey[300],
-                                                ),
-                                                itemCount: details.length,
-                                              ),
                                     materialreqdetailFailed: () => SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height,

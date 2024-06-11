@@ -83,16 +83,6 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
       body: PopScope(
         // canPop: false,
         onPopInvoked: (didPop) {
-          // log("$_totalcount $_approvedCount");
-          // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-          //   Future.delayed(const Duration(microseconds: 100), () {
-          //     showPopAlert(context);
-          //   });
-          // } else {
-
-          //   context.read<NavigatetoBackCubit>().popFromScreen(true);
-          // }
-
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
               userID: widget.vanToVanHeader.userID ?? '',
               mode: widget.currentMode,
