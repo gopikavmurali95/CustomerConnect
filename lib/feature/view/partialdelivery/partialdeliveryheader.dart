@@ -73,6 +73,157 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey.shade200),
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: const [
+                      BoxShadow(
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
+                          blurRadius: 0.4,
+                          spreadRadius: 0.4)
+                    ]),
+                child: TextFormField(
+                  controller: _SearchCtrl,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search here..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (_SearchCtrl.text.isNotEmpty) {
+                                  _SearchCtrl.clear();
+
+                                  context.read<PartialDeliveryHeaderBloc>().add(
+                                      GetPartialDeliveryHeaderEvent(
+                                          userID: widget.user.usrId!,
+                                          mode: _selectedeMode,
+                                          searchQuery: ''));
+                                }
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                                                                .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<PartialDeliveryHeaderBloc>().add(
+                          GetPartialDeliveryHeaderEvent(
+                              userID: widget.user.usrId!,
+                              mode: _selectedeMode,
+                              searchQuery: value));
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 3.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey.shade200),
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: const [
+                      BoxShadow(
+                          // ignore: use_full_hex_values_for_flutter_colors
+                          color: Color(0xff00000050),
+                          blurRadius: 0.4,
+                          spreadRadius: 0.4)
+                    ]),
+                child: DropdownButtonFormField(
+                  elevation: 0,
+                  value: filterFieldsPartialDelivery[0].mode,
+                  dropdownColor: Colors.white,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                                                                .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  items: filterFieldsPartialDelivery
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e.mode,
+                          child: Text(e.statusName),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    _selectedeMode = value!;
+                    context
+                        .read<PartialDeliveryHeaderBloc>()
+                        .add(const ClearPartialDeliveryHeaderEvent());
+                    context.read<PartialDeliveryHeaderBloc>().add(
+                        GetPartialDeliveryHeaderEvent(
+                            userID: widget.user.usrId!,
+                            mode: value,
+                            searchQuery: ''));
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -96,180 +247,6 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                           )
                         : Column(
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Container(
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                          color: Colors.grey.shade200),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                            // ignore: use_full_hex_values_for_flutter_colors
-                                            color: Color(0xff00000050),
-                                            blurRadius: 0.4,
-                                            spreadRadius: 0.4)
-                                      ]),
-                                  child: TextFormField(
-                                    controller: _SearchCtrl,
-                                    style: kfontstyle(
-                                        fontSize: 10.sp, color: Colors.black87),
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      hintText: 'Search here..',
-                                      suffix: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Expanded(
-                                            child: IconButton(
-                                                onPressed: () {
-                                                  if (_SearchCtrl
-                                                      .text.isNotEmpty) {
-                                                    _SearchCtrl.clear();
-
-                                                    context
-                                                        .read<
-                                                            PartialDeliveryHeaderBloc>()
-                                                        .add(GetPartialDeliveryHeaderEvent(
-                                                            userID: widget
-                                                                .user.usrId!,
-                                                            mode:
-                                                                _selectedeMode,
-                                                            searchQuery: ''));
-                                                  }
-                                                },
-                                                icon: Icon(
-                                                  Icons.clear,
-                                                  size: 10.sp,
-                                                )),
-                                          ),
-                                          SizedBox(
-                                            height: 10.h,
-                                          )
-                                        ],
-                                      ),
-                                      prefixIcon: Icon(
-                                        Icons.search,
-                                        size: 14.sp,
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                      border: /* InputBorder
-                                                                .none  */
-                                          OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                    ),
-                                    onChanged: (value) {
-                                      debounce = Timer(
-                                          const Duration(
-                                            milliseconds: 500,
-                                          ), () async {
-                                        context
-                                            .read<PartialDeliveryHeaderBloc>()
-                                            .add(GetPartialDeliveryHeaderEvent(
-                                                userID: widget.user.usrId!,
-                                                mode: _selectedeMode,
-                                                searchQuery: value));
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 3.h,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 5),
-                                child: Container(
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                          color: Colors.grey.shade200),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                            // ignore: use_full_hex_values_for_flutter_colors
-                                            color: Color(0xff00000050),
-                                            blurRadius: 0.4,
-                                            spreadRadius: 0.4)
-                                      ]),
-                                  child: DropdownButtonFormField(
-                                    elevation: 0,
-                                    value: filterFieldsPartialDelivery[0].mode,
-                                    dropdownColor: Colors.white,
-                                    style: kfontstyle(
-                                        fontSize: 10.sp, color: Colors.black87),
-                                    decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                      border: /* InputBorder
-                                                                .none  */
-                                          OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                            color: Colors.transparent),
-                                      ),
-                                    ),
-                                    items: filterFieldsPartialDelivery
-                                        .map(
-                                          (e) => DropdownMenuItem(
-                                            value: e.mode,
-                                            child: Text(e.statusName),
-                                          ),
-                                        )
-                                        .toList(),
-                                    onChanged: (value) {
-                                      _selectedeMode = value!;
-                                      context.read<PartialDeliveryHeaderBloc>().add(
-                                          const ClearPartialDeliveryHeaderEvent());
-                                      context
-                                          .read<PartialDeliveryHeaderBloc>()
-                                          .add(GetPartialDeliveryHeaderEvent(
-                                              userID: widget.user.usrId!,
-                                              mode: value,
-                                              searchQuery: ''));
-                                    },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),

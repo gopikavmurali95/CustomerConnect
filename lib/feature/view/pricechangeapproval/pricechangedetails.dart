@@ -49,6 +49,7 @@ List<PriceChangeReasonModel> availableresons = [];
 class _PriceChangeDetailState extends State<PriceChangeDetail> {
   @override
   void initState() {
+    _searchctrls.clear();
     _procechangeapproved.clear();
     _approvedCount = 0;
     _totalcount = 0;
@@ -1203,6 +1204,25 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                         ],
                                       ),
                                     );
+                                  } else if (checkrejectedstatus() == false) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "You should do approve or reject for all the items listed here.In case of rejection please specify the resaon."),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   } else {
                                     showCupertinoDialog(
                                       context: context,
@@ -1276,6 +1296,19 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
         ),
       ),
     );
+  }
+
+  bool checkrejectedstatus() {
+    log(jsonEncode(_procechangeapproved));
+    int index = statuslist.indexWhere((element) => element == false);
+    if (index < 0) {
+      return true;
+    } else if (selectedresons[index].isNotEmpty &&
+        selectedresons[index] != "-1") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

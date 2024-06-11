@@ -50,6 +50,7 @@ class _ReturnApprovalDetailScreenState
     extends State<ReturnApprovalDetailScreen> {
   @override
   void initState() {
+    _searchctrls.clear();
     _approvedCount = 0;
     loadingCount = 0;
     context

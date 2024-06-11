@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -56,12 +57,13 @@ class _ScheduledReturnDetailScreenState
     extends State<ScheduledReturnDetailScreen> {
   @override
   void initState() {
+    _searchctrls.clear();
     _approvedCount = 0;
     loadingCount = 0;
 
     availableresons.clear();
     availableroutes.clear();
-
+    _searchctrls.clear();
     context
         .read<ScheduledReturnDetailsBloc>()
         .add(const ClearScheduledReturnDetailsEvent());
@@ -751,33 +753,17 @@ class _ScheduledReturnDetailScreenState
                                                                               true,
                                                                           onChanged:
                                                                               (value) {
-                                                                            if (selectedresons[index] ==
-                                                                                '-1') {
-                                                                              showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Plese select a reason"),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            } else {
-                                                                              statuslist[index] = true;
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] = ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "A",
-                                                                              );
-                                                                            }
+                                                                            statuslist[index] =
+                                                                                true;
+                                                                            loadingCount =
+                                                                                0;
+                                                                            setState(() {});
+                                                                            approvedProducts[index] =
+                                                                                ScheduledReturnPrdModel(
+                                                                              reason: selectedresons[index],
+                                                                              rrdId: details[index].rrdId,
+                                                                              status: "A",
+                                                                            );
                                                                           },
                                                                         ),
                                                                         Text(
@@ -816,33 +802,17 @@ class _ScheduledReturnDetailScreenState
                                                                               false,
                                                                           onChanged:
                                                                               (value) {
-                                                                            if (selectedresons[index] ==
-                                                                                '-1') {
-                                                                              showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Plese select a reason"),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            } else {
-                                                                              statuslist[index] = false;
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] = ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "R",
-                                                                              );
-                                                                            }
+                                                                            statuslist[index] =
+                                                                                false;
+                                                                            loadingCount =
+                                                                                0;
+                                                                            setState(() {});
+                                                                            approvedProducts[index] =
+                                                                                ScheduledReturnPrdModel(
+                                                                              reason: selectedresons[index],
+                                                                              rrdId: details[index].rrdId,
+                                                                              status: "R",
+                                                                            );
                                                                           },
                                                                         ),
                                                                         Text(
@@ -1136,6 +1106,26 @@ class _ScheduledReturnDetailScreenState
                                               ],
                                             ),
                                           );
+                                        } else if (checkrejectedstatus() ==
+                                            false) {
+                                          showCupertinoDialog(
+                                            context: context,
+                                            builder: (context) =>
+                                                CupertinoAlertDialog(
+                                              title: const Text('Alert'),
+                                              content: const Text(
+                                                  "You should do approve or reject for all the items listed here.In case of rejection please specify the resaon."),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
                                         } else {
                                           showCupertinoDialog(
                                             context: context,
@@ -1234,6 +1224,19 @@ class _ScheduledReturnDetailScreenState
         ),
       ),
     );
+  }
+
+  bool checkrejectedstatus() {
+    log(jsonEncode(approvedProducts));
+    int index = statuslist.indexWhere((element) => element == false);
+    if (index < 0) {
+      return true;
+    } else if (selectedresons[index].isNotEmpty &&
+        selectedresons[index] != "-1") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
