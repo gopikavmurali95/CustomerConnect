@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -293,6 +294,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                             currentMode:
                                                                 _selectedPriceChangeMode,
                                                           )));
+                                              log(_selectedPriceChangeMode);
                                             },
                                             child: Row(
                                               children: [
