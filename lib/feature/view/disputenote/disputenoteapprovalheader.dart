@@ -38,6 +38,7 @@ class _DisputeNoteApprovalHEaderScreenState
     extends State<DisputeNoteApprovalHEaderScreen> {
   @override
   void initState() {
+    _disputeHeaderSearchCtrl.clear();
     context.read<ProgressIndicatorCubit>().removeProgressIndicator();
     context
         .read<DisputeNoteHeaderBloc>()

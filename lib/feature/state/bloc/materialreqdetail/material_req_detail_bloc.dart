@@ -15,34 +15,35 @@ class MaterialReqDetailBloc
   final IMaterialReqHeaderRepo materialdetailrepo;
   MaterialReqDetailBloc(this.materialdetailrepo)
       : super(MaterialReqDetailState.initial()) {
-    List<MaterialReqDetailModel> searchlistitems =[];
+    List<MaterialReqDetailModel> searchlistitems = [];
     on<MaterialReqDetailSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqDetailModel>> mdetailList =
           await materialdetailrepo.materialreqdetailList(event.reqId);
 
-      emit(mdetailList.fold((l) => const MaterialreqdetailFailed(),
-          (r)
-          {
-            searchlistitems =  r
-                .where((element) =>
-            (element.mrdID??'').
-            toLowerCase().
-            toUpperCase().
-            contains(event.searchQuery.toUpperCase()) ||
-                (element.prdName??'').
-                toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())||
-                (element.prdID??'').
-                toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())||
-                (element.prdCode??'')
-                    .toLowerCase().
-                toUpperCase().
-                contains(event.searchQuery.toUpperCase())).toList();
-            return Materialreqdetailsuccess(  materialdetail: event.searchQuery.isEmpty ?r : searchlistitems,);
-          }));
+      emit(mdetailList.fold((l) => const MaterialreqdetailFailed(), (r) {
+        searchlistitems = r
+            .where((element) =>
+                (element.mrdID ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.prdName ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.prdID ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                (element.prdCode ?? '')
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return Materialreqdetailsuccess(
+          materialdetail: event.searchQuery.isEmpty ? r : searchlistitems,
+        );
+      }));
     });
     on<MaterialDetailClearEvent>((event, emit) {
       emit(const Materialreqdetailsuccess(materialdetail: null));

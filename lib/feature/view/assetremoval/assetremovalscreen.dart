@@ -30,6 +30,7 @@ class _AssetRemovalApprovalScreenState
     extends State<AssetRemovalApprovalScreen> {
   @override
   void initState() {
+    _assetRemovectrl.clear();
     context
         .read<AssetRemovelRequestHeaderBloc>()
         .add(const ClearAssetRemovalHeaderEvent());

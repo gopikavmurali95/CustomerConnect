@@ -83,7 +83,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       Row(
@@ -158,7 +158,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
                       height: 40,
                       decoration: BoxDecoration(

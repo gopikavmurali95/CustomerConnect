@@ -44,9 +44,11 @@ int _totalcount = 0;
 
 List<MatrialAprReqPrdModel?> _materialreqproducts = [];
 List<MatrialAprReqPrdModel?> _materialreqproductsReject = [];
-TextEditingController _materialreqdetailSerachController = TextEditingController();
+TextEditingController _materialreqdetailSerachController =
+    TextEditingController();
 TextEditingController _apprvLQtymqController = TextEditingController();
 TextEditingController _apprvHQtymqController = TextEditingController();
+
 class _MaterialRequestDetailScreenState
     extends State<MaterialRequestDetailScreen> {
   @override
@@ -111,9 +113,8 @@ class _MaterialRequestDetailScreenState
             //     showPopAlert(context);
             //   });
             // } else {
-            context
-                .read<MaterialReqHeadBloc>()
-                .add(MaterialHeadSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+            context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
+                userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
             //   log("$_approvedCount , $_totalcount");
             //   context.read<NavigatetoBackCubit>().popFromScreen(true);
             // }
@@ -201,7 +202,6 @@ class _MaterialRequestDetailScreenState
                         physics: const AlwaysScrollableScrollPhysics(),
                         child: Column(
                           children: [
-
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
@@ -309,36 +309,42 @@ class _MaterialRequestDetailScreenState
                                 ],
                               ),
                             ),
-                            SizedBox(height: 10.h,),
+                            SizedBox(
+                              height: 10.h,
+                            ),
                             Padding(
-                              padding:
-                              const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                              padding: const EdgeInsets.only(
+                                  left: 10.0, right: 10, bottom: 10),
                               child: Container(
                                   height: 30.h,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
-                                      border: Border.all(color: Colors.grey.shade200),
+                                      border: Border.all(
+                                          color: Colors.grey.shade200),
                                       borderRadius: BorderRadius.circular(10.0),
                                       boxShadow: const [
                                         BoxShadow(
-                                          // ignore: use_full_hex_values_for_flutter_colors
+                                            // ignore: use_full_hex_values_for_flutter_colors
                                             color: Color(0xff00000050),
                                             blurRadius: 0.4,
                                             spreadRadius: 0.4)
                                       ]),
                                   child: TextFormField(
-                                    controller: _materialreqdetailSerachController,
+                                    controller:
+                                        _materialreqdetailSerachController,
                                     onChanged: (value) {
                                       debounce = Timer(
                                           const Duration(
                                             milliseconds: 500,
                                           ), () async {
-                                        context.read<MaterialReqDetailBloc>().add(
-                                            MaterialReqDetailSuccessEvent(
-
-                                                searchQuery: _materialreqdetailSerachController.text, reqId: ''));
+                                        context
+                                            .read<MaterialReqDetailBloc>()
+                                            .add(MaterialReqDetailSuccessEvent(
+                                                searchQuery:
+                                                    _materialreqdetailSerachController
+                                                        .text,
+                                                reqId: ''));
                                       });
-
                                     },
                                     decoration: InputDecoration(
                                         prefixIcon: const Icon(
@@ -346,7 +352,8 @@ class _MaterialRequestDetailScreenState
                                           size: 15,
                                         ),
                                         suffix: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             SizedBox(height: 5.h),
                                             Expanded(
@@ -354,13 +361,16 @@ class _MaterialRequestDetailScreenState
                                                 onPressed: () {
                                                   if (_materialreqdetailSerachController
                                                       .text.isNotEmpty) {
-                                                    _materialreqdetailSerachController.clear();
+                                                    _materialreqdetailSerachController
+                                                        .clear();
 
                                                     context
-                                                        .read<MaterialReqDetailBloc>()
+                                                        .read<
+                                                            MaterialReqDetailBloc>()
                                                         .add(const MaterialReqDetailSuccessEvent(
-                                                        //mode: _selectedloadrequest,
-                                                        searchQuery: "", reqId: ''));
+                                                            //mode: _selectedloadrequest,
+                                                            searchQuery: "",
+                                                            reqId: ''));
                                                   }
                                                 },
                                                 icon: Icon(
@@ -378,7 +388,8 @@ class _MaterialRequestDetailScreenState
                                             fontWeight: FontWeight.normal),
                                         isDense: true,
                                         counterText: "",
-                                        contentPadding: const EdgeInsets.all(15.0),
+                                        contentPadding:
+                                            const EdgeInsets.all(15.0),
                                         filled: true,
                                         fillColor: Colors.white,
                                         // suffix: InkWell(
@@ -402,7 +413,8 @@ class _MaterialRequestDetailScreenState
                                         //   ),
                                         // ),
                                         border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(10.0),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
                                             borderSide: BorderSide.none)),
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
@@ -418,36 +430,30 @@ class _MaterialRequestDetailScreenState
                               width: double.infinity,
                               color: const Color(0xfff5f5f5),
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 10, right: 10),
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Item',
-                                      style: boxHeading(),),
+                                      style: boxHeading(),
+                                    ),
                                     SizedBox(
                                       width: 10.w,
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                            'UOM',
-                                            style: boxHeading()
-                                        ),
+                                        Text('UOM', style: boxHeading()),
                                         SizedBox(
                                           width: 30.w,
                                         ),
-                                        Text(
-                                            'Req Qty',
-                                            style: boxHeading()
-                                        ),
+                                        Text('Req Qty', style: boxHeading()),
                                         SizedBox(
                                           width: 30.w,
                                         ),
-                                        Text(
-                                            'Appr Qty',
-                                            style: boxHeading()
-                                        ),
+                                        Text('Appr Qty', style: boxHeading()),
                                         SizedBox(
                                           width: 10.w,
                                         ),
@@ -537,10 +543,15 @@ class _MaterialRequestDetailScreenState
                                                   child: Column(
                                                     children: [
                                                       Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
                                                           Expanded(
-                                                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Text(
                                                                   details[index]
@@ -558,7 +569,9 @@ class _MaterialRequestDetailScreenState
                                                                   ),
                                                                 ),
                                                                 Text(
-                                                                  details[index].prdName ?? '',
+                                                                  details[index]
+                                                                          .prdName ??
+                                                                      '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           12.sp,
@@ -573,31 +586,45 @@ class _MaterialRequestDetailScreenState
                                                           ),
 
                                                           SizedBox(
-                                                            width: MediaQuery.of(context).size.width/2.w,
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                2.w,
                                                             child: Row(
-                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: [
                                                                 Column(
                                                                   children: [
                                                                     Text(
-                                                                       details[index].reqHUOM?? '',
+                                                                      details[index]
+                                                                              .reqHUOM ??
+                                                                          '',
                                                                       style: kfontstyle(
-                                                                          fontSize: 12.sp,
-                                                                          fontWeight:
-                                                                          FontWeight
+                                                                          fontSize: 12
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
                                                                               .w400,
-                                                                          color: Colors
-                                                                              .black54),
+                                                                          color:
+                                                                              Colors.black54),
                                                                     ),
-                                                                    SizedBox(height: 5.h,),
-                                                                    Text(details[index].reqLUOM?? '',
+                                                                    SizedBox(
+                                                                      height:
+                                                                          5.h,
+                                                                    ),
+                                                                    Text(
+                                                                      details[index]
+                                                                              .reqLUOM ??
+                                                                          '',
                                                                       style: kfontstyle(
-                                                                          fontSize: 12.sp,
-                                                                          fontWeight:
-                                                                          FontWeight
+                                                                          fontSize: 12
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
                                                                               .w400,
-                                                                          color: Colors
-                                                                              .black54),
+                                                                          color:
+                                                                              Colors.black54),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -607,87 +634,91 @@ class _MaterialRequestDetailScreenState
                                                                 Column(
                                                                   children: [
                                                                     Text(
-                                                                      details[index].requestedHQty?? '',
+                                                                      details[index]
+                                                                              .requestedHQty ??
+                                                                          '',
                                                                       style: kfontstyle(
-                                                                          fontSize: 12.sp,
-                                                                          fontWeight:
-                                                                          FontWeight
+                                                                          fontSize: 12
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
                                                                               .w400,
-                                                                          color: Colors
-                                                                              .black54),
+                                                                          color:
+                                                                              Colors.black54),
                                                                     ),
-                                                                    SizedBox(height: 5.h,),
-                                                                    Text(details[index].requestedLQty?? '',
+                                                                    SizedBox(
+                                                                      height:
+                                                                          5.h,
+                                                                    ),
+                                                                    Text(
+                                                                      details[index]
+                                                                              .requestedLQty ??
+                                                                          '',
                                                                       style: kfontstyle(
-                                                                          fontSize: 12.sp,
-                                                                          fontWeight:
-                                                                          FontWeight
+                                                                          fontSize: 12
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
                                                                               .w400,
-                                                                          color: Colors
-                                                                              .black54),
+                                                                          color:
+                                                                              Colors.black54),
                                                                     ),
                                                                   ],
                                                                 ),
-
                                                                 Column(
                                                                   children: [
                                                                     SizedBox(
-                                                                      height: 25,
+                                                                      height:
+                                                                          25,
                                                                       width: 80,
-                                                                      child: TextFormField(
-                                                                         controller: _apprvHQtymqController,
+                                                                      child:
+                                                                          TextFormField(
+                                                                        controller:
+                                                                            _apprvHQtymqController,
                                                                         style: const TextStyle(
-                                                                            fontSize: 9
-                                                                        ),
+                                                                            fontSize:
+                                                                                9),
                                                                         decoration: InputDecoration(
                                                                             enabledBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(
-                                                                                  color: Colors.black12, width: 1),
+                                                                              borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                             ),
                                                                             focusedBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(
-                                                                                  color: Colors.grey, width: 1.0),
+                                                                              borderSide: BorderSide(color: Colors.grey, width: 1.0),
                                                                             ),
                                                                             fillColor: const Color(0xfff5f5f5),
                                                                             filled: true,
                                                                             border: OutlineInputBorder(
-
-                                                                              borderSide: const BorderSide(
-                                                                                  color: Colors.red, width: 4),
+                                                                              borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                               borderRadius: BorderRadius.circular(5),
-
-                                                                            )
-                                                                        ),
+                                                                            )),
                                                                       ),
                                                                     ),
-                                                                    SizedBox(height: 5.h,),
                                                                     SizedBox(
-                                                                      height: 25,
+                                                                      height:
+                                                                          5.h,
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          25,
                                                                       width: 80,
-                                                                      child: TextFormField(
-                                                                        controller: _apprvLQtymqController,
+                                                                      child:
+                                                                          TextFormField(
+                                                                        controller:
+                                                                            _apprvLQtymqController,
                                                                         style: const TextStyle(
-                                                                            fontSize: 9
-                                                                        ),
+                                                                            fontSize:
+                                                                                9),
                                                                         decoration: InputDecoration(
                                                                             enabledBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(
-                                                                                  color: Colors.black12, width: 1),
+                                                                              borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                             ),
                                                                             focusedBorder: const OutlineInputBorder(
-                                                                              borderSide: BorderSide(
-                                                                                  color: Colors.grey, width: 1.0),
+                                                                              borderSide: BorderSide(color: Colors.grey, width: 1.0),
                                                                             ),
                                                                             fillColor: const Color(0xfff5f5f5),
                                                                             filled: true,
                                                                             border: OutlineInputBorder(
-
-                                                                              borderSide: const BorderSide(
-                                                                                  color: Colors.red, width: 4),
+                                                                              borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                               borderRadius: BorderRadius.circular(5),
-
-                                                                            )
-                                                                        ),
+                                                                            )),
                                                                       ),
                                                                     ),
                                                                   ],

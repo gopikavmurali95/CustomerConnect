@@ -31,6 +31,12 @@ List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
 
 class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
   @override
+  void initState() {
+    _vanToVanHSearchCtrl.clear();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

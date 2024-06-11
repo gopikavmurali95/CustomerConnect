@@ -14,7 +14,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
-
 class MaterialRequestHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
   const MaterialRequestHeaderScreen({super.key, required this.user});
@@ -23,13 +22,12 @@ class MaterialRequestHeaderScreen extends StatefulWidget {
   State<MaterialRequestHeaderScreen> createState() =>
       _MaterialRequestHeaderScreenState();
 }
-List<ApprovalStatusFilterModel> ddfilterMaterialReq = [
 
+List<ApprovalStatusFilterModel> ddfilterMaterialReq = [
   ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
   ApprovalStatusFilterModel(mode: 'AH', statusName: 'Approved and Hold'),
   ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
-
 ];
 
 String _selectedMaterialReq = 'P';
@@ -41,10 +39,11 @@ class _MaterialRequestHeaderScreenState
   void initState() {
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
     context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
-        userId: widget.user.usrId??'',
-      mode: 'P', searchQuery: '',
-    ));
-   _materialReqSearchController.clear();
+          userId: widget.user.usrId ?? '',
+          mode: 'P',
+          searchQuery: '',
+        ));
+    _materialReqSearchController.clear();
     super.initState();
   }
 
@@ -89,8 +88,8 @@ class _MaterialRequestHeaderScreenState
               child: Column(
                 children: [
                   Padding(
-                    padding:
-                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 10.0, right: 10, bottom: 10),
                     child: Container(
                         height: 30.h,
                         decoration: BoxDecoration(
@@ -99,7 +98,7 @@ class _MaterialRequestHeaderScreenState
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: const [
                               BoxShadow(
-                                // ignore: use_full_hex_values_for_flutter_colors
+                                  // ignore: use_full_hex_values_for_flutter_colors
                                   color: Color(0xff00000050),
                                   blurRadius: 0.4,
                                   spreadRadius: 0.4)
@@ -107,19 +106,21 @@ class _MaterialRequestHeaderScreenState
                         child: TextFormField(
                           controller: _materialReqSearchController,
                           onChanged: (value) {
-
                             debounce = Timer(
                                 const Duration(
                                   milliseconds: 500,
                                 ), () async {
-                              context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
-                                userId: widget.user.usrId??'',
-                                mode: _selectedMaterialReq, searchQuery: _materialReqSearchController.text,
-                              ));
-
+                              context
+                                  .read<MaterialReqHeadBloc>()
+                                  .add(MaterialHeadSuccessEvent(
+                                    userId: widget.user.usrId ?? '',
+                                    mode: _selectedMaterialReq,
+                                    searchQuery:
+                                        _materialReqSearchController.text,
+                                  ));
                             });
-                         log(_materialReqSearchController.text);
-                         log(_selectedMaterialReq);
+                            log(_materialReqSearchController.text);
+                            log(_selectedMaterialReq);
                           },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
@@ -140,8 +141,9 @@ class _MaterialRequestHeaderScreenState
                                           context
                                               .read<MaterialReqHeadBloc>()
                                               .add(MaterialHeadSuccessEvent(
-                                              mode: _selectedMaterialReq,
-                                              searchQuery: "", userId: ''));
+                                                  mode: _selectedMaterialReq,
+                                                  searchQuery: "",
+                                                  userId: ''));
                                         }
                                         // _loadPendingSearchCtrl.clear();
                                         // context
@@ -212,51 +214,48 @@ class _MaterialRequestHeaderScreenState
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: const [
                               BoxShadow(
-                                // ignore: use_full_hex_values_for_flutter_colors
+                                  // ignore: use_full_hex_values_for_flutter_colors
                                   color: Color(0xff00000050),
                                   // blurRadius: 0.2,
                                   spreadRadius: 0.2)
                             ]),
-
                         child: DropdownButtonFormField(
                           value: ddfilterMaterialReq[0].mode,
                           // value: ddfilterFieldsDisputeNote[0].mode,
                           dropdownColor: Colors.white,
-                          style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                          style: kfontstyle(
+                              fontSize: 10.sp, color: Colors.black87),
                           decoration: InputDecoration(
-
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 20,),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                            ),
                             border: /* InputBorder
                                 .none  */
-                            OutlineInputBorder(
+                                OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  color: Colors.transparent
-                              ),
+                              borderSide:
+                                  const BorderSide(color: Colors.transparent),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  color: Colors.transparent
-                              ),
+                              borderSide:
+                                  const BorderSide(color: Colors.transparent),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  color: Colors.transparent
-                              ),
+                              borderSide:
+                                  const BorderSide(color: Colors.transparent),
                             ),
                           ),
                           items: ddfilterMaterialReq
                               .map(
                                 (e) => DropdownMenuItem(
-                              value: e.mode,
-                              child: Text(e.statusName),
-                            ),
-                          )
+                                  value: e.mode,
+                                  child: Text(e.statusName),
+                                ),
+                              )
                               .toList(),
                           onChanged: (value) {
                             _selectedMaterialReq = value!;
@@ -265,38 +264,45 @@ class _MaterialRequestHeaderScreenState
                                 .add(const MaterialReqHeadClearEvent());
 
                             context.read<MaterialReqHeadBloc>().add(
-                              MaterialHeadSuccessEvent(
-                                  searchQuery: '',
-                                  userId: widget.user.usrId?? '',
-                                  mode: value),
-                            );
+                                  MaterialHeadSuccessEvent(
+                                      searchQuery: '',
+                                      userId: widget.user.usrId ?? '',
+                                      mode: value),
+                                );
                           },
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.h,),
+                  SizedBox(
+                    height: 10.h,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: BlocBuilder<MaterialReqHeadBloc, MaterialReqHeadState>(
+                    child:
+                        BlocBuilder<MaterialReqHeadBloc, MaterialReqHeadState>(
                       builder: (context, state) {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               state.when(
-                                materialreqheadsuccess:
-                                  (materialheader) => _selectedMaterialReq == "P"
-                                  ? "Pending Approvals" :
-                                  _selectedMaterialReq == "A" ?
-                              "Approved Requests" : _selectedMaterialReq == "AH" ?
-                                  "Approved and Hold": "Rejected Requests",
+                                materialreqheadsuccess: (materialheader) =>
+                                    _selectedMaterialReq == "P"
+                                        ? "Pending Approvals"
+                                        : _selectedMaterialReq == "A"
+                                            ? "Approved Requests"
+                                            : _selectedMaterialReq == "AH"
+                                                ? "Approved and Hold"
+                                                : "Rejected Requests",
                                 materialreqheadFailed: () =>
-                                _selectedMaterialReq == "P"
-                                    ? "Pending Approvals" :
-                                _selectedMaterialReq == "A" ?
-                                "Approved Requests" : _selectedMaterialReq == "AH" ?
-                                "Approved and Hold":"Rejected Requests",
+                                    _selectedMaterialReq == "P"
+                                        ? "Pending Approvals"
+                                        : _selectedMaterialReq == "A"
+                                            ? "Approved Requests"
+                                            : _selectedMaterialReq == "AH"
+                                                ? "Approved and Hold"
+                                                : "Rejected Requests",
                                 // materialreqheadsuccess: (materialheader) =>,
                                 // materialreqheadFailed: () =>,
                               ),
@@ -305,7 +311,9 @@ class _MaterialRequestHeaderScreenState
                             Text(
                               state.when(
                                 materialreqheadsuccess: (headers) =>
-                                headers == null ? "0" : headers.length.toString(),
+                                    headers == null
+                                        ? "0"
+                                        : headers.length.toString(),
                                 materialreqheadFailed: () => "0",
                               ),
                               style: countHeading(),
@@ -315,7 +323,9 @@ class _MaterialRequestHeaderScreenState
                       },
                     ),
                   ),
-                  SizedBox(height: 10.h,),
+                  SizedBox(
+                    height: 10.h,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child:
@@ -339,148 +349,166 @@ class _MaterialRequestHeaderScreenState
                                             color: Colors.grey[300],
                                           ),
                                       itemCount: 10),
-                                ) :headers.isEmpty?Center(
-                            child: Text("No Data Available",style: boxHeading(),),
-                          )
-                              : ListView.separated(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) =>
-                                      GestureDetector(
-                                        onTap: () // {},
-                                            {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    MaterialRequestDetailScreen(
-                                                      user: widget.user,
-                                                      materialrequest:
-                                                          headers[index],
-                                                    )),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              height: 50,
-                                              width: 10,
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      const Color(0xfffee8e0),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20)),
-                                            ),
-                                            SizedBox(
-                                              width: 10.w,
-                                            ),
-                                            Expanded(
-                                              child: Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          headers[index]
-                                                                  .mrhNumber ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            color: const Color(
-                                                                0xff2C6B9E),
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                        ),
-                                                        Row(
+                                )
+                              : headers.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        "No Data Available",
+                                        style: boxHeading(),
+                                      ),
+                                    )
+                                  : ListView.separated(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          GestureDetector(
+                                            onTap: () // {},
+                                                {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        MaterialRequestDetailScreen(
+                                                          user: widget.user,
+                                                          materialrequest:
+                                                              headers[index],
+                                                        )),
+                                              );
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 50,
+                                                  width: 10,
+                                                  decoration: BoxDecoration(
+                                                      color: const Color(
+                                                          0xfffee8e0),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20)),
+                                                ),
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
+                                                Expanded(
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Text(
-                                                              '${headers[index].strName} - ',
+                                                              headers[index]
+                                                                      .mrhNumber ??
+                                                                  '',
                                                               style: kfontstyle(
-                                                                fontSize: 11.sp,
+                                                                fontSize: 12.sp,
                                                                 color: const Color(
                                                                     0xff2C6B9E),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
                                                               ),
                                                             ),
-                                                            Expanded(
-                                                              child: Text(
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                headers[index]
-                                                                        .warName ??
-                                                                    '',
-                                                                style: kfontstyle(
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  '${headers[index].strName} - ',
+                                                                  style:
+                                                                      kfontstyle(
                                                                     fontSize:
-                                                                        12.sp,
+                                                                        11.sp,
                                                                     color: const Color(
-                                                                        0xff413434)),
-                                                              ),
+                                                                        0xff2C6B9E),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    headers[index]
+                                                                            .warName ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Text(
+                                                              headers[index]
+                                                                      .createdDate ??
+                                                                  '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  color: Colors
+                                                                      .grey),
                                                             ),
                                                           ],
                                                         ),
-                                                        Text(
-                                                          headers[index]
-                                                                  .createdDate ??
-                                                              '',
-                                                          style: kfontstyle(
-                                                              fontSize: 10.sp,
-                                                              color:
-                                                                  Colors.grey),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    // height: 10.h,
-                                                    // width: 10.h,
-                                                    decoration: BoxDecoration(
-                                                      color: headers[index]
-                                                                  .status!
-                                                                  .isEmpty ||
-                                                              headers[index]
-                                                                      .status !=
-                                                                  'A'
-                                                          ? headers[index]
-                                                                      .status !=
-                                                                  'AH'
-                                                              ? Colors.red[300]
+                                                      ),
+                                                      Container(
+                                                        // height: 10.h,
+                                                        // width: 10.h,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: headers[index]
+                                                                      .status!
+                                                                      .isEmpty ||
+                                                                  headers[index]
+                                                                          .status !=
+                                                                      'A'
+                                                              ? headers[index]
+                                                                          .status !=
+                                                                      'AH'
+                                                                  ? Colors
+                                                                      .red[300]
+                                                                  : const Color(
+                                                                      0xfff7f4e2)
                                                               : const Color(
-                                                                  0xfff7f4e2)
-                                                          : const Color(
-                                                              0xffe3f7e2),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        10,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding: const EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 10,
-                                                          vertical: 3),
-                                                      child: Text(
-                                                        headers[index].status ??
-                                                            "",
-                                                        style: kfontstyle(
-                                                            fontSize: 10.sp),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
+                                                                  0xffe3f7e2),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            10,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal:
+                                                                      10,
+                                                                  vertical: 3),
+                                                          child: Text(
+                                                            headers[index]
+                                                                    .status ??
+                                                                "",
+                                                            style: kfontstyle(
+                                                                fontSize:
+                                                                    10.sp),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                  separatorBuilder: (context, index) => Divider(
-                                        color: Colors.grey[300],
-                                      ),
-                                  itemCount: headers.length),
+                                          ),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                      itemCount: headers.length),
                           materialreqheadFailed: () => SizedBox(
                             height: MediaQuery.of(context).size.height,
                             child: Center(
@@ -507,15 +535,12 @@ class _MaterialRequestHeaderScreenState
         ),
       ),
     );
-
   }
 
   Future<void> _onRefreshMaterialReqHeaderScreen(
       BuildContext context, LoginUserModel model) async {
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
-    context
-        .read<MaterialReqHeadBloc>()
-        .add(MaterialHeadSuccessEvent(userId: model.usrId!, mode: _selectedMaterialReq, searchQuery: ''));
+    context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
+        userId: model.usrId!, mode: _selectedMaterialReq, searchQuery: ''));
   }
-
 }
