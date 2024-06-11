@@ -289,7 +289,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
               color: Colors.grey[300],
             ), */
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

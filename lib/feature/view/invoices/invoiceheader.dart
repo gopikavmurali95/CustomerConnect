@@ -94,7 +94,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
                       height: 40,
                       decoration: BoxDecoration(
@@ -194,7 +194,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                     //SizedBox(width: 05,),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
                         "All invoices",
                         style: countHeading(),
@@ -202,7 +202,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child:
                           BlocListener<InvoiceHeaderBloc, InvoiceHeaderState>(
                         listener: (context, state) {
@@ -266,7 +266,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
         height: 40.h,
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
