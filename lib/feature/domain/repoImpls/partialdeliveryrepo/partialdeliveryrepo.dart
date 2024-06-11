@@ -17,11 +17,11 @@ import 'package:http/http.dart' as http;
 class PartialDeliveryRepo implements IPartialDeliveryRepo {
   @override
   Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
-      partialDeliveryList(String userID) async {
+      partialDeliveryList(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + partialDeliverHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       // log(response.body);
       if (response.statusCode == 200) {
         log(response.body);

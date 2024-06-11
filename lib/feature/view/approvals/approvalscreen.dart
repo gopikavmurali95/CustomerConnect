@@ -2,7 +2,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
@@ -68,11 +67,6 @@ class ApprovalScreen extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context
-                              .read<PriceChangeHeaderBloc>()
-                              .add(const ClearPriceChangeHeader());
-                          context.read<PriceChangeHeaderBloc>().add(
-                              GetPriceChangeHeaderEvent(rotID: user.usrId!));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

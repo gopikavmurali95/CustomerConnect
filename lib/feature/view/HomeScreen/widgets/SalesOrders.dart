@@ -1,9 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
@@ -138,28 +136,6 @@ class SalesOrders extends StatelessWidget {
                                   fit: FlexFit.tight,
                                   child: InkWell(
                                     onTap: () {
-                                      context
-                                          .read<TodaysDeliveryHeaderBloc>()
-                                          .add(const ClearTodaysDelivery());
-                                      context
-                                          .read<TodaysDeliveryHeaderBloc>()
-                                          .add(
-                                            GetTodaysDeliveryEvent(
-                                              todaysdelivery: TodaysDeliveryInParas(
-                                                  area: '',
-                                                  customer: '',
-                                                  customerOutlet: '',
-                                                  fromDate:
-                                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                                  mode: '',
-                                                  route: '',
-                                                  subArea: '',
-                                                  toDate:
-                                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                                  userId: user.usrId),
-                                              searchQuery: '',
-                                            ),
-                                          );
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(

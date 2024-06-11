@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PartialDeliveryHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getPartialDeliveryEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getPartialDeliveryEvent,
     required TResult Function() clearPartialDeliveryHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getPartialDeliveryEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult? Function()? clearPartialDeliveryHeaderEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getPartialDeliveryEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult Function()? clearPartialDeliveryHeaderEvent,
     required TResult orElse(),
   }) =>
@@ -89,7 +92,7 @@ abstract class _$$GetPartialDeliveryHeaderEventImplCopyWith<$Res> {
           $Res Function(_$GetPartialDeliveryHeaderEventImpl) then) =
       __$$GetPartialDeliveryHeaderEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -106,11 +109,21 @@ class __$$GetPartialDeliveryHeaderEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetPartialDeliveryHeaderEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -120,14 +133,19 @@ class __$$GetPartialDeliveryHeaderEventImplCopyWithImpl<$Res>
 
 class _$GetPartialDeliveryHeaderEventImpl
     implements GetPartialDeliveryHeaderEvent {
-  const _$GetPartialDeliveryHeaderEventImpl({required this.userID});
+  const _$GetPartialDeliveryHeaderEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PartialDeliveryHeaderEvent.getPartialDeliveryEvent(userID: $userID)';
+    return 'PartialDeliveryHeaderEvent.getPartialDeliveryEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -135,11 +153,14 @@ class _$GetPartialDeliveryHeaderEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPartialDeliveryHeaderEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -152,30 +173,33 @@ class _$GetPartialDeliveryHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getPartialDeliveryEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getPartialDeliveryEvent,
     required TResult Function() clearPartialDeliveryHeaderEvent,
   }) {
-    return getPartialDeliveryEvent(userID);
+    return getPartialDeliveryEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getPartialDeliveryEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult? Function()? clearPartialDeliveryHeaderEvent,
   }) {
-    return getPartialDeliveryEvent?.call(userID);
+    return getPartialDeliveryEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getPartialDeliveryEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult Function()? clearPartialDeliveryHeaderEvent,
     required TResult orElse(),
   }) {
     if (getPartialDeliveryEvent != null) {
-      return getPartialDeliveryEvent(userID);
+      return getPartialDeliveryEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -220,10 +244,14 @@ class _$GetPartialDeliveryHeaderEventImpl
 
 abstract class GetPartialDeliveryHeaderEvent
     implements PartialDeliveryHeaderEvent {
-  const factory GetPartialDeliveryHeaderEvent({required final String userID}) =
-      _$GetPartialDeliveryHeaderEventImpl;
+  const factory GetPartialDeliveryHeaderEvent(
+      {required final String userID,
+      required final String mode,
+      required final String searchQuery}) = _$GetPartialDeliveryHeaderEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetPartialDeliveryHeaderEventImplCopyWith<
           _$GetPartialDeliveryHeaderEventImpl>
@@ -273,7 +301,8 @@ class _$ClearPartialDeliveryHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getPartialDeliveryEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getPartialDeliveryEvent,
     required TResult Function() clearPartialDeliveryHeaderEvent,
   }) {
     return clearPartialDeliveryHeaderEvent();
@@ -282,7 +311,8 @@ class _$ClearPartialDeliveryHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getPartialDeliveryEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult? Function()? clearPartialDeliveryHeaderEvent,
   }) {
     return clearPartialDeliveryHeaderEvent?.call();
@@ -291,7 +321,8 @@ class _$ClearPartialDeliveryHeaderEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getPartialDeliveryEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getPartialDeliveryEvent,
     TResult Function()? clearPartialDeliveryHeaderEvent,
     required TResult orElse(),
   }) {

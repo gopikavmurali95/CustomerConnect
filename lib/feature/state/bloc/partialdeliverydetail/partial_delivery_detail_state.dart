@@ -3,7 +3,7 @@ part of 'partial_delivery_detail_bloc.dart';
 @freezed
 class PartialDeliveryDetailState with _$PartialDeliveryDetailState {
   const factory PartialDeliveryDetailState.getAllPartialDeliveryDetailsState(
-          {required List<PartialDeliveryDetail>? details}) =
+          {required List<PartialDeliveryDetailsModel>? details}) =
       GetAllPartialDeliveryDetailsState;
 
   const factory PartialDeliveryDetailState.getPartialDeliveryFailedState() =

@@ -335,7 +335,7 @@ abstract class INotificationRepo {
 
 abstract class IPriceChangeRepo {
   Future<Either<MainFailures, List<PriceChangeHeaderModel>>> priceChangeList(
-      String rotID);
+      String rotID, String mode);
   Future<Either<MainFailures, List<PriceChangeDetailsModel>>>
       priceChangeDetails(String pchID);
   Future<Either<MainFailures, List<PriceChangeReasonModel>>>
@@ -348,7 +348,7 @@ abstract class IPriceChangeRepo {
 
 abstract class IReturnApprovalRepo {
   Future<Either<MainFailures, List<ReturnApprovalHeaderModel>>>
-      getReturnApprovalHeaders(String rotID);
+      getReturnApprovalHeaders(String rotID, String mode);
   Future<Either<MainFailures, List<ReturnApprovalDetailModel>>>
       getReturnApprovalDetails(String reqID, String mode);
   Future<Either<MainFailures, List<ApprovalResonModel>>>
@@ -395,7 +395,7 @@ abstract class ICreditNoteApprovalRepo {
 
 abstract class IScheduledReturnApprovalRepo {
   Future<Either<MainFailures, List<SheduledReturnHeaderModel>>>
-      getScheduledReturnApprovalHeaders(String userID);
+      getScheduledReturnApprovalHeaders(String userID, String mode);
 
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
       getScheduledReturnApprovalDetails(String reqID);
@@ -420,7 +420,7 @@ abstract class IFieldServiceInvoiceApprovalRepo {
 
 abstract class IPartialDeliveryRepo {
   Future<Either<MainFailures, List<PartialDeliveryHeaderModel>>>
-      partialDeliveryList(String userID);
+      partialDeliveryList(String userID, String mode);
   Future<Either<MainFailures, List<PartialDeliveryDetailsModel>>>
       partialDeliveryDetails(String reqID);
   Future<Either<MainFailures, List<PartialDeliveryReasonModel>>>

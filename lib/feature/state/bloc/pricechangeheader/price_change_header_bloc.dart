@@ -17,10 +17,33 @@ class PriceChangeHeaderBloc
   PriceChangeHeaderBloc(this.pricechange)
       : super(PriceChangeHeaderState.initial()) {
     on<GetPriceChangeHeaderEvent>((event, emit) async {
+      List<PriceChangeHeaderModel> searcheditems = [];
       Either<MainFailures, List<PriceChangeHeaderModel>> pchange =
-          await pricechange.priceChangeList(event.rotID);
-      emit(pchange.fold((l) => const PriceChangeFailureState(),
-          (r) => GetPriceChangeState(pcHeader: r)));
+          await pricechange.priceChangeList(event.rotID, event.mode);
+      emit(
+        pchange.fold(
+          (l) => const PriceChangeFailureState(),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.pchReqId!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.cusName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetPriceChangeState(
+                pcHeader: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearPriceChangeHeader>((event, emit) {
       emit(const GetPriceChangeState(pcHeader: null));

@@ -18,20 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ReturnApprovalDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID, String mode)
+    required TResult Function(String reqID, String mode, String searchQuery)
         getReturnApprovalDetailEvennt,
     required TResult Function() clearReturnDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult? Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult? Function()? clearReturnDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult Function()? clearReturnDetailEvent,
     required TResult orElse(),
   }) =>
@@ -87,7 +89,7 @@ abstract class _$$GetReturnApprovalDetailEvenntImplCopyWith<$Res> {
           $Res Function(_$GetReturnApprovalDetailEvenntImpl) then) =
       __$$GetReturnApprovalDetailEvenntImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reqID, String mode});
+  $Res call({String reqID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -105,6 +107,7 @@ class __$$GetReturnApprovalDetailEvenntImplCopyWithImpl<$Res>
   $Res call({
     Object? reqID = null,
     Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetReturnApprovalDetailEvenntImpl(
       reqID: null == reqID
@@ -115,6 +118,10 @@ class __$$GetReturnApprovalDetailEvenntImplCopyWithImpl<$Res>
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -124,16 +131,18 @@ class __$$GetReturnApprovalDetailEvenntImplCopyWithImpl<$Res>
 class _$GetReturnApprovalDetailEvenntImpl
     implements GetReturnApprovalDetailEvennt {
   const _$GetReturnApprovalDetailEvenntImpl(
-      {required this.reqID, required this.mode});
+      {required this.reqID, required this.mode, required this.searchQuery});
 
   @override
   final String reqID;
   @override
   final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'ReturnApprovalDetailEvent.getReturnApprovalDetailEvennt(reqID: $reqID, mode: $mode)';
+    return 'ReturnApprovalDetailEvent.getReturnApprovalDetailEvennt(reqID: $reqID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -142,11 +151,13 @@ class _$GetReturnApprovalDetailEvenntImpl
         (other.runtimeType == runtimeType &&
             other is _$GetReturnApprovalDetailEvenntImpl &&
             (identical(other.reqID, reqID) || other.reqID == reqID) &&
-            (identical(other.mode, mode) || other.mode == mode));
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqID, mode);
+  int get hashCode => Object.hash(runtimeType, reqID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -159,31 +170,33 @@ class _$GetReturnApprovalDetailEvenntImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID, String mode)
+    required TResult Function(String reqID, String mode, String searchQuery)
         getReturnApprovalDetailEvennt,
     required TResult Function() clearReturnDetailEvent,
   }) {
-    return getReturnApprovalDetailEvennt(reqID, mode);
+    return getReturnApprovalDetailEvennt(reqID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult? Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult? Function()? clearReturnDetailEvent,
   }) {
-    return getReturnApprovalDetailEvennt?.call(reqID, mode);
+    return getReturnApprovalDetailEvennt?.call(reqID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult Function()? clearReturnDetailEvent,
     required TResult orElse(),
   }) {
     if (getReturnApprovalDetailEvennt != null) {
-      return getReturnApprovalDetailEvennt(reqID, mode);
+      return getReturnApprovalDetailEvennt(reqID, mode, searchQuery);
     }
     return orElse();
   }
@@ -228,10 +241,12 @@ abstract class GetReturnApprovalDetailEvennt
     implements ReturnApprovalDetailEvent {
   const factory GetReturnApprovalDetailEvennt(
       {required final String reqID,
-      required final String mode}) = _$GetReturnApprovalDetailEvenntImpl;
+      required final String mode,
+      required final String searchQuery}) = _$GetReturnApprovalDetailEvenntImpl;
 
   String get reqID;
   String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetReturnApprovalDetailEvenntImplCopyWith<
           _$GetReturnApprovalDetailEvenntImpl>
@@ -280,7 +295,7 @@ class _$ClearReturnDetailEventImpl implements ClearReturnDetailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String reqID, String mode)
+    required TResult Function(String reqID, String mode, String searchQuery)
         getReturnApprovalDetailEvennt,
     required TResult Function() clearReturnDetailEvent,
   }) {
@@ -290,7 +305,8 @@ class _$ClearReturnDetailEventImpl implements ClearReturnDetailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult? Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult? Function()? clearReturnDetailEvent,
   }) {
     return clearReturnDetailEvent?.call();
@@ -299,7 +315,8 @@ class _$ClearReturnDetailEventImpl implements ClearReturnDetailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String reqID, String mode)? getReturnApprovalDetailEvennt,
+    TResult Function(String reqID, String mode, String searchQuery)?
+        getReturnApprovalDetailEvennt,
     TResult Function()? clearReturnDetailEvent,
     required TResult orElse(),
   }) {

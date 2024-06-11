@@ -2,7 +2,9 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,102 +66,95 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                 horizontal: 20),
                                                         child: Row(
                                                           children: [
-                                                            SizedBox(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width /
-                                                                  2.1,
+                                                            Flexible(
+                                                              flex: 3,
+                                                              fit:
+                                                                  FlexFit.tight,
                                                               child: Column(
                                                                 crossAxisAlignment:
                                                                     CrossAxisAlignment
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    orderdetails[index]
-                                                                            .prdCode ??
-                                                                        '',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      color: const Color(
-                                                                          0xff6E62A4),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
+                                                                      orderdetails[index]
+                                                                              .prdCode ??
+                                                                          '',
+                                                                      style:
+                                                                          loadTextStyle()),
+                                                                  Text(
+                                                                      orderdetails[index]
+                                                                              .prdName ??
+                                                                          '',
+                                                                      style:
+                                                                          subTitleTextStyle()),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            /* SizedBox(
+                                                              width: 70.h,
+                                                            ), */
+                                                            Flexible(
+                                                              flex: 1,
+                                                              fit:
+                                                                  FlexFit.tight,
+                                                              child: Column(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: orderdetails[index].oddHigherUom ==
+                                                                                null ||
+                                                                            orderdetails[index].oddHigherUom!.isEmpty
+                                                                        ? false
+                                                                        : true,
+                                                                    child: Text(
+                                                                      orderdetails[
+                                                                              index]
+                                                                          .oddHigherUom!,
+                                                                      style:
+                                                                          subTitleTextStyle(),
                                                                     ),
                                                                   ),
-                                                                  Text(
-                                                                    orderdetails[index]
-                                                                            .prdName ??
-                                                                        '',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
+                                                                  SizedBox(
+                                                                    height: 5.h,
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: orderdetails[index].oddLowerUom ==
+                                                                                null ||
+                                                                            orderdetails[index].oddLowerUom!.isEmpty
+                                                                        ? false
+                                                                        : true,
+                                                                    child: Text(
+                                                                      orderdetails[
+                                                                              index]
+                                                                          .oddLowerUom!,
+                                                                      style:
+                                                                          subTitleTextStyle(),
                                                                     ),
                                                                   ),
                                                                 ],
                                                               ),
                                                             ),
                                                             SizedBox(
-                                                              width: 70.h,
-                                                            ),
-                                                            Column(
-                                                              children: [
-                                                                Visibility(
-                                                                  visible: orderdetails[index].oddHigherUom ==
-                                                                              null ||
-                                                                          orderdetails[index]
-                                                                              .oddHigherUom!
-                                                                              .isEmpty
-                                                                      ? false
-                                                                      : true,
-                                                                  child: Text(
-                                                                      orderdetails[index]
-                                                                              .oddHigherUom ??
-                                                                          ''),
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 5.h,
-                                                                ),
-                                                                Visibility(
-                                                                  visible: orderdetails[index].oddLowerUom ==
-                                                                              null ||
-                                                                          orderdetails[index]
-                                                                              .oddLowerUom!
-                                                                              .isEmpty
-                                                                      ? false
-                                                                      : true,
-                                                                  child: Text(
-                                                                      orderdetails[index]
-                                                                              .oddLowerUom ??
-                                                                          ''),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            SizedBox(
                                                               width: 20.h,
                                                             ),
                                                             Column(
                                                               children: [
-                                                                Text(orderdetails[
-                                                                            index]
-                                                                        .oddHigherQty ??
-                                                                    ''),
+                                                                Text(
+                                                                  orderdetails[
+                                                                          index]
+                                                                      .oddHigherQty!,
+                                                                  style:
+                                                                      subTitleTextStyle(),
+                                                                ),
                                                                 SizedBox(
                                                                   height: 5.h,
                                                                 ),
-                                                                Text(orderdetails[
-                                                                            index]
-                                                                        .oddLowerQty ??
-                                                                    ''),
+                                                                Text(
+                                                                  orderdetails[
+                                                                          index]
+                                                                      .oddLowerQty!,
+                                                                  style:
+                                                                      subTitleTextStyle(),
+                                                                ),
                                                               ],
                                                             ),
                                                           ],
@@ -200,7 +195,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              10.sp,
+                                                                              9.sp,
                                                                           color:
                                                                               Colors.black,
                                                                           fontWeight:
@@ -213,7 +208,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              10.sp,
+                                                                              9.sp,
                                                                           color:
                                                                               Colors.black,
                                                                           fontWeight:
@@ -244,8 +239,14 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                const Text('Sub Total'),
-                                                Text(totalorders.subTotal ?? '')
+                                                Text(
+                                                  'Sub Total',
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                                Text(
+                                                  totalorders.subTotal ?? '',
+                                                  style: subTitleTextStyle(),
+                                                )
                                               ],
                                             ),
                                             Row(
@@ -253,8 +254,14 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                const Text('VAT'),
-                                                Text(totalorders.vat ?? '')
+                                                Text(
+                                                  'VAT',
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                                Text(
+                                                  totalorders.vat ?? '',
+                                                  style: subTitleTextStyle(),
+                                                )
                                               ],
                                             ),
                                           ],

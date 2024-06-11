@@ -396,64 +396,65 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          context
-                              .read<ApprovalCountsBloc>()
-                              .add(const ClearApprovalCounts());
-                          context.read<ApprovalCountsBloc>().add(
-                              GetApprovalsCountEvent(
-                                  userID: widget.user.usrId ?? ''));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ApprovalScreen(
-                                        user: widget.user,
-                                      )));
-                        },
-                        child: Container(
-                          // height: 50,
-                          // width: MediaQuery.of(context).size.width / 2,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.shade300,
-                                    spreadRadius: 1,
-                                    blurRadius: 1)
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  "assets/images/apvl.png",
-                                  height: 15.h,
-                                ),
-                                SizedBox(
-                                  width: 8.w,
-                                ),
-                                Text(
-                                  "Approvals",
-                                  style: headTextStyle(),
-                                )
-                              ],
-                            ),
+                    //Expanded(
+                    //child:
+                    GestureDetector(
+                      onTap: () {
+                        context
+                            .read<ApprovalCountsBloc>()
+                            .add(const ClearApprovalCounts());
+                        context.read<ApprovalCountsBloc>().add(
+                            GetApprovalsCountEvent(
+                                userID: widget.user.usrId ?? ''));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ApprovalScreen(
+                                      user: widget.user,
+                                    )));
+                      },
+                      child: Container(
+                        // height: 50,
+                        width: MediaQuery.of(context).size.width / 2.25,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: 1,
+                                  blurRadius: 1)
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/apvl.png",
+                                height: 15.h,
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Text(
+                                "Approvals",
+                                style: headTextStyle(),
+                              )
+                            ],
                           ),
                         ),
                       ),
                     ),
+                    //),
                     SizedBox(
                       width: 10.w,
                     ),
-                    Expanded(
+                    /* Expanded(
                       child: InkWell(
                         onTap: () {},
                         child: Container(
@@ -492,7 +493,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                    ),
+                    ), */
                   ],
                 ),
               ),

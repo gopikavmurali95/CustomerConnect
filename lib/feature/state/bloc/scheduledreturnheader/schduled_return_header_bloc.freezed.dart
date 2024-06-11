@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SchduledReturnHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllScheduledReturnHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllScheduledReturnHeadersEvent,
     required TResult Function() clearScheduledReturnHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult? Function()? clearScheduledReturnHeadersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult Function()? clearScheduledReturnHeadersEvent,
     required TResult orElse(),
   }) =>
@@ -88,7 +91,7 @@ abstract class _$$GetAllScheduledReturnHeadersEventImplCopyWith<$Res> {
           $Res Function(_$GetAllScheduledReturnHeadersEventImpl) then) =
       __$$GetAllScheduledReturnHeadersEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userID});
+  $Res call({String userID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -105,11 +108,21 @@ class __$$GetAllScheduledReturnHeadersEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetAllScheduledReturnHeadersEventImpl(
       userID: null == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,14 +132,19 @@ class __$$GetAllScheduledReturnHeadersEventImplCopyWithImpl<$Res>
 
 class _$GetAllScheduledReturnHeadersEventImpl
     implements GetAllScheduledReturnHeadersEvent {
-  const _$GetAllScheduledReturnHeadersEventImpl({required this.userID});
+  const _$GetAllScheduledReturnHeadersEventImpl(
+      {required this.userID, required this.mode, required this.searchQuery});
 
   @override
   final String userID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'SchduledReturnHeaderEvent.getAllScheduledReturnHeadersEvent(userID: $userID)';
+    return 'SchduledReturnHeaderEvent.getAllScheduledReturnHeadersEvent(userID: $userID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -134,11 +152,14 @@ class _$GetAllScheduledReturnHeadersEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllScheduledReturnHeadersEventImpl &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userID);
+  int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -151,30 +172,33 @@ class _$GetAllScheduledReturnHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllScheduledReturnHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllScheduledReturnHeadersEvent,
     required TResult Function() clearScheduledReturnHeadersEvent,
   }) {
-    return getAllScheduledReturnHeadersEvent(userID);
+    return getAllScheduledReturnHeadersEvent(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult? Function()? clearScheduledReturnHeadersEvent,
   }) {
-    return getAllScheduledReturnHeadersEvent?.call(userID);
+    return getAllScheduledReturnHeadersEvent?.call(userID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult Function()? clearScheduledReturnHeadersEvent,
     required TResult orElse(),
   }) {
     if (getAllScheduledReturnHeadersEvent != null) {
-      return getAllScheduledReturnHeadersEvent(userID);
+      return getAllScheduledReturnHeadersEvent(userID, mode, searchQuery);
     }
     return orElse();
   }
@@ -220,9 +244,14 @@ class _$GetAllScheduledReturnHeadersEventImpl
 abstract class GetAllScheduledReturnHeadersEvent
     implements SchduledReturnHeaderEvent {
   const factory GetAllScheduledReturnHeadersEvent(
-      {required final String userID}) = _$GetAllScheduledReturnHeadersEventImpl;
+          {required final String userID,
+          required final String mode,
+          required final String searchQuery}) =
+      _$GetAllScheduledReturnHeadersEventImpl;
 
   String get userID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetAllScheduledReturnHeadersEventImplCopyWith<
           _$GetAllScheduledReturnHeadersEventImpl>
@@ -272,7 +301,8 @@ class _$ClearScheduledReturnHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userID) getAllScheduledReturnHeadersEvent,
+    required TResult Function(String userID, String mode, String searchQuery)
+        getAllScheduledReturnHeadersEvent,
     required TResult Function() clearScheduledReturnHeadersEvent,
   }) {
     return clearScheduledReturnHeadersEvent();
@@ -281,7 +311,8 @@ class _$ClearScheduledReturnHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult? Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult? Function()? clearScheduledReturnHeadersEvent,
   }) {
     return clearScheduledReturnHeadersEvent?.call();
@@ -290,7 +321,8 @@ class _$ClearScheduledReturnHeadersEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userID)? getAllScheduledReturnHeadersEvent,
+    TResult Function(String userID, String mode, String searchQuery)?
+        getAllScheduledReturnHeadersEvent,
     TResult Function()? clearScheduledReturnHeadersEvent,
     required TResult orElse(),
   }) {

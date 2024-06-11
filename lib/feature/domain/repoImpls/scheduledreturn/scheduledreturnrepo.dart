@@ -17,11 +17,11 @@ import 'package:injectable/injectable.dart';
 class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
   @override
   Future<Either<MainFailures, List<SheduledReturnHeaderModel>>>
-      getScheduledReturnApprovalHeaders(String userID) async {
+      getScheduledReturnApprovalHeaders(String userID, String mode) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + sheduledReturnHeaderUrl),
-          body: {"UserID": userID});
+          body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ReturnApprovalHeaderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getReturnApprovalHeaders,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getReturnApprovalHeaders,
     required TResult Function() clearReturnHeaderState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getReturnApprovalHeaders,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult? Function()? clearReturnHeaderState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getReturnApprovalHeaders,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult Function()? clearReturnHeaderState,
     required TResult orElse(),
   }) =>
@@ -84,7 +87,7 @@ abstract class _$$GetReturnApprovalHeadersImplCopyWith<$Res> {
           $Res Function(_$GetReturnApprovalHeadersImpl) then) =
       __$$GetReturnApprovalHeadersImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String rotID});
+  $Res call({String rotID, String mode, String searchQuery});
 }
 
 /// @nodoc
@@ -101,11 +104,21 @@ class __$$GetReturnApprovalHeadersImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? rotID = null,
+    Object? mode = null,
+    Object? searchQuery = null,
   }) {
     return _then(_$GetReturnApprovalHeadersImpl(
       rotID: null == rotID
           ? _value.rotID
           : rotID // ignore: cast_nullable_to_non_nullable
+              as String,
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -114,14 +127,19 @@ class __$$GetReturnApprovalHeadersImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetReturnApprovalHeadersImpl implements GetReturnApprovalHeaders {
-  const _$GetReturnApprovalHeadersImpl({required this.rotID});
+  const _$GetReturnApprovalHeadersImpl(
+      {required this.rotID, required this.mode, required this.searchQuery});
 
   @override
   final String rotID;
+  @override
+  final String mode;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'ReturnApprovalHeaderEvent.getReturnApprovalHeaders(rotID: $rotID)';
+    return 'ReturnApprovalHeaderEvent.getReturnApprovalHeaders(rotID: $rotID, mode: $mode, searchQuery: $searchQuery)';
   }
 
   @override
@@ -129,11 +147,14 @@ class _$GetReturnApprovalHeadersImpl implements GetReturnApprovalHeaders {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetReturnApprovalHeadersImpl &&
-            (identical(other.rotID, rotID) || other.rotID == rotID));
+            (identical(other.rotID, rotID) || other.rotID == rotID) &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rotID);
+  int get hashCode => Object.hash(runtimeType, rotID, mode, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -145,30 +166,33 @@ class _$GetReturnApprovalHeadersImpl implements GetReturnApprovalHeaders {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getReturnApprovalHeaders,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getReturnApprovalHeaders,
     required TResult Function() clearReturnHeaderState,
   }) {
-    return getReturnApprovalHeaders(rotID);
+    return getReturnApprovalHeaders(rotID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getReturnApprovalHeaders,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult? Function()? clearReturnHeaderState,
   }) {
-    return getReturnApprovalHeaders?.call(rotID);
+    return getReturnApprovalHeaders?.call(rotID, mode, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getReturnApprovalHeaders,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult Function()? clearReturnHeaderState,
     required TResult orElse(),
   }) {
     if (getReturnApprovalHeaders != null) {
-      return getReturnApprovalHeaders(rotID);
+      return getReturnApprovalHeaders(rotID, mode, searchQuery);
     }
     return orElse();
   }
@@ -208,10 +232,14 @@ class _$GetReturnApprovalHeadersImpl implements GetReturnApprovalHeaders {
 }
 
 abstract class GetReturnApprovalHeaders implements ReturnApprovalHeaderEvent {
-  const factory GetReturnApprovalHeaders({required final String rotID}) =
-      _$GetReturnApprovalHeadersImpl;
+  const factory GetReturnApprovalHeaders(
+      {required final String rotID,
+      required final String mode,
+      required final String searchQuery}) = _$GetReturnApprovalHeadersImpl;
 
   String get rotID;
+  String get mode;
+  String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetReturnApprovalHeadersImplCopyWith<_$GetReturnApprovalHeadersImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -259,7 +287,8 @@ class _$ClearReturnHeaderStateImpl implements ClearReturnHeaderState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String rotID) getReturnApprovalHeaders,
+    required TResult Function(String rotID, String mode, String searchQuery)
+        getReturnApprovalHeaders,
     required TResult Function() clearReturnHeaderState,
   }) {
     return clearReturnHeaderState();
@@ -268,7 +297,8 @@ class _$ClearReturnHeaderStateImpl implements ClearReturnHeaderState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String rotID)? getReturnApprovalHeaders,
+    TResult? Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult? Function()? clearReturnHeaderState,
   }) {
     return clearReturnHeaderState?.call();
@@ -277,7 +307,8 @@ class _$ClearReturnHeaderStateImpl implements ClearReturnHeaderState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String rotID)? getReturnApprovalHeaders,
+    TResult Function(String rotID, String mode, String searchQuery)?
+        getReturnApprovalHeaders,
     TResult Function()? clearReturnHeaderState,
     required TResult orElse(),
   }) {

@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PartialDeliveryDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPartialDeliveryDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailEvent,
     required TResult Function() clearPartialDeliveryDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPartialDeliveryDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult? Function()? clearPartialDeliveryDetailEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPartialDeliveryDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult Function()? clearPartialDeliveryDetailEvent,
     required TResult orElse(),
   }) =>
@@ -88,6 +91,8 @@ abstract class _$$GetPartialDeliveryDetailEventImplCopyWith<$Res> {
           _$GetPartialDeliveryDetailEventImpl value,
           $Res Function(_$GetPartialDeliveryDetailEventImpl) then) =
       __$$GetPartialDeliveryDetailEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String reqID, String searchQuery});
 }
 
 /// @nodoc
@@ -99,56 +104,94 @@ class __$$GetPartialDeliveryDetailEventImplCopyWithImpl<$Res>
       _$GetPartialDeliveryDetailEventImpl _value,
       $Res Function(_$GetPartialDeliveryDetailEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reqID = null,
+    Object? searchQuery = null,
+  }) {
+    return _then(_$GetPartialDeliveryDetailEventImpl(
+      reqID: null == reqID
+          ? _value.reqID
+          : reqID // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetPartialDeliveryDetailEventImpl
     implements GetPartialDeliveryDetailEvent {
-  const _$GetPartialDeliveryDetailEventImpl();
+  const _$GetPartialDeliveryDetailEventImpl(
+      {required this.reqID, required this.searchQuery});
+
+  @override
+  final String reqID;
+  @override
+  final String searchQuery;
 
   @override
   String toString() {
-    return 'PartialDeliveryDetailEvent.getPartialDeliveryDetailEvent()';
+    return 'PartialDeliveryDetailEvent.getPartialDeliveryDetailEvent(reqID: $reqID, searchQuery: $searchQuery)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetPartialDeliveryDetailEventImpl);
+            other is _$GetPartialDeliveryDetailEventImpl &&
+            (identical(other.reqID, reqID) || other.reqID == reqID) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetPartialDeliveryDetailEventImplCopyWith<
+          _$GetPartialDeliveryDetailEventImpl>
+      get copyWith => __$$GetPartialDeliveryDetailEventImplCopyWithImpl<
+          _$GetPartialDeliveryDetailEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPartialDeliveryDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailEvent,
     required TResult Function() clearPartialDeliveryDetailEvent,
   }) {
-    return getPartialDeliveryDetailEvent();
+    return getPartialDeliveryDetailEvent(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPartialDeliveryDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult? Function()? clearPartialDeliveryDetailEvent,
   }) {
-    return getPartialDeliveryDetailEvent?.call();
+    return getPartialDeliveryDetailEvent?.call(reqID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPartialDeliveryDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult Function()? clearPartialDeliveryDetailEvent,
     required TResult orElse(),
   }) {
     if (getPartialDeliveryDetailEvent != null) {
-      return getPartialDeliveryDetailEvent();
+      return getPartialDeliveryDetailEvent(reqID, searchQuery);
     }
     return orElse();
   }
@@ -193,8 +236,16 @@ class _$GetPartialDeliveryDetailEventImpl
 
 abstract class GetPartialDeliveryDetailEvent
     implements PartialDeliveryDetailEvent {
-  const factory GetPartialDeliveryDetailEvent() =
-      _$GetPartialDeliveryDetailEventImpl;
+  const factory GetPartialDeliveryDetailEvent(
+      {required final String reqID,
+      required final String searchQuery}) = _$GetPartialDeliveryDetailEventImpl;
+
+  String get reqID;
+  String get searchQuery;
+  @JsonKey(ignore: true)
+  _$$GetPartialDeliveryDetailEventImplCopyWith<
+          _$GetPartialDeliveryDetailEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -240,7 +291,8 @@ class _$ClearPartialDeliveryDetailEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPartialDeliveryDetailEvent,
+    required TResult Function(String reqID, String searchQuery)
+        getPartialDeliveryDetailEvent,
     required TResult Function() clearPartialDeliveryDetailEvent,
   }) {
     return clearPartialDeliveryDetailEvent();
@@ -249,7 +301,8 @@ class _$ClearPartialDeliveryDetailEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPartialDeliveryDetailEvent,
+    TResult? Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult? Function()? clearPartialDeliveryDetailEvent,
   }) {
     return clearPartialDeliveryDetailEvent?.call();
@@ -258,7 +311,8 @@ class _$ClearPartialDeliveryDetailEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPartialDeliveryDetailEvent,
+    TResult Function(String reqID, String searchQuery)?
+        getPartialDeliveryDetailEvent,
     TResult Function()? clearPartialDeliveryDetailEvent,
     required TResult orElse(),
   }) {
@@ -316,21 +370,21 @@ abstract class ClearPartialDeliveryDetailEvent
 mixin _$PartialDeliveryDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PartialDeliveryDetail>? details)
+    required TResult Function(List<PartialDeliveryDetailsModel>? details)
         getAllPartialDeliveryDetailsState,
     required TResult Function() getPartialDeliveryFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PartialDeliveryDetail>? details)?
+    TResult? Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult? Function()? getPartialDeliveryFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PartialDeliveryDetail>? details)?
+    TResult Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult Function()? getPartialDeliveryFailedState,
     required TResult orElse(),
@@ -390,7 +444,7 @@ abstract class _$$GetAllPartialDeliveryDetailsStateImplCopyWith<$Res> {
           $Res Function(_$GetAllPartialDeliveryDetailsStateImpl) then) =
       __$$GetAllPartialDeliveryDetailsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PartialDeliveryDetail>? details});
+  $Res call({List<PartialDeliveryDetailsModel>? details});
 }
 
 /// @nodoc
@@ -412,7 +466,7 @@ class __$$GetAllPartialDeliveryDetailsStateImplCopyWithImpl<$Res>
       details: freezed == details
           ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
-              as List<PartialDeliveryDetail>?,
+              as List<PartialDeliveryDetailsModel>?,
     ));
   }
 }
@@ -422,12 +476,12 @@ class __$$GetAllPartialDeliveryDetailsStateImplCopyWithImpl<$Res>
 class _$GetAllPartialDeliveryDetailsStateImpl
     implements GetAllPartialDeliveryDetailsState {
   const _$GetAllPartialDeliveryDetailsStateImpl(
-      {required final List<PartialDeliveryDetail>? details})
+      {required final List<PartialDeliveryDetailsModel>? details})
       : _details = details;
 
-  final List<PartialDeliveryDetail>? _details;
+  final List<PartialDeliveryDetailsModel>? _details;
   @override
-  List<PartialDeliveryDetail>? get details {
+  List<PartialDeliveryDetailsModel>? get details {
     final value = _details;
     if (value == null) return null;
     if (_details is EqualUnmodifiableListView) return _details;
@@ -463,7 +517,7 @@ class _$GetAllPartialDeliveryDetailsStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PartialDeliveryDetail>? details)
+    required TResult Function(List<PartialDeliveryDetailsModel>? details)
         getAllPartialDeliveryDetailsState,
     required TResult Function() getPartialDeliveryFailedState,
   }) {
@@ -473,7 +527,7 @@ class _$GetAllPartialDeliveryDetailsStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PartialDeliveryDetail>? details)?
+    TResult? Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult? Function()? getPartialDeliveryFailedState,
   }) {
@@ -483,7 +537,7 @@ class _$GetAllPartialDeliveryDetailsStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PartialDeliveryDetail>? details)?
+    TResult Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult Function()? getPartialDeliveryFailedState,
     required TResult orElse(),
@@ -535,10 +589,10 @@ class _$GetAllPartialDeliveryDetailsStateImpl
 abstract class GetAllPartialDeliveryDetailsState
     implements PartialDeliveryDetailState {
   const factory GetAllPartialDeliveryDetailsState(
-          {required final List<PartialDeliveryDetail>? details}) =
+          {required final List<PartialDeliveryDetailsModel>? details}) =
       _$GetAllPartialDeliveryDetailsStateImpl;
 
-  List<PartialDeliveryDetail>? get details;
+  List<PartialDeliveryDetailsModel>? get details;
   @JsonKey(ignore: true)
   _$$GetAllPartialDeliveryDetailsStateImplCopyWith<
           _$GetAllPartialDeliveryDetailsStateImpl>
@@ -588,7 +642,7 @@ class _$GetPartialDeliveryFailedStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PartialDeliveryDetail>? details)
+    required TResult Function(List<PartialDeliveryDetailsModel>? details)
         getAllPartialDeliveryDetailsState,
     required TResult Function() getPartialDeliveryFailedState,
   }) {
@@ -598,7 +652,7 @@ class _$GetPartialDeliveryFailedStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PartialDeliveryDetail>? details)?
+    TResult? Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult? Function()? getPartialDeliveryFailedState,
   }) {
@@ -608,7 +662,7 @@ class _$GetPartialDeliveryFailedStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PartialDeliveryDetail>? details)?
+    TResult Function(List<PartialDeliveryDetailsModel>? details)?
         getAllPartialDeliveryDetailsState,
     TResult Function()? getPartialDeliveryFailedState,
     required TResult orElse(),

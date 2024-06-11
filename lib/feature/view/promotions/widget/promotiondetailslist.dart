@@ -40,9 +40,18 @@ class PromotionDetailsList extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(prodetails[index].minQty ?? ''),
-                              Text(prodetails[index].maxQty ?? ''),
-                              Text(prodetails[index].qty ?? '')
+                              Text(
+                                prodetails[index].minQty ?? '',
+                                style: subTitleTextStyle(),
+                              ),
+                              Text(
+                                prodetails[index].maxQty ?? '',
+                                style: subTitleTextStyle(),
+                              ),
+                              Text(
+                                prodetails[index].qty ?? '',
+                                style: subTitleTextStyle(),
+                              )
                             ],
                           ),
                         ),

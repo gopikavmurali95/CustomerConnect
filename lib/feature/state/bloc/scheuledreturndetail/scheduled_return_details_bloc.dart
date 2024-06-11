@@ -21,8 +21,27 @@ class ScheduledReturnDetailsBloc
           await scheduledReturnApprovalRepo
               .getScheduledReturnApprovalDetails(event.reqID);
 
-      emit(details.fold((l) => const ScheduledReturnDetailFailedState(),
-          (r) => GetScheduledReturnDetailState(details: r)));
+      List<SheduledReturnDetailModel> searcheditems = [];
+      emit(
+        details.fold(
+          (l) => const ScheduledReturnDetailFailedState(),
+          (r) {
+            searcheditems = r
+                .where((element) =>
+                    element.prdCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.prdName!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()))
+                .toList();
+            return GetScheduledReturnDetailState(
+                details: event.searchQuery.isEmpty ? r : searcheditems);
+          },
+        ),
+      );
     });
     on<ClearScheduledReturnDetailsEvent>((event, emit) {
       emit(const GetScheduledReturnDetailState(details: null));
