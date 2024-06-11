@@ -378,7 +378,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                     LoadReqDetailscreen(
                                                         user: widget.user,
                                                         loadrequest:
-                                                            headers[index])
+                                                            headers[index], currentMode: _selectedloadrequest,)
 
                                                 // LoadTransferDetailScreen(
                                                 //   header: headers[index],

@@ -356,7 +356,7 @@ class _MaterialRequestHeaderScreenState
                                                     MaterialRequestDetailScreen(
                                                       user: widget.user,
                                                       materialrequest:
-                                                          headers[index],
+                                                          headers[index], currentMode:_selectedMaterialReq,
                                                     )),
                                           );
                                         },
