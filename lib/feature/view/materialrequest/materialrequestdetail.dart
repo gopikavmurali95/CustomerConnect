@@ -24,8 +24,9 @@ class MaterialRequestDetailScreen extends StatefulWidget {
   //final ReturnApprovalHeaderModel returnApprovel;
   final MaterialReqHeaderModel materialrequest;
   final LoginUserModel user;
+  final String currentMode;
   const MaterialRequestDetailScreen(
-      {super.key, required this.user, required this.materialrequest});
+      {super.key, required this.user, required this.materialrequest, required this.currentMode});
 
   @override
   State<MaterialRequestDetailScreen> createState() =>
@@ -58,6 +59,7 @@ class _MaterialRequestDetailScreenState
           MaterialReqDetailSuccessEvent(
               reqId: widget.materialrequest.mrhID ?? '', searchQuery: ''),
         );
+    _materialreqdetailSerachController.clear();
 
     super.initState();
   }
@@ -105,14 +107,10 @@ class _MaterialRequestDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
-            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
             context
                 .read<MaterialReqHeadBloc>()
-                .add(MaterialHeadSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                .add(MaterialHeadSuccessEvent(userId: widget.user.usrId ?? '',
+                mode:widget.currentMode, searchQuery: widget.materialrequest.rotID??''));
             //   log("$_approvedCount , $_totalcount");
             //   context.read<NavigatetoBackCubit>().popFromScreen(true);
             // }
@@ -313,7 +311,7 @@ class _MaterialRequestDetailScreenState
                               padding:
                               const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                               child: Container(
-                                  height: 40,
+                                  height: 30.h,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(color: Colors.grey.shade200),
@@ -334,8 +332,8 @@ class _MaterialRequestDetailScreenState
                                           ), () async {
                                         context.read<MaterialReqDetailBloc>().add(
                                             MaterialReqDetailSuccessEvent(
-
-                                                searchQuery: _materialreqdetailSerachController.text, reqId: ''));
+                                                searchQuery: _materialreqdetailSerachController.text,
+                                                reqId: widget.materialrequest.mrhID??''));
                                       });
 
                                     },
@@ -354,12 +352,11 @@ class _MaterialRequestDetailScreenState
                                                   if (_materialreqdetailSerachController
                                                       .text.isNotEmpty) {
                                                     _materialreqdetailSerachController.clear();
-
                                                     context
                                                         .read<MaterialReqDetailBloc>()
-                                                        .add(const MaterialReqDetailSuccessEvent(
+                                                        .add(MaterialReqDetailSuccessEvent(
                                                         //mode: _selectedloadrequest,
-                                                        searchQuery: "", reqId: ''));
+                                                        searchQuery: "", reqId: widget.materialrequest.mrhID??''));
                                                   }
                                                 },
                                                 icon: Icon(
@@ -468,6 +465,7 @@ class _MaterialRequestDetailScreenState
                                       _materialreqproducts = List.generate(
                                           materialdetail.length,
                                           (index) => null);
+                                      statuslist.clear();
 
                                       _totalcount = materialdetail.length;
 
@@ -523,7 +521,9 @@ class _MaterialRequestDetailScreenState
                                                               Colors.grey[300],
                                                         ),
                                                     itemCount: 10),
-                                              )
+                                              ):details.isEmpty? Center(
+                                          child: Text("No data Available",style: kfontstyle(),),
+                                        )
                                             : ListView.separated(
                                                 physics:
                                                     const NeverScrollableScrollPhysics(),

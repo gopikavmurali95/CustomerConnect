@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -22,27 +24,28 @@ class MaterialReqHeadBloc
     on<MaterialHeadSuccessEvent>((event, emit) async {
       Either<MainFailures, List<MaterialReqHeaderModel>> mheadlist =
           await materialheadrepo.materialreqheaderList(event.userId,event.mode);
+      log("searchquery in block${event.searchQuery}");
       emit(mheadlist.fold((l) => const MaterialreqheadFailed(),
           (r) {
             searchlistitems =  r
                 .where((element) =>
-            element.userID!.
-            toLowerCase().
-            toUpperCase().
-            contains(event.searchQuery.toUpperCase()) ||
-                element.rotID!.
+            (element.strName??'').
                 toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())||
-                element.userID!.
+                (element.rotID??'').
                 toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())||
-                element.mrhID!
+                (element.mrhNumber??'').
+                toLowerCase().
+                toUpperCase().
+                contains(event.searchQuery.toUpperCase())||
+                (element.warName??'')
                     .toLowerCase().
                 toUpperCase().
                 contains(event.searchQuery.toUpperCase())).toList();
-            return Materialreqheadsuccess(materialheader: event.searchQuery.isEmpty ?r : searchlistitems);
+            return Materialreqheadsuccess(materialheader: event.searchQuery.isEmpty ? r : searchlistitems);
           }));
     });
 

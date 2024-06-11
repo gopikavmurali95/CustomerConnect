@@ -53,7 +53,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
               child: Container(
-                  height: 40,
+                  height: 30.h,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.grey.shade200),

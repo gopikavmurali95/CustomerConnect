@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/journey_plan_approval_in_model/journey_plan_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -11,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
+import '../../data/models/journey_plan_header_model/journey_plan_header_model.dart';
 
 class JourneyPlanHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -23,6 +26,7 @@ class JourneyPlanHeaderScreen extends StatefulWidget {
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
+Timer? debounce;
 List<ApprovalStatusFilterModel> ddfilterJourneyPlan = [
   ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
@@ -47,6 +51,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
           // mode:'P',
           // searchQuery:''
         ));
+    _journeyplanSearchController.clear();
     super.initState();
   }
 
@@ -83,7 +88,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
               child: Container(
-                  height: 40,
+                  height: 30.h,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.grey.shade200),
@@ -98,16 +103,16 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                   child: TextFormField(
                     controller: _journeyplanSearchController,
                     onChanged: (value) {
-                      // debounce = Timer(
-                      //     const Duration(
-                      //       milliseconds: 500,
-                      //     ), () async {
-                      //   context.read<LoadReqHeaderBloc>().add(
-                      //       LoadreqSuccessEvent(
-                      //           mode: _selectedloadrequest,
-                      //           searchQuery:
-                      //           _loadqSearchController.text, userId: ''));
-                      // });
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 500,
+                          ), () async {
+                        context.read<JourneyPlanHeaderBloc>().add(
+                            GetAllJourneyPlanHeadersEvent(
+                                mode: _selectedJourneyPlan,
+                                searchQuery:
+                                _journeyplanSearchController.text, userID: '',));
+                      });
                     },
                     decoration: InputDecoration(
                         prefixIcon: const Icon(
@@ -183,7 +188,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Card(
                 child: Container(
-                  height: 40.h,
+                  height: 30.h,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -268,34 +273,59 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    _selectedJourneyPlan == 'P'
-                        ? "Pending Requests "
-                        : _selectedJourneyPlan == 'A'
-                            ? "Approved Requests"
-                            : _selectedJourneyPlan == 'CN'
-                                ? "Cancelled request"
-                                : "Rejected Requests",
-                    style: countHeading(),
+              child: BlocBuilder<JourneyPlanHeaderBloc, JourneyPlanHeaderState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.when(
+                          getAllJourneyPlanHeadersState: (List<JourneyPlanHeaderModel>? headers) =>
+                             _selectedJourneyPlan == "P"?
+                                     "Pending Approvals"
+                                 : _selectedJourneyPlan == "A"
+                                 ?  "Approved Requests" :
+                                 _selectedJourneyPlan == "CN" ?
+                                 "Cancel" : "Rejected",
+                          journeyPlanHeadersFailedState: () =>
+                          _selectedJourneyPlan == "P"?
+                            "Pending Approvals"
+                           : _selectedJourneyPlan == "A"
+                          ?  "Approved Requests" :
+                           _selectedJourneyPlan == "CN" ?
+                               "Cancel" : "Rejected",
+
                   ),
-                  BlocBuilder<JourneyPlanHeaderBloc, JourneyPlanHeaderState>(
-                    builder: (context, state) {
-                      return Text(
+                        // state.when(
+                        //   getDisputeNoteHeaderState: (headers) =>
+                        //   _selectedDisputeMode == "P"
+                        //       ? "Pending Approvals"
+                        //       : _selectedDisputeMode == "AT"
+                        //       ? "Approved Requests"
+                        //       : "Rejected Requests",
+                        //   disputeNoteHeaderFailedState: () =>
+                        //   _selectedDisputeMode == "P"
+                        //       ? "Pending Approvals"
+                        //       : _selectedDisputeMode == "AT"
+                        //       ? "Approved Requests"
+                        //       : "Rejected Requests",
+                        // ),
+                        style: countHeading(),
+                      ),
+                      Text(
                         state.when(
                           getAllJourneyPlanHeadersState: (headers) =>
-                              headers == null ? "0" : headers.length.toString(),
+                          headers == null ? "0" : headers.length.toString(),
                           journeyPlanHeadersFailedState: () => "0",
                         ),
                         style: countHeading(),
-                      );
-                    },
-                  )
-                ],
+                      )
+                    ],
+                  );
+                },
               ),
             ),
+
             SizedBox(
               height: 10.h,
             ),
@@ -337,7 +367,9 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                             color: Colors.grey[300],
                                           ),
                                       itemCount: 10),
-                                )
+                                ) : headers.isEmpty? Center(
+                            child: Text("No Data Available",style: kfontstyle(),),
+                          )
                               : ListView.separated(
                                   itemBuilder:
                                       (context, index) => GestureDetector(

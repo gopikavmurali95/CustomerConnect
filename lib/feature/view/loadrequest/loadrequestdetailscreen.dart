@@ -28,8 +28,9 @@ class LoadReqDetailscreen extends StatefulWidget {
 
   final LoadReqHeaderModel loadrequest;
   final LoginUserModel user;
+  final String currentMode;
   const LoadReqDetailscreen(
-      {super.key, required this.user, required this.loadrequest});
+      {super.key, required this.user, required this.loadrequest, required this.currentMode});
 
   @override
   State<LoadReqDetailscreen> createState() => _LoadReqDetailscreenState();
@@ -59,6 +60,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
     context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
             reqId: widget.loadrequest.lrhID ?? '', searchQuery: '') //widget.user.usrId??''
         );
+    _loadreqdetailSearchController.clear();
 
     super.initState();
   }
@@ -87,7 +89,18 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
         ),
       ),
       body: PopScope(
-        onPopInvoked: (didPop) {},
+        onPopInvoked: (didPop) {
+          context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
+              userId: widget.loadrequest.userID??'',
+              mode: widget.currentMode,
+              searchQuery: ''));
+
+          // context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
+          //     reqId: widget.loadrequest.rotID??'',
+          //     mode: widget.currentMode,
+          //     searchQuery: '',
+          // ));
+        },
         child: Column(
           children: [
             Expanded(
@@ -208,7 +221,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                     padding:
                     const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                     child: Container(
-                        height: 30,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
@@ -229,7 +242,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                 ), () async {
                               context.read<LoadReqDetailBloc>().add(
                                   GetloadreqdetailEvent(
-
                                       searchQuery:
                                       _loadreqdetailSearchController.text, reqId: '', ));
                             });
@@ -476,6 +488,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           if (details != null) {
                             _loadproducts =
                                 List.generate(details.length, (index) => null);
+                            statuslist.clear();
 
                             for (int index = 0;
                                 index < details.length;
