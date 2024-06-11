@@ -1,7 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,7 +35,7 @@ class PromotionCustomerList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        ListTile(
+                        /* ListTile(
                           leading: CircleAvatar(
                             backgroundColor: const Color(0xffB3DAF7),
                             child: Center(
@@ -91,6 +93,77 @@ class PromotionCustomerList extends StatelessWidget {
                                 '${promocustomer[index].promotionCustomerModelClass} | '
                                 '${promocustomer[index].areaName}',
                                 style: statusTextStyle(),
+                              )
+                            ],
+                          ),
+                        ), */
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: const Color(0xffB3DAF7),
+                                child: Center(
+                                  child: Text(
+                                    promocustomer[index]
+                                        .cusName!
+                                        .split('')
+                                        .toList()[0],
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15.w,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          promocustomer[index].cusCode ?? '',
+                                          style: blueTextStyle(),
+                                        ),
+                                        Flexible(
+                                          flex: 1,
+                                          fit: FlexFit.tight,
+                                          child: Text(
+                                            ' - ${promocustomer[index].cusName}',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          promocustomer[index].cusCode ?? '',
+                                          style: subTitleTextStyle(),
+                                        ),
+                                        Text(
+                                          ' - ',
+                                          style: subTitleTextStyle(),
+                                        ),
+                                        Text(
+                                          promocustomer[index].areaName ?? '',
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      '${promocustomer[index].cusType} | '
+                                      '${promocustomer[index].promotionCustomerModelClass} | '
+                                      '${promocustomer[index].areaName}',
+                                      style: statusTextStyle(),
+                                    )
+                                  ],
+                                ),
                               )
                             ],
                           ),
