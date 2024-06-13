@@ -248,7 +248,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                   width: double.infinity,
                   color: const Color(0xfff5f5f5),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 30),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -259,9 +259,9 @@ class _CustomerItemListState extends State<CustomerItemList> {
                               fontWeight: FontWeight.w400,
                               color: Colors.black54),
                         ),
-                        SizedBox(
+                        /* SizedBox(
                           width: 10.w,
-                        ),
+                        ), */
                         Row(
                           children: [
                             Text(
@@ -272,7 +272,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                   color: Colors.black54),
                             ),
                             SizedBox(
-                              width: 40.w,
+                              width: 50.w,
                             ),
                             Text(
                               'Price',

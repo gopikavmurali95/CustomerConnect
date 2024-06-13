@@ -32,7 +32,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         .read<SpecialPriceCustomersBloc>()
         .add(const ClearSpecialPriceCustomer());
     context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
-        userID: widget.user.usrId!,
+        userID: widget.spPrice.prhId ?? '',
         fromDate:
             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
         todate:
@@ -185,7 +185,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                   .add(const ClearSpecialPriceCustomer());
                               context.read<SpecialPriceCustomersBloc>().add(
                                   GetSpecialPriceCustomersEvent(
-                                      userID: widget.user.usrId!,
+                                      userID: widget.spPrice.prhId ?? '',
                                       fromDate:
                                           '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       todate:
@@ -207,7 +207,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                     .add(const ClearSpecialPriceCustomer());
                                 context.read<SpecialPriceCustomersBloc>().add(
                                     GetSpecialPriceCustomersEvent(
-                                        userID: widget.user.usrId!,
+                                        userID: widget.spPrice.prhId ?? '',
                                         fromDate:
                                             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                         todate:
@@ -297,23 +297,23 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
       ),
     );
   }
-}
 
-Future<void> _onRefreshSpecialPricingCustomerScreen(
-    BuildContext context, LoginUserModel model) async {
-  context
-      .read<SpecialPriceCustomersBloc>()
-      .add(const ClearSpecialPriceCustomer());
-  context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
-      userID: model.usrId!,
-      fromDate:
-          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-      todate:
-          '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-      searchQuery: ''));
+  Future<void> _onRefreshSpecialPricingCustomerScreen(
+      BuildContext context, LoginUserModel model) async {
+    context
+        .read<SpecialPriceCustomersBloc>()
+        .add(const ClearSpecialPriceCustomer());
+    context.read<SpecialPriceCustomersBloc>().add(GetSpecialPriceCustomersEvent(
+        userID: widget.spPrice.prhId ?? '',
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        todate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        searchQuery: ''));
 
-  // context.read<SpecialPriceDetailsBloc>().add(const ClearSpecialriceDetailsEvent());
-  // context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(
-  //     prhID: '',
-  //     searchQuery: ''));
+    // context.read<SpecialPriceDetailsBloc>().add(const ClearSpecialriceDetailsEvent());
+    // context.read<SpecialPriceDetailsBloc>().add(const GetSpecialPriceDetailsEvent(
+    //     prhID: '',
+    //     searchQuery: ''));
+  }
 }

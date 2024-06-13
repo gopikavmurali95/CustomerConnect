@@ -80,7 +80,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialPRiceCustomerurl),
-          body: {"UserID": userID, "FromDate": fromDate, "ToDate": toDate});
+          body: {"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate});
       if (response.statusCode == 200) {
         logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

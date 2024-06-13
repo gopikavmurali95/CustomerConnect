@@ -1,7 +1,9 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +17,7 @@ class CustomerItemListWidget extends StatelessWidget {
         return state.when(
           getCusItemsState: (items) => items == null
               ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemBuilder: (context, index) =>
@@ -41,86 +43,98 @@ class CustomerItemListWidget extends StatelessWidget {
                             Row(
                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  // height: 55.h,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        items[index].prdCode ?? '',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff7b70ac),
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2,
-                                        child: Text(
-                                          items[index].prdName ?? '',
+                                Flexible(
+                                  flex: 2,
+                                  fit: FlexFit.tight,
+                                  child: SizedBox(
+                                    // height: 55.h,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          items[index].prdCode ?? '',
                                           style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black54),
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff7b70ac),
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
+                                        SizedBox(
+                                          // width: MediaQuery.of(context)
+                                          //         .size
+                                          //         .width /
+                                          //     2,
+                                          child: Text(
+                                            items[index].prdName ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black54),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                /* SizedBox(
+                                  width: 50.h,
+                                ), */
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text(
+                                            items[index].uomName ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black54),
+                                          ),
+
+                                          /* 
+                                      Text(
+                                        'Pc',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black54),
+                                      ), */
+                                        ],
+                                      ),
+                                      // SizedBox(
+                                      //   width: 20.h,
+                                      // ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            items[index].pldPrice ?? "",
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.end,
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black54),
+                                          ),
+                                          /* SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      Text(
+                                        '12.00',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black54),
+                                      ), */
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 30.h,
-                                ),
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          items[index].uomName ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black54),
-                                        ),
-
-                                        /* 
-                                    Text(
-                                      'Pc',
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.black54),
-                                    ), */
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 30.h,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          items[index].pldPrice ?? "",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black54),
-                                        ),
-                                        /* SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Text(
-                                      '12.00',
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.black54),
-                                    ), */
-                                      ],
-                                    ),
-                                  ],
                                 )
                               ],
                             ),

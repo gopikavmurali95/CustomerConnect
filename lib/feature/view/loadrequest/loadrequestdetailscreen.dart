@@ -18,8 +18,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
 // import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
@@ -31,7 +29,10 @@ class LoadReqDetailscreen extends StatefulWidget {
   final LoginUserModel user;
   final String currentMode;
   const LoadReqDetailscreen(
-      {super.key, required this.user, required this.loadrequest, required this.currentMode});
+      {super.key,
+      required this.user,
+      required this.loadrequest,
+      required this.currentMode});
 
   @override
   State<LoadReqDetailscreen> createState() => _LoadReqDetailscreenState();
@@ -51,7 +52,6 @@ TextEditingController _apprvHQtyController = TextEditingController();
 TextEditingController _apprvLQtyController = TextEditingController();
 TextEditingController _loadreqdetailSearchController = TextEditingController();
 
-
 class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
   @override
   void initState() {
@@ -59,7 +59,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
     loadingCount = 0;
     context.read<LoadReqDetailBloc>().add(const ClearLodReqDetailEvent());
     context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
-            reqId: widget.loadrequest.lrhID ?? '', searchQuery: '') //widget.user.usrId??''
+            reqId: widget.loadrequest.lrhID ?? '',
+            searchQuery: '') //widget.user.usrId??''
         );
     _loadreqdetailSearchController.clear();
 
@@ -92,7 +93,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
       body: PopScope(
         onPopInvoked: (didPop) {
           context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
-              userId: widget.loadrequest.userID??'',
+              userId: widget.loadrequest.userID ?? '',
               mode: widget.currentMode,
               searchQuery: ''));
 
@@ -182,8 +183,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                               ),
                               Text(
                                 '${widget.loadrequest.createdDate}',
-                                style:
-                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                                style: kfontstyle(
+                                    fontSize: 10.sp, color: Colors.grey),
                               ),
                             ],
                           ),
@@ -192,13 +193,11 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           // height: 10.h,
                           // width: 10.h,
                           decoration: BoxDecoration(
-                            color: widget.loadrequest.status! ==
-                                "Pending"
+                            color: widget.loadrequest.status! == "Pending"
                                 ? const Color(0xfff7f4e2)
-                                : widget.loadrequest.status==
-                                "Action Taken"
-                                ? const Color(0xffe3f7e2)
-                                : Colors.red[300],
+                                : widget.loadrequest.status == "Action Taken"
+                                    ? const Color(0xffe3f7e2)
+                                    : Colors.red[300],
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
@@ -207,7 +206,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 5, vertical: 3),
                             child: Text(
-                              widget.loadrequest.status?? '',
+                              widget.loadrequest.status ?? '',
                               style: kfontstyle(fontSize: 8.sp),
                             ),
                           ),
@@ -219,8 +218,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                     height: 5.h,
                   ),
                   Padding(
-                    padding:
-                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 10.0, right: 10, bottom: 10),
                     child: Container(
                         height: 30.h,
                         decoration: BoxDecoration(
@@ -229,23 +228,27 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             borderRadius: BorderRadius.circular(10.0),
                             boxShadow: const [
                               BoxShadow(
-                                // ignore: use_full_hex_values_for_flutter_colors
+                                  // ignore: use_full_hex_values_for_flutter_colors
                                   color: Color(0xff00000050),
                                   blurRadius: 0.4,
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
-                          style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                          style: kfontstyle(
+                              fontSize: 13.sp, color: Colors.black87),
                           controller: _loadreqdetailSearchController,
                           onChanged: (value) {
                             debounce = Timer(
                                 const Duration(
                                   milliseconds: 500,
                                 ), () async {
-                              context.read<LoadReqDetailBloc>().add(
-                                  GetloadreqdetailEvent(
-                                      searchQuery:
-                                      _loadreqdetailSearchController.text, reqId: '', ));
+                              context
+                                  .read<LoadReqDetailBloc>()
+                                  .add(GetloadreqdetailEvent(
+                                    searchQuery:
+                                        _loadreqdetailSearchController.text,
+                                    reqId: '',
+                                  ));
                             });
                             // if (debounce?.isActive ?? false) debounce!.cancel();
                             // debounce = Timer(
@@ -277,13 +280,15 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                       onPressed: () {
                                         if (_loadreqdetailSearchController
                                             .text.isNotEmpty) {
-                                          _loadreqdetailSearchController.clear();
+                                          _loadreqdetailSearchController
+                                              .clear();
 
                                           context
                                               .read<LoadReqDetailBloc>()
                                               .add(const GetloadreqdetailEvent(
-                                              // mode: _selectedloadrequestdetail,
-                                              searchQuery: "", reqId: ''));
+                                                  // mode: _selectedloadrequestdetail,
+                                                  searchQuery: "",
+                                                  reqId: ''));
                                         }
                                         // _loadPendingSearchCtrl.clear();
                                         // context
@@ -342,8 +347,9 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           // controller: _locationNameTextController,
                         )),
                   ),
-
-                  SizedBox(height: 5.h,),
+                  SizedBox(
+                    height: 5.h,
+                  ),
                   Container(
                     height: 30.h,
                     width: double.infinity,
@@ -355,30 +361,22 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                         children: [
                           Text(
                             'Item',
-                            style: boxHeading(),),
+                            style: boxHeading(),
+                          ),
                           SizedBox(
                             width: 10.w,
                           ),
                           Row(
                             children: [
-                              Text(
-                                'UOM',
-                                style: boxHeading()
-                              ),
+                              Text('UOM', style: boxHeading()),
                               SizedBox(
                                 width: 30.w,
                               ),
-                              Text(
-                                'Req Qty',
-                                style: boxHeading()
-                              ),
+                              Text('Req Qty', style: boxHeading()),
                               SizedBox(
                                 width: 30.w,
                               ),
-                              Text(
-                                'Appr Qty',
-                                style: boxHeading()
-                              ),
+                              Text('Appr Qty', style: boxHeading()),
                               SizedBox(
                                 width: 10.w,
                               ),
@@ -420,332 +418,405 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                     child: BlocBuilder<LoadReqDetailBloc, LoadReqDetailState>(
                       builder: (context, state) {
                         return state.when(
-                          loadreqDetailSuccessState: (details) => details ==
-                                  null
-                              ? Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 0),
-                                    child: ListView.separated(
-                                        // physics:
-                                        //     const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) =>
-                                            ShimmerContainers(
-                                                height: 60.h,
-                                                width: double.infinity),
-                                        separatorBuilder: (context, index) =>
-                                            Divider(
-                                              color: Colors.grey[300],
-                                            ),
-                                        itemCount: 10),
-                                  ),
-                                ) :details.isEmpty ? Center(
-                            child: Text("No Data Available",style: kfontstyle(),),
-                          )
-                              : Expanded(
-                                  child: ListView.separated(
-
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) =>
-                                        BlocListener<ApproveReturnProductBloc,
-                                            ApproveReturnProductState>(
-                                      listener: (context, state) {
-                                        state.when(
-                                          approveReturnProductdSTatusState:
-                                              (response) {
-                                            if (response != null) {
-                                              Navigator.pop(context);
-                                              isLoading = false;
-                                              if (response.mode == '1') {
-                                                showCupertinoDialog(
-                                                  context: context,
-                                                  builder: (context) =>
-                                                      CupertinoAlertDialog(
-                                                    title: const Text('Alert'),
-                                                    content: Text(
-                                                        "Product Status Update ${response.status} "),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              } else {
-                                                statuslist[index] = null;
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                                showCupertinoDialog(
-                                                  context: context,
-                                                  builder: (context) =>
-                                                      CupertinoAlertDialog(
-                                                    title: const Text('Alert'),
-                                                    content: Text(
-                                                        "Product Status Update ${response.status} ,Try Again"),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }
-                                            }
-                                          },
-                                          approveReturnLoadingState: () {
-                                            if (loadingCount == 0) {
-                                              loadingCount = 1;
-                                              approvedCount += 1;
-                                              showCupertinoModalPopup(
-                                                  context: context,
-                                                  barrierDismissible: false,
-                                                  builder: (context) =>
-                                                      SizedBox(
-                                                        height: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .height,
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        child: const PopScope(
-                                                          canPop: true,
-                                                          child:
-                                                              CupertinoActivityIndicator(
-                                                            animating: true,
-                                                            color: Colors.red,
-                                                            radius: 30,
-                                                          ),
-                                                        ),
-                                                      ));
-                                            }
-                                          },
-                                          approvalFailedState: () {
-                                            statuslist[index] = null;
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                            showCupertinoDialog(
-                                              context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
-                                                title: const Text('Alert'),
-                                                content: const Text(
-                                                    "Something Went Wrong, please Try again later"),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
+                          loadreqDetailSuccessState: (details) =>
+                              details == null
+                                  ? Expanded(
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 10),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        details[index]
-                                                                .prdCode ?? '',
-                                                        style: kfontstyle(
-                                                          fontSize: 12.sp,
-                                                          color: const Color(
-                                                              0xff7b70ac),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 40,
-                                                        width: MediaQuery.of(context).size.width/3,
-                                                        child: Text(
-                                                          details[index].prdName ?? '',
-                                                          style: kfontstyle(
-                                                              fontSize: 10.sp,
-                                                              fontWeight: FontWeight.w400,
-                                                              color: Colors.black54),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: MediaQuery.of(context).size.width/2.w,
-                                                  child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Column(
-                                                        children: [
-                                                          Text(
-                                                            details[index].lrdHUOM ?? '',
-                                                            style: kfontstyle(
-                                                                fontSize: 12.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Colors
-                                                                    .black54),
+                                            horizontal: 0),
+                                        child: ListView.separated(
+                                            // physics:
+                                            //     const NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemBuilder: (context, index) =>
+                                                ShimmerContainers(
+                                                    height: 60.h,
+                                                    width: double.infinity),
+                                            separatorBuilder:
+                                                (context, index) => Divider(
+                                                      color: Colors.grey[300],
+                                                    ),
+                                            itemCount: 10),
+                                      ),
+                                    )
+                                  : details.isEmpty
+                                      ? Center(
+                                          child: Text(
+                                            "No Data Available",
+                                            style: kfontstyle(),
+                                          ),
+                                        )
+                                      : Expanded(
+                                          child: ListView.separated(
+                                            shrinkWrap: true,
+                                            itemBuilder: (context, index) =>
+                                                BlocListener<
+                                                    ApproveReturnProductBloc,
+                                                    ApproveReturnProductState>(
+                                              listener: (context, state) {
+                                                state.when(
+                                                  approveReturnProductdSTatusState:
+                                                      (response) {
+                                                    if (response != null) {
+                                                      Navigator.pop(context);
+                                                      isLoading = false;
+                                                      if (response.mode ==
+                                                          '1') {
+                                                        showCupertinoDialog(
+                                                          context: context,
+                                                          builder: (context) =>
+                                                              CupertinoAlertDialog(
+                                                            title: const Text(
+                                                                'Alert'),
+                                                            content: Text(
+                                                                "Product Status Update ${response.status} "),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                        'Ok'),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          SizedBox(height: 5.h,),
-                                                          Text(
-                                                            details[index].lrdLUOM ?? '',
-                                                            style: kfontstyle(
-                                                                fontSize: 12.sp,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                color: Colors
-                                                                    .black54),
+                                                        );
+                                                      } else {
+                                                        statuslist[index] =
+                                                            null;
+                                                        setState(() {});
+                                                        Navigator.pop(context);
+                                                        showCupertinoDialog(
+                                                          context: context,
+                                                          builder: (context) =>
+                                                              CupertinoAlertDialog(
+                                                            title: const Text(
+                                                                'Alert'),
+                                                            content: Text(
+                                                                "Product Status Update ${response.status} ,Try Again"),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                    const Text(
+                                                                        'Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      }
+                                                    }
+                                                  },
+                                                  approveReturnLoadingState:
+                                                      () {
+                                                    if (loadingCount == 0) {
+                                                      loadingCount = 1;
+                                                      approvedCount += 1;
+                                                      showCupertinoModalPopup(
+                                                          context: context,
+                                                          barrierDismissible:
+                                                              false,
+                                                          builder: (context) =>
+                                                              SizedBox(
+                                                                height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height,
+                                                                width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                                                                child:
+                                                                    const PopScope(
+                                                                  canPop: true,
+                                                                  child:
+                                                                      CupertinoActivityIndicator(
+                                                                    animating:
+                                                                        true,
+                                                                    color: Colors
+                                                                        .red,
+                                                                    radius: 30,
+                                                                  ),
+                                                                ),
+                                                              ));
+                                                    }
+                                                  },
+                                                  approvalFailedState: () {
+                                                    statuslist[index] = null;
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                    showCupertinoDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          CupertinoAlertDialog(
+                                                        title:
+                                                            const Text('Alert'),
+                                                        content: const Text(
+                                                            "Something Went Wrong, please Try again later"),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'Ok'),
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(
-                                                        height: 20.h,
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          Text(
-                                                           details[index].lrdHQty?? '',
-                                                            style: kfontstyle(
-                                                                fontSize: 12.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Colors
-                                                                    .black54),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                details[index]
+                                                                        .prdCode ??
+                                                                    '',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: const Color(
+                                                                      0xff7b70ac),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 40,
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    3,
+                                                                child: Text(
+                                                                  details[index]
+                                                                          .prdName ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          10.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black54),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          SizedBox(height: 5.h,),
-                                                          Text(
-                                                            details[index].lrdLQty?? '',
-                                                            style: kfontstyle(
-                                                                fontSize: 12.sp,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                color: Colors
-                                                                    .black54),
+                                                        ),
+                                                        SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              2.w,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Column(
+                                                                children: [
+                                                                  Text(
+                                                                    details[index]
+                                                                            .lrdHUOM ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: 5.h,
+                                                                  ),
+                                                                  Text(
+                                                                    details[index]
+                                                                            .lrdLUOM ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox(
+                                                                height: 20.h,
+                                                              ),
+                                                              Column(
+                                                                children: [
+                                                                  Text(
+                                                                    details[index]
+                                                                            .lrdHQty ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: 5.h,
+                                                                  ),
+                                                                  Text(
+                                                                    details[index]
+                                                                            .lrdLQty ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    height: 25,
+                                                                    width: 80,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .number,
+                                                                      controller:
+                                                                          TextEditingController(
+                                                                              text: details[index].lrdHQty),
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        details[index].lrdLQty =
+                                                                            value;
+                                                                        _loadproducts[index] =
+                                                                            LoadReqPrdModel(
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdId:
+                                                                              details[index].lrdID,
+                                                                        );
+                                                                      },
+                                                                      //controller: _apprvHQtyController,
+                                                                      style: const TextStyle(
+                                                                          fontSize:
+                                                                              9),
+                                                                      decoration: InputDecoration(
+                                                                          enabledBorder: const OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(color: Colors.black12, width: 1),
+                                                                          ),
+                                                                          focusedBorder: const OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(color: Colors.grey, width: 1.0),
+                                                                          ),
+                                                                          fillColor: const Color(0xfff5f5f5),
+                                                                          filled: true,
+                                                                          border: OutlineInputBorder(
+                                                                            borderSide:
+                                                                                const BorderSide(color: Colors.red, width: 4),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5),
+                                                                          )),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: 5.h,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: 25,
+                                                                    width: 80,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      keyboardType:
+                                                                          TextInputType
+                                                                              .number,
+                                                                      controller:
+                                                                          TextEditingController(
+                                                                              text: details[index].lrdLQty),
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        details[index].lrdLQty =
+                                                                            value;
+                                                                        _loadproducts[index] =
+                                                                            LoadReqPrdModel(
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdId:
+                                                                              details[index].lrdID,
+                                                                        );
+                                                                      },
+                                                                      style: const TextStyle(
+                                                                          fontSize:
+                                                                              9),
+                                                                      decoration: InputDecoration(
+                                                                          enabledBorder: const OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(color: Colors.black12, width: 1),
+                                                                          ),
+                                                                          focusedBorder: const OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(color: Colors.grey, width: 1.0),
+                                                                          ),
+                                                                          fillColor: const Color(0xfff5f5f5),
+                                                                          filled: true,
+                                                                          border: OutlineInputBorder(
+                                                                            borderSide:
+                                                                                const BorderSide(color: Colors.red, width: 4),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5),
+                                                                          )),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              )
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
-
-                                                     Column(
-                                                       children: [
-                                                         SizedBox(
-                                                           height: 25,
-                                                           width: 80,
-                                                           child: TextFormField(
-                                                             keyboardType: TextInputType.number,
-                                                             controller: TextEditingController(
-                                                                 text: details[index].lrdHQty),
-                                                             onChanged: (value){
-                                                               details[index].lrdLQty =value;
-                                                               _loadproducts[index] = LoadReqPrdModel(
-                                                                 lrdLQty: details[index].lrdLQty,
-                                                                 lrdHQty: details[index].lrdHQty,
-                                                                 lrdId: details[index].lrdID,
-                                                               );
-
-                                                             },
-                                                             //controller: _apprvHQtyController,
-                                                             style: const TextStyle(
-                                                               fontSize: 9
-                                                             ),
-                                                             decoration: InputDecoration(
-                                                                 enabledBorder: const OutlineInputBorder(
-                                                                   borderSide: BorderSide(
-                                                                       color: Colors.black12, width: 1),
-                                                                 ),
-                                                                 focusedBorder: const OutlineInputBorder(
-                                                                   borderSide: BorderSide(
-                                                                       color: Colors.grey, width: 1.0),
-                                                                 ),
-                                                               fillColor: const Color(0xfff5f5f5),
-                                                               filled: true,
-                                                               border: OutlineInputBorder(
-
-                                                                 borderSide: const BorderSide(
-                                                                     color: Colors.red, width: 4),
-                                                                 borderRadius: BorderRadius.circular(5),
-
-                                                               )
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         SizedBox(height: 5.h,),
-                                                         SizedBox(
-                                                           height: 25,
-                                                           width: 80,
-                                                           child: TextFormField(
-                                                             keyboardType: TextInputType.number,
-                                                             controller: TextEditingController(
-                                                                 text: details[index].lrdLQty),
-                                                             onChanged: (value){
-                                                               details[index].lrdLQty =value;
-                                                               _loadproducts[index] = LoadReqPrdModel(
-                                                                 lrdLQty: details[index].lrdLQty,
-                                                                 lrdHQty: details[index].lrdHQty,
-                                                                 lrdId: details[index].lrdID,
-                                                               );
-
-                                                             },
-                                                             style: const TextStyle(
-                                                                 fontSize: 9
-                                                             ),
-                                                             decoration: InputDecoration(
-                                                                 enabledBorder: const OutlineInputBorder(
-                                                                   borderSide: BorderSide(
-                                                                       color: Colors.black12, width: 1),
-                                                                 ),
-                                                                 focusedBorder: const OutlineInputBorder(
-                                                                   borderSide: BorderSide(
-                                                                       color: Colors.grey, width: 1.0),
-                                                                 ),
-                                                                 fillColor: const Color(0xfff5f5f5),
-                                                                 filled: true,
-                                                                 border: OutlineInputBorder(
-
-                                                                   borderSide: const BorderSide(
-                                                                       color: Colors.red, width: 4),
-                                                                   borderRadius: BorderRadius.circular(5),
-
-                                                                 )
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ],
-                                                     )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            /* Row(
+                                                        )
+                                                      ],
+                                                    ),
+                                                    /* Row(
                                                   children: [
                                                     BlocConsumer<
                                                         LoadReqApprovalBloc,
@@ -973,168 +1044,168 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                         );
                                                       },
                                                     ), */
-                                            /*  ],
+                                                    /*  ],
                                                 ) */
 
-                                            // Row(
-                                            //   children: [
-                                            //     Expanded(
-                                            //       // width: MediaQuery.of(
-                                            //       //         context)
-                                            //       //     .size
-                                            //       //     .width,
-                                            //       child: Row(
-                                            //         mainAxisAlignment:
-                                            //             MainAxisAlignment.end,
-                                            //         children: [
-                                            //           Text(
-                                            //             details[index]
-                                            //                     .lrdHUOM ??
-                                            //                 '',
-                                            //             style: kfontstyle(
-                                            //                 fontSize: 12.sp,
-                                            //                 fontWeight:
-                                            //                     FontWeight.w400,
-                                            //                 color:
-                                            //                     Colors.black54),
-                                            //           ),
-                                            //           SizedBox(
-                                            //             width: 10.w,
-                                            //           ),
-                                            //           Flexible(
-                                            //               flex: 2,
-                                            //               fit: FlexFit.tight,
-                                            //               child: TextFormField(
-                                            //                 keyboardType:
-                                            //                     TextInputType
-                                            //                         .number,
-                                            //                 controller:
-                                            //                     TextEditingController(
-                                            //                   text: details[
-                                            //                           index]
-                                            //                       .lrdApvHQty,
-                                            //                 ),
-                                            //                 style: kfontstyle(
-                                            //                     fontSize:
-                                            //                         13.sp),
-                                            //                 onChanged: (value) {
-                                            //                   details[index]
-                                            //                           .lrdApvLQty =
-                                            //                       value;
-                                            //                   _loadproducts[
-                                            //                           index] =
-                                            //                       LoadReqPrdModel(
-                                            //                     lrdHQty: details[
-                                            //                             index]
-                                            //                         .lrdLQty,
-                                            //                     lrdHuom: details[
-                                            //                             index]
-                                            //                         .lrdHUOM,
-                                            //                     lrdId: details[
-                                            //                             index]
-                                            //                         .lrdID,
-                                            //                     lrdLQty: details[
-                                            //                             index]
-                                            //                         .lrdLQty,
-                                            //                     lrdLuom: details[
-                                            //                             index]
-                                            //                         .lrdLUOM,
-                                            //                     lrdPrdId: details[
-                                            //                             index]
-                                            //                         .lrdPrdID,
-                                            //                     lrdTotalQty: details[
-                                            //                             index]
-                                            //                         .lrdTotalQty,
-                                            //                     txtApvHQty: details[
-                                            //                             index]
-                                            //                         .lrdApvHQty,
-                                            //                     txtApvLQty: details[
-                                            //                             index]
-                                            //                         .lrdApvLQty,
-                                            //                   );
-                                            //                 },
-                                            //               )),
-                                            //           const Spacer(),
-                                            //           Text(
-                                            //             details[index]
-                                            //                     .lrdLUOM ??
-                                            //                 '',
-                                            //             style: kfontstyle(
-                                            //                 fontSize: 12.sp,
-                                            //                 fontWeight:
-                                            //                     FontWeight.w400,
-                                            //                 color:
-                                            //                     Colors.black54),
-                                            //           ),
-                                            //           SizedBox(
-                                            //             width: 10.w,
-                                            //           ),
-                                            //           Flexible(
-                                            //             flex: 2,
-                                            //             fit: FlexFit.tight,
-                                            //             child: TextFormField(
-                                            //               keyboardType:
-                                            //                   TextInputType
-                                            //                       .number,
-                                            //               controller:
-                                            //                   TextEditingController(
-                                            //                 text: details[index]
-                                            //                     .lrdApvLQty,
-                                            //               ),
-                                            //               onChanged: (value) {
-                                            //                 details[index]
-                                            //                         .lrdApvLQty =
-                                            //                     value;
-                                            //                 _loadproducts[
-                                            //                         index] =
-                                            //                     LoadReqPrdModel(
-                                            //                   lrdHQty:
-                                            //                       details[index]
-                                            //                           .lrdLQty,
-                                            //                   lrdHuom:
-                                            //                       details[index]
-                                            //                           .lrdHUOM,
-                                            //                   lrdId:
-                                            //                       details[index]
-                                            //                           .lrdID,
-                                            //                   lrdLQty:
-                                            //                       details[index]
-                                            //                           .lrdLQty,
-                                            //                   lrdLuom:
-                                            //                       details[index]
-                                            //                           .lrdLUOM,
-                                            //                   lrdPrdId:
-                                            //                       details[index]
-                                            //                           .lrdPrdID,
-                                            //                   lrdTotalQty:
-                                            //                       details[index]
-                                            //                           .lrdTotalQty,
-                                            //                   txtApvHQty:
-                                            //                       details[index]
-                                            //                           .lrdApvHQty,
-                                            //                   txtApvLQty:
-                                            //                       details[index]
-                                            //                           .lrdApvLQty,
-                                            //                 );
-                                            //               },
-                                            //             ),
-                                            //           ),
-                                            //         ],
-                                            //       ),
-                                            //     ),
-                                            //   ],
-                                            // )
-                                          ],
+                                                    // Row(
+                                                    //   children: [
+                                                    //     Expanded(
+                                                    //       // width: MediaQuery.of(
+                                                    //       //         context)
+                                                    //       //     .size
+                                                    //       //     .width,
+                                                    //       child: Row(
+                                                    //         mainAxisAlignment:
+                                                    //             MainAxisAlignment.end,
+                                                    //         children: [
+                                                    //           Text(
+                                                    //             details[index]
+                                                    //                     .lrdHUOM ??
+                                                    //                 '',
+                                                    //             style: kfontstyle(
+                                                    //                 fontSize: 12.sp,
+                                                    //                 fontWeight:
+                                                    //                     FontWeight.w400,
+                                                    //                 color:
+                                                    //                     Colors.black54),
+                                                    //           ),
+                                                    //           SizedBox(
+                                                    //             width: 10.w,
+                                                    //           ),
+                                                    //           Flexible(
+                                                    //               flex: 2,
+                                                    //               fit: FlexFit.tight,
+                                                    //               child: TextFormField(
+                                                    //                 keyboardType:
+                                                    //                     TextInputType
+                                                    //                         .number,
+                                                    //                 controller:
+                                                    //                     TextEditingController(
+                                                    //                   text: details[
+                                                    //                           index]
+                                                    //                       .lrdApvHQty,
+                                                    //                 ),
+                                                    //                 style: kfontstyle(
+                                                    //                     fontSize:
+                                                    //                         13.sp),
+                                                    //                 onChanged: (value) {
+                                                    //                   details[index]
+                                                    //                           .lrdApvLQty =
+                                                    //                       value;
+                                                    //                   _loadproducts[
+                                                    //                           index] =
+                                                    //                       LoadReqPrdModel(
+                                                    //                     lrdHQty: details[
+                                                    //                             index]
+                                                    //                         .lrdLQty,
+                                                    //                     lrdHuom: details[
+                                                    //                             index]
+                                                    //                         .lrdHUOM,
+                                                    //                     lrdId: details[
+                                                    //                             index]
+                                                    //                         .lrdID,
+                                                    //                     lrdLQty: details[
+                                                    //                             index]
+                                                    //                         .lrdLQty,
+                                                    //                     lrdLuom: details[
+                                                    //                             index]
+                                                    //                         .lrdLUOM,
+                                                    //                     lrdPrdId: details[
+                                                    //                             index]
+                                                    //                         .lrdPrdID,
+                                                    //                     lrdTotalQty: details[
+                                                    //                             index]
+                                                    //                         .lrdTotalQty,
+                                                    //                     txtApvHQty: details[
+                                                    //                             index]
+                                                    //                         .lrdApvHQty,
+                                                    //                     txtApvLQty: details[
+                                                    //                             index]
+                                                    //                         .lrdApvLQty,
+                                                    //                   );
+                                                    //                 },
+                                                    //               )),
+                                                    //           const Spacer(),
+                                                    //           Text(
+                                                    //             details[index]
+                                                    //                     .lrdLUOM ??
+                                                    //                 '',
+                                                    //             style: kfontstyle(
+                                                    //                 fontSize: 12.sp,
+                                                    //                 fontWeight:
+                                                    //                     FontWeight.w400,
+                                                    //                 color:
+                                                    //                     Colors.black54),
+                                                    //           ),
+                                                    //           SizedBox(
+                                                    //             width: 10.w,
+                                                    //           ),
+                                                    //           Flexible(
+                                                    //             flex: 2,
+                                                    //             fit: FlexFit.tight,
+                                                    //             child: TextFormField(
+                                                    //               keyboardType:
+                                                    //                   TextInputType
+                                                    //                       .number,
+                                                    //               controller:
+                                                    //                   TextEditingController(
+                                                    //                 text: details[index]
+                                                    //                     .lrdApvLQty,
+                                                    //               ),
+                                                    //               onChanged: (value) {
+                                                    //                 details[index]
+                                                    //                         .lrdApvLQty =
+                                                    //                     value;
+                                                    //                 _loadproducts[
+                                                    //                         index] =
+                                                    //                     LoadReqPrdModel(
+                                                    //                   lrdHQty:
+                                                    //                       details[index]
+                                                    //                           .lrdLQty,
+                                                    //                   lrdHuom:
+                                                    //                       details[index]
+                                                    //                           .lrdHUOM,
+                                                    //                   lrdId:
+                                                    //                       details[index]
+                                                    //                           .lrdID,
+                                                    //                   lrdLQty:
+                                                    //                       details[index]
+                                                    //                           .lrdLQty,
+                                                    //                   lrdLuom:
+                                                    //                       details[index]
+                                                    //                           .lrdLUOM,
+                                                    //                   lrdPrdId:
+                                                    //                       details[index]
+                                                    //                           .lrdPrdID,
+                                                    //                   lrdTotalQty:
+                                                    //                       details[index]
+                                                    //                           .lrdTotalQty,
+                                                    //                   txtApvHQty:
+                                                    //                       details[index]
+                                                    //                           .lrdApvHQty,
+                                                    //                   txtApvLQty:
+                                                    //                       details[index]
+                                                    //                           .lrdApvLQty,
+                                                    //                 );
+                                                    //               },
+                                                    //             ),
+                                                    //           ),
+                                                    //         ],
+                                                    //       ),
+                                                    //     ),
+                                                    //   ],
+                                                    // )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            separatorBuilder:
+                                                (context, index) => Divider(
+                                              color: Colors.grey[300],
+                                            ),
+                                            itemCount: details.length,
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    separatorBuilder: (context, index) =>
-                                        Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                    itemCount: details.length,
-                                  ),
-                                ),
                           loadreqDetailFailedState: () => SizedBox(
                             height: MediaQuery.of(context).size.height / 1.5,
                             child: Center(
@@ -1168,7 +1239,9 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                               onPressed: () {
                                 context.read<LoadReqHeaderBloc>().add(
                                     LoadreqSuccessEvent(
-                                        userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                                        userId: widget.user.usrId ?? '',
+                                        mode: '',
+                                        searchQuery: ''));
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
@@ -1193,7 +1266,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             onPressed: () {
                               context.read<LoadReqDetailBloc>().add(
                                   GetloadreqdetailEvent(
-                                      reqId: widget.loadrequest.lrhID ?? "", searchQuery: ''));
+                                      reqId: widget.loadrequest.lrhID ?? "",
+                                      searchQuery: ''));
                               Navigator.pop(context);
                             },
                             child: const Text('Ok'),
@@ -1441,8 +1515,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
   Future<void> _onRefreshLoadReqDetailscreen(
       BuildContext context, LoginUserModel model) async {
     context.read<LoadReqDetailBloc>().add(const ClearLodReqDetailEvent());
-    context
-        .read<LoadReqDetailBloc>()
-        .add(GetloadreqdetailEvent(reqId: widget.loadrequest.lrhID ?? '', searchQuery: ''));
+    context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
+        reqId: widget.loadrequest.lrhID ?? '', searchQuery: ''));
   }
 }

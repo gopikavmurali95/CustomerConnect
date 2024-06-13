@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
@@ -130,7 +132,8 @@ class SpPrHeaderList extends StatelessWidget {
                                     children: [
                                       GestureDetector(
                                         onTap: () {
-                                          context
+                                          log(spHeader[index].prhId ?? '');
+                                          /* context
                                               .read<SpecialPriceDetailsBloc>()
                                               .add(
                                                   const ClearSpecialriceDetailsEvent());
@@ -149,7 +152,7 @@ class SpPrHeaderList extends StatelessWidget {
                                                         user: user,
                                                         spPrice:
                                                             spHeader[index],
-                                                      )));
+                                                      ))); */
                                         },
                                         child: Text(
                                           'Details',
