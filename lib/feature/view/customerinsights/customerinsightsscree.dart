@@ -64,7 +64,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
           ),
         ),
         title: Text(
-          "Customer Insights ",
+          "Customer Insights",
           style: appHeading(),
         ),
       ),

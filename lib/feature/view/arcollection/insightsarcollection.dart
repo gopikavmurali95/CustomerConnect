@@ -95,7 +95,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
           ),
         ),
         title: Text(
-          "AR Collection ",
+          "AR Collections ",
           style: appHeading(),
         ),
         actions: [
@@ -121,7 +121,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                 visible: true,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: Row(
                     children: [
                       Container(
@@ -189,7 +189,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15),
+                padding: const EdgeInsets.only(left: 10.0, right: 10),
                 child: BlocListener<CusInsArHeaderBloc, CusInsArHeaderState>(
                   listener: (context, state) {
                     state.when(
@@ -600,7 +600,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                             //SizedBox(width: 05,),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20.0, right: 20, top: 0),
+                                  left: 10.0, right: 10, top: 10),
                               child: Text(
                                 "All",
                                 style: countHeading(),
@@ -614,9 +614,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                       headers == null
                                           ? Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 20.0,
-                                                  right: 20,
-                                                  top: 0),
+                                                  left: 10.0,
+                                                  right: 10,
+                                                  top: 10),
                                               child: Text(
                                                 "0",
                                                 style: countHeading(),
@@ -624,9 +624,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                             )
                                           : Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 20.0,
-                                                  right: 20,
-                                                  top: 0),
+                                                  left: 10.0,
+                                                  right: 10,
+                                                  top: 10),
                                               child: Text(
                                                 "${headers.length}",
                                                 style: countHeading(),
@@ -634,7 +634,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                             ),
                                   getArHeadersFailedState: () => Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 20.0, right: 20, top: 0),
+                                        left: 10.0, right: 10, top: 10),
                                     child: Text(
                                       "0",
                                       style: countHeading(),

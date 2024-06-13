@@ -97,20 +97,20 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 5.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Divider(
               color: Colors.grey.shade300,
             ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 5.h,
           ),
           SizedBox(
             //color: Colors.red,
-            height: 55,
+            height: 50,
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,12 +162,12 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 5.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Container(
-                height: 40,
+                height: 35.h,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.grey.shade200),
@@ -204,33 +204,33 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                 )),
           ),
           SizedBox(
-            height: 15.h,
+            height: 10.h,
           ),
           Container(
             height: 30.h,
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('items'),
+                  Text('Items',style: boxHeading(),),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 15.h,
+                        width: 30.h,
                       ),
-                      const Text('Uom'),
+                      Text('Uom',style: boxHeading(),),
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Std Price'),
+                       Text('Std Price',style: boxHeading(),),
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Spcl Price'),
+                       Text('Spcl Price',style: boxHeading(),),
                     ],
                   ),
                 ],

@@ -745,22 +745,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                               ),
                                                               onChanged:
                                                                   (value) {
-                                                                pdet[index]
-                                                                        .pcdChangedLprice =
-                                                                    value;
+                                                                pdet[index].pcdChangedLprice = value;
                                                                 _procechangeapproved[index] = PriceChangePrdModel(
                                                                     aprvdHprice:
                                                                         pdet[index]
                                                                             .pcdChangedHPrice,
-                                                                    aprvdLprice:
-                                                                        pdet[index]
-                                                                            .pcdChangedLprice,
+                                                                    aprvdLprice: pdet[index].pcdChangedLprice,
                                                                     pcdId: pdet[
-                                                                            index]
-                                                                        .pcdId,
-                                                                    reason:
-                                                                        selectedresons[
-                                                                            index],
+                                                                            index].pcdId,
+                                                                    reason: selectedresons[index],
                                                                     status:
                                                                         'A');
                                                               },
