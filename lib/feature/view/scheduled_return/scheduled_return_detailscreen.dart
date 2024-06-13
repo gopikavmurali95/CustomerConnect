@@ -290,23 +290,13 @@ class _ScheduledReturnDetailScreenState
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.grey.shade200),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: const [
-                            BoxShadow(
-                                // ignore: use_full_hex_values_for_flutter_colors
-                                color: Color(0xff00000050),
-                                blurRadius: 0.4,
-                                spreadRadius: 0.4)
-                          ]),
+                    child: SizedBox(
+                      height: 30.h,
+                      width: MediaQuery.of(context).size.width,
                       child: TextFormField(
                         controller: _searchctrls,
                         style:
-                            kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                            kfontstyle(fontSize: 13.sp, color: Colors.black87),
                         decoration: InputDecoration(
                           isDense: true,
                           hintText: 'Search here..',
@@ -318,10 +308,7 @@ class _ScheduledReturnDetailScreenState
                                     onPressed: () {
                                       if (_searchctrls.text.isNotEmpty) {
                                         _searchctrls.clear();
-                                        context
-                                            .read<ScheduledReturnDetailsBloc>()
-                                            .add(
-                                                const ClearScheduledReturnDetailsEvent());
+
                                         context
                                             .read<ScheduledReturnDetailsBloc>()
                                             .add(
@@ -355,18 +342,15 @@ class _ScheduledReturnDetailScreenState
                               .none  */
                               OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                const BorderSide(color: Colors.transparent),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                const BorderSide(color: Colors.transparent),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                const BorderSide(color: Colors.transparent),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                           ),
                         ),
                         onChanged: (value) {

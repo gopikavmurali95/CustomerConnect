@@ -23,6 +23,9 @@ class _QualificationGroupState extends State<AssignmentGroup> {
   @override
   void initState() {
     _groupProdctrl.clear();
+    context.read<QualificationGroupBloc>().add(const ClearGroupData());
+    context.read<QualificationGroupBloc>().add(GetGroupWiseDataEvent(
+        id: widget.promotion.aid!, mode: 'A', searchQuery: ''));
     super.initState();
   }
 
@@ -51,7 +54,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
         bottom: PreferredSize(
           preferredSize: Size(100, 135.h),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 SizedBox(
@@ -205,7 +208,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
         ),
       ),
       body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: QualificationGroupList()),
     );
   }

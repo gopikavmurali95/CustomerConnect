@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/widgets/ongoing_detail.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 import '../../data/models/picking_header_model/PickingOutModel.dart';
@@ -67,7 +69,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                       )))),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
                 child: Container(
                     height: 40,
                     decoration: BoxDecoration(
@@ -150,31 +152,37 @@ class _PickingOgoingState extends State<PickingOgoing> {
               width: MediaQuery.of(context).size.width,
               height: 30,
               color: Colors.grey.shade200,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 160),
-                    child: Text(
-                      "Items",
-                      style: boxHeading(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      flex: 5,
+                      fit: FlexFit.tight,
+                      child: Text(
+                        "Items",
+                        style: boxHeading(),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 50),
-                    child: Text(
-                      "UOM",
-                      style: boxHeading(),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Text(
+                        "UOM",
+                        style: boxHeading(),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Text(
-                      "Qty",
-                      style: boxHeading(),
+                    Flexible(
+                      flex: 0,
+                      fit: FlexFit.tight,
+                      child: Text(
+                        "Qty",
+                        style: boxHeading(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(

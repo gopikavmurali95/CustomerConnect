@@ -36,36 +36,39 @@ class SPCustomerList extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                backgroundColor: const Color(0xffB3DAF7),
-                                child: Center(
-                                  child: Text(
-                                    customer[index]
-                                        .cusName!
-                                        .split('')
-                                        .toList()[0],
-                                    style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: CircleAvatar(
+                                    backgroundColor: const Color(0xffB3DAF7),
+                                    child: Center(
+                                      child: Text(
+                                        customer[index]
+                                            .cusName!
+                                            .split('')
+                                            .toList()[0],
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              title: Row(
-                                children: [
-                                  Text(
-                                    customer[index].cusCode!,
-                                    style: blueTextStyle(),
-                                  ),
-                                  Expanded(
-                                    child: Text(' -${customer[index].cusName}',
-                                        overflow: TextOverflow.ellipsis,
-                                        style: subTitleTextStyle()),
-                                  )
-                                ],
-                              ),
-                              /*  subtitle: Column(
+                                Text(
+                                  customer[index].cusCode!,
+                                  style: blueTextStyle(),
+                                ),
+                                Expanded(
+                                  child: Text(' -${customer[index].cusName}',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: subTitleTextStyle()),
+                                )
+                              ],
+                            ),
+                            /*  subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
@@ -79,7 +82,6 @@ class SPCustomerList extends StatelessWidget {
 
                               ],
                             ), */
-                            ),
                             const Divider()
                           ],
                         );

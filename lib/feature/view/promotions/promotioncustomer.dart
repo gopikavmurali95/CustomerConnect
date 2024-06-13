@@ -52,7 +52,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
         bottom: PreferredSize(
           preferredSize: Size(100, 120.h),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 InkWell(
@@ -229,7 +229,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -66,14 +66,8 @@ class ARHeaderListWidget extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          arHeaders[index].arhArNumber ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
+                                        Text(arHeaders[index].arhArNumber ?? '',
+                                            style: blueTextStyle()),
                                         Row(
                                           children: [
                                             Text(
@@ -98,19 +92,15 @@ class ARHeaderListWidget extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                              '${arHeaders[index].cusCode} - ',
-                                              style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  color:
-                                                      const Color(0xff413434)),
-                                            ),
+                                                '${arHeaders[index].cusCode} - ',
+                                                style: subTitleTextStyle()),
                                             Expanded(
                                               child: Text(
-                                                arHeaders[index].cusName ?? "",
-                                                overflow: TextOverflow.ellipsis,
-                                                style:
-                                                    kfontstyle(fontSize: 11.sp),
-                                              ),
+                                                  arHeaders[index].cusName ??
+                                                      "",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: subTitleTextStyle()),
                                             ),
                                           ],
                                         ),
@@ -129,7 +119,7 @@ class ARHeaderListWidget extends StatelessWidget {
                                         arHeaders[index].arhCollectedAmount ??
                                             "",
                                         style: kfontstyle(
-                                            fontSize: 12.sp,
+                                            fontSize: 11.sp,
                                             fontWeight: FontWeight.w500),
                                       ),
                                       SizedBox(

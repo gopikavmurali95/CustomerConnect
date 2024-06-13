@@ -52,7 +52,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 15, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 child: SizedBox(
                   //color: Colors.red,
                   height: 60,
@@ -147,7 +147,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 5, left: 15.0, right: 15, bottom: 10),
+                    top: 5, left: 10.0, right: 10, bottom: 10),
                 child: Container(
                     height: 40,
                     decoration: BoxDecoration(
@@ -239,38 +239,45 @@ class _SpecialPricingState extends State<SpecialPricing> {
                   width: MediaQuery.of(context).size.width,
                   height: 30,
                   color: Colors.grey.shade200,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 110),
-                        child: Text(
-                          "Items",
-                          style: boxHeading(),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          flex: 4,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            "Items",
+                            style: boxHeading(),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 42),
-                        child: Text(
-                          "UOM",
-                          style: boxHeading(),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            "UOM",
+                            style: boxHeading(),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Std Price",
-                          style: boxHeading(),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            "std Price",
+                            style: boxHeading(),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Spcl Price",
-                          style: boxHeading(),
+                        Flexible(
+                          flex: 0,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            "Spcl Price",
+                            style: boxHeading(),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -316,7 +323,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 15.0, top: 2),
+                                                left: 10.0, top: 2, right: 25),
                                             child: Container(
                                               //height: 55,
                                               width: 180,
@@ -356,7 +363,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                right: 17.0),
+                                                left: 5.0),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,

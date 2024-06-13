@@ -172,22 +172,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: const [
-                        BoxShadow(
-                            // ignore: use_full_hex_values_for_flutter_colors
-                            color: Color(0xff00000050),
-                            blurRadius: 0.4,
-                            spreadRadius: 0.4)
-                      ]),
+                child: SizedBox(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     controller: _searchctrls,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     decoration: InputDecoration(
                       isDense: true,
                       hintText: 'Search here..',
@@ -199,9 +189,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 onPressed: () {
                                   if (_searchctrls.text.isNotEmpty) {
                                     _searchctrls.clear();
-                                    context
-                                        .read<PriceChangeDetailsBloc>()
-                                        .add(const ClearPriceChangeDetails());
+
                                     context.read<PriceChangeDetailsBloc>().add(
                                         GetPriceChangeDetailsEvent(
                                             pchID: widget
@@ -231,15 +219,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               .none  */
                           OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                     ),
                     onChanged: (value) {
@@ -276,11 +264,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    context.read<PriceChangeHeaderBloc>().add(
+                                    /* context.read<PriceChangeHeaderBloc>().add(
                                         GetPriceChangeHeaderEvent(
                                             rotID: widget.user.usrId!,
                                             mode: '',
-                                            searchQuery: ''));
+                                            searchQuery: '')); */
 
                                     Navigator.pop(context);
                                     Navigator.pop(context);
@@ -453,7 +441,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   )
                                 : pdet.isEmpty
                                     ? const Center(
-                                        child: Text('No Data Found'),
+                                        child: Text('No Data Available'),
                                       )
                                     : ListView.separated(
                                         shrinkWrap: true,

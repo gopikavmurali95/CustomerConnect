@@ -75,22 +75,12 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: _SearchCtrl,
-                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
                     hintText: 'Search here..',
@@ -128,18 +118,18 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                     fillColor: Colors.white,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     border: /* InputBorder
-                                                                .none  */
+                              .none  */
                         OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
                   onChanged: (value) {
@@ -151,7 +141,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                           GetPartialDeliveryHeaderEvent(
                               userID: widget.user.usrId!,
                               mode: _selectedeMode,
-                              searchQuery: value));
+                              searchQuery: value.trim()));
                     });
                   },
                 ),
@@ -209,6 +199,58 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                       .toList(),
                   onChanged: (value) {
                     _selectedeMode = value!;
+                    context
+                        .read<PartialDeliveryHeaderBloc>()
+                        .add(const ClearPartialDeliveryHeaderEvent());
+                    context.read<PartialDeliveryHeaderBloc>().add(
+                        GetPartialDeliveryHeaderEvent(
+                            userID: widget.user.usrId!,
+                            mode: value,
+                            searchQuery: ''));
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButtonFormField(
+                  elevation: 0,
+                  value: filterFieldsPartialDelivery[0].mode,
+                  dropdownColor: Colors.white,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                  ),
+                  items: filterFieldsPartialDelivery
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e.mode,
+                          child: Text(e.statusName),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    _selectedeMode = value!;
+
                     context
                         .read<PartialDeliveryHeaderBloc>()
                         .add(const ClearPartialDeliveryHeaderEvent());
@@ -311,18 +353,11 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                 .start,
                                                         children: [
                                                           Text(
-                                                            header[index]
-                                                                    .orderId ??
-                                                                '',
-                                                            style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              color: const Color(
-                                                                  0xff2C6B9E),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                          ),
+                                                              header[index]
+                                                                      .orderId ??
+                                                                  '',
+                                                              style:
+                                                                  blueTextStyle()),
                                                           Row(
                                                             children: [
                                                               Text(
@@ -337,18 +372,14 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                               ),
                                                               Expanded(
                                                                 child: Text(
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  header[index]
-                                                                          .cusName ??
-                                                                      '',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      color: const Color(
-                                                                          0xff413434)),
-                                                                ),
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    header[index]
+                                                                            .cusName ??
+                                                                        '',
+                                                                    style:
+                                                                        subTitleTextStyle()),
                                                               ),
                                                             ],
                                                           ),

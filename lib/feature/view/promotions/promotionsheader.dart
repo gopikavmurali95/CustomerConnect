@@ -9,9 +9,7 @@ import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_h
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -82,7 +80,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -180,7 +178,9 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.only(
+          left: 10,
+        ),
         child: Column(
           children: [
             SizedBox(
@@ -193,18 +193,21 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                   'All promotions',
                   style: countHeading(),
                 ),
-                BlocBuilder<PromotionHeaderBloc, PromotionHeaderState>(
-                  builder: (context, state) {
-                    return Text(
-                      state.when(
-                        getPromotionsHeader: (promotion) => promotion == null
-                            ? "0"
-                            : promotion.length.toString(),
-                        promotionHeaderFailed: () => '',
-                      ),
-                      style: countHeading(),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: BlocBuilder<PromotionHeaderBloc, PromotionHeaderState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.when(
+                          getPromotionsHeader: (promotion) => promotion == null
+                              ? "0"
+                              : promotion.length.toString(),
+                          promotionHeaderFailed: () => '',
+                        ),
+                        style: countHeading(),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
@@ -311,8 +314,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                               ),
                                             ],
                                           ),
-                                          GestureDetector(
-                                            onTap: () {
+                                          IconButton(
+                                            onPressed: () {
                                               context
                                                   .read<PromotionDetailsBloc>()
                                                   .add(
@@ -333,7 +336,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                                     index],
                                                           )));
                                             },
-                                            child: SizedBox(
+                                            icon: SizedBox(
                                               height: 20.h,
                                               // width: 65.w,
                                               child: Row(
