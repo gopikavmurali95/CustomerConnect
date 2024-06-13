@@ -1482,6 +1482,9 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
                     const Expanded(child: SizedBox())
                   ],
                 ),

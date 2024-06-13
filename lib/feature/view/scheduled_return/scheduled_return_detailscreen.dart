@@ -643,6 +643,8 @@ class _ScheduledReturnDetailScreenState
                                                                               availableresons[0].rsnId ?? '',
                                                                           style:
                                                                               kfontstyle(color: Colors.black),
+                                                                          isExpanded:
+                                                                              true,
                                                                           decoration:
                                                                               InputDecoration(
                                                                             filled:
@@ -960,6 +962,7 @@ class _ScheduledReturnDetailScreenState
                                                             ]),
                                                         child:
                                                             DropdownButtonFormField(
+                                                          isExpanded: true,
                                                           elevation: 0,
                                                           // isExpanded:
                                                           //     true,
