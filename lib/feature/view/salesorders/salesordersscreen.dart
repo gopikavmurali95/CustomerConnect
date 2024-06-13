@@ -118,7 +118,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       Row(
@@ -193,9 +193,9 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
-                      height: 40,
+                      height: 35.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),

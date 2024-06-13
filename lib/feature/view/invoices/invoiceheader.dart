@@ -67,7 +67,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
           ),
         ),
         title: Text(
-          "Invoice ",
+          "Invoice",
           style: appHeading(),
         ),
         actions: [

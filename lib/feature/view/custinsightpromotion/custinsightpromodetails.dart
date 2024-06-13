@@ -63,7 +63,7 @@ class _CustInsightPromotionDetailsState
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20.0),
+            padding: const EdgeInsets.only(left: 10.0),
             child: Row(
               children: [
                 Container(
@@ -132,7 +132,7 @@ class _CustInsightPromotionDetailsState
             height: 8.h,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 SizedBox(

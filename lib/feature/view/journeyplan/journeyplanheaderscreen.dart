@@ -101,6 +101,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                             spreadRadius: 0.4)
                       ]),
                   child: TextFormField(
+                    style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     controller: _journeyplanSearchController,
                     onChanged: (value) {
                       debounce = Timer(
@@ -286,14 +287,14 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                  : _selectedJourneyPlan == "A"
                                  ?  "Approved Requests" :
                                  _selectedJourneyPlan == "CN" ?
-                                 "Cancel" : "Rejected",
+                                 "Cancelled Requests" : "Rejected Requests",
                           journeyPlanHeadersFailedState: () =>
                           _selectedJourneyPlan == "P"?
                             "Pending Approvals"
                            : _selectedJourneyPlan == "A"
                           ?  "Approved Requests" :
                            _selectedJourneyPlan == "CN" ?
-                               "Cancel" : "Rejected",
+                               "Cancelled Requests" : "Rejected Requests",
 
                   ),
                         // state.when(

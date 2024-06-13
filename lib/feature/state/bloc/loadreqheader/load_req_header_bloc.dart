@@ -33,10 +33,15 @@ class LoadReqHeaderBloc extends Bloc<LoadReqHeaderEvent, LoadReqHeaderState> {
               toLowerCase().
               toUpperCase().
               contains(event.searchQuery.toUpperCase())||
+
               element.userID!.
           toLowerCase().
           toUpperCase().
           contains(event.searchQuery.toUpperCase())||
+              element.usrName!.
+              toLowerCase().
+              toUpperCase().
+              contains(event.searchQuery.toUpperCase())||
               element.rotCode!
               .toLowerCase().
               toUpperCase().

@@ -25,7 +25,6 @@ List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
   ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
  // ApprovalStatusFilterModel(mode: 'AL', statusName: 'All'),
-
   ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
 
 ];
@@ -36,9 +35,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
-    context
-        .read<LoadReqHeaderBloc>()
-        .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+    // context
+    //     .read<LoadReqHeaderBloc>()
+    //     .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
     context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
       userId: widget.user.usrId??'',
       mode: 'P', searchQuery: '',
@@ -91,9 +90,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                 children: [
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                    const EdgeInsets.only(left: 10.0, right: 10, bottom: 3),
                     child: Container(
-                        height: 35.h,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
@@ -106,6 +105,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
+                          style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                           controller: _loadqSearchController,
                           onChanged: (value) {
                             debounce = Timer(
@@ -142,15 +142,6 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                               mode: _selectedloadrequest,
                                               searchQuery: "", userId: ''));
                                         }
-                                        // _loadPendingSearchCtrl.clear();
-                                        // context
-                                        //     .read<LoadingDetailBloc>()
-                                        //     .add(const ClearLoadingDetailEvent());
-                                        // context.read<LoadingDetailBloc>().add(
-                                        //   GetloadingDetailEvent(
-                                        //       iD: widget.loadingheader.id ?? '',
-                                        //       searchQuery: ''),
-                                        // );
                                       },
                                       icon: Icon(
                                         Icons.close,
@@ -170,26 +161,6 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                               contentPadding: const EdgeInsets.all(15.0),
                               filled: true,
                               fillColor: Colors.white,
-                              // suffix: InkWell(
-                              //   onTap: () {
-                              //     _loadPendingdetailsSearchCtrl.clear();
-                              //     context.read<LoadingHeaderBloc>().add(
-                              //         GetLoadingHeaderEvent(
-                              //             searchQuery: '',
-                              //             loadingin: LoadingHeaderInModel(
-                              //                 userId: widget.user.usrId,
-                              //                 fromDate: '01-01-2023',
-                              //                 toDate: '23-03-2024',
-                              //                 mode: 'DD',
-                              //                 area: '',
-                              //                 route: '',
-                              //                 subArea: '')));
-                              //   },
-                              //   child: const Icon(
-                              //     Icons.close,
-                              //     size: 14,
-                              //   ),
-                              // ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none)),
@@ -204,7 +175,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Card(
                       child: Container(
-                        height: 35.h,
+                        height: 30.h,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -217,29 +188,12 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                  // blurRadius: 0.2,
                                   spreadRadius: 0.2)
                             ]),
-                        // decoration: BoxDecoration(
-                        //   boxShadow: [
-                        //     BoxShadow(
-                        //       color: Colors.grey.withOpacity(0.2),
-                        //       spreadRadius: .5,
-                        //       blurRadius: 1,
-                        //       offset: const Offset(0, 2),
-                        //     ),
-                        //   ],
-                        //   borderRadius: BorderRadius.circular(10),
-                        // ),
                         child: DropdownButtonFormField(
-                          //menuMaxHeight: 100,
-                          //padding: EdgeInsets.all(100),
-
-
-                          //elevation: 0,
                           value: ddfilterLoadRequest[0].mode,
                           // value: ddfilterFieldsDisputeNote[0].mode,
                           dropdownColor: Colors.white,
                           style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
                           decoration: InputDecoration(
-
                             filled: true,
                             fillColor: Colors.white,
                             contentPadding:
@@ -309,18 +263,6 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                       ? "Pending Approvals" :
                                   _selectedloadrequest == "A" ?
                                   "Approved Requests" : "Rejected Requests",
-                                // getDisputeNoteHeaderState: (headers) =>
-                                // _selectedDisputeMode == "P"
-                                //     ? "Pending Approvals"
-                                //     : _selectedDisputeMode == "AT"
-                                //     ? "Approved Requests"
-                                //     : "Rejected Requests",
-                                // disputeNoteHeaderFailedState: () =>
-                                // _selectedDisputeMode == "P"
-                                //     ? "Pending Approvals"
-                                //     : _selectedDisputeMode == "AT"
-                                //     ? "Approved Requests"
-                                //     : "Rejected Requests",
                               ),
                               style: countHeading(),
                             ),

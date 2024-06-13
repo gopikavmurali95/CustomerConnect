@@ -119,7 +119,7 @@ class _CustomerInsightSpecialPricingState
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: Row(
                     children: [
                       Container(
@@ -190,11 +190,11 @@ class _CustomerInsightSpecialPricingState
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       Container(
-                          height: 40,
+                          height: 35.h,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.grey.shade200),
@@ -303,7 +303,7 @@ class _CustomerInsightSpecialPricingState
                     //SizedBox(width: 05,),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 0),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 0),
                       child: Text(
                         "All ",
                         style: countHeading(),
@@ -311,7 +311,7 @@ class _CustomerInsightSpecialPricingState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 0),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 0),
                       child: BlocBuilder<CusSpPriceBloc, CusSpPriceState>(
                         builder: (context, state) {
                           return state.when(

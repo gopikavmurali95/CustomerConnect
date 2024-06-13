@@ -81,7 +81,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
           ),
         ),
         title: Text(
-          "Outstanding ",
+          "Outstandings ",
           style: appHeading(),
         ),
         actions: [
@@ -111,7 +111,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                          horizontal: 10, vertical: 10),
                       child: Row(
                         children: [
                           Container(
@@ -182,11 +182,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 0),
+                          horizontal: 10, vertical: 0),
                       child: Column(
                         children: [
                           Container(
-                              height: 40,
+                              height: 30.h,
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   border:
@@ -520,7 +520,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                         //SizedBox(width: 05,),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
+                              left: 10.0, right: 10, top: 0),
                           child: Text(
                             "Outstanding invoices",
                             style: countHeading(),
@@ -528,7 +528,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
+                              left: 10.0, right: 10, top: 0),
                           child: BlocBuilder<CusOutStandingBloc,
                               CusOutStandingState>(
                             builder: (context, state) {
