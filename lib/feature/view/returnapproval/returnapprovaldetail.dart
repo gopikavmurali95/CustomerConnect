@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -278,7 +279,7 @@ class _ReturnApprovalDetailScreenState
                 width: double.infinity,
                 color: const Color(0xfff5f5f5),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -460,7 +461,7 @@ class _ReturnApprovalDetailScreenState
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                        horizontal: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -534,64 +535,90 @@ class _ReturnApprovalDetailScreenState
                                             )
                                           ],
                                         ),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Expanded(
-                                                  child: BlocConsumer<
-                                                      ApprovalReasonsBloc,
-                                                      ApprovalReasonsState>(
-                                                    listener: (context, state) {
-                                                      state.when(
-                                                        getApprovalResonsState:
-                                                            (resons) {
-                                                          if (resons != null) {
-                                                            selectedresons
-                                                                .clear();
-                                                            availableresons
-                                                                .clear();
-                                                            availableresons = [
-                                                              ApprovalResonModel(
-                                                                  rsnId: '-1',
-                                                                  rsnName:
-                                                                      'Select reason',
-                                                                  rsnType:
-                                                                      'null')
-                                                            ];
+                                        Transform.scale(
+                                          scale: .9,
+                                          origin: const Offset(450, 0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Expanded(
+                                                child: BlocConsumer<
+                                                    ApprovalReasonsBloc,
+                                                    ApprovalReasonsState>(
+                                                  listener: (context, state) {
+                                                    state.when(
+                                                      getApprovalResonsState:
+                                                          (resons) {
+                                                        if (resons != null) {
+                                                          selectedresons
+                                                              .clear();
 
-                                                            selectedresons =
-                                                                List.generate(
-                                                                    details
-                                                                        .length,
-                                                                    (index) =>
-                                                                        '-1');
+                                                          availableresons
+                                                              .clear();
+                                                          availableresons = [
+                                                            ApprovalResonModel(
+                                                                rsnId: '-1',
+                                                                rsnName:
+                                                                    'Select reason',
+                                                                rsnType: 'null')
+                                                          ];
 
-                                                            availableresons
-                                                                .addAll(resons);
-                                                          }
-                                                        },
-                                                        getReasonsFailedState:
-                                                            () {},
-                                                      );
-                                                    },
-                                                    builder: (context, state) {
-                                                      return state.when(
-                                                        getApprovalResonsState:
-                                                            (resons) => resons ==
-                                                                        null ||
-                                                                    availableresons
-                                                                        .isEmpty
-                                                                ? const ShimmerContainers(
-                                                                    height: 30,
-                                                                    width: 80,
-                                                                  )
-                                                                : SizedBox(
-                                                                    // height: 30.h,
-                                                                    //width: MediaQuery.of(context).size.width / 3,
+                                                          selectedresons =
+                                                              List.generate(
+                                                                  details
+                                                                      .length,
+                                                                  (index) =>
+                                                                      '-1');
+                                                          availableresons
+                                                              .addAll(resons);
+                                                        }
+                                                      },
+                                                      getReasonsFailedState:
+                                                          () {},
+                                                    );
+                                                  },
+                                                  builder: (context, state) {
+                                                    return state.when(
+                                                      getApprovalResonsState:
+                                                          (resons) => resons ==
+                                                                      null ||
+                                                                  availableresons
+                                                                      .isEmpty
+                                                              ? const ShimmerContainers(
+                                                                  height: 30,
+                                                                  width: 80,
+                                                                )
+                                                              : Transform.scale(
+                                                                  scale: 0.8,
+                                                                  child:
+                                                                      Container(
+                                                                    height:
+                                                                        30.h,
+                                                                    // width: MediaQuery.of(context)
+                                                                    //         .size
+                                                                    //         .width /
+                                                                    //     3,
+
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        border: Border.all(
+                                                                            color: Colors
+                                                                                .grey.shade200),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
+                                                                        boxShadow: const [
+                                                                          BoxShadow(
+                                                                              // ignore: use_full_hex_values_for_flutter_colors
+                                                                              color: Color(0xff00000050),
+                                                                              blurRadius: 0.4,
+                                                                              spreadRadius: 0.4)
+                                                                        ]),
                                                                     child:
                                                                         DropdownButtonFormField(
+                                                                      elevation:
+                                                                          0,
                                                                       dropdownColor:
                                                                           Colors
                                                                               .white,
@@ -601,10 +628,39 @@ class _ReturnApprovalDetailScreenState
                                                                       style: kfontstyle(
                                                                           color:
                                                                               Colors.black),
+                                                                      isExpanded:
+                                                                          true,
                                                                       decoration:
-                                                                          const InputDecoration(
+                                                                          InputDecoration(
+                                                                        filled:
+                                                                            true,
+                                                                        fillColor:
+                                                                            Colors.white,
+                                                                        contentPadding: const EdgeInsets
+                                                                            .symmetric(
+                                                                            horizontal:
+                                                                                10),
                                                                         border:
-                                                                            InputBorder.none,
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          borderSide:
+                                                                              const BorderSide(color: Colors.transparent),
+                                                                        ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          borderSide:
+                                                                              const BorderSide(color: Colors.transparent),
+                                                                        ),
+                                                                        focusedBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          borderSide:
+                                                                              const BorderSide(color: Colors.transparent),
+                                                                        ),
                                                                       ),
                                                                       items: availableresons.map(
                                                                           (ApprovalResonModel
@@ -631,258 +687,150 @@ class _ReturnApprovalDetailScreenState
                                                                       },
                                                                     ),
                                                                   ),
-                                                        getReasonsFailedState:
-                                                            () =>
-                                                                const SizedBox(),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                                BlocBuilder<
-                                                    AapprovalOrRejectRadioCubit,
-                                                    AapprovalOrRejectRadioState>(
-                                                  builder: (context, state) {
-                                                    return AbsorbPointer(
-                                                      absorbing: details[index]
-                                                              .radApprovalStatus!
-                                                              .isNotEmpty
-                                                          ? true
-                                                          : false,
-                                                      child: Row(
-                                                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                        children: [
-                                                          Transform.scale(
-                                                            scale: 0.8,
-                                                            child: Row(
-                                                              children: [
-                                                                Radio(
-                                                                  fillColor: MaterialStateProperty.resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                    return (statuslist[index] ==
-                                                                            true)
-                                                                        ? Colors
-                                                                            .green
-                                                                            .shade300
-                                                                        : Colors
-                                                                            .grey;
-                                                                  }),
-                                                                  /* activeColor: isselected == true
-                                                                                                                                                                  ? const Color(0xff0075ff)
-                                                                                                                                                                  : Colors.grey, */
-                                                                  value: statuslist[
-                                                                              index] ==
-                                                                          null
-                                                                      ? false
-                                                                      : statuslist[index] ==
-                                                                              true
-                                                                          ? true
-                                                                          : false,
-                                                                  groupValue:
-                                                                      true,
-                                                                  onChanged:
-                                                                      (value) {
-                                                                    if (selectedresons[
-                                                                            index] ==
-                                                                        '-1') {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              const Text('Alert'),
-                                                                          content:
-                                                                              const Text("Plese select a reason"),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                    } else {
-                                                                      statuslist[
-                                                                              index] =
-                                                                          true;
-                                                                      loadingCount =
-                                                                          0;
-                                                                      setState(
-                                                                          () {});
-                                                                      _returnProducts[index] = ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "A");
-                                                                    }
-
-                                                                    /*  context
-                                                                                                                                    .read<
-                                                                                                                                        AapprovalOrRejectRadioCubit>()
-                                                                                                                                    .changeApprovalStatus(
-                                                                                                                                        statuslist[index]); */
-                                                                  },
                                                                 ),
-                                                                Text(
-                                                                  'Approve',
-                                                                  style:
-                                                                      kfontstyle(),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Transform.scale(
-                                                            scale: 0.8,
-                                                            child: Row(
-                                                              children: [
-                                                                Radio(
-                                                                  fillColor: MaterialStateProperty.resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                    return (statuslist[index] !=
-                                                                                null &&
-                                                                            !statuslist[
-                                                                                index]!)
-                                                                        ? Colors
-                                                                            .red
-                                                                            .shade300
-                                                                        : Colors
-                                                                            .grey;
-                                                                  }),
-                                                                  /*  activeColor: isselected == false
-                                                                                                                                                                  ? const Color(0xff0075ff)
-                                                                                                                                            : Colors.grey, */
-                                                                  value: statuslist[
-                                                                              index] ==
-                                                                          null
-                                                                      ? true
-                                                                      : statuslist[index] ==
-                                                                              true
-                                                                          ? true
-                                                                          : false,
-                                                                  groupValue:
-                                                                      false,
-                                                                  onChanged:
-                                                                      (value) {
-                                                                    if (selectedresons[
-                                                                            index] ==
-                                                                        '-1') {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              const Text('Alert'),
-                                                                          content:
-                                                                              const Text("Plese select a reason"),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                    } else {
-                                                                      statuslist[
-                                                                              index] =
-                                                                          false;
-
-                                                                      loadingCount =
-                                                                          0;
-                                                                      setState(
-                                                                          () {});
-                                                                      _returnProducts[index] = ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "R");
-                                                                      // showCupertinoDialog(
-                                                                      //   context:
-                                                                      //       context,
-                                                                      //   builder:
-                                                                      //       (context) =>
-                                                                      //           CupertinoAlertDialog(
-                                                                      //     title: const Text(
-                                                                      //         'Alert'),
-                                                                      //     content:
-                                                                      //         const Text(
-                                                                      //             "Do you Want to Reject this product"),
-                                                                      //     actions: [
-                                                                      //       TextButton(
-                                                                      //         onPressed:
-                                                                      //             () {
-                                                                      //           setState(
-                                                                      //               () {});
-                                                                      //           Navigator.pop(
-                                                                      //               context);
-                                                                      //         },
-                                                                      //         child: const Text(
-                                                                      //             'Cancel'),
-                                                                      //       ),
-                                                                      //       TextButton(
-                                                                      //         onPressed:
-                                                                      //             () {
-                                                                      //
-                                                                      //           Navigator.pop(
-                                                                      //               context);
-                                                                      //           context
-                                                                      //               .read<ApproveReturnProductBloc>()
-                                                                      //               .add(const AddApprovalLoadingEvent());
-                                                                      //
-                                                                      //           context
-                                                                      //               .read<ApproveReturnProductBloc>()
-                                                                      //               .add(
-                                                                      //                 ApproveProductEvent(
-                                                                      //                   approval: ReturnApproveInModel(userID: details[index].radId, returnID: widget.returnApprovel.rahId,),
-                                                                      //                 ),
-                                                                      //               );
-                                                                      //         },
-                                                                      //         child: const Text(
-                                                                      //             'Proceed'),
-                                                                      //       ),
-                                                                      //     ],
-                                                                      //   ),
-                                                                      // );
-                                                                    }
-
-                                                                    /* context
-                                                                                                                                    .read<
-                                                                                                                                        AapprovalOrRejectRadioCubit>()
-                                                                                                                                    .changeApprovalStatus(
-                                                                                                                                        statuslist[index]); */
-                                                                  },
-                                                                ),
-                                                                Text(
-                                                                  'Reject',
-                                                                  style:
-                                                                      kfontstyle(),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
+                                                      getReasonsFailedState:
+                                                          () =>
+                                                              const SizedBox(),
                                                     );
                                                   },
-                                                )
-                                              ],
-                                            ),
-                                          ],
+                                                ),
+                                              ),
+                                              BlocBuilder<
+                                                  AapprovalOrRejectRadioCubit,
+                                                  AapprovalOrRejectRadioState>(
+                                                builder: (context, state) {
+                                                  return Row(
+                                                    children: [
+                                                      Transform.scale(
+                                                        scale: 0.8,
+                                                        origin: const Offset(
+                                                            -120, 0),
+                                                        child: Row(
+                                                          children: [
+                                                            Radio(
+                                                              fillColor: MaterialStateProperty
+                                                                  .resolveWith<
+                                                                      Color>((Set<
+                                                                          MaterialState>
+                                                                      states) {
+                                                                return (statuslist[
+                                                                            index] ==
+                                                                        true)
+                                                                    ? Colors
+                                                                        .green
+                                                                        .shade300
+                                                                    : Colors
+                                                                        .grey;
+                                                              }),
+                                                              /* activeColor: isselected == true
+                                                                                                             : Colors.grey, */
+                                                              value: statuslist[
+                                                                          index] ==
+                                                                      null
+                                                                  ? false
+                                                                  : statuslist[
+                                                                              index] ==
+                                                                          true
+                                                                      ? true
+                                                                      : false,
+                                                              groupValue: true,
+                                                              onChanged:
+                                                                  (value) {
+                                                                statuslist[
+                                                                        index] =
+                                                                    true;
+                                                                loadingCount =
+                                                                    0;
+                                                                setState(() {});
+
+                                                                _returnProducts[
+                                                                        index] =
+                                                                    ReturnApprovalProductModel(
+                                                                        radID: details[index]
+                                                                            .radId,
+                                                                        reason: selectedresons[
+                                                                            index],
+                                                                        status:
+                                                                            "A");
+                                                              },
+                                                            ),
+                                                            Text(
+                                                              'Approve',
+                                                              style:
+                                                                  kfontstyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Transform.scale(
+                                                        scale: 0.8,
+                                                        origin: const Offset(
+                                                            -120, 0),
+                                                        child: Row(
+                                                          children: [
+                                                            Radio(
+                                                              fillColor: MaterialStateProperty
+                                                                  .resolveWith<
+                                                                      Color>((Set<
+                                                                          MaterialState>
+                                                                      states) {
+                                                                return (statuslist[index] !=
+                                                                            null &&
+                                                                        !statuslist[
+                                                                            index]!)
+                                                                    ? Colors.red
+                                                                        .shade300
+                                                                    : Colors
+                                                                        .grey;
+                                                              }),
+                                                              /*  activeColor: isselected == false
+                                                                                                                                                                                                  ? const Color(0xff0075ff)
+                                                                                                                                                                                                  : Colors.grey, */
+                                                              value: statuslist[
+                                                                          index] ==
+                                                                      null
+                                                                  ? true
+                                                                  : statuslist[
+                                                                              index] ==
+                                                                          true
+                                                                      ? true
+                                                                      : false,
+                                                              groupValue: false,
+                                                              onChanged:
+                                                                  (value) {
+                                                                statuslist[
+                                                                        index] =
+                                                                    false;
+
+                                                                loadingCount =
+                                                                    0;
+                                                                setState(() {});
+
+                                                                _returnProducts[
+                                                                        index] =
+                                                                    ReturnApprovalProductModel(
+                                                                        radID: details[index]
+                                                                            .radId,
+                                                                        reason: selectedresons[
+                                                                            index],
+                                                                        status:
+                                                                            "R");
+                                                              },
+                                                            ),
+                                                            Text(
+                                                              'Reject',
+                                                              style:
+                                                                  kfontstyle(),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  );
+                                                },
+                                              )
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -908,7 +856,7 @@ class _ReturnApprovalDetailScreenState
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
                           const Flexible(
@@ -943,6 +891,24 @@ class _ReturnApprovalDetailScreenState
                                             onPressed: () {
                                               Navigator.pop(context);
                                               // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else if (checkrejectedstatus() == false) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content:
+                                            const Text("Plese select a reason"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
                                             },
                                             child: const Text('Ok'),
                                           ),
@@ -1021,6 +987,18 @@ class _ReturnApprovalDetailScreenState
         ),
       ),
     );
+  }
+
+  bool checkrejectedstatus() {
+    int index = statuslist.indexWhere((element) => element == false);
+    if (index < 0) {
+      return true;
+    } else if (selectedresons[index].isNotEmpty &&
+        selectedresons[index] != "-1") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
