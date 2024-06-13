@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/domain/notification/fcmmessgehandler.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
@@ -139,7 +140,7 @@ void main() async {
 
     await PushNotificationService().initialize();
 
-    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
       alert: true,
@@ -525,6 +526,7 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
+          navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
@@ -556,11 +558,18 @@ class MyApp extends StatelessWidget {
               surfaceTintColor: Colors.white,
             ),
           ),
-          home: user == null
+          routes: {
+            "homePage": (context) => user == null
+                ? const LoginScreen()
+                : MessageHandler(child: HomeScreen(user: user!)),
+            "Login": (context) => const LoginScreen(),
+          },
+          initialRoute: "homePage",
+          /* home: user == null
               ? const LoginScreen()
               : HomeScreen(
                   user: user!,
-                ),
+                ), */
         ),
       ),
     );
