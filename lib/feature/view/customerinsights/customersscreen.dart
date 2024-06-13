@@ -112,7 +112,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
                           'Kindly select a route to view the customers',
                           style: kfontstyle(fontSize: 11.sp),
@@ -130,14 +130,15 @@ class _CustomersScrenState extends State<CustomersScren> {
                                       null
                                   ? Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 10),
+                                          horizontal: 10, vertical: 10),
                                       child: ShimmerContainers(
-                                          height: 40.h, width: double.infinity),
+                                          height: 30.h, width: double.infinity),
                                     )
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 10),
+                                          horizontal: 10, vertical: 10),
                                       child: Container(
+                                        height: 40.h,
                                           decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
@@ -327,9 +328,9 @@ class _CustomersScrenState extends State<CustomersScren> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15),
+                    padding: const EdgeInsets.only(left: 10.0, right: 10),
                     child: Container(
-                        height: 40,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),

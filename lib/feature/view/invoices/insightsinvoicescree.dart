@@ -97,7 +97,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
           ),
         ),
         title: Text(
-          "Invoices ",
+          "Invoices",
           style: appHeading(),
         ),
         actions: [
@@ -136,7 +136,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                        horizontal: 10, vertical: 0),
                     child: Row(
                       children: [
                         Container(
@@ -207,9 +207,9 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                        horizontal: 10, vertical: 10),
                     child: Container(
-                        height: 40,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.grey.shade200),
@@ -326,7 +326,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                       //SizedBox(width: 05,),
                       Padding(
                         padding: const EdgeInsets.only(
-                            left: 20.0, right: 20, top: 10),
+                            left: 10.0, right: 10, top: 0),
                         child: Text(
                           "All invoices",
                           style: countHeading(),
@@ -340,7 +340,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                 headers == null
                                     ? Padding(
                                         padding: const EdgeInsets.only(
-                                            left: 20.0, right: 20, top: 10),
+                                            left: 10.0, right: 10, top: 0),
                                         child: Text(
                                           "0",
                                           style: countHeading(),
@@ -348,7 +348,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                       )
                                     : Padding(
                                         padding: const EdgeInsets.only(
-                                            left: 20.0, right: 20, top: 10),
+                                            left: 10.0, right: 10, top: 10),
                                         child: Text(
                                           "${headers.length}",
                                           style: countHeading(),

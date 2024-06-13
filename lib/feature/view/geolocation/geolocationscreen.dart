@@ -108,7 +108,7 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: Column(
                     children: [
                       Row(

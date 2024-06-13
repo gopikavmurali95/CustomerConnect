@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
 // import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
@@ -234,6 +235,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
+                          style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                           controller: _loadreqdetailSearchController,
                           onChanged: (value) {
                             debounce = Timer(
@@ -341,101 +343,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                         )),
                   ),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10.0, right: 10),
-                  //   child: Container(
-                  //       height: 40,
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           border: Border.all(color: Colors.grey.shade200),
-                  //           borderRadius: BorderRadius.circular(10.0),
-                  //           boxShadow: const [
-                  //             BoxShadow(
-                  //                 color: Color(0xff00000050),
-                  //                 blurRadius: 0.4,
-                  //                 spreadRadius: 0.2)
-                  //           ]),
-                  //       child: TextFormField(
-                  //         //controller: _spPriceSearchCtrl,
-                  //         onChanged: (value) {
-                  //           // if (debounce?.isActive ?? false) debounce!.cancel();
-                  //           // debounce = Timer(
-                  //           //   const Duration(
-                  //           //     milliseconds: 500,
-                  //           //   ),
-                  //           //       () async {
-                  //           //     // context
-                  //           //     //     .read<SpecialPriceHeaderBloc>()
-                  //           //     //     .add(const ClearSpecialPriceEvent());
-                  //           //     // context.read<SpecialPriceHeaderBloc>().add(
-                  //           //     //     GetSpecialPriceHeaderEvent(
-                  //           //     //         spPriceInparas: SpecialPriceHeaderModel(
-                  //           //     //             area: '',
-                  //           //     //             customer: '',
-                  //           //     //             fromDate:
-                  //           //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  //           //     //             mode: '',
-                  //           //     //             outlet: '',
-                  //           //     //             route: '',
-                  //           //     //             subArea: '',
-                  //           //     //             toDate:
-                  //           //     //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  //           //     //             userId: widget.user.usrId),
-                  //           //     //         searchQuery: value.trim()));
-                  //           //   },
-                  //           // );
-                  //         },
-                  //         decoration: InputDecoration(
-                  //             prefixIcon: const Icon(
-                  //               Icons.search,
-                  //               size: 20,
-                  //             ),
-                  //             suffix: InkWell(
-                  //               onTap: () {
-                  //                 // _spPriceSearchCtrl.clear();
-                  //                 // context
-                  //                 //     .read<SpecialPriceHeaderBloc>()
-                  //                 //     .add(const ClearSpecialPriceEvent());
-                  //                 // context.read<SpecialPriceHeaderBloc>().add(
-                  //                 //     GetSpecialPriceHeaderEvent(
-                  //                 //         spPriceInparas: SpecialPriceHeaderModel(
-                  //                 //             area: '',
-                  //                 //             customer: '',
-                  //                 //             fromDate:
-                  //                 //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  //                 //             mode: '',
-                  //                 //             outlet: '',
-                  //                 //             route: '',
-                  //                 //             subArea: '',
-                  //                 //             toDate:
-                  //                 //             '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  //                 //             userId: widget.user.usrId),
-                  //                 //         searchQuery: ''));
-                  //               },
-                  //               child: const Icon(
-                  //                 Icons.close,
-                  //                 size: 14,
-                  //               ),
-                  //             ),
-                  //             hintText: "Search here..",
-                  //             hintStyle: const TextStyle(
-                  //                 fontSize: 14,
-                  //                 color: Colors.grey,
-                  //                 fontWeight: FontWeight.normal),
-                  //             isDense: true,
-                  //             counterText: "",
-                  //             contentPadding: const EdgeInsets.all(15.0),
-                  //             filled: true,
-                  //             fillColor: Colors.white,
-                  //             border: OutlineInputBorder(
-                  //                 borderRadius: BorderRadius.circular(10.0),
-                  //                 borderSide: BorderSide.none)),
-                  //         textAlign: TextAlign.start,
-                  //         maxLines: 1,
-                  //         maxLength: 20,
-                  //         // controller: _locationNameTextController,
-                  //       )),
-                  // ),
                   SizedBox(height: 5.h,),
                   Container(
                     height: 30.h,
@@ -753,7 +660,19 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                            height: 25,
                                                            width: 80,
                                                            child: TextFormField(
-                                                             controller: _apprvHQtyController,
+                                                             keyboardType: TextInputType.number,
+                                                             controller: TextEditingController(
+                                                                 text: details[index].lrdHQty),
+                                                             onChanged: (value){
+                                                               details[index].lrdLQty =value;
+                                                               _loadproducts[index] = LoadReqPrdModel(
+                                                                 lrdLQty: details[index].lrdLQty,
+                                                                 lrdHQty: details[index].lrdHQty,
+                                                                 lrdId: details[index].lrdID,
+                                                               );
+
+                                                             },
+                                                             //controller: _apprvHQtyController,
                                                              style: const TextStyle(
                                                                fontSize: 9
                                                              ),
@@ -783,7 +702,18 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                            height: 25,
                                                            width: 80,
                                                            child: TextFormField(
-                                                             controller: _apprvLQtyController,
+                                                             keyboardType: TextInputType.number,
+                                                             controller: TextEditingController(
+                                                                 text: details[index].lrdLQty),
+                                                             onChanged: (value){
+                                                               details[index].lrdLQty =value;
+                                                               _loadproducts[index] = LoadReqPrdModel(
+                                                                 lrdLQty: details[index].lrdLQty,
+                                                                 lrdHQty: details[index].lrdHQty,
+                                                                 lrdId: details[index].lrdID,
+                                                               );
+
+                                                             },
                                                              style: const TextStyle(
                                                                  fontSize: 9
                                                              ),

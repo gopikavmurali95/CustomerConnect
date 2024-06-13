@@ -141,7 +141,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
                     children: [
                       Container(
@@ -212,9 +212,9 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 20.0, right: 20, bottom: 0, top: 10),
+                      left: 10.0, right: 10, bottom: 0, top: 10),
                   child: Container(
-                      height: 40,
+                      height: 35.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),
@@ -322,7 +322,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                   height: 10.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 25),
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

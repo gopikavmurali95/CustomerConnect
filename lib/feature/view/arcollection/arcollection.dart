@@ -88,7 +88,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
           ),
         ),
         title: Text(
-          "AR Collection ",
+          "AR Collection",
           style: appHeading(),
         ),
         actions: [

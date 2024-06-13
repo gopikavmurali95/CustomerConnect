@@ -17,6 +17,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
@@ -48,6 +49,7 @@ int _totalcount = 0;
 
 List<MatrialAprReqPrdModel?> _materialreqproducts = [];
 List<MatrialAprReqPrdModel?> _materialreqproductsReject = [];
+List<MaterialReqDetailModel?> _procechangematerial= [];
 TextEditingController _materialreqdetailSerachController =
     TextEditingController();
 TextEditingController _apprvLQtymqController = TextEditingController();
@@ -331,8 +333,12 @@ class _MaterialRequestDetailScreenState
                                             spreadRadius: 0.4)
                                       ]),
                                   child: TextFormField(
-                                    controller:
-                                        _materialreqdetailSerachController,
+                                    style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                                   // controller:  TextEditingController(
+                                   //   text:
+                                   //    //text: pdet[index].pcdChangedLprice,
+                                   //  ),
+                                    controller: _materialreqdetailSerachController,
                                     onChanged: (value) {
                                       debounce = Timer(
                                           const Duration(
@@ -667,8 +673,20 @@ class _MaterialRequestDetailScreenState
                                                                               80,
                                                                           child:
                                                                               TextFormField(
-                                                                            controller:
-                                                                                _apprvHQtymqController,
+                                                                                keyboardType: TextInputType.number,
+                                                                                controller: TextEditingController(
+                                                                                    text: details[index].adjustedHQty
+                                                                                ),
+                                                                                onChanged: (value){
+                                                                                  details[index].adjustedLQty =value;
+                                                                                  _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                    adjustedHQty: details[index].adjustedHQty,
+                                                                                    adjustedLQty: details[index].adjustedLQty,
+                                                                                    prdID: details[index].prdID,
+
+                                                                                  );
+
+                                                                                },
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
@@ -697,8 +715,21 @@ class _MaterialRequestDetailScreenState
                                                                               80,
                                                                           child:
                                                                               TextFormField(
-                                                                            controller:
-                                                                                _apprvLQtymqController,
+                                                                                keyboardType: TextInputType.number,
+                                                                                controller: TextEditingController(
+                                                                                  text: details[index].adjustedLQty
+                                                                                ),
+                                                                            onChanged: (value){
+                                                                                  details[index].adjustedLQty =value;
+                                                                                  _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                    adjustedHQty: details[index].adjustedHQty,
+                                                                                    adjustedLQty: details[index].adjustedLQty,
+                                                                                    prdID: details[index].prdID,
+
+                                                                                  );
+
+                                                                            },
+                                                                            //controller: _apprvLQtymqController,
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
@@ -722,216 +753,10 @@ class _MaterialRequestDetailScreenState
                                                                 ),
                                                               ),
 
-                                                              // Row(
-                                                              //   children: [
-                                                              //     Column(
-                                                              //       children: [
-                                                              //         Text(
-                                                              //           details[index]
-                                                              //                   .reqHUOM ??
-                                                              //               '',
-                                                              //           style: kfontstyle(
-                                                              //               fontSize: 12
-                                                              //                   .sp,
-                                                              //               fontWeight:
-                                                              //                   FontWeight
-                                                              //                       .w400,
-                                                              //               color: Colors
-                                                              //                   .black54),
-                                                              //         ),
-                                                              //
-                                                              //         // SizedBox(
-                                                              //         //   height:
-                                                              //         //       10.h,
-                                                              //         // ),
-                                                              //         Text(
-                                                              //           details[index]
-                                                              //                   .reqLUOM ??
-                                                              //               '',
-                                                              //           style: kfontstyle(
-                                                              //               fontSize: 12
-                                                              //                   .sp,
-                                                              //               fontWeight:
-                                                              //                   FontWeight
-                                                              //                       .w400,
-                                                              //               color: Colors
-                                                              //                   .black54),
-                                                              //         ),
-                                                              //       ],
-                                                              //     ),
-                                                              //     SizedBox(
-                                                              //       width: 50.w,
-                                                              //     ),
-                                                              //     Column(
-                                                              //       children: [
-                                                              //         Text(
-                                                              //           details[index]
-                                                              //                   .requestedHQty ??
-                                                              //               '',
-                                                              //           style: kfontstyle(
-                                                              //               fontSize: 12
-                                                              //                   .sp,
-                                                              //               fontWeight:
-                                                              //                   FontWeight
-                                                              //                       .w400,
-                                                              //               color: Colors
-                                                              //                   .black54),
-                                                              //         ),
-                                                              //         SizedBox(
-                                                              //           height:
-                                                              //               10.h,
-                                                              //         ),
-                                                              //         Text(
-                                                              //           details[index]
-                                                              //                   .requestedLQty ??
-                                                              //               '',
-                                                              //           style: kfontstyle(
-                                                              //               fontSize: 12
-                                                              //                   .sp,
-                                                              //               fontWeight:
-                                                              //                   FontWeight
-                                                              //                       .w400,
-                                                              //               color: Colors
-                                                              //                   .black54),
-                                                              //         ),
-                                                              //       ],
-                                                              //     ),
-                                                              //   ],
-                                                              // )
+
                                                             ],
                                                           ),
-                                                          // Row(
-                                                          //   children: [
-                                                          //     Expanded(
-                                                          //       // width: MediaQuery.of(
-                                                          //       //         context)
-                                                          //       //     .size
-                                                          //       //     .width,
-                                                          //       child: Row(
-                                                          //         mainAxisAlignment:
-                                                          //             MainAxisAlignment
-                                                          //                 .end,
-                                                          //         children: [
-                                                          //           Text(
-                                                          //             details[index]
-                                                          //                     .reqHUOM ??
-                                                          //                 '',
-                                                          //             style: kfontstyle(
-                                                          //                 fontSize:
-                                                          //                     12.sp,
-                                                          //                 fontWeight:
-                                                          //                     FontWeight
-                                                          //                         .w400,
-                                                          //                 color: Colors
-                                                          //                     .black54),
-                                                          //           ),
-                                                          //           SizedBox(
-                                                          //             width: 10.w,
-                                                          //           ),
-                                                          //           Flexible(
-                                                          //               flex: 2,
-                                                          //               fit: FlexFit
-                                                          //                   .tight,
-                                                          //               child:
-                                                          //                   TextFormField(
-                                                          //                 keyboardType:
-                                                          //                     TextInputType
-                                                          //                         .number,
-                                                          //                 controller:
-                                                          //                     TextEditingController(
-                                                          //                   text: details[index]
-                                                          //                       .adjustedHQty,
-                                                          //                 ),
-                                                          //                 style: kfontstyle(
-                                                          //                     fontSize:
-                                                          //                         13.sp),
-                                                          //                 onChanged:
-                                                          //                     (value) {
-                                                          //                   details[index].adjustedHQty =
-                                                          //                       value;
-                                                          //                   _materialreqproducts[index] =
-                                                          //                       MatrialAprReqPrdModel(
-                                                          //                     mrdId:
-                                                          //                         details[index].mrdID,
-                                                          //                     prdId:
-                                                          //                         details[index].prdID,
-                                                          //                     reqHuom:
-                                                          //                         details[index].reqHUOM,
-                                                          //                     reqLuom:
-                                                          //                         details[index].reqLUOM,
-                                                          //                     requestedHQty:
-                                                          //                         details[index].requestedHQty,
-                                                          //                     requestedLQty:
-                                                          //                         details[index].requestedLQty,
-                                                          //                     hqty:
-                                                          //                         details[index].adjustedHQty,
-                                                          //                     lqty:
-                                                          //                         details[index].adjustedLQty,
-                                                          //                   );
-                                                          //                 },
-                                                          //               )),
-                                                          //           const Spacer(),
-                                                          //           Text(
-                                                          //             details[index]
-                                                          //                     .reqLUOM ??
-                                                          //                 '',
-                                                          //             style: kfontstyle(
-                                                          //                 fontSize:
-                                                          //                     12.sp,
-                                                          //                 fontWeight:
-                                                          //                     FontWeight
-                                                          //                         .w400,
-                                                          //                 color: Colors
-                                                          //                     .black54),
-                                                          //           ),
-                                                          //           SizedBox(
-                                                          //             width: 10.w,
-                                                          //           ),
-                                                          //           Flexible(
-                                                          //               flex: 2,
-                                                          //               fit: FlexFit
-                                                          //                   .tight,
-                                                          //               child:
-                                                          //                   TextFormField(
-                                                          //                 keyboardType:
-                                                          //                     TextInputType
-                                                          //                         .number,
-                                                          //                 controller:
-                                                          //                     TextEditingController(
-                                                          //                   text: details[index]
-                                                          //                       .adjustedLQty,
-                                                          //                 ),
-                                                          //                 onChanged:
-                                                          //                     (value) {
-                                                          //                   details[index].adjustedLQty =
-                                                          //                       value;
-                                                          //
-                                                          //                   _materialreqproducts[index] =
-                                                          //                       MatrialAprReqPrdModel(
-                                                          //                     mrdId:
-                                                          //                         details[index].mrdID,
-                                                          //                     prdId:
-                                                          //                         details[index].prdID,
-                                                          //                     reqHuom:
-                                                          //                         details[index].reqHUOM,
-                                                          //                     reqLuom:
-                                                          //                         details[index].reqLUOM,
-                                                          //                     requestedHQty:
-                                                          //                         details[index].requestedHQty,
-                                                          //                     requestedLQty:
-                                                          //                         details[index].requestedLQty,
-                                                          //                     hqty:
-                                                          //                         details[index].adjustedHQty,
-                                                          //                     lqty:
-                                                          //                         details[index].adjustedLQty,
-                                                          //                   );
-                                                          //                 },
-                                                          //               )),
-                                                          //         ],
-                                                          //       ),
-                                                          //     ),
-                                                          //   ],
-                                                          // )
+
                                                         ],
                                                       ),
                                                     ),
