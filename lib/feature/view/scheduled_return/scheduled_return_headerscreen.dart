@@ -78,23 +78,13 @@ class _ScheduledReturnHEaderScreenState
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: _SearchCtrl,
-                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
                     hintText: 'Search here..',
@@ -132,18 +122,18 @@ class _ScheduledReturnHEaderScreenState
                     fillColor: Colors.white,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     border: /* InputBorder
-                                                                .none  */
+                              .none  */
                         OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
                   onChanged: (value) {
@@ -155,7 +145,7 @@ class _ScheduledReturnHEaderScreenState
                           GetAllScheduledReturnHeadersEvent(
                               userID: widget.user.usrId ?? '',
                               mode: _selectedeMode,
-                              searchQuery: value));
+                              searchQuery: value.trim()));
                     });
                   },
                 ),
@@ -165,20 +155,10 @@ class _ScheduledReturnHEaderScreenState
               height: 3.h,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
                 child: DropdownButtonFormField(
                   elevation: 0,
                   value: filterFieldsScheduledReturn[0].mode,
@@ -189,18 +169,18 @@ class _ScheduledReturnHEaderScreenState
                     fillColor: Colors.white,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                     border: /* InputBorder
-                                                                .none  */
+                              .none  */
                         OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
                   items: filterFieldsScheduledReturn
@@ -255,25 +235,21 @@ class _ScheduledReturnHEaderScreenState
                               )
                             : Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          _selectedeMode == 'P'
-                                              ? 'Pending Approvals'
-                                              : 'Approved Requests',
-                                          style: countHeading(),
-                                        ),
-                                        Text(
-                                          headers.length.toString(),
-                                          style: countHeading(),
-                                        )
-                                      ],
-                                    ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        _selectedeMode == 'P'
+                                            ? 'Pending Approvals'
+                                            : 'Approved Requests',
+                                        style: countHeading(),
+                                      ),
+                                      Text(
+                                        headers.length.toString(),
+                                        style: countHeading(),
+                                      )
+                                    ],
                                   ),
                                   SizedBox(
                                     height: 10.h,
@@ -327,20 +303,11 @@ class _ScheduledReturnHEaderScreenState
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                    headers[index]
-                                                                            .rrhRequestNumber ??
-                                                                        '',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      color: const Color(
-                                                                          0xff2C6B9E),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                                  ),
+                                                                      headers[index]
+                                                                              .rrhRequestNumber ??
+                                                                          '',
+                                                                      style:
+                                                                          blueTextStyle()),
                                                                   Row(
                                                                     children: [
                                                                       Text(
@@ -354,16 +321,13 @@ class _ScheduledReturnHEaderScreenState
                                                                         ),
                                                                       ),
                                                                       Expanded(
-                                                                        child:
-                                                                            Text(
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          headers[index].cusName ??
-                                                                              '',
-                                                                          style: kfontstyle(
-                                                                              fontSize: 12.sp,
-                                                                              color: const Color(0xff413434)),
-                                                                        ),
+                                                                        child: Text(
+                                                                            overflow: TextOverflow
+                                                                                .ellipsis,
+                                                                            headers[index].cusName ??
+                                                                                '',
+                                                                            style:
+                                                                                subTitleTextStyle()),
                                                                       ),
                                                                     ],
                                                                   ),

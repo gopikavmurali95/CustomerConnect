@@ -67,15 +67,12 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +142,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                   height: 15.h,
                 ),
                 Container(
-                    height: 40,
+                    height: 30,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.grey.shade200),
@@ -219,7 +216,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -267,7 +264,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
         height: 40.h,
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

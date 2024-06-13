@@ -62,7 +62,7 @@ class PromotionDetailsList extends StatelessWidget {
                     );
                   }),
           promotionDetailsFailed: () => SizedBox(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height / 2,
             child: Center(
               child: Text(
                 'No Data Available',

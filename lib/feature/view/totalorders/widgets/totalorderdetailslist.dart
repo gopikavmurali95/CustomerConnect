@@ -63,7 +63,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .symmetric(
-                                                                horizontal: 20),
+                                                                horizontal: 10),
                                                         child: Row(
                                                           children: [
                                                             Flexible(
@@ -164,7 +164,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .only(
-                                                                right: 20),
+                                                                right: 10),
                                                         child: Row(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -231,7 +231,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                           itemCount: orderdetails.length),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
+                                            horizontal: 10),
                                         child: Column(
                                           children: [
                                             Row(

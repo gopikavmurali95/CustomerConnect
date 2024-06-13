@@ -34,7 +34,7 @@ class _TotalOrdersState extends State<TotalOrders> {
             area: '',
             customer: '',
             fromDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                '${DateTime.now().day - 10}-${DateTime.now().month}-${DateTime.now().year}',
             outlet: '',
             route: '',
             subArea: '',
@@ -90,7 +90,7 @@ class _TotalOrdersState extends State<TotalOrders> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
                       height: 40,
                       decoration: BoxDecoration(
@@ -188,7 +188,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                     //SizedBox(width: 05,),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
                         "All ",
                         style: countHeading(),
@@ -196,7 +196,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: BlocBuilder<TotalOrdersHeaderBloc,
                           TotalOrdersHeaderState>(
                         builder: (context, state) {
