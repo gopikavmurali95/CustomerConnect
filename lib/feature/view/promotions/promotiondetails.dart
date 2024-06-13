@@ -146,14 +146,6 @@ class PromotionDetails extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context
-                              .read<QualificationGroupBloc>()
-                              .add(const ClearGroupData());
-                          context.read<QualificationGroupBloc>().add(
-                              GetGroupWiseDataEvent(
-                                  id: promotion.qid ?? '',
-                                  mode: " ",
-                                  searchQuery: ''));
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -214,14 +206,6 @@ class PromotionDetails extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context
-                              .read<QualificationGroupBloc>()
-                              .add(const ClearGroupData());
-                          context.read<QualificationGroupBloc>().add(
-                              GetGroupWiseDataEvent(
-                                  id: promotion.aid!,
-                                  mode: " ",
-                                  searchQuery: ''));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

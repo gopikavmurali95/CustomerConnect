@@ -87,14 +87,8 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            invheader[index].invoiceNo ?? '',
-                                            style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff2C6B9E),
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
+                                          Text(invheader[index].invoiceNo ?? '',
+                                              style: blueTextStyle()),
                                           Row(
                                             children: [
                                               Text(
@@ -115,34 +109,23 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  invheader[index].cusName ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    invheader[index].cusName ??
+                                                        '',
+                                                    style: subTitleTextStyle()),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Text(
-                                                invheader[index].cusOutCode ??
-                                                    '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
+                                                  invheader[index].cusOutCode ??
+                                                      '',
+                                                  style: subTitleTextStyle()),
                                               Text(
                                                 ' - ',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: const Color(
-                                                        0xff413434)),
+                                                style: subTitleTextStyle(),
                                               ),
                                               Expanded(
                                                 child: Text(
@@ -150,63 +133,16 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                       '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp),
+                                                  style: subTitleTextStyle(),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            children: [
-                                              // Text(
-                                              //   'CR | Route 101 | 16 May 2023 | 10:35',
-                                              //   style: kfontstyle(
-                                              //       fontSize: 10.sp,
-                                              //       color: Colors.grey),
-                                              // ),
-                                              Text(
-                                                invheader[index].payType ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 9.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                ' | ',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                invheader[index].rotName ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                ' | ',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                invheader[index].date ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                ' | ',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                              Text(
-                                                invheader[index].time ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                            ],
+                                          Text(
+                                            '${invheader[index].payType} | ${invheader[index].rotName} | ${invheader[index].date} | ${invheader[index].time}',
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                color: Colors.grey),
                                           ),
                                         ],
                                       ),

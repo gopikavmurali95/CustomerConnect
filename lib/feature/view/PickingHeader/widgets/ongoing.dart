@@ -50,67 +50,73 @@ class OnGoing extends StatelessWidget {
                           children: [
                             SizedBox(
                               height: 50,
-                              child: ListTile(
-                                onTap: () {
-                                  context
-                                      .read<PickingdetailBloc>()
-                                      .add(const ClearPickingDetailevent());
-                                  context.read<PickingdetailBloc>().add(
-                                      PickingDetailSuccess(
-                                          pickingID:
-                                              pickingOut[index].pickingID!,
-                                          searchQuery: ''));
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PickingOgoing(
-                                        picking: pickingOut[index],
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: ListTile(
+                                  onTap: () {
+                                    context
+                                        .read<PickingdetailBloc>()
+                                        .add(const ClearPickingDetailevent());
+                                    context.read<PickingdetailBloc>().add(
+                                        PickingDetailSuccess(
+                                            pickingID:
+                                                pickingOut[index].pickingID!,
+                                            searchQuery: ''));
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => PickingOgoing(
+                                          picking: pickingOut[index],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  contentPadding: EdgeInsets.zero,
+                                  //titleAlignment: ListTileTitleAlignment.center,
+                                  //minVerticalPadding:5,
+                                  //minLeadingWidth: 50,
+                                  //titleAlignment:ListTileTitleAlignment.center,
+                                  horizontalTitleGap: 10,
+                                  leading: Padding(
+                                    padding: const EdgeInsets.only(bottom: 8.0),
+                                    child: CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: const Color(0xffBEC363),
+                                      child: Image.asset(
+                                        "assets/images/listicon.png",
+                                        height: 20,
                                       ),
                                     ),
-                                  );
-                                },
-                                //titleAlignment: ListTileTitleAlignment.center,
-                                //minVerticalPadding:5,
-                                //minLeadingWidth: 50,
-                                //titleAlignment:ListTileTitleAlignment.center,
-                                horizontalTitleGap: 10,
-                                leading: Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: const Color(0xffBEC363),
-                                    child: Image.asset(
-                                      "assets/images/listicon.png",
-                                      height: 20,
-                                    ),
                                   ),
-                                ),
-                                title: Text(
-                                  "${pickingOut[index].pickingNumber}",
-                                  style: blueTextStyle(),
-                                ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: RichText(
-                                      text: TextSpan(
-                                          text:
-                                              "${pickingOut[index].rotCode} | ",
-                                          style: subTitleTextStyle(),
-                                          children: [
-                                        TextSpan(
+                                  title: Text(
+                                    "${pickingOut[index].pickingNumber}",
+                                    style: blueTextStyle(),
+                                  ),
+                                  subtitle: Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 10.0),
+                                    child: RichText(
+                                        text: TextSpan(
                                             text:
-                                                "${pickingOut[index].date} | ",
-                                            style: subTitleTextStyle()),
-                                        TextSpan(
-                                            text: "${pickingOut[index].time}",
-                                            style: subTitleTextStyle())
-                                      ])),
+                                                "${pickingOut[index].rotCode} | ",
+                                            style: subTitleTextStyle(),
+                                            children: [
+                                          TextSpan(
+                                              text:
+                                                  "${pickingOut[index].date} | ",
+                                              style: subTitleTextStyle()),
+                                          TextSpan(
+                                              text: "${pickingOut[index].time}",
+                                              style: subTitleTextStyle())
+                                        ])),
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 05
+                                  left: 10, right: 10, top: 05
                                   // top: 10,bottom: 10
                                   ),
                               child: Divider(

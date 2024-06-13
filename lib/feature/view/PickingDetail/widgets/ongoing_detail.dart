@@ -1,8 +1,5 @@
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,21 +32,21 @@ class OngoingDetail extends StatelessWidget {
                       child: Text('No Data Found'),
                     )
                   : ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: pdetailList.length,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 15.0, top: 2),
-                                  child: Container(
-                                    // height: 55,
-                                    width: 200,
-                                    color: Colors.white,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    flex: 4,
+                                    fit: FlexFit.tight,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
@@ -70,65 +67,78 @@ class OngoingDetail extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                ),
-                                Column(
-                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  // crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Visibility(
-                                      visible:
-                                          pdetailList[index].pkdHigherUom ==
-                                                      null ||
-                                                  pdetailList[index]
-                                                      .pkdHigherUom!
-                                                      .isEmpty
-                                              ? false
-                                              : true,
-                                      child: Text(
-                                        pdetailList[index].pkdHigherUom ?? '',
-                                        style: subTitleTextStyle(),
-                                      ),
+                                  Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    /* child: Column(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      // crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Visibility(
+                                          visible:
+                                              pdetailList[index].pkdHigherUom ==
+                                                          null ||
+                                                      pdetailList[index]
+                                                          .pkdHigherUom!
+                                                          .isEmpty
+                                                  ? false
+                                                  : true,
+                                          child: Text(
+                                            pdetailList[index].pkdHigherUom ??
+                                                '',
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Visibility(
+                                          visible:
+                                              pdetailList[index].pkdLowerUom ==
+                                                          null ||
+                                                      pdetailList[index]
+                                                          .pkdLowerUom!
+                                                          .isEmpty
+                                                  ? false
+                                                  : true,
+                                          child: Text(
+                                            pdetailList[index].pkdLowerUom!,
+                                            style: subTitleTextStyle(),
+                                          ),
+                                        ),
+                                      ],
+                                    ), */
+                                    child: Text(
+                                      'CTN',
+                                      //'pdetailList[index].pkdLowerUom!',
+                                      style: subTitleTextStyle(),
                                     ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Visibility(
-                                      visible: pdetailList[index].pkdLowerUom ==
-                                                  null ||
-                                              pdetailList[index]
-                                                  .pkdLowerUom!
-                                                  .isEmpty
-                                          ? false
-                                          : true,
-                                      child: Text(
-                                        pdetailList[index].pkdLowerUom!,
-                                        style: subTitleTextStyle(),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 5, right: 20.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        pdetailList[index].pkdPickedHQty!,
-                                        style: subTitleTextStyle(),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        pdetailList[index].pkdPickedLQty!,
-                                        style: subTitleTextStyle(),
-                                      ),
-                                    ],
                                   ),
-                                ),
-                                //  SizedBox(width: 0,)
-                              ],
+
+                                  Flexible(
+                                    flex: 0,
+                                    fit: FlexFit.tight,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          pdetailList[index].pkdPickedHQty!,
+                                          style: subTitleTextStyle(),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          pdetailList[index].pkdPickedLQty!,
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  //  SizedBox(width: 0,)
+                                ],
+                              ),
                             ),
                             //  Divider(),
                           ],

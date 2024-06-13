@@ -9,7 +9,6 @@ import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_chan
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,22 +76,13 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
                 child: TextFormField(
                   controller: _priceChangeHeaderSearchCtrl,
-                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  style: kfontstyle(
+                      fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
                     hintText: 'Search here..',
@@ -134,15 +124,15 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                               .none  */
                         OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
                   onChanged: (value) {
@@ -165,19 +155,9 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade200),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: const [
-                      BoxShadow(
-                          // ignore: use_full_hex_values_for_flutter_colors
-                          color: Color(0xff00000050),
-                          blurRadius: 0.4,
-                          spreadRadius: 0.4)
-                    ]),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
                 child: DropdownButtonFormField(
                   elevation: 0,
                   value: filterFieldsPriceChange[0].mode,
@@ -191,15 +171,15 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                               .none  */
                         OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.transparent),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
                   items: filterFieldsPriceChange
@@ -247,174 +227,179 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                       ),
                                   itemCount: 10),
                             )
-                          : Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        _selectedPriceChangeMode == 'P'
-                                            ? 'Pending Approvals'
-                                            : 'Approved Requests',
-                                        style: countHeading(),
+                          : pChange.isEmpty
+                              ? const Center(
+                                  child: Text('No Data Available'),
+                                )
+                              : Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            _selectedPriceChangeMode == 'P'
+                                                ? 'Pending Approvals'
+                                                : 'Approved Requests',
+                                            style: countHeading(),
+                                          ),
+                                          Text(
+                                            pChange.length.toString(),
+                                            style: countHeading(),
+                                          )
+                                        ],
                                       ),
-                                      Text(
-                                        pChange.length.toString(),
-                                        style: countHeading(),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                Expanded(
-                                    child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15),
-                                  child: ListView.separated(
-                                      itemBuilder: (context, index) =>
-                                          GestureDetector(
-                                            onTap: () {
-                                              context
-                                                  .read<NavigatetoBackCubit>()
-                                                  .popFromScreen(false);
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          PriceChangeDetail(
-                                                            priceChangeApprovel:
-                                                                pChange[index],
-                                                            user: widget.user,
-                                                            currentMode:
-                                                                _selectedPriceChangeMode,
-                                                          )));
-                                              log(_selectedPriceChangeMode);
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  height: 50,
-                                                  width: 10,
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xfffee8e0),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                ),
-                                                SizedBox(
-                                                  width: 10.w,
-                                                ),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        '${pChange[index].pchReqId}',
-                                                        style: kfontstyle(
-                                                          fontSize: 12.sp,
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    Expanded(
+                                        child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      child: ListView.separated(
+                                          itemBuilder: (context, index) =>
+                                              GestureDetector(
+                                                onTap: () {
+                                                  context
+                                                      .read<
+                                                          NavigatetoBackCubit>()
+                                                      .popFromScreen(false);
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PriceChangeDetail(
+                                                                priceChangeApprovel:
+                                                                    pChange[
+                                                                        index],
+                                                                user:
+                                                                    widget.user,
+                                                                currentMode:
+                                                                    _selectedPriceChangeMode,
+                                                              )));
+                                                  log(_selectedPriceChangeMode);
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      height: 50,
+                                                      width: 10,
+                                                      decoration: BoxDecoration(
                                                           color: const Color(
-                                                              0xff2C6B9E),
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      Row(
+                                                              0xfffee8e0),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20)),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10.w,
+                                                    ),
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text(
-                                                            '${pChange[index].cusCode} - ',
-                                                            style: kfontstyle(
-                                                              fontSize: 11.sp,
-                                                              color: const Color(
-                                                                  0xff2C6B9E),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "${pChange[index].cusName}",
-                                                              style: kfontstyle(
+                                                              '${pChange[index].pchReqId}',
+                                                              style:
+                                                                  blueTextStyle()),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                '${pChange[index].cusCode} - ',
+                                                                style:
+                                                                    kfontstyle(
                                                                   fontSize:
-                                                                      12.sp,
+                                                                      11.sp,
                                                                   color: const Color(
-                                                                      0xff413434)),
-                                                            ),
+                                                                      0xff2C6B9E),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    "${pChange[index].cusName}",
+                                                                    style:
+                                                                        subTitleTextStyle()),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Text(
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "${pChange[index].type}",
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                color: const Color(
+                                                                    0xff413434)),
+                                                          ),
+                                                          Text(
+                                                            '${pChange[index].createdDate} ',
+                                                            style: kfontstyle(
+                                                                fontSize: 10.sp,
+                                                                color: Colors
+                                                                    .grey),
                                                           ),
                                                         ],
                                                       ),
-                                                      Text(
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        "${pChange[index].type}",
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            color: const Color(
-                                                                0xff413434)),
-                                                      ),
-                                                      Text(
-                                                        '${pChange[index].createdDate} ',
-                                                        style: kfontstyle(
-                                                            fontSize: 10.sp,
-                                                            color: Colors.grey),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Container(
-                                                  // height: 10.h,
-                                                  // width: 10.h,
-                                                  decoration: BoxDecoration(
-                                                    color: pChange[index]
-                                                                .pchApprovalStatus! ==
-                                                            "Pending"
-                                                        ? const Color(
-                                                            0xfff7f4e2)
-                                                        : pChange[index]
+                                                    ),
+                                                    Container(
+                                                      // height: 10.h,
+                                                      // width: 10.h,
+                                                      decoration: BoxDecoration(
+                                                        color: pChange[index]
                                                                     .pchApprovalStatus! ==
-                                                                "Action Taken"
+                                                                "Pending"
                                                             ? const Color(
-                                                                0xffe3f7e2)
-                                                            : Colors.red[300],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      10,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 5,
-                                                        vertical: 3),
-                                                    child: Text(
-                                                      pChange[index]
-                                                              .pchApprovalStatus ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                          fontSize: 8.sp),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                      separatorBuilder: (context, index) =>
-                                          Divider(
-                                            color: Colors.grey[300],
-                                          ),
-                                      itemCount: pChange.length),
-                                ))
-                              ],
-                            ),
+                                                                0xfff7f4e2)
+                                                            : pChange[index]
+                                                                        .pchApprovalStatus! ==
+                                                                    "Action Taken"
+                                                                ? const Color(
+                                                                    0xffe3f7e2)
+                                                                : Colors
+                                                                    .red[300],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          10,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 5,
+                                                                vertical: 3),
+                                                        child: Text(
+                                                          pChange[index]
+                                                                  .pchApprovalStatus ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                              fontSize: 8.sp),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                                color: Colors.grey[300],
+                                              ),
+                                          itemCount: pChange.length),
+                                    ))
+                                  ],
+                                ),
                       priceChangeFailureState: () => Center(
                             child: Text(
                               'No Data Available',

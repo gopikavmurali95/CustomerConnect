@@ -41,8 +41,8 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
           GetArHeaderData(
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
-                fromDate:
-                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                fromDate: '01-02-2024',
+                // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 toDate:
                     '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',
@@ -109,7 +109,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: BlocBuilder<ArScrollCtrlCubit, ArScrollCtrlState>(
               builder: (context, state) {
                 return Column(
@@ -503,7 +503,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                         //SizedBox(width: 05,),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 10.0, right: 20, top: 0),
+                              left: 10.0, right: 10, top: 0),
                           child: Text(
                             "All",
                             style: countHeading(),
@@ -516,7 +516,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                   arHeaders == null
                                       ? Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 20.0, right: 20, top: 0),
+                                              left: 10.0, right: 10, top: 0),
                                           child: Text(
                                             "0",
                                             style: countHeading(),

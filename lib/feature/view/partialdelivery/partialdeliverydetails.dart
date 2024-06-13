@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -41,6 +42,8 @@ bool isLoading = false;
 int _approvedCount = 0;
 List<PartialDeliveryProductModel?> _partialdeliveryapproved = [];
 int _totalcount = 0;
+TextEditingController _searchctrls = TextEditingController();
+Timer? debounce;
 
 List<PartialDeliveryReasonModel> availableresons = [];
 
@@ -106,6 +109,130 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
         },
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        color: const Color(0xfffee8e0),
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${widget.header.orderId}',
+                            style: blueTextStyle()),
+                        Row(
+                          children: [
+                            Text('${widget.header.cusCode} - ',
+                                style: blueTextStyle()),
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  "${widget.header.cusName}",
+                                  style: subTitleTextStyle()),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          '${widget.header.createdDate} ',
+                          style:
+                              kfontstyle(fontSize: 10.sp, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              color: Colors.grey[200],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                  controller: _searchctrls,
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search here..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (_searchctrls.text.isNotEmpty) {
+                                  _searchctrls.clear();
+
+                                  context
+                                      .read<PartialDeliveryDetailsBloc>()
+                                      .add(GetPartialDeliveryDetailsEvent(
+                                          reqID: widget.header.dahId!,
+                                          searchQuery: ''));
+                                }
+                              },
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                              .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<PartialDeliveryDetailsBloc>().add(
+                          GetPartialDeliveryDetailsEvent(
+                              reqID: widget.header.dahId!,
+                              searchQuery: value.trim()));
+                    });
+                  },
+                ),
+              ),
+            ),
             BlocListener<PartialDeliveryApprovalBloc,
                 PartialDeliveryApprovalState>(
               listener: (context, state) {

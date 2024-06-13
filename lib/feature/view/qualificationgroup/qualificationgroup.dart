@@ -23,6 +23,9 @@ class _QualificationGroupState extends State<QualificationGroup> {
   @override
   void initState() {
     _groupProdctrl.clear();
+    context.read<QualificationGroupBloc>().add(const ClearGroupData());
+    context.read<QualificationGroupBloc>().add(GetGroupWiseDataEvent(
+        id: widget.promotion.qid ?? '', mode: " ", searchQuery: ''));
     super.initState();
   }
 

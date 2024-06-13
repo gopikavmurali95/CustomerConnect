@@ -35,68 +35,6 @@ class PromotionCustomerList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        /* ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: const Color(0xffB3DAF7),
-                            child: Center(
-                              child: Text(
-                                promocustomer[index]
-                                    .cusName!
-                                    .split('')
-                                    .toList()[0],
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          title: Row(
-                            children: [
-                              Text(
-                                promocustomer[index].cusCode ?? '',
-                                style: blueTextStyle(),
-                              ),
-                              Text(' -', style: subTitleTextStyle()),
-                              Flexible(
-                                child: Text(promocustomer[index].cusName ?? '',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: subTitleTextStyle()),
-                              )
-                            ],
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    promocustomer[index].cusCode ?? '',
-                                    style: subTitleTextStyle(),
-                                  ),
-                                  Text(
-                                    ' - ',
-                                    style: subTitleTextStyle(),
-                                  ),
-                                  Text(
-                                    promocustomer[index].areaName ?? '',
-                                    style: subTitleTextStyle(),
-                                  ),
-                                ],
-                              ),
-                              /*   Text(
-                                '199521 - Carrefour Hypermarket',
-                                style: subTitleTextStyle(),
-                              ), */
-                              Text(
-                                '${promocustomer[index].cusType} | '
-                                '${promocustomer[index].promotionCustomerModelClass} | '
-                                '${promocustomer[index].areaName}',
-                                style: statusTextStyle(),
-                              )
-                            ],
-                          ),
-                        ), */
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(

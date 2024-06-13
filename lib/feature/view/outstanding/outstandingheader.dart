@@ -8,7 +8,6 @@ import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.da
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,7 +86,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Column(
               children: [
                 Container(
@@ -227,14 +226,14 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                               counts == null
                                   ? Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
+                                          horizontal: 10),
                                       child: ShimmerContainers(
                                           height: 110.h,
                                           width: double.infinity),
                                     )
                                   : Padding(
                                       padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
+                                        horizontal: 10,
                                       ),
                                       child: Row(
                                         crossAxisAlignment:
@@ -404,7 +403,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                         //SizedBox(width: 05,),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
+                              left: 10.0, right: 10, top: 0),
                           child: Text(
                             "Outstanding invoices",
                             style: countHeading(),
@@ -412,7 +411,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 0),
+                              left: 10.0, right: 10, top: 0),
                           child: BlocBuilder<OutstandingBloc, OutstandingState>(
                             builder: (context, state) {
                               return Text(
