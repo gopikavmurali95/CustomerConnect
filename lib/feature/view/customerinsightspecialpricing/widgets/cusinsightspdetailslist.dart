@@ -28,39 +28,44 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                   )
                 : ListView.separated(
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
-                          Flexible(
-                            flex: 2,
-                            fit: FlexFit.tight,
-                            child: SizedBox(
-                              // width: MediaQuery.of(context).size.width / 2.5,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    spPrice[index].prdCode ?? '',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff6E62A4),
-                                      fontWeight: FontWeight.w600,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width/2,
+                            child: Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      spPrice[index].prdCode ?? '',
+                                      style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff6E62A4),
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    spPrice[index].prdName ?? '',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400,
+                                    Text(
+                                      spPrice[index].prdName ?? '',
+                                      style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
+                          SizedBox(width: 10.h,),
                           Column(
                             children: [
+
                               Text(spPrice[index].uom ?? ''),
                               SizedBox(
                                 height: 5.h,
@@ -68,29 +73,30 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                               Text(spPrice[index].uom ?? ''),
                             ],
                           ),
+                          SizedBox(width: 5.h,),
                           SizedBox(
-                            width: 30.h,
+                            width: 50,
+                            child: Column(
+                              children: [
+                                Text(spPrice[index].stdPrice ?? ''),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(spPrice[index].stdPrice ?? ''),
+                              ],
+                            ),
                           ),
-                          Column(
-                            children: [
-                              Text(spPrice[index].stdPrice ?? ''),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(spPrice[index].stdPrice ?? ''),
-                            ],
-                          ),
+                          SizedBox(width: 10.h,),
                           SizedBox(
-                            width: 30.h,
-                          ),
-                          Column(
-                            children: [
-                              Text(spPrice[index].specialPrice ?? ''),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(spPrice[index].specialPrice ?? ''),
-                            ],
+                            child: Column(
+                              children: [
+                                Text(spPrice[index].specialPrice ?? ''),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(spPrice[index].specialPrice ?? ''),
+                              ],
+                            ),
                           ),
                         ],
                       ),

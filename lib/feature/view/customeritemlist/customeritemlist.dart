@@ -160,7 +160,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
-                      height: 40,
+                      height: 35.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),
@@ -248,16 +248,12 @@ class _CustomerItemListState extends State<CustomerItemList> {
                   width: double.infinity,
                   color: const Color(0xfff5f5f5),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 30),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Item',
-                          style: kfontstyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black54),
+                          'Item',style: boxHeading(),
                         ),
                         SizedBox(
                           width: 10.w,
@@ -265,22 +261,13 @@ class _CustomerItemListState extends State<CustomerItemList> {
                         Row(
                           children: [
                             Text(
-                              'UOM',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black54),
+                              'UOM',style: boxHeading(),
                             ),
                             SizedBox(
-                              width: 40.w,
+                              width: 30.w,
                             ),
                             Text(
-                              'Price',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black54),
-                            )
+                              'Price',style: boxHeading(),)
                           ],
                         )
                       ],
