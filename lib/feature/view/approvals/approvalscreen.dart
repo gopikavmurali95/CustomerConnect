@@ -17,6 +17,7 @@ import 'package:customer_connect/feature/view/pricechangeapproval/pricechangehea
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
+import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -1483,7 +1484,92 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Expanded(child: SizedBox())
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const VoidTranscactioHeaderScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Void Transaction",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count
+                                                    .pendingMaterialReqApproval!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //const Expanded(child: SizedBox())
                   ],
                 ),
               ),
