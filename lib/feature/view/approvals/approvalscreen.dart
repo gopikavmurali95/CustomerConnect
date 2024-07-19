@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconf
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
+import 'package:customer_connect/feature/view/mustsell/mustsellheaderscreen.dart';
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
@@ -1441,6 +1442,103 @@ class ApprovalScreen extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     "Inventory Reconfirm",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.inventoryReconfirm ?? '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    const Expanded(child: SizedBox())
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MustSellHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Must sell",
                                     style: headTextStyle(),
                                   ),
                                 ),

@@ -88,8 +88,8 @@ class _MaterialRequestHeaderScreenState
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10.0, right: 10, bottom: 3),
+                    padding:
+                        const EdgeInsets.only(left: 10.0, right: 10, bottom: 3),
                     child: Container(
                         height: 30.h,
                         decoration: BoxDecoration(
@@ -104,7 +104,8 @@ class _MaterialRequestHeaderScreenState
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
-                          style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                          style: kfontstyle(
+                              fontSize: 13.sp, color: Colors.black87),
                           controller: _materialReqSearchController,
                           onChanged: (value) {
                             debounce = Timer(

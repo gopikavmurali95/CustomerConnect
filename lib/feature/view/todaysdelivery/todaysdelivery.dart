@@ -32,8 +32,8 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                 area: '',
                 customer: '',
                 customerOutlet: '',
-                fromDate: 
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                fromDate:
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 mode: '',
                 route: '',
                 subArea: '',

@@ -84,33 +84,33 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.invoice.invoiceNo ?? '',
-                            style: blueTextStyle()),
+                          Text(widget.invoice.invoiceNo ?? '',
+                              style: blueTextStyle()),
                           Row(
                             children: [
                               Text(
                                 '${widget.customer.cusCode} ',
-                                style: TextStyle(fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),),),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  widget.customer.cusName ?? '',
-                                  style: subTitleTextStyle()
-                                ),),],),
-                          Row(
-                            children: [
-                              Text(
-                                '${widget.customer.headerCode} - ',
-                                style: subTitleTextStyle()
+                                style: TextStyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
                               ),
                               Expanded(
                                 child: Text(
-                                  widget.customer.headerName ?? '',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: subTitleTextStyle()
-                                ),
+                                    overflow: TextOverflow.ellipsis,
+                                    widget.customer.cusName ?? '',
+                                    style: subTitleTextStyle()),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('${widget.customer.headerCode} - ',
+                                  style: subTitleTextStyle()),
+                              Expanded(
+                                child: Text(widget.customer.headerName ?? '',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: subTitleTextStyle()),
                               ),
                             ],
                           ),
@@ -299,16 +299,9 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Total Amount',
-                    style:
-                        bottomTextStyle()
-                  ),
-                  Text(
-                    'AED ${widget.invoice.grandTotal}',
-                    style:
-                      bottomTotalAmountStyle()
-                  )
+                  Text('Total Amount', style: bottomTextStyle()),
+                  Text('AED ${widget.invoice.grandTotal}',
+                      style: bottomTotalAmountStyle())
                 ],
               ),
             ),

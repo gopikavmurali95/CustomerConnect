@@ -6,8 +6,10 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -160,7 +162,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
-                      height: 40,
+                      height: 35.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),
@@ -250,38 +252,37 @@ class _CustomerItemListState extends State<CustomerItemList> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Item',
-                          style: kfontstyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black54),
+                        Flexible(
+                          flex: 2,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            'Item',
+                            style: boxHeading(),
+                          ),
                         ),
                         /* SizedBox(
                           width: 10.w,
                         ), */
-                        Row(
-                          children: [
-                            Text(
-                              'UOM',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black54),
-                            ),
-                            SizedBox(
-                              width: 50.w,
-                            ),
-                            Text(
-                              'Price',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black54),
-                            )
-                          ],
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Row(
+                            children: [
+                              Text(
+                                'UOM',
+                                style: boxHeading(),
+                              ),
+                              SizedBox(
+                                width: 60.w,
+                              ),
+                              Text(
+                                'Price',
+                                style: boxHeading(),
+                              )
+                            ],
+                          ),
                         )
                       ],
                     ),

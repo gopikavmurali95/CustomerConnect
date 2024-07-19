@@ -18,6 +18,7 @@ import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
@@ -59,6 +60,9 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
@@ -101,6 +105,7 @@ import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/d
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
@@ -522,6 +527,21 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<InventoryReconfirmDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AllUsersBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MessagesBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MustSellHeaderBloc>(),
+        ),
+        BlocProvider<MustsellApprovalSelectionCubit>(
+          create: (context) => MustsellApprovalSelectionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MustSellApproveBloc>(),
         ),
       ],
       child: ScreenUtilInit(

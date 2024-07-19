@@ -431,12 +431,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     //),
-                    SizedBox(
+                    /* SizedBox(
                       width: 10.w,
                     ),
-                    /* Expanded(
+                    Expanded(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChatHomeScreen(
+                                user: widget.user,
+                              ),
+                            ),
+                          );
+                        },
                         child: Container(
                           //height: 50,
                           // width: MediaQuery.of(context).size.width / 2,
@@ -456,16 +465,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Image.asset(
-                                  "assets/images/ts.png",
-                                  height: 15.h,
+                                Icon(
+                                  Icons.chat,
+                                  size: 15.h,
                                 ),
                                 // fit: BoxFit.scaleDown,),
                                 SizedBox(
                                   width: 8.w,
                                 ),
                                 Text(
-                                  "Track Salesman",
+                                  "Messages",
                                   style: headTextStyle(),
                                 )
                               ],

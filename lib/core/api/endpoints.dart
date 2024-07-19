@@ -121,3 +121,7 @@ const inventoryReconfirmDetailUrl = 'CusOperation/InventoryReconfirmDetails';
 const inventoryReconfirmResonurl =
     'CusOperation/GetReasonForInventoryReconfirm';
 const inventoryReconfirmApprovalUrl = 'CusOperation/InventoryReconfirmApproval';
+const getUserForChatUrl = 'Home/GetUsers';
+const mustSellHeaderurl = 'MustSellApproval/MustSellApprovalHeader';
+const mustsellDetailUrl = 'MustSellApproval/MustSellApprovalDetail';
+const mustSellApproveUrl = 'MustSellApproval/PostMustSellApproval';

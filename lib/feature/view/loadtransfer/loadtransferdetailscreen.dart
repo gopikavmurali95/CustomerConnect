@@ -568,7 +568,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     children: [
                                                       Text(
                                                         details[index]
-                                                                .ldrBalanceHQty ??
+                                                                .ldrOffloadHQty ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
@@ -582,7 +582,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                       ),
                                                       Text(
                                                         details[index]
-                                                                .ldrBalanceLQty ??
+                                                                .ldrOffloadLQty ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,

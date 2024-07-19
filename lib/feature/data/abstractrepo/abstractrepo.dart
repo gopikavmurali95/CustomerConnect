@@ -79,6 +79,10 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/must_sell_approve_resp_model/must_sell_approve_resp_model.dart';
+import 'package:customer_connect/feature/data/models/must_sell_detail_model/must_sell_detail_model.dart';
+import 'package:customer_connect/feature/data/models/must_sell_header_model/must_sell_header_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
@@ -474,7 +478,7 @@ abstract class ILoadTransferApprovalRepo {
 
 abstract class IJourneyPlanApprovalRepo {
   Future<Either<MainFailures, List<JourneyPlanHeaderModel>>>
-      getJourneyPlanHeaders(String userID,String mode);
+      getJourneyPlanHeaders(String userID, String mode);
 
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve);
@@ -485,7 +489,7 @@ abstract class IJourneyPlanApprovalRepo {
 
 abstract class IMaterialReqHeaderRepo {
   Future<Either<MainFailures, List<MaterialReqHeaderModel>>>
-      materialreqheaderList(String userId,String mode);
+      materialreqheaderList(String userId, String mode);
 
   Future<Either<MainFailures, List<MaterialReqDetailModel>>>
       materialreqdetailList(String reqId);
@@ -502,7 +506,7 @@ abstract class IGetAllAvailableRoutesRepo {
 
 abstract class ILoadRequestHeaderRepo {
   Future<Either<MainFailures, List<LoadReqHeaderModel>>> loadreqHeaderList(
-      String userId,String mode);
+      String userId, String mode);
   Future<Either<MainFailures, List<LoadReqDetailModel>>> loadreqdetailList(
       String reqId);
 }
@@ -529,4 +533,15 @@ abstract class IinvetoryReconfirmationApprovalRepo {
       inventoryReconfromApprove(InventoryReconfirmApproveInModel approve);
   Future<Either<MainFailures, List<InventoryReconfirmReasonModel>>>
       getinventoryReconfirmReasons();
+}
+
+abstract class IMustSellRepo {
+  Future<Either<MainFailures, List<MustSellHeaderModel>>> getMustSellHeaders(
+      String mode);
+
+  Future<Either<MainFailures, List<MustSellDetailModel>>> getMustSellDetail(
+      String reqId);
+
+  Future<Either<MainFailures, MustSellApproveRespModel>> mustSellApprove(
+      MustSellApproveInModel approve);
 }

@@ -30,11 +30,11 @@ class LoadingHeaderBloc extends Bloc<LoadingHeaderEvent, LoadingHeaderState> {
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()) ||
-                        element.transactionCode!
-                            .toLowerCase()
-                            .toUpperCase()
-                            .contains(event.searchQuery.toUpperCase())||
-                element.rotName!
+                    element.transactionCode!
+                        .toLowerCase()
+                        .toUpperCase()
+                        .contains(event.searchQuery.toUpperCase()) ||
+                    element.rotName!
                         .toLowerCase()
                         .toUpperCase()
                         .contains(event.searchQuery.toUpperCase()))

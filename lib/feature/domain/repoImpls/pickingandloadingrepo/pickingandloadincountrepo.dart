@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -18,7 +19,7 @@ class PickingAndLoadinCountRepo implements IPickingAndLoadinCountRepo {
       final response =
           await http.post(Uri.parse(baseUrl + totalpickingandloadincountsurl));
       if (response.statusCode == 200) {
-        //logger.w('Response: ${response.body}');
+        log('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final pickingandloadincount =
             PickingAndLoadinCountsModel.fromJson(json["result"][0]);
@@ -29,7 +30,7 @@ class PickingAndLoadinCountRepo implements IPickingAndLoadinCountRepo {
         );
       }
     } catch (e) {
-      // logger.e('Picking and loadin count error : $e');
+      log('Picking and loadin count error : $e');
       return left(const MainFailures.serverfailure());
     }
   }
