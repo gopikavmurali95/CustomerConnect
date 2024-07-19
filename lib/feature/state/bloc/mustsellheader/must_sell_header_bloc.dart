@@ -28,15 +28,15 @@ class MustSellHeaderBloc
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                (element.ordNumber ?? '')
+                (element.msaTransId ?? '')
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                (element.salNumber ?? '')
+                (element.cuscode ?? '')
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                (element.userName ?? '')
+                (element.cusname ?? '')
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))
