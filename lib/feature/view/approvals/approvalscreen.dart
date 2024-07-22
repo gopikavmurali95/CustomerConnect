@@ -16,6 +16,7 @@ import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryhea
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
+import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -46,7 +47,7 @@ class ApprovalScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Approvals",
+          "Approval",
           style: appHeading(),
         ),
       ),
@@ -1483,10 +1484,107 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Expanded(child: SizedBox())
+                     SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          context.read<FieldServiceHeaderBloc>().add(
+                              GetAllFieldServiceHeadersEvent(
+                                  userId: user.usrId ?? '', searchQuery: ''));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SettlementApprovalHeader(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/lr.png",
+                                    height: 18.3.h,
+                                  ),
+                                ),
+                                // fit: BoxFit.scaleDown,),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                  //  overflow: TextOverflow.ellipsis,
+                                    "Settlement Approval",
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.pendingLoadRequestHeader!,
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    
+                    // const Expanded(child: SizedBox())
+                    
                   ],
                 ),
               ),
+              
             ],
           ),
         ),

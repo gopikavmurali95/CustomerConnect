@@ -221,6 +221,7 @@ class _MaterialRequestHeaderScreenState
                                   spreadRadius: 0.2)
                             ]),
                         child: DropdownButtonFormField(
+                          elevation: 0,
                           value: ddfilterMaterialReq[0].mode,
                           // value: ddfilterFieldsDisputeNote[0].mode,
                           dropdownColor: Colors.white,
