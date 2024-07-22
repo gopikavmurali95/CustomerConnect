@@ -49,7 +49,7 @@ int _totalcount = 0;
 
 List<MatrialAprReqPrdModel?> _materialreqproducts = [];
 List<MatrialAprReqPrdModel?> _materialreqproductsReject = [];
-List<MaterialReqDetailModel?> _procechangematerial= [];
+List<MaterialReqDetailModel?> _procechangematerial = [];
 TextEditingController _materialreqdetailSerachController =
     TextEditingController();
 TextEditingController _apprvLQtymqController = TextEditingController();
@@ -333,12 +333,14 @@ class _MaterialRequestDetailScreenState
                                             spreadRadius: 0.4)
                                       ]),
                                   child: TextFormField(
-                                    style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
-                                   // controller:  TextEditingController(
-                                   //   text:
-                                   //    //text: pdet[index].pcdChangedLprice,
-                                   //  ),
-                                    controller: _materialreqdetailSerachController,
+                                    style: kfontstyle(
+                                        fontSize: 13.sp, color: Colors.black87),
+                                    // controller:  TextEditingController(
+                                    //   text:
+                                    //    //text: pdet[index].pcdChangedLprice,
+                                    //  ),
+                                    controller:
+                                        _materialreqdetailSerachController,
                                     onChanged: (value) {
                                       debounce = Timer(
                                           const Duration(
@@ -600,7 +602,6 @@ class _MaterialRequestDetailScreenState
                                                                   ],
                                                                 ),
                                                               ),
-
                                                               SizedBox(
                                                                 width: MediaQuery.of(
                                                                             context)
@@ -673,20 +674,19 @@ class _MaterialRequestDetailScreenState
                                                                               80,
                                                                           child:
                                                                               TextFormField(
-                                                                                keyboardType: TextInputType.number,
-                                                                                controller: TextEditingController(
-                                                                                    text: details[index].adjustedHQty
-                                                                                ),
-                                                                                onChanged: (value){
-                                                                                  details[index].adjustedLQty =value;
-                                                                                  _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                    adjustedHQty: details[index].adjustedHQty,
-                                                                                    adjustedLQty: details[index].adjustedLQty,
-                                                                                    prdID: details[index].prdID,
-
-                                                                                  );
-
-                                                                                },
+                                                                            keyboardType:
+                                                                                TextInputType.number,
+                                                                            controller:
+                                                                                TextEditingController(text: details[index].adjustedHQty),
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              details[index].adjustedLQty = value;
+                                                                              _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                adjustedHQty: details[index].adjustedHQty,
+                                                                                adjustedLQty: details[index].adjustedLQty,
+                                                                                prdID: details[index].prdID,
+                                                                              );
+                                                                            },
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
@@ -715,19 +715,18 @@ class _MaterialRequestDetailScreenState
                                                                               80,
                                                                           child:
                                                                               TextFormField(
-                                                                                keyboardType: TextInputType.number,
-                                                                                controller: TextEditingController(
-                                                                                  text: details[index].adjustedLQty
-                                                                                ),
-                                                                            onChanged: (value){
-                                                                                  details[index].adjustedLQty =value;
-                                                                                  _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                    adjustedHQty: details[index].adjustedHQty,
-                                                                                    adjustedLQty: details[index].adjustedLQty,
-                                                                                    prdID: details[index].prdID,
-
-                                                                                  );
-
+                                                                            keyboardType:
+                                                                                TextInputType.number,
+                                                                            controller:
+                                                                                TextEditingController(text: details[index].adjustedLQty),
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              details[index].adjustedLQty = value;
+                                                                              _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                adjustedHQty: details[index].adjustedHQty,
+                                                                                adjustedLQty: details[index].adjustedLQty,
+                                                                                prdID: details[index].prdID,
+                                                                              );
                                                                             },
                                                                             //controller: _apprvLQtymqController,
                                                                             style:
@@ -752,11 +751,8 @@ class _MaterialRequestDetailScreenState
                                                                   ],
                                                                 ),
                                                               ),
-
-
                                                             ],
                                                           ),
-
                                                         ],
                                                       ),
                                                     ),

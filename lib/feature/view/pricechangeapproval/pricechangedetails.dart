@@ -559,14 +559,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                               decoration: BoxDecoration(
                                                                   color: Colors
                                                                       .grey
-                                                                      .shade300,
+                                                                      .shade100,
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
                                                                               5),
                                                                   border: Border.all(
                                                                       color: Colors
-                                                                          .grey)),
+                                                                          .grey
+                                                                          .shade400)),
                                                               child:
                                                                   TextFormField(
                                                                 textAlign:
@@ -582,11 +583,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         10.sp),
                                                                 decoration:
                                                                     InputDecoration(
+                                                                  enabled: pdet[index]
+                                                                              .pcdStdHPrice ==
+                                                                          pdet[index]
+                                                                              .pcdChangedHPrice
+                                                                      ? false
+                                                                      : true,
                                                                   isDense: true,
                                                                   filled: true,
                                                                   fillColor: Colors
                                                                       .grey
-                                                                      .shade300,
+                                                                      .shade200,
                                                                   contentPadding:
                                                                       const EdgeInsets
                                                                           .only(
@@ -610,6 +617,16 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(5),
+                                                                    borderSide:
+                                                                        const BorderSide(
+                                                                            color:
+                                                                                Colors.transparent),
+                                                                  ),
+                                                                  disabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10),
                                                                     borderSide:
                                                                         const BorderSide(
                                                                             color:
@@ -668,14 +685,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             decoration: BoxDecoration(
                                                                 color: Colors
                                                                     .grey
-                                                                    .shade300,
+                                                                    .shade100,
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             5),
                                                                 border: Border.all(
                                                                     color: Colors
-                                                                        .grey)),
+                                                                        .grey
+                                                                        .shade400)),
                                                             child:
                                                                 TextFormField(
                                                               textAlign:
@@ -691,11 +709,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                       10.sp),
                                                               decoration:
                                                                   InputDecoration(
+                                                                enabled: pdet[index]
+                                                                            .pcdStdLPrice ==
+                                                                        pdet[index]
+                                                                            .pcdChangedLprice
+                                                                    ? false
+                                                                    : true,
                                                                 isDense: true,
                                                                 filled: true,
                                                                 fillColor: Colors
                                                                     .grey
-                                                                    .shade300,
+                                                                    .shade200,
                                                                 contentPadding:
                                                                     const EdgeInsets
                                                                         .only(
@@ -709,6 +733,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                       BorderRadius
                                                                           .circular(
                                                                               5),
+                                                                  borderSide:
+                                                                      const BorderSide(
+                                                                          color:
+                                                                              Colors.transparent),
+                                                                ),
+                                                                disabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
                                                                   borderSide:
                                                                       const BorderSide(
                                                                           color:
@@ -745,15 +780,22 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                               ),
                                                               onChanged:
                                                                   (value) {
-                                                                pdet[index].pcdChangedLprice = value;
+                                                                pdet[index]
+                                                                        .pcdChangedLprice =
+                                                                    value;
                                                                 _procechangeapproved[index] = PriceChangePrdModel(
                                                                     aprvdHprice:
                                                                         pdet[index]
                                                                             .pcdChangedHPrice,
-                                                                    aprvdLprice: pdet[index].pcdChangedLprice,
+                                                                    aprvdLprice:
+                                                                        pdet[index]
+                                                                            .pcdChangedLprice,
                                                                     pcdId: pdet[
-                                                                            index].pcdId,
-                                                                    reason: selectedresons[index],
+                                                                            index]
+                                                                        .pcdId,
+                                                                    reason:
+                                                                        selectedresons[
+                                                                            index],
                                                                     status:
                                                                         'A');
                                                               },

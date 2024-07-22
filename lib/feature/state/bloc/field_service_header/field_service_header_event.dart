@@ -4,8 +4,7 @@ part of 'field_service_header_bloc.dart';
 class FieldServiceHeaderEvent with _$FieldServiceHeaderEvent {
   const factory FieldServiceHeaderEvent.getAllFieldServiceHeadersEvent(
       {required String userId,
-        required String searchQuery
-      }) = GetAllFieldServiceHeadersEvent;
+      required String searchQuery}) = GetAllFieldServiceHeadersEvent;
 
   const factory FieldServiceHeaderEvent.clearFieldServiceHeaderEvent() =
       ClearFieldServiceHeaderEvent;

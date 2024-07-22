@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/domain/notification/fcmmessgehandler.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
@@ -17,6 +18,7 @@ import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
@@ -58,6 +60,9 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
@@ -100,6 +105,7 @@ import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/d
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
@@ -139,7 +145,7 @@ void main() async {
 
     await PushNotificationService().initialize();
 
-    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
       alert: true,
@@ -522,9 +528,25 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<InventoryReconfirmDetailBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<AllUsersBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MessagesBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MustSellHeaderBloc>(),
+        ),
+        BlocProvider<MustsellApprovalSelectionCubit>(
+          create: (context) => MustsellApprovalSelectionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MustSellApproveBloc>(),
+        ),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(
+          navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
@@ -556,11 +578,18 @@ class MyApp extends StatelessWidget {
               surfaceTintColor: Colors.white,
             ),
           ),
-          home: user == null
+          routes: {
+            "homePage": (context) => user == null
+                ? const LoginScreen()
+                : MessageHandler(child: HomeScreen(user: user!)),
+            "Login": (context) => const LoginScreen(),
+          },
+          initialRoute: "homePage",
+          /* home: user == null
               ? const LoginScreen()
               : HomeScreen(
                   user: user!,
-                ),
+                ), */
         ),
       ),
     );

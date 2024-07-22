@@ -11,6 +11,7 @@ package="com.example.customer_connect">
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
+            android:enableOnBackInvokedCallback="true"
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
@@ -29,6 +30,11 @@ package="com.example.customer_connect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
@@ -53,6 +59,8 @@ package="com.example.customer_connect">
         <action android:name="android.intent.action.QUICKBOOT_POWERON" />
         <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
     </intent-filter>
+
+    
 </receiver>
     </application>
     <!-- Required to query activities that can process text, see:

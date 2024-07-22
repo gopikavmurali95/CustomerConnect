@@ -32,23 +32,25 @@ class ApprovalCountModel {
   String? pendingPartialDeliveryHeader;
   @JsonKey(name: 'PendingReturnRequestSC')
   String? pendingReturnRequestSc;
+  @JsonKey(name: 'PendingInvReconfirm')
+  String? inventoryReconfirm;
 
-  ApprovalCountModel({
-    this.pendingReturnHeader,
-    this.pendingPriceChangeApproval,
-    this.pendingJurneyPlanSeqApprvl,
-    this.pendingVanToVanHeader,
-    this.pendingMaterialReqApproval,
-    this.pendingLodTransRequest,
-    this.pendingLoadRequestHeader,
-    this.pendingAssetAddReqHeader,
-    this.pendingAssetRemovalReqHeader,
-    this.pendingInvoiceApprovalHeader,
-    this.pendingDisputeNoteReqHeader,
-    this.pendingCreditNoteReqHeader,
-    this.pendingPartialDeliveryHeader,
-    this.pendingReturnRequestSc,
-  });
+  ApprovalCountModel(
+      {this.pendingReturnHeader,
+      this.pendingPriceChangeApproval,
+      this.pendingJurneyPlanSeqApprvl,
+      this.pendingVanToVanHeader,
+      this.pendingMaterialReqApproval,
+      this.pendingLodTransRequest,
+      this.pendingLoadRequestHeader,
+      this.pendingAssetAddReqHeader,
+      this.pendingAssetRemovalReqHeader,
+      this.pendingInvoiceApprovalHeader,
+      this.pendingDisputeNoteReqHeader,
+      this.pendingCreditNoteReqHeader,
+      this.pendingPartialDeliveryHeader,
+      this.pendingReturnRequestSc,
+      this.inventoryReconfirm});
 
   factory ApprovalCountModel.fromJson(Map<String, dynamic> json) {
     return _$ApprovalCountModelFromJson(json);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -17,7 +18,7 @@ class ApprovalsCountRepo implements IApprovalCountsRepo {
       final response =
           await http.post(Uri.parse(approvalBaseUrl + approvalCountUrl));
       if (response.statusCode == 200) {
-        // log('Response: ${response.body}');
+        log('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final approvalcounts = ApprovalCountModel.fromJson(json["result"][0]);
         return right(approvalcounts);
@@ -27,7 +28,7 @@ class ApprovalsCountRepo implements IApprovalCountsRepo {
         );
       }
     } catch (e) {
-      // logger.e('Picking and loadin count error : $e');
+      log(' count error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

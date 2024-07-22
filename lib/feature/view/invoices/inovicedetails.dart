@@ -7,7 +7,9 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 // import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -235,35 +237,51 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Items',
-                    style: boxHeading(),
+                  Flexible(
+                    flex: 3,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      'Items',
+                      style: boxHeading(),
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Type',
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 25.h,
-                      ),
-                      Text(
-                        'UOM',
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 22.h,
-                      ),
-                      Text(
-                        'Qty',
-                        style: boxHeading(),
-                      ),
-                      /*  SizedBox(
-                        width: 15.h,
-                      ), */
-                    ],
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            'Type',
+                            style: boxHeading(),
+                          ),
+                        ),
+                        /* SizedBox(
+                          width: 25.h,
+                        ), */
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Text(
+                            'UOM',
+                            style: boxHeading(),
+                          ),
+                        ),
+                        /*  SizedBox(
+                          width: 22.h,
+                        ), */
+                        Text(
+                          'Qty',
+                          style: boxHeading(),
+                        ),
+                        SizedBox(
+                          width: 10.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

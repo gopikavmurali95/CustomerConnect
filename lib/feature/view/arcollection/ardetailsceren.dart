@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
@@ -30,7 +28,6 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log(widget.arheader.image ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

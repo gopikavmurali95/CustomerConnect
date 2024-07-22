@@ -27,16 +27,19 @@ class FieldServiceHeaderBloc
           (l) => const FieldServiceInvoiceHeaderFailedState(),
           (r) {
             {
-              searchlistitems = r.where((element) =>
-              element.userID!
-                  .toLowerCase().
-              toUpperCase().
-              contains(event.searchQuery.toUpperCase())||
-                  element.rotID!.
-                  toLowerCase().
-                  toUpperCase().
-                  contains(event.searchQuery.toUpperCase())).toList();
-              return  GetFieldServiceInvoiceHEadersState(headers: event.searchQuery.isEmpty ? r :searchlistitems);
+              searchlistitems = r
+                  .where((element) =>
+                      element.userID!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()) ||
+                      element.rotID!
+                          .toLowerCase()
+                          .toUpperCase()
+                          .contains(event.searchQuery.toUpperCase()))
+                  .toList();
+              return GetFieldServiceInvoiceHEadersState(
+                  headers: event.searchQuery.isEmpty ? r : searchlistitems);
             }
           },
         ),

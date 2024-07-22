@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoi
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,101 +66,121 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
+                                            Flexible(
+                                              flex: 5,
+                                              fit: FlexFit.tight,
+                                              child: SizedBox(
+                                                /*   // color: Colors.teal,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.8, */
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                        invdetails[index]
+                                                                .prdCode ??
+                                                            '',
+                                                        style: loadTextStyle()),
+                                                    SizedBox(
+                                                      width: 200.w,
+                                                      child: Text(
+                                                        invdetails[index]
+                                                                .prdName ??
+                                                            '',
+                                                        style:
+                                                            subTitleTextStyle(),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            /*   SizedBox(
+                                              width: 15.h,
+                                            ), */
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Text(
+                                                  invdetails[index].prdType ??
+                                                      '',
+                                                  style: subTitleTextStyle()),
+                                            ),
                                             SizedBox(
-                                              // color: Colors.teal,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  1.8,
+                                              width: 5.h,
+                                            ),
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
                                               child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                      invdetails[index]
-                                                              .prdCode ??
-                                                          '',
-                                                      style: loadTextStyle()),
-                                                  SizedBox(
-                                                    width: 200.w,
+                                                  Visibility(
+                                                    visible: invdetails[index]
+                                                                    .higherUom ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .higherUom!
+                                                                .isEmpty
+                                                        ? false
+                                                        : true,
                                                     child: Text(
                                                       invdetails[index]
-                                                              .prdName ??
+                                                              .higherUom ??
                                                           '',
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),
                                                   ),
+                                                  SizedBox(
+                                                    height: 5.h,
+                                                  ),
+                                                  Visibility(
+                                                    visible: invdetails[index]
+                                                                    .lowerUom ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .lowerUom!
+                                                                .isEmpty
+                                                        ? false
+                                                        : true,
+                                                    child: Text(
+                                                        invdetails[index]
+                                                                .lowerUom ??
+                                                            '',
+                                                        style:
+                                                            subTitleTextStyle()),
+                                                  ),
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: 25.h,
-                                            ),
-                                            Text(
-                                                invdetails[index].prdType ?? '',
-                                                style: subTitleTextStyle()),
-                                            SizedBox(
+                                            /*  SizedBox(
                                               width: 30.h,
-                                            ),
-                                            Column(
-                                              children: [
-                                                Visibility(
-                                                  visible: invdetails[index]
-                                                                  .higherUom ==
-                                                              null ||
-                                                          invdetails[index]
-                                                              .higherUom!
-                                                              .isEmpty
-                                                      ? false
-                                                      : true,
-                                                  child: Text(
+                                            ), */
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: Column(
+                                                children: [
+                                                  Text(
                                                     invdetails[index]
-                                                            .higherUom ??
+                                                            .higherQty ??
                                                         '',
                                                     style: subTitleTextStyle(),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 5.h,
-                                                ),
-                                                Visibility(
-                                                  visible: invdetails[index]
-                                                                  .lowerUom ==
-                                                              null ||
-                                                          invdetails[index]
-                                                              .lowerUom!
-                                                              .isEmpty
-                                                      ? false
-                                                      : true,
-                                                  child: Text(
-                                                      invdetails[index]
-                                                              .lowerUom ??
-                                                          '',
-                                                      style:
-                                                          subTitleTextStyle()),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 30.h,
-                                            ),
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  invdetails[index].higherQty ??
-                                                      '',
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                                SizedBox(
-                                                  height: 5.h,
-                                                ),
-                                                Text(
-                                                  invdetails[index].lowerQty ??
-                                                      '',
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                              ],
+                                                  SizedBox(
+                                                    height: 5.h,
+                                                  ),
+                                                  Text(
+                                                    invdetails[index]
+                                                            .lowerQty ??
+                                                        '',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),

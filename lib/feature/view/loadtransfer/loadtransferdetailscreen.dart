@@ -568,7 +568,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     children: [
                                                       Text(
                                                         details[index]
-                                                                .ldrBalanceHQty ??
+                                                                .ldrOffloadHQty ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
@@ -582,7 +582,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                       ),
                                                       Text(
                                                         details[index]
-                                                                .ldrBalanceLQty ??
+                                                                .ldrOffloadLQty ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
@@ -620,8 +620,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                 return (statuslist[
                                                                             index] ==
                                                                         true)
-                                                                    ? const Color(
-                                                                        0xff0075ff)
+                                                                    ? Colors
+                                                                        .green
+                                                                        .shade300
                                                                     : Colors
                                                                         .grey;
                                                               }),
@@ -709,8 +710,8 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                             null &&
                                                                         !statuslist[
                                                                             index]!)
-                                                                    ? const Color(
-                                                                        0xff0075ff)
+                                                                    ? Colors.red
+                                                                        .shade300
                                                                     : Colors
                                                                         .grey;
                                                               }),
