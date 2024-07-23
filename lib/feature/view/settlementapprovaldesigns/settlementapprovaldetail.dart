@@ -66,153 +66,153 @@ class _PriceChangeDetailState extends State<SettlementApprovalDetails> {
   Widget build(BuildContext context) {
     log(jsonEncode(_procechangeapproved));
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
-        titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
-            // log(_approvedCount.toString());
-            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+        appBar: AppBar(
+          surfaceTintColor: Colors.white,
+          backgroundColor: Colors.white,
+          titleSpacing: 0.5,
+          leading: IconButton(
+            onPressed: () {
+              // log(_approvedCount.toString());
+              // if (_approvedCount != 0 && _approvedCount != _totalcount) {
+              //   Future.delayed(const Duration(microseconds: 100), () {
+              //     showPopAlert(context);
+              //   });
+              // } else {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
+          ),
+          title: Text(
+            "Settlement Approval Detail",
+            style: appHeading(),
           ),
         ),
-        title: Text(
-          "Settlement Approval Detail",
-          style: appHeading(),
-        ),
-      ),
-      body: Column(
-        children: [
-          Expanded(child: Column(
-            children: [
-              Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 10,
-                          decoration: BoxDecoration(
-                              color: const Color(0xfffee8e0),
-                              borderRadius: BorderRadius.circular(20)),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ttfsh",
-                               // '${widget.loadrequest.lrhNumber}h',
-                                style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  color: const Color(0xff2C6B9E),
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "rotcode",
-                                    //'${widget.loadrequest.rotCode}- ',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff2C6B9E),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    fit: FlexFit.tight,
-                                    child: Text(
-                                      "username",
-                                     // overflow: TextOverflow.ellipsis,
-                                      //"${widget.loadrequest.usrName}",
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff413434)),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Exp Date : ',
-                                    style: kfontstyle(
-                                      fontSize: 10.sp,
-                                      color: const Color(0xff2C6B9E),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    fit: FlexFit.tight,
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      "reqdate",
-                                     // "${widget.loadrequest.lrhLoadReqDate}",
-                                      style: kfontstyle(
-                                          fontSize: 10.sp,
-                                          color: const Color(0xff413434)),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "crete date",
-                                //'${widget.loadrequest.createdDate}',
-                                style:
-                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Container(
-                        //   // height: 10.h,
-                        //   // width: 10.h,
-                        //   decoration: BoxDecoration(
-                        //     color: widget.loadrequest.status! ==
-                        //         "Pending"
-                        //         ? const Color(0xfff7f4e2)
-                        //         : widget.loadrequest.status==
-                        //         "Action Taken"
-                        //         ? const Color(0xffe3f7e2)
-                        //         : Colors.red[300],
-                        //     borderRadius: BorderRadius.circular(
-                        //       10,
-                        //     ),
-                        //   ),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.symmetric(
-                        //         horizontal: 5, vertical: 3),
-                        //     child: Text(
-                        //       widget.loadrequest.status?? '',
-                        //       style: kfontstyle(fontSize: 8.sp),
-                        //     ),
-                        //   ),
-                        // )
-                      ],
-                    ),
+        body: Column(
+          children: [
+            Expanded(
+                child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
                   ),
-            ],
-          ))
-        ],
-      )
-    );
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            color: const Color(0xfffee8e0),
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Ttfsh",
+                              // '${widget.loadrequest.lrhNumber}h',
+                              style: kfontstyle(
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "rotcode",
+                                  //'${widget.loadrequest.rotCode}- ',
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff2C6B9E),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: Text(
+                                    "username",
+                                    // overflow: TextOverflow.ellipsis,
+                                    //"${widget.loadrequest.usrName}",
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff413434)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  'Exp Date : ',
+                                  style: kfontstyle(
+                                    fontSize: 10.sp,
+                                    color: const Color(0xff2C6B9E),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    "reqdate",
+                                    // "${widget.loadrequest.lrhLoadReqDate}",
+                                    style: kfontstyle(
+                                        fontSize: 10.sp,
+                                        color: const Color(0xff413434)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "crete date",
+                              //'${widget.loadrequest.createdDate}',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Container(
+                      //   // height: 10.h,
+                      //   // width: 10.h,
+                      //   decoration: BoxDecoration(
+                      //     color: widget.loadrequest.status! ==
+                      //         "Pending"
+                      //         ? const Color(0xfff7f4e2)
+                      //         : widget.loadrequest.status==
+                      //         "Action Taken"
+                      //         ? const Color(0xffe3f7e2)
+                      //         : Colors.red[300],
+                      //     borderRadius: BorderRadius.circular(
+                      //       10,
+                      //     ),
+                      //   ),
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.symmetric(
+                      //         horizontal: 5, vertical: 3),
+                      //     child: Text(
+                      //       widget.loadrequest.status?? '',
+                      //       style: kfontstyle(fontSize: 8.sp),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
+                ),
+              ],
+            ))
+          ],
+        ));
   }
 
   bool checkrejectedstatus() {

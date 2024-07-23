@@ -108,11 +108,13 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                           const Duration(
                             milliseconds: 500,
                           ), () async {
-                        context.read<JourneyPlanHeaderBloc>().add(
-                            GetAllJourneyPlanHeadersEvent(
-                                mode: _selectedJourneyPlan,
-                                searchQuery:
-                                _journeyplanSearchController.text, userID: '',));
+                        context
+                            .read<JourneyPlanHeaderBloc>()
+                            .add(GetAllJourneyPlanHeadersEvent(
+                              mode: _selectedJourneyPlan,
+                              searchQuery: _journeyplanSearchController.text,
+                              userID: '',
+                            ));
                       });
                     },
                     decoration: InputDecoration(
@@ -281,22 +283,24 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                     children: [
                       Text(
                         state.when(
-                          getAllJourneyPlanHeadersState: (List<JourneyPlanHeaderModel>? headers) =>
-                             _selectedJourneyPlan == "P"?
-                                     "Pending Approvals"
-                                 : _selectedJourneyPlan == "A"
-                                 ?  "Approved Requests" :
-                                 _selectedJourneyPlan == "CN" ?
-                                 "Cancelled Requests" : "Rejected Requests",
+                          getAllJourneyPlanHeadersState:
+                              (List<JourneyPlanHeaderModel>? headers) =>
+                                  _selectedJourneyPlan == "P"
+                                      ? "Pending Approvals"
+                                      : _selectedJourneyPlan == "A"
+                                          ? "Approved Requests"
+                                          : _selectedJourneyPlan == "CN"
+                                              ? "Cancelled Requests"
+                                              : "Rejected Requests",
                           journeyPlanHeadersFailedState: () =>
-                          _selectedJourneyPlan == "P"?
-                            "Pending Approvals"
-                           : _selectedJourneyPlan == "A"
-                          ?  "Approved Requests" :
-                           _selectedJourneyPlan == "CN" ?
-                               "Cancelled Requests" : "Rejected Requests",
-
-                  ),
+                              _selectedJourneyPlan == "P"
+                                  ? "Pending Approvals"
+                                  : _selectedJourneyPlan == "A"
+                                      ? "Approved Requests"
+                                      : _selectedJourneyPlan == "CN"
+                                          ? "Cancelled Requests"
+                                          : "Rejected Requests",
+                        ),
                         // state.when(
                         //   getDisputeNoteHeaderState: (headers) =>
                         //   _selectedDisputeMode == "P"
@@ -316,7 +320,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                       Text(
                         state.when(
                           getAllJourneyPlanHeadersState: (headers) =>
-                          headers == null ? "0" : headers.length.toString(),
+                              headers == null ? "0" : headers.length.toString(),
                           journeyPlanHeadersFailedState: () => "0",
                         ),
                         style: countHeading(),
@@ -326,7 +330,6 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                 },
               ),
             ),
-
             SizedBox(
               height: 10.h,
             ),
@@ -368,14 +371,19 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                             color: Colors.grey[300],
                                           ),
                                       itemCount: 10),
-                                ) : headers.isEmpty? Center(
-                            child: Text("No Data Available",style: kfontstyle(),),
-                          )
-                              : ListView.separated(
-                                  itemBuilder:
-                                      (context, index) => GestureDetector(
-                                            onTap: () {
-                                              /*  Navigator.push(
+                                )
+                              : headers.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        "No Data Available",
+                                        style: kfontstyle(),
+                                      ),
+                                    )
+                                  : ListView.separated(
+                                      itemBuilder:
+                                          (context, index) => GestureDetector(
+                                                onTap: () {
+                                                  /*  Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
@@ -385,389 +393,380 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                       ),
                                                     ),
                                                   ); */
-                                            },
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  height: 50,
-                                                  width: 10,
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xfffee8e0),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                ),
-                                                SizedBox(
-                                                  width: 10.w,
-                                                ),
-                                                Expanded(
-                                                  child: Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              headers[index]
-                                                                      .jpsCurrentSeq ??
-                                                                  '',
-                                                              style: kfontstyle(
-                                                                fontSize: 12.sp,
-                                                                color: const Color(
-                                                                    0xff2C6B9E),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                            ),
-                                                            Row(
+                                                },
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      height: 50,
+                                                      width: 10,
+                                                      decoration: BoxDecoration(
+                                                          color: const Color(
+                                                              0xfffee8e0),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20)),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10.w,
+                                                    ),
+                                                    Expanded(
+                                                      child: Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Text(
-                                                                  '${headers[index].cusCode} - ',
-                                                                  style: kfontstyle(
-                                                                      fontSize: 12.sp,
-                                                                      color: const Color(
-                                                                        0xff2C6B9E,
-                                                                      ),
-                                                                      fontWeight: FontWeight.w500),
-                                                                ),
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    headers[index]
-                                                                            .cusName ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        color: const Color(
-                                                                            0xff413434)),
+                                                                  headers[index]
+                                                                          .jpsCurrentSeq ??
+                                                                      '',
+                                                                  style:
+                                                                      kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    color: const Color(
+                                                                        0xff2C6B9E),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                            Text(
-                                                              '${headers[index].rotCode} |${headers[index].createdDate}',
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      10.sp,
-                                                                  color: Colors
-                                                                      .grey),
-                                                            ),
-                                                            BlocConsumer<
-                                                                JoureyPlanApprovalBloc,
-                                                                JoureyPlanApprovalState>(
-                                                              listener:
-                                                                  (context,
-                                                                      state) {
-                                                                state.when(
-                                                                  approveJourneyPlanState:
-                                                                      (response) {
-                                                                    if (response !=
-                                                                        null) {
-                                                                      Navigator.pop(
-                                                                          context);
-                                                                      // if (isApproval) {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              const Text('Alert'),
-                                                                          content:
-                                                                              Text(response.status ?? ''),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text('Proceed'),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                      // }
-                                                                    }
-                                                                  },
-                                                                  approveJourneyPlanFailedState:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    showCupertinoDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) =>
-                                                                              CupertinoAlertDialog(
-                                                                        title: const Text(
-                                                                            'Alert'),
-                                                                        content:
-                                                                            const Text("something went wrong, please try again later"),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child:
-                                                                                const Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                  approveJourneyPlanLoadingState:
-                                                                      () {
-                                                                    if (loadingCount ==
-                                                                        0) {
-                                                                      loadingCount =
-                                                                          1;
-                                                                      showCupertinoModalPopup(
-                                                                          context:
-                                                                              context,
-                                                                          barrierDismissible:
-                                                                              false,
-                                                                          builder: (context) =>
-                                                                              SizedBox(
-                                                                                height: MediaQuery.of(context).size.height,
-                                                                                width: MediaQuery.of(context).size.width,
-                                                                                child: const PopScope(
-                                                                                  canPop: true,
-                                                                                  child: CupertinoActivityIndicator(
-                                                                                    animating: true,
-                                                                                    color: Colors.red,
-                                                                                    radius: 30,
-                                                                                  ),
-                                                                                ),
-                                                                              ));
-                                                                    }
-                                                                  },
-                                                                );
-                                                              },
-                                                              builder: (context,
-                                                                  state) {
-                                                                return Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
+                                                                Row(
                                                                   children: [
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Row(
-                                                                        children: [
-                                                                          Radio(
-                                                                            fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] == true) ? Colors.green.shade300
-                                                                                  : Colors.grey;
-                                                                            }),
-                                                                            /* activeColor: isselected == true
-                                                                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                                                                          : Colors.grey, */
-                                                                            value: statuslist[index] == null
-                                                                                ? false
-                                                                                : statuslist[index] == true
-                                                                                    ? true
-                                                                                    : false,
-                                                                            groupValue:
-                                                                                true,
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Do you Want to Approve this product"),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        setState(() {});
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Cancel'),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        statuslist[index] = true;
-                                                                                        loadingCount = 0;
-                                                                                        setState(() {});
-                                                                                        context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
-
-                                                                                        context.read<JoureyPlanApprovalBloc>().add(
-                                                                                              ApproveJourneyPlanEvent(
-                                                                                                approve: JourneyPlanApprovalInModel(
-                                                                                                  jpsId: headers[index].jpsId,
-                                                                                                  userId: headers[index].userID,
-                                                                                                ),
-                                                                                              ),
-                                                                                            );
-
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Proceed'),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            },
+                                                                    Text(
+                                                                      '${headers[index].cusCode} - ',
+                                                                      style: kfontstyle(
+                                                                          fontSize: 12.sp,
+                                                                          color: const Color(
+                                                                            0xff2C6B9E,
                                                                           ),
+                                                                          fontWeight: FontWeight.w500),
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
                                                                           Text(
-                                                                            'Approve',
-                                                                            style:
-                                                                                kfontstyle(),
-                                                                          )
-                                                                        ],
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        headers[index].cusName ??
+                                                                            '',
+                                                                        style: kfontstyle(
+                                                                            fontSize:
+                                                                                12.sp,
+                                                                            color: const Color(0xff413434)),
                                                                       ),
                                                                     ),
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Row(
-                                                                        children: [
-                                                                          Radio(
-                                                                            fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] != null && !statuslist[index]!) ?
-                                                                               Colors.red.shade300 : Colors.grey;
-                                                                            }),
-                                                                            /*  activeColor: isselected == false
+                                                                  ],
+                                                                ),
+                                                                Text(
+                                                                  '${headers[index].rotCode} |${headers[index].createdDate}',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          10.sp,
+                                                                      color: Colors
+                                                                          .grey),
+                                                                ),
+                                                                BlocConsumer<
+                                                                    JoureyPlanApprovalBloc,
+                                                                    JoureyPlanApprovalState>(
+                                                                  listener:
+                                                                      (context,
+                                                                          state) {
+                                                                    state.when(
+                                                                      approveJourneyPlanState:
+                                                                          (response) {
+                                                                        if (response !=
+                                                                            null) {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                          // if (isApproval) {
+                                                                          showCupertinoDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder: (context) =>
+                                                                                CupertinoAlertDialog(
+                                                                              title: const Text('Alert'),
+                                                                              content: Text(response.status ?? ''),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () {
+                                                                                    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                                                                                    Navigator.pop(context);
+                                                                                  },
+                                                                                  child: const Text('Proceed'),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                          // }
+                                                                        }
+                                                                      },
+                                                                      approveJourneyPlanFailedState:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                        showCupertinoDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder: (context) =>
+                                                                              CupertinoAlertDialog(
+                                                                            title:
+                                                                                const Text('Alert'),
+                                                                            content:
+                                                                                const Text("something went wrong, please try again later"),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () {
+                                                                                  context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: const Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                      approveJourneyPlanLoadingState:
+                                                                          () {
+                                                                        if (loadingCount ==
+                                                                            0) {
+                                                                          loadingCount =
+                                                                              1;
+                                                                          showCupertinoModalPopup(
+                                                                              context: context,
+                                                                              barrierDismissible: false,
+                                                                              builder: (context) => SizedBox(
+                                                                                    height: MediaQuery.of(context).size.height,
+                                                                                    width: MediaQuery.of(context).size.width,
+                                                                                    child: const PopScope(
+                                                                                      canPop: true,
+                                                                                      child: CupertinoActivityIndicator(
+                                                                                        animating: true,
+                                                                                        color: Colors.red,
+                                                                                        radius: 30,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ));
+                                                                        }
+                                                                      },
+                                                                    );
+                                                                  },
+                                                                  builder:
+                                                                      (context,
+                                                                          state) {
+                                                                    return Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Transform
+                                                                            .scale(
+                                                                          scale:
+                                                                              0.8,
+                                                                          child:
+                                                                              Row(
+                                                                            children: [
+                                                                              Radio(
+                                                                                fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                  return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                                }),
+                                                                                /* activeColor: isselected == true
                                                                                                                                                                                                                           ? const Color(0xff0075ff)
                                                                                                                                                                                                                           : Colors.grey, */
-                                                                            value: statuslist[index] == null
-                                                                                ? true
-                                                                                : statuslist[index] == true
+                                                                                value: statuslist[index] == null
+                                                                                    ? false
+                                                                                    : statuslist[index] == true
+                                                                                        ? true
+                                                                                        : false,
+                                                                                groupValue: true,
+                                                                                onChanged: (value) {
+                                                                                  showCupertinoDialog(
+                                                                                    context: context,
+                                                                                    builder: (context) => CupertinoAlertDialog(
+                                                                                      title: const Text('Alert'),
+                                                                                      content: const Text("Do you Want to Approve this product"),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            setState(() {});
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: const Text('Cancel'),
+                                                                                        ),
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            statuslist[index] = true;
+                                                                                            loadingCount = 0;
+                                                                                            setState(() {});
+                                                                                            context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+
+                                                                                            context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                  ApproveJourneyPlanEvent(
+                                                                                                    approve: JourneyPlanApprovalInModel(
+                                                                                                      jpsId: headers[index].jpsId,
+                                                                                                      userId: headers[index].userID,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                );
+
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: const Text('Proceed'),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                              Text(
+                                                                                'Approve',
+                                                                                style: kfontstyle(),
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                        Transform
+                                                                            .scale(
+                                                                          scale:
+                                                                              0.8,
+                                                                          child:
+                                                                              Row(
+                                                                            children: [
+                                                                              Radio(
+                                                                                fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                  return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                                }),
+                                                                                /*  activeColor: isselected == false
+                                                                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                                                                          : Colors.grey, */
+                                                                                value: statuslist[index] == null
                                                                                     ? true
-                                                                                    : false,
-                                                                            groupValue:
-                                                                                false,
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Do you Want to Reject this product"),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        setState(() {});
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Cancel'),
+                                                                                    : statuslist[index] == true
+                                                                                        ? true
+                                                                                        : false,
+                                                                                groupValue: false,
+                                                                                onChanged: (value) {
+                                                                                  showCupertinoDialog(
+                                                                                    context: context,
+                                                                                    builder: (context) => CupertinoAlertDialog(
+                                                                                      title: const Text('Alert'),
+                                                                                      content: const Text("Do you Want to Reject this product"),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            setState(() {});
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: const Text('Cancel'),
+                                                                                        ),
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            statuslist[index] = false;
+                                                                                            loadingCount = 0;
+                                                                                            setState(() {});
+                                                                                            context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+
+                                                                                            context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                  RejectaJOurneyPlanEvent(
+                                                                                                    reject: JourneyPlanApprovalInModel(
+                                                                                                      jpsId: headers[index].jpsId,
+                                                                                                      userId: headers[index].userID,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                );
+
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: const Text('Proceed'),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        statuslist[index] = false;
-                                                                                        loadingCount = 0;
-                                                                                        setState(() {});
-                                                                                        context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                  );
 
-                                                                                        context.read<JoureyPlanApprovalBloc>().add(
-                                                                                              RejectaJOurneyPlanEvent(
-                                                                                                reject: JourneyPlanApprovalInModel(
-                                                                                                  jpsId: headers[index].jpsId,
-                                                                                                  userId: headers[index].userID,
-                                                                                                ),
-                                                                                              ),
-                                                                                            );
-
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: const Text('Proceed'),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-
-                                                                              /* context
+                                                                                  /* context
                                                                                                                                                                                             .read<
                                                                                                                                                                                                 AapprovalOrRejectRadioCubit>()
                                                                                                                                                                                             .changeApprovalStatus(
                                                                                                                                                                                                 statuslist[index]); */
-                                                                            },
+                                                                                },
+                                                                              ),
+                                                                              Text(
+                                                                                'Reject',
+                                                                                style: kfontstyle(),
+                                                                              )
+                                                                            ],
                                                                           ),
-                                                                          Text(
-                                                                            'Reject',
-                                                                            style:
-                                                                                kfontstyle(),
-                                                                          )
-                                                                        ],
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                );
-                                                              },
+                                                                        )
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ],
                                                             ),
-                                                          ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        color: headers[index]
+                                                                    .status!
+                                                                    .isEmpty ||
+                                                                headers[index]
+                                                                        .status !=
+                                                                    'Approved'
+                                                            ? headers[index]
+                                                                        .status ==
+                                                                    'Rejected'
+                                                                ? Colors
+                                                                    .red[300]
+                                                                : const Color(
+                                                                    0xfff7f4e2)
+                                                            : const Color(
+                                                                0xffe3f7e2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 8,
+                                                                vertical: 5),
+                                                        child: Text(
+                                                          headers[index]
+                                                                  .status ??
+                                                              '',
+                                                          style: kfontstyle(
+                                                              fontSize: 8.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: headers[index]
+                                                                          .status ==
+                                                                      'Rejected'
+                                                                  ? Colors
+                                                                      .white54
+                                                                  : Colors
+                                                                      .black54),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    color: headers[index]
-                                                                .status!
-                                                                .isEmpty ||
-                                                            headers[index]
-                                                                    .status !=
-                                                                'Approved'
-                                                        ? headers[index]
-                                                                    .status ==
-                                                                'Rejected'
-                                                            ? Colors.red[300]
-                                                            : const Color(
-                                                                0xfff7f4e2)
-                                                        : const Color(
-                                                            0xffe3f7e2),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      20,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 5),
-                                                    child: Text(
-                                                      headers[index].status ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                          fontSize: 8.sp,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: headers[index]
-                                                                      .status ==
-                                                                  'Rejected'
-                                                              ? Colors.white54
-                                                              : Colors.black54),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
                                           ),
-                                  separatorBuilder: (context, index) => Divider(
-                                        color: Colors.grey[300],
-                                      ),
-                                  itemCount: headers.length),
+                                      itemCount: headers.length),
                       journeyPlanHeadersFailedState: () => Center(
                         child: Text(
                           'No Data Available',

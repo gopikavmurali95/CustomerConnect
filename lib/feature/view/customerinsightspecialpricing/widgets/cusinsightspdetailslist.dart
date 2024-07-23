@@ -32,7 +32,7 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                       child: Row(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width/2,
+                            width: MediaQuery.of(context).size.width / 2,
                             child: Flexible(
                               flex: 2,
                               fit: FlexFit.tight,
@@ -62,10 +62,11 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10.h,),
+                          SizedBox(
+                            width: 10.h,
+                          ),
                           Column(
                             children: [
-
                               Text(spPrice[index].uom ?? ''),
                               SizedBox(
                                 height: 5.h,
@@ -73,7 +74,9 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                               Text(spPrice[index].uom ?? ''),
                             ],
                           ),
-                          SizedBox(width: 5.h,),
+                          SizedBox(
+                            width: 5.h,
+                          ),
                           SizedBox(
                             width: 50,
                             child: Column(
@@ -86,7 +89,9 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(width: 10.h,),
+                          SizedBox(
+                            width: 10.h,
+                          ),
                           SizedBox(
                             child: Column(
                               children: [

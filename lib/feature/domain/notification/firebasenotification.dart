@@ -7,11 +7,12 @@ import 'package:flutter/material.dart';
 import 'dart:developer';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class PushNotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
   static BuildContext? _context;
 
-  /// when app is in the foreground
   static Future<void> onTapNotification(NotificationResponse? response) async {
     if (PushNotificationService._context == null || response?.payload == null) {
       return;
@@ -36,15 +37,30 @@ class PushNotificationService {
 
       if (message.notification != null) {
         log('Message also contained a notification: ${message.notification?.title}');
+
         await shownotification(message);
       }
     });
 
-    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      // _navigateToNotificationScreen(message);
+    });
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-    // Get the token
     await getToken();
   }
+
+  /*  void _navigateToNotificationScreen(RemoteMessage message) async {
+    log('In Navigation');
+    LoginUserModel? user = await getuserdata();
+    navigatorKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (context) => NotificationScreen(
+          user: user!,
+        ),
+      ),
+    );
+  } */
 
   Future<String?> getToken() async {
     String? token = await _fcm.getToken();
@@ -88,7 +104,7 @@ class PushNotificationService {
       android: android,
       iOS: const DarwinNotificationDetails(),
     );
-
+    groupNotifications(flp);
     int id = getUniqueIntegerFromDateTime();
     log(id.toString());
     await flp.show(
@@ -97,18 +113,17 @@ class PushNotificationService {
       message.notification?.body,
       platform,
     );
-    groupNotifications(flp);
   }
 }
 
-Future<void> onDidReceiveNotificationResponse(
+/* Future<void> onDidReceiveNotificationResponse(
     NotificationResponse? response) async {
   LoginUserModel? user = await getuserdata();
   log('in navigation ');
   await Navigator.of(PushNotificationService._context!).push(MaterialPageRoute(
     builder: (context) => NotificationScreen(user: user!),
   ));
-}
+} */
 
 void groupNotifications(FlutterLocalNotificationsPlugin flp) async {
   List<ActiveNotification>? activeNotifications = await flp
@@ -175,9 +190,12 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp();
-
-  log("Handling a background message: ${message.messageId}");
+  Firebase.initializeApp();
+  log('Handling a background message ${message.messageId}');
+  PushNotificationService().shownotification(message);
 }
+
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+late AndroidNotificationChannel channel;
+
+bool isFlutterLocalNotificationsInitialized = false;

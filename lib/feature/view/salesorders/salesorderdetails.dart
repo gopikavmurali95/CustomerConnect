@@ -92,10 +92,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.salesorders.orderId ?? '',
-                            style: blueTextStyle()
-                          ),
+                          Text(widget.salesorders.orderId ?? '',
+                              style: blueTextStyle()),
                           Row(
                             children: [
                               Text(
@@ -113,11 +111,10 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 ),
                               ),
                               Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  widget.salesorders.cusName ?? '',
-                                  style: subTitleTextStyle())
-                              ),
+                                  child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      widget.salesorders.cusName ?? '',
+                                      style: subTitleTextStyle())),
                             ],
                           ),
                           Row(
@@ -269,18 +266,27 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Items',style: boxHeading(),),
+                  Text(
+                    'Items',
+                    style: boxHeading(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
                         width: 20.h,
                       ),
-                      Text('UOM',style: boxHeading(),),
+                      Text(
+                        'UOM',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 20.h,
                       ),
-                       Text('Qty',style: boxHeading(),),
+                      Text(
+                        'Qty',
+                        style: boxHeading(),
+                      ),
                     ],
                   ),
                 ],
@@ -304,14 +310,9 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Total Amount',
-                style: bottomTextStyle()
-              ),
-              Text(
-                widget.salesorders.grandTotal ?? '',
-                style: bottomTotalAmountStyle()
-              )
+              Text('Total Amount', style: bottomTextStyle()),
+              Text(widget.salesorders.grandTotal ?? '',
+                  style: bottomTotalAmountStyle())
             ],
           ),
         ),

@@ -17,6 +17,7 @@ import 'package:customer_connect/feature/view/pricechangeapproval/pricechangehea
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
+import 'package:customer_connect/feature/view/settlementapprovaldesigns/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -1484,7 +1485,7 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       width: 10.w,
                     ),
                     Expanded(
@@ -1496,10 +1497,10 @@ class ApprovalScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SettlementApprovalHeader(
-                                user: user,
-                              ),
-                            ),
+                                builder: (context) =>
+                                    SettlementApprovalHeaderScreen(
+                                      user: user,
+                                    )),
                           );
                         },
                         child: Container(
@@ -1534,7 +1535,7 @@ class ApprovalScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                  //  overflow: TextOverflow.ellipsis,
+                                    //  overflow: TextOverflow.ellipsis,
                                     "Settlement Approval",
                                     style: headTextStyle(),
                                   ),
@@ -1578,13 +1579,11 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                     // const Expanded(child: SizedBox())
-                    
                   ],
                 ),
               ),
-              
             ],
           ),
         ),

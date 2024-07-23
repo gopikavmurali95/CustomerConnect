@@ -215,22 +215,34 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Items',style: boxHeading(),),
+                  Text(
+                    'Items',
+                    style: boxHeading(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
                         width: 30.h,
                       ),
-                      Text('Uom',style: boxHeading(),),
+                      Text(
+                        'Uom',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 15.h,
                       ),
-                       Text('Std Price',style: boxHeading(),),
+                      Text(
+                        'Std Price',
+                        style: boxHeading(),
+                      ),
                       SizedBox(
                         width: 15.h,
                       ),
-                       Text('Spcl Price',style: boxHeading(),),
+                      Text(
+                        'Spcl Price',
+                        style: boxHeading(),
+                      ),
                     ],
                   ),
                 ],

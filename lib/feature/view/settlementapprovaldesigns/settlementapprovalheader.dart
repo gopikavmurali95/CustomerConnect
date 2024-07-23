@@ -8,7 +8,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
-import 'package:customer_connect/feature/view/settlementapproval/settlementapprovaldetail.dart';
+import 'package:customer_connect/feature/view/settlementapprovaldesigns/settlementapprovaldetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -272,21 +272,26 @@ class _PriceChangeHeaderState extends State<SettlementApprovalHeader> {
                                                   Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) => SettlementApprovalDetails(
-                                                            priceChangeApprovel: pChange[index],
-                                                             user: widget.user,
-                                                              currentMode: '',)
-                                                             
-                                                              // PriceChangeDetail(
-                                                              //   priceChangeApprovel:
-                                                              //       pChange[
-                                                              //           index],
-                                                              //   user:
-                                                              //       widget.user,
-                                                              //   currentMode:
-                                                              //       _selectedPriceChangeMode,
-                                                              // )
-                                                              ));
+                                                          builder: (context) =>
+                                                              SettlementApprovalDetails(
+                                                                priceChangeApprovel:
+                                                                    pChange[
+                                                                        index],
+                                                                user:
+                                                                    widget.user,
+                                                                currentMode: '',
+                                                              )
+
+                                                          // PriceChangeDetail(
+                                                          //   priceChangeApprovel:
+                                                          //       pChange[
+                                                          //           index],
+                                                          //   user:
+                                                          //       widget.user,
+                                                          //   currentMode:
+                                                          //       _selectedPriceChangeMode,
+                                                          // )
+                                                          ));
                                                   log(_selectedPriceChangeMode);
                                                 },
                                                 child: Row(

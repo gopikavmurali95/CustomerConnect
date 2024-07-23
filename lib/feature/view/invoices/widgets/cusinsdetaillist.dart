@@ -47,15 +47,18 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                         children: [
                                           SizedBox(
                                             // color: Colors.teal,
-                                            width: MediaQuery.of(context).size.width / 1.86,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                1.86,
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  details[index].prdCode ?? '',
-                                                  style: loadTextStyle()
-                                                ),
+                                                    details[index].prdCode ??
+                                                        '',
+                                                    style: loadTextStyle()),
                                                 Text(
                                                     details[index].prdName ??
                                                         '',
@@ -225,30 +228,21 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text(
-                                      'Type',
-                                      style: boxHeading()
-                                    ),
+                                    child: Text('Type', style: boxHeading()),
                                   ),
                                   Flexible(
                                     flex: 1,
-                                    fit: FlexFit
-                                    .tight,
-                                    child: Text(
-                                      'Value',
-                                      style: boxHeading()
-                                    ),
+                                    fit: FlexFit.tight,
+                                    child: Text('Value', style: boxHeading()),
                                   ),
                                   // SizedBox(
                                   //   width: 20.h,
                                   // ),
                                   Flexible(
-                                    flex:1,
+                                    flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text(
-                                      'Discount',
-                                      style:boxHeading()
-                                    ),
+                                    child:
+                                        Text('Discount', style: boxHeading()),
                                   ),
                                   SizedBox(
                                     width: 10.h,
@@ -256,10 +250,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text(
-                                      'Vat',
-                                      style:boxHeading()
-                                    ),
+                                    child: Text('Vat', style: boxHeading()),
                                   ),
                                   // SizedBox(
                                   //   width: 20.h,
@@ -267,10 +258,8 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     fit: FlexFit.tight,
                                     flex: 0,
-                                    child: Text(
-                                      'Subtotal',
-                                      style: boxHeading()
-                                    ),
+                                    child:
+                                        Text('Subtotal', style: boxHeading()),
                                   ),
                                 ],
                               ),
@@ -289,13 +278,17 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                         Flexible(
                                             flex: 1,
                                             fit: FlexFit.tight,
-                                            child:
-                                                Text(types[index].type ?? '',style: subTitleTextStyle(),)),
+                                            child: Text(
+                                              types[index].type ?? '',
+                                              style: subTitleTextStyle(),
+                                            )),
                                         Flexible(
                                             flex: 1,
                                             fit: FlexFit.tight,
-                                            child:
-                                                Text(types[index].value ?? '',style: subTitleTextStyle(),)),
+                                            child: Text(
+                                              types[index].value ?? '',
+                                              style: subTitleTextStyle(),
+                                            )),
                                         /*  SizedBox(
                                           width: 20.h,
                                         ), */
@@ -303,15 +296,19 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             flex: 1,
                                             fit: FlexFit.tight,
                                             child: Text(
-                                                types[index].discount ?? '',style: subTitleTextStyle(),)),
+                                              types[index].discount ?? '',
+                                              style: subTitleTextStyle(),
+                                            )),
                                         /*  SizedBox(
                                           width: 20.h,
                                         ), */
                                         Flexible(
                                             flex: 1,
                                             fit: FlexFit.tight,
-                                            child:
-                                                Text(types[index].vat ?? '',style: subTitleTextStyle(),)),
+                                            child: Text(
+                                              types[index].vat ?? '',
+                                              style: subTitleTextStyle(),
+                                            )),
                                         SizedBox(
                                           width: 5.h,
                                         ),
@@ -319,7 +316,9 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             flex: 0,
                                             fit: FlexFit.tight,
                                             child: Text(
-                                                types[index].subTotal ?? '',style: subTitleTextStyle(),)),
+                                              types[index].subTotal ?? '',
+                                              style: subTitleTextStyle(),
+                                            )),
                                       ],
                                     ),
                                   ),

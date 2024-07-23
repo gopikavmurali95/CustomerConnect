@@ -34,7 +34,7 @@ class _TotalOrdersState extends State<TotalOrders> {
             area: '',
             customer: '',
             fromDate:
-                '${DateTime.now().day - 10}-${DateTime.now().month}-${DateTime.now().year}',
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             outlet: '',
             route: '',
             subArea: '',

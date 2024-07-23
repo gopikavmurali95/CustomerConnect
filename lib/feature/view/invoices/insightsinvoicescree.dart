@@ -135,8 +135,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                     child: Row(
                       children: [
                         Container(

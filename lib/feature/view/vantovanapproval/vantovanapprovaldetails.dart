@@ -597,8 +597,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                             return (statuslist[
                                                                         index] ==
                                                                     true)
-                                                                ? const Color(
-                                                                    0xff0075ff)
+                                                                ? Colors.green
+                                                                    .shade300
                                                                 : Colors.grey;
                                                           }),
                                                           value: statuslist[
@@ -657,8 +657,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                     null &&
                                                                 !statuslist[
                                                                     index]!)
-                                                            ? const Color(
-                                                                0xff0075ff)
+                                                            ? Colors
+                                                                .red.shade300
                                                             : Colors.grey;
                                                       }),
                                                       value: statuslist[

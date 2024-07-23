@@ -20,33 +20,33 @@ class LoadReqHeaderBloc extends Bloc<LoadReqHeaderEvent, LoadReqHeaderState> {
     List<LoadReqHeaderModel> searchlist = [];
     on<LoadreqSuccessEvent>((event, emit) async {
       Either<MainFailures, List<LoadReqHeaderModel>> loadreqlist =
-          await loadReqstHeaderRepo.loadreqHeaderList(event.userId,event.mode);
-      emit(loadreqlist.fold((l) => const LoadReqheadFailedState(),
-          (r) {
-            searchlist =  r
-              .where((element) =>
-          element.rotID!.
-          toLowerCase().
-          toUpperCase().
-          contains(event.searchQuery.toUpperCase()) ||
-              element.lrhNumber!.
-              toLowerCase().
-              toUpperCase().
-              contains(event.searchQuery.toUpperCase())||
-
-              element.userID!.
-          toLowerCase().
-          toUpperCase().
-          contains(event.searchQuery.toUpperCase())||
-              element.usrName!.
-              toLowerCase().
-              toUpperCase().
-              contains(event.searchQuery.toUpperCase())||
-              element.rotCode!
-              .toLowerCase().
-              toUpperCase().
-              contains(event.searchQuery.toUpperCase())).toList();
-          return  LoadReqheadSuccessState(loadlist: event.searchQuery.isEmpty ? r : searchlist);
+          await loadReqstHeaderRepo.loadreqHeaderList(event.userId, event.mode);
+      emit(loadreqlist.fold((l) => const LoadReqheadFailedState(), (r) {
+        searchlist = r
+            .where((element) =>
+                element.rotID!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.lrhNumber!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.userID!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.usrName!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.rotCode!
+                    .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()))
+            .toList();
+        return LoadReqheadSuccessState(
+            loadlist: event.searchQuery.isEmpty ? r : searchlist);
       }));
     });
     on<LoadreqClearEvent>((event, emit) {

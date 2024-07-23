@@ -138,7 +138,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
                                       child: Container(
-                                        height: 40.h,
+                                          height: 40.h,
                                           decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
