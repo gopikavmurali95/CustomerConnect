@@ -125,3 +125,7 @@ const mustSellHeaderurl = 'MustSellApproval/MustSellApprovalHeader';
 const mustsellDetailUrl = 'MustSellApproval/MustSellApprovalDetail';
 const mustSellApproveUrl = 'MustSellApproval/PostMustSellApproval';
 const settlementApprovalHeaderUrl = 'SettlementApproval/SettlementApprovalHeader';
+const voidTransactionApprovalHeaderUrl =
+    'VoidTransApproval/VoidTransApprovalHeader';
+const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
+const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';

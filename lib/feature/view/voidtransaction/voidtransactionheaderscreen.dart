@@ -1,19 +1,57 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+// import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
+import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
 import 'package:customer_connect/feature/view/voidtransaction/widgets/vtheaderlistwidget.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class VoidTranscactioHeaderScreen extends StatefulWidget {
-  const VoidTranscactioHeaderScreen({super.key});
+  final LoginUserModel user;
+  const VoidTranscactioHeaderScreen({super.key, required this.user});
 
   @override
   State<VoidTranscactioHeaderScreen> createState() =>
       _VoidTranscactioHeaderScreenState();
 }
 
+List<ApprovalStatusFilterModel> ddfilterVoidTransaction = [
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
+  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
+  ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
+];
+TextEditingController _voidTranHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
+String selectedVoidTransactionMode = 'P';
+
 class _VoidTranscactioHeaderScreenState
     extends State<VoidTranscactioHeaderScreen> {
+  @override
+  void initState() {
+    selectedVoidTransactionMode = 'P';
+    context
+        .read<VoidTransactionHeaderBloc>()
+        .add(const ClearVoidTransactionHeader());
+    context.read<VoidTransactionHeaderBloc>().add(
+        const GetVoidTransactionHeaderEvent(statusValue: "P", searchQuery: ''));
+    voidTransactionJsonstriongList.clear();
+    context.read<VoidTransactionSelectionCubit>().selectedHeadersList([]);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +65,6 @@ class _VoidTranscactioHeaderScreenState
             Icons.arrow_back_ios_rounded,
           ),
         ),
-        // leading: SizedBox(
-        //   height: 05,
-        //   width: 04,
-        //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
-        // ),
         title: Text(
           "Void Transaction Approval",
           style: appHeading(),
@@ -54,7 +87,7 @@ class _VoidTranscactioHeaderScreenState
             height: 30.h,
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
-              // controller: _mustSellHeaderSearchCtrl,
+              controller: _voidTranHeaderSearchCtrl,
               style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
               decoration: InputDecoration(
                 isDense: true,
@@ -65,16 +98,17 @@ class _VoidTranscactioHeaderScreenState
                     Expanded(
                       child: IconButton(
                           onPressed: () {
-                            /*  if (_mustSellHeaderSearchCtrl.text.isNotEmpty) {
-                                _mustSellHeaderSearchCtrl.clear();
-                                context
-                                    .read<MustSellHeaderBloc>()
-                                    .add(const ClearMustSellHeadersEvent());
-                                context.read<MustSellHeaderBloc>().add(
-                                    GetMustSellHeadersEvent(
-                                        mode: selectedMustSellMode,
-                                        searchQuery: ""));
-                              } */
+                            if (_voidTranHeaderSearchCtrl.text.isNotEmpty) {
+                              _voidTranHeaderSearchCtrl.clear();
+
+                              context
+                                  .read<VoidTransactionHeaderBloc>()
+                                  .add(const ClearVoidTransactionHeader());
+                              context.read<VoidTransactionHeaderBloc>().add(
+                                  GetVoidTransactionHeaderEvent(
+                                      statusValue: selectedVoidTransactionMode,
+                                      searchQuery: ''));
+                            }
                           },
                           icon: Icon(
                             Icons.clear,
@@ -109,15 +143,15 @@ class _VoidTranscactioHeaderScreenState
                 ),
               ),
               onChanged: (value) {
-                /*  debounce = Timer(
-                      const Duration(
-                        milliseconds: 500,
-                      ), () async {
-                    context.read<MustSellHeaderBloc>().add(
-                        GetMustSellHeadersEvent(
-                            mode: selectedMustSellMode,
-                            searchQuery: value.trim()));
-                  }); */
+                debounce = Timer(
+                    const Duration(
+                      milliseconds: 500,
+                    ), () async {
+                  context.read<VoidTransactionHeaderBloc>().add(
+                      GetVoidTransactionHeaderEvent(
+                          statusValue: selectedVoidTransactionMode,
+                          searchQuery: value.trim()));
+                });
               },
             ),
           ),
@@ -136,8 +170,6 @@ class _VoidTranscactioHeaderScreenState
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
-                hintText: "All Transactions",
-                hintStyle: kfontstyle(fontSize: 10.sp, color: Colors.black87),
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
@@ -156,30 +188,25 @@ class _VoidTranscactioHeaderScreenState
                   borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
               ),
-              /* items: ddfilterMustSell
-                    .map(
-                      (e) => DropdownMenuItem(
-                        value: e.mode,
-                        child: Text(e.statusName),
-                      ),
-                    )
-                    .toList(), */
-              items: <String>['All Transactions', 'Option 2', 'Option 3']
-                  .map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              items: ddfilterVoidTransaction
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e.mode,
+                      child: Text(e.statusName),
+                    ),
+                  )
+                  .toList(),
+
               onChanged: (value) {
-                /* selectedMustSellMode = value!;
-                  context
-                      .read<MustSellHeaderBloc>()
-                      .add(const ClearMustSellHeadersEvent());
-                  context.read<MustSellHeaderBloc>().add(
-                      GetMustSellHeadersEvent(
-                          mode: value,
-                          searchQuery: _mustSellHeaderSearchCtrl.text)); */
+                selectedVoidTransactionMode = value!;
+                context
+                    .read<VoidTransactionHeaderBloc>()
+                    .add(const ClearVoidTransactionHeader());
+                context.read<VoidTransactionHeaderBloc>().add(
+                    GetVoidTransactionHeaderEvent(
+                        statusValue: value,
+                        searchQuery: _voidTranHeaderSearchCtrl.text));
+                setState(() {});
               },
             ),
           ),
@@ -196,21 +223,18 @@ class _VoidTranscactioHeaderScreenState
                 "Pending Approvals",
                 style: countHeading(),
               ),
-              /* BlocBuilder<MustSellHeaderBloc, MustSellHeaderState>(
-                  builder: (context, state) {
-                    return Text(
-                      state.when(
-                        getMustsellHeadersState: (headers) =>
-                            headers == null ? "0" : headers.length.toString(),
-                        mustSellHeadersFailedState: () => "0",
-                      ),
-                      style: countHeading(),
-                    );
-                  },
-                ) */
-              Text(
-                '11',
-                style: countHeading(),
+              BlocBuilder<VoidTransactionHeaderBloc,
+                  VoidTransactionHeaderState>(
+                builder: (context, state) {
+                  return Text(
+                    state.when(
+                      getvoidTransactionHeaderState: (headers) =>
+                          headers == null ? "0" : headers.length.toString(),
+                      voidTransactionHeaderFailure: () => "0",
+                    ),
+                    style: countHeading(),
+                  );
+                },
               )
             ],
           ),
@@ -218,66 +242,394 @@ class _VoidTranscactioHeaderScreenState
         SizedBox(
           height: 10.h,
         ),
-        const Expanded(
+        Expanded(
             child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: VoidTransactionHeaderListWidget(),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: BlocBuilder<VoidTransactionHeaderBloc,
+              VoidTransactionHeaderState>(builder: (context, state) {
+            return state.when(
+              getvoidTransactionHeaderState: (headers) => headers == null
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => ShimmerContainers(
+                              height: 60.h, width: double.infinity),
+                          separatorBuilder: (context, index) => Divider(
+                                color: Colors.grey[300],
+                              ),
+                          itemCount: 10),
+                    )
+                  : headers.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No Data Found',
+                            style: kfontstyle(),
+                          ),
+                        )
+                      : ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: headers.length,
+                          itemBuilder: (context, index) => Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xfffee8e0),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                  ),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Expanded(
+                                      child: Row(
+                                    children: [
+                                      Expanded(
+                                          child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            headers[index].vtaId ?? '',
+                                            style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff2C6B9E),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  '${headers[index].rotCode} - ${headers[index].rotName}',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  headers[index].type ?? '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            headers[index].createdDate ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ))
+                                    ],
+                                  )),
+                                  /* headers[index].type != 'Pending'
+                                ? const SizedBox.shrink()
+                                : */
+                                  IntrinsicHeight(
+                                    child: Row(
+                                      children: [
+                                        VerticalDivider(
+                                          color: Colors.grey[300],
+                                          thickness: 1,
+                                        ),
+                                        BlocBuilder<
+                                            VoidTransactionSelectionCubit,
+                                            VoidTransactionSelectionState>(
+                                          builder: (context, state) {
+                                            return state.when(
+                                                voidTransactionSelectedState:
+                                                    (selected) => Checkbox(
+                                                          value: voidTransactionJsonstriongList
+                                                              .where((element) =>
+                                                                  element
+                                                                      .vtaId ==
+                                                                  headers[index]
+                                                                      .vtaId)
+                                                              .isNotEmpty,
+                                                          side: BorderSide(
+                                                              color: Colors
+                                                                  .grey[500]!),
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          4)),
+                                                          activeColor: Colors
+                                                              .green.shade300,
+                                                          onChanged:
+                                                              (bool? value) {
+                                                            if (voidTransactionJsonstriongList
+                                                                .where((element) =>
+                                                                    element
+                                                                        .vtaId ==
+                                                                    headers[index]
+                                                                        .vtaId)
+                                                                .isEmpty) {
+                                                              voidTransactionJsonstriongList.add(
+                                                                  VoidTransactionJsonModel(
+                                                                      vtaId: headers[
+                                                                              index]
+                                                                          .vtaId,
+                                                                      status:
+                                                                          ''));
+                                                            } else {
+                                                              voidTransactionJsonstriongList
+                                                                  .removeWhere((element) =>
+                                                                      element
+                                                                          .vtaId ==
+                                                                      headers[index]
+                                                                          .vtaId);
+                                                            }
+                                                            setState(() {
+                                                              log(jsonEncode(
+                                                                  voidTransactionJsonstriongList));
+                                                            });
+                                                          },
+                                                        ));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+              voidTransactionHeaderFailure: () => Center(
+                child: Text(
+                  'No Data Available',
+                  style: kfontstyle(),
+                ),
+              ),
+            );
+          }),
         ))
       ]),
-      bottomNavigationBar: SizedBox(
-        height: 42.h,
-        width: double.infinity,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
+      bottomNavigationBar: voidTransactionJsonstriongList.isEmpty ||
+              selectedVoidTransactionMode != 'P'
+          ? null
+          : SizedBox(
+              height: 42.h,
+              width: double.infinity,
+              child: Column(
                 children: [
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Colors.red.shade300,
-                      onPressed: () {},
-                      child: Text(
-                        'Reject Selected',
-                        style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Colors.green.shade300,
-                      onPressed: () {},
-                      child: Text(
-                        'Approve Selected',
-                        style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: Colors.red.shade300,
+                            onPressed: () {},
+                            child: Text(
+                              'Reject Selected',
+                              style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: BlocConsumer<VoidTransactionRejectionBloc,
+                              VoidTransactionRejectionState>(
+                            listener: (context, state) {
+                              state.when(
+                                voidTranctionRejectingState: (approve) {
+                                  if (approve != null) {
+                                    _voidTranHeaderSearchCtrl.clear();
+                                    context
+                                        .read<VoidTransactionHeaderBloc>()
+                                        .add(
+                                            const ClearVoidTransactionHeader());
+                                    context
+                                        .read<VoidTransactionHeaderBloc>()
+                                        .add(GetVoidTransactionHeaderEvent(
+                                            statusValue:
+                                                selectedVoidTransactionMode,
+                                            searchQuery: ''));
+                                    context
+                                        .read<VoidTransactionSelectionCubit>()
+                                        .selectedHeadersList([]);
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: Text(approve.status ?? ''),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                voidTransactionRejectionFailed: () {
+                                  Navigator.pop(context);
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: const Text('Alert'),
+                                      content: const Text(
+                                          "Something Went Wrong, please Try again later"),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                /* voidTransactionLoadingState: () {
+                                  showCupertinoModalPopup(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => SizedBox(
+                                            height: MediaQuery.of(context)
+                                                .size
+                                                .height,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            child: const PopScope(
+                                              canPop: true,
+                                              child: CupertinoActivityIndicator(
+                                                animating: true,
+                                                color: Colors.red,
+                                                radius: 30,
+                                              ),
+                                            ),
+                                          ));
+                                }, */
+                              );
+                            },
+                            builder: (context, state) {
+                              return MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: selectedVoidTransactionMode == 'P'
+                                    ? Colors.green.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  if (selectedVoidTransactionMode == 'P') {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Do you Want to Proceed"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<
+                                                      VoidTransactionApprovalBloc>()
+                                                  .add(
+                                                      const VoidTransactionLoadingEvent());
+                                              for (var item
+                                                  in voidTransactionJsonstriongList) {
+                                                item.status = 'A';
+                                              }
+                                              /* context
+                                                  .read<
+                                                      VoidTransactionApprovalBloc>()
+                                                  .add(VoidTransactionApprovingEvent(
+                                                      approving:
+                                                          VoidTransacrtionApprovalInModel(
+                                                              jsonString:
+                                                                  voidTransactionJsonstriongList))); */
+                                              context
+                                                  .read<
+                                                      VoidTransactionRejectionBloc>()
+                                                  .add(VoidTransactionRejectingEvent(
+                                                      rejecting:
+                                                          VoidTransactionJsonModel(
+                                                              status: '',
+                                                              trnNumber: '',
+                                                              type: '',
+                                                              udpId: '',
+                                                              userId: widget
+                                                                  .user.usrId,
+                                                              vtaId: '23')));
+                                            },
+                                            child: const Text('Proceed'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  'Approve Selected',
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

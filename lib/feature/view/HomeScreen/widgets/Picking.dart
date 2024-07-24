@@ -22,486 +22,470 @@ class PickingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0),
       child:
           BlocBuilder<PickingAndLoadingCountBloc, PickingAndLoadingCountState>(
         builder: (context, state) {
           return state.when(
             plCountSuccessState: (count) {
               if (count != null) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery.of(context).size.height / 3.5,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    gradient: const LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [Color(0xffB3DAF7), Color(0xffD9EDFB)],
-                    ),
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Picking", style: boxHeading()),
-                              Text(
-                                count.pickingTotal ?? '',
-                                style: countHeading(),
-                              )
-                            ],
-                          ),
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 0, vertical: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Picking", style: countHeading()),
+                            Text(
+                              count.pickingTotal ?? '',
+                              style: countHeading(),
+                            )
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 0.0, right: 0, top: 3),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            PickHeaderNotStarted(user: user),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.pickingNotStarted ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                  "(${count.pickingNotStartedRoute} Routes)",
-                                                  style: subTextStyle()),
-                                              /* Text(
-                                                  count.pickingNotStartedRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()), */
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/pending.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              //Icon(Icons.note_add_outlined,size: 12,),
-                                              Text("Not Started",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 0.0, right: 0, top: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          PickHeaderNotStarted(user: user),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PickHeaderOngoing(
-                                          user: user,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110,
-                                    decoration: BoxDecoration(
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110.w,
+                                  decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.pickingOngoing ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text("(", style: subTextStyle()),
-                                              Text(
-                                                  count.pickingOngoingRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/ongoing.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              Text("Ongoing",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            PickHeaderCompleted(
-                                          user: user,
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.pickingNotStarted ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                "(${count.pickingNotStartedRoute} Routes)",
+                                                style: subTextStyle()),
+                                            /* Text(
+                                                count.pickingNotStartedRoute ??
+                                                    '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()), */
+                                          ],
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.pickingCompleted ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text("(", style: subTextStyle()),
-                                              Text(
-                                                  count.pickingCompletedRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/completed.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              //Icon(Icons.note_add_outlined,size: 12,),
-                                              Text("Completed",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Load in",
-                                style: boxHeading(),
-                              ),
-                              Text(
-                                count.loadInTotal ?? '',
-                                style: countHeading(),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 0.0, right: 0, top: 3),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoadPending(
-                                          user: user,
+                                        SizedBox(
+                                          height: 2.h,
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.loadInPending ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text("(", style: subTextStyle()),
-                                              Text(
-                                                  count.loadInPendingRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/pending.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              //Icon(Icons.note_add_outlined,size: 12,),
-                                              Text("Pending",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/pending.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            //Icon(Icons.note_add_outlined,size: 12,),
+                                            Text("Not Started",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoadCompleted(
-                                          user: user,
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PickHeaderOngoing(
+                                        user: user,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.pickingOngoing ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text("(", style: subTextStyle()),
+                                            Text(
+                                                count.pickingOngoingRoute ?? '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()),
+                                          ],
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.loadInCompleted ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text("(", style: subTextStyle()),
-                                              Text(
-                                                  count.loadInCompletedRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/completed.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              //Icon(Icons.note_add_outlined,size: 12,),
-                                              Text("Completed",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Flexible(
-                                flex: 3,
-                                fit: FlexFit.tight,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoadRejected(
-                                          user: user,
+                                        SizedBox(
+                                          height: 2.h,
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    // height: 70,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 12, vertical: 8),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(count.loadInCancelled ?? '',
-                                              style: countHeading()),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                  '(${count.loadInCancelledRoute}) Routes',
-                                                  style: subTextStyle()),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 2.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                "assets/svg/rejected.svg",
-                                                height: 8.h,
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              //Icon(Icons.note_add_outlined,size: 12,),
-                                              Text("Rejected",
-                                                  style: statusTextStyle()),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/ongoing.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            Text("Ongoing",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PickHeaderCompleted(
+                                        user: user,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.pickingCompleted ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text("(", style: subTextStyle()),
+                                            Text(
+                                                count.pickingCompletedRoute ??
+                                                    '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/completed.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            //Icon(Icons.note_add_outlined,size: 12,),
+                                            Text("Completed",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(
-                          height: 5.h,
-                        )
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 4, vertical: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Load in",
+                              style: countHeading(),
+                            ),
+                            Text(
+                              count.loadInTotal ?? '',
+                              style: countHeading(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 0.0, right: 0, top: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoadPending(
+                                        user: user,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.loadInPending ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text("(", style: subTextStyle()),
+                                            Text(count.loadInPendingRoute ?? '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/pending.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            //Icon(Icons.note_add_outlined,size: 12,),
+                                            Text("Pending",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoadCompleted(
+                                        user: user,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.loadInCompleted ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text("(", style: subTextStyle()),
+                                            Text(
+                                                count.loadInCompletedRoute ??
+                                                    '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/completed.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            //Icon(Icons.note_add_outlined,size: 12,),
+                                            Text("Completed",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoadRejected(
+                                        user: user,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  // height: 70,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 8),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(count.loadInCancelled ?? '',
+                                            style: countHeading()),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                '(${count.loadInCancelledRoute}) Routes',
+                                                style: subTextStyle()),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              "assets/svg/rejected.svg",
+                                              height: 8.h,
+                                            ),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            //Icon(Icons.note_add_outlined,size: 12,),
+                                            Text("Rejected",
+                                                style: statusTextStyle()),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      )
+                    ],
                   ),
                 );
               } else {
@@ -511,451 +495,427 @@ class PickingWidget extends StatelessWidget {
                 ); // Return a default Widget when count is null
               }
             },
-            plCountFailedState: () => Container(
-              width: MediaQuery.of(context).size.width,
-              // height: MediaQuery.of(context).size.height / 3.5,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: const LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color(0xffB3DAF7), Color(0xffD9EDFB)],
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Picking", style: boxHeading()),
-                          Text(
-                            '0',
-                            style: countHeading(),
-                          )
-                        ],
-                      ),
+            plCountFailedState: () => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              child: Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Picking", style: countHeading()),
+                        Text(
+                          '0',
+                          style: countHeading(),
+                        )
+                      ],
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 0.0, right: 0, top: 3),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        PickHeaderNotStarted(user: user),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text("(0 Routes)",
-                                              style: subTextStyle()),
-                                          /* Text(
-                                                  count.pickingNotStartedRoute ??
-                                                      '',
-                                                  style: subTextStyle()),
-                                              Text(" Routes)",
-                                                  style: subTextStyle()), */
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/pending.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          //Icon(Icons.note_add_outlined,size: 12,),
-                                          Text("Not Started",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      PickHeaderNotStarted(user: user),
                                 ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PickHeaderOngoing(
-                                      user: user,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110,
-                                decoration: BoxDecoration(
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110.w,
+                              decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text("(", style: subTextStyle()),
-                                          Text('0', style: subTextStyle()),
-                                          Text(" Routes)",
-                                              style: subTextStyle()),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/ongoing.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          Text("Ongoing",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PickHeaderCompleted(
-                                      user: user,
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text("(0 Routes)",
+                                            style: subTextStyle()),
+                                        /* Text(
+                                                count.pickingNotStartedRoute ??
+                                                    '',
+                                                style: subTextStyle()),
+                                            Text(" Routes)",
+                                                style: subTextStyle()), */
+                                      ],
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text("(", style: subTextStyle()),
-                                          Text('0', style: subTextStyle()),
-                                          Text(" Routes)",
-                                              style: subTextStyle()),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/completed.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          //Icon(Icons.note_add_outlined,size: 12,),
-                                          Text("Completed",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Load in",
-                            style: boxHeading(),
-                          ),
-                          Text(
-                            '0',
-                            style: countHeading(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 0.0, right: 0, top: 3),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoadPending(
-                                      user: user,
+                                    SizedBox(
+                                      height: 2.h,
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text("(", style: subTextStyle()),
-                                          Text('0', style: subTextStyle()),
-                                          Text(" Routes)",
-                                              style: subTextStyle()),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/pending.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          //Icon(Icons.note_add_outlined,size: 12,),
-                                          Text("Pending",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/pending.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        //Icon(Icons.note_add_outlined,size: 12,),
+                                        Text("Not Started",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoadCompleted(
-                                      user: user,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PickHeaderOngoing(
+                                    user: user,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text("(", style: subTextStyle()),
+                                        Text('0', style: subTextStyle()),
+                                        Text(" Routes)", style: subTextStyle()),
+                                      ],
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text("(", style: subTextStyle()),
-                                          Text('0', style: subTextStyle()),
-                                          Text(" Routes)",
-                                              style: subTextStyle()),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/completed.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          //Icon(Icons.note_add_outlined,size: 12,),
-                                          Text("Completed",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Flexible(
-                            flex: 3,
-                            fit: FlexFit.tight,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoadRejected(
-                                      user: user,
+                                    SizedBox(
+                                      height: 2.h,
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                // height: 70,
-                                width: 110,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('0', style: countHeading()),
-                                      Row(
-                                        children: [
-                                          Text('(0) Routes',
-                                              style: subTextStyle()),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 2.h,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                            "assets/svg/rejected.svg",
-                                            height: 8.h,
-                                          ),
-                                          SizedBox(
-                                            width: 8.w,
-                                          ),
-                                          //Icon(Icons.note_add_outlined,size: 12,),
-                                          Text("Rejected",
-                                              style: statusTextStyle()),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/ongoing.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        Text("Ongoing",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PickHeaderCompleted(
+                                    user: user,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text("(", style: subTextStyle()),
+                                        Text('0', style: subTextStyle()),
+                                        Text(" Routes)", style: subTextStyle()),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/completed.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        //Icon(Icons.note_add_outlined,size: 12,),
+                                        Text("Completed",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      height: 5.h,
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Load in",
+                          style: countHeading(),
+                        ),
+                        Text(
+                          '0',
+                          style: countHeading(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0.0, right: 0, top: 3),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoadPending(
+                                    user: user,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text("(", style: subTextStyle()),
+                                        Text('0', style: subTextStyle()),
+                                        Text(" Routes)", style: subTextStyle()),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/pending.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        //Icon(Icons.note_add_outlined,size: 12,),
+                                        Text("Pending",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoadCompleted(
+                                    user: user,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text("(", style: subTextStyle()),
+                                        Text('0', style: subTextStyle()),
+                                        Text(" Routes)", style: subTextStyle()),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/completed.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        //Icon(Icons.note_add_outlined,size: 12,),
+                                        Text("Completed",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Flexible(
+                          flex: 3,
+                          fit: FlexFit.tight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoadRejected(
+                                    user: user,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              // height: 70,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('0', style: countHeading()),
+                                    Row(
+                                      children: [
+                                        Text('(0) Routes',
+                                            style: subTextStyle()),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/svg/rejected.svg",
+                                          height: 8.h,
+                                        ),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        //Icon(Icons.note_add_outlined,size: 12,),
+                                        Text("Rejected",
+                                            style: statusTextStyle()),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  )
+                ],
               ),
             ),
           );
