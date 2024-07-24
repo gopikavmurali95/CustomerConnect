@@ -22,6 +22,8 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
           Uri.parse(approvalBaseUrl + voidTransactionApprovalHeaderUrl),
           body: {"Status_Value": statusValue});
 
+      log(response.body);
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
