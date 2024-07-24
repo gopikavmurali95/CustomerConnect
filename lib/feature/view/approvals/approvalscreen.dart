@@ -12,12 +12,14 @@ import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconf
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
+import 'package:customer_connect/feature/view/mustsell/mustsellheaderscreen.dart';
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
-import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
+// import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
+import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -1441,7 +1443,97 @@ class ApprovalScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Inventory Recon",
+                                    "Inventory Reconfirm",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.inventoryReconfirm ?? '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VoidTranscactioHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Void Transaction",
+                                    //"Inventory Recon",
                                     style: headTextStyle(),
                                   ),
                                 ),
@@ -1484,23 +1576,117 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10.w,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 5, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MustSellHeaderScreen(
+                                user: user,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          // height: 50,
+                          // width: MediaQuery.of(context).size.width / 2,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    spreadRadius: 1,
+                                    blurRadius: 1)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Image.asset(
+                                    "assets/images/mr.png",
+                                    height: 17.h,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8.w,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    "Must Sell Approval",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                ),
+                                BlocBuilder<ApprovalCountsBloc,
+                                    ApprovalCountsState>(
+                                  builder: (context, state) {
+                                    return state.when(
+                                        getApprovalsCount: (count) => count ==
+                                                null
+                                            ? Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              )
+                                            : Text(
+                                                count.inventoryReconfirm ?? '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ),
+                                        getApprovalCountsFailed: () => Text(
+                                              '0',
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black87,
+                                              ),
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       width: 10.w,
                     ),
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          context.read<FieldServiceHeaderBloc>().add(
-                              GetAllFieldServiceHeadersEvent(
-                                  userId: user.usrId ?? '', searchQuery: ''));
-                          Navigator.push(
+                          /* Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
                                     SettlementApprovalHeaderScreen(
                                       user: user,
                                     )),
-                          );
+                          ); */
                         },
                         child: Container(
                           //height: 50,
@@ -1534,7 +1720,7 @@ class ApprovalScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    //  overflow: TextOverflow.ellipsis,
+                                    overflow: TextOverflow.ellipsis,
                                     "Settlement Approval",
                                     style: headTextStyle(),
                                   ),
@@ -1578,8 +1764,6 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                    // const Expanded(child: SizedBox())
                   ],
                 ),
               ),
