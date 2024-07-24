@@ -219,7 +219,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                     //menuMaxHeight: 100,
                     //padding: EdgeInsets.all(100),
 
-                    //elevation: 0,
+                    elevation: 0,
                     value: ddfilterJourneyPlan[0].mode,
                     // value: ddfilterFieldsDisputeNote[0].mode,
                     dropdownColor: Colors.white,

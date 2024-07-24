@@ -17,7 +17,7 @@ import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryhea
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
-import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
+// import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class ApprovalScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Approvals",
+          "Approval",
           style: appHeading(),
         ),
       ),
@@ -1533,6 +1533,7 @@ class ApprovalScreen extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     "Void Transaction",
+                                    //"Inventory Recon",
                                     style: headTextStyle(),
                                   ),
                                 ),
@@ -1629,7 +1630,8 @@ class ApprovalScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Must sell",
+                                    "Must Sell Approval",
+                                    overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
                                 ),
@@ -1675,18 +1677,19 @@ class ApprovalScreen extends StatelessWidget {
                       width: 10.w,
                     ),
                     Expanded(
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          /* Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const SettlementApprovalHeaderScreen(),
-                            ),
-                          );
+                                builder: (context) =>
+                                    SettlementApprovalHeaderScreen(
+                                      user: user,
+                                    )),
+                          ); */
                         },
                         child: Container(
-                          // height: 50,
+                          //height: 50,
                           // width: MediaQuery.of(context).size.width / 2,
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.white),
@@ -1707,20 +1710,22 @@ class ApprovalScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Image.asset(
-                                    "assets/images/mr.png",
-                                    height: 17.h,
+                                    "assets/images/lr.png",
+                                    height: 18.3.h,
                                   ),
                                 ),
+                                // fit: BoxFit.scaleDown,),
                                 SizedBox(
                                   width: 8.w,
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Settlement Approval",
                                     overflow: TextOverflow.ellipsis,
+                                    "Settlement Approval",
                                     style: headTextStyle(),
                                   ),
                                 ),
+
                                 BlocBuilder<ApprovalCountsBloc,
                                     ApprovalCountsState>(
                                   builder: (context, state) {
@@ -1736,8 +1741,7 @@ class ApprovalScreen extends StatelessWidget {
                                                 ),
                                               )
                                             : Text(
-                                                count
-                                                    .pendingMaterialReqApproval!,
+                                                count.pendingLoadRequestHeader!,
                                                 style: kfontstyle(
                                                   fontSize: 11.sp,
                                                   fontWeight: FontWeight.w500,

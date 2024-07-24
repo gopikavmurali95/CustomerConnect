@@ -188,6 +188,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                   spreadRadius: 0.2)
                             ]),
                         child: DropdownButtonFormField(
+                          elevation: 0,
                           value: ddfilterLoadRequest[0].mode,
                           // value: ddfilterFieldsDisputeNote[0].mode,
                           dropdownColor: Colors.white,

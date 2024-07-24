@@ -1,11 +1,14 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/saheaderlistwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SettlementApprovalHeaderScreen extends StatefulWidget {
-  const SettlementApprovalHeaderScreen({super.key});
+  const SettlementApprovalHeaderScreen(
+      {super.key, required LoginUserModel user});
 
   @override
   State<SettlementApprovalHeaderScreen> createState() =>
@@ -33,7 +36,7 @@ class _SettlementApprovalHeaderScreenState
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Settlement Approval",
+          "Settlement Approvalssss",
           style: appHeading(),
         ),
         actions: [
