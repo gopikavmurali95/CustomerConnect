@@ -5,7 +5,7 @@ import 'package:customer_connect/feature/domain/notification/firebasenotificatio
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
-import 'package:customer_connect/feature/state/cubit/cubit/home_graph_switch_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invnttransexpand/inverntory_trans_ex_pand_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homegraphmodel.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';

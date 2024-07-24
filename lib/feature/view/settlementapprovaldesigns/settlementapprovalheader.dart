@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
-import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
+// import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
 import 'package:customer_connect/feature/view/settlementapprovaldesigns/settlementapprovaldetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';

@@ -134,6 +134,10 @@ import 'package:customer_connect/feature/data/models/van_to_van_approval_in_para
 import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_details_model/van_to_van_details_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_header_model/van_to_van_header_model.dart';
+import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/void_transaction_approve_and_reject_model/void_transaction_approve_and_reject_model.dart';
+import 'package:customer_connect/feature/data/models/void_transaction_header_model/void_transaction_header_model.dart';
+import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../models/load_req_detail_model/LoadReqDetailModel.dart';
@@ -544,4 +548,15 @@ abstract class IMustSellRepo {
 
   Future<Either<MainFailures, MustSellApproveRespModel>> mustSellApprove(
       MustSellApproveInModel approve);
+}
+
+abstract class IVoidTransactionRepo {
+  Future<Either<MainFailures, List<VoidTransactionHeaderModel>>>
+      getVoidTransactionHeader(String statusValue);
+
+  Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
+      voidTransactionApprove(VoidTransacrtionApprovalInModel approve);
+
+  Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
+      voidTransactionReject(VoidTransactionJsonModel reject);
 }
