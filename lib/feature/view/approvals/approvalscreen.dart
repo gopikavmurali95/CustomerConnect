@@ -1495,8 +1495,9 @@ class ApprovalScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const VoidTranscactioHeaderScreen(),
+                              builder: (context) => VoidTranscactioHeaderScreen(
+                                user: user,
+                              ),
                             ),
                           );
                         },

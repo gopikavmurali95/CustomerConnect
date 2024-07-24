@@ -125,3 +125,7 @@ const getUserForChatUrl = 'Home/GetUsers';
 const mustSellHeaderurl = 'MustSellApproval/MustSellApprovalHeader';
 const mustsellDetailUrl = 'MustSellApproval/MustSellApprovalDetail';
 const mustSellApproveUrl = 'MustSellApproval/PostMustSellApproval';
+const voidTransactionApprovalHeaderUrl =
+    'VoidTransApproval/VoidTransApprovalHeader';
+const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
+const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
