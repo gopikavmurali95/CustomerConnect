@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     SizedBox(
-                                      width: 20.w,
+                                      width: 10.w,
                                     ),
                                     AnimatedSemiCircleProgressChart(
                                       totalCount: graph.graph.totalCount,
@@ -230,7 +230,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ],
                                       ),
-                                    )
+                                    ),
+                                    SizedBox(
+                                      width: 10.w,
+                                    ),
                                   ],
                                 ),
                               ),
