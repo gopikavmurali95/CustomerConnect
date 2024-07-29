@@ -89,6 +89,8 @@ import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_orde
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
@@ -551,6 +553,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<MustSellDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementApprovalHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementCashDetailsBloc>(),
         ),
         BlocProvider<InverntoryTransExPandCubit>(
           create: (context) => InverntoryTransExPandCubit(),

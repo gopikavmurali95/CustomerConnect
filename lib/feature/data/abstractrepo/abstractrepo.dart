@@ -116,6 +116,7 @@ import 'package:customer_connect/feature/data/models/sales_order_details_model/s
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/settlement_approval_header_out_model/settlement_approval_header_out_model.dart';
+import 'package:customer_connect/feature/data/models/settlemet_approvalcash_detail_model/settlemet_approvalcash_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
@@ -551,14 +552,17 @@ abstract class IMustSellRepo {
       MustSellApproveInModel approve);
 }
 
-abstract class ISettlementApprovalHeaderRepo{
-  Future<Either<MainFailures,List<SettlementApprovalHeaderOutModel>>>
-    getSettlementApprovalHeaders(String statusvalue);
+abstract class ISettlementApprovalHeaderRepo {
+  Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
+      getSettlementApprovalHeaders(String statusvalue);
+
+  Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
+      getSttlAppCashDetails(String udpID);
 }
 
 abstract class IVoidTransactionRepo {
   Future<Either<MainFailures, List<VoidTransactionHeaderModel>>>
-      getVoidTransactionHeader(String statusValue);
+      getVoidTransactionHeader(String mode);
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
       voidTransactionApprove(VoidTransacrtionApprovalInModel approve);

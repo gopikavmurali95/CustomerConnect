@@ -1687,7 +1687,7 @@ class ApprovalScreen extends StatelessWidget {
                                     SettlementApprovalHeaderScreen(
                                       user: user,
                                     )),
-                          ); 
+                          );
                         },
                         child: Container(
                           //height: 50,
