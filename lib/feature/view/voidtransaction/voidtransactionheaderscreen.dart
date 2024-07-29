@@ -5,13 +5,13 @@ import 'dart:developer';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
 // import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
-import 'package:customer_connect/feature/view/voidtransaction/widgets/vtheaderlistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +36,7 @@ List<ApprovalStatusFilterModel> ddfilterVoidTransaction = [
 TextEditingController _voidTranHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
 String selectedVoidTransactionMode = 'P';
+List<VoidTransactionJsonModel> voidTransactionJsonstriongList = [];
 
 class _VoidTranscactioHeaderScreenState
     extends State<VoidTranscactioHeaderScreen> {
@@ -166,16 +167,13 @@ class _VoidTranscactioHeaderScreenState
             width: MediaQuery.of(context).size.width,
             child: DropdownButtonFormField(
               elevation: 0,
-              //value: selectedMustSellMode,
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                border: /* InputBorder
-                              .none  */
-                    OutlineInputBorder(
+                border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
@@ -196,7 +194,6 @@ class _VoidTranscactioHeaderScreenState
                     ),
                   )
                   .toList(),
-
               onChanged: (value) {
                 selectedVoidTransactionMode = value!;
                 context
@@ -206,7 +203,7 @@ class _VoidTranscactioHeaderScreenState
                     GetVoidTransactionHeaderEvent(
                         statusValue: value,
                         searchQuery: _voidTranHeaderSearchCtrl.text));
-                setState(() {});
+                // setState(() {});
               },
             ),
           ),
@@ -363,9 +360,9 @@ class _VoidTranscactioHeaderScreenState
                                                           value: voidTransactionJsonstriongList
                                                               .where((element) =>
                                                                   element
-                                                                      .vtaId ==
+                                                                      .trnNumber ==
                                                                   headers[index]
-                                                                      .vtaId)
+                                                                      .trnNumber)
                                                               .isNotEmpty,
                                                           side: BorderSide(
                                                               color: Colors
@@ -377,29 +374,42 @@ class _VoidTranscactioHeaderScreenState
                                                                           4)),
                                                           activeColor: Colors
                                                               .green.shade300,
-                                                          onChanged:
-                                                              (bool? value) {
+                                                          onChanged: (value) {
                                                             if (voidTransactionJsonstriongList
                                                                 .where((element) =>
                                                                     element
-                                                                        .vtaId ==
+                                                                        .trnNumber ==
                                                                     headers[index]
-                                                                        .vtaId)
+                                                                        .trnNumber)
                                                                 .isEmpty) {
                                                               voidTransactionJsonstriongList.add(
                                                                   VoidTransactionJsonModel(
                                                                       vtaId: headers[
                                                                               index]
                                                                           .vtaId,
-                                                                      status:
-                                                                          ''));
+                                                                      type: headers[index].type ==
+                                                                              "Order"
+                                                                          ? 'OR'
+                                                                          : headers[index].type ==
+                                                                                  "Sales"
+                                                                              ? 'SL'
+                                                                              : 'AR',
+                                                                      trnNumber:
+                                                                          headers[index]
+                                                                              .trnNumber,
+                                                                      udpId: headers[
+                                                                              index]
+                                                                          .udpID,
+                                                                      userId: widget
+                                                                          .user
+                                                                          .usrId));
                                                             } else {
                                                               voidTransactionJsonstriongList
                                                                   .removeWhere((element) =>
                                                                       element
-                                                                          .vtaId ==
+                                                                          .trnNumber ==
                                                                       headers[index]
-                                                                          .vtaId);
+                                                                          .trnNumber);
                                                             }
                                                             setState(() {
                                                               log(jsonEncode(
@@ -445,44 +455,25 @@ class _VoidTranscactioHeaderScreenState
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            color: Colors.red.shade300,
-                            onPressed: () {},
-                            child: Text(
-                              'Reject Selected',
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
                           child: BlocConsumer<VoidTransactionRejectionBloc,
                               VoidTransactionRejectionState>(
                             listener: (context, state) {
                               state.when(
-                                voidTranctionRejectingState: (approve) {
-                                  if (approve != null) {
+                                voidTranctionRejectingState: (resp) {
+                                  if (resp != null) {
                                     _voidTranHeaderSearchCtrl.clear();
                                     context
                                         .read<VoidTransactionHeaderBloc>()
                                         .add(
                                             const ClearVoidTransactionHeader());
+
                                     context
                                         .read<VoidTransactionHeaderBloc>()
                                         .add(GetVoidTransactionHeaderEvent(
                                             statusValue:
                                                 selectedVoidTransactionMode,
-                                            searchQuery: ''));
+                                            searchQuery: ""));
+                                    voidTransactionJsonstriongList.clear();
                                     context
                                         .read<VoidTransactionSelectionCubit>()
                                         .selectedHeadersList([]);
@@ -492,7 +483,8 @@ class _VoidTranscactioHeaderScreenState
                                       builder: (context) =>
                                           CupertinoAlertDialog(
                                         title: const Text('Alert'),
-                                        content: Text(approve.status ?? ''),
+                                        content:
+                                            const Text("Rejected Successfully"),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
@@ -524,27 +516,6 @@ class _VoidTranscactioHeaderScreenState
                                     ),
                                   );
                                 },
-                                /* voidTransactionLoadingState: () {
-                                  showCupertinoModalPopup(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      builder: (context) => SizedBox(
-                                            height: MediaQuery.of(context)
-                                                .size
-                                                .height,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: const PopScope(
-                                              canPop: true,
-                                              child: CupertinoActivityIndicator(
-                                                animating: true,
-                                                color: Colors.red,
-                                                radius: 30,
-                                              ),
-                                            ),
-                                          ));
-                                }, */
                               );
                             },
                             builder: (context, state) {
@@ -552,9 +523,7 @@ class _VoidTranscactioHeaderScreenState
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                color: selectedVoidTransactionMode == 'P'
-                                    ? Colors.green.shade300
-                                    : Colors.grey[300],
+                                color: Colors.red.shade300,
                                 onPressed: () {
                                   if (selectedVoidTransactionMode == 'P') {
                                     showCupertinoDialog(
@@ -580,31 +549,15 @@ class _VoidTranscactioHeaderScreenState
                                                       VoidTransactionApprovalBloc>()
                                                   .add(
                                                       const VoidTransactionLoadingEvent());
-                                              for (var item
-                                                  in voidTransactionJsonstriongList) {
-                                                item.status = 'A';
-                                              }
-                                              /* context
-                                                  .read<
-                                                      VoidTransactionApprovalBloc>()
-                                                  .add(VoidTransactionApprovingEvent(
-                                                      approving:
-                                                          VoidTransacrtionApprovalInModel(
-                                                              jsonString:
-                                                                  voidTransactionJsonstriongList))); */
+
                                               context
                                                   .read<
                                                       VoidTransactionRejectionBloc>()
                                                   .add(VoidTransactionRejectingEvent(
                                                       rejecting:
-                                                          VoidTransactionJsonModel(
-                                                              status: '',
-                                                              trnNumber: '',
-                                                              type: '',
-                                                              udpId: '',
-                                                              userId: widget
-                                                                  .user.usrId,
-                                                              vtaId: '23')));
+                                                          VoidTransacrtionApprovalInModel(
+                                                              jsonString:
+                                                                  voidTransactionJsonstriongList)));
                                             },
                                             child: const Text('Proceed'),
                                           ),
@@ -614,7 +567,7 @@ class _VoidTranscactioHeaderScreenState
                                   }
                                 },
                                 child: Text(
-                                  'Approve Selected',
+                                  'Reject Selected',
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w500,
@@ -623,7 +576,159 @@ class _VoidTranscactioHeaderScreenState
                               );
                             },
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: BlocConsumer<VoidTransactionApprovalBloc,
+                                VoidTransactionApprovalState>(
+                              listener: (context, state) {
+                                state.when(
+                                  voidTransactionApprovingState: (resp) {
+                                    if (resp != null) {
+                                      _voidTranHeaderSearchCtrl.clear();
+                                      context
+                                          .read<VoidTransactionHeaderBloc>()
+                                          .add(
+                                              const ClearVoidTransactionHeader());
+
+                                      context
+                                          .read<VoidTransactionHeaderBloc>()
+                                          .add(GetVoidTransactionHeaderEvent(
+                                              statusValue:
+                                                  selectedVoidTransactionMode,
+                                              searchQuery: ""));
+                                      voidTransactionJsonstriongList.clear();
+                                      context
+                                          .read<VoidTransactionSelectionCubit>()
+                                          .selectedHeadersList([]);
+                                      Navigator.pop(context);
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: const Text('Alert'),
+                                          content: const Text(
+                                              "Approved Successfully"),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  voidTransactionApprovalFailed: () {
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Something Went Wrong, please Try again later"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  voidTransactionLoadingState: () {
+                                    showCupertinoModalPopup(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (context) => SizedBox(
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: const PopScope(
+                                                canPop: true,
+                                                child:
+                                                    CupertinoActivityIndicator(
+                                                  animating: true,
+                                                  color: Colors.red,
+                                                  radius: 30,
+                                                ),
+                                              ),
+                                            ));
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  color: selectedVoidTransactionMode == 'P'
+                                      ? Colors.green.shade300
+                                      : Colors.grey[300],
+                                  onPressed: () {
+                                    if (selectedVoidTransactionMode == 'P') {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: const Text('Alert'),
+                                          content: const Text(
+                                              "Do you Want to Proceed"),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(
+                                                        const VoidTransactionLoadingEvent());
+
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(VoidTransactionApprovingEvent(
+                                                        approving:
+                                                            VoidTransacrtionApprovalInModel(
+                                                                jsonString:
+                                                                    voidTransactionJsonstriongList)));
+                                              },
+                                              child: const Text('Proceed'),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: Text(
+                                    'Approve Selected',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                );
+                              },
+                            ))
                       ],
                     ),
                   )

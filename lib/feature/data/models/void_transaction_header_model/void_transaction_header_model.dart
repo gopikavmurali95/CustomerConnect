@@ -6,6 +6,7 @@ part 'void_transaction_header_model.g.dart';
 class VoidTransactionHeaderModel {
   @JsonKey(name: 'vta_ID')
   String? vtaId;
+  @JsonKey(name: 'type')
   String? type;
   @JsonKey(name: 'trn_Number')
   String? trnNumber;
@@ -19,6 +20,8 @@ class VoidTransactionHeaderModel {
   String? cusName;
   @JsonKey(name: 'CreatedDate')
   String? createdDate;
+  @JsonKey(name: 'udpID')
+  String? udpID;
 
   VoidTransactionHeaderModel({
     this.vtaId,

@@ -62,6 +62,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqapproval/material
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
@@ -105,9 +106,11 @@ import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/cre
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/invnttransexpand/inverntory_trans_ex_pand_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
@@ -546,6 +549,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<MustSellApproveBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MustSellDetailBloc>(),
+        ),
+        BlocProvider<InverntoryTransExPandCubit>(
+          create: (context) => InverntoryTransExPandCubit(),
+        ),
+        BlocProvider<HomeGraphSwitchCubit>(
+          create: (context) => HomeGraphSwitchCubit(),
         ),
         BlocProvider(
           create: (context) => getit<VoidTransactionHeaderBloc>(),

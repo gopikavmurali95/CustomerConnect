@@ -25,18 +25,16 @@ class CustomerTransaction extends StatelessWidget {
                 if (custranscount != null) {
                   return Container(
                       width: MediaQuery.of(context).size.width,
-                      // height: 120,
-                      // height: MediaQuery.of(context).size.height/5,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: [Color(0xffC6E1E5), Color(0xffE6F4F6)],
-                          )),
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/home/cus_bg.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 8),
+                            horizontal: 10, vertical: 10),
                         child: Column(
                           children: [
                             Padding(
@@ -47,14 +45,14 @@ class CustomerTransaction extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Customer Transactions",
-                                    style: boxHeading(),
+                                    style: countHeading(),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 0.0, right: 0, top: 3),
+                                  left: 5.0, right: 5, top: 3),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -93,7 +91,7 @@ class CustomerTransaction extends StatelessWidget {
                                                 children: [
                                                   SvgPicture.asset(
                                                     "assets/svg/inv.svg",
-                                                    height: 18,
+                                                    height: 23,
                                                   ),
                                                 ],
                                               ),
@@ -171,7 +169,7 @@ class CustomerTransaction extends StatelessWidget {
                                                 children: [
                                                   SvgPicture.asset(
                                                     "assets/svg/ar.svg",
-                                                    height: 18,
+                                                    height: 23,
                                                   ),
                                                 ],
                                               ),
@@ -230,7 +228,184 @@ class CustomerTransaction extends StatelessWidget {
                   );
                 }
               },
-              cusTransactionFailedState: () => const SizedBox(),
+              cusTransactionFailedState: () => Container(
+                  width: MediaQuery.of(context).size.width,
+                  // height: 120,
+                  // height: MediaQuery.of(context).size.height/5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/home/cus_bg.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Customer Transactions",
+                                style: countHeading(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 0.0, right: 0, top: 3),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Flexible(
+                                flex: 2,
+                                fit: FlexFit.tight,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            InvoiceHeaderScreen(
+                                          isfromUser: false,
+                                          user: user,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    /*  height: 70,
+                                          width: 170, */
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, top: 10, bottom: 5),
+                                      child: Row(
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SvgPicture.asset(
+                                                "assets/svg/inv.svg",
+                                                height: 18,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(width: 12.w),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text('0', style: countHeading()),
+                                              Row(
+                                                children: [
+                                                  Text("AED ",
+                                                      style: subTextStyle()),
+                                                  Text('0',
+                                                      style: subTextStyle()),
+                                                ],
+                                              ),
+                                              Text(
+                                                "Invoices",
+                                                style: statusTextStyle(),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8.w,
+                              ),
+                              Flexible(
+                                flex: 2,
+                                fit: FlexFit.tight,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ArCollectionScreen(
+                                          isFromUser: false,
+                                          user: user,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    /* height: 70,
+                                          width: 170, */
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, top: 10, bottom: 5),
+                                      child: Row(
+                                        children: [
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SvgPicture.asset(
+                                                "assets/svg/ar.svg",
+                                                height: 18,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 12.w,
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text('0', style: countHeading()),
+                                              Row(
+                                                children: [
+                                                  Text("AED ",
+                                                      style: subTextStyle()),
+                                                  Text('0',
+                                                      style: subTextStyle()),
+                                                ],
+                                              ),
+                                              Text(
+                                                "Ar Collection ",
+                                                style: statusTextStyle(),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 3.h,
+                        )
+                      ],
+                    ),
+                  )),
             );
           },
         ));

@@ -52,7 +52,7 @@ TextStyle subTitleTextStyle() {
 
 TextStyle headTextStyle() {
   return GoogleFonts.poppins(
-      fontSize: 9.sp,
+      fontSize: 8.sp,
       fontWeight: FontWeight.w500,
       color: const Color(0xff413434));
 }

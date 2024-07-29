@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/data/models/must_sell_i_json_model/must
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
+import 'package:customer_connect/feature/view/mustsell/mustselldetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ List<ApprovalStatusFilterModel> ddfilterMustSell = [
 Action Taken -AT
 Approved- A
 Rejected -R */
-TextEditingController _mustSellHeaderSearchCtrl = TextEditingController();
+TextEditingController mustSellHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
 String selectedMustSellMode = 'P';
 List<MustSellIJsonModel> mustSellJsonstriongList = [];
@@ -42,6 +43,8 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
   @override
   void initState() {
     selectedMustSellMode = 'P';
+    mustSellHeaderSearchCtrl.clear();
+
     context.read<MustSellHeaderBloc>().add(const ClearMustSellHeadersEvent());
     context
         .read<MustSellHeaderBloc>()
@@ -82,7 +85,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
               height: 30.h,
               width: MediaQuery.of(context).size.width,
               child: TextFormField(
-                controller: _mustSellHeaderSearchCtrl,
+                controller: mustSellHeaderSearchCtrl,
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
@@ -93,8 +96,8 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                       Expanded(
                         child: IconButton(
                             onPressed: () {
-                              if (_mustSellHeaderSearchCtrl.text.isNotEmpty) {
-                                _mustSellHeaderSearchCtrl.clear();
+                              if (mustSellHeaderSearchCtrl.text.isNotEmpty) {
+                                mustSellHeaderSearchCtrl.clear();
                                 context
                                     .read<MustSellHeaderBloc>()
                                     .add(const ClearMustSellHeadersEvent());
@@ -198,7 +201,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                   context.read<MustSellHeaderBloc>().add(
                       GetMustSellHeadersEvent(
                           mode: value,
-                          searchQuery: _mustSellHeaderSearchCtrl.text));
+                          searchQuery: mustSellHeaderSearchCtrl.text));
                 },
               ),
             ),
@@ -256,7 +259,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                         : headers.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Found',
+                                  'No Data Available',
                                   style: kfontstyle(),
                                 ),
                               )
@@ -266,21 +269,15 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                 itemBuilder: (context, index) =>
                                     GestureDetector(
                                       onTap: () {
-                                        /* Navigator.push(
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => LoadReqDetailscreen(
+                                              builder: (context) =>
+                                                  MustSellDetailScreen(
                                                     user: widget.user,
-                                                    loadrequest: headers[index],
-                                                    currentMode: _selectedloadrequest,
-                                                  )
-                            
-                                              // LoadTransferDetailScreen(
-                                              //   header: headers[index],
-                                              //   user: widget.user,
-                                              // ),
-                                              ),
-                                        ); */
+                                                    header: headers[index],
+                                                  )),
+                                        );
                                       },
                                       child: Row(
                                         children: [
@@ -460,7 +457,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                 state.when(
                   mustSellApproveStatusState: (resp) {
                     if (resp != null) {
-                      _mustSellHeaderSearchCtrl.clear();
+                      mustSellHeaderSearchCtrl.clear();
                       context
                           .read<MustSellHeaderBloc>()
                           .add(const ClearMustSellHeadersEvent());
@@ -476,7 +473,8 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                           title: const Text('Alert'),
-                          content: Text(resp.status ?? ''),
+                          content:
+                              Text("Must sell approval ${resp.status ?? ''}"),
                           actions: [
                             TextButton(
                               onPressed: () {
