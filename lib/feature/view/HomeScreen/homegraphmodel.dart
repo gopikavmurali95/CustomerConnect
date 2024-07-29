@@ -33,7 +33,7 @@ List<HomeGraphModel> homegraphList = [
       completedCount: 60,
       graphTitle: 'Active Routes',
       cColors: const Color(0xffefbd3b),
-      pColor: const Color(0xffebe5d6),
+      pColor: const Color(0xffefbd3b).withOpacity(.25),
       tileColor: const LinearGradient(colors: [
         Color(0xffefbd3b),
         Color(0xffd3a11d),
@@ -46,7 +46,8 @@ List<HomeGraphModel> homegraphList = [
     totalCount: 100,
     completedCount: 20,
     cColors: const Color(0xff43c2de),
-    pColor: const Color(0xffe2e6e6),
+    pColor: /* const Color(0xffe2e6e6) */
+        const Color(0xff43c2de).withOpacity(.25),
     tileColor: const LinearGradient(
       colors: [Color(0xff3cbadf), Color(0xff3598c7)],
     ),
@@ -59,7 +60,7 @@ List<HomeGraphModel> homegraphList = [
     totalCount: 100,
     completedCount: 28,
     cColors: const Color(0xffa143d5),
-    pColor: const Color(0xffe6e0e2),
+    pColor: const Color(0xffa143d5).withOpacity(.25),
     tileColor: const LinearGradient(
       colors: [Color(0xffba65f5), Color(0xffa247d8)],
     ),
@@ -68,11 +69,11 @@ List<HomeGraphModel> homegraphList = [
     mTitle: 'Productive',
     ftitle: "Planned",
     ltitle: "Unplanned",
-    graphTitle: 'Productive',
+    graphTitle: 'Productive Visits',
     totalCount: 100,
     completedCount: 64,
     cColors: const Color(0xff4cd643),
-    pColor: const Color(0xffebe9e7),
+    pColor: const Color(0xff4cd643).withOpacity(.25),
     tileColor: const LinearGradient(
       colors: [
         Color(0xff4bd944),

@@ -36,7 +36,7 @@ class PickingWidget extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 0),
+                            horizontal: 1, vertical: 0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -263,7 +263,7 @@ class PickingWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 4, vertical: 0),
+                            horizontal: 2, vertical: 0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -501,7 +501,7 @@ class PickingWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 2, vertical: 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -710,7 +710,7 @@ class PickingWidget extends StatelessWidget {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 2, vertical: 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

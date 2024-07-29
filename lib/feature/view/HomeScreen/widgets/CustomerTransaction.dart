@@ -17,7 +17,7 @@ class CustomerTransaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
         child: BlocBuilder<CustomerTransactionBloc, CustomerTransactionState>(
           builder: (context, state) {
             return state.when(
@@ -38,7 +38,11 @@ class CustomerTransaction extends StatelessWidget {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 5),
+                              padding: const EdgeInsets.only(
+                                bottom: 10,
+                                left: 5,
+                                right: 5,
+                              ),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -52,7 +56,7 @@ class CustomerTransaction extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 5.0, right: 5, top: 3),
+                                  left: 5.0, right: 5, top: 0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -245,7 +249,11 @@ class CustomerTransaction extends StatelessWidget {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.only(
+                            bottom: 10,
+                            left: 5,
+                            right: 5,
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -258,7 +266,7 @@ class CustomerTransaction extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 0.0, right: 0, top: 3),
+                              left: 5.0, right: 5, top: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

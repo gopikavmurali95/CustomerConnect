@@ -19,7 +19,7 @@ class SalesOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1.5),
       child: BlocBuilder<SalesOrderCountBloc, SalesOrderCountState>(
         builder: (context, state) {
           return state.when(
@@ -36,11 +36,15 @@ class SalesOrders extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 12),
+                          horizontal: 10, vertical: 10),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 5),
+                            padding: const EdgeInsets.only(
+                              bottom: 10,
+                              left: 5,
+                              right: 5,
+                            ),
                             child: Row(
                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -54,7 +58,7 @@ class SalesOrders extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                left: 5.0, right: 5, top: 0),
+                                left: 5.0, right: 5, top: 0, bottom: 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -246,7 +250,8 @@ class SalesOrders extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
+                        padding:
+                            const EdgeInsets.only(bottom: 5, right: 5, left: 3),
                         child: Row(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -259,8 +264,8 @@ class SalesOrders extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 0.0, right: 0, top: 3),
+                        padding: const EdgeInsets.only(
+                            left: 5.0, right: 5, top: 0, bottom: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
