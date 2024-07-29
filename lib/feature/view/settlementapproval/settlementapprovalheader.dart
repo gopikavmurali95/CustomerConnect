@@ -36,7 +36,7 @@ class _SettlementApprovalHeaderScreenState
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Settlement Approvalssss",
+          "Settlement Approval",
           style: appHeading(),
         ),
         actions: [
