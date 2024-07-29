@@ -17,6 +17,7 @@ import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryhea
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
+import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 // import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
@@ -1679,14 +1680,14 @@ class ApprovalScreen extends StatelessWidget {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          /* Navigator.push(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
                                     SettlementApprovalHeaderScreen(
                                       user: user,
                                     )),
-                          ); */
+                          ); 
                         },
                         child: Container(
                           //height: 50,

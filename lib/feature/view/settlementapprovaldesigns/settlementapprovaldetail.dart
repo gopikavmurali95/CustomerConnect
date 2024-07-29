@@ -182,30 +182,6 @@ class _PriceChangeDetailState extends State<SettlementApprovalDetails> {
                           ],
                         ),
                       ),
-                      // Container(
-                      //   // height: 10.h,
-                      //   // width: 10.h,
-                      //   decoration: BoxDecoration(
-                      //     color: widget.loadrequest.status! ==
-                      //         "Pending"
-                      //         ? const Color(0xfff7f4e2)
-                      //         : widget.loadrequest.status==
-                      //         "Action Taken"
-                      //         ? const Color(0xffe3f7e2)
-                      //         : Colors.red[300],
-                      //     borderRadius: BorderRadius.circular(
-                      //       10,
-                      //     ),
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.symmetric(
-                      //         horizontal: 5, vertical: 3),
-                      //     child: Text(
-                      //       widget.loadrequest.status?? '',
-                      //       style: kfontstyle(fontSize: 8.sp),
-                      //     ),
-                      //   ),
-                      // )
                     ],
                   ),
                 ),

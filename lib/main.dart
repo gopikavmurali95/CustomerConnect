@@ -106,6 +106,7 @@ import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/cre
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/homeappbar/home_app_bar_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invcubit/invoice_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
@@ -570,6 +571,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<VoidTransactionSelectionCubit>(
           create: (context) => VoidTransactionSelectionCubit(),
+        ),
+        BlocProvider<HomeAppBarCubit>(
+          create: (context) => HomeAppBarCubit(),
         ),
       ],
       child: ScreenUtilInit(

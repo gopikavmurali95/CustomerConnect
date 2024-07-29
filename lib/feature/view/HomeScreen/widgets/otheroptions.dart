@@ -7,6 +7,8 @@ import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
+import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,10 +50,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade100,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    )
+                        color: Colors.grey.shade300.withOpacity(.4),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: const Offset(0, 3)),
                   ],
                 ),
                 child: Stack(
@@ -110,10 +112,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade100,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    ),
+                        color: Colors.grey.shade300.withOpacity(.4),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: const Offset(0, 3)),
                   ],
                 ),
                 child: Stack(
@@ -167,10 +169,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade100,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    ),
+                        color: Colors.grey.shade300.withOpacity(.4),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: const Offset(0, 3)),
                   ],
                 ),
                 child: Stack(
@@ -232,10 +234,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade100,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                    ),
+                        color: Colors.grey.shade300.withOpacity(.4),
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                        offset: const Offset(0, 3)),
                   ],
                 ),
                 child: Stack(
@@ -302,10 +304,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  )
+                      color: Colors.grey.shade300.withOpacity(.4),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3)),
                 ],
               ),
               child: Stack(
@@ -367,10 +369,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  )
+                      color: Colors.grey.shade300.withOpacity(.4),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3)),
                 ],
               ),
               child: Stack(
@@ -413,7 +415,13 @@ class OtherOptionsHomeWidget extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const TargetHeaderScreen(),
+                  ));
+            },
             child: Container(
               height: 65.h,
               decoration: BoxDecoration(
@@ -422,10 +430,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  )
+                      color: Colors.grey.shade300.withOpacity(.4),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3)),
                 ],
               ),
               child: Stack(
@@ -477,10 +485,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  )
+                      color: Colors.grey.shade300.withOpacity(.4),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3)),
                 ],
               ),
               child: Stack(
@@ -533,10 +541,10 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade100,
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                  )
+                      color: Colors.grey.shade300.withOpacity(.4),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3)),
                 ],
               ),
               child: Stack(
@@ -547,7 +555,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                     child: Opacity(
                       opacity: 0.07,
                       child: Image.asset(
-                        "assets/images/home/inv_mon@2x.png",
+                        "assets/images/home/mer@2x.png",
                         height: 30.h,
                       ),
                     ),
@@ -560,14 +568,14 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            "assets/images/home/inv_mon@2x.png",
+                            "assets/images/home/mer@2x.png",
                             height: 23.h,
                           ),
                           SizedBox(
                             height: 8.w,
                           ),
                           Text(
-                            "Inventory Monitoring",
+                            "Merchandising",
                             textAlign: TextAlign.center,
                             style: headTextStyle(),
                           ),
@@ -579,7 +587,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
+          /*  GestureDetector(
             onTap: () {},
             child: Container(
               height: 65.h,
@@ -690,7 +698,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 ],
               ),
             ),
-          ),
+          ), */
         ], visibility: const [
           true,
           true,
@@ -701,8 +709,8 @@ class OtherOptionsHomeWidget extends StatelessWidget {
           true,
           true,
           true,
-          true,
-          true,
+          /*true,
+          true, */
         ]),
       ),
     );
