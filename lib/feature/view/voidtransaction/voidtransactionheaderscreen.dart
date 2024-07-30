@@ -6,7 +6,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
-// import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart';
@@ -43,6 +42,7 @@ class _VoidTranscactioHeaderScreenState
   @override
   void initState() {
     selectedVoidTransactionMode = 'P';
+    _voidTranHeaderSearchCtrl.clear();
     context
         .read<VoidTransactionHeaderBloc>()
         .add(const ClearVoidTransactionHeader());
@@ -167,6 +167,7 @@ class _VoidTranscactioHeaderScreenState
             width: MediaQuery.of(context).size.width,
             child: DropdownButtonFormField(
               elevation: 0,
+              value: selectedVoidTransactionMode,
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
@@ -266,7 +267,7 @@ class _VoidTranscactioHeaderScreenState
                           ),
                         )
                       : ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
+                          //physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: headers.length,
                           itemBuilder: (context, index) => Column(
@@ -293,7 +294,7 @@ class _VoidTranscactioHeaderScreenState
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            headers[index].vtaId ?? '',
+                                            headers[index].trnNumber ?? '',
                                             style: kfontstyle(
                                               fontSize: 12.sp,
                                               color: const Color(0xff2C6B9E),
@@ -340,88 +341,78 @@ class _VoidTranscactioHeaderScreenState
                                       ))
                                     ],
                                   )),
-                                  /* headers[index].type != 'Pending'
-                                ? const SizedBox.shrink()
-                                : */
-                                  IntrinsicHeight(
-                                    child: Row(
-                                      children: [
-                                        VerticalDivider(
-                                          color: Colors.grey[300],
-                                          thickness: 1,
-                                        ),
-                                        BlocBuilder<
-                                            VoidTransactionSelectionCubit,
-                                            VoidTransactionSelectionState>(
-                                          builder: (context, state) {
-                                            return state.when(
-                                                voidTransactionSelectedState:
-                                                    (selected) => Checkbox(
-                                                          value: voidTransactionJsonstriongList
-                                                              .where((element) =>
-                                                                  element
-                                                                      .trnNumber ==
-                                                                  headers[index]
-                                                                      .trnNumber)
-                                                              .isNotEmpty,
-                                                          side: BorderSide(
-                                                              color: Colors
-                                                                  .grey[500]!),
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          4)),
-                                                          activeColor: Colors
-                                                              .green.shade300,
-                                                          onChanged: (value) {
-                                                            if (voidTransactionJsonstriongList
-                                                                .where((element) =>
-                                                                    element
-                                                                        .trnNumber ==
-                                                                    headers[index]
-                                                                        .trnNumber)
-                                                                .isEmpty) {
-                                                              voidTransactionJsonstriongList.add(
-                                                                  VoidTransactionJsonModel(
-                                                                      vtaId: headers[
-                                                                              index]
-                                                                          .vtaId,
-                                                                      type: headers[index].type ==
-                                                                              "Order"
-                                                                          ? 'OR'
-                                                                          : headers[index].type ==
-                                                                                  "Sales"
-                                                                              ? 'SL'
-                                                                              : 'AR',
-                                                                      trnNumber:
+                                  selectedVoidTransactionMode != 'P'
+                                      ? const SizedBox.shrink()
+                                      : IntrinsicHeight(
+                                          child: Row(
+                                            children: [
+                                              VerticalDivider(
+                                                color: Colors.grey[300],
+                                                thickness: 1,
+                                              ),
+                                              BlocBuilder<
+                                                  VoidTransactionSelectionCubit,
+                                                  VoidTransactionSelectionState>(
+                                                builder: (context, state) {
+                                                  return state.when(
+                                                      voidTransactionSelectedState:
+                                                          (selected) =>
+                                                              Checkbox(
+                                                                value: voidTransactionJsonstriongList
+                                                                    .where((element) =>
+                                                                        element
+                                                                            .trnNumber ==
+                                                                        headers[index]
+                                                                            .trnNumber)
+                                                                    .isNotEmpty,
+                                                                side: BorderSide(
+                                                                    color: Colors
+                                                                            .grey[
+                                                                        500]!),
+                                                                shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            4)),
+                                                                activeColor:
+                                                                    Colors.green
+                                                                        .shade300,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  if (voidTransactionJsonstriongList
+                                                                      .where((element) =>
+                                                                          element
+                                                                              .trnNumber ==
                                                                           headers[index]
-                                                                              .trnNumber,
-                                                                      udpId: headers[
-                                                                              index]
-                                                                          .udpID,
-                                                                      userId: widget
-                                                                          .user
-                                                                          .usrId));
-                                                            } else {
-                                                              voidTransactionJsonstriongList
-                                                                  .removeWhere((element) =>
-                                                                      element
-                                                                          .trnNumber ==
-                                                                      headers[index]
-                                                                          .trnNumber);
-                                                            }
-                                                            setState(() {
-                                                              log(jsonEncode(
-                                                                  voidTransactionJsonstriongList));
-                                                            });
-                                                          },
-                                                        ));
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  )
+                                                                              .trnNumber)
+                                                                      .isEmpty) {
+                                                                    voidTransactionJsonstriongList.add(VoidTransactionJsonModel(
+                                                                        vtaId: headers[index].vtaId,
+                                                                        type: headers[index].type == "Order"
+                                                                            ? 'OR'
+                                                                            : headers[index].type == "Sales"
+                                                                                ? 'SL'
+                                                                                : 'AR',
+                                                                        trnNumber: headers[index].trnNumber,
+                                                                        udpId: headers[index].udpID,
+                                                                        userId: widget.user.usrId));
+                                                                  } else {
+                                                                    voidTransactionJsonstriongList.removeWhere((element) =>
+                                                                        element
+                                                                            .trnNumber ==
+                                                                        headers[index]
+                                                                            .trnNumber);
+                                                                  }
+                                                                  setState(() {
+                                                                    log(jsonEncode(
+                                                                        voidTransactionJsonstriongList));
+                                                                  });
+                                                                },
+                                                              ));
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        )
                                 ],
                               ),
                             ],

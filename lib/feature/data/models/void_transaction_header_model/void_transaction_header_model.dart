@@ -22,6 +22,8 @@ class VoidTransactionHeaderModel {
   String? createdDate;
   @JsonKey(name: 'udpID')
   String? udpID;
+  @JsonKey(name: 'Status ')
+  String? status;
 
   VoidTransactionHeaderModel({
     this.vtaId,
@@ -32,6 +34,7 @@ class VoidTransactionHeaderModel {
     this.cusCode,
     this.cusName,
     this.createdDate,
+    this.status,
   });
 
   factory VoidTransactionHeaderModel.fromJson(Map<String, dynamic> json) {

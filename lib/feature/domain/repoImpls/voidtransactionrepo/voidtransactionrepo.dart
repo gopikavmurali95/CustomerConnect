@@ -22,6 +22,7 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
           body: {"Status_Value": statusValue});
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<VoidTransactionHeaderModel> headers = headerdata
@@ -74,7 +75,7 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + voidTransactionRejectUrl), body: {
-        "JSONString: ": jsonEncode(reject),
+        "JSONString: ": jsonEncode(reject.jsonString),
       });
 
       if (response.statusCode == 200) {

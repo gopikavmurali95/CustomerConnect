@@ -1435,8 +1435,8 @@ class ApprovalScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Image.asset(
-                                    "assets/images/mr.png",
-                                    height: 17.h,
+                                    "assets/images/incre@2x.png",
+                                    height: 19.h,
                                   ),
                                 ),
                                 SizedBox(
@@ -1524,7 +1524,7 @@ class ApprovalScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Image.asset(
-                                    "assets/images/mr.png",
+                                    "assets/images/vta@2x.png",
                                     height: 17.h,
                                   ),
                                 ),
@@ -1622,7 +1622,7 @@ class ApprovalScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Image.asset(
-                                    "assets/images/mr.png",
+                                    "assets/images/msa@2x.png",
                                     height: 17.h,
                                   ),
                                 ),
@@ -1687,7 +1687,7 @@ class ApprovalScreen extends StatelessWidget {
                                     SettlementApprovalHeaderScreen(
                                       user: user,
                                     )),
-                          ); 
+                          );
                         },
                         child: Container(
                           //height: 50,
@@ -1711,7 +1711,7 @@ class ApprovalScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
                                   child: Image.asset(
-                                    "assets/images/lr.png",
+                                    "assets/images/sev@2x.png",
                                     height: 18.3.h,
                                   ),
                                 ),

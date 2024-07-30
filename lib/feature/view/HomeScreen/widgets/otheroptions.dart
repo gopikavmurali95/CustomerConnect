@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/dybnamicgrid.da
 import 'package:customer_connect/feature/view/SpecialPricing/specialpricingheader.dart';
 import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
@@ -532,7 +533,12 @@ class OtherOptionsHomeWidget extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (context) => const MerchandisingScreen()));
+            },
             child: Container(
               height: 65.h,
               decoration: BoxDecoration(
