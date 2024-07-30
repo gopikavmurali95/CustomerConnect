@@ -1,8 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/target/widgets/lineartargetchart.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:customer_connect/feature/view/target/widgets/targetgraphwidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TargetHeaderScreen extends StatefulWidget {
@@ -45,91 +44,172 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.width / 3,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 2,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            height: MediaQuery.of(context).size.width / 2.8,
-                            width: MediaQuery.of(context).size.width - 80,
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xffe9f2f6),
-                                  Color(0xffdcdef7),
-                                ],
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Target Amount',
-                                        style: countHeading(),
-                                      )
-                                    ],
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: AnimatedLinearProgressChart(
-                                        targetAmount: 10000,
-                                        achievedAmount: 400,
-                                        colors: [
-                                          Color(0xffbec6ee),
-                                          Color(0xff535bcd)
-                                        ],
-                                        subColor: Color(0xff535bcd),
-                                        duration: Duration(milliseconds: 500),
-                                        title: ''),
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: AnimatedLinearProgressChart(
-                                        targetAmount: 10000,
-                                        achievedAmount: 1000,
-                                        colors: [
-                                          Color(0xffc5c7e9),
-                                          Color(0xff9599dd)
-                                        ],
-                                        subColor: Color(0xff9599dd),
-                                        duration: Duration(milliseconds: 500),
-                                        title: ''),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const TargetGraphWidget(),
+            SizedBox(
+              height: 10.sp,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: TextFormField(
+                  // controller: mustSellHeaderSearchCtrl,
+                  style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    hintText: 'Search routes..',
+                    suffix: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.clear,
+                                size: 10.sp,
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        )
+                      ],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 14.sp,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
+                                .none  */
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                )
-              ],
+                  onChanged: (value) {},
+                ),
+              ),
             ),
-          )
-        ],
+            SizedBox(
+              height: 10.sp,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Route Wise Targets",
+                    style: countHeading(),
+                  ),
+                  Text(
+                    '10',
+                    style: countHeading(),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ListView.builder(
+                itemCount: 10,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 50.h,
+                            width: 10,
+                            decoration: BoxDecoration(
+                                color: const Color(0xfffee8e0),
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'TFDB08 - Route DB08',
+                                        style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          color: const Color(0xff2C6B9E),
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              'Target Amount : 20000.00',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              'Target Quantity : 1000.00',
+                                              style: kfontstyle(
+                                                  fontSize: 12.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(
+                        color: Colors.grey[300],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

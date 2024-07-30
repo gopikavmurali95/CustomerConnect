@@ -7,9 +7,12 @@ package="com.example.customer_connect">
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
+    
         android:label="customer_connect"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAK6v3B4Gnj9Z5SKq1EScpieGgQanvmiUk"/>
         <activity
             android:enableOnBackInvokedCallback="true"
             android:name=".MainActivity"
@@ -27,6 +30,9 @@ package="com.example.customer_connect">
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+           <!-- <meta-data
+              android:name="com.google.android.geo.API_KEY"
+              android:value="AIzaSyAK6v3B4Gnj9Z5SKq1EScpieGgQanvmiUk" /> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
