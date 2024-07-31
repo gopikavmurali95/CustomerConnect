@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
+import 'package:customer_connect/feature/view/tracking/trackingscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -161,7 +162,13 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                 ),
               )),
           GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => const TrackSalesManScreen(),
+                    ));
+              },
               child: Container(
                 height: 65.h,
                 decoration: BoxDecoration(

@@ -219,11 +219,12 @@ class _HomeScreenState extends State<HomeScreen> {
             right: 0,
             child: Container(
               height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(0),
                 image: const DecorationImage(
-                  image: AssetImage('assets/images/home/o_bg.png'),
-                ),
+                    image: AssetImage('assets/images/home/o_bg.png'),
+                    fit: BoxFit.cover),
               ),
             ),
           ),

@@ -1,138 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LinearProgressPainter extends CustomPainter {
-  final double progress;
-  final List<Color> colors;
-  final int targetAmount;
-  final int achievedAmount;
-  final Color subColor;
-  final String title;
+class CustomProgressBar extends StatefulWidget {
+  final double targetAmount;
+  final double achievedAmount;
+  final LinearGradient colors;
 
-  LinearProgressPainter({
-    required this.progress,
-    required this.colors,
-    required this.achievedAmount,
-    required this.targetAmount,
-    required this.subColor,
-    required this.title,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint backgroundPaint = Paint()
-      ..color = subColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10
-      ..strokeCap = StrokeCap.round;
-
-    Paint progressPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10
-      ..strokeCap = StrokeCap.round
-      ..shader = LinearGradient(
-        colors: colors,
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-      ).createShader(Rect.fromLTWH(0, 0, size.width * progress, size.height));
-
-    double startX = 0;
-    double endX = size.width * progress;
-
-    canvas.drawLine(Offset(startX, size.height / 2),
-        Offset(size.width, size.height / 2), backgroundPaint);
-    canvas.drawLine(Offset(startX, size.height / 2),
-        Offset(endX, size.height / 2), progressPaint);
-
-    TextSpan span = TextSpan(
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.normal,
-      ),
-      children: [
-        TextSpan(
-          text: '$achievedAmount\n\n',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.bold,
-            height: .58,
-          ),
-        ),
-        TextSpan(
-          text: title == 'Non Productive Visits'
-              ? "Non Productive\n Visits"
-              : title,
-        ),
-      ],
-    );
-
-    TextPainter tp = TextPainter(
-      text: span,
-      textAlign: TextAlign.center,
-      textDirection: TextDirection.ltr,
-    );
-
-    tp.layout();
-    tp.paint(canvas,
-        Offset((size.width - tp.width) / 2, size.height / 2 - tp.height - 10));
-
-    // Adding text at the end of the progress bar
-    TextSpan endTextSpan = TextSpan(
-      text: '${(progress * 100).toStringAsFixed(1)}%',
-      style: TextStyle(
-        color: colors.last,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-
-    TextPainter endTp = TextPainter(
-      text: endTextSpan,
-      textAlign: TextAlign.center,
-      textDirection: TextDirection.ltr,
-    );
-
-    endTp.layout();
-    endTp.paint(
-      canvas,
-      Offset(endX - endTp.width / 2, size.height / 2 - endTp.height / 2),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}
-
-class AnimatedLinearProgressChart extends StatefulWidget {
-  final int targetAmount;
-  final int achievedAmount;
-  final List<Color> colors;
-  final Duration duration;
-  final Color subColor;
-  final String title;
-
-  const AnimatedLinearProgressChart({
-    super.key,
-    required this.achievedAmount,
-    required this.targetAmount,
-    required this.colors,
-    required this.duration,
-    required this.subColor,
-    required this.title,
-  });
+  const CustomProgressBar(
+      {super.key,
+      required this.targetAmount,
+      required this.achievedAmount,
+      required this.colors});
 
   @override
   // ignore: library_private_types_in_public_api
-  _AnimatedLinearProgressChartState createState() =>
-      _AnimatedLinearProgressChartState();
+  _CustomProgressBarState createState() => _CustomProgressBarState();
 }
 
-class _AnimatedLinearProgressChartState
-    extends State<AnimatedLinearProgressChart>
+class _CustomProgressBarState extends State<CustomProgressBar>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -142,60 +27,64 @@ class _AnimatedLinearProgressChartState
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: widget.duration,
+      duration: const Duration(milliseconds: 500),
     );
-    double progress = widget.achievedAmount / widget.targetAmount;
-    _animation = Tween<double>(begin: 0, end: progress).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      });
-
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: widget.achievedAmount / widget.targetAmount,
+    ).animate(_controller);
     _controller.forward();
-  }
-
-  @override
-  void didUpdateWidget(AnimatedLinearProgressChart oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.achievedAmount != widget.achievedAmount ||
-        oldWidget.targetAmount != widget.targetAmount) {
-      double progress = widget.achievedAmount / widget.targetAmount;
-      _animation = Tween<double>(begin: _animation.value, end: progress)
-          .animate(_controller)
-        ..addListener(() {
-          setState(() {});
-        });
-      _controller.forward(from: 0);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomPaint(
-          painter: LinearProgressPainter(
-            title: widget.title,
-            subColor: widget.subColor,
-            progress: _animation.value,
-            colors: widget.colors,
-            achievedAmount: widget.achievedAmount,
-            targetAmount: widget.targetAmount,
+        Container(
+          height: 18.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.transparent),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: const SizedBox(
-            height: 30,
-            width: 200,
+          child: AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: _animation.value,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: widget.colors,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          _animation.isCompleted
+                              ? widget.achievedAmount.toStringAsFixed(2)
+                              : '',
+                          // textScaler: TextScaler.linear(.8.sp),
+                          style: TextStyle(fontSize: 8.sp, color: Colors.white),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
-        ),
-        SizedBox(
-          height: 5.h,
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -1,23 +1,17 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/target/routetarget.dart';
-import 'package:customer_connect/feature/view/target/widgets/targetgraphwidget.dart';
+import 'package:customer_connect/feature/view/target/targetpackage.dart';
+import 'package:customer_connect/feature/view/target/widgets/routetargetdays.dart';
+import 'package:customer_connect/feature/view/target/widgets/routetargetgraph.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
-class TargetHeaderScreen extends StatefulWidget {
-  const TargetHeaderScreen({super.key});
+class RouteTargetWidget extends StatelessWidget {
+  const RouteTargetWidget({super.key});
 
-  @override
-  State<TargetHeaderScreen> createState() => _TargetHeaderScreenState();
-}
-
-class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
@@ -32,26 +26,20 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
           ),
         ),
         title: Text(
-          "Target",
+          "Route Target",
           style: appHeading(),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset(
-              "assets/svg/filter.svg",
-              height: 20,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TargetGraphWidget(),
+            const RouteTargetDaysWidget(),
             SizedBox(
-              height: 10.sp,
+              height: 10.h,
+            ),
+            const RouteTargetGraphWidget(),
+            SizedBox(
+              height: 10.h,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -63,7 +51,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search routes..',
+                    hintText: 'Search packages..',
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -107,7 +95,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
               ),
             ),
             SizedBox(
-              height: 10.sp,
+              height: 10.h,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -115,13 +103,13 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Route Wise Targets",
+                    'Package Wise Target',
                     style: countHeading(),
                   ),
                   Text(
-                    '10',
+                    '12',
                     style: countHeading(),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -131,24 +119,25 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ListView.builder(
-                itemCount: 10,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const RouteTargetWidget()));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 0),
+                itemCount: 12,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) =>
+                                  const TargetPackageScreen()));
+                    },
                     child: Column(
                       children: [
                         Row(
                           children: [
                             Container(
-                              height: 50.h,
+                              height: 40.h,
                               width: 10,
                               decoration: BoxDecoration(
                                   color: const Color(0xfffee8e0),
@@ -165,40 +154,46 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'TFDB08 - Route DB08',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
+                                        Text('Package 01',
+                                            style: blueTextStyle()),
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Expanded(
-                                              child: Text(
+                                            Text(
                                                 overflow: TextOverflow.ellipsis,
-                                                'Target Amount : 20000.00',
+                                                'Target Amount : 20,000.00',
                                                 style: kfontstyle(
-                                                    fontSize: 12.sp,
+                                                    fontSize: 11,
                                                     color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: Text(
+                                                        0xff413434))),
+                                            Text(
                                                 overflow: TextOverflow.ellipsis,
                                                 'Target Quantity : 1000.00',
                                                 style: kfontstyle(
-                                                    fontSize: 12.sp,
+                                                    fontSize: 11,
                                                     color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                            ),
+                                                        0xff413434))),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                'Achieved Amount : 20,000.00',
+                                                style: kfontstyle(
+                                                    fontSize: 11,
+                                                    color: const Color(
+                                                        0xff413434))),
+                                            Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                'Achieved Quantity : 1000.00',
+                                                style: kfontstyle(
+                                                    fontSize: 11,
+                                                    color: const Color(
+                                                        0xff413434))),
                                           ],
                                         ),
                                       ],
