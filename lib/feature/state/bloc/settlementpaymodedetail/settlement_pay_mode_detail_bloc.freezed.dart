@@ -330,21 +330,22 @@ abstract class ClearPaymodeDetailEvent implements SettlementPayModeDetailEvent {
 mixin _$SettlementPayModeDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)
+    required TResult Function(
+            List<SettlemenetApprovalPayModeDetailModel>? paymode)
         getSettlementPayModeDetailState,
     required TResult Function() paymodeDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult? Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult? Function()? paymodeDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult Function()? paymodeDetailFailedState,
     required TResult orElse(),
@@ -403,7 +404,7 @@ abstract class _$$GetSettlementPayModeDetailStateImplCopyWith<$Res> {
           $Res Function(_$GetSettlementPayModeDetailStateImpl) then) =
       __$$GetSettlementPayModeDetailStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SettlemenetApprovalPaymodeDetailModel? paymode});
+  $Res call({List<SettlemenetApprovalPayModeDetailModel>? paymode});
 }
 
 /// @nodoc
@@ -423,9 +424,9 @@ class __$$GetSettlementPayModeDetailStateImplCopyWithImpl<$Res>
   }) {
     return _then(_$GetSettlementPayModeDetailStateImpl(
       paymode: freezed == paymode
-          ? _value.paymode
+          ? _value._paymode
           : paymode // ignore: cast_nullable_to_non_nullable
-              as SettlemenetApprovalPaymodeDetailModel?,
+              as List<SettlemenetApprovalPayModeDetailModel>?,
     ));
   }
 }
@@ -434,10 +435,19 @@ class __$$GetSettlementPayModeDetailStateImplCopyWithImpl<$Res>
 
 class _$GetSettlementPayModeDetailStateImpl
     implements GetSettlementPayModeDetailState {
-  const _$GetSettlementPayModeDetailStateImpl({required this.paymode});
+  const _$GetSettlementPayModeDetailStateImpl(
+      {required final List<SettlemenetApprovalPayModeDetailModel>? paymode})
+      : _paymode = paymode;
 
+  final List<SettlemenetApprovalPayModeDetailModel>? _paymode;
   @override
-  final SettlemenetApprovalPaymodeDetailModel? paymode;
+  List<SettlemenetApprovalPayModeDetailModel>? get paymode {
+    final value = _paymode;
+    if (value == null) return null;
+    if (_paymode is EqualUnmodifiableListView) return _paymode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -449,11 +459,12 @@ class _$GetSettlementPayModeDetailStateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetSettlementPayModeDetailStateImpl &&
-            (identical(other.paymode, paymode) || other.paymode == paymode));
+            const DeepCollectionEquality().equals(other._paymode, _paymode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, paymode);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_paymode));
 
   @JsonKey(ignore: true)
   @override
@@ -466,7 +477,8 @@ class _$GetSettlementPayModeDetailStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)
+    required TResult Function(
+            List<SettlemenetApprovalPayModeDetailModel>? paymode)
         getSettlementPayModeDetailState,
     required TResult Function() paymodeDetailFailedState,
   }) {
@@ -476,7 +488,7 @@ class _$GetSettlementPayModeDetailStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult? Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult? Function()? paymodeDetailFailedState,
   }) {
@@ -486,7 +498,7 @@ class _$GetSettlementPayModeDetailStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult Function()? paymodeDetailFailedState,
     required TResult orElse(),
@@ -536,10 +548,10 @@ class _$GetSettlementPayModeDetailStateImpl
 abstract class GetSettlementPayModeDetailState
     implements SettlementPayModeDetailState {
   const factory GetSettlementPayModeDetailState(
-          {required final SettlemenetApprovalPaymodeDetailModel? paymode}) =
-      _$GetSettlementPayModeDetailStateImpl;
+      {required final List<SettlemenetApprovalPayModeDetailModel>?
+          paymode}) = _$GetSettlementPayModeDetailStateImpl;
 
-  SettlemenetApprovalPaymodeDetailModel? get paymode;
+  List<SettlemenetApprovalPayModeDetailModel>? get paymode;
   @JsonKey(ignore: true)
   _$$GetSettlementPayModeDetailStateImplCopyWith<
           _$GetSettlementPayModeDetailStateImpl>
@@ -588,7 +600,8 @@ class _$PaymodeDetailFailedStateImpl implements PaymodeDetailFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)
+    required TResult Function(
+            List<SettlemenetApprovalPayModeDetailModel>? paymode)
         getSettlementPayModeDetailState,
     required TResult Function() paymodeDetailFailedState,
   }) {
@@ -598,7 +611,7 @@ class _$PaymodeDetailFailedStateImpl implements PaymodeDetailFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult? Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult? Function()? paymodeDetailFailedState,
   }) {
@@ -608,7 +621,7 @@ class _$PaymodeDetailFailedStateImpl implements PaymodeDetailFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlemenetApprovalPaymodeDetailModel? paymode)?
+    TResult Function(List<SettlemenetApprovalPayModeDetailModel>? paymode)?
         getSettlementPayModeDetailState,
     TResult Function()? paymodeDetailFailedState,
     required TResult orElse(),

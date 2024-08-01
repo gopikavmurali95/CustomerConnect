@@ -42,14 +42,16 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const SettlementApprovalDetailScreen()));
+                                        SettlementApprovalDetailScreen(
+                                          header: headers[index],
+                                        )));
                           },
                           child: Column(
                             children: [
                               Row(
                                 children: [
                                   Container(
-                                    height: 50,
+                                    height: 65,
                                     width: 10,
                                     decoration: BoxDecoration(
                                         color: const Color(0xfffee8e0),
@@ -68,7 +70,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            headers[index].rotCode ?? '',
+                                            "${headers[index].rotCode ?? ''} - ${headers[index].rotName ?? ''}",
                                             //'Tfsh0$index - RTL route $index',
                                             style: kfontstyle(
                                               fontSize: 12.sp,
@@ -82,7 +84,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  "${headers[index].cusCode ?? ''} - ${headers[index].cusName ?? ''}",
+                                                  headers[index].usrName ?? '',
                                                   //'Tfsh03U03 - Fayis M ',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
@@ -98,7 +100,8 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  "${headers[index].createdDate ?? ''} - ${headers[index].udpId ?? ''}",
+                                                  headers[index].createdDate ??
+                                                      '',
                                                   //'31 May 2024 | 10:35',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
@@ -129,7 +132,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                       ),
             settlementApprovalHeaderFailedState: () => Center(
                   child: Text(
-                    'No Data Available',
+                    'No Data Available in header',
                     style: kfontstyle(),
                   ),
                 ));

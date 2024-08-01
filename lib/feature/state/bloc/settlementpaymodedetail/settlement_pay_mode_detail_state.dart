@@ -3,7 +3,7 @@ part of 'settlement_pay_mode_detail_bloc.dart';
 @freezed
 class SettlementPayModeDetailState with _$SettlementPayModeDetailState {
   const factory SettlementPayModeDetailState.getSettlementPayModeDetailState(
-          {required SettlemenetApprovalPaymodeDetailModel? paymode}) =
+          {required List<SettlemenetApprovalPayModeDetailModel>? paymode}) =
       GetSettlementPayModeDetailState;
 
   const factory SettlementPayModeDetailState.paymodeDetailFailedState() =

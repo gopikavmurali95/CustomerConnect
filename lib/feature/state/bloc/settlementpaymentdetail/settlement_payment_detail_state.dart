@@ -3,7 +3,8 @@ part of 'settlement_payment_detail_bloc.dart';
 @freezed
 class SettlementPaymentDetailState with _$SettlementPaymentDetailState {
   const factory SettlementPaymentDetailState.getPaymentDetailState(
-      {required SettlementPaymentDetailModel? payment}) = GetPaymentDetailState;
+          {required List<SettlementPaymentDetailModel>? payment}) =
+      GetPaymentDetailState;
 
   const factory SettlementPaymentDetailState.paymentDetailFailedState() =
       PaymentDetailFailedState;

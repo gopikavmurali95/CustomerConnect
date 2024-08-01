@@ -4,10 +4,9 @@ part 'data.g.dart';
 
 @JsonSerializable()
 class Data {
-  String? exampleField1;
-  String? exampleField2;
+  String? exampleKey;
 
-  Data({this.exampleField1, this.exampleField2});
+  Data({this.exampleKey});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

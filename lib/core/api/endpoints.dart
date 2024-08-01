@@ -138,3 +138,5 @@ const settlementApprovalPayModeDetailUrl =
 const settlementApprovalPaymentDetailUrl =
     "SettlementApproval/SettlementApprovalPaymentDetail";
 const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
+
+const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";

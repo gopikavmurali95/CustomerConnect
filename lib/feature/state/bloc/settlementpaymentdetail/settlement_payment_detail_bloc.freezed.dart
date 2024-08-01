@@ -330,21 +330,21 @@ abstract class ClearPaymentDetailEvent implements SettlementPaymentDetailEvent {
 mixin _$SettlementPaymentDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlementPaymentDetailModel? payment)
+    required TResult Function(List<SettlementPaymentDetailModel>? payment)
         getPaymentDetailState,
     required TResult Function() paymentDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlementPaymentDetailModel? payment)?
+    TResult? Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult? Function()? paymentDetailFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlementPaymentDetailModel? payment)?
+    TResult Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult Function()? paymentDetailFailedState,
     required TResult orElse(),
@@ -401,7 +401,7 @@ abstract class _$$GetPaymentDetailStateImplCopyWith<$Res> {
           $Res Function(_$GetPaymentDetailStateImpl) then) =
       __$$GetPaymentDetailStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SettlementPaymentDetailModel? payment});
+  $Res call({List<SettlementPaymentDetailModel>? payment});
 }
 
 /// @nodoc
@@ -420,9 +420,9 @@ class __$$GetPaymentDetailStateImplCopyWithImpl<$Res>
   }) {
     return _then(_$GetPaymentDetailStateImpl(
       payment: freezed == payment
-          ? _value.payment
+          ? _value._payment
           : payment // ignore: cast_nullable_to_non_nullable
-              as SettlementPaymentDetailModel?,
+              as List<SettlementPaymentDetailModel>?,
     ));
   }
 }
@@ -430,10 +430,19 @@ class __$$GetPaymentDetailStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
-  const _$GetPaymentDetailStateImpl({required this.payment});
+  const _$GetPaymentDetailStateImpl(
+      {required final List<SettlementPaymentDetailModel>? payment})
+      : _payment = payment;
 
+  final List<SettlementPaymentDetailModel>? _payment;
   @override
-  final SettlementPaymentDetailModel? payment;
+  List<SettlementPaymentDetailModel>? get payment {
+    final value = _payment;
+    if (value == null) return null;
+    if (_payment is EqualUnmodifiableListView) return _payment;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -445,12 +454,12 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPaymentDetailStateImpl &&
-            const DeepCollectionEquality().equals(other.payment, payment));
+            const DeepCollectionEquality().equals(other._payment, _payment));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(payment));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_payment));
 
   @JsonKey(ignore: true)
   @override
@@ -462,7 +471,7 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlementPaymentDetailModel? payment)
+    required TResult Function(List<SettlementPaymentDetailModel>? payment)
         getPaymentDetailState,
     required TResult Function() paymentDetailFailedState,
   }) {
@@ -472,7 +481,7 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlementPaymentDetailModel? payment)?
+    TResult? Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult? Function()? paymentDetailFailedState,
   }) {
@@ -482,7 +491,7 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlementPaymentDetailModel? payment)?
+    TResult Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult Function()? paymentDetailFailedState,
     required TResult orElse(),
@@ -529,10 +538,10 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
 
 abstract class GetPaymentDetailState implements SettlementPaymentDetailState {
   const factory GetPaymentDetailState(
-          {required final SettlementPaymentDetailModel? payment}) =
+          {required final List<SettlementPaymentDetailModel>? payment}) =
       _$GetPaymentDetailStateImpl;
 
-  SettlementPaymentDetailModel? get payment;
+  List<SettlementPaymentDetailModel>? get payment;
   @JsonKey(ignore: true)
   _$$GetPaymentDetailStateImplCopyWith<_$GetPaymentDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -580,7 +589,7 @@ class _$PaymentDetailFailedStateImpl implements PaymentDetailFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(SettlementPaymentDetailModel? payment)
+    required TResult Function(List<SettlementPaymentDetailModel>? payment)
         getPaymentDetailState,
     required TResult Function() paymentDetailFailedState,
   }) {
@@ -590,7 +599,7 @@ class _$PaymentDetailFailedStateImpl implements PaymentDetailFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(SettlementPaymentDetailModel? payment)?
+    TResult? Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult? Function()? paymentDetailFailedState,
   }) {
@@ -600,7 +609,7 @@ class _$PaymentDetailFailedStateImpl implements PaymentDetailFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(SettlementPaymentDetailModel? payment)?
+    TResult Function(List<SettlementPaymentDetailModel>? payment)?
         getPaymentDetailState,
     TResult Function()? paymentDetailFailedState,
     required TResult orElse(),

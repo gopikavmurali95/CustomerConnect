@@ -47,9 +47,9 @@ List<ApprovalResonModel> availableresons = [];
 int approvedCount = 0;
 
 List<LoadReqPrdModel?> _loadproducts = [];
-String _selectedloadrequestdetail = 'P';
-TextEditingController _apprvHQtyController = TextEditingController();
-TextEditingController _apprvLQtyController = TextEditingController();
+//String _selectedloadrequestdetail = 'P';
+//TextEditingController _apprvHQtyController = TextEditingController();
+//TextEditingController _apprvLQtyController = TextEditingController();
 TextEditingController _loadreqdetailSearchController = TextEditingController();
 
 class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
@@ -130,7 +130,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${widget.loadrequest.lrhNumber}h',
+                                '${widget.loadrequest.lrhNumber}',
                                 style: kfontstyle(
                                   fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),

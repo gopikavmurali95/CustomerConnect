@@ -6,13 +6,18 @@ part 'settlement_payment_detail_model.g.dart';
 class SettlementPaymentDetailModel {
   @JsonKey(name: 'cus_Code')
   String? cusCode;
+  @JsonKey(name: 'name')
   String? name;
+  @JsonKey(name: 'type')
   String? type;
+  @JsonKey(name: 'chequeNo')
   String? chequeNo;
+  @JsonKey(name: 'chequeDate')
   String? chequeDate;
   @JsonKey(name: 'bnk_Name')
   String? bnkName;
-  int? amount;
+  @JsonKey(name: 'amount')
+  String? amount;
 
   SettlementPaymentDetailModel({
     this.cusCode,

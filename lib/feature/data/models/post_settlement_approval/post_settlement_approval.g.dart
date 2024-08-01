@@ -6,17 +6,15 @@ part of 'post_settlement_approval.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PostSettlementApproval _$PostSettlementApprovalFromJson(
+PostSettlementApprovalModel _$PostSettlementApprovalModelFromJson(
         Map<String, dynamic> json) =>
-    PostSettlementApproval(
+    PostSettlementApprovalModel(
       status: json['Status'] as String?,
-      res: json['Res'] == null
-          ? null
-          : Res.fromJson(json['Res'] as Map<String, dynamic>),
+      res: json['Res'] as String?,
     );
 
-Map<String, dynamic> _$PostSettlementApprovalToJson(
-        PostSettlementApproval instance) =>
+Map<String, dynamic> _$PostSettlementApprovalModelToJson(
+        PostSettlementApprovalModel instance) =>
     <String, dynamic>{
       'Status': instance.status,
       'Res': instance.res,

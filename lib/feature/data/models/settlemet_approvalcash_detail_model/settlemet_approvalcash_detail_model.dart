@@ -5,16 +5,18 @@ part 'settlemet_approvalcash_detail_model.g.dart';
 @JsonSerializable()
 class SettlemetApprovalcashDetailModel {
   @JsonKey(name: 'CashInv')
-  int? cashInv;
+  String? cashInv;
   @JsonKey(name: 'CashAR')
-  int? cashAr;
-  int? debitNote;
+  String? cashAr;
+  String? debitNote;
   @JsonKey(name: 'CashTotal')
-  int? cashTotal;
+  String? cashTotal;
   @JsonKey(name: 'CashAdv')
-  int? cashAdv;
+  String? cashAdv;
   @JsonKey(name: 'PendingBalance')
-  int? pendingBalance;
+  String? pendingBalance;
+  @JsonKey(name: 'PettyCash')
+  String? pettyCash;
 
   SettlemetApprovalcashDetailModel({
     this.cashInv,
@@ -23,6 +25,7 @@ class SettlemetApprovalcashDetailModel {
     this.cashTotal,
     this.cashAdv,
     this.pendingBalance,
+    this.pettyCash,
   });
 
   factory SettlemetApprovalcashDetailModel.fromJson(Map<String, dynamic> json) {

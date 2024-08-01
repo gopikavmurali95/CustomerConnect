@@ -9,12 +9,13 @@ part of 'settlemet_approvalcash_detail_model.dart';
 SettlemetApprovalcashDetailModel _$SettlemetApprovalcashDetailModelFromJson(
         Map<String, dynamic> json) =>
     SettlemetApprovalcashDetailModel(
-      cashInv: (json['CashInv'] as num?)?.toInt(),
-      cashAr: (json['CashAR'] as num?)?.toInt(),
-      debitNote: (json['debitNote'] as num?)?.toInt(),
-      cashTotal: (json['CashTotal'] as num?)?.toInt(),
-      cashAdv: (json['CashAdv'] as num?)?.toInt(),
-      pendingBalance: (json['PendingBalance'] as num?)?.toInt(),
+      cashInv: json['CashInv'] as String?,
+      cashAr: json['CashAR'] as String?,
+      debitNote: json['debitNote'] as String?,
+      cashTotal: json['CashTotal'] as String?,
+      cashAdv: json['CashAdv'] as String?,
+      pendingBalance: json['PendingBalance'] as String?,
+      pettyCash: json['PettyCash'] as String?,
     );
 
 Map<String, dynamic> _$SettlemetApprovalcashDetailModelToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$SettlemetApprovalcashDetailModelToJson(
       'CashTotal': instance.cashTotal,
       'CashAdv': instance.cashAdv,
       'PendingBalance': instance.pendingBalance,
+      'PettyCash': instance.pettyCash,
     };

@@ -1,22 +1,20 @@
 import 'dart:async';
-
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/settlement_approval_header_out_model/settlement_approval_header_out_model.dart';
 import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/saheaderlistwidget.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SettlementApprovalHeaderScreen extends StatefulWidget {
-  const SettlementApprovalHeaderScreen(
-      {super.key, required LoginUserModel user});
 
+class SettlementApprovalHeaderScreen extends StatefulWidget {
+   final LoginUserModel users;
+  const SettlementApprovalHeaderScreen(
+      {super.key, required LoginUserModel user, required this.users});
   @override
   State<SettlementApprovalHeaderScreen> createState() =>
       _SettlementApprovalHeaderScreenState();
@@ -34,13 +32,13 @@ List<ApprovalStatusFilterModel> ddfilterSettlementApproval = [
 ];
 TextEditingController settlementApprovalHeaderSearchCtrl =
     TextEditingController();
-String selectedSettlmtApprovalmode = 'AP';
+String selectedSettlmtApprovalmode = 'AL';
 
 class _SettlementApprovalHeaderScreenState
     extends State<SettlementApprovalHeaderScreen> {
   @override
   void initState() {
-    selectedSettlmtApprovalmode = "AP";
+    selectedSettlmtApprovalmode = "AL";
     settlementApprovalHeaderSearchCtrl.clear();
     context
         .read<SettlementApprovalHeaderBloc>()
@@ -48,7 +46,7 @@ class _SettlementApprovalHeaderScreenState
 
     context.read<SettlementApprovalHeaderBloc>().add(
         const GetSettlementApprovalHeaderEvent(
-            statusvalue: 'AP', searchQuery: ''));
+            statusvalue: 'AL', searchQuery: ''));
 
     super.initState();
   }
@@ -172,7 +170,7 @@ class _SettlementApprovalHeaderScreenState
             width: MediaQuery.of(context).size.width,
             child: DropdownButtonFormField(
               elevation: 0,
-              //value: selectedMustSellMode,
+              value: ddfilterSettlementApproval[0].mode,//selectedSettlmtApprovalmode,//ddfilterSettlementApproval[0].mode,
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
@@ -220,6 +218,7 @@ class _SettlementApprovalHeaderScreenState
                     GetSettlementApprovalHeaderEvent(
                         searchQuery: settlementApprovalHeaderSearchCtrl.text,
                         statusvalue: value));
+                       // setState(() {});
               },
             ),
           ),
@@ -263,4 +262,13 @@ class _SettlementApprovalHeaderScreenState
       ]),
     );
   }
+}
+
+
+Future<void> _onRefreshSettlementApprovaalHeaderScreen(
+    BuildContext context, LoginUserModel model) async {
+  context.read<SettlementApprovalHeaderBloc>().add(const ClearSettlementApprovalHeaderEvent());
+  context
+      .read<SettlementApprovalHeaderBloc>()
+      .add(const  GetSettlementApprovalHeaderEvent(statusvalue: '', searchQuery: ''));
 }

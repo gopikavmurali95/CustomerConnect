@@ -5,7 +5,6 @@ import 'package:customer_connect/feature/data/models/settlement_approval_header_
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
 part 'settlement_approval_header_event.dart';
 part 'settlement_approval_header_state.dart';
 part 'settlement_approval_header_bloc.freezed.dart';
@@ -21,8 +20,7 @@ class SettlementApprovalHeaderBloc
       List<SettlementApprovalHeaderOutModel> searchlistitems = [];
       Either<MainFailures, List<SettlementApprovalHeaderOutModel>> headers =
           await settlementheaderRepo
-              .getSettlementApprovalHeaders(event.statusvalue);
-
+              .getSettlementApprovalHeaders(event.statusvalue,event.searchQuery);
       emit(
           headers.fold((l) => const SettlementApprovalHeaderFailedState(), (r) {
         searchlistitems = r

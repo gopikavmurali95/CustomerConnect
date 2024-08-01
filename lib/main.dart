@@ -90,6 +90,9 @@ import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schd
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
@@ -143,6 +146,7 @@ import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.da
 import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
+import 'feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart';
 
 bool isLoadingProgress = false;
 void main() async {
@@ -560,6 +564,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<SettlementCashDetailsBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<SettlementPayModeDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementPaymentDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PostSettlementApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context)=>getit<SettlementApprovalRejectBloc>()
+          ),
         BlocProvider<InverntoryTransExPandCubit>(
           create: (context) => InverntoryTransExPandCubit(),
         ),

@@ -15,7 +15,7 @@ SettlementPaymentDetailModel _$SettlementPaymentDetailModelFromJson(
       chequeNo: json['chequeNo'] as String?,
       chequeDate: json['chequeDate'] as String?,
       bnkName: json['bnk_Name'] as String?,
-      amount: (json['amount'] as num?)?.toInt(),
+      amount: json['amount'] as String?,
     );
 
 Map<String, dynamic> _$SettlementPaymentDetailModelToJson(

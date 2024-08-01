@@ -1,16 +1,23 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/settlement_approval_header_out_model/settlement_approval_header_out_model.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart';
+import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashdetails.dart';
+import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashmodecontainers.dart';
+import 'package:customer_connect/feature/view/settlementapproval/widgets/sadetailstotalcheckslist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:dotted_line/dotted_line.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettlementApprovalDetailScreen extends StatefulWidget {
-  const SettlementApprovalDetailScreen({super.key});
+  final SettlementApprovalHeaderOutModel header;
+  const SettlementApprovalDetailScreen({super.key, required this.header});
 
   @override
   State<SettlementApprovalDetailScreen> createState() =>
@@ -19,6 +26,33 @@ class SettlementApprovalDetailScreen extends StatefulWidget {
 
 class _SettlementApprovalDetailScreenState
     extends State<SettlementApprovalDetailScreen> {
+  @override
+  void initState() {
+    context
+        .read<SettlementCashDetailsBloc>()
+        .add(const ClearCashDetailsEvent());
+    context
+        .read<SettlementCashDetailsBloc>()
+        .add(GetCashDetailEvent(udpID: widget.header.udpId ?? ""));
+
+    context
+        .read<SettlementPayModeDetailBloc>()
+        .add(const ClearPaymodeDetailEvent());
+    context
+        .read<SettlementPayModeDetailBloc>()
+        .add(GetPaymodeDetailEvent(udpID: widget.header.udpId ?? ""));
+
+    context
+        .read<SettlementPaymentDetailBloc>()
+        .add(const ClearPaymentDetailEvent());
+
+    context
+        .read<SettlementPaymentDetailBloc>()
+        .add(GetPaymentDetailEvent(udpID: widget.header.udpId ?? ''));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +66,6 @@ class _SettlementApprovalDetailScreenState
             Icons.arrow_back_ios_rounded,
           ),
         ),
-        // leading: SizedBox(
-        //   height: 05,
-        //   width: 04,
-        //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
-        // ),
         title: Text(
           "Settlement Approval Detail",
           style: appHeading(),
@@ -44,1006 +73,178 @@ class _SettlementApprovalDetailScreenState
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          child: BlocBuilder<SettlementCashDetailsBloc,
-              SettlementCashDetailsState>(
-            builder: (context, state) {
-              return state.when(
-                  getCashDetailsState: (cash) => cash == null
-                      ? ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) => ShimmerContainers(
-                              height: 65.h, width: double.infinity),
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(),
-                          itemCount: 10)
-                      : Column(
+        child: SizedBox(
+          height: double.infinity,
+          child: SingleChildScrollView(
+            // physics: const NeverScrollableScrollPhysics(),
+             physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 65,
+                          width: 10,
+                          decoration: BoxDecoration(
+                              color: const Color(0xfffee8e0),
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Expanded(
+                            child: Row(
                           children: [
-                            Column(
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "${widget.header.rotCode} -${widget.header.rotName}",
+                                  //'Tfsh003 - RTL route 03',
+                                  style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    color: const Color(0xff2C6B9E),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                                 Row(
                                   children: [
-                                    Container(
-                                      height: 50,
-                                      width: 10,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xfffee8e0),
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
                                     Expanded(
-                                        child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              // "${cash.cashAdv}",
-                                              'Tfsh003 - RTL route 03',
-                                              style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff2C6B9E),
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    'Tfsh03U03 - Fayis M ',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff413434)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    '31 May 2024 | 10:35',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff413434)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Text(
-                                              'Sales Route',
-                                              style: kfontstyle(
-                                                  fontSize: 10.sp,
-                                                  color: Colors.grey),
-                                            ),
-                                          ],
-                                        ))
-                                      ],
-                                    )),
-                                    /* Container(
-                                      height: 55.h,
-                                      width: 1.w,
-                                      color: Colors.grey.shade300,
-                                    ),
-                                    Transform.scale(
-                                      scale: 0.8,
-                                      child: Theme(
-                                        data: ThemeData(
-                                          checkboxTheme: const CheckboxThemeData(
-                                            side: BorderSide(color: Colors.grey, width: 2),
-                                          ),
-                                        ),
-                                        child: Checkbox(
-                                          activeColor: Colors.green.shade300,
-                                          checkColor: Colors.white,
-                                          value: _isCheckedList[index],
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _isCheckedList[index] = value!;
-                                            });
-                                          },
-                                        ),
+                                      child: Text(
+                                        "${widget.header.usrName}",
+                                        overflow: TextOverflow.ellipsis,
+                                        //'Tfsh03U03 - Fayis M ',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
                                       ),
-                                    ), */
+                                    ),
                                   ],
                                 ),
-                                Divider(
-                                  color: Colors.grey[300],
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Cash Invoices  ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Column(
+                                Row(
                                   children: [
-                                    SizedBox(
-                                      height: 7.h,
+                                    Expanded(
+                                      child: Text(
+                                        "${widget.header.createdDate}",
+                                        overflow: TextOverflow.ellipsis,
+                                        // '31 May 2024 | 10:35',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
+                                      ),
                                     ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
                                   ],
-                                )),
-                                Text(
-                                  "svx",
-                                  // "${cash.cashInv}",
-                                  //' 200.00',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'AR Collection Cash ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
                                 ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
                                 Text(
-                                  "bbhs",
-                                  // "${cash.cashAr}",
+                                  "${widget.header.rotType}",
+                                  // 'Sales Route',
                                   style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Advance Collection Cash  ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                                      fontSize: 10.sp, color: Colors.grey),
                                 ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text(
-                                  "bdd",
-                                  // "${cash.cashAdv}",
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
                               ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Inventory Variance - Debit Note  ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text(
-                                  "db",
-                                  //"${cash.debitNote}",
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Cumulative Variance  ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text(
-                                  "jhbbdcjs",
-                                  //"${cash.pendingBalance}",
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Petty Cash ',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text(
-                                  "${cash.cashAdv}",
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "67465",
-                                  //  "${cash.cashTotal}",
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text(
-                                  'AED 7,300.00',
-                                  style: kfontstyle(
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 0, vertical: 15),
-                              child: BlocBuilder<SettlementPayModeDetailBloc,
-                                  SettlementPayModeDetailState>(
-                                builder: (context, state) {
-                                  return state.when(
-                                      getSettlementPayModeDetailState:
-                                          (paymode) => paymode == null
-                                              ? const Text("No Data")
-                                              : Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 180,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              2.5,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        color: const Color
-                                                            .fromRGBO(
-                                                            243, 244, 242, 100),
-                                                      ),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    top: 10,
-                                                                    left: 10),
-                                                            child: Text(
-                                                              "Total Cash",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      8.sp),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    top: 2,
-                                                                    left: 10),
-                                                            child: Text(
-                                                              "${cash.cashTotal}",
-                                                             // "7,300.00",
-                                                              style: kfontstyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                fontSize: 10.sp,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          const Divider(),
-                                                          Row(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        left:
-                                                                            10.0,
-                                                                        right:
-                                                                            5,
-                                                                        top: 2),
-                                                                child:
-                                                                    Container(
-                                                                  height: 30,
-                                                                  width: 30,
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10),
-                                                                      color: Colors
-                                                                          .white),
-                                                                ),
-                                                              ),
-                                                              Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "Hard Cash",
-                                                                    style: kfontstyle(
-                                                                        fontSize:
-                                                                            10.sp),
-                                                                  ),
-                                                                  Text(
-                                                                     "${paymode.mode}",
-                                                                     // "3,800.00",
-                                                                      style: kfontstyle(
-                                                                          fontSize: 8
-                                                                              .sp,
-                                                                          fontWeight:
-                                                                              FontWeight.w600)),
-                                                                ],
-                                                              )
-                                                            ],
-                                                          ),
-                                                          SizedBox(
-                                                            height: 10.h,
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        left:
-                                                                            10.0,
-                                                                        right:
-                                                                            5),
-                                                                child:
-                                                                    Container(
-                                                                  height: 30,
-                                                                  width: 30,
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10),
-                                                                      color: Colors
-                                                                          .white),
-                                                                ),
-                                                              ),
-                                                              Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "Online Payment",
-                                                                    style: kfontstyle(
-                                                                        fontSize:
-                                                                            10.sp),
-                                                                  ),
-                                                                  Text(
-                                                                      "1,000.00",
-                                                                      style: kfontstyle(
-                                                                          fontSize: 8
-                                                                              .sp,
-                                                                          fontWeight:
-                                                                              FontWeight.w600)),
-                                                                ],
-                                                              )
-                                                            ],
-                                                          ),
-                                                          SizedBox(
-                                                            height: 10.h,
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        left:
-                                                                            10.0,
-                                                                        right:
-                                                                            5),
-                                                                child:
-                                                                    Container(
-                                                                  height: 30,
-                                                                  width: 30,
-                                                                  decoration: BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10),
-                                                                      color: Colors
-                                                                          .white),
-                                                                ),
-                                                              ),
-                                                              Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "POS",
-                                                                    style: kfontstyle(
-                                                                        fontSize:
-                                                                            10.sp),
-                                                                  ),
-                                                                  Text(
-                                                                      "2,500.00",
-                                                                      style: kfontstyle(
-                                                                          fontSize: 8
-                                                                              .sp,
-                                                                          fontWeight:
-                                                                              FontWeight.w600)),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        height: 180,
-                                                        //width: MediaQuery.of(context).size.width/3,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            color: const Color(
-                                                                0xfff3fbeb)
-                                                            // color: const Color.fromARGB(255, 207, 243, 209)
-                                                            ),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                top: 10,
-                                                              ),
-                                                              child: Text(
-                                                                "Collected",
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        8.sp),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      top: 2),
-                                                              child: Text(
-                                                                "${paymode.collectedAmount}",
-                                                               // "7,000.00",
-                                                                style:
-                                                                    kfontstyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      10.sp,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            const Divider(),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "3,800.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 10.h,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "1,000.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 10.h,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "2,500.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        height: 180,
-                                                        //width: MediaQuery.of(context).size.width/3,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            color: const Color(
-                                                                0xfffef2f2)),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                top: 10,
-                                                              ),
-                                                              child: Text(
-                                                                "Variance",
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        8.sp),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      top: 2),
-                                                              child: Text(
-                                                                "${paymode.variance}",
-                                                                style:
-                                                                    kfontstyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize:
-                                                                      10.sp,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            const Divider(),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "300.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 10.h,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "00.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 10.h,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      vertical:
-                                                                          10),
-                                                              child: Text(
-                                                                  "00.00",
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          8.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                      paymodeDetailFailedState: () => Center(
-                                            child: Text(
-                                              'No Data Available',
-                                              style: kfontstyle(),
-                                            ),
-                                          ));
-                                },
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Variance Limit',
-                                    style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 137, 10, 3),
-                                      fontSize: 11.sp,
-                                      fontWeight: FontWeight.w600,
-                                    )),
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 7.h,
-                                    ),
-                                    DottedLine(
-                                      dashColor: Colors.grey.shade300,
-                                    )
-                                  ],
-                                )),
-                                Text('200.00',
-                                    style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 137, 10, 3),
-                                      fontSize: 11.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ))
-                              ],
-                            ),
-                            const Divider(
-                              color: Color.fromARGB(255, 227, 225, 225),
-                            ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  //SizedBox(width: 05,),
-                                  Text(
-                                    "Total Checks",
-                                    style: countHeading(),
-                                  ),
-                                  Text(
-                                    "4/1200.00",
-                                    style: countHeading(),
-                                  ),
-                                ]),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: ListView.builder(
-                                      // shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: 30,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return Column(
-                                          children: [
-                                            SizedBox(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  SizedBox(
-                                                    child: Row(
-                                                      children: [
-                                                        CircleAvatar(
-                                                          radius: 25,
-                                                          backgroundColor:
-                                                              const Color
-                                                                  .fromARGB(
-                                                                  255,
-                                                                  237,
-                                                                  194,
-                                                                  227),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "index",
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      14.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: Colors
-                                                                      .white),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10.w,
-                                                        ),
-                                                        GestureDetector(
-                                                          onTap: () {},
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              SizedBox(
-                                                                width: 200.w,
-                                                                child: Text(
-                                                                  "6735278782",
-                                                                  //'${spHeader[index].prhName}',
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  maxLines: 2,
-                                                                  style:
-                                                                      kfontstyle(
-                                                                    fontSize:
-                                                                        11.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                "Emirates MBD,Abu Dhabi",
-                                                                // '${spHeader[index].startDate} To ${spHeader[index].endDate}',
-                                                                style:
-                                                                    subTextStyle(),
-                                                              ),
-                                                              Text(
-                                                                "16 May 2024",
-                                                                //'${spHeader[index].prhCode}',
-                                                                style:
-                                                                    subTextStyle(),
-                                                              ),
-                                                              Text(
-                                                                "199521 - Carrefour Hypermarket",
-                                                                //'${spHeader[index].prhCode}',
-                                                                style:
-                                                                    subTextStyle(),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {},
-                                                        child: Text(
-                                                          '120.00',
-                                                          style: TextStyle(
-                                                              fontSize: 10.sp),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5.w,
-                                                      ),
-                                                      const Text(
-                                                        "AR",
-                                                        style: TextStyle(
-                                                            fontSize: 10),
-                                                      )
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 0, right: 0, top: 0
-                                                  // top: 10,bottom: 10
-                                                  ),
-                                              child: Divider(
-                                                color: Colors.grey.shade300,
-                                              ),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            // SizedBox(width: ,),
+                            ))
                           ],
-                        ),
-                  cashDetailFailedState: () => const Center(
-                        child: Text("no data"),
-                      ));
-            },
+                        )),
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.grey[300],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                const SettlmntCashDetailsScreen(),
+                const PaymentModeWidgets(),
+
+                BlocBuilder<SettlementPayModeDetailBloc,
+                    SettlementPayModeDetailState>(
+                  builder: (context, state) {
+                    return state.when(
+                        getSettlementPayModeDetailState: (paymode) =>
+                            paymode == null
+                                ? ShimmerContainers(
+                                    height: 60.h, width: double.infinity)
+                                : Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Variance Limit',
+                                          style: TextStyle(
+                                            color: const Color.fromARGB(
+                                                255, 137, 10, 3),
+                                            fontSize: 11.sp,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                      Expanded(
+                                          child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 7.h,
+                                          ),
+                                          DottedLine(
+                                            dashColor: Colors.grey.shade300,
+                                          )
+                                        ],
+                                      )),
+                                      Text("${paymode[0].varianceLimit}",
+                                          //'200.00',
+                                          style: TextStyle(
+                                            color: const Color.fromARGB(
+                                                255, 137, 10, 3),
+                                            fontSize: 11.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ))
+                                    ],
+                                  ),
+                        paymodeDetailFailedState: () => Center(
+                              child: Text(
+                                'No Data Available In variance',
+                                style: kfontstyle(),
+                              ),
+                            ));
+                  },
+                ),
+                const Divider(
+                  color: Color.fromARGB(255, 227, 225, 225),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //SizedBox(width: 05,),
+                      Text(
+                        "Total Checks",
+                        style: countHeading(),
+                      ),
+                      BlocBuilder<SettlementPaymentDetailBloc,
+                          SettlementPaymentDetailState>(
+                        builder: (context, state) {
+                          return Text(
+                            state.when(
+                              getPaymentDetailState: (payment) => payment ==
+                                      null
+                                  ? "0"
+                                  : payment.length
+                                      .toString(), //payment[index].amount.toString(),
+                              paymentDetailFailedState: () => "0",
+                            ),
+                            style: countHeading(),
+                          );
+                        },
+                      ),
+                    ]),
+
+                const SizedBox(
+                  height: 5,
+                ),
+                const SettlmtTotalChecksList()
+                // SizedBox(width: ,),
+              ],
+            ),
           ),
         ),
       ),
@@ -1052,24 +253,244 @@ class _SettlementApprovalDetailScreenState
         child: Row(
           children: [
             Expanded(
-                child: MaterialButton(
+                child: BlocConsumer<SettlementApprovalRejectBloc,
+                    SettlementApprovalRejectState>(
+              listener: (context, state) {
+                state.when(
+                  getRejectApprovalState: (response) {
+                    if (response != null) {
+                      Navigator.pop(context);
+                      // if (isApproval) {
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content: const Text("Rejected Successfully"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                context
+                                    .read<SettlementApprovalRejectBloc>()
+                                    .add(GetRejectApprovalEvent(
+                                        udpID: widget.header.udpId ?? ""));
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Ok'),
+                            ),
+                          ],
+                        ),
+                      );
+                      // }
+                    }
+                  },
+                  rejectApprovalFailedState: () {
+                    Navigator.pop(context);
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (context) => CupertinoAlertDialog(
+                        title: const Text('Alert'),
+                        content: const Text(
+                            "Something Went Wrong, please Try again later"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  postApprovalLoadingState: () {
+                    showCupertinoModalPopup(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: const PopScope(
+                                canPop: true,
+                                child: CupertinoActivityIndicator(
+                                  animating: true,
+                                  color: Colors.red,
+                                  radius: 30,
+                                ),
+                              ),
+                            ));
+                  },
+                );
+              },
+              builder: (context, state) {
+                return MaterialButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     color: Colors.red.shade300,
-                    onPressed: () {},
-                    child: const Text("Reject"))),
+                    onPressed: () {
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content:
+                              const Text("Do you Want to Reject this request"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                setState(() {});
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                context
+                                    .read<SettlementApprovalRejectBloc>()
+                                    .add(const RejectApprovalLoadingEvent());
+                                context
+                                    .read<SettlementApprovalRejectBloc>()
+                                    .add(
+                                      GetRejectApprovalEvent(
+                                          udpID: widget.header.udpId ?? ""),
+                                    );
+
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Proceed'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Reject",
+                      style: kfontstyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ));
+              },
+            )),
             const SizedBox(
               width: 5,
             ),
-            Expanded(
-                child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+            BlocConsumer<PostSettlementApprovalBloc,
+                PostSettlementApprovalState>(
+              listener: (context, state) {
+                state.when(getPostSettlementApprovalState: (response) {
+                  if (response != null) {
+                    Navigator.pop(context);
+                    // if (isApproval) {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (context) => CupertinoAlertDialog(
+                        title: const Text('Alert'),
+                        content: const Text("Approved Successfully"),//Text("${response.status}"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              context.read<PostSettlementApprovalBloc>().add(
+                                  GetPostApprovalEvent(
+                                      udpID: widget.header.udpId ?? ""));
+
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      ),
+                    );
+                    // }
+                  }
+                }, postSettlementApprovalFailedState: () {
+                  Navigator.pop(context);
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: const Text('Alert'),
+                      content: const Text(
+                          "Something Went Wrong, please Try again later"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Ok'),
+                        ),
+                      ],
                     ),
-                    color: Colors.green.shade300,
-                    onPressed: () {},
-                    child: const Text("Approve")))
+                  );
+                }, postLoadingState: () {
+                  showCupertinoModalPopup(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) => SizedBox(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            child: const PopScope(
+                              canPop: true,
+                              child: CupertinoActivityIndicator(
+                                animating: true,
+                                color: Colors.red,
+                                radius: 30,
+                              ),
+                            ),
+                          ));
+                });
+              },
+              builder: (context, state) {
+                return Expanded(
+                    child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.green.shade300,
+                        onPressed: () {
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) => CupertinoAlertDialog(
+                              title: const Text('Alert'),
+                              content: const Text(
+                                  "Do you Want to Approve this product"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    context
+                                        .read<PostSettlementApprovalBloc>()
+                                        .add(const PostLoadingApprovalEvent());
+                                    context
+                                        .read<PostSettlementApprovalBloc>()
+                                        .add(
+                                          GetPostApprovalEvent(
+                                            udpID: widget.header.udpId ?? "",
+                                          ),
+                                        );
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Proceed'),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Approve",
+                          style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        )));
+              },
+            )
           ],
         ),
       ),

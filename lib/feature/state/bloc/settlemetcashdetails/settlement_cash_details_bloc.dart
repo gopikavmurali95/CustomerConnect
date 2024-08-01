@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -20,8 +23,10 @@ class SettlementCashDetailsBloc
       Either<MainFailures, SettlemetApprovalcashDetailModel> cashDetails =
           await cashDetailRepo.getSttlAppCashDetails(event.udpID);
 
-      emit(cashDetails.fold((l) => const CashDetailFailedState(),
-          (r) => GetCashDetailsState(cash: r)));
+      emit(cashDetails.fold((l) => const CashDetailFailedState(), (r) {
+        log(jsonEncode(r));
+        return GetCashDetailsState(cash: r);
+      }));
     });
 
     on<ClearCashDetailsEvent>((event, emit) {
