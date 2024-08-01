@@ -6,6 +6,7 @@ part 'void_transaction_header_model.g.dart';
 class VoidTransactionHeaderModel {
   @JsonKey(name: 'vta_ID')
   String? vtaId;
+  @JsonKey(name: 'type')
   String? type;
   @JsonKey(name: 'trn_Number')
   String? trnNumber;
@@ -19,6 +20,10 @@ class VoidTransactionHeaderModel {
   String? cusName;
   @JsonKey(name: 'CreatedDate')
   String? createdDate;
+  @JsonKey(name: 'udpID')
+  String? udpID;
+  @JsonKey(name: 'Status ')
+  String? status;
 
   VoidTransactionHeaderModel({
     this.vtaId,
@@ -29,6 +34,7 @@ class VoidTransactionHeaderModel {
     this.cusCode,
     this.cusName,
     this.createdDate,
+    this.status,
   });
 
   factory VoidTransactionHeaderModel.fromJson(Map<String, dynamic> json) {

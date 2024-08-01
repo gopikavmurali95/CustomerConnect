@@ -143,7 +143,6 @@ import 'package:customer_connect/feature/data/models/van_to_van_header_model/van
 import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_approve_and_reject_model/void_transaction_approve_and_reject_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_header_model/void_transaction_header_model.dart';
-import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../models/load_req_detail_model/LoadReqDetailModel.dart';
@@ -584,5 +583,5 @@ abstract class IVoidTransactionRepo {
       voidTransactionApprove(VoidTransacrtionApprovalInModel approve);
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
-      voidTransactionReject(VoidTransactionJsonModel reject);
+      voidTransactionReject(VoidTransacrtionApprovalInModel reject);
 }

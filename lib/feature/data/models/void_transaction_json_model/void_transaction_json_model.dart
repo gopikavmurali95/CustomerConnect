@@ -6,8 +6,6 @@ part 'void_transaction_json_model.g.dart';
 class VoidTransactionJsonModel {
   @JsonKey(name: 'vta_ID')
   String? vtaId;
-  @JsonKey(name: 'Status')
-  String? status;
   @JsonKey(name: 'type')
   String? type;
   @JsonKey(name: 'trn_Number')
@@ -19,7 +17,6 @@ class VoidTransactionJsonModel {
 
   VoidTransactionJsonModel({
     this.vtaId,
-    this.status,
     this.type,
     this.trnNumber,
     this.udpId,

@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VoidTransactionRejectionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(VoidTransactionJsonModel rejecting)
+    required TResult Function(VoidTransacrtionApprovalInModel rejecting)
         voidTransactionRejectingEvent,
     required TResult Function() clearVoidTransactionRejection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VoidTransactionJsonModel rejecting)?
+    TResult? Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult? Function()? clearVoidTransactionRejection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VoidTransactionJsonModel rejecting)?
+    TResult Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult Function()? clearVoidTransactionRejection,
     required TResult orElse(),
@@ -93,7 +93,7 @@ abstract class _$$VoidTransactionRejectingEventImplCopyWith<$Res> {
           $Res Function(_$VoidTransactionRejectingEventImpl) then) =
       __$$VoidTransactionRejectingEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({VoidTransactionJsonModel rejecting});
+  $Res call({VoidTransacrtionApprovalInModel rejecting});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class __$$VoidTransactionRejectingEventImplCopyWithImpl<$Res>
       rejecting: null == rejecting
           ? _value.rejecting
           : rejecting // ignore: cast_nullable_to_non_nullable
-              as VoidTransactionJsonModel,
+              as VoidTransacrtionApprovalInModel,
     ));
   }
 }
@@ -127,7 +127,7 @@ class _$VoidTransactionRejectingEventImpl
   const _$VoidTransactionRejectingEventImpl({required this.rejecting});
 
   @override
-  final VoidTransactionJsonModel rejecting;
+  final VoidTransacrtionApprovalInModel rejecting;
 
   @override
   String toString() {
@@ -157,7 +157,7 @@ class _$VoidTransactionRejectingEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(VoidTransactionJsonModel rejecting)
+    required TResult Function(VoidTransacrtionApprovalInModel rejecting)
         voidTransactionRejectingEvent,
     required TResult Function() clearVoidTransactionRejection,
   }) {
@@ -167,7 +167,7 @@ class _$VoidTransactionRejectingEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VoidTransactionJsonModel rejecting)?
+    TResult? Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult? Function()? clearVoidTransactionRejection,
   }) {
@@ -177,7 +177,7 @@ class _$VoidTransactionRejectingEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VoidTransactionJsonModel rejecting)?
+    TResult Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult Function()? clearVoidTransactionRejection,
     required TResult orElse(),
@@ -229,10 +229,10 @@ class _$VoidTransactionRejectingEventImpl
 abstract class VoidTransactionRejectingEvent
     implements VoidTransactionRejectionEvent {
   const factory VoidTransactionRejectingEvent(
-          {required final VoidTransactionJsonModel rejecting}) =
+          {required final VoidTransacrtionApprovalInModel rejecting}) =
       _$VoidTransactionRejectingEventImpl;
 
-  VoidTransactionJsonModel get rejecting;
+  VoidTransacrtionApprovalInModel get rejecting;
   @JsonKey(ignore: true)
   _$$VoidTransactionRejectingEventImplCopyWith<
           _$VoidTransactionRejectingEventImpl>
@@ -282,7 +282,7 @@ class _$ClearVoidTransactionRejectionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(VoidTransactionJsonModel rejecting)
+    required TResult Function(VoidTransacrtionApprovalInModel rejecting)
         voidTransactionRejectingEvent,
     required TResult Function() clearVoidTransactionRejection,
   }) {
@@ -292,7 +292,7 @@ class _$ClearVoidTransactionRejectionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VoidTransactionJsonModel rejecting)?
+    TResult? Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult? Function()? clearVoidTransactionRejection,
   }) {
@@ -302,7 +302,7 @@ class _$ClearVoidTransactionRejectionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VoidTransactionJsonModel rejecting)?
+    TResult Function(VoidTransacrtionApprovalInModel rejecting)?
         voidTransactionRejectingEvent,
     TResult Function()? clearVoidTransactionRejection,
     required TResult orElse(),

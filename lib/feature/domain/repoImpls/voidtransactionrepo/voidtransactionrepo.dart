@@ -7,7 +7,6 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/void_transacrtion_approval_in_model/void_transacrtion_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_approve_and_reject_model/void_transaction_approve_and_reject_model.dart';
 import 'package:customer_connect/feature/data/models/void_transaction_header_model/void_transaction_header_model.dart';
-import 'package:customer_connect/feature/data/models/void_transaction_json_model/void_transaction_json_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +22,7 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
           body: {"Status_Value": statusValue});
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<VoidTransactionHeaderModel> headers = headerdata
@@ -46,8 +46,11 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + voidTransactionApprovalUrl), body: {
-        "JSONString: ": jsonEncode(approve.jsonString),
+        "JSONString": jsonEncode(approve.jsonString),
       });
+      log({
+        "JSONString": jsonEncode(approve.jsonString),
+      }.toString());
 
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
@@ -68,11 +71,11 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
 
   @override
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
-      voidTransactionReject(VoidTransactionJsonModel reject) async {
+      voidTransactionReject(VoidTransacrtionApprovalInModel reject) async {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + voidTransactionRejectUrl), body: {
-        "JSONString: ": jsonEncode(reject),
+        "JSONString: ": jsonEncode(reject.jsonString),
       });
 
       if (response.statusCode == 200) {
