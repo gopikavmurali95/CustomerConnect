@@ -132,7 +132,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                       ),
             settlementApprovalHeaderFailedState: () => Center(
                   child: Text(
-                    'No Data Available in header',
+                    'No Data Available',
                     style: kfontstyle(),
                   ),
                 ));

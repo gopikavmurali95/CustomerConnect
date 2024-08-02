@@ -20,7 +20,7 @@ class SettlementApprovalHeaderBloc
       List<SettlementApprovalHeaderOutModel> searchlistitems = [];
       Either<MainFailures, List<SettlementApprovalHeaderOutModel>> headers =
           await settlementheaderRepo
-              .getSettlementApprovalHeaders(event.statusvalue,event.searchQuery);
+              .getSettlementApprovalHeaders(event.statusvalue);
       emit(
           headers.fold((l) => const SettlementApprovalHeaderFailedState(), (r) {
         searchlistitems = r

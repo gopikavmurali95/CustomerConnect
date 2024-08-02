@@ -5,6 +5,7 @@ class SettlementApprovalHeaderEvent with _$SettlementApprovalHeaderEvent {
   const factory SettlementApprovalHeaderEvent.getSettlementApprovalHeaderEvent(
       {required String statusvalue,
       required String searchQuery}) = GetSettlementApprovalHeaderEvent;
+      
   const factory SettlementApprovalHeaderEvent.clearSettlementApprovalHeaderEvent() =
       ClearSettlementApprovalHeaderEvent;
 }

@@ -557,7 +557,7 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-      getSettlementApprovalHeaders(String statusvalue, String searchQuery);
+      getSettlementApprovalHeaders(String statusvalue,);
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
