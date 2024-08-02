@@ -33,6 +33,7 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
@@ -105,6 +106,7 @@ import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cu
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/daily_activity_expansion_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homeappbar/home_app_bar_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
@@ -574,6 +576,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<HomeAppBarCubit>(
           create: (context) => HomeAppBarCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerSettingsBloc>(),
+        ),
+        BlocProvider<DailyActivityExpansionCubit>(
+          create: (context) => DailyActivityExpansionCubit(),
         ),
       ],
       child: ScreenUtilInit(

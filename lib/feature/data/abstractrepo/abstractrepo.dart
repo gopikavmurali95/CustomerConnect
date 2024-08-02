@@ -40,6 +40,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
+import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_status_model/dispute_approval_status_model.dart';
@@ -550,9 +551,9 @@ abstract class IMustSellRepo {
       MustSellApproveInModel approve);
 }
 
-abstract class ISettlementApprovalHeaderRepo{
-  Future<Either<MainFailures,List<SettlementApprovalHeaderOutModel>>>
-    getSettlementApprovalHeaders(String statusvalue);
+abstract class ISettlementApprovalHeaderRepo {
+  Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
+      getSettlementApprovalHeaders(String statusvalue);
 }
 
 abstract class IVoidTransactionRepo {
@@ -564,4 +565,9 @@ abstract class IVoidTransactionRepo {
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
+}
+
+abstract class ICustomerSettingsRepo {
+  Future<Either<MainFailures, CustomerSettingsModel>> getCustomerSettings(
+      String userID);
 }

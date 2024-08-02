@@ -118,14 +118,17 @@ const approvalCountUrl = 'InventoryApproval/SelectPendingStatusCounts';
 const salesOrderDetailsUrl = 'CusInsightSalesOrder/SelectSalesOrders';
 const inventoryReconfirmHeaderUrl = 'CusOperation/InventoryReconfirm';
 const inventoryReconfirmDetailUrl = 'CusOperation/InventoryReconfirmDetails';
-const inventoryReconfirmResonurl ='CusOperation/GetReasonForInventoryReconfirm';
+const inventoryReconfirmResonurl =
+    'CusOperation/GetReasonForInventoryReconfirm';
 const inventoryReconfirmApprovalUrl = 'CusOperation/InventoryReconfirmApproval';
 const getUserForChatUrl = 'Home/GetUsers';
 const mustSellHeaderurl = 'MustSellApproval/MustSellApprovalHeader';
 const mustsellDetailUrl = 'MustSellApproval/MustSellApprovalDetail';
 const mustSellApproveUrl = 'MustSellApproval/PostMustSellApproval';
-const settlementApprovalHeaderUrl = 'SettlementApproval/SettlementApprovalHeader';
+const settlementApprovalHeaderUrl =
+    'SettlementApproval/SettlementApprovalHeader';
 const voidTransactionApprovalHeaderUrl =
     'VoidTransApproval/VoidTransApprovalHeader';
 const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
 const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
+const cusSettingUrl = 'CCUserSettings/GetCCUserSettings';
