@@ -1,4 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandoutofstockdetailscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
@@ -104,11 +106,24 @@ class MerchandisingScreen extends StatelessWidget {
                           SizedBox(
                             width: 8.w,
                           ),
-                          Expanded(
-                            child: Text('OOS Items',
-                                style: kfontstyle(
-                                    fontSize: 8.sp,
-                                    color: Colors.grey.shade600)),
+                          InkWell(
+                             onTap: (){
+                              Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const OutOfStockScreen(
+                                     
+                                    )),
+                          );
+                            },
+                            
+                            child: Expanded(
+                              child: Text('OOS Items',
+                                  style: kfontstyle(
+                                      fontSize: 8.sp,
+                                      color: Colors.grey.shade600)),
+                            ),
                           ),
                           Expanded(
                             child: Text(
@@ -130,10 +145,23 @@ class MerchandisingScreen extends StatelessWidget {
                             width: 8.w,
                           ),
                           Expanded(
-                            child: Text('OOS Customers',
-                                style: kfontstyle(
-                                    fontSize: 8.sp,
-                                    color: Colors.grey.shade600)),
+                            child: InkWell(
+                               onTap: (){
+                              Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const OutOfCustomerScreen(
+                                     
+                                    )),
+                          );
+                            },
+
+                              child: Text('OOS Customers',
+                                  style: kfontstyle(
+                                      fontSize: 8.sp,
+                                      color: Colors.grey.shade600)),
+                            ),
                           ),
                           Expanded(
                             child: Text(

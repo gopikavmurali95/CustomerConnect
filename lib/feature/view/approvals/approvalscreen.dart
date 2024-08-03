@@ -1686,6 +1686,7 @@ class ApprovalScreen extends StatelessWidget {
                                 builder: (context) =>
                                     SettlementApprovalHeaderScreen(
                                       user: user,
+                                      users: user,
                                     )),
                           );
                         },

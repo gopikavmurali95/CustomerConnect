@@ -97,6 +97,7 @@ import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_m
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/data/models/pickingdetailmodel/PickingDetailModel.dart';
+import 'package:customer_connect/feature/data/models/post_settlement_approval/post_settlement_approval.dart';
 import 'package:customer_connect/feature/data/models/price_change_details_model/price_change_details_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_header_model/price_change_header_model.dart';
 import 'package:customer_connect/feature/data/models/price_change_reason_model/price_change_reason_model.dart';
@@ -115,7 +116,11 @@ import 'package:customer_connect/feature/data/models/sales_order_details_inparas
 import 'package:customer_connect/feature/data/models/sales_order_details_model/sales_order_details_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
+import 'package:customer_connect/feature/data/models/settelemet_approval_reject/settelemet_approval_reject.dart';
+import 'package:customer_connect/feature/data/models/settlemenet_approval_pay_mode_detail_model/settlemenet_approval_pay_mode_detail_model.dart';
 import 'package:customer_connect/feature/data/models/settlement_approval_header_out_model/settlement_approval_header_out_model.dart';
+import 'package:customer_connect/feature/data/models/settlement_payment_detail_model/settlement_payment_detail_model.dart';
+import 'package:customer_connect/feature/data/models/settlemet_approvalcash_detail_model/settlemet_approvalcash_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_customer_model/special_price_customer_model.dart';
@@ -560,11 +565,26 @@ abstract class IMustSellRepo {
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
       getSettlementApprovalHeaders(String statusvalue);
+
+  Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
+      getSttlAppCashDetails(String udpID);
+
+  Future<Either<MainFailures, List<SettlemenetApprovalPayModeDetailModel>>>
+      getPayModeDetails(String udpID);
+
+  Future<Either<MainFailures, List<SettlementPaymentDetailModel>>>
+      getPaymentDetails(String udpID);
+
+  Future<Either<MainFailures, PostSettlementApprovalModel>> postApprovaldetails(
+      String udpID);
+
+  Future<Either<MainFailures, SettelemetApprovalReject>> rejectApprovaldetails(
+      String udpID);
 }
 
 abstract class IVoidTransactionRepo {
   Future<Either<MainFailures, List<VoidTransactionHeaderModel>>>
-      getVoidTransactionHeader(String statusValue);
+      getVoidTransactionHeader(String mode);
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
       voidTransactionApprove(VoidTransacrtionApprovalInModel approve);

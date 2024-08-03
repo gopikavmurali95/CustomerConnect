@@ -1,22 +1,56 @@
+import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/saheaderlistwidget.dart';
+import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SettlementApprovalHeaderScreen extends StatefulWidget {
-  const SettlementApprovalHeaderScreen(
-      {super.key, required LoginUserModel user});
 
+class SettlementApprovalHeaderScreen extends StatefulWidget {
+   final LoginUserModel users;
+  const SettlementApprovalHeaderScreen(
+      {super.key, required LoginUserModel user, required this.users});
   @override
   State<SettlementApprovalHeaderScreen> createState() =>
       _SettlementApprovalHeaderScreenState();
 }
 
+List<ApprovalStatusFilterModel> ddfilterSettlementApproval = [
+  ApprovalStatusFilterModel(statusName: "All", mode: 'AL'),
+  ApprovalStatusFilterModel(statusName: "Sales", mode: 'SL'),
+  ApprovalStatusFilterModel(statusName: "Order", mode: 'OR'),
+  ApprovalStatusFilterModel(statusName: "AR", mode: 'AR'),
+  ApprovalStatusFilterModel(statusName: "Order & AR", mode: 'OA'),
+  ApprovalStatusFilterModel(statusName: "Delivery", mode: 'DL'),
+  ApprovalStatusFilterModel(statusName: "Merchandising", mode: 'MER'),
+  ApprovalStatusFilterModel(statusName: "Field Service", mode: 'FS'),
+];
+TextEditingController settlementApprovalHeaderSearchCtrl =
+    TextEditingController();
+String selectedSettlmtApprovalmode = 'AL';
+
 class _SettlementApprovalHeaderScreenState
     extends State<SettlementApprovalHeaderScreen> {
+  @override
+  void initState() {
+    selectedSettlmtApprovalmode = "AL";
+    settlementApprovalHeaderSearchCtrl.clear();
+    context
+        .read<SettlementApprovalHeaderBloc>()
+        .add(const ClearSettlementApprovalHeaderEvent());
+
+    context.read<SettlementApprovalHeaderBloc>().add(
+        const GetSettlementApprovalHeaderEvent(
+            statusvalue: 'AL', searchQuery: ''));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +91,7 @@ class _SettlementApprovalHeaderScreenState
             height: 30.h,
             width: MediaQuery.of(context).size.width,
             child: TextFormField(
-              // controller: _mustSellHeaderSearchCtrl,
+              controller: settlementApprovalHeaderSearchCtrl,
               style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
               decoration: InputDecoration(
                 isDense: true,
@@ -68,16 +102,17 @@ class _SettlementApprovalHeaderScreenState
                     Expanded(
                       child: IconButton(
                           onPressed: () {
-                            /*  if (_mustSellHeaderSearchCtrl.text.isNotEmpty) {
-                                _mustSellHeaderSearchCtrl.clear();
-                                context
-                                    .read<MustSellHeaderBloc>()
-                                    .add(const ClearMustSellHeadersEvent());
-                                context.read<MustSellHeaderBloc>().add(
-                                    GetMustSellHeadersEvent(
-                                        mode: selectedMustSellMode,
-                                        searchQuery: ""));
-                              } */
+                            if (settlementApprovalHeaderSearchCtrl
+                                .text.isNotEmpty) {
+                              settlementApprovalHeaderSearchCtrl.clear();
+                              context.read<SettlementApprovalHeaderBloc>().add(
+                                  const ClearSettlementApprovalHeaderEvent());
+                              context.read<SettlementApprovalHeaderBloc>().add(
+                                  GetSettlementApprovalHeaderEvent(
+                                      searchQuery: "",
+                                      statusvalue:
+                                          selectedSettlmtApprovalmode));
+                            }
                           },
                           icon: Icon(
                             Icons.clear,
@@ -112,15 +147,15 @@ class _SettlementApprovalHeaderScreenState
                 ),
               ),
               onChanged: (value) {
-                /*  debounce = Timer(
-                      const Duration(
-                        milliseconds: 500,
-                      ), () async {
-                    context.read<MustSellHeaderBloc>().add(
-                        GetMustSellHeadersEvent(
-                            mode: selectedMustSellMode,
-                            searchQuery: value.trim()));
-                  }); */
+                debounce = Timer(
+                    const Duration(
+                      milliseconds: 500,
+                    ), () async {
+                  context.read<SettlementApprovalHeaderBloc>().add(
+                      GetSettlementApprovalHeaderEvent(
+                          searchQuery: value.trim(),
+                          statusvalue: selectedSettlmtApprovalmode));
+                });
               },
             ),
           ),
@@ -135,7 +170,7 @@ class _SettlementApprovalHeaderScreenState
             width: MediaQuery.of(context).size.width,
             child: DropdownButtonFormField(
               elevation: 0,
-              //value: selectedMustSellMode,
+              value: ddfilterSettlementApproval[0].mode,//selectedSettlmtApprovalmode,//ddfilterSettlementApproval[0].mode,
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
@@ -159,30 +194,31 @@ class _SettlementApprovalHeaderScreenState
                   borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
               ),
-              /* items: ddfilterMustSell
-                    .map(
-                      (e) => DropdownMenuItem(
-                        value: e.mode,
-                        child: Text(e.statusName),
-                      ),
-                    )
-                    .toList(), */
-              items: <String>['All Route Types', 'Option 2', 'Option 3']
-                  .map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              items: ddfilterSettlementApproval
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e.mode,
+                      child: Text(e.statusName),
+                    ),
+                  )
+                  .toList(),
+              // items: <String>['All Route Types', 'Option 2', 'Option 3']
+              //     .map((String value) {
+              //   return DropdownMenuItem<String>(
+              //     value: value,
+              //     child: Text(value),
+              //   );
+              // }).toList(),
               onChanged: (value) {
-                /* selectedMustSellMode = value!;
-                  context
-                      .read<MustSellHeaderBloc>()
-                      .add(const ClearMustSellHeadersEvent());
-                  context.read<MustSellHeaderBloc>().add(
-                      GetMustSellHeadersEvent(
-                          mode: value,
-                          searchQuery: _mustSellHeaderSearchCtrl.text)); */
+                selectedSettlmtApprovalmode = value!;
+                context
+                    .read<SettlementApprovalHeaderBloc>()
+                    .add(const ClearSettlementApprovalHeaderEvent());
+                context.read<SettlementApprovalHeaderBloc>().add(
+                    GetSettlementApprovalHeaderEvent(
+                        searchQuery: settlementApprovalHeaderSearchCtrl.text,
+                        statusvalue: value));
+                       // setState(() {});
               },
             ),
           ),
@@ -199,22 +235,19 @@ class _SettlementApprovalHeaderScreenState
                 "Pending Approvals",
                 style: countHeading(),
               ),
-              /* BlocBuilder<MustSellHeaderBloc, MustSellHeaderState>(
-                  builder: (context, state) {
-                    return Text(
-                      state.when(
-                        getMustsellHeadersState: (headers) =>
-                            headers == null ? "0" : headers.length.toString(),
-                        mustSellHeadersFailedState: () => "0",
-                      ),
-                      style: countHeading(),
-                    );
-                  },
-                ) */
-              Text(
-                '11',
-                style: countHeading(),
-              )
+              BlocBuilder<SettlementApprovalHeaderBloc,
+                  SettlementApprovalHeaderState>(
+                builder: (context, state) {
+                  return Text(
+                    state.when(
+                      getSettlementApprovalHeader: (headers) =>
+                          headers == null ? "0" : headers.length.toString(),
+                      settlementApprovalHeaderFailedState: () => "0",
+                    ),
+                    style: countHeading(),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -229,4 +262,13 @@ class _SettlementApprovalHeaderScreenState
       ]),
     );
   }
+}
+
+
+Future<void> _onRefreshSettlementApprovaalHeaderScreen(
+    BuildContext context, LoginUserModel model) async {
+  context.read<SettlementApprovalHeaderBloc>().add(const ClearSettlementApprovalHeaderEvent());
+  context
+      .read<SettlementApprovalHeaderBloc>()
+      .add(const  GetSettlementApprovalHeaderEvent(statusvalue: '', searchQuery: ''));
 }

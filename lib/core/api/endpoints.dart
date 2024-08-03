@@ -138,3 +138,12 @@ const targetDetailsListUrl = 'CusTarget/RouteWiseTargetDetail';
 const targetDetailsGraphAmtUrl = 'CusTarget/TargetDetailAmtCount';
 const targetDetailsGraphQtyUrl = 'CusTarget/TargetDetailQtyCount';
 const targetPachageListUrl = 'CusTarget/RouteWisePackageDetail';
+const settlementApprovalCashDetailUrl =
+    "SettlementApproval/SettlementApprovalCashDetail";
+const settlementApprovalPayModeDetailUrl =
+    "SettlementApproval/SettlementApprovalPaymodeDetail";
+const settlementApprovalPaymentDetailUrl =
+    "SettlementApproval/SettlementApprovalPaymentDetail";
+const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
+
+const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";

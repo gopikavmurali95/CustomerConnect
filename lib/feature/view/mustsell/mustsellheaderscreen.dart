@@ -143,7 +143,8 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                   debounce = Timer(
                       const Duration(
                         milliseconds: 500,
-                      ), () async {
+                      ), () 
+                      async {
                     context.read<MustSellHeaderBloc>().add(
                         GetMustSellHeadersEvent(
                             mode: selectedMustSellMode,
