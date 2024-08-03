@@ -1,13 +1,41 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/target_details_list_model/target_details_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart';
 import 'package:customer_connect/feature/view/target/widgets/targetpackagelist.dart';
 import 'package:customer_connect/feature/view/target/widgets/targetpackagetiles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TargetPackageScreen extends StatelessWidget {
-  const TargetPackageScreen({super.key});
+class TargetPackageScreen extends StatefulWidget {
+  final TargetHeaderListModel header;
+  final TargetDetailsListModel details;
+  const TargetPackageScreen(
+      {super.key, required this.details, required this.header});
+
+  @override
+  State<TargetPackageScreen> createState() => _TargetPackageScreenState();
+}
+
+TextEditingController targetPackagSearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _TargetPackageScreenState extends State<TargetPackageScreen> {
+  @override
+  void initState() {
+    targetPackagSearchCtrl.clear();
+    context.read<TargetPackageListBloc>().add(const ClearTargetPackageList());
+    context.read<TargetPackageListBloc>().add(GetTargetPackageListEvent(
+        pkgID: widget.details.pkgId ?? '',
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        rotID: widget.header.rotID ?? '',
+        serachQuery: ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +68,15 @@ class TargetPackageScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Package 01',
+                    widget.details.pkgName ?? '',
                     style: countHeading(),
                   ),
                   SizedBox(
                     height: 10.h,
                   ),
-                  const TargetPAckageContainerWidget(),
+                  TargetPAckageContainerWidget(
+                    details: widget.details,
+                  ),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -54,7 +84,7 @@ class TargetPackageScreen extends StatelessWidget {
                     height: 30.h,
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
-                      // controller: mustSellHeaderSearchCtrl,
+                      controller: targetPackagSearchCtrl,
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
@@ -64,7 +94,23 @@ class TargetPackageScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (targetPackagSearchCtrl
+                                        .text.isNotEmpty) {
+                                      targetPackagSearchCtrl.clear();
+
+                                      context
+                                          .read<TargetPackageListBloc>()
+                                          .add(const ClearTargetPackageList());
+                                      context.read<TargetPackageListBloc>().add(
+                                          GetTargetPackageListEvent(
+                                              pkgID: widget.details.pkgId ?? '',
+                                              fromDate:
+                                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                              rotID: widget.header.rotID ?? '',
+                                              serachQuery: ''));
+                                    }
+                                  },
                                   icon: Icon(
                                     Icons.clear,
                                     size: 10.sp,
@@ -98,7 +144,20 @@ class TargetPackageScreen extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.grey.shade200),
                         ),
                       ),
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        debounce = Timer(
+                            const Duration(
+                              milliseconds: 500,
+                            ), () async {
+                          context.read<TargetPackageListBloc>().add(
+                              GetTargetPackageListEvent(
+                                  pkgID: widget.details.pkgId ?? '',
+                                  fromDate:
+                                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  rotID: widget.header.rotID ?? '',
+                                  serachQuery: value.trim()));
+                        });
+                      },
                     ),
                   ),
                   SizedBox(
@@ -111,9 +170,22 @@ class TargetPackageScreen extends StatelessWidget {
                         'Items',
                         style: countHeading(),
                       ),
-                      Text(
-                        '12',
-                        style: countHeading(),
+                      BlocBuilder<TargetPackageListBloc,
+                          TargetPackageListState>(
+                        builder: (context, state) {
+                          return state.when(
+                              getTargetPackageListState: (count) =>
+                                  count == null
+                                      ? const SizedBox()
+                                      : Text(
+                                          count.length.toString(),
+                                          style: countHeading(),
+                                        ),
+                              targetPackageListFailure: () => Text(
+                                    '0',
+                                    style: countHeading(),
+                                  ));
+                        },
                       )
                     ],
                   ),
@@ -123,45 +195,53 @@ class TargetPackageScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 30.h,
-              width: double.infinity,
-              color: const Color(0xfff5f5f5),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  children: [
-                    Flexible(
-                        flex: 3,
-                        fit: FlexFit.tight,
-                        child: Text('Item',
-                            style: kfontstyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black54))),
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Text('Achvd Amt',
-                          style: kfontstyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black54)),
+            Column(
+              children: [
+                Container(
+                  height: 30.h,
+                  width: double.infinity,
+                  color: const Color(0xfff5f5f5),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      children: [
+                        Flexible(
+                            flex: 3,
+                            fit: FlexFit.tight,
+                            child: Text('Item',
+                                style: kfontstyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black54))),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Text('Achvd Amt',
+                              style: kfontstyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black54)),
+                        ),
+                        Flexible(
+                          flex: 0,
+                          fit: FlexFit.tight,
+                          child: Text('Achvd Qty',
+                              style: kfontstyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black54)),
+                        )
+                      ],
                     ),
-                    Flexible(
-                      flex: 0,
-                      fit: FlexFit.tight,
-                      child: Text('Achvd Qty',
-                          style: kfontstyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black54)),
-                    )
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-            const Expanded(child: TargetPackageListItems())
+            Expanded(
+                child: TargetPackageListItems(
+              header: widget.header,
+              details: widget.details,
+            ))
           ],
         ),
       ),

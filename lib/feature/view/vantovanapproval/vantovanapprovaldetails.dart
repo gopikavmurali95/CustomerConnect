@@ -31,8 +31,8 @@ class VanToVanApprovalDetails extends StatefulWidget {
 
 List<bool?> statuslist = [];
 int loadingCount = 0;
-int _totalcount = 0;
-int _approvedCount = 0;
+int totalcount = 0;
+int approvedCount = 0;
 List<VanToVanProductModel?> approvedProducts = [];
 
 Timer? debounce;
@@ -41,8 +41,8 @@ TextEditingController _vantovanDetailCtrl = TextEditingController();
 class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
   @override
   void initState() {
-    _totalcount = 0;
-    _approvedCount = 0;
+    totalcount = 0;
+    approvedCount = 0;
     _vantovanDetailCtrl.clear();
     context.read<VanToVanDetailsBloc>().add(const clearVanToVanDetailEvent());
     context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
@@ -469,7 +469,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () {
-                                                            _approvedCount++;
+                                                            approvedCount++;
 
                                                             Navigator.pop(
                                                                 context);

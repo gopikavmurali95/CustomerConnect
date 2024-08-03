@@ -2,16 +2,14 @@ part of 'settlement_approval_header_bloc.dart';
 
 @freezed
 class SettlementApprovalHeaderState with _$SettlementApprovalHeaderState {
-
   const factory SettlementApprovalHeaderState.getSettlementApprovalHeaderState(
-    {required List<SettlementApprovalHeaderOutModel>? headers}
+          {required List<SettlementApprovalHeaderOutModel>? headers}) =
+      GetSettlementApprovalHeaderState;
 
-  ) 
-  = GetSettlementApprovalHeaderState;
+  const factory SettlementApprovalHeaderState.settlementApprovalHeaderFailedstate() =
+      SettlementApprovalHeaderFailedstate;
 
-  const factory SettlementApprovalHeaderState.settlementApprovalHeaderFailedstate() 
-  = SettlementApprovalHeaderFailedstate;
-  
- factory SettlementApprovalHeaderState.initial() => 
-const SettlementApprovalHeaderState.getSettlementApprovalHeaderState(headers: null);
+  factory SettlementApprovalHeaderState.initial() =>
+      const SettlementApprovalHeaderState.getSettlementApprovalHeaderState(
+          headers: null);
 }

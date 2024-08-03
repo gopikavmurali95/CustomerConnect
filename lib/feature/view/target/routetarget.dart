@@ -1,13 +1,40 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailslist/target_details_list_bloc.dart';
 import 'package:customer_connect/feature/view/target/targetpackage.dart';
 import 'package:customer_connect/feature/view/target/widgets/routetargetdays.dart';
 import 'package:customer_connect/feature/view/target/widgets/routetargetgraph.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RouteTargetWidget extends StatelessWidget {
-  const RouteTargetWidget({super.key});
+class RouteTargetWidget extends StatefulWidget {
+  final TargetHeaderListModel headr;
+  const RouteTargetWidget({super.key, required this.headr});
+
+  @override
+  State<RouteTargetWidget> createState() => _RouteTargetWidgetState();
+}
+
+TextEditingController targetDetailsSearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _RouteTargetWidgetState extends State<RouteTargetWidget> {
+  @override
+  void initState() {
+    targetDetailsSearchCtrl.clear();
+    context.read<TargetDetailsListBloc>().add(const ClearTargetDetailsList());
+    context.read<TargetDetailsListBloc>().add(GetTargetDetailsListEvent(
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        rotID: widget.headr.rotID ?? '',
+        searchQuery: ''));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +60,15 @@ class RouteTargetWidget extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const RouteTargetDaysWidget(),
+            RouteTargetDaysWidget(
+              headr: widget.headr,
+            ),
             SizedBox(
               height: 10.h,
             ),
-            const RouteTargetGraphWidget(),
+            RouteTargetGraphWidget(
+              header: widget.headr,
+            ),
             SizedBox(
               height: 10.h,
             ),
@@ -47,7 +78,7 @@ class RouteTargetWidget extends StatelessWidget {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  // controller: mustSellHeaderSearchCtrl,
+                  controller: targetDetailsSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -57,7 +88,21 @@ class RouteTargetWidget extends StatelessWidget {
                       children: [
                         Expanded(
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (targetDetailsSearchCtrl.text.isNotEmpty) {
+                                  targetDetailsSearchCtrl.clear();
+
+                                  context
+                                      .read<TargetDetailsListBloc>()
+                                      .add(const ClearTargetDetailsList());
+                                  context.read<TargetDetailsListBloc>().add(
+                                      GetTargetDetailsListEvent(
+                                          fromDate:
+                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                          rotID: widget.headr.rotID ?? '',
+                                          searchQuery: ''));
+                                }
+                              },
                               icon: Icon(
                                 Icons.clear,
                                 size: 10.sp,
@@ -90,128 +135,207 @@ class RouteTargetWidget extends StatelessWidget {
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<TargetDetailsListBloc>().add(
+                          GetTargetDetailsListEvent(
+                              fromDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              rotID: widget.headr.rotID ?? '',
+                              searchQuery: value.trim()));
+                    });
+                  },
                 ),
               ),
             ),
             SizedBox(
               height: 10.h,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Package Wise Target',
-                    style: countHeading(),
-                  ),
-                  Text(
-                    '12',
-                    style: countHeading(),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 12,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) =>
-                                  const TargetPackageScreen()));
-                    },
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 40.h,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xfffee8e0),
-                                  borderRadius: BorderRadius.circular(20)),
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Row(
+            BlocBuilder<TargetDetailsListBloc, TargetDetailsListState>(
+              builder: (context, state) {
+                return state.when(
+                    getTargetDetailsListState: ((details) => details == null
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) =>
+                                    ShimmerContainers(
+                                        height: 60.h, width: double.infinity),
+                                separatorBuilder: (context, index) => Divider(
+                                      color: Colors.grey[300],
+                                    ),
+                                itemCount: 10),
+                          )
+                        : details.isEmpty
+                            ? Center(
+                                child: Text(
+                                  'No Data Found',
+                                  style: kfontstyle(),
+                                ),
+                              )
+                            : Column(
                                 children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text('Package 01',
-                                            style: blueTextStyle()),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                'Target Amount : 20,000.00',
-                                                style: kfontstyle(
-                                                    fontSize: 11,
-                                                    color: const Color(
-                                                        0xff413434))),
-                                            Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                'Target Quantity : 1000.00',
-                                                style: kfontstyle(
-                                                    fontSize: 11,
-                                                    color: const Color(
-                                                        0xff413434))),
-                                          ],
+                                        Text(
+                                          'Package Wise Target',
+                                          style: countHeading(),
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                'Achieved Amount : 20,000.00',
-                                                style: kfontstyle(
-                                                    fontSize: 11,
-                                                    color: const Color(
-                                                        0xff413434))),
-                                            Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                'Achieved Quantity : 1000.00',
-                                                style: kfontstyle(
-                                                    fontSize: 11,
-                                                    color: const Color(
-                                                        0xff413434))),
-                                          ],
-                                        ),
+                                        Text(
+                                          details.length.toString(),
+                                          style: countHeading(),
+                                        )
                                       ],
                                     ),
                                   ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: details.length,
+                                      itemBuilder: (context, index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        TargetPackageScreen(
+                                                          details:
+                                                              details[index],
+                                                          header: widget.headr,
+                                                        )));
+                                          },
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: 40.h,
+                                                    width: 10,
+                                                    decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xfffee8e0),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20)),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10.w,
+                                                  ),
+                                                  Expanded(
+                                                    child: Row(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                  details[index]
+                                                                          .pkgName ??
+                                                                      '',
+                                                                  style:
+                                                                      blueTextStyle()),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Text(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      'Target Amount : ${details[index].targetAmt}',
+                                                                      style: kfontstyle(
+                                                                          fontSize:
+                                                                              11,
+                                                                          color:
+                                                                              const Color(0xff413434))),
+                                                                  Text(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      'Target Quantity : ${details[index].targetQty}',
+                                                                      style: kfontstyle(
+                                                                          fontSize:
+                                                                              11,
+                                                                          color:
+                                                                              const Color(0xff413434))),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Text(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      'Achieved Amount : ${details[index].achAmt}',
+                                                                      style: kfontstyle(
+                                                                          fontSize:
+                                                                              11,
+                                                                          color:
+                                                                              const Color(0xff413434))),
+                                                                  Text(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      'Achieved Quantity : ${details[index].achQty}',
+                                                                      style: kfontstyle(
+                                                                          fontSize:
+                                                                              11,
+                                                                          color:
+                                                                              const Color(0xff413434))),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Divider(
+                                                color: Colors.grey[300],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Divider(
-                          color: Colors.grey[300],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                              )),
+                    getTargetDetailsListFailed: () => Center(
+                          child: Text(
+                            'No Data Available',
+                            style: kfontstyle(),
+                          ),
+                        ));
+              },
             )
           ],
         ),

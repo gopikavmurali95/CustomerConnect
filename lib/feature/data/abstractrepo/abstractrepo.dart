@@ -122,6 +122,13 @@ import 'package:customer_connect/feature/data/models/special_price_customer_mode
 import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
+import 'package:customer_connect/feature/data/models/target_details_count_model/target_details_count_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_amt_model/target_details_graph_amt_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_qty_model/target_details_graph_qty_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_list_model/target_details_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_count_model/target_header_count_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_package_list_model/target_package_list_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_details_model/todays_delivery_details_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
@@ -550,9 +557,9 @@ abstract class IMustSellRepo {
       MustSellApproveInModel approve);
 }
 
-abstract class ISettlementApprovalHeaderRepo{
-  Future<Either<MainFailures,List<SettlementApprovalHeaderOutModel>>>
-    getSettlementApprovalHeaders(String statusvalue);
+abstract class ISettlementApprovalHeaderRepo {
+  Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
+      getSettlementApprovalHeaders(String statusvalue);
 }
 
 abstract class IVoidTransactionRepo {
@@ -564,4 +571,27 @@ abstract class IVoidTransactionRepo {
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
+}
+
+abstract class ITargetRepo {
+  Future<Either<MainFailures, TargetHeaderCountModel>> targetHeaderCount(
+      String fromDate);
+
+  Future<Either<MainFailures, List<TargetHeaderListModel>>>
+      getTargetHeaderItems(String fromDate);
+
+  Future<Either<MainFailures, TargetDetailsCountModel>> targetDetailCount(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, List<TargetDetailsListModel>>>
+      getTargetDetailItems(String fromDate, String rotID);
+
+  Future<Either<MainFailures, TargetDetailsGraphAmtModel>> targetDetailAmt(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, TargetDetailsGraphQtyModel>> targetDetailQty(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, List<TargetPackageListModel>>>
+      getTargetPackageItems(String fromDate, String rotID, String pkgID);
 }

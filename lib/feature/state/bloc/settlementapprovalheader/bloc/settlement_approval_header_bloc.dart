@@ -7,15 +7,14 @@ import 'package:injectable/injectable.dart';
 part 'settlement_approval_header_event.dart';
 part 'settlement_approval_header_state.dart';
 part 'settlement_approval_header_bloc.freezed.dart';
-@injectable
-class SettlementApprovalHeaderBloc extends
- Bloc<SettlementApprovalHeaderEvent, SettlementApprovalHeaderState> {
 
+@injectable
+class SettlementApprovalHeaderBloc
+    extends Bloc<SettlementApprovalHeaderEvent, SettlementApprovalHeaderState> {
   final ISettlementApprovalHeaderRepo settlmntHeaderrepo;
-  
-  SettlementApprovalHeaderBloc(this.settlmntHeaderrepo) : super(SettlementApprovalHeaderState.initial()) {
-    on<SettlementApprovalHeaderEvent>((event, emit) {
-     
-    });
+
+  SettlementApprovalHeaderBloc(this.settlmntHeaderrepo)
+      : super(SettlementApprovalHeaderState.initial()) {
+    on<SettlementApprovalHeaderEvent>((event, emit) {});
   }
 }
