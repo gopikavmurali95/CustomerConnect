@@ -9,6 +9,10 @@ import 'package:customer_connect/feature/domain/notification/fcmmessgehandler.da
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewdetail/activity_review_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewtarget/activity_review_targets_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activitysalesdata/activity_review_sales_data_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/PartialDeliveryReasons/partial_delivery_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
@@ -90,6 +94,11 @@ import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_orde
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
@@ -145,6 +154,7 @@ import 'feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.da
 import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
+import 'feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart';
 
 bool isLoadingProgress = false;
 void main() async {
@@ -556,6 +566,23 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MustSellDetailBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<SettlementApprovalHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementCashDetailsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementPayModeDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<SettlementPaymentDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<PostSettlementApprovalBloc>(),
+        ),
+        BlocProvider(
+            create: (context) => getit<SettlementApprovalRejectBloc>()),
         BlocProvider<InverntoryTransExPandCubit>(
           create: (context) => InverntoryTransExPandCubit(),
         ),
@@ -582,6 +609,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<DailyActivityExpansionCubit>(
           create: (context) => DailyActivityExpansionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewTargetsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewSalesDataBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewDetailBloc>(),
         ),
       ],
       child: ScreenUtilInit(

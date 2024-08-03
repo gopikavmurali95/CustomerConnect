@@ -1,5 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/view/target/routetarget.dart';
 import 'package:customer_connect/feature/view/target/widgets/targetgraphwidget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -132,78 +134,86 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                 itemCount: 10,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 50.h,
-                            width: 10,
-                            decoration: BoxDecoration(
-                                color: const Color(0xfffee8e0),
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'TFDB08 - Route DB08',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff2C6B9E),
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              overflow: TextOverflow.ellipsis,
-                                              'Target Amount : 20000.00',
-                                              style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  color:
-                                                      const Color(0xff413434)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              overflow: TextOverflow.ellipsis,
-                                              'Target Quantity : 1000.00',
-                                              style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  color:
-                                                      const Color(0xff413434)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const RouteTargetWidget()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 50.h,
+                              width: 10,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xfffee8e0),
+                                  borderRadius: BorderRadius.circular(20)),
                             ),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: Colors.grey[300],
-                      ),
-                    ],
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'TFDB08 - Route DB08',
+                                          style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff2C6B9E),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                'Target Amount : 20000.00',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color: const Color(
+                                                        0xff413434)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                overflow: TextOverflow.ellipsis,
+                                                'Target Quantity : 1000.00',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color: const Color(
+                                                        0xff413434)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey[300],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -1546,7 +1546,7 @@ class ApprovalScreen extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) =>
                                       SettlementApprovalHeaderScreen(
-                                        user: user,
+                                        users: user,
                                       )),
                             );
                           },

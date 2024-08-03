@@ -132,3 +132,16 @@ const voidTransactionApprovalHeaderUrl =
 const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
 const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
 const cusSettingUrl = 'CCUserSettings/GetCCUserSettings';
+const settlementApprovalCashDetailUrl =
+    "SettlementApproval/SettlementApprovalCashDetail";
+const settlementApprovalPayModeDetailUrl =
+    "SettlementApproval/SettlementApprovalPaymodeDetail";
+const settlementApprovalPaymentDetailUrl =
+    "SettlementApproval/SettlementApprovalPaymentDetail";
+const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
+
+const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";
+const activtyReviewHeaderUrl = 'CusActReview/ActReviewHeaderList';
+const activityTargetsUrl = 'CusActReview/ActReviewDetailChartData';
+const activitytargetSalesurl = 'CusActReview/ActRevTodaysSaleData';
+const activityReviewDetailListUrl = 'CusActReview/ActRevDetailVisitData';
