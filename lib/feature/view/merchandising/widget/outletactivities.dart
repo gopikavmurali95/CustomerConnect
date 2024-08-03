@@ -1,8 +1,8 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/view/merchandising/outletactivities/outactcustomeractivities.dart';
-import 'package:customer_connect/feature/view/merchandising/outletactivities/outactdisplayagreementscreen.dart';
-import 'package:customer_connect/feature/view/merchandising/outletactivities/outactvtysurveyscreen.dart';
-import 'package:customer_connect/feature/view/merchandising/outletactivities/outactvtytaskscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactcustomeractivities.dart';
+import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
