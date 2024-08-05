@@ -69,14 +69,14 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
     context.read<TargetDetailsGraphAmtBloc>().add(const ClearGraphAmount());
     context.read<TargetDetailsGraphAmtBloc>().add(GetTargetGraphAmtEvent(
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         rotID: widget.header.rotID ?? ''));
     context
         .read<RargetDetailsGraphQtyBloc>()
         .add(const ClearTargetGraphQuantity());
     context.read<RargetDetailsGraphQtyBloc>().add(GetTargetGraphQtyEvent(
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         rotID: widget.header.rotID ?? ''));
     super.initState();
   }

@@ -64,7 +64,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
     context.read<TargetHeaderCountBloc>().add(const ClearTargetHeaderCount());
     context.read<TargetHeaderCountBloc>().add(GetTargetHeaderCountEvent(
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}'));
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}'));
     super.initState();
   }
 

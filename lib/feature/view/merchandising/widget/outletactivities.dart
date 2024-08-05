@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutletAcivitiesWidget extends StatelessWidget {
-  const OutletAcivitiesWidget({super.key});
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const OutletAcivitiesWidget(
+      {super.key, required this.fromdatectrl, required this.todatectrl});
 
   @override
   Widget build(BuildContext context) {
@@ -115,8 +118,10 @@ class OutletAcivitiesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActvitySurveyHeaderScreen()),
+                        builder: (context) => OutActvitySurveyHeaderScreen(
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            )),
                   );
                 },
                 child: Container(

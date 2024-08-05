@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -46,6 +47,7 @@ class TargetHeaderCountRepo implements ITargetRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + targetHeaderListUrl),
           body: {"FromDate": fromDate});
+      log('fromdate: $fromDate');
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
