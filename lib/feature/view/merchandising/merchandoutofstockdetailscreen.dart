@@ -1,0 +1,330 @@
+import 'dart:async';
+
+import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/outofstockitemsdetails.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class OutOfStockScreen extends StatefulWidget {
+  const OutOfStockScreen({super.key});
+
+  @override
+  State<OutOfStockScreen> createState() => _OutOfStockScreenState();
+}
+
+TextEditingController outofStockItemsHeaderSearchCtrl = TextEditingController();
+Timer? debounce;
+
+class _OutOfStockScreenState extends State<OutOfStockScreen> {
+  @override
+  void initState() {
+    context.read<OutOfStockItemsBloc>().add(const ClearOutOfStockItems());
+    context.read<OutOfStockItemsBloc>().add(const GetOutOfStockItemsEvent(
+        searchQuery: '', fromDate: '2024-05-01', toDate: '2024-08-03'));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
+        titleSpacing: 0.5,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+            size: 20,
+          ),
+        ),
+        title: Text(
+          "Out Of Stock Items",
+          style: appHeading(),
+        ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10.0, right: 10, bottom: 3),
+                      child: Container(
+                          height: 30.h,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                    // ignore: use_full_hex_values_for_flutter_colors
+                                    color: Color(0xff00000050),
+                                    blurRadius: 0.4,
+                                    spreadRadius: 0.4)
+                              ]),
+                          child: TextFormField(
+                            style: kfontstyle(
+                                fontSize: 13.sp, color: Colors.black87),
+                            controller: outofStockItemsHeaderSearchCtrl,
+                            onChanged: (value) {
+                              debounce = Timer(
+                                  const Duration(
+                                    milliseconds: 300,
+                                  ), () async {
+                                context.read<OutOfStockItemsBloc>().add(
+                                    GetOutOfStockItemsEvent(
+                                        searchQuery: value.trim(),
+                                        fromDate: '2024-05-01',
+                                        toDate: '2024-08-03'));
+                              });
+                            },
+                            decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  size: 15,
+                                ),
+                                suffix: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 5.h),
+                                    Expanded(
+                                      child: IconButton(
+                                        onPressed: () {
+                                          outofStockItemsHeaderSearchCtrl
+                                              .clear();
+                                          context
+                                              .read<OutOfStockItemsBloc>()
+                                              .add(
+                                                  const ClearOutOfStockItems());
+                                          context
+                                              .read<OutOfStockItemsBloc>()
+                                              .add(
+                                                  const GetOutOfStockItemsEvent(
+                                                      searchQuery: '',
+                                                      fromDate: '2024-05-01',
+                                                      toDate: '2024-08-03'));
+                                        },
+                                        icon: Icon(
+                                          Icons.close,
+                                          size: 13.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                hintText: "Search here",
+                                hintStyle: TextStyle(
+                                    fontSize: 12.sp,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.normal),
+                                isDense: true,
+                                counterText: "",
+                                contentPadding: const EdgeInsets.all(15.0),
+                                filled: true,
+                                fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderSide: BorderSide.none)),
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                            maxLength: 20,
+                            // controller: _locationNameTextController,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Out of stock Items",
+                            style: countHeading(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: BlocBuilder<OutOfStockItemsBloc,
+                                OutOfStockItemsState>(
+                              builder: (context, state) {
+                                return Text(
+                                  state.when(
+                                    getOutOfSockItemsState: (headers) =>
+                                        headers == null
+                                            ? '0'
+                                            : headers.length.toString(),
+                                    outOfStockItemsFailedState: () => '0',
+                                  ),
+                                  style: countHeading(),
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    BlocBuilder<OutOfStockItemsBloc, OutOfStockItemsState>(
+                      builder: (context, state) {
+                        return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: state.when(
+                              getOutOfSockItemsState: (headers) => headers ==
+                                      null
+                                  ? Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 0),
+                                      child: ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) =>
+                                              ShimmerContainers(
+                                                  height: 50.h,
+                                                  width: double.infinity),
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                                color: Colors.grey[300],
+                                              ),
+                                          itemCount: 10),
+                                    )
+                                  : headers.isEmpty
+                                      ? Center(
+                                          child: Text(
+                                            'No Data Available',
+                                            style: kfontstyle(),
+                                          ),
+                                        )
+                                      : ListView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemBuilder:
+                                              (context, index) =>
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                OutOfStockItemsDetailsScreen(
+                                                                  header:
+                                                                      headers[
+                                                                          index],
+                                                                )),
+                                                      );
+                                                    },
+                                                    child: Column(
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            Container(
+                                                              height: 40,
+                                                              width: 10,
+                                                              decoration: BoxDecoration(
+                                                                  color: const Color(
+                                                                      0xfffee8e0),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20)),
+                                                            ),
+                                                            SizedBox(
+                                                              width: 10.w,
+                                                            ),
+                                                            Expanded(
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    headers[index]
+                                                                            .prdCode ??
+                                                                        '',
+                                                                    style:
+                                                                        kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff2C6B9E),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Text(
+                                                                          headers[index].prdName ??
+                                                                              '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 10.sp,
+                                                                              color: const Color.fromARGB(255, 64, 65, 67)),
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          5),
+                                                              child: Text(
+                                                                "3",
+                                                                style:
+                                                                    countHeading(),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Divider(
+                                                          color:
+                                                              Colors.grey[300],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                          itemCount: headers.length),
+                              outOfStockItemsFailedState: () => SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height - 200,
+                                child: Center(
+                                  child: Text(
+                                    'No Data Available',
+                                    style: kfontstyle(),
+                                  ),
+                                ),
+                              ),
+                            ));
+                      },
+                    )
+                  ],
+                )),
+          ),
+        ],
+      ),
+    );
+  }
+}

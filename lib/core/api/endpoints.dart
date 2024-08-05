@@ -145,3 +145,7 @@ const activtyReviewHeaderUrl = 'CusActReview/ActReviewHeaderList';
 const activityTargetsUrl = 'CusActReview/ActReviewDetailChartData';
 const activitytargetSalesurl = 'CusActReview/ActRevTodaysSaleData';
 const activityReviewDetailListUrl = 'CusActReview/ActRevDetailVisitData';
+const outOfStockitemsUrl = 'CusMerch/GetCCOutOfStockItems';
+const outOfStockitemCustomersUrl = 'CusMerch/GetCCOutOfStockItemsDetail';
+const outOfStockCustomersUrl = 'CusMerch/GetCCOutOfStockCustomers';
+const outOfStockCustomerDetailUrl = 'CusMerch/GetCCOutOfStockCustomersDetail';

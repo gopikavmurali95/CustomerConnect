@@ -18,8 +18,7 @@ import 'package:injectable/injectable.dart';
 class SettlementApproval implements ISettlementApprovalHeaderRepo {
   @override
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-      getSettlementApprovalHeaders(
-          String statusvalue, String searchQuery) async {
+      getSettlementApprovalHeaders(String statusvalue) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + settlementApprovalHeaderUrl),

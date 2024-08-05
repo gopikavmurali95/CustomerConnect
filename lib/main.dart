@@ -72,6 +72,8 @@ import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_hea
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
 
@@ -621,6 +623,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<ActivityReviewDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutOfStockItemsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutOfStockItemCustomersBloc>(),
         ),
       ],
       child: ScreenUtilInit(

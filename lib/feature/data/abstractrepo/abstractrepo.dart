@@ -90,6 +90,8 @@ import 'package:customer_connect/feature/data/models/must_sell_detail_model/must
 import 'package:customer_connect/feature/data/models/must_sell_header_model/must_sell_header_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_items_customers_model/out_of_stock_items_customers_model.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_items_model/out_of_stock_items_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
@@ -562,7 +564,9 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-      getSettlementApprovalHeaders(String statusvalue, String searchQuery);
+      getSettlementApprovalHeaders(
+    String statusvalue,
+  );
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
@@ -607,4 +611,18 @@ abstract class IActivityReviewRepo {
 
   Future<Either<MainFailures, List<ActivityReviewDetailListModel>>>
       getActvityReviewDetailList(String udpID);
+}
+
+abstract class IOutOfStockProductsRepo {
+  Future<Either<MainFailures, List<OutOfStockItemsModel>>> getOutOfStockItems(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, List<OutOfStockItemsCustomersModel>>>
+      getOutOfStockItemsCustomers(String osiID);
+}
+
+abstract class IOutOfStockCustomersRepo {
+  Future<Either<MainFailures, List<OutOfStockItemsModel>>>
+      getOutOfStockCustomers(String fromDate, String toDate);
+  Future<Either<MainFailures, List<OutOfStockItemsCustomersModel>>>
+      getOutOfStockCustomersDetail(String cusID);
 }
