@@ -8,9 +8,8 @@ class SettlementApprovalRejectState with _$SettlementApprovalRejectState {
   const factory SettlementApprovalRejectState.rejectApprovalFailedState() =
       RejectApprovalFailedState;
 
-      const factory SettlementApprovalRejectState.postApprovalLoadingState() = PostApprovalLoadingState;
-      
-      
+  const factory SettlementApprovalRejectState.postApprovalLoadingState() =
+      PostApprovalLoadingState;
 
   factory SettlementApprovalRejectState.initial() =>
       const SettlementApprovalRejectState.getRejectApprovalState(reject: null);

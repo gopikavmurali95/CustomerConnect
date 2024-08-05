@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 
 part 'settlement_approval_reject_event.dart';
 part 'settlement_approval_reject_state.dart';
-  part 'settlement_approval_reject_bloc.freezed.dart';
+part 'settlement_approval_reject_bloc.freezed.dart';
 
 @injectable
 class SettlementApprovalRejectBloc
@@ -17,20 +17,17 @@ class SettlementApprovalRejectBloc
 
   SettlementApprovalRejectBloc(this.rejectApprovalRepo)
       : super(SettlementApprovalRejectState.initial()) {
-    on<GetRejectApprovalEvent>((event, emit) async{
+    on<GetRejectApprovalEvent>((event, emit) async {
+      Either<MainFailures, SettelemetApprovalReject> rejct =
+          await rejectApprovalRepo.rejectApprovaldetails(event.udpID);
 
-      Either<MainFailures,  SettelemetApprovalReject> rejct =
-      await rejectApprovalRepo.rejectApprovaldetails(event.udpID);
-
-      emit(rejct.fold(
-        (l) => const RejectApprovalFailedState(),
-         (r) => GetRejectApprovalState(reject: r)));
-
+      emit(rejct.fold((l) => const RejectApprovalFailedState(),
+          (r) => GetRejectApprovalState(reject: r)));
     });
     on<ClearRejectApprovalEvent>((event, emit) {
       emit(const GetRejectApprovalState(reject: null));
     });
-     on<RejectApprovalLoadingEvent>((event, emit) {
+    on<RejectApprovalLoadingEvent>((event, emit) {
       emit(const PostApprovalLoadingState());
     });
   }

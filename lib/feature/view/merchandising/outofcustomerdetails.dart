@@ -41,67 +41,59 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
-                 Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10.0),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 40,
-                                      width: 10,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xfffee8e0),
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "201232",
-                                                  style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color:
-                                                        const Color(0xff2C6B9E),
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      "Emmerch International Hotel",
-                                                      style: kfontstyle(
-                                                          fontSize: 10.sp,
-                                                          color: const Color
-                                                              .fromARGB(
-                                                              255, 64, 65, 67)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                         
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10.0, right: 10, bottom: 3,top: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 40,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            color: const Color(0xfffee8e0),
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "201232",
+                                    style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff2C6B9E),
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        overflow: TextOverflow.ellipsis,
+                                        "Emmerch International Hotel",
+                                        style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            color: const Color.fromARGB(
+                                                255, 64, 65, 67)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 10.0, right: 10, bottom: 3, top: 10),
                   child: Container(
                       height: 30.h,
                       decoration: BoxDecoration(

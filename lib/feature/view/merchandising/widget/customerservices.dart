@@ -18,13 +18,13 @@ class CustomerServicesWidget extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                  onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const CustomerRequestScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CustomerRequestScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -111,13 +111,14 @@ class CustomerServicesWidget extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                   onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MerchandiseCreditNoteRequestScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const MerchandiseCreditNoteRequestScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -208,13 +209,14 @@ class CustomerServicesWidget extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                   onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MerchandiseDisputeNoteRequestScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const MerchandiseDisputeNoteRequestScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -301,13 +303,14 @@ class CustomerServicesWidget extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                   onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MerchandiseReturnRequestScreen ()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const MerchandiseReturnRequestScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),

@@ -17,13 +17,14 @@ class OutletAcivitiesWidget extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                 onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OutletActivityTaskHeaderScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const OutletActivityTaskHeaderScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -110,13 +111,14 @@ class OutletAcivitiesWidget extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                 onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OutActvitySurveyHeaderScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const OutActvitySurveyHeaderScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -207,13 +209,14 @@ class OutletAcivitiesWidget extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                  onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OutActDisplayAgreementScreen()),
-                );
-              },
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const OutActDisplayAgreementScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
@@ -300,14 +303,14 @@ class OutletAcivitiesWidget extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                  onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const OutActCustomerActivityScreen()),
-                );
-              },
-
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const OutActCustomerActivityScreen()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),

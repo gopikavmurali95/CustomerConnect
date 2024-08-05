@@ -51,6 +51,7 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
@@ -557,7 +558,9 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-      getSettlementApprovalHeaders(String statusvalue,);
+      getSettlementApprovalHeaders(
+    String statusvalue,
+  );
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
@@ -568,11 +571,11 @@ abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementPaymentDetailModel>>>
       getPaymentDetails(String udpID);
 
-  Future<Either<MainFailures, PostSettlementApprovalModel>> 
-  postApprovaldetails(String udpID);
-  
-  Future<Either<MainFailures, SettelemetApprovalReject>> 
-  rejectApprovaldetails(String udpID);
+  Future<Either<MainFailures, PostSettlementApprovalModel>> postApprovaldetails(
+      String udpID);
+
+  Future<Either<MainFailures, SettelemetApprovalReject>> rejectApprovaldetails(
+      String udpID);
 }
 
 abstract class IVoidTransactionRepo {
@@ -584,4 +587,10 @@ abstract class IVoidTransactionRepo {
 
   Future<Either<MainFailures, VoidTransactionApproveAndRejectModel>>
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
+}
+
+
+abstract class IMerchandisingDashBoardRepo{
+  Future<Either<MainFailures, GetOutOfStockCountModel>>
+    getoutofstockcount();
 }

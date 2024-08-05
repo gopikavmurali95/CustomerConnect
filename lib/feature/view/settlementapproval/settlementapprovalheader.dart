@@ -10,9 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-
 class SettlementApprovalHeaderScreen extends StatefulWidget {
-   final LoginUserModel users;
+  final LoginUserModel users;
   const SettlementApprovalHeaderScreen(
       {super.key, required LoginUserModel user, required this.users});
   @override
@@ -170,7 +169,8 @@ class _SettlementApprovalHeaderScreenState
             width: MediaQuery.of(context).size.width,
             child: DropdownButtonFormField(
               elevation: 0,
-              value: ddfilterSettlementApproval[0].mode,//selectedSettlmtApprovalmode,//ddfilterSettlementApproval[0].mode,
+              value: ddfilterSettlementApproval[0]
+                  .mode, //selectedSettlmtApprovalmode,//ddfilterSettlementApproval[0].mode,
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
@@ -218,7 +218,7 @@ class _SettlementApprovalHeaderScreenState
                     GetSettlementApprovalHeaderEvent(
                         searchQuery: settlementApprovalHeaderSearchCtrl.text,
                         statusvalue: value));
-                       // setState(() {});
+                // setState(() {});
               },
             ),
           ),
@@ -264,11 +264,11 @@ class _SettlementApprovalHeaderScreenState
   }
 }
 
-
 Future<void> _onRefreshSettlementApprovaalHeaderScreen(
     BuildContext context, LoginUserModel model) async {
-  context.read<SettlementApprovalHeaderBloc>().add(const ClearSettlementApprovalHeaderEvent());
   context
       .read<SettlementApprovalHeaderBloc>()
-      .add(const  GetSettlementApprovalHeaderEvent(statusvalue: '', searchQuery: ''));
+      .add(const ClearSettlementApprovalHeaderEvent());
+  context.read<SettlementApprovalHeaderBloc>().add(
+      const GetSettlementApprovalHeaderEvent(statusvalue: '', searchQuery: ''));
 }

@@ -5,28 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutActCustomerActivityScreen extends StatefulWidget {
-  
-  const OutActCustomerActivityScreen({super.key, });
+  const OutActCustomerActivityScreen({
+    super.key,
+  });
 
   @override
-  State<OutActCustomerActivityScreen> createState() => _PriceChangeHeaderState();
+  State<OutActCustomerActivityScreen> createState() =>
+      _PriceChangeHeaderState();
 }
 
 List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
   ApprovalStatusFilterModel(statusName: "All Activities", mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Completed", mode: 'AT'),
-   ApprovalStatusFilterModel(statusName: "Pending", mode: 'AT'),
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'AT'),
 ];
-
-
 
 Timer? debounce;
 TextEditingController _priceChangeHeaderSearchCtrl = TextEditingController();
 
 class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
   @override
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +35,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-          Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -50,9 +48,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
         ),
       ),
       body: PopScope(
-        onPopInvoked: (didPop) {
-         
-        },
+        onPopInvoked: (didPop) {},
         child: Column(
           children: [
             Padding(
@@ -72,9 +68,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                       children: [
                         Expanded(
                           child: IconButton(
-                              onPressed: () {
-                              
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.clear,
                                 size: 10.sp,
@@ -107,9 +101,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  onChanged: (value) {
-                   
-                  },
+                  onChanged: (value) {},
                 ),
               ),
             ),
@@ -153,9 +145,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) {
-                   
-                  },
+                  onChanged: (value) {},
                 ),
               ),
             ),
@@ -163,164 +153,137 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
               height: 10.h,
             ),
             Expanded(
-              child:  Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "All Tasks",
-                                        // _selectedPriceChangeMode == 'P'
-                                        //     ? 'Pending Approvals'
-                                        //     : 'Approved Requests',
-                                        style: countHeading(),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                                        child: Text(
-                                          "13",
-                                          style: countHeading(),
-                                        ),
-                                      )
-                                    ],
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "All Tasks",
+                          // _selectedPriceChangeMode == 'P'
+                          //     ? 'Pending Approvals'
+                          //     : 'Approved Requests',
+                          style: countHeading(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Text(
+                            "13",
+                            style: countHeading(),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: ListView.separated(
+                        itemBuilder: (context, index) => GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xfffee8e0),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                Expanded(
-                                    child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15),
-                                  child: ListView.separated(
-                                      itemBuilder: (context, index) =>
-                                          GestureDetector(
-                                            onTap: () {
-                                             
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  height: 50,
-                                                  width: 10,
-                                                  decoration: BoxDecoration(
-                                                      color: const Color(
-                                                          0xfffee8e0),
-                                                      borderRadius:
-                                                          BorderRadius
-                                                              .circular(
-                                                                  20)),
-                                                ),
-                                                SizedBox(
-                                                  width: 10.w,
-                                                ),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                         "CUSACT01-Customer New Activity",
-                                                          style:
-                                                              blueTextStyle()),
-                                                      Row(
-                                                        children: [
-                                                          Text(
-                                                            "201232-",
-                                                            style:
-                                                                kfontstyle(
-                                                              fontSize:
-                                                                  11.sp,
-                                                              color: const Color(
-                                                                  0xff2C6B9E),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                               "Emmerch International Hotel",
-                                                                style:
-                                                                    subTitleTextStyle()),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      // Text(
-                                                      //   overflow:
-                                                      //       TextOverflow
-                                                      //           .ellipsis,
-                                                      //  "",
-                                                      //   style: kfontstyle(
-                                                      //       fontSize: 12.sp,
-                                                      //       color: const Color(
-                                                      //           0xff413434)),
-                                                      // ),
-                                                      Text(
-                                                        "Due on: 01 Aug 2024 | Completed on: 05 Aug 2024",
-                                                        style: kfontstyle(
-                                                            fontSize: 9.sp,
-                                                            color: Colors
-                                                                .grey),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Container(
-                                                  // height: 10.h,
-                                                  // width: 10.h,
-                                                  decoration: BoxDecoration(
-                                                    color: const Color(
-                                                                0xffe3f7e2),
-                                                    // color: pChange[index]
-                                                    //             .pchApprovalStatus! ==
-                                                    //         "Pending"
-                                                    //     ? const Color(
-                                                    //         0xfff7f4e2)
-                                                    //     : pChange[index]
-                                                    //                 .pchApprovalStatus! ==
-                                                    //             "Action Taken"
-                                                    //         ? const Color(
-                                                    //             0xffe3f7e2)
-                                                    //         : Colors
-                                                    //             .red[300],
-                                                    borderRadius:
-                                                        BorderRadius
-                                                            .circular(
-                                                      10,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets
-                                                            .symmetric(
-                                                            horizontal: 5,
-                                                            vertical: 3),
-                                                    child: Text(
-                                                      "Complete",
-                                                      style: kfontstyle(
-                                                          fontSize: 8.sp),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("CUSACT01-Customer New Activity",
+                                            style: blueTextStyle()),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "201232-",
+                                              style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                color: const Color(0xff2C6B9E),
+                                              ),
                                             ),
-                                          ),
-                                      separatorBuilder: (context, index) =>
-                                          Divider(
-                                            color: Colors.grey[300],
-                                          ),
-                                      itemCount:10),
-                                ))
-                              ],
+                                            Expanded(
+                                              child: Text(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  "Emmerch International Hotel",
+                                                  style: subTitleTextStyle()),
+                                            ),
+                                          ],
+                                        ),
+                                        // Text(
+                                        //   overflow:
+                                        //       TextOverflow
+                                        //           .ellipsis,
+                                        //  "",
+                                        //   style: kfontstyle(
+                                        //       fontSize: 12.sp,
+                                        //       color: const Color(
+                                        //           0xff413434)),
+                                        // ),
+                                        Text(
+                                          "Due on: 01 Aug 2024 | Completed on: 05 Aug 2024",
+                                          style: kfontstyle(
+                                              fontSize: 9.sp,
+                                              color: Colors.grey),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    // height: 10.h,
+                                    // width: 10.h,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffe3f7e2),
+                                      // color: pChange[index]
+                                      //             .pchApprovalStatus! ==
+                                      //         "Pending"
+                                      //     ? const Color(
+                                      //         0xfff7f4e2)
+                                      //     : pChange[index]
+                                      //                 .pchApprovalStatus! ==
+                                      //             "Action Taken"
+                                      //         ? const Color(
+                                      //             0xffe3f7e2)
+                                      //         : Colors
+                                      //             .red[300],
+                                      borderRadius: BorderRadius.circular(
+                                        10,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 3),
+                                      child: Text(
+                                        "Complete",
+                                        style: kfontstyle(fontSize: 8.sp),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                 ),
-            
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
+                  ))
+                ],
+              ),
+            ),
           ],
         ),
       ),

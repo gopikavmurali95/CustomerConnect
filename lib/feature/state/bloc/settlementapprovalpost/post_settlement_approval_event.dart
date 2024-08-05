@@ -8,8 +8,6 @@ class PostSettlementApprovalEvent with _$PostSettlementApprovalEvent {
   const factory PostSettlementApprovalEvent.clearPostApprovalEvent() =
       ClearPostApprovalEvent;
 
-const factory PostSettlementApprovalEvent.PostLoadingApprovalEvent() = PostLoadingApprovalEvent;
-
-   
-  
+  const factory PostSettlementApprovalEvent.PostLoadingApprovalEvent() =
+      PostLoadingApprovalEvent;
 }

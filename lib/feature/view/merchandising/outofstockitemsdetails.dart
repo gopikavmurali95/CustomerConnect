@@ -191,11 +191,10 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                               //   );
                               // },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 0.0),
                                 child: Row(
                                   children: [
-                                   
-                                  
                                     Expanded(
                                       child: Row(
                                         children: [
@@ -221,7 +220,8 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                                       "Emmerch International Hotel",
                                                       style: kfontstyle(
                                                           fontSize: 10.sp,
-                                                          color: const Color.fromARGB(
+                                                          color: const Color
+                                                              .fromARGB(
                                                               255, 64, 65, 67)),
                                                     ),
                                                   ],
@@ -232,7 +232,6 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                         ],
                                       ),
                                     ),
-                                   
                                   ],
                                 ),
                               ),

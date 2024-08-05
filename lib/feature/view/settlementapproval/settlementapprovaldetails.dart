@@ -77,7 +77,7 @@ class _SettlementApprovalDetailScreenState
           height: double.infinity,
           child: SingleChildScrollView(
             // physics: const NeverScrollableScrollPhysics(),
-             physics: const AlwaysScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
                 Column(
@@ -386,7 +386,8 @@ class _SettlementApprovalDetailScreenState
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: const Text('Alert'),
-                        content: const Text("Approved Successfully"),//Text("${response.status}"),
+                        content: const Text(
+                            "Approved Successfully"), //Text("${response.status}"),
                         actions: [
                           TextButton(
                             onPressed: () {

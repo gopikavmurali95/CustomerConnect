@@ -576,8 +576,7 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<PostSettlementApprovalBloc>(),
         ),
         BlocProvider(
-          create: (context)=>getit<SettlementApprovalRejectBloc>()
-          ),
+            create: (context) => getit<SettlementApprovalRejectBloc>()),
         BlocProvider<InverntoryTransExPandCubit>(
           create: (context) => InverntoryTransExPandCubit(),
         ),

@@ -48,17 +48,17 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(top: 2, left: 10),
-                                    child:   Text(
-                                      "${paymode[0].expectedAmountTotal}",
-                                      //"7,300.00",
-                                      style: kfontstyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 10.sp,
-                                      ),
-                                    ),
+                                child: Text(
+                                  "${paymode[0].expectedAmountTotal}",
+                                  //"7,300.00",
+                                  style: kfontstyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
                                 // child: BlocBuilder<SettlementCashDetailsBloc, SettlementCashDetailsState>(
                                 //   builder: (context, state) {
-                                //     return state.when(getCashDetailsState: (cash) => cash == null ?  
+                                //     return state.when(getCashDetailsState: (cash) => cash == null ?
                                 //      Text("0",style: kfontstyle(
                                 //         fontWeight: FontWeight.w500,
                                 //         fontSize: 10.sp,
@@ -69,7 +69,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                 //       )),
                                 //      cashDetailFailedState: () => const Text("0"),
                                 //      );
-                                   
+
                                 //   },
                                 // ),
                               ),
@@ -98,7 +98,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                         "${paymode[0].mode}",
+                                        "${paymode[0].mode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
                                       Text("${paymode[0].expectedAmount}",
@@ -137,7 +137,6 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        
                                         "${paymode[1].mode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
@@ -176,7 +175,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                         "${paymode[2].mode}",
+                                        "${paymode[2].mode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
                                       Text("${paymode[2].expectedAmount}",

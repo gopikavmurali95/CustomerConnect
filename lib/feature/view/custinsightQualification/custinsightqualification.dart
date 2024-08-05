@@ -97,10 +97,10 @@ class CustInsightQualificationGroup extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Divider(),
+                const Divider(),
                 SizedBox(
                   height: 65,
                   width: double.infinity,

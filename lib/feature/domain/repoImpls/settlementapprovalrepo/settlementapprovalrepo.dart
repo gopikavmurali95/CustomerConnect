@@ -77,7 +77,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
       if (response.statusCode == 200) {
         log('Settlemt PayModeDetail: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
-         final List<dynamic> paymodedata= json['result'];
+        final List<dynamic> paymodedata = json['result'];
         List<SettlemenetApprovalPayModeDetailModel> paymodeDetails = paymodedata
             .map<SettlemenetApprovalPayModeDetailModel>(
                 (json) => SettlemenetApprovalPayModeDetailModel.fromJson(json))
@@ -118,7 +118,6 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
         );
       }
     } catch (e) {
-     
       return left(const MainFailures.serverfailure());
     }
   }
@@ -132,7 +131,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
           body: {"udpID": udpID});
 
       if (response.statusCode == 200) {
-         log('Settlemt PostResponse: ${response.body}');
+        log('Settlemt PostResponse: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final postApproval =
             PostSettlementApprovalModel.fromJson(json["result"][0]);
@@ -155,7 +154,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
           body: {"udpID": udpID});
 
       if (response.statusCode == 200) {
-         log('Settlemt Reject Response: ${response.body}');
+        log('Settlemt Reject Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final rejectApproval =
             SettelemetApprovalReject.fromJson(json["result"][0]);

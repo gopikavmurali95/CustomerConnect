@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/merchandising/outofstockitemsdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class OutOfStockScreen extends StatefulWidget {
   const OutOfStockScreen({super.key});
 
@@ -58,9 +59,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                         style:
                             kfontstyle(fontSize: 13.sp, color: Colors.black87),
                         // controller: _loadqSearchController,
-                        onChanged: (value) {
-                         
-                        },
+                        onChanged: (value) {},
                         decoration: InputDecoration(
                             prefixIcon: const Icon(
                               Icons.search,
@@ -177,7 +176,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                     "Divella farfalle Pasta 500kg Offer pack",
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
-                                                        color: const Color.fromARGB(
+                                                        color: const Color
+                                                            .fromARGB(
                                                             255, 64, 65, 67)),
                                                   ),
                                                 ],

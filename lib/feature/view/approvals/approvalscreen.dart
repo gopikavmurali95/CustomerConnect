@@ -1,6 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/users_model/users_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
@@ -1686,7 +1685,8 @@ class ApprovalScreen extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     SettlementApprovalHeaderScreen(
-                                      user: user, users: user, 
+                                      user: user,
+                                      users: user,
                                     )),
                           );
                         },

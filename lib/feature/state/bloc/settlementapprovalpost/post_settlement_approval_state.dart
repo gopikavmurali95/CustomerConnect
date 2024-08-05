@@ -9,8 +9,8 @@ class PostSettlementApprovalState with _$PostSettlementApprovalState {
   const factory PostSettlementApprovalState.postSettlementApprovalFailedState() =
       PostSettlementApprovalFailedState;
 
-  const factory PostSettlementApprovalState.postLoadingState() = PostLoadingState;
-  
+  const factory PostSettlementApprovalState.postLoadingState() =
+      PostLoadingState;
 
   factory PostSettlementApprovalState.initial() =>
       const PostSettlementApprovalState.getPostSettlementApprovalState(
