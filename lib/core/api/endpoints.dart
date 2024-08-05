@@ -132,6 +132,13 @@ const voidTransactionApprovalHeaderUrl =
 const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
 const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
 const cusSettingUrl = 'CCUserSettings/GetCCUserSettings';
+const targetHeaderCountUrl = 'CusTarget/TargetHeaderCount';
+const targetHeaderListUrl = 'CusTarget/HeaderRouteWiseTargets';
+const targetDetailsCountUrl = 'CusTarget/TargetDaysCount';
+const targetDetailsListUrl = 'CusTarget/RouteWiseTargetDetail';
+const targetDetailsGraphAmtUrl = 'CusTarget/TargetDetailAmtCount';
+const targetDetailsGraphQtyUrl = 'CusTarget/TargetDetailQtyCount';
+const targetPachageListUrl = 'CusTarget/RouteWisePackageDetail';
 const settlementApprovalCashDetailUrl =
     "SettlementApproval/SettlementApprovalCashDetail";
 const settlementApprovalPayModeDetailUrl =
@@ -149,3 +156,11 @@ const outOfStockitemsUrl = 'CusMerch/GetCCOutOfStockItems';
 const outOfStockitemCustomersUrl = 'CusMerch/GetCCOutOfStockItemsDetail';
 const outOfStockCustomersUrl = 'CusMerch/GetCCOutOfStockCustomers';
 const outOfStockCustomerDetailUrl = 'CusMerch/GetCCOutOfStockCustomersDetail';
+
+const merchandisingGetOutofStockCountUrl = "CusMerch/GetCCOutOfStockCount";
+const chartRoutesUrl = 'CusChartDashboard/GetCCRouteCount';
+const chartPlannedVisitsUrl = 'CusChartDashboard/GetCCPlanVisitCount';
+const chartActualVisitsUrl = 'CusChartDashboard/GetCCActualVisitCount';
+const chartProductiveVisitsUrl = 'CusChartDashboard/GetCCProductiveVisitCount';
+const chartNonProductiveVistisUrl =
+    'CusChartDashboard/GetCCNonProductiveVisitCount';

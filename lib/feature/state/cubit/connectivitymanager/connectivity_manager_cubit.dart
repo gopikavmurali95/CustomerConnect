@@ -5,5 +5,5 @@ part 'connectivity_manager_state.dart';
 part 'connectivity_manager_cubit.freezed.dart';
 
 class ConnectivityManagerCubit extends Cubit<ConnectivityManagerState> {
-  ConnectivityManagerCubit() : super(ConnectivityManagerState.initial());
+  ConnectivityManagerCubit() : super(const ConnectivityManagerState.initial());
 }

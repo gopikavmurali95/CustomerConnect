@@ -12,7 +12,8 @@ import 'package:flutter_svg/svg.dart';
 
 class SettlementApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel users;
-  const SettlementApprovalHeaderScreen({super.key, required this.users});
+  const SettlementApprovalHeaderScreen(
+      {super.key, required LoginUserModel user, required this.users});
   @override
   State<SettlementApprovalHeaderScreen> createState() =>
       _SettlementApprovalHeaderScreenState();

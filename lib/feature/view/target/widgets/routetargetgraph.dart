@@ -1,11 +1,19 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_amt_model/target_details_graph_amt_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_qty_model/target_details_graph_qty_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphamt/target_details_graph_amt_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphqty/rarget_details_graph_qty_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ssun_chart/pie_chart.dart';
 
 class RouteTargetGraphWidget extends StatefulWidget {
-  const RouteTargetGraphWidget({super.key});
+  final TargetHeaderListModel header;
+  const RouteTargetGraphWidget({super.key, required this.header});
 
   @override
   State<RouteTargetGraphWidget> createState() => _RouteTargetGraphWidgetState();
@@ -56,6 +64,26 @@ final containerGradients = [
 
 class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
   @override
+  void initState() {
+    pievalues.clear();
+    context.read<TargetDetailsGraphAmtBloc>().add(const ClearGraphAmount());
+    context.read<TargetDetailsGraphAmtBloc>().add(GetTargetGraphAmtEvent(
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        rotID: widget.header.rotID ?? ''));
+    context
+        .read<RargetDetailsGraphQtyBloc>()
+        .add(const ClearTargetGraphQuantity());
+    context.read<RargetDetailsGraphQtyBloc>().add(GetTargetGraphQtyEvent(
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        rotID: widget.header.rotID ?? ''));
+    super.initState();
+  }
+
+  List<double> pievalues = [];
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: SingleChildScrollView(
@@ -66,203 +94,587 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
             SizedBox(
               width: 5.h,
             ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                // height: MediaQuery.of(context).size.width / 2.8,
-                width: MediaQuery.of(context).size.width - 50,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    gradient: containerGradients[0][0]),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Target Amount',
-                            style: countHeading(),
-                          ),
-                          Text(
-                            '2500.00',
-                            style: countHeading(),
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 100.w,
-                            height: 100.h,
-                            child: PieChart(
-                              bgColor: Colors.transparent,
-                              usePercentValues: false,
-                              centerTextColor: Colors.blue,
-                              centerTextSize: 11,
-                              drawCenterText: true,
-                              drawHoleEnabled: true,
-                              holeRadius: 26,
-                              entryLabelTextSize: 10,
-                              transparentCircleRadius: 33,
-                              entryLabelColor: Colors.black,
-                              data: PieData(
-                                List.of(
-                                  [
-                                    PieDataSet(
-                                      colors: routetargetcolorslist,
-                                      entries: List.of(
-                                        [
-                                          PieEntry('56%', 56),
-                                          PieEntry('8%', 38),
-                                          PieEntry('36%', 76),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
+            BlocListener<TargetDetailsGraphAmtBloc, TargetDetailsGraphAmtState>(
+              listener: (context, state) {
+                state.when(
+                    getTargetGraphAmt: (amount) {
+                      pievalues.clear();
+                      if (amount != null) {
+                        if (double.parse(
+                                (amount.achAmt ?? '').replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (amount.achAmt ?? '').replaceAll(',', '')));
+                        }
+                        if (double.parse(
+                                (amount.mtdGapAmt ?? '').replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (amount.mtdGapAmt ?? '').replaceAll(',', '')));
+                        }
+                        if (double.parse((amount.monthGapAmt ?? '')
+                                .replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (amount.monthGapAmt ?? '').replaceAll(',', '')));
+                        }
+                      }
+                    },
+                    getTargetGraphAmtFailed: () => Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            width: MediaQuery.of(context).size.width - 50,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                gradient: containerGradients[0][0]),
+                            child: Center(
+                              child: Text(
+                                'No Data Available',
+                                style: kfontstyle(),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const ArChartItemWidget(
-                                  amount: '1400.00',
-                                  color: Color(0xff3DDB7C),
-                                  title: 'Achieved',
-                                ),
-                                SizedBox(
-                                  height: 15.h,
-                                ),
-                                const ArChartItemWidget(
-                                  amount: '200.00',
-                                  color: Color(0xffE07744),
-                                  title: 'MTD Gap',
-                                ),
-                                SizedBox(
-                                  height: 15.h,
-                                ),
-                                const ArChartItemWidget(
-                                  amount: '1100.00',
-                                  color: Color(0xffEAD846),
-                                  title: 'Monthly Gap',
-                                ),
-                              ],
+                        ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: BlocBuilder<TargetDetailsGraphAmtBloc,
+                    TargetDetailsGraphAmtState>(
+                  builder: (context, state) {
+                    return state.when(
+                        getTargetGraphAmt: ((amount) {
+                          if (amount == null) {
+                            return ShimmerContainers(
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              width: MediaQuery.of(context).size.width - 50,
+                            );
+                          }
+                          final percentages = calculatePercentages(amount);
+                          return Container(
+                            // height: MediaQuery.of(context).size.width / 2.8,
+                            width: MediaQuery.of(context).size.width - 50,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                gradient: containerGradients[0][0]),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Target Amount',
+                                        style: countHeading(),
+                                      ),
+                                      Text(
+                                        amount.totalAmt ?? '',
+                                        style: countHeading(),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      pievalues.length > 1
+                                          ? SizedBox(
+                                              width: 110.w,
+                                              height: 110.h,
+                                              child: PieChart(
+                                                bgColor: Colors.transparent,
+                                                usePercentValues: false,
+                                                // centerTextSize: 11,
+                                                // drawCenterText: true,
+                                                drawHoleEnabled: true,
+                                                holeRadius: 20,
+                                                entryLabelTextSize: 10.sp,
+                                                transparentCircleRadius: 27,
+                                                entryLabelColor: Colors.black,
+                                                data: PieData(
+                                                  List.of(
+                                                    [
+                                                      PieDataSet(
+                                                        colors:
+                                                            routetargetcolorslist,
+                                                        entries: List.of(
+                                                          [
+                                                            PieEntry(
+                                                                percentages['achAmount'] ==
+                                                                        0.00
+                                                                    ? ''
+                                                                    : '${percentages['achAmount']!.toStringAsFixed(2)}%',
+                                                                double.parse((amount
+                                                                            .achAmt ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        ''))),
+                                                            PieEntry(
+                                                                percentages['mtdAmount'] ==
+                                                                        0.00
+                                                                    ? ''
+                                                                    : '${percentages['mtdAmount']!.toStringAsFixed(2)}%',
+                                                                double.parse((amount
+                                                                            .mtdGapAmt ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        ''))),
+                                                            PieEntry(
+                                                                percentages['monthAmount'] ==
+                                                                        0.00
+                                                                    ? ''
+                                                                    : '${percentages['monthAmount']!.toStringAsFixed(2)}%',
+                                                                double.parse((amount
+                                                                            .monthGapAmt ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        ''))),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          : pievalues.isEmpty
+                                              ? const Center()
+                                              : Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 6, bottom: 6),
+                                                  child: Stack(
+                                                    children: [
+                                                      CircleAvatar(
+                                                        radius: 50.h,
+                                                        backgroundColor: pievalues[0] ==
+                                                                double.parse(
+                                                                    (amount.achAmt ??
+                                                                            '')
+                                                                        .replaceAll(
+                                                                            ',',
+                                                                            ''))
+                                                            ? routetargetcolorslist[
+                                                                0]
+                                                            : pievalues[0] ==
+                                                                    double.parse((amount.mtdGapAmt ??
+                                                                            '')
+                                                                        .replaceAll(
+                                                                            ',',
+                                                                            ''))
+                                                                ? routetargetcolorslist[
+                                                                    1]
+                                                                : pievalues[0] ==
+                                                                        double.parse(
+                                                                            (amount.monthGapAmt ?? '').replaceAll(',', ''))
+                                                                    ? routetargetcolorslist[2]
+                                                                    : routetargetcolorslist[3],
+                                                        child: Center(
+                                                          child: CircleAvatar(
+                                                            radius: 23.h,
+                                                            backgroundColor:
+                                                                Colors.white30,
+                                                            child: Center(
+                                                              child:
+                                                                  CircleAvatar(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                radius: 16.h,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Positioned(
+                                                          top: 50,
+                                                          right: 15,
+                                                          child: Text(
+                                                            '${pievalues[0]}',
+                                                            style: kfontstyle(
+                                                                fontSize: 10.sp,
+                                                                color: Colors
+                                                                    .black),
+                                                          ))
+                                                    ],
+                                                  ),
+                                                ),
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            ArChartItemWidget(
+                                              amount: amount.achAmt ?? '',
+                                              color: const Color(0xff3DDB7C),
+                                              title: 'Achieved',
+                                            ),
+                                            SizedBox(
+                                              height: 15.h,
+                                            ),
+                                            ArChartItemWidget(
+                                              amount: amount.mtdGapAmt ?? '',
+                                              color: const Color(0xffE07744),
+                                              title: 'MTD Gap',
+                                            ),
+                                            SizedBox(
+                                              height: 15.h,
+                                            ),
+                                            ArChartItemWidget(
+                                              amount: amount.monthGapAmt ?? '',
+                                              color: const Color(0xffEAD846),
+                                              title: 'Monthly Gap',
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+                          );
+                        }),
+                        getTargetGraphAmtFailed: () => Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                width: MediaQuery.of(context).size.width - 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    gradient: containerGradients[0][0]),
+                                child: Center(
+                                  child: Text(
+                                    'No Data Available',
+                                    style: kfontstyle(),
+                                  ),
+                                ),
+                              ),
+                            ));
+                  },
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                // height: MediaQuery.of(context).size.width / 2.8,
-                width: MediaQuery.of(context).size.width - 50,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    gradient: containerGradients[1][0]),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Target Quantity',
-                            style: countHeading(),
-                          ),
-                          Text(
-                            '2500.00',
-                            style: countHeading(),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 100.w,
-                            height: 100.h,
-                            child: PieChart(
-                              bgColor: Colors.transparent,
-                              usePercentValues: false,
-                              centerTextColor: Colors.blue,
-                              centerTextSize: 11,
-                              drawCenterText: true,
-                              drawHoleEnabled: true,
-                              holeRadius: 20,
-                              entryLabelTextSize: 10,
-                              transparentCircleRadius: 27,
-                              entryLabelColor: Colors.white,
-                              data: PieData(
-                                List.of(
-                                  [
-                                    PieDataSet(
-                                      colors: routetargetcolorslist,
-                                      entries: List.of(
-                                        [
-                                          PieEntry('56%', 56),
-                                          PieEntry('8%', 38),
-                                          PieEntry('36%', 76),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
+            BlocListener<RargetDetailsGraphQtyBloc, RargetDetailsGraphQtyState>(
+              listener: (context, state) {
+                state.when(
+                    getTargetGraphQtyState: (quantity) {
+                      pievalues.clear();
+                      if (quantity != null) {
+                        if (double.parse(
+                                (quantity.achQty ?? '').replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (quantity.achQty ?? '').replaceAll(',', '')));
+                        }
+                        if (double.parse((quantity.mtdGapQty ?? '')
+                                .replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (quantity.mtdGapQty ?? '').replaceAll(',', '')));
+                        }
+                        if (double.parse((quantity.monthGapQty ?? '')
+                                .replaceAll(',', '')) >
+                            0.00) {
+                          pievalues.add(double.parse(
+                              (quantity.monthGapQty ?? '')
+                                  .replaceAll(',', '')));
+                        }
+                      }
+                    },
+                    getTargetGraphQtyFailed: () => Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            width: MediaQuery.of(context).size.width - 50,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                gradient: containerGradients[1][0]),
+                            child: Center(
+                              child: Text(
+                                'No Data Available',
+                                style: kfontstyle(),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const ArChartItemWidget(
-                                  amount: '1400.00',
-                                  color: Color(0xff3DDB7C),
-                                  title: 'Achieved',
+                        ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: BlocBuilder<RargetDetailsGraphQtyBloc,
+                    RargetDetailsGraphQtyState>(
+                  builder: (context, state) {
+                    return state.when(
+                        getTargetGraphQtyState: (qty) {
+                          if (qty == null) {
+                            return ShimmerContainers(
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              width: MediaQuery.of(context).size.width - 50,
+                            );
+                          } else {
+                            final qtypercentages = calculateQtyPercentages(qty);
+
+                            return Container(
+                              // height: MediaQuery.of(context).size.width / 2.8,
+                              width: MediaQuery.of(context).size.width - 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  gradient: containerGradients[1][0]),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Target Quantity',
+                                          style: countHeading(),
+                                        ),
+                                        Text(
+                                          qty.totalQty ?? '',
+                                          style: countHeading(),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        pievalues.length > 1
+                                            ? SizedBox(
+                                                width: 110.w,
+                                                height: 110.h,
+                                                child: PieChart(
+                                                  bgColor: Colors.transparent,
+                                                  usePercentValues: false,
+                                                  // centerTextSize: 11,
+                                                  // drawCenterText: true,
+                                                  drawHoleEnabled: true,
+                                                  holeRadius: 20,
+                                                  entryLabelTextSize: 10.sp,
+                                                  transparentCircleRadius: 27,
+
+                                                  entryLabelColor: Colors.black,
+                                                  data: PieData(
+                                                    List.of(
+                                                      [
+                                                        PieDataSet(
+                                                          colors:
+                                                              routetargetcolorslist,
+                                                          entries: List.of(
+                                                            [
+                                                              PieEntry(
+                                                                  qtypercentages[
+                                                                              'achQty'] ==
+                                                                          0.00
+                                                                      ? ''
+                                                                      : '${qtypercentages['achQty']!.toStringAsFixed(2)}%',
+                                                                  double.parse((qty
+                                                                              .achQty ??
+                                                                          '')
+                                                                      .replaceAll(
+                                                                          ',',
+                                                                          ''))),
+                                                              PieEntry(
+                                                                  qtypercentages[
+                                                                              'mtdQty'] ==
+                                                                          0.00
+                                                                      ? ''
+                                                                      : '${qtypercentages['mtdQty']!.toStringAsFixed(2)}%',
+                                                                  double.parse((qty
+                                                                              .mtdGapQty ??
+                                                                          '')
+                                                                      .replaceAll(
+                                                                          ',',
+                                                                          ''))),
+                                                              PieEntry(
+                                                                  qtypercentages[
+                                                                              'monthQty'] ==
+                                                                          0.00
+                                                                      ? ''
+                                                                      : '${qtypercentages['monthQty']!.toStringAsFixed(2)}%',
+                                                                  double.parse((qty
+                                                                              .monthGapQty ??
+                                                                          '')
+                                                                      .replaceAll(
+                                                                          ',',
+                                                                          ''))),
+                                                            ],
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : pievalues.isEmpty
+                                                ? const Center()
+                                                : Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 6, bottom: 6),
+                                                    child: Stack(
+                                                      children: [
+                                                        CircleAvatar(
+                                                          radius: 50.h,
+                                                          backgroundColor: pievalues[0] ==
+                                                                  double.parse((qty
+                                                                              .achQty ??
+                                                                          '')
+                                                                      .replaceAll(
+                                                                          ',',
+                                                                          ''))
+                                                              ? routetargetcolorslist[
+                                                                  0]
+                                                              : pievalues[0] ==
+                                                                      double.parse((qty.mtdGapQty ??
+                                                                              '')
+                                                                          .replaceAll(
+                                                                              ',',
+                                                                              ''))
+                                                                  ? routetargetcolorslist[
+                                                                      1]
+                                                                  : pievalues[0] ==
+                                                                          double.parse((qty.monthGapQty ?? '').replaceAll(',', ''))
+                                                                      ? routetargetcolorslist[2]
+                                                                      : routetargetcolorslist[3],
+                                                          child: Center(
+                                                            child: CircleAvatar(
+                                                              radius: 23.h,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .white30,
+                                                              child: Center(
+                                                                child:
+                                                                    CircleAvatar(
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .white,
+                                                                  radius: 16.h,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Positioned(
+                                                            top: 50,
+                                                            right: 15,
+                                                            child: Text(
+                                                              // '${pievalues[0]}',
+                                                              pievalues[0] ==
+                                                                      double.parse((qty
+                                                                                  .achQty ??
+                                                                              '')
+                                                                          .replaceAll(
+                                                                              ',',
+                                                                              ''))
+                                                                  ? (qtypercentages[
+                                                                              'achQty'] ==
+                                                                          0.00
+                                                                      ? ''
+                                                                      : '${qtypercentages['achQty']!.toStringAsFixed(2)}%')
+                                                                  : pievalues[0] ==
+                                                                          double.parse((qty.mtdGapQty ?? '').replaceAll(
+                                                                              ',',
+                                                                              ''))
+                                                                      ? (qtypercentages['mtdQty'] ==
+                                                                              0.00
+                                                                          ? ''
+                                                                          : '${qtypercentages['mtdQty']!.toStringAsFixed(2)}%')
+                                                                      : (qtypercentages['monthQty'] ==
+                                                                              0.00
+                                                                          ? ''
+                                                                          : '${qtypercentages['monthQty']!.toStringAsFixed(2)}%'),
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  color: Colors
+                                                                      .black),
+                                                            ))
+                                                      ],
+                                                    ),
+                                                  ),
+                                        SizedBox(
+                                          width: 20.w,
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ArChartItemWidget(
+                                                amount: qty.achQty ?? '',
+                                                color: const Color(0xff3DDB7C),
+                                                title: 'Achieved',
+                                              ),
+                                              SizedBox(
+                                                height: 15.h,
+                                              ),
+                                              ArChartItemWidget(
+                                                amount: qty.mtdGapQty ?? '',
+                                                color: const Color(0xffE07744),
+                                                title: 'MTD Gap',
+                                              ),
+                                              SizedBox(
+                                                height: 15.h,
+                                              ),
+                                              ArChartItemWidget(
+                                                amount: qty.monthGapQty ?? '',
+                                                color: const Color(0xffEAD846),
+                                                title: 'Monthly Gap',
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  height: 15.h,
+                              ),
+                            );
+                          }
+                        },
+                        getTargetGraphQtyFailed: () => Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                width: MediaQuery.of(context).size.width - 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    gradient: containerGradients[1][0]),
+                                child: Center(
+                                  child: Text(
+                                    'No Data Available',
+                                    style: kfontstyle(),
+                                  ),
                                 ),
-                                const ArChartItemWidget(
-                                  amount: '200.00',
-                                  color: Color(0xffE07744),
-                                  title: 'MTD Gap',
-                                ),
-                                SizedBox(
-                                  height: 15.h,
-                                ),
-                                const ArChartItemWidget(
-                                  amount: '1100.00',
-                                  color: Color(0xffEAD846),
-                                  title: 'Monthly Gap',
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+                              ),
+                            ));
+                  },
                 ),
               ),
             ),
@@ -281,3 +693,46 @@ List<Color> routetargetcolorslist = [
   const Color(0xffE07744),
   const Color(0xffEAD846),
 ];
+
+Map<String, double> calculatePercentages(TargetDetailsGraphAmtModel amt) {
+  double achAmount = double.parse((amt.achAmt ?? '').replaceAll(',', ''));
+  double mtdAmount = double.parse((amt.mtdGapAmt ?? '').replaceAll(',', ''));
+  double monthAmount =
+      double.parse((amt.monthGapAmt ?? '').replaceAll(',', ''));
+  double totalAmount = achAmount + mtdAmount + monthAmount;
+
+  Map<String, double> percentages = {};
+
+  if (totalAmount > 0) {
+    percentages['achAmount'] = (achAmount / totalAmount) * 100;
+    percentages['mtdAmount'] = (mtdAmount / totalAmount) * 100;
+    percentages['monthAmount'] = (monthAmount / totalAmount) * 100;
+  } else {
+    percentages['achAmount'] = 0.0;
+    percentages['mtdAmount'] = 0.0;
+    percentages['monthAmount'] = 0.0;
+  }
+
+  return percentages;
+}
+
+Map<String, double> calculateQtyPercentages(TargetDetailsGraphQtyModel qty) {
+  double achQty = double.parse((qty.achQty ?? '').replaceAll(',', ''));
+  double mtdQty = double.parse((qty.mtdGapQty ?? '').replaceAll(',', ''));
+  double monthQty = double.parse((qty.monthGapQty ?? '').replaceAll(',', ''));
+  double toatalQty = achQty + mtdQty + monthQty;
+
+  Map<String, double> qtypercentages = {};
+
+  if (toatalQty > 0) {
+    qtypercentages['achQty'] = (achQty / toatalQty) * 100;
+    qtypercentages['mtdQty'] = (mtdQty / mtdQty) * 100;
+    qtypercentages['monthQty'] = (monthQty / monthQty) * 100;
+  } else {
+    qtypercentages['achQty'] = 0.0;
+    qtypercentages['mtdQty'] = 0.0;
+    qtypercentages['monthQty'] = 0.0;
+  }
+
+  return qtypercentages;
+}

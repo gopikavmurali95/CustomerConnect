@@ -12,6 +12,7 @@ OutOfStockItemsModel _$OutOfStockItemsModelFromJson(
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
       osiId: json['osi_ID'] as String?,
+      cusCount: json['cusCount'] as String?,
     );
 
 Map<String, dynamic> _$OutOfStockItemsModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$OutOfStockItemsModelToJson(
       'prd_Code': instance.prdCode,
       'prd_Name': instance.prdName,
       'osi_ID': instance.osiId,
+      'cusCount': instance.cusCount,
     };

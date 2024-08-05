@@ -6,9 +6,9 @@ import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_s
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/widgets/insightspecialpricelist.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

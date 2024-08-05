@@ -7,9 +7,13 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:developer';
 
 class OutOfStockScreen extends StatefulWidget {
-  const OutOfStockScreen({super.key});
+  final TextEditingController fromDateCtrl;
+  final TextEditingController toDateCtrl;
+  const OutOfStockScreen(
+      {super.key, required this.fromDateCtrl, required this.toDateCtrl});
 
   @override
   State<OutOfStockScreen> createState() => _OutOfStockScreenState();
@@ -21,9 +25,13 @@ Timer? debounce;
 class _OutOfStockScreenState extends State<OutOfStockScreen> {
   @override
   void initState() {
+    log(widget.fromDateCtrl.text);
+    log(widget.toDateCtrl.text);
     context.read<OutOfStockItemsBloc>().add(const ClearOutOfStockItems());
-    context.read<OutOfStockItemsBloc>().add(const GetOutOfStockItemsEvent(
-        searchQuery: '', fromDate: '2024-05-01', toDate: '2024-08-03'));
+    context.read<OutOfStockItemsBloc>().add(GetOutOfStockItemsEvent(
+        searchQuery: '',
+        fromDate: widget.fromDateCtrl.text,
+        toDate: widget.fromDateCtrl.text));
     super.initState();
   }
 
@@ -292,7 +300,9 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                       horizontal:
                                                                           5),
                                                               child: Text(
-                                                                "3",
+                                                                headers[index]
+                                                                        .cusCount ??
+                                                                    '',
                                                                 style:
                                                                     countHeading(),
                                                               ),

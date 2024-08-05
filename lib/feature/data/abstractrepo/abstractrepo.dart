@@ -17,6 +17,11 @@ import 'package:customer_connect/feature/data/models/asset_add_resp_out_model/as
 import 'package:customer_connect/feature/data/models/asset_removal_approval_in_model/asset_removal_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_approve_out_model/asset_removal_approve_out_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_request_header_model/asset_removal_request_header_model.dart';
+import 'package:customer_connect/feature/data/models/chart_actual_visit_model/chart_actual_visit_model.dart';
+import 'package:customer_connect/feature/data/models/chart_non_productive_model/chart_non_productive_model.dart';
+import 'package:customer_connect/feature/data/models/chart_planned_visits_model/chart_planned_visits_model.dart';
+import 'package:customer_connect/feature/data/models/chart_productive_visit_model/chart_productive_visit_model.dart';
+import 'package:customer_connect/feature/data/models/chart_routes_model/chart_routes_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_code_in_model/confirm_geo_code_in_model.dart';
 import 'package:customer_connect/feature/data/models/confirm_geo_locations_model/confirm_geo_locations_model.dart';
 import 'package:customer_connect/feature/data/models/credit_note_detail_model/credit_note_detail_model.dart';
@@ -56,6 +61,7 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
@@ -134,6 +140,13 @@ import 'package:customer_connect/feature/data/models/special_price_customer_mode
 import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
+import 'package:customer_connect/feature/data/models/target_details_count_model/target_details_count_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_amt_model/target_details_graph_amt_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_graph_qty_model/target_details_graph_qty_model.dart';
+import 'package:customer_connect/feature/data/models/target_details_list_model/target_details_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_count_model/target_header_count_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_package_list_model/target_package_list_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_details_model/todays_delivery_details_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
@@ -564,9 +577,7 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-      getSettlementApprovalHeaders(
-    String statusvalue,
-  );
+      getSettlementApprovalHeaders(String statusvalue);
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
@@ -625,4 +636,44 @@ abstract class IOutOfStockCustomersRepo {
       getOutOfStockCustomers(String fromDate, String toDate);
   Future<Either<MainFailures, List<OutOfStockItemsCustomersModel>>>
       getOutOfStockCustomersDetail(String cusID);
+}
+
+abstract class IMerchandisingDashBoardRepo {
+  Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount();
+}
+
+abstract class ITargetRepo {
+  Future<Either<MainFailures, TargetHeaderCountModel>> targetHeaderCount(
+      String fromDate);
+
+  Future<Either<MainFailures, List<TargetHeaderListModel>>>
+      getTargetHeaderItems(String fromDate);
+
+  Future<Either<MainFailures, TargetDetailsCountModel>> targetDetailCount(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, List<TargetDetailsListModel>>>
+      getTargetDetailItems(String fromDate, String rotID);
+
+  Future<Either<MainFailures, TargetDetailsGraphAmtModel>> targetDetailAmt(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, TargetDetailsGraphQtyModel>> targetDetailQty(
+      String fromDate, String rotID);
+
+  Future<Either<MainFailures, List<TargetPackageListModel>>>
+      getTargetPackageItems(String fromDate, String rotID, String pkgID);
+}
+
+abstract class IHomeChartsRepo {
+  Future<Either<MainFailures, ChartRoutesModel>> routesChart(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, ChartPlannedVisitsModel>> plannedVisitsChart(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, ChartActualVisitModel>> actualVisitsChart(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, ChartProductiveVisitModel>> productiveChart(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, ChartNonProductiveModel>> nonProductiveChart(
+      String fromDate, String toDate);
 }

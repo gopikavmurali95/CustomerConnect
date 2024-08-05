@@ -1,15 +1,25 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandoutofstockdetailscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/widget/calenderwidget.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class MerchandisingScreen extends StatelessWidget {
+class MerchandisingScreen extends StatefulWidget {
   const MerchandisingScreen({super.key});
 
+  @override
+  State<MerchandisingScreen> createState() => _MerchandisingScreenState();
+}
+
+DateTime selectedDate = DateTime.now();
+TextEditingController fromdateController = TextEditingController();
+TextEditingController todateController = TextEditingController();
+
+class _MerchandisingScreenState extends State<MerchandisingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +53,12 @@ class MerchandisingScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            MerchandisingCalender(
+                fromDateController: fromdateController,
+                toDateController: todateController),
+            SizedBox(
+              height: 10.h,
+            ),
             Text(
               'Inventory Monitoring',
               style: countHeading(),
@@ -52,7 +68,6 @@ class MerchandisingScreen extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              //height: 80.h,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(10),
@@ -69,7 +84,6 @@ class MerchandisingScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    //////////////////////////////////
                     Row(
                       children: [
                         Image.asset(
@@ -108,23 +122,23 @@ class MerchandisingScreen extends StatelessWidget {
                         SizedBox(
                           width: 8.w,
                         ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OutOfStockScreen(),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OutOfStockScreen(
+                                  fromDateCtrl: fromdateController,
+                                  toDateCtrl: todateController,
                                 ),
-                              );
-                            },
-                            child: Text(
-                              'OOS Items',
-                              style: kfontstyle(
-                                fontSize: 8.sp,
-                                color: Colors.grey.shade600,
                               ),
+                            );
+                          },
+                          child: Text(
+                            'OOS Items',
+                            style: kfontstyle(
+                              fontSize: 8.sp,
+                              color: Colors.grey.shade600,
                             ),
                           ),
                         ),
@@ -150,23 +164,21 @@ class MerchandisingScreen extends StatelessWidget {
                         SizedBox(
                           width: 8.w,
                         ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OutOfCustomerScreen(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              'OOS Customers',
-                              style: kfontstyle(
-                                fontSize: 8.sp,
-                                color: Colors.grey.shade600,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const OutOfCustomerScreen(),
                               ),
+                            );
+                          },
+                          child: Text(
+                            'OOS Customers',
+                            style: kfontstyle(
+                              fontSize: 8.sp,
+                              color: Colors.grey.shade600,
                             ),
                           ),
                         ),
