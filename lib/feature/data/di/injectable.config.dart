@@ -230,9 +230,9 @@ import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_p
 import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart'
     as _i71;
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart'
-    as _i78;
-import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
     as _i79;
+import 'package:customer_connect/feature/state/bloc/loadingdetail/loading_detail_bloc.dart'
+    as _i78;
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart'
     as _i80;
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart'
@@ -769,7 +769,6 @@ extension GetItInjectableX on _i1.GetIt {
             gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
     gh.factory<_i193.GetAllRouteBloc>(
         () => _i193.GetAllRouteBloc(gh<_i3.IGetAllAvailableRoutesRepo>()));
-
     return this;
   }
 }

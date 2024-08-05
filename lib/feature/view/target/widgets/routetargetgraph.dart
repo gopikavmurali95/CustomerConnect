@@ -257,7 +257,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                     children: [
                                                       CircleAvatar(
                                                         radius: 50.h,
-                                                        backgroundColor: pievalues[0] ==
+                                                        backgroundColor: pievalues[
+                                                                    0] ==
                                                                 double.parse(
                                                                     (amount.achAmt ??
                                                                             '')
@@ -274,11 +275,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                                             ''))
                                                                 ? routetargetcolorslist[
                                                                     1]
-                                                                : pievalues[0] ==
-                                                                        double.parse(
-                                                                            (amount.monthGapAmt ?? '').replaceAll(',', ''))
-                                                                    ? routetargetcolorslist[2]
-                                                                    : routetargetcolorslist[3],
+                                                                : routetargetcolorslist[
+                                                                    2],
                                                         child: Center(
                                                           child: CircleAvatar(
                                                             radius: 23.h,
@@ -537,8 +535,9 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                       children: [
                                                         CircleAvatar(
                                                           radius: 50.h,
-                                                          backgroundColor: pievalues[0] ==
-                                                                  double.parse((qty
+                                                          backgroundColor: pievalues[
+                                                                      0] ==
+                                                                  double.tryParse((qty
                                                                               .achQty ??
                                                                           '')
                                                                       .replaceAll(
@@ -547,17 +546,15 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                               ? routetargetcolorslist[
                                                                   0]
                                                               : pievalues[0] ==
-                                                                      double.parse((qty.mtdGapQty ??
+                                                                      double.tryParse((qty.mtdGapQty ??
                                                                               '')
                                                                           .replaceAll(
                                                                               ',',
                                                                               ''))
                                                                   ? routetargetcolorslist[
                                                                       1]
-                                                                  : pievalues[0] ==
-                                                                          double.parse((qty.monthGapQty ?? '').replaceAll(',', ''))
-                                                                      ? routetargetcolorslist[2]
-                                                                      : routetargetcolorslist[3],
+                                                                  : routetargetcolorslist[
+                                                                      2],
                                                           child: Center(
                                                             child: CircleAvatar(
                                                               radius: 23.h,
@@ -580,9 +577,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                             top: 50,
                                                             right: 15,
                                                             child: Text(
-                                                              // '${pievalues[0]}',
                                                               pievalues[0] ==
-                                                                      double.parse((qty
+                                                                      double.tryParse((qty
                                                                                   .achQty ??
                                                                               '')
                                                                           .replaceAll(
@@ -594,7 +590,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                                       ? ''
                                                                       : '${qtypercentages['achQty']!.toStringAsFixed(2)}%')
                                                                   : pievalues[0] ==
-                                                                          double.parse((qty.mtdGapQty ?? '').replaceAll(
+                                                                          double.tryParse((qty.mtdGapQty ?? '').replaceAll(
                                                                               ',',
                                                                               ''))
                                                                       ? (qtypercentages['mtdQty'] ==
