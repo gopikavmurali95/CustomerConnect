@@ -5,8 +5,8 @@ class HomeGraphModel {
   final String ftitle;
   final String ltitle;
   final String graphTitle;
-  final int totalCount;
-  final int completedCount;
+  int totalCount;
+  int completedCount;
   final Color cColors;
   final Color pColor;
   final Gradient tileColor;
@@ -29,8 +29,8 @@ List<HomeGraphModel> homegraphList = [
       mTitle: 'Routes',
       ftitle: "Days Started",
       ltitle: "Days Not Started",
-      totalCount: 100,
-      completedCount: 60,
+      totalCount: 0,
+      completedCount: 0,
       graphTitle: 'Active Routes',
       cColors: const Color(0xffefbd3b),
       pColor: const Color(0xffefbd3b).withOpacity(.25),
@@ -43,8 +43,8 @@ List<HomeGraphModel> homegraphList = [
     ftitle: "Visited",
     ltitle: "Pending",
     graphTitle: 'Planned Visits',
-    totalCount: 100,
-    completedCount: 20,
+    totalCount: 0,
+    completedCount: 0,
     cColors: const Color(0xff43c2de),
     pColor: /* const Color(0xffe2e6e6) */
         const Color(0xff43c2de).withOpacity(.25),
@@ -57,8 +57,8 @@ List<HomeGraphModel> homegraphList = [
     ftitle: "Planned",
     ltitle: "Unplanned",
     graphTitle: 'Actual Visits',
-    totalCount: 100,
-    completedCount: 28,
+    totalCount: 0,
+    completedCount: 0,
     cColors: const Color(0xffa143d5),
     pColor: const Color(0xffa143d5).withOpacity(.25),
     tileColor: const LinearGradient(
@@ -88,8 +88,8 @@ List<HomeGraphModel> homegraphList = [
     ftitle: "Planned",
     ltitle: "Unplanned",
     graphTitle: 'Non Productive Visits',
-    totalCount: 100,
-    completedCount: 88,
+    totalCount: 0,
+    completedCount: 0,
     cColors: const Color(0xfff13b3b),
     pColor: const Color(0xfff2c8c6),
     tileColor: const LinearGradient(
