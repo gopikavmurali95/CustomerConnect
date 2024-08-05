@@ -1,10 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/target_details_list_model/target_details_list_model.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TargetPAckageContainerWidget extends StatelessWidget {
-  const TargetPAckageContainerWidget({super.key});
+  final TargetDetailsListModel details;
+  const TargetPAckageContainerWidget({super.key, required this.details});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
-                    '500.00',
+                    details.targetAmt ?? '',
                     style: countHeading(),
                   ),
                   SizedBox(
@@ -85,11 +87,11 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '900.00',
+                        details.achAmt ?? '',
                         style: countHeading(),
                       ),
                       Text(
-                        '30%',
+                        details.achAmtPerc ?? '',
                         style: countHeading(),
                       ),
                     ],
@@ -106,7 +108,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
-                    '900.00',
+                    details.mTDGapAmt ?? '',
                     style: countHeading(),
                   ),
                   SizedBox(
@@ -124,21 +126,21 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '900.00',
+                        details.monthGapAmt ?? '',
                         style: countHeading(),
                       ),
                       Row(
                         children: [
                           Text(
-                            '44%',
+                            details.monthGapAmtPerc ?? '',
                             style: countHeading(),
                           ),
-                          Text(
+                          /* Text(
                             '(36%+8%)',
                             style: kfontstyle(
                               fontSize: 8.sp,
                             ),
-                          )
+                          ) */
                         ],
                       ),
                     ],
@@ -166,7 +168,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
-                    '150',
+                    details.targetQty ?? '',
                     style: countHeading(),
                   ),
                   SizedBox(
@@ -184,11 +186,11 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '30',
+                        details.achQty ?? '',
                         style: countHeading(),
                       ),
                       Text(
-                        '20%',
+                        details.achQtyPerc ?? '',
                         style: countHeading(),
                       ),
                     ],
@@ -205,7 +207,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
-                    '30',
+                    details.mTDGapQty ?? '',
                     style: countHeading(),
                   ),
                   SizedBox(
@@ -223,21 +225,21 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '30',
+                        details.monthGapQty ?? '',
                         style: countHeading(),
                       ),
                       Row(
                         children: [
                           Text(
-                            '44%',
+                            details.monthGapQtyPerc ?? '',
                             style: countHeading(),
                           ),
-                          Text(
+                          /* Text(
                             '(36%+8%)',
                             style: kfontstyle(
                               fontSize: 8.sp,
                             ),
-                          )
+                          ) */
                         ],
                       ),
                     ],

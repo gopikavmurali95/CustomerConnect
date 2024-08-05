@@ -75,7 +75,7 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + voidTransactionRejectUrl), body: {
-        "JSONString: ": jsonEncode(reject.jsonString),
+        "JSONString": jsonEncode(reject.jsonString),
       });
 
       if (response.statusCode == 200) {

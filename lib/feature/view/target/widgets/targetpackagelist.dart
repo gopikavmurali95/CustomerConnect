@@ -1,8 +1,17 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/target_details_list_model/target_details_list_model.dart';
+import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
+import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TargetPackageListItems extends StatefulWidget {
-  const TargetPackageListItems({super.key});
+  final TargetHeaderListModel header;
+  final TargetDetailsListModel details;
+  const TargetPackageListItems(
+      {super.key, required this.header, required this.details});
 
   @override
   State<TargetPackageListItems> createState() => _TargetPackageListItemsState();
@@ -10,54 +19,85 @@ class TargetPackageListItems extends StatefulWidget {
 
 class _TargetPackageListItemsState extends State<TargetPackageListItems> {
   @override
+  void initState() {
+    context.read<TargetPackageListBloc>().add(const ClearTargetPackageList());
+    context.read<TargetPackageListBloc>().add(GetTargetPackageListEvent(
+        pkgID: widget.details.pkgId ?? '',
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        rotID: widget.header.rotID ?? '',
+        serachQuery: ''));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: ListView.builder(
-          shrinkWrap: true,
-          //physics: const NeverScrollableScrollPhysics(),
-          itemCount: 13,
-          itemBuilder: (context, index) => Column(
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                          flex: 3,
-                          fit: FlexFit.tight,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+      child: BlocBuilder<TargetPackageListBloc, TargetPackageListState>(
+        builder: (context, state) {
+          return state.when(
+              getTargetPackageListState: (list) => list == null
+                  ? ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => ShimmerContainers(
+                          height: 60.h, width: double.infinity),
+                      separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                      itemCount: 10)
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      //physics: const NeverScrollableScrollPhysics(),
+                      itemCount: list.length,
+                      itemBuilder: (context, index) => Column(
                             children: [
-                              Text(
-                                '40047977',
-                                style: loadTextStyle(),
+                              Row(
+                                children: [
+                                  Flexible(
+                                      flex: 3,
+                                      fit: FlexFit.tight,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            list[index].prdCode ?? '',
+                                            style: loadTextStyle(),
+                                          ),
+                                          Text(
+                                            list[index].prdName ?? '',
+                                            style: subTitleTextStyle(),
+                                          )
+                                        ],
+                                      )),
+                                  Flexible(
+                                      fit: FlexFit.tight,
+                                      flex: 1,
+                                      child: Text(
+                                        list[index].achAmt ?? '',
+                                        style: subTitleTextStyle(),
+                                      )),
+                                  Flexible(
+                                      fit: FlexFit.tight,
+                                      flex: 0,
+                                      child: Text(
+                                        list[index].achQty ?? '',
+                                        style: subTitleTextStyle(),
+                                      ))
+                                ],
                               ),
-                              Text(
-                                'Divelle Farfelle Farfelle Pasta 500g Offer Pack',
-                                style: subTitleTextStyle(),
-                              )
+                              Divider(
+                                color: Colors.grey[200],
+                              ),
                             ],
                           )),
-                      Flexible(
-                          fit: FlexFit.tight,
-                          flex: 1,
-                          child: Text(
-                            '2.00',
-                            style: subTitleTextStyle(),
-                          )),
-                      Flexible(
-                          fit: FlexFit.tight,
-                          flex: 0,
-                          child: Text(
-                            '2.00',
-                            style: subTitleTextStyle(),
-                          ))
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.grey[200],
-                  ),
-                ],
-              )),
+              targetPackageListFailure: () => const Center(
+                    child: Text('No Data Available'),
+                  ));
+        },
+      ),
     );
   }
 }

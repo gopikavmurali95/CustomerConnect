@@ -131,6 +131,13 @@ const voidTransactionApprovalHeaderUrl =
     'VoidTransApproval/VoidTransApprovalHeader';
 const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
 const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
+const targetHeaderCountUrl = 'CusTarget/TargetHeaderCount';
+const targetHeaderListUrl = 'CusTarget/HeaderRouteWiseTargets';
+const targetDetailsCountUrl = 'CusTarget/TargetDaysCount';
+const targetDetailsListUrl = 'CusTarget/RouteWiseTargetDetail';
+const targetDetailsGraphAmtUrl = 'CusTarget/TargetDetailAmtCount';
+const targetDetailsGraphQtyUrl = 'CusTarget/TargetDetailQtyCount';
+const targetPachageListUrl = 'CusTarget/RouteWisePackageDetail';
 const settlementApprovalCashDetailUrl =
     "SettlementApproval/SettlementApprovalCashDetail";
 const settlementApprovalPayModeDetailUrl =

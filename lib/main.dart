@@ -97,6 +97,13 @@ import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlem
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailcount/target_details_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphamt/target_details_graph_amt_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphqty/rarget_details_graph_qty_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetdetailslist/target_details_list_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetheadercount/target_header_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetheaderlist/targer_header_list_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
@@ -597,6 +604,27 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<HomeAppBarCubit>(
           create: (context) => HomeAppBarCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargetHeaderCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargerHeaderListBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargetDetailsCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargetDetailsListBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargetDetailsGraphAmtBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<RargetDetailsGraphQtyBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TargetPackageListBloc>(),
         ),
       ],
       child: ScreenUtilInit(
