@@ -565,13 +565,7 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-<<<<<<< HEAD
-      getSettlementApprovalHeaders(
-    String statusvalue,
-  );
-=======
       getSettlementApprovalHeaders(String statusvalue);
->>>>>>> 2ea0970ad1403ce24e81a56a5a3592c1aa279d74
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
@@ -600,13 +594,10 @@ abstract class IVoidTransactionRepo {
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
 }
 
-<<<<<<< HEAD
-
-abstract class IMerchandisingDashBoardRepo{
-  Future<Either<MainFailures, GetOutOfStockCountModel>>
-    getoutofstockcount();
+abstract class IMerchandisingDashBoardRepo {
+  Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount();
 }
-=======
+
 abstract class ITargetRepo {
   Future<Either<MainFailures, TargetHeaderCountModel>> targetHeaderCount(
       String fromDate);
@@ -629,4 +620,3 @@ abstract class ITargetRepo {
   Future<Either<MainFailures, List<TargetPackageListModel>>>
       getTargetPackageItems(String fromDate, String rotID, String pkgID);
 }
->>>>>>> 2ea0970ad1403ce24e81a56a5a3592c1aa279d74
