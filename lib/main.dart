@@ -60,6 +60,7 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart';
@@ -625,6 +626,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<TargetPackageListBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MerchandisingSurveyBloc>(),
         ),
       ],
       child: ScreenUtilInit(

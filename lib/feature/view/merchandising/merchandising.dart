@@ -66,13 +66,15 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 2.h,),
+            SizedBox(
+              height: 2.h,
+            ),
             MerchandisingCalender(
-              fromDateController: fromdateController,
-               toDateController: todateController),
-              SizedBox(
+                fromDateController: fromdateController,
+                toDateController: todateController),
+            SizedBox(
               height: 10.h,
-            ),  
+            ),
             Text(
               'Inventory Monitoring',
               style: countHeading(),

@@ -149,3 +149,4 @@ const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
 const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";
 
 const merchandisingGetOutofStockCountUrl = "CusMerch/GetCCOutOfStockCount";
+const merchandisingSurveyUrl = 'CusMerch/GetCCSurvey';

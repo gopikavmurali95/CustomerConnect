@@ -80,6 +80,7 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_resp_model/must_sell_approve_resp_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_detail_model/must_sell_detail_model.dart';
@@ -619,4 +620,9 @@ abstract class ITargetRepo {
 
   Future<Either<MainFailures, List<TargetPackageListModel>>>
       getTargetPackageItems(String fromDate, String rotID, String pkgID);
+}
+
+abstract class IMerchandinsingSurveyRepo {
+  Future<Either<MainFailures, List<MerchandingSurveyModel>>> getSurveyItems(
+      String fromDate, String toDate, String status);
 }

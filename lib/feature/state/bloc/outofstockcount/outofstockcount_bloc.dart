@@ -7,13 +7,12 @@ import 'package:injectable/injectable.dart';
 part 'outofstockcount_event.dart';
 part 'outofstockcount_state.dart';
 part 'outofstockcount_bloc.freezed.dart';
+
 @injectable
-class OutofstockcountBloc extends Bloc<OutofstockcountEvent, OutofstockcountState> {
+class OutofstockcountBloc
+    extends Bloc<OutofstockcountEvent, OutofstockcountState> {
   final IMerchandisingDashBoardRepo countrepo;
   OutofstockcountBloc(this.countrepo) : super(OutofstockcountState.initial()) {
-    on<OutofstockcountEvent>((event, emit) {
-      
-     
-    });
+    on<OutofstockcountEvent>((event, emit) {});
   }
 }
