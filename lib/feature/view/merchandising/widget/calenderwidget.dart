@@ -5,8 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 class MerchandisingCalender extends StatefulWidget {
+  final TextEditingController fromDateController;
+  final TextEditingController toDateController;
   const MerchandisingCalender(
-      {super.key, required fromDateController, required toDateController});
+      {super.key,
+      required this.fromDateController,
+      required this.toDateController});
 
   @override
   State<MerchandisingCalender> createState() => _ReturnInvoiceCalenderState();
@@ -16,11 +20,10 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
   late DateTime fromDate;
   late DateTime toDate;
   TextEditingController fromDateController = TextEditingController(
-    text: DateFormat('dd/MM/yyyy')
-        .format(DateTime(DateTime.now().year, DateTime.now().month, 1)),
-  );
+      text: DateFormat('dd-MM-yyyy')
+          .format(DateTime.now().subtract(const Duration(days: 30))));
   TextEditingController toDateController = TextEditingController(
-      text: DateFormat('dd/MM/yyyy').format(DateTime.now()));
+      text: DateFormat('dd-MM-yyyy').format(DateTime.now()));
 
   @override
   void initState() {
@@ -48,7 +51,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                 setState(() {
                   fromDate = selectedDate;
                   fromDateController.text =
-                      DateFormat('dd/MM/yyyy').format(selectedDate);
+                      DateFormat('dd-MM-yyyy').format(selectedDate);
                 });
               }
             },
@@ -124,8 +127,8 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
               if (selectedDate != null && selectedDate != fromDate) {
                 setState(() {
                   toDate = selectedDate;
-                  toDateController.text =
-                      DateFormat('dd/MM/yyyy').format(selectedDate);
+                  widget.fromDateController.text =
+                      DateFormat('dd-MM-yyyy').format(selectedDate);
                 });
               }
             },

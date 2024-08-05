@@ -42,6 +42,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
+  flutter_image: ^4.1.11
   flutter_local_notifications: ^17.1.2
   flutter_screenutil: ^5.9.0
   flutter_svg: ^2.0.5

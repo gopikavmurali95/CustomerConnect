@@ -15,24 +15,11 @@ class MerchandisingScreen extends StatefulWidget {
   State<MerchandisingScreen> createState() => _MerchandisingScreenState();
 }
 
+DateTime selectedDate = DateTime.now();
+TextEditingController fromdateController = TextEditingController();
+TextEditingController todateController = TextEditingController();
+
 class _MerchandisingScreenState extends State<MerchandisingScreen> {
-  DateTime selectedDate = DateTime.now();
-  TextEditingController fromdateController = TextEditingController();
-  TextEditingController todateController = TextEditingController();
-
-  // Future<void> _selectDate(BuildContext context) async {
-  //   final DateTime? picked = await showDatePicker(
-  //       context: context,
-  //       initialDate: selectedDate,
-  //       firstDate: DateTime(2015, 8),
-  //       lastDate: DateTime(2101));
-  //   if (picked != null && picked != selectedDate) {
-  //     setState(() {
-  //       selectedDate = picked;
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,9 +53,6 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 2.h,
-            ),
             MerchandisingCalender(
                 fromDateController: fromdateController,
                 toDateController: todateController),
@@ -84,7 +68,6 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
             ),
             Container(
               width: double.infinity,
-              //height: 80.h,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(10),
@@ -101,7 +84,6 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    //////////////////////////////////
                     Row(
                       children: [
                         Image.asset(
@@ -140,23 +122,23 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                         SizedBox(
                           width: 8.w,
                         ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OutOfStockScreen(),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OutOfStockScreen(
+                                  fromDateCtrl: fromdateController,
+                                  toDateCtrl: todateController,
                                 ),
-                              );
-                            },
-                            child: Text(
-                              'OOS Items',
-                              style: kfontstyle(
-                                fontSize: 8.sp,
-                                color: Colors.grey.shade600,
                               ),
+                            );
+                          },
+                          child: Text(
+                            'OOS Items',
+                            style: kfontstyle(
+                              fontSize: 8.sp,
+                              color: Colors.grey.shade600,
                             ),
                           ),
                         ),
@@ -182,23 +164,21 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                         SizedBox(
                           width: 8.w,
                         ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OutOfCustomerScreen(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              'OOS Customers',
-                              style: kfontstyle(
-                                fontSize: 8.sp,
-                                color: Colors.grey.shade600,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const OutOfCustomerScreen(),
                               ),
+                            );
+                          },
+                          child: Text(
+                            'OOS Customers',
+                            style: kfontstyle(
+                              fontSize: 8.sp,
+                              color: Colors.grey.shade600,
                             ),
                           ),
                         ),
