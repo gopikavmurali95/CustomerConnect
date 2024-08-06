@@ -1,18 +1,39 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_customer_model/out_of_stock_customer_model.dart';
+import 'package:customer_connect/feature/state/bloc/ooscustomerdetail/oos_customer_detail_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutOfStockCustomerDetailScreen extends StatefulWidget {
-  const OutOfStockCustomerDetailScreen({super.key});
+  final OutOfStockCustomerModel header;
+  const OutOfStockCustomerDetailScreen({super.key, required this.header});
 
   @override
   State<OutOfStockCustomerDetailScreen> createState() =>
       _OutOfStockScreenState();
 }
 
+TextEditingController _oosCusDetailCtrl = TextEditingController();
+Timer? debounce;
+
 class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
+  @override
+  void initState() {
+    _oosCusDetailCtrl.clear();
+    context
+        .read<OosCustomerDetailBloc>()
+        .add(const ClearOosCustomerDetilEvent());
+    context.read<OosCustomerDetailBloc>().add(GetOosCustomerDetailEvent(
+        searchQuery: '', cusID: widget.header.cusId ?? ""));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +84,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "201232",
+                                    widget.header.cusCode ?? '',
                                     style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff2C6B9E),
@@ -74,7 +95,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                        "Emmerch International Hotel",
+                                        widget.header.cusName ?? '',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -110,8 +131,18 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                       child: TextFormField(
                         style:
                             kfontstyle(fontSize: 13.sp, color: Colors.black87),
-                        // controller: _loadqSearchController,
-                        onChanged: (value) {},
+                        controller: _oosCusDetailCtrl,
+                        onChanged: (value) {
+                          debounce = Timer(
+                              const Duration(
+                                milliseconds: 300,
+                              ), () async {
+                            context.read<OosCustomerDetailBloc>().add(
+                                GetOosCustomerDetailEvent(
+                                    searchQuery: value.trim(),
+                                    cusID: widget.header.cusId ?? ""));
+                          });
+                        },
                         decoration: InputDecoration(
                             prefixIcon: const Icon(
                               Icons.search,
@@ -123,7 +154,16 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                 SizedBox(height: 5.h),
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _oosCusDetailCtrl.clear();
+                                      context.read<OosCustomerDetailBloc>().add(
+                                          const ClearOosCustomerDetilEvent());
+                                      context.read<OosCustomerDetailBloc>().add(
+                                          GetOosCustomerDetailEvent(
+                                              searchQuery: '',
+                                              cusID:
+                                                  widget.header.cusId ?? ""));
+                                    },
                                     icon: Icon(
                                       Icons.close,
                                       size: 13.sp,
@@ -165,9 +205,20 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Text(
-                          "3",
-                          style: countHeading(),
+                        child: BlocBuilder<OosCustomerDetailBloc,
+                            OosCustomerDetailState>(
+                          builder: (context, state) {
+                            return Text(
+                              state.when(
+                                getOosCustomerDetailsState: (details) =>
+                                    details == null
+                                        ? '0'
+                                        : details.length.toString(),
+                                oosCustomersDetailFailedState: () => '0',
+                              ),
+                              style: countHeading(),
+                            );
+                          },
                         ),
                       )
                     ],
@@ -178,68 +229,125 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                 ),
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => GestureDetector(
-                              // onTap: () {
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             const OutOfStockCustomerDetailScreen()),
-                              //   );
-                              // },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 0.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "40077977",
-                                                  style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color:
-                                                        const Color(0xff2C6B9E),
-                                                    fontWeight: FontWeight.w600,
+                    child: BlocBuilder<OosCustomerDetailBloc,
+                        OosCustomerDetailState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getOosCustomerDetailsState: (details) => details ==
+                                  null
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 0),
+                                  child: ListView.separated(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          ShimmerContainers(
+                                              height: 50.h,
+                                              width: double.infinity),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                      itemCount: 10),
+                                )
+                              : details.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        'No Data Available',
+                                        style: kfontstyle(),
+                                      ),
+                                    )
+                                  : ListView.separated(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemBuilder:
+                                          (context, index) => GestureDetector(
+                                                // onTap: () {
+                                                //   Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) =>
+                                                //             const OutOfStockCustomerDetailScreen()),
+                                                //   );
+                                                // },
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 0.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    details[index]
+                                                                            .prdCode ??
+                                                                        '',
+                                                                    style:
+                                                                        kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff2C6B9E),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        details[index].prdName ??
+                                                                            '',
+                                                                        style: kfontstyle(
+                                                                            fontSize: 10
+                                                                                .sp,
+                                                                            color: const Color.fromARGB(
+                                                                                255,
+                                                                                64,
+                                                                                65,
+                                                                                67)),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      "Divella farfalle Pasta 500kg Offer pack",
-                                                      style: kfontstyle(
-                                                          fontSize: 10.sp,
-                                                          color: const Color
-                                                              .fromARGB(
-                                                              255, 64, 65, 67)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                              ),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                      itemCount: details.length),
+                          oosCustomersDetailFailedState: () => SizedBox(
+                            height: MediaQuery.of(context).size.height - 200,
+                            child: Center(
+                              child: Text(
+                                'No Data Available',
+                                style: kfontstyle(),
                               ),
                             ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10))
+                          ),
+                        );
+                      },
+                    ))
               ],
             )),
       ),

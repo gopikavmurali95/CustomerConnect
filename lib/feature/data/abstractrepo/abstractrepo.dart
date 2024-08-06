@@ -98,6 +98,8 @@ import 'package:customer_connect/feature/data/models/must_sell_detail_model/must
 import 'package:customer_connect/feature/data/models/must_sell_header_model/must_sell_header_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_in_model/notification_replay_in_model.dart';
 import 'package:customer_connect/feature/data/models/notification_replay_out_model/notification_replay_out_model.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_customer_detail_model/out_of_stock_customer_detail_model.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_customer_model/out_of_stock_customer_model.dart';
 import 'package:customer_connect/feature/data/models/out_of_stock_items_customers_model/out_of_stock_items_customers_model.dart';
 import 'package:customer_connect/feature/data/models/out_of_stock_items_model/out_of_stock_items_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
@@ -635,9 +637,9 @@ abstract class IOutOfStockProductsRepo {
 }
 
 abstract class IOutOfStockCustomersRepo {
-  Future<Either<MainFailures, List<OutOfStockItemsModel>>>
+  Future<Either<MainFailures, List<OutOfStockCustomerModel>>>
       getOutOfStockCustomers(String fromDate, String toDate);
-  Future<Either<MainFailures, List<OutOfStockItemsCustomersModel>>>
+  Future<Either<MainFailures, List<OutOfStockCustomerDetailModel>>>
       getOutOfStockCustomersDetail(String cusID);
 }
 

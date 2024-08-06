@@ -166,3 +166,5 @@ const chartNonProductiveVistisUrl =
     'CusChartDashboard/GetCCNonProductiveVisitCount';
 const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
 const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';
+const oosCustomersUrl = 'CusMerch/GetCCOutOfStockCustomers';
+const oosCustomerdetailUrl = 'CusMerch/GetCCOutOfStockCustomersDetail';

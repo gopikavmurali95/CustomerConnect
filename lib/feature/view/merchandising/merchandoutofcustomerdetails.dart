@@ -1,16 +1,37 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/ooscustomers/oos_customers_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outofcustomerdetails.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutOfCustomerScreen extends StatefulWidget {
-  const OutOfCustomerScreen({super.key});
+  final TextEditingController fromDate;
+  final TextEditingController toDate;
+  const OutOfCustomerScreen(
+      {super.key, required this.fromDate, required this.toDate});
 
   @override
   State<OutOfCustomerScreen> createState() => _OutOfCustomerScreenState();
 }
 
+TextEditingController _oosCusCtrl = TextEditingController();
+Timer? debounce;
+
 class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
+  @override
+  void initState() {
+    context.read<OosCustomersBloc>().add(const ClearOosCustomersEvent());
+    context.read<OosCustomersBloc>().add(GetOosCustomersEvent(
+        searchQuery: '',
+        fromDate: widget.fromDate.text,
+        toDate: widget.toDate.text));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +79,20 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                     ],
                   ),
                   child: TextFormField(
+                    controller: _oosCusCtrl,
                     style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      debounce = Timer(
+                          const Duration(
+                            milliseconds: 300,
+                          ), () async {
+                        context.read<OosCustomersBloc>().add(
+                            GetOosCustomersEvent(
+                                searchQuery: value.trim(),
+                                fromDate: widget.fromDate.text,
+                                toDate: widget.toDate.text));
+                      });
+                    },
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.search,
@@ -71,7 +104,17 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                           SizedBox(height: 5.h),
                           Expanded(
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _oosCusCtrl.clear();
+                                context
+                                    .read<OosCustomersBloc>()
+                                    .add(const ClearOosCustomersEvent());
+                                context.read<OosCustomersBloc>().add(
+                                    GetOosCustomersEvent(
+                                        searchQuery: '',
+                                        fromDate: widget.fromDate.text,
+                                        toDate: widget.toDate.text));
+                              },
                               icon: Icon(
                                 Icons.close,
                                 size: 13.sp,
@@ -114,9 +157,19 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                       "Out of stock items",
                       style: countHeading(),
                     ),
-                    Text(
-                      "0",
-                      style: countHeading(),
+                    BlocBuilder<OosCustomersBloc, OosCustomersState>(
+                      builder: (context, state) {
+                        return Text(
+                          state.when(
+                            getOosCustomersState: (customers) =>
+                                customers == null
+                                    ? '0'
+                                    : customers.length.toString(),
+                            oosCustomersFailedState: () => '0',
+                          ),
+                          style: countHeading(),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -126,73 +179,130 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const OutOfStockCustomerDetailScreen(),
+                child: BlocBuilder<OosCustomersBloc, OosCustomersState>(
+                  builder: (context, state) {
+                    return state.when(
+                      getOosCustomersState: (headers) => headers == null
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: ListView.separated(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) =>
+                                      ShimmerContainers(
+                                          height: 50.h, width: double.infinity),
+                                  separatorBuilder: (context, index) => Divider(
+                                        color: Colors.grey[300],
+                                      ),
+                                  itemCount: 10),
+                            )
+                          : headers.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    'No Data Available',
+                                    style: kfontstyle(),
+                                  ),
+                                )
+                              : ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) =>
+                                      GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              OutOfStockCustomerDetailScreen(
+                                            header: headers[index],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 0.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 40,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      const Color(0xfffee8e0),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      headers[index].cusCode ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        color: const Color(
+                                                            0xff2C6B9E),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      headers[index].cusName ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 10.sp,
+                                                        color: const Color
+                                                            .fromARGB(
+                                                            255, 64, 65, 67),
+                                                      ),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 5),
+                                                child: Text(
+                                                  headers[index].prodCount ??
+                                                      '',
+                                                  style: countHeading(),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  itemCount: headers.length,
+                                ),
+                      oosCustomersFailedState: () => SizedBox(
+                        height: MediaQuery.of(context).size.height - 200,
+                        child: Center(
+                          child: Text(
+                            'No Data Available',
+                            style: kfontstyle(),
+                          ),
                         ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              color: const Color(0xfffee8e0),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "201232",
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff2C6B9E),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Text(
-                                  "Emmerch International Hotel",
-                                  style: kfontstyle(
-                                    fontSize: 10.sp,
-                                    color:
-                                        const Color.fromARGB(255, 64, 65, 67),
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Text(
-                              "5",
-                              style: countHeading(),
-                            ),
-                          ),
-                        ],
                       ),
-                    ),
-                  ),
-                  separatorBuilder: (context, index) => Divider(
-                    color: Colors.grey[300],
-                  ),
-                  itemCount: 10,
+                    );
+                  },
                 ),
               ),
             ],

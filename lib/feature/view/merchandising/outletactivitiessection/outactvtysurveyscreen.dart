@@ -4,7 +4,6 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

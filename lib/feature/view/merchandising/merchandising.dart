@@ -23,9 +23,9 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
   @override
   void initState() {
     fromdateController.text =
-        '1-${DateTime.now().month}-${DateTime.now().year}';
+        '${DateTime.now().year}-${DateTime.now().month}-1';
     todateController.text =
-        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+        '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
     super.initState();
   }
 
@@ -178,8 +178,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    const OutOfCustomerScreen(),
+                                builder: (context) => OutOfCustomerScreen(
+                                  fromDate: fromdateController,
+                                  toDate: todateController,
+                                ),
                               ),
                             );
                           },
