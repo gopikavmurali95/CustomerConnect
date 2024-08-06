@@ -20,7 +20,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
     context.read<TargetDetailsCountBloc>().add(const ClearTargetDetailsCount());
     context.read<TargetDetailsCountBloc>().add(GetTargetDetailsCountEvent(
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         rotID: widget.headr.rotID ?? ''));
     super.initState();
   }

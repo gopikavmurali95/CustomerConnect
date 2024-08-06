@@ -206,7 +206,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                     child: Row(
                       children: [
                         Flexible(
-                            flex: 3,
+                            flex: 4,
                             fit: FlexFit.tight,
                             child: Text('Item',
                                 style: kfontstyle(
@@ -222,8 +222,11 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black54)),
                         ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
                         Flexible(
-                          flex: 0,
+                          flex: 1,
                           fit: FlexFit.tight,
                           child: Text('Achvd Qty',
                               style: kfontstyle(

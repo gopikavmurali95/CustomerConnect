@@ -9,6 +9,10 @@ import 'package:customer_connect/feature/domain/notification/fcmmessgehandler.da
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 // import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewdetail/activity_review_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activityreviewtarget/activity_review_targets_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/activitysalesdata/activity_review_sales_data_bloc.dart';
 // import 'package:customer_connect/feature/state/bloc/PartialDeliveryReasons/partial_delivery_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
@@ -18,6 +22,8 @@ import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
@@ -33,6 +39,7 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
@@ -60,10 +67,12 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart';
@@ -72,6 +81,8 @@ import 'package:customer_connect/feature/state/bloc/notificationlisting/notifica
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
 
@@ -122,6 +133,7 @@ import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cu
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/daily_activity_expansion_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homeappbar/home_app_bar_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
@@ -611,6 +623,30 @@ class MyApp extends StatelessWidget {
           create: (context) => HomeAppBarCubit(),
         ),
         BlocProvider(
+          create: (context) => getit<CustomerSettingsBloc>(),
+        ),
+        BlocProvider<DailyActivityExpansionCubit>(
+          create: (context) => DailyActivityExpansionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewTargetsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewSalesDataBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ActivityReviewDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutOfStockItemsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutOfStockItemCustomersBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<TargetHeaderCountBloc>(),
         ),
         BlocProvider(
@@ -636,6 +672,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<MerchSurveyCountBloc>()),
         BlocProvider(create: (context) => getit<MerchdisplaycountBloc>()),
         BlocProvider(create: (context) => getit<MerchCusActCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchandTaskHeaderBloc>()),
+        BlocProvider(
+          create: (context) => getit<MerchandisingSurveyBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ChartProductiveVisitBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ChartNonProductiveBloc>(),
+        ),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(

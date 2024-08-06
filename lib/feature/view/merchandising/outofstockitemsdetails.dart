@@ -1,17 +1,38 @@
+import 'dart:async';
+
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/out_of_stock_items_model/out_of_stock_items_model.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutOfStockItemsDetailsScreen extends StatefulWidget {
-  const OutOfStockItemsDetailsScreen({super.key});
+  final OutOfStockItemsModel header;
+  const OutOfStockItemsDetailsScreen({super.key, required this.header});
 
   @override
   State<OutOfStockItemsDetailsScreen> createState() => _OutOfStockScreenState();
 }
 
+TextEditingController outofStockItemsDetailSearchCtrl = TextEditingController();
+Timer? debounce;
+
 class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
+  @override
+  void initState() {
+    context
+        .read<OutOfStockItemCustomersBloc>()
+        .add(const ClearOutOfStockItemCustomersEvent());
+    context.read<OutOfStockItemCustomersBloc>().add(
+        GetOutOfStockItemCustomersEvent(
+            searchQuery: '', osiID: widget.header.osiId ?? ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +84,7 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "400979007",
+                                    widget.header.prdCode ?? '',
                                     style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff2C6B9E),
@@ -74,7 +95,7 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                        "Divella farfalle Pasta 500kg Offer pack",
+                                        widget.header.prdName ?? '',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -110,8 +131,23 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                       child: TextFormField(
                         style:
                             kfontstyle(fontSize: 13.sp, color: Colors.black87),
-                        // controller: _loadqSearchController,
-                        onChanged: (value) {},
+                        controller: outofStockItemsDetailSearchCtrl,
+                        onChanged: (value) {
+                          debounce = Timer(
+                            const Duration(
+                              milliseconds: 300,
+                            ),
+                            () async {
+                              context.read<OutOfStockItemCustomersBloc>().add(
+                                  const ClearOutOfStockItemCustomersEvent());
+                              context.read<OutOfStockItemCustomersBloc>().add(
+                                    GetOutOfStockItemCustomersEvent(
+                                        searchQuery: '',
+                                        osiID: widget.header.osiId ?? ''),
+                                  );
+                            },
+                          );
+                        },
                         decoration: InputDecoration(
                             prefixIcon: const Icon(
                               Icons.search,
@@ -123,7 +159,15 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                 SizedBox(height: 5.h),
                                 Expanded(
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      outofStockItemsDetailSearchCtrl.clear();
+                                      context
+                                          .read<OutOfStockItemCustomersBloc>()
+                                          .add(GetOutOfStockItemCustomersEvent(
+                                              searchQuery: '',
+                                              osiID:
+                                                  widget.header.osiId ?? ''));
+                                    },
                                     icon: Icon(
                                       Icons.close,
                                       size: 13.sp,
@@ -148,7 +192,6 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                         textAlign: TextAlign.start,
                         maxLines: 1,
                         maxLength: 20,
-                        // controller: _locationNameTextController,
                       )),
                 ),
                 SizedBox(
@@ -165,9 +208,20 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Text(
-                          "3",
-                          style: countHeading(),
+                        child: BlocBuilder<OutOfStockItemCustomersBloc,
+                            OutOfStockItemCustomersState>(
+                          builder: (context, state) {
+                            return Text(
+                              state.when(
+                                getOutOfStockItemCustomersState: (details) =>
+                                    details == null
+                                        ? '0'
+                                        : details.length.toString(),
+                                outofStateItemCustomersFailedState: () => '0',
+                              ),
+                              style: countHeading(),
+                            );
+                          },
                         ),
                       )
                     ],
@@ -178,68 +232,117 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                 ),
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => GestureDetector(
-                              // onTap: () {
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             const OutOfStockItemsDetailsScreen()),
-                              //   );
-                              // },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 0.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "201232",
-                                                  style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color:
-                                                        const Color(0xff2C6B9E),
-                                                    fontWeight: FontWeight.w600,
+                    child: BlocBuilder<OutOfStockItemCustomersBloc,
+                        OutOfStockItemCustomersState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getOutOfStockItemCustomersState: (details) => details ==
+                                  null
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 0),
+                                  child: ListView.separated(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          ShimmerContainers(
+                                              height: 40.h,
+                                              width: double.infinity),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                      itemCount: 10),
+                                )
+                              : details.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        'No Data Available',
+                                        style: kfontstyle(),
+                                      ),
+                                    )
+                                  : ListView.separated(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemBuilder:
+                                          (context, index) => GestureDetector(
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 0.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    details[index]
+                                                                            .cusCode ??
+                                                                        '',
+                                                                    style:
+                                                                        kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff2C6B9E),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        details[index].cusName ??
+                                                                            '',
+                                                                        style: kfontstyle(
+                                                                            fontSize: 10
+                                                                                .sp,
+                                                                            color: const Color.fromARGB(
+                                                                                255,
+                                                                                64,
+                                                                                65,
+                                                                                67)),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      "Emmerch International Hotel",
-                                                      style: kfontstyle(
-                                                          fontSize: 10.sp,
-                                                          color: const Color
-                                                              .fromARGB(
-                                                              255, 64, 65, 67)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                              ),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                      itemCount: details.length),
+                          outofStateItemCustomersFailedState: () => SizedBox(
+                            height: MediaQuery.of(context).size.height - 200,
+                            child: Center(
+                              child: Text(
+                                'No Data Available',
+                                style: kfontstyle(),
                               ),
                             ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10))
+                          ),
+                        );
+                      },
+                    ))
               ],
             )),
       ),

@@ -24,7 +24,7 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
     context.read<TargetPackageListBloc>().add(GetTargetPackageListEvent(
         pkgID: widget.details.pkgId ?? '',
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         rotID: widget.header.rotID ?? '',
         serachQuery: ''));
     super.initState();
@@ -53,10 +53,13 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
                       itemCount: list.length,
                       itemBuilder: (context, index) => Column(
                             children: [
+                              SizedBox(
+                                height: 5.h,
+                              ),
                               Row(
                                 children: [
                                   Flexible(
-                                      flex: 3,
+                                      flex: 4,
                                       fit: FlexFit.tight,
                                       child: Column(
                                         crossAxisAlignment:
@@ -67,23 +70,29 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
                                             style: loadTextStyle(),
                                           ),
                                           Text(
-                                            list[index].prdName ?? '',
+                                            '${list[index].prdName}  ',
                                             style: subTitleTextStyle(),
                                           )
                                         ],
                                       )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
                                   Flexible(
                                       fit: FlexFit.tight,
                                       flex: 1,
                                       child: Text(
-                                        list[index].achAmt ?? '',
+                                        '  ${list[index].achAmt} ',
                                         style: subTitleTextStyle(),
                                       )),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
                                   Flexible(
                                       fit: FlexFit.tight,
-                                      flex: 0,
+                                      flex: 1,
                                       child: Text(
-                                        list[index].achQty ?? '',
+                                        '   ${list[index].achQty?.split('.00').toList()[0]}',
                                         style: subTitleTextStyle(),
                                       ))
                                 ],

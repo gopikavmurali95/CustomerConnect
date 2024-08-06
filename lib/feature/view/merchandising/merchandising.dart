@@ -1,12 +1,12 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
+
 import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
-import 'package:customer_connect/feature/view/merchandising/merchandoutofstockdetailscreen.dart';
+
 import 'package:customer_connect/feature/view/merchandising/widget/calenderwidget.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,23 +17,19 @@ class MerchandisingScreen extends StatefulWidget {
   State<MerchandisingScreen> createState() => _MerchandisingScreenState();
 }
 
-class _MerchandisingScreenState extends State<MerchandisingScreen> {
-  DateTime selectedDate = DateTime.now();
-  TextEditingController fromdateController = TextEditingController();
-  TextEditingController todateController = TextEditingController();
+DateTime selectedDate = DateTime.now();
+final fromdateController = TextEditingController();
+final todateController = TextEditingController();
 
-  // Future<void> _selectDate(BuildContext context) async {
-  //   final DateTime? picked = await showDatePicker(
-  //       context: context,
-  //       initialDate: selectedDate,
-  //       firstDate: DateTime(2015, 8),
-  //       lastDate: DateTime(2101));
-  //   if (picked != null && picked != selectedDate) {
-  //     setState(() {
-  //       selectedDate = picked;
-  //     });
-  //   }
-  // }
+class _MerchandisingScreenState extends State<MerchandisingScreen> {
+  @override
+  void initState() {
+    fromdateController.text =
+        '1-${DateTime.now().month}-${DateTime.now().year}';
+    todateController.text =
+        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,19 +62,17 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 5.h,
-              ),
+              SizedBox(height: 2.h,),
               MerchandisingCalender(
                 fromDateController: fromdateController,
-                toDateController: todateController,
-              ),
-              SizedBox(
+                 toDateController: todateController),
+                SizedBox(
                 height: 10.h,
-              ),
+              ),  
               Text(
                 'Inventory Monitoring',
                 style: countHeading(),
@@ -125,23 +119,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          BlocBuilder<OutofstockcountBloc,
-                              OutofstockcountState>(
-                            builder: (context, state) {
-                              return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? Text(
-                                              "0",
-                                              style: countHeading(),
-                                            )
-                                          : Text("${count.itemCount}"),
-                                  outOfStockFailedState: () => Text(
-                                        "0",
-                                        style: countHeading(),
-                                      ));
-                            },
-                          )
+                          Text('22', style: countHeading())
                         ],
                       ),
                       SizedBox(
@@ -162,15 +140,15 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           ),
                           Expanded(
                             child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const OutOfStockScreen(),
-                                  ),
-                                );
-                              },
+                              // onTap: () {
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) =>
+                              //           const OutOfStockScreen(),
+                              //     ),
+                              //   );
+                              // },
                               child: Text(
                                 'OOS Items',
                                 style: kfontstyle(
@@ -180,31 +158,14 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          BlocBuilder<OutofstockcountBloc,
-                              OutofstockcountState>(
-                            builder: (context, state) {
-                              return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? Text(
-                                              "0",
-                                              style: countHeading(),
-                                            )
-                                          : Text("${count.itemCount}"),
-                                  outOfStockFailedState: () => Text(
-                                        "0",
-                                        style: countHeading(),
-                                      ));
-                            },
+                          Text(
+                            '200',
+                            style: kfontstyle(
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff413434),
+                            ),
                           ),
-                          // Text(
-                          //   '200',
-                          //   style: kfontstyle(
-                          //     fontSize: 11.sp,
-                          //     fontWeight: FontWeight.w500,
-                          //     color: const Color(0xff413434),
-                          //   ),
-                          // ),
                           SizedBox(
                             width: 10.w,
                           ),
@@ -239,22 +200,13 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          BlocBuilder<OutofstockcountBloc,
-                              OutofstockcountState>(
-                            builder: (context, state) {
-                              return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? Text(
-                                              "0",
-                                              style: countHeading(),
-                                            )
-                                          : Text("${count.cusCount}"),
-                                  outOfStockFailedState: () => Text(
-                                        "0",
-                                        style: countHeading(),
-                                      ));
-                            },
+                          Text(
+                            '15',
+                            style: kfontstyle(
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff413434),
+                            ),
                           ),
                         ],
                       ),

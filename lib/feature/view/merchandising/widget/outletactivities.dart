@@ -3,10 +3,13 @@ import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_a
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactcustomeractivities.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +30,9 @@ class OutletAcivitiesWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const OutletActivityTaskHeaderScreen()),
+                             OutletActivityTaskHeaderScreen(
+                              fromdatecontroller: fromdateController,
+                               todatecontroller: todateController,)),
                   );
                 },
                 child: Container(
@@ -143,7 +148,9 @@ class OutletAcivitiesWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const OutActvitySurveyHeaderScreen()),
+                             OutActvitySurveyHeaderScreen(
+                              fromdatectrl: fromdateController,
+                              todatectrl: todateController,)),
                   );
                 },
                 child: Container(
