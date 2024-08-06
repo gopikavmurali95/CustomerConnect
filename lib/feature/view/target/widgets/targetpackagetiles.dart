@@ -91,7 +91,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                         style: countHeading(),
                       ),
                       Text(
-                        details.achAmtPerc ?? '',
+                        '${details.achAmtPerc}%',
                         style: countHeading(),
                       ),
                     ],
@@ -132,7 +132,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            details.monthGapAmtPerc ?? '',
+                            '${details.monthGapAmtPerc}%',
                             style: countHeading(),
                           ),
                           /* Text(
@@ -190,7 +190,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                         style: countHeading(),
                       ),
                       Text(
-                        details.achQtyPerc ?? '',
+                        '${details.achQtyPerc}%',
                         style: countHeading(),
                       ),
                     ],
@@ -231,7 +231,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            details.monthGapQtyPerc ?? '',
+                            '${details.monthGapQtyPerc}%',
                             style: countHeading(),
                           ),
                           /* Text(

@@ -42,5 +42,8 @@ class MerchandisingSurveyBloc
             data: event.searchQuery.isEmpty ? r : searchlistitems);
       }));
     });
+    on<ClearMerchandisingSurveyList>((event, emit) {
+      emit(const GetMerchandisingSurveyState(data: null));
+    });
   }
 }

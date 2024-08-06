@@ -16,10 +16,19 @@ class MerchandisingScreen extends StatefulWidget {
 }
 
 DateTime selectedDate = DateTime.now();
-TextEditingController fromdateController = TextEditingController();
-TextEditingController todateController = TextEditingController();
+final fromdateController = TextEditingController();
+final todateController = TextEditingController();
 
 class _MerchandisingScreenState extends State<MerchandisingScreen> {
+  @override
+  void initState() {
+    fromdateController.text =
+        '1-${DateTime.now().month}-${DateTime.now().year}';
+    todateController.text =
+        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,7 +215,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
             SizedBox(
               height: 10.h,
             ),
-            const OutletAcivitiesWidget(),
+            OutletAcivitiesWidget(
+              fromdatectrl: fromdateController,
+              todatectrl: todateController,
+            ),
             SizedBox(
               height: 10.h,
             ),

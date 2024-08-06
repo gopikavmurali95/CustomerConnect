@@ -31,7 +31,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
     context.read<OutOfStockItemsBloc>().add(GetOutOfStockItemsEvent(
         searchQuery: '',
         fromDate: widget.fromDateCtrl.text,
-        toDate: widget.fromDateCtrl.text));
+        toDate: widget.toDateCtrl.text));
     super.initState();
   }
 
@@ -92,8 +92,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                 context.read<OutOfStockItemsBloc>().add(
                                     GetOutOfStockItemsEvent(
                                         searchQuery: value.trim(),
-                                        fromDate: '2024-05-01',
-                                        toDate: '2024-08-03'));
+                                        fromDate: widget.fromDateCtrl.text,
+                                        toDate: widget.toDateCtrl.text));
                               });
                             },
                             decoration: InputDecoration(
@@ -116,11 +116,12 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                   const ClearOutOfStockItems());
                                           context
                                               .read<OutOfStockItemsBloc>()
-                                              .add(
-                                                  const GetOutOfStockItemsEvent(
-                                                      searchQuery: '',
-                                                      fromDate: '2024-05-01',
-                                                      toDate: '2024-08-03'));
+                                              .add(GetOutOfStockItemsEvent(
+                                                  searchQuery: '',
+                                                  fromDate:
+                                                      widget.fromDateCtrl.text,
+                                                  toDate:
+                                                      widget.toDateCtrl.text));
                                         },
                                         icon: Icon(
                                           Icons.close,

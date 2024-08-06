@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -18,6 +19,8 @@ class OutOfStockItemsRepo implements IOutOfStockProductsRepo {
       final response = await http.post(Uri.parse(baseUrl + outOfStockitemsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
 
+      log({"FromDate": fromDate, "ToDate": toDate}.toString());
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

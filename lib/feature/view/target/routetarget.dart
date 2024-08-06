@@ -30,7 +30,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
     context.read<TargetDetailsListBloc>().add(const ClearTargetDetailsList());
     context.read<TargetDetailsListBloc>().add(GetTargetDetailsListEvent(
         fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         rotID: widget.headr.rotID ?? '',
         searchQuery: ''));
     super.initState();
@@ -98,7 +98,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                   context.read<TargetDetailsListBloc>().add(
                                       GetTargetDetailsListEvent(
                                           fromDate:
-                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                              '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
                                           rotID: widget.headr.rotID ?? '',
                                           searchQuery: ''));
                                 }
@@ -143,7 +143,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                       context.read<TargetDetailsListBloc>().add(
                           GetTargetDetailsListEvent(
                               fromDate:
-                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
                               rotID: widget.headr.rotID ?? '',
                               searchQuery: value.trim()));
                     });
