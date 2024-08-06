@@ -49,6 +49,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
+import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
@@ -158,6 +159,7 @@ import 'package:customer_connect/feature/data/models/sales_orders_model/sales_or
 import 'package:customer_connect/feature/data/models/total_orders_details_model/total_orders_details_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
+import 'package:customer_connect/feature/data/models/tracking_sales_man_model/tracking_sales_man_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
@@ -694,4 +696,12 @@ abstract class IMerchDisplayAgreement {
 abstract class IMerchCustomerActivitiesRepo {
   Future<Either<MainFailures, List<MerchCustomerActivitiesModel>>>
       getActivityItems(String fromDate, String toDate, String status);
+}
+
+abstract class ITrackSalesManRepo {
+  Future<Either<MainFailures, List<TrackingSalesManModel>>> getSalesManDetails(
+      String date, String rotID);
+
+  Future<Either<MainFailures, List<CustomerLiveLocationModel>>>
+      getCustomerLocations(String date);
 }

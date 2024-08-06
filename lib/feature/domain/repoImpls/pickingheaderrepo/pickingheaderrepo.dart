@@ -52,7 +52,7 @@ class PickingHeaderRepo implements IPickingHeaderRepo {
           .post(Uri.parse(baseUrl + pickingDetailUrl), body: {'PickingID': iD});
 
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> loadingdetaildata = json['result'];

@@ -156,7 +156,6 @@ const outOfStockitemsUrl = 'CusMerch/GetCCOutOfStockItems';
 const outOfStockitemCustomersUrl = 'CusMerch/GetCCOutOfStockItemsDetail';
 const outOfStockCustomersUrl = 'CusMerch/GetCCOutOfStockCustomers';
 const outOfStockCustomerDetailUrl = 'CusMerch/GetCCOutOfStockCustomersDetail';
-
 const merchandisingGetOutofStockCountUrl = "CusMerch/GetCCOutOfStockCount";
 const merchandisingSurveyUrl = 'CusMerch/GetCCSurvey';
 const chartRoutesUrl = 'CusChartDashboard/GetCCRouteCount';
@@ -167,3 +166,5 @@ const chartNonProductiveVistisUrl =
     'CusChartDashboard/GetCCNonProductiveVisitCount';
 const merchDisplayAgreementUrl = 'CusMerch/GetCCDisplayagreement';
 const merchCustomerActivitiesUrl = 'CusMerch/GetCCCustomerActivity';
+const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
+const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';
