@@ -60,6 +60,10 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart';
@@ -67,6 +71,7 @@ import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_hea
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
 
@@ -626,6 +631,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<TargetPackageListBloc>(),
         ),
+        BlocProvider(create: (context) => getit<OutofstockcountBloc>()),
+        BlocProvider(create: (context) => getit<MerchTaskCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchSurveyCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchdisplaycountBloc>()),
+        BlocProvider(create: (context) => getit<MerchCusActCountBloc>()),
       ],
       child: ScreenUtilInit(
         child: MaterialApp(

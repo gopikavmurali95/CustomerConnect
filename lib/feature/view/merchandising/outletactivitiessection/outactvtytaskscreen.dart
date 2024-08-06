@@ -6,8 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutletActivityTaskHeaderScreen extends StatefulWidget {
   const OutletActivityTaskHeaderScreen({
-    super.key,
-  });
+    super.key,});
 
   @override
   State<OutletActivityTaskHeaderScreen> createState() =>
@@ -15,9 +14,9 @@ class OutletActivityTaskHeaderScreen extends StatefulWidget {
 }
 
 List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
-  ApprovalStatusFilterModel(statusName: "All Tasks", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Completed", mode: 'AT'),
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'AT'),
+  ApprovalStatusFilterModel(statusName: "All", mode: 'AL'),
+  ApprovalStatusFilterModel(statusName: "Completed", mode: 'C'),
+  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
 ];
 
 Timer? debounce;

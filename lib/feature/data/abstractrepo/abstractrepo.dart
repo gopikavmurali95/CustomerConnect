@@ -51,7 +51,13 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/get_cus_actcount_model/get_cus_actcount_model.dart';
+import 'package:customer_connect/feature/data/models/get_display_count_model/get_display_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_survey_count_model/get_survey_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_count_model/get_task_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_header_in_model/get_task_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_headers_out_model/get_task_headers_out_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
@@ -565,13 +571,7 @@ abstract class IMustSellRepo {
 
 abstract class ISettlementApprovalHeaderRepo {
   Future<Either<MainFailures, List<SettlementApprovalHeaderOutModel>>>
-<<<<<<< HEAD
-      getSettlementApprovalHeaders(
-    String statusvalue,
-  );
-=======
       getSettlementApprovalHeaders(String statusvalue);
->>>>>>> 2ea0970ad1403ce24e81a56a5a3592c1aa279d74
 
   Future<Either<MainFailures, SettlemetApprovalcashDetailModel>>
       getSttlAppCashDetails(String udpID);
@@ -600,13 +600,19 @@ abstract class IVoidTransactionRepo {
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
 }
 
-<<<<<<< HEAD
-
-abstract class IMerchandisingDashBoardRepo{
-  Future<Either<MainFailures, GetOutOfStockCountModel>>
-    getoutofstockcount();
+abstract class IMerchandisingDashBoardRepo {
+  Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetTaskCountModel>> gettaskcount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetSurveyCountModel>> getsurveycount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetDisplayCountModel>> getdisplaycount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetCusActcountModel>> getCusActCount(
+      String fromDate, String toDate);
 }
-=======
+
 abstract class ITargetRepo {
   Future<Either<MainFailures, TargetHeaderCountModel>> targetHeaderCount(
       String fromDate);
@@ -629,4 +635,8 @@ abstract class ITargetRepo {
   Future<Either<MainFailures, List<TargetPackageListModel>>>
       getTargetPackageItems(String fromDate, String rotID, String pkgID);
 }
->>>>>>> 2ea0970ad1403ce24e81a56a5a3592c1aa279d74
+
+abstract class IMerchandiseTaskHeaderRepo {
+  Future<Either<MainFailures, List<GetTaskHeadersOutModel>>> getTaskHeader(
+      GetTaskHeaderInModel taskdetails);
+}

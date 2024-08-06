@@ -149,3 +149,8 @@ const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
 const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";
 
 const merchandisingGetOutofStockCountUrl = "CusMerch/GetCCOutOfStockCount";
+const getTaskCountUrl = "CusMerch/GetCCTasksCount";
+const getSurveyCountUrl = "CusMerch/GetCCSurveyCount";
+const getDisplayCountUrl = "CusMerch/GetCCDisplayCount";
+const getCusActCountUrl = "CusMerch/GetCCCusActCount";
+const merchandiseTaskHeaderUrl ="CusMerch/GetCCTask";

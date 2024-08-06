@@ -9,8 +9,8 @@ part of 'get_out_of_stock_count_model.dart';
 GetOutOfStockCountModel _$GetOutOfStockCountModelFromJson(
         Map<String, dynamic> json) =>
     GetOutOfStockCountModel(
-      itemCount: (json['ItemCount'] as num?)?.toInt(),
-      cusCount: (json['CusCount'] as num?)?.toInt(),
+      itemCount: json['ItemCount'] as String?,
+      cusCount: json['CusCount'] as String?,
     );
 
 Map<String, dynamic> _$GetOutOfStockCountModelToJson(

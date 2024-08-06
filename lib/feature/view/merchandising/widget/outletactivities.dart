@@ -1,9 +1,14 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactcustomeractivities.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutletAcivitiesWidget extends StatelessWidget {
@@ -71,13 +76,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchTaskCountBloc,
+                                MerchTaskCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getTaskCountState: (taskcount) =>
+                                      taskcount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${taskcount.assignedTasks}"),
+                                  taskCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -91,13 +107,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchTaskCountBloc,
+                                MerchTaskCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getTaskCountState: (taskcount) =>
+                                      taskcount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${taskcount.completedTasks}"),
+                                  taskCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -165,13 +192,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchSurveyCountBloc,
+                                MerchSurveyCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getSurveyCountState: (survey) =>
+                                      survey == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${survey.assignedSurvey}"),
+                                  surveyCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -185,13 +223,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchSurveyCountBloc,
+                                MerchSurveyCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getSurveyCountState: (survey) =>
+                                      survey == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${survey.completedSurvey}"),
+                                  surveyCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -263,13 +312,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchdisplaycountBloc,
+                                MerchdisplaycountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getDisplayCountState: (discount) =>
+                                      discount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${discount.neww}"),
+                                  dispalyCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -283,13 +343,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchdisplaycountBloc,
+                                MerchdisplaycountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getDisplayCountState: (discount) =>
+                                      discount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${discount.active}"),
+                                  dispalyCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -357,13 +428,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchCusActCountBloc,
+                                MerchCusActCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusActCountState: (cuscount) =>
+                                      cuscount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${cuscount.actionTaken}"),
+                                  cusActCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -377,13 +459,24 @@ class OutletAcivitiesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
-                            )
+                            BlocBuilder<MerchCusActCountBloc,
+                                MerchCusActCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusActCountState: (cuscount) =>
+                                      cuscount == null
+                                          ? Text(
+                                              "0",
+                                              style: countHeading(),
+                                            )
+                                          : Text("${cuscount.total}"),
+                                  cusActCountFailedState: () => Text(
+                                    "0",
+                                    style: countHeading(),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],

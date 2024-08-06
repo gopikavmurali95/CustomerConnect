@@ -5,9 +5,9 @@ part 'get_out_of_stock_count_model.g.dart';
 @JsonSerializable()
 class GetOutOfStockCountModel {
   @JsonKey(name: 'ItemCount')
-  int? itemCount;
+  String? itemCount;
   @JsonKey(name: 'CusCount')
-  int? cusCount;
+  String? cusCount;
 
   GetOutOfStockCountModel({this.itemCount, this.cusCount});
 

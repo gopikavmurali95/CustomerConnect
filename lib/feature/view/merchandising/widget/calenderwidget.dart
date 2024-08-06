@@ -52,58 +52,53 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                 });
               }
             },
-            child: Flexible(
-              flex: 2,
-              fit: FlexFit.tight,
-              child: Container(
-                height: 30.h,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white.withOpacity(0.4)),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.shade200,
-                          spreadRadius: 1.5,
-                          blurRadius: 2)
-                    ]),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'From',
-                        style: kfontstyle(
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                        ),
+            child: Container(
+              height: 30.h,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.white.withOpacity(0.4)),
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.shade200,
+                        spreadRadius: 1.5,
+                        blurRadius: 2)
+                  ]),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'From',
+                      style: kfontstyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
                       ),
-                      Text(
-                        '| ',
-                        style: kfontstyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey[300],
-                        ),
+                    ),
+                    Text(
+                      '| ',
+                      style: kfontstyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey[300],
                       ),
-                      Text(
-                        fromDateController.text,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 11.sp,
-                          color: Colors.grey.withOpacity(0.9),
-                        ),
+                    ),
+                    Text(
+                      fromDateController.text,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11.sp,
+                        color: Colors.grey.withOpacity(0.9),
                       ),
-                      SizedBox(width: 10.w),
-                      SvgPicture.asset(
-                        'assets/svg/calendar.svg',
-                        height: 14.sp,
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(width: 10.w),
+                    SvgPicture.asset(
+                      'assets/svg/calendar.svg',
+                      height: 14.sp,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -129,58 +124,53 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                 });
               }
             },
-            child: Flexible(
-              flex: 2,
-              fit: FlexFit.tight,
-              child: Container(
-                height: 30.h,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white.withOpacity(0.4)),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.shade200,
-                          spreadRadius: 1.5,
-                          blurRadius: 2)
-                    ]),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'To',
-                        style: kfontstyle(
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                        ),
+            child: Container(
+              height: 30.h,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.white.withOpacity(0.4)),
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.shade200,
+                        spreadRadius: 1.5,
+                        blurRadius: 2)
+                  ]),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'To',
+                      style: kfontstyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
                       ),
-                      Text(
-                        '| ',
-                        style: kfontstyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey[300],
-                        ),
+                    ),
+                    Text(
+                      '| ',
+                      style: kfontstyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey[300],
                       ),
-                      Text(
-                        toDateController.text,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 11.sp,
-                          color: Colors.grey.withOpacity(0.9),
-                        ),
+                    ),
+                    Text(
+                      toDateController.text,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11.sp,
+                        color: Colors.grey.withOpacity(0.9),
                       ),
-                      SizedBox(width: 10.w),
-                      SvgPicture.asset(
-                        'assets/svg/calendar.svg',
-                        height: 14.sp,
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(width: 10.w),
+                    SvgPicture.asset(
+                      'assets/svg/calendar.svg',
+                      height: 14.sp,
+                    ),
+                  ],
                 ),
               ),
             ),
