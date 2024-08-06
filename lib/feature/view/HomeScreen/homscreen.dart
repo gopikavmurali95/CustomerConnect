@@ -4,6 +4,8 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
@@ -103,17 +105,29 @@ class _HomeScreenState extends State<HomeScreen> {
         .read<CustomerSettingsBloc>()
         .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
 
-    context
-        .read<ChartRoutsBloc>()
-        .add(const GetchartRouteDataEvent(date: '2024-08-03'));
+    context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
 
-    context
-        .read<ChartPlannedVisitsBloc>()
-        .add(const GetChartPlannedVisitsEvent(date: '2024-08-03'));
+    context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
 
-    context
-        .read<ChartActualVisitsBloc>()
-        .add(const GetChartActualVisitsDataEvent(date: '2024-08-03'));
+    context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
   }
 
 /* 
@@ -185,6 +199,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _performTapAction(int index) {
+    context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+    context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
     context.read<HomeGraphSwitchCubit>().chnageGraph(homegraphList[index]);
   }
 
@@ -306,466 +342,515 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         );
                       },
-                      child: SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        controller: _scrollController,
-                        child: Column(
-                          children: [
-                            BlocBuilder<HomeGraphSwitchCubit,
-                                HomeGraphSwitchState>(
-                              builder: (context, graph) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 0),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 60.h,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            SizedBox(
-                                              width: 10.w,
-                                            ),
-                                            AnimatedSemiCircleProgressChart(
-                                              totalCount:
-                                                  graph.graph.totalCount,
-                                              completedCount:
-                                                  graph.graph.completedCount,
-                                              color: graph.graph.cColors,
-                                              duration:
-                                                  const Duration(seconds: 1),
-                                              subColors: graph.graph.pColor,
-                                              title: graph.graph.graphTitle,
-                                            ),
-                                            SizedBox(
-                                              width: 30.w,
-                                            ),
-                                            Container(
-                                              height: 52.h,
-                                              width: 3.w,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white
-                                                    .withOpacity(.7),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 20.w,
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        height: 8.h,
-                                                        width: 20.w,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: graph
-                                                              .graph.cColors,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10.w,
-                                                      ),
-                                                      Expanded(
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Text(
-                                                              graph
-                                                                  .graph.ftitle,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      10.sp),
-                                                            ),
-                                                            Text(
-                                                              graph.graph
-                                                                  .completedCount
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        height: 8.h,
-                                                        width: 20.w,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: graph
-                                                              .graph.pColor,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10.w,
-                                                      ),
-                                                      Expanded(
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Text(
-                                                              graph
-                                                                  .graph.ltitle,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      10.sp),
-                                                            ),
-                                                            Text(
-                                                              '${(graph.graph.totalCount) - (graph.graph.completedCount)}',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5.h,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 10.w,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 15.h,
-                                      ),
-                                      SizedBox(
-                                        height: 30.h,
-                                        child: ListView.builder(
-                                          controller: _centerscrollController,
-                                          itemCount: homegraphList.length,
-                                          scrollDirection: Axis.horizontal,
-                                          itemBuilder: (context, index) =>
-                                              Padding(
+                      child: BlocListener<ChartProductiveVisitBloc,
+                          ChartProductiveVisitState>(
+                        listener: (context, state) {
+                          state.when(
+                            getChartProductiveVisitDataSate:
+                                (productiveVisitData) {
+                              homegraphList[3].totalCount =
+                                  int.parse(productiveVisitData.total ?? '0');
+                              homegraphList[3].completedCount =
+                                  int.parse(productiveVisitData.planned ?? '0');
+                            },
+                          );
+                        },
+                        child: BlocListener<ChartNonProductiveBloc,
+                            ChartNonProductiveState>(
+                          listener: (context, state) {
+                            state.when(
+                              getChartNonProductiveDataState:
+                                  (nonProductiveData) {
+                                homegraphList[4].totalCount =
+                                    int.parse(nonProductiveData.total ?? '0');
+                                homegraphList[4].completedCount =
+                                    int.parse(nonProductiveData.planned ?? '0');
+                              },
+                            );
+                          },
+                          child: SingleChildScrollView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            controller: _scrollController,
+                            child: Column(
+                              children: [
+                                BlocBuilder<HomeGraphSwitchCubit,
+                                    HomeGraphSwitchState>(
+                                  builder: (context, graph) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(bottom: 0),
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 60.h,
+                                          ),
+                                          Padding(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                _onItemTap(index);
-                                                // _centerItem(index);
-                                              },
-                                              child: Container(
-                                                key: tileKeys[index],
-                                                decoration: BoxDecoration(
-                                                  gradient: graph.graph ==
-                                                          homegraphList[index]
-                                                      ? homegraphList[index]
-                                                          .tileColor
-                                                      : const LinearGradient(
-                                                          colors: [
-                                                              Colors.white,
-                                                              Colors.white,
-                                                            ]),
-                                                  borderRadius:
-                                                      BorderRadius.circular(35),
+                                                horizontal: 10),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  width: 10.w,
                                                 ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 18,
-                                                      vertical: 10),
-                                                  child: Center(
-                                                    child: Text(
-                                                      homegraphList[index]
-                                                          .mTitle,
-                                                      style: TextStyle(
-                                                          fontSize: 10.sp,
-                                                          color: graph.graph ==
-                                                                  homegraphList[
-                                                                      index]
-                                                              ? Colors.white
-                                                              : Colors.black),
+                                                AnimatedSemiCircleProgressChart(
+                                                  totalCount:
+                                                      graph.graph.totalCount,
+                                                  completedCount: graph
+                                                      .graph.completedCount,
+                                                  color: graph.graph.cColors,
+                                                  duration: const Duration(
+                                                      seconds: 1),
+                                                  subColors: graph.graph.pColor,
+                                                  title: graph.graph.graphTitle,
+                                                ),
+                                                SizedBox(
+                                                  width: 30.w,
+                                                ),
+                                                Container(
+                                                  height: 52.h,
+                                                  width: 3.w,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white
+                                                        .withOpacity(.7),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 20.w,
+                                                ),
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            height: 8.h,
+                                                            width: 20.w,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: graph.graph
+                                                                  .cColors,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Text(
+                                                                  graph.graph
+                                                                      .ftitle,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10.sp),
+                                                                ),
+                                                                Text(
+                                                                  graph.graph
+                                                                      .completedCount
+                                                                      .toString(),
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          11.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10.h,
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Container(
+                                                            height: 8.h,
+                                                            width: 20.w,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: graph
+                                                                  .graph.pColor,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Text(
+                                                                  graph.graph
+                                                                      .ltitle,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10.sp),
+                                                                ),
+                                                                Text(
+                                                                  '${(graph.graph.totalCount) - (graph.graph.completedCount)}',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          11.sp,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height: 5.h,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15.h,
+                                          ),
+                                          SizedBox(
+                                            height: 30.h,
+                                            child: ListView.builder(
+                                              controller:
+                                                  _centerscrollController,
+                                              itemCount: homegraphList.length,
+                                              scrollDirection: Axis.horizontal,
+                                              itemBuilder: (context, index) =>
+                                                  Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 5),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    _onItemTap(index);
+                                                    // _centerItem(index);
+                                                  },
+                                                  child: Container(
+                                                    key: tileKeys[index],
+                                                    decoration: BoxDecoration(
+                                                      gradient: graph.graph ==
+                                                              homegraphList[
+                                                                  index]
+                                                          ? homegraphList[index]
+                                                              .tileColor
+                                                          : const LinearGradient(
+                                                              colors: [
+                                                                  Colors.white,
+                                                                  Colors.white,
+                                                                ]),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              35),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 18,
+                                                          vertical: 10),
+                                                      child: Center(
+                                                        child: Text(
+                                                          homegraphList[index]
+                                                              .mTitle,
+                                                          style: TextStyle(
+                                                              fontSize: 10.sp,
+                                                              color: graph.graph ==
+                                                                      homegraphList[
+                                                                          index]
+                                                                  ? Colors.white
+                                                                  : Colors
+                                                                      .black),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Visibility(
-                                        visible: state.when(
-                                          getCustomerSettingsState:
-                                              (settings) =>
-                                                  settings?.invTrans == null ||
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                          Visibility(
+                                            visible: state.when(
+                                              getCustomerSettingsState:
+                                                  (settings) => settings
+                                                                  ?.invTrans ==
+                                                              null ||
                                                           settings?.invTrans !=
                                                               'Y'
                                                       ? false
                                                       : true,
-                                          customerSettingsFailedState: () =>
-                                              true,
-                                        ),
-                                        child: BlocBuilder<
-                                            InverntoryTransExPandCubit,
-                                            InverntoryTransExPandState>(
-                                          builder: (context, state) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.all(9.0),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  context
-                                                      .read<
-                                                          InverntoryTransExPandCubit>()
-                                                      .expandedContainer(
-                                                          state.isExpanded);
-                                                },
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                10)),
-                                                    image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/home/inv_bg.jpg'),
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 10,
-                                                            vertical:
-                                                                state.isExpanded
+                                              customerSettingsFailedState: () =>
+                                                  true,
+                                            ),
+                                            child: BlocBuilder<
+                                                InverntoryTransExPandCubit,
+                                                InverntoryTransExPandState>(
+                                              builder: (context, state) {
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(9.0),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      context
+                                                          .read<
+                                                              InverntoryTransExPandCubit>()
+                                                          .expandedContainer(
+                                                              state.isExpanded);
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    10)),
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              'assets/images/home/inv_bg.jpg'),
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 10,
+                                                                vertical: state
+                                                                        .isExpanded
                                                                     ? 10
                                                                     : 20),
-                                                    child: Column(
-                                                      children: [
-                                                        Padding(
-                                                          padding: EdgeInsets.only(
-                                                              top: state
-                                                                      .isExpanded
-                                                                  ? 10
-                                                                  : 0,
-                                                              left: 6,
-                                                              right: 6),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Text(
-                                                                'Inventory Transactions',
-                                                                style:
-                                                                    countHeading(),
-                                                              ),
-                                                              AnimatedRotation(
-                                                                  turns: state
-                                                                          .isExpanded
-                                                                      ? 0.25
-                                                                      : 0.0,
-                                                                  duration: const Duration(
-                                                                      milliseconds:
-                                                                          300),
-                                                                  child: Icon(
-                                                                    CupertinoIcons
-                                                                        .chevron_forward,
-                                                                    color: Colors
-                                                                        .black54,
-                                                                    size: 18.sp,
-                                                                  )),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                            height:
-                                                                state.isExpanded
-                                                                    ? 10.h
-                                                                    : 0),
-                                                        AnimatedSize(
-                                                          duration:
-                                                              const Duration(
-                                                                  milliseconds:
-                                                                      300),
-                                                          curve:
-                                                              Curves.easeInOut,
-                                                          reverseDuration:
-                                                              const Duration(
-                                                                  milliseconds:
-                                                                      300),
-                                                          child: ClipRect(
-                                                            child: Align(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topCenter,
-                                                              heightFactor:
-                                                                  state.isExpanded
-                                                                      ? 1.0
-                                                                      : 0.0,
-                                                              child: Visibility(
-                                                                visible: state
-                                                                    .isExpanded,
-                                                                maintainState:
-                                                                    true,
-                                                                child: PickingWidget(
-                                                                    user: widget
-                                                                        .user),
+                                                        child: Column(
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      top: state
+                                                                              .isExpanded
+                                                                          ? 10
+                                                                          : 0,
+                                                                      left: 6,
+                                                                      right: 6),
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Text(
+                                                                    'Inventory Transactions',
+                                                                    style:
+                                                                        countHeading(),
+                                                                  ),
+                                                                  AnimatedRotation(
+                                                                      turns: state
+                                                                              .isExpanded
+                                                                          ? 0.25
+                                                                          : 0.0,
+                                                                      duration: const Duration(
+                                                                          milliseconds:
+                                                                              300),
+                                                                      child:
+                                                                          Icon(
+                                                                        CupertinoIcons
+                                                                            .chevron_forward,
+                                                                        color: Colors
+                                                                            .black54,
+                                                                        size: 18
+                                                                            .sp,
+                                                                      )),
+                                                                ],
                                                               ),
                                                             ),
-                                                          ),
+                                                            SizedBox(
+                                                                height: state
+                                                                        .isExpanded
+                                                                    ? 10.h
+                                                                    : 0),
+                                                            AnimatedSize(
+                                                              duration:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          300),
+                                                              curve: Curves
+                                                                  .easeInOut,
+                                                              reverseDuration:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          300),
+                                                              child: ClipRect(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topCenter,
+                                                                  heightFactor:
+                                                                      state.isExpanded
+                                                                          ? 1.0
+                                                                          : 0.0,
+                                                                  child:
+                                                                      Visibility(
+                                                                    visible: state
+                                                                        .isExpanded,
+                                                                    maintainState:
+                                                                        true,
+                                                                    child: PickingWidget(
+                                                                        user: widget
+                                                                            .user),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Visibility(
+                                  visible: state.when(
+                                    getCustomerSettingsState: (settings) =>
+                                        settings?.custTrans == null ||
+                                                settings?.custTrans != 'Y'
+                                            ? false
+                                            : true,
+                                    customerSettingsFailedState: () => true,
+                                  ),
+                                  child: CustomerTransaction(user: widget.user),
+                                ),
+                                Visibility(
+                                    visible: state.when(
+                                      getCustomerSettingsState: (settings) =>
+                                          settings?.salesOrd == null ||
+                                                  settings?.salesOrd != 'Y'
+                                              ? false
+                                              : true,
+                                      customerSettingsFailedState: () => true,
+                                    ),
+                                    child: SalesOrders(user: widget.user)),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: 2,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                3,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                const Color(0xfffcfcfc)
+                                                    .withOpacity(.0),
+                                                const Color(0xffdedede),
+                                              ],
+                                            )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 7, vertical: 6),
+                                        child: Text(
+                                          "Other Options",
+                                          style: countHeading(),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 2,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                3,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              const Color(0xffdedede),
+                                              const Color(0xfffcfcfc)
+                                                  .withOpacity(.0),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                );
-                              },
-                            ),
-                            Visibility(
-                              visible: state.when(
-                                getCustomerSettingsState: (settings) =>
-                                    settings?.custTrans == null ||
-                                            settings?.custTrans != 'Y'
-                                        ? false
-                                        : true,
-                                customerSettingsFailedState: () => true,
-                              ),
-                              child: CustomerTransaction(user: widget.user),
-                            ),
-                            Visibility(
-                                visible: state.when(
-                                  getCustomerSettingsState: (settings) =>
-                                      settings?.salesOrd == null ||
-                                              settings?.salesOrd != 'Y'
-                                          ? false
-                                          : true,
-                                  customerSettingsFailedState: () => true,
                                 ),
-                                child: SalesOrders(user: widget.user)),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 2,
-                                    width:
-                                        MediaQuery.of(context).size.width / 3,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            const Color(0xfffcfcfc)
-                                                .withOpacity(.0),
-                                            const Color(0xffdedede),
-                                          ],
-                                        )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 7, vertical: 6),
-                                    child: Text(
-                                      "Other Options",
-                                      style: countHeading(),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 2,
-                                    width:
-                                        MediaQuery.of(context).size.width / 3,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          const Color(0xffdedede),
-                                          const Color(0xfffcfcfc)
-                                              .withOpacity(.0),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            OtherOptionsHomeWidget(
-                              user: widget.user,
-                            ),
-                            /* SizedBox(
-                                                                                height: 10.h,
-                                                                              ), */
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Opacity(
-                                opacity: 0.5,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                OtherOptionsHomeWidget(
+                                  user: widget.user,
+                                ),
+                                /* SizedBox(
+                                                                                                                              height: 10.h,
+                                                                                                                            ), */
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: Opacity(
+                                    opacity: 0.5,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          'POWERED BY',
-                                          style: TextStyle(
-                                              fontSize: 5.sp,
-                                              color: Colors.black87),
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/svg/Path 838.svg',
-                                          height: 14.h,
-                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'POWERED BY',
+                                              style: TextStyle(
+                                                  fontSize: 5.sp,
+                                                  color: Colors.black87),
+                                            ),
+                                            SvgPicture.asset(
+                                              'assets/svg/Path 838.svg',
+                                              height: 14.h,
+                                            ),
+                                          ],
+                                        )
                                       ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -837,6 +922,28 @@ class _HomeScreenState extends State<HomeScreen> {
     context
         .read<CustomerSettingsBloc>()
         .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
+    context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
+        date:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+    context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+
+    context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        toDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
     await Future.delayed(const Duration(seconds: 2));
   }
 }

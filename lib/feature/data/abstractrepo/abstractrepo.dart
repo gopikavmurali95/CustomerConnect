@@ -49,6 +49,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
+import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
@@ -90,6 +91,7 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_resp_model/must_sell_approve_resp_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_detail_model/must_sell_detail_model.dart';
@@ -155,6 +157,7 @@ import 'package:customer_connect/feature/data/models/sales_orders_model/sales_or
 import 'package:customer_connect/feature/data/models/total_orders_details_model/total_orders_details_model.dart';
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
+import 'package:customer_connect/feature/data/models/tracking_sales_man_model/tracking_sales_man_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
@@ -665,6 +668,11 @@ abstract class ITargetRepo {
       getTargetPackageItems(String fromDate, String rotID, String pkgID);
 }
 
+abstract class IMerchandinsingSurveyRepo {
+  Future<Either<MainFailures, List<MerchandingSurveyModel>>> getSurveyItems(
+      String fromDate, String toDate, String status);
+}
+
 abstract class IHomeChartsRepo {
   Future<Either<MainFailures, ChartRoutesModel>> routesChart(
       String fromDate, String toDate);
@@ -676,4 +684,12 @@ abstract class IHomeChartsRepo {
       String fromDate, String toDate);
   Future<Either<MainFailures, ChartNonProductiveModel>> nonProductiveChart(
       String fromDate, String toDate);
+}
+
+abstract class ITrackSalesManRepo {
+  Future<Either<MainFailures, List<TrackingSalesManModel>>> getSalesManDetails(
+      String date, String rotID);
+
+  Future<Either<MainFailures, List<CustomerLiveLocationModel>>>
+      getCustomerLocations(String date);
 }

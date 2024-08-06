@@ -70,8 +70,8 @@ List<HomeGraphModel> homegraphList = [
     ftitle: "Planned",
     ltitle: "Unplanned",
     graphTitle: 'Productive Visits',
-    totalCount: 100,
-    completedCount: 64,
+    totalCount: 0,
+    completedCount: 0,
     cColors: const Color(0xff4cd643),
     pColor: const Color(0xff4cd643).withOpacity(.25),
     tileColor: const LinearGradient(
