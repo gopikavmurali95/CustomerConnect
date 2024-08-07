@@ -1432,7 +1432,7 @@ class ApprovalScreen extends StatelessWidget {
                                                 )
                                               : Text(
                                                   count
-                                                      .pendingMaterialReqApproval!,
+                                                      .voidTransactionHead??'0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     fontWeight: FontWeight.w500,
@@ -1516,7 +1516,7 @@ class ApprovalScreen extends StatelessWidget {
                                                   ),
                                                 )
                                               : Text(
-                                                  count.inventoryReconfirm ??
+                                                  count.mustSellHead ??
                                                       '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
@@ -1605,7 +1605,7 @@ class ApprovalScreen extends StatelessWidget {
                                                 )
                                               : Text(
                                                   count
-                                                      .pendingLoadRequestHeader!,
+                                                      .settlementApprovalHead ?? '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     fontWeight: FontWeight.w500,

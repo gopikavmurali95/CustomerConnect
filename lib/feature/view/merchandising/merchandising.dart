@@ -119,7 +119,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Out Of Stock',
+                              'Out Of Stocks',
                               style: kfontstyle(
                                 fontSize: 9.sp,
                                 color: Colors.black87,
@@ -135,7 +135,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                   getOutOfStockCountState: (count) =>
                                       count == null
                                           ? const Text("0")
-                                          : Text("${count.cusCount}"),
+                                          : Text("${count.transCount}"),
                                   outOfStockFailedState: () => const Text("0"));
                             },
                           )
