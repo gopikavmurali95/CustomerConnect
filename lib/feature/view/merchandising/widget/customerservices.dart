@@ -159,7 +159,10 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const MerchandiseCreditNoteRequestScreen()),
+                            MerchandiseCreditNoteRequestScreen(
+                              fromdatectrl: widget.fromdatecontroller,
+                              todatectrl: widget.todatecontroller,
+                            )),
                   );
                 },
                 child: Container(
@@ -398,8 +401,10 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseReturnRequestScreen()),
+                        builder: (context) => MerchandiseReturnRequestScreen(
+                              fromdatectrl: widget.fromdatecontroller,
+                              todatectrl: widget.todatecontroller,
+                            )),
                   );
                 },
                 child: Container(

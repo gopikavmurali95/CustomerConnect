@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/get_display_count_model/get_display_count_model.dart';
-import 'package:customer_connect/feature/data/models/get_survey_count_model/get_survey_count_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

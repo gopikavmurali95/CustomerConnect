@@ -98,7 +98,9 @@ import 'package:customer_connect/feature/data/models/material_req_header_model/M
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
 import 'package:customer_connect/feature/data/models/merch_cu_service_count_model/merch_cu_service_count_model.dart';
+import 'package:customer_connect/feature/data/models/merch_credit_note_request_model/merch_credit_note_request_model.dart';
 import 'package:customer_connect/feature/data/models/merch_customer_activities_model/merch_customer_activities_model.dart';
+import 'package:customer_connect/feature/data/models/merch_return_request_model/merch_return_request_model.dart';
 import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
 import 'package:customer_connect/feature/data/models/merchandising_display_agreement_mdel/merchandising_display_agreement_mdel.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
@@ -732,4 +734,14 @@ abstract class ITrackSalesManRepo {
 
   Future<Either<MainFailures, List<CustomerLiveLocationModel>>>
       getCustomerLocations(String date);
+}
+
+abstract class IMerchCreditNoteReqRepo {
+  Future<Either<MainFailures, List<MerchCreditNoteRequestModel>>>
+      getActivityItems(String fromDate, String toDate, String status);
+}
+
+abstract class IMerchReturnReqRepo {
+  Future<Either<MainFailures, List<MerchReturnRequestModel>>> getReturnItems(
+      String fromDate, String toDate, String status);
 }
