@@ -71,6 +71,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqapproval/material
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchcusservicecount/merch_cus_service_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
@@ -679,6 +680,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<MerchdisplaycountBloc>()),
         BlocProvider(create: (context) => getit<MerchCusActCountBloc>()),
         BlocProvider(create: (context) => getit<MerchandTaskHeaderBloc>()),
+        BlocProvider(create: (context) => getit<MerchCusServiceCountBloc>()),
         BlocProvider(
           create: (context) => getit<ChartRoutsBloc>(),
         ),

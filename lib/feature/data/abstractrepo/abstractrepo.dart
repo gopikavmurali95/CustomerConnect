@@ -97,6 +97,7 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/merch_cu_service_count_model/merch_cu_service_count_model.dart';
 import 'package:customer_connect/feature/data/models/merch_customer_activities_model/merch_customer_activities_model.dart';
 import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
 import 'package:customer_connect/feature/data/models/merchandising_display_agreement_mdel/merchandising_display_agreement_mdel.dart';
@@ -628,6 +629,8 @@ abstract class IMerchandisingDashBoardRepo {
       String fromDate, String toDate);
   Future<Either<MainFailures, GetCusActcountModel>> getCusActCount(
       String fromDate, String toDate);
+  Future<Either<MainFailures,MerchCuServiceCountModel>>getCusServiceCount(
+     String fromDate,String toDate);    
       
 }
 

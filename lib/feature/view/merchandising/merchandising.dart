@@ -184,10 +184,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               return state.when(
                                   getOutOfStockCountState: (count) =>
                                       count == null
-                                          ? const Text("null")
+                                          ? const Text("0")
                                           : Text("${count.cusCount}"),
                                   outOfStockFailedState: () =>
-                                      const Text("fail"));
+                                      const Text("0"));
                             },
                           ),
                           SizedBox(
@@ -268,7 +268,9 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
               SizedBox(
                 height: 10.h,
               ),
-              const CustomerServicesWidget()
+               CustomerServicesWidget(
+                fromdatecontroller: fromdateController,
+                 todatecontroller: fromdateController,)
             ],
           ),
         ),
