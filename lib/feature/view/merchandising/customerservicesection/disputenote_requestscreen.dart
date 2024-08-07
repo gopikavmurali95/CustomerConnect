@@ -1,14 +1,22 @@
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
+import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseDisputeNoteRequestScreen extends StatefulWidget {
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
   const MerchandiseDisputeNoteRequestScreen({
     super.key,
+    required this.fromdatectrl,
+    required this.todatectrl,
   });
 
   @override
@@ -16,19 +24,30 @@ class MerchandiseDisputeNoteRequestScreen extends StatefulWidget {
       _CreditNoteHeaderScreenState();
 }
 
-List<ApprovalStatusFilterModel> ddfilterFieldscreditNote = [
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Action taken", mode: 'AT'),
-  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
-  ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
+List<MerchandisingStatusFilterModel> filterDisputeNoteReq = [
+  MerchandisingStatusFilterModel(statusName: "All", mode: 'AL'),
+  MerchandisingStatusFilterModel(statusName: "Approved", mode: 'AP'),
+  MerchandisingStatusFilterModel(statusName: "Requested", mode: 'RQ'),
 ];
-TextEditingController _creditNoteHSearch = TextEditingController();
+TextEditingController _merchDisputeNoteSearch = TextEditingController();
 Timer? debounce;
-String _selectedMode = 'P';
+String _selectedDisputeNoteMode = 'AL';
 
 class _CreditNoteHeaderScreenState
     extends State<MerchandiseDisputeNoteRequestScreen> {
   @override
+  void initState() {
+    _selectedDisputeNoteMode = 'AL';
+    _merchDisputeNoteSearch.clear();
+    context.read<MerchDisputeNoteReqBloc>().add(const ClearDisputeNoteData());
+    context.read<MerchDisputeNoteReqBloc>().add(GetDisputeNoteDataEvent(
+        fromDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text,
+        status: 'AL',
+        searchQuery: ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +76,7 @@ class _CreditNoteHeaderScreenState
             child: SizedBox(
               height: 30.h,
               child: TextFormField(
-                controller: _creditNoteHSearch,
+                controller: _merchDisputeNoteSearch,
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
@@ -67,7 +86,21 @@ class _CreditNoteHeaderScreenState
                     children: [
                       Expanded(
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (_merchDisputeNoteSearch.text.isNotEmpty) {
+                                _merchDisputeNoteSearch.clear();
+
+                                context
+                                    .read<MerchDisputeNoteReqBloc>()
+                                    .add(const ClearDisputeNoteData());
+                                context.read<MerchDisputeNoteReqBloc>().add(
+                                    GetDisputeNoteDataEvent(
+                                        fromDate: widget.fromdatectrl.text,
+                                        toDate: widget.todatectrl.text,
+                                        status: _selectedDisputeNoteMode,
+                                        searchQuery: ''));
+                              }
+                            },
                             icon: Icon(
                               Icons.clear,
                               size: 10.sp,
@@ -100,7 +133,19 @@ class _CreditNoteHeaderScreenState
                     borderSide: BorderSide(color: Colors.grey.shade200),
                   ),
                 ),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  debounce = Timer(
+                      const Duration(
+                        milliseconds: 500,
+                      ), () async {
+                    context.read<MerchDisputeNoteReqBloc>().add(
+                        GetDisputeNoteDataEvent(
+                            fromDate: widget.fromdatectrl.text,
+                            toDate: widget.todatectrl.text,
+                            status: _selectedDisputeNoteMode,
+                            searchQuery: value.trim()));
+                  });
+                },
               ),
             ),
           ),
@@ -114,7 +159,7 @@ class _CreditNoteHeaderScreenState
               width: MediaQuery.of(context).size.width - 20,
               child: DropdownButtonFormField(
                 elevation: 0,
-                value: ddfilterFieldscreditNote[0].mode,
+                value: filterDisputeNoteReq[0].mode,
                 dropdownColor: Colors.white,
                 style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
                 decoration: InputDecoration(
@@ -136,7 +181,7 @@ class _CreditNoteHeaderScreenState
                     borderSide: BorderSide(color: Colors.grey.shade200),
                   ),
                 ),
-                items: ddfilterFieldscreditNote
+                items: filterDisputeNoteReq
                     .map(
                       (e) => DropdownMenuItem(
                         value: e.mode,
@@ -144,159 +189,208 @@ class _CreditNoteHeaderScreenState
                       ),
                     )
                     .toList(),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  _selectedDisputeNoteMode = value!;
+                  context
+                      .read<MerchDisputeNoteReqBloc>()
+                      .add(const ClearDisputeNoteData());
+                  context.read<MerchDisputeNoteReqBloc>().add(
+                      GetDisputeNoteDataEvent(
+                          fromDate: widget.fromdatectrl.text,
+                          toDate: widget.todatectrl.text,
+                          status: value,
+                          searchQuery: _merchDisputeNoteSearch.text));
+                },
               ),
             ),
           ),
           SizedBox(
             height: 10.h,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Pending",
-                  style: countHeading(),
-                ),
-                Text(
-                  "6",
-                  style: countHeading(),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
           Expanded(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: ListView.separated(
-                    itemBuilder: (context, index) => GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         CreditNoteDetailScreen(
-                            //       creditNote: headers[index],
-                            //       user: widget.user,
-                            //       currentMode: _selectedMode,
-                            //     ),
-                            //   ),
-                            // );
-                          },
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 10,
-                                decoration: BoxDecoration(
-                                    color: const Color(0xfffee8e0),
-                                    borderRadius: BorderRadius.circular(20)),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "DSP-REQ-MER-01",
-                                            style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff2C6B9E),
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "RTL3714-",
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  color:
-                                                      const Color(0xff2C6B9E),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  "Al Dhafra Co-Cp Society Bainoona",
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            "25-Jul-2024",
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: Colors.grey),
-                                          ),
-                                        ],
-                                      ),
+            child:
+                BlocBuilder<MerchDisputeNoteReqBloc, MerchDisputeNoteReqState>(
+              builder: (context, state) {
+                return state.when(
+                    getMerchDisputeDataState: (dispute) => dispute == null
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) =>
+                                    ShimmerContainers(
+                                        height: 60.h, width: double.infinity),
+                                separatorBuilder: (context, index) => Divider(
+                                      color: Colors.grey[300],
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xffe3f7e2),
-                                        // color: headers[index]
-                                        //             .status!
-                                        //             .isEmpty ||
-                                        //         headers[index]
-                                        //                 .status !=
-                                        //             'Action Taken'
-                                        //     ? headers[index]
-                                        //                 .status ==
-                                        //             'Rejected'
-                                        //         ? Colors.red[300]
-                                        //         : const Color(
-                                        //             0xfff7f4e2)
-                                        //     : const Color(
-                                        //         0xffe3f7e2),
-                                        borderRadius: BorderRadius.circular(
-                                          20,
+                                itemCount: 10),
+                          )
+                        : dispute.isEmpty
+                            ? const Center(
+                                child: Text('No Data Available'),
+                              )
+                            : Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          _selectedDisputeNoteMode == 'AL'
+                                              ? 'All Requests'
+                                              : _selectedDisputeNoteMode == 'AP'
+                                                  ? 'ApprovedRequests'
+                                                  : 'Requested Requets',
+                                          style: countHeading(),
                                         ),
-                                      ),
-                                      child: Padding(
+                                        Text(
+                                          dispute.length.toString(),
+                                          style: countHeading(),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  Expanded(
+                                    child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 5),
-                                        child: Text(
-                                          "Pending",
-                                          style: kfontstyle(
-                                              fontSize: 10.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black54
-                                              // color: headers[index]
-                                              //             .status ==
-                                              //         'Rejected'
-                                              //     ? Colors.white54
-                                              //     : Colors.black54
-                                              ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                            horizontal: 10),
+                                        child: ListView.separated(
+                                            itemBuilder:
+                                                (context, index) =>
+                                                    GestureDetector(
+                                                      onTap: () {},
+                                                      child: Row(
+                                                        children: [
+                                                          Container(
+                                                            height: 50,
+                                                            width: 10,
+                                                            decoration: BoxDecoration(
+                                                                color: const Color(
+                                                                    0xfffee8e0),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20)),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: Row(
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        dispute[index].drhTransId ??
+                                                                            '',
+                                                                        style:
+                                                                            kfontstyle(
+                                                                          fontSize:
+                                                                              12.sp,
+                                                                          color:
+                                                                              const Color(0xff2C6B9E),
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                      ),
+                                                                      Row(
+                                                                        children: [
+                                                                          Text(
+                                                                            "${dispute[index].cusCode}-",
+                                                                            style:
+                                                                                kfontstyle(
+                                                                              fontSize: 11.sp,
+                                                                              color: const Color(0xff2C6B9E),
+                                                                            ),
+                                                                          ),
+                                                                          Expanded(
+                                                                            child:
+                                                                                Text(
+                                                                              overflow: TextOverflow.ellipsis,
+                                                                              dispute[index].cusName ?? '',
+                                                                              style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                      Text(
+                                                                        dispute[index].date ??
+                                                                            '',
+                                                                        style: kfontstyle(
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                            color: Colors.grey),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: dispute[index].status ==
+                                                                            'Requested'
+                                                                        ? const Color(
+                                                                            0xfff7f4e2)
+                                                                        : const Color(
+                                                                            0xffe3f7e2),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                      20,
+                                                                    ),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            8,
+                                                                        vertical:
+                                                                            5),
+                                                                    child: Text(
+                                                                      dispute[index]
+                                                                              .status ??
+                                                                          '',
+                                                                      style: kfontstyle(
+                                                                          fontSize: 10
+                                                                              .sp,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Colors.black54),
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                            separatorBuilder:
+                                                (context, index) => Divider(
+                                                      color: Colors.grey[300],
+                                                    ),
+                                            itemCount: dispute.length)),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                    separatorBuilder: (context, index) => Divider(
-                          color: Colors.grey[300],
-                        ),
-                    itemCount: 10)),
+                    merchDisputeNoteDataFailed: () => const Center(
+                          child: Text('No Data Available'),
+                        ));
+              },
+            ),
           ),
         ]));
   }

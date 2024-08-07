@@ -37,8 +37,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
   String selectedMode = "AL";
   @override
   void initState() {
-    super.initState();
-    selectedMode = "Al";
+    
+    selectedMode = "AL";
     taskHeaderSearchCtrl.clear();
 
     context.read<MerchandTaskHeaderBloc>().add(const TaskHeaderClearEvent());
@@ -51,6 +51,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                 .text, //"2024-08-06",//widget.todatecontroller.text,
             status: "AL"),
         searchQuery: ''));
+        super.initState();
   }
 
   @override
@@ -251,7 +252,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                 )
                               : tasksheader.isEmpty
                                   ? const Center(
-                                      child: Text('No Data Available'),
+                                      child: Text('No Data Available here '),
                                     )
                                   : Column(
                                       children: [
@@ -263,12 +264,20 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "All Tasks",
-                                                // _selectedPriceChangeMode == 'P'
-                                                //     ? 'Pending Approvals'
-                                                //     : 'Approved Requests',
+                                                selectedMode == 'AL'
+                                                    ? 'All Tasks'
+                                                    : selectedMode == 'C'
+                                                        ? 'Completed Tasks'
+                                                        : 'Pending Tasks',
                                                 style: countHeading(),
                                               ),
+                                              // Text(
+                                              //   "All Tasks",
+                                              //   // _selectedPriceChangeMode == 'P'
+                                              //   //     ? 'Pending Approvals'
+                                              //   //     : 'Approved Requests',
+                                              //   style: countHeading(),
+                                              // ),
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(
@@ -316,14 +325,14 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                      "${tasksheader[index].cusName}",
-                                                                      //"40047977 - New task 01",
+                                                                      "${tasksheader[index].taskCode}-${tasksheader[index].taskName}"
+                                                                      ,
                                                                       style:
                                                                           blueTextStyle()),
                                                                   Row(
                                                                     children: [
                                                                       Text(
-                                                                        "${tasksheader[index].cusCode}",
+                                                                        "${tasksheader[index].cusCode}-",
                                                                         //"201232-",
                                                                         style:
                                                                             kfontstyle(
@@ -336,54 +345,53 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                       Expanded(
                                                                         child: Text(
                                                                             overflow: TextOverflow.ellipsis,
-                                                                            "${tasksheader[index].taskName}",
+                                                                            "${tasksheader[index].cusName}",
                                                                             // "Emmerch International Hotel",
                                                                             style: subTitleTextStyle()),
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  // Text(
-                                                                  //   overflow:
-                                                                  //       TextOverflow
-                                                                  //           .ellipsis,
-                                                                  //  "",
-                                                                  //   style: kfontstyle(
-                                                                  //       fontSize: 12.sp,
-                                                                  //       color: const Color(
-                                                                  //           0xff413434)),
-                                                                  // ),
-                                                                  Text(
-                                                                    "Due on:${tasksheader[index].dueOn} |"
-                                                                    "Completed on: ${tasksheader[index].compOn}",
-                                                                    // "Due on: 01 Aug 2024 | Completed on: 05 Aug 2024",
-                                                                    style: kfontstyle(
-                                                                        fontSize: 9
-                                                                            .sp,
-                                                                        color: Colors
-                                                                            .grey),
-                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        "Due on:${tasksheader[index].dueOn}",
+                                                                        style: kfontstyle(
+                                                                            fontSize:
+                                                                                9.sp,
+                                                                            color: Colors.grey),
+                                                                      ),
+                                                                      Visibility(
+                                                                        visible: tasksheader[index].status ==
+                                                                                "C"
+                                                                            ? true
+                                                                            : false,
+                                                                        child:
+                                                                            Text(
+                                                                          "| Completed on: ${tasksheader[index].compOn}",
+                                                                          style: kfontstyle(
+                                                                              fontSize: 9.sp,
+                                                                              color: Colors.grey),
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  )
                                                                 ],
                                                               ),
                                                             ),
                                                             Container(
-                                                              // height: 10.h,
-                                                              // width: 10.h,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: const Color(
-                                                                    0xffe3f7e2),
-                                                                // color: pChange[index]
-                                                                //             .pchApprovalStatus! ==
-                                                                //         "Pending"
-                                                                //     ? const Color(
-                                                                //         0xfff7f4e2)
-                                                                //     : pChange[index]
-                                                                //                 .pchApprovalStatus! ==
-                                                                //             "Action Taken"
-                                                                //         ? const Color(
-                                                                //             0xffe3f7e2)
-                                                                //         : Colors
-                                                                //             .red[300],
+                                                                color: tasksheader[index]
+                                                                            .status! ==
+                                                                        "Pending"
+                                                                    ? const Color(
+                                                                        0xfff7f4e2)
+                                                                    : tasksheader[index].status! ==
+                                                                            "Completed"
+                                                                        ? const Color(
+                                                                            0xffe3f7e2)
+                                                                        : Colors
+                                                                            .red[300],
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -412,7 +420,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                   (context, index) => Divider(
                                                         color: Colors.grey[300],
                                                       ),
-                                              itemCount: 10),
+                                              itemCount: tasksheader.length),
                                         ))
                                       ],
                                     )),
