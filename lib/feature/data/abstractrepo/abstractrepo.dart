@@ -62,7 +62,13 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/get_cus_actcount_model/get_cus_actcount_model.dart';
+import 'package:customer_connect/feature/data/models/get_display_count_model/get_display_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_survey_count_model/get_survey_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_count_model/get_task_count_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_header_in_model/get_task_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/get_task_headers_out_model/get_task_headers_out_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approval_resp_model/inventory_reconfirm_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_detail_model/inventory_reconfirm_detail_model.dart';
@@ -91,8 +97,11 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/merch_cu_service_count_model/merch_cu_service_count_model.dart';
+import 'package:customer_connect/feature/data/models/merch_credit_note_request_model/merch_credit_note_request_model.dart';
 import 'package:customer_connect/feature/data/models/merch_customer_activities_model/merch_customer_activities_model.dart';
 import 'package:customer_connect/feature/data/models/merch_customer_request_header_model/merch_customer_request_header_model.dart';
+import 'package:customer_connect/feature/data/models/merch_return_request_model/merch_return_request_model.dart';
 import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
 import 'package:customer_connect/feature/data/models/merchandising_display_agreement_mdel/merchandising_display_agreement_mdel.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
@@ -614,6 +623,22 @@ abstract class IVoidTransactionRepo {
       voidTransactionReject(VoidTransacrtionApprovalInModel reject);
 }
 
+abstract class IMerchandisingDashBoardRepo {
+  Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetTaskCountModel>> gettaskcount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetSurveyCountModel>> getsurveycount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetDisplayCountModel>> getdisplaycount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures, GetCusActcountModel>> getCusActCount(
+      String fromDate, String toDate);
+  Future<Either<MainFailures,MerchCuServiceCountModel>>getCusServiceCount(
+     String fromDate,String toDate);    
+      
+}
+
 abstract class ICustomerSettingsRepo {
   Future<Either<MainFailures, CustomerSettingsModel>> getCustomerSettings(
       String userID);
@@ -646,9 +671,9 @@ abstract class IOutOfStockCustomersRepo {
       getOutOfStockCustomersDetail(String cusID);
 }
 
-abstract class IMerchandisingDashBoardRepo {
-  Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount();
-}
+// abstract class IMerchandisingDashBoardRepo {
+//   Future<Either<MainFailures, GetOutOfStockCountModel>> getoutofstockcount();
+// }
 
 abstract class ITargetRepo {
   Future<Either<MainFailures, TargetHeaderCountModel>> targetHeaderCount(
@@ -671,6 +696,11 @@ abstract class ITargetRepo {
 
   Future<Either<MainFailures, List<TargetPackageListModel>>>
       getTargetPackageItems(String fromDate, String rotID, String pkgID);
+}
+
+abstract class IMerchandiseTaskHeaderRepo {
+  Future<Either<MainFailures, List<GetTaskHeadersOutModel>>> getTaskHeader(
+      GetTaskHeaderInModel taskdetails);
 }
 
 abstract class IMerchandinsingSurveyRepo {
@@ -711,5 +741,13 @@ abstract class ITrackSalesManRepo {
 
 abstract class IMerchCustomerRequestRepo {
   Future<Either<MainFailures, List<MerchCustomerRequestHeaderModel>>>
-      getCustomerHEaders(String fromDate, String toDate, String status);
+      getCustomerHEaders(String fromDate, String toDate, String status);}
+abstract class IMerchCreditNoteReqRepo {
+  Future<Either<MainFailures, List<MerchCreditNoteRequestModel>>>
+      getActivityItems(String fromDate, String toDate, String status);
+}
+
+abstract class IMerchReturnReqRepo {
+  Future<Either<MainFailures, List<MerchReturnRequestModel>>> getReturnItems(
+      String fromDate, String toDate, String status);
 }

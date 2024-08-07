@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:customer_connect/constants/fonts.dart';
@@ -780,15 +779,37 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                context
-                                    .read<TrackSalesManListBloc>()
-                                    .add(const ClearsalessmansEvent());
+                                if (_dateController.text.isEmpty ||
+                                    _routeIDCtrl.text.isEmpty) {
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: const Text('Alert'),
+                                      content: const Text(
+                                          "Please make sure you have selected a route and date"),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
+                                          },
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else {
+                                  context
+                                      .read<TrackSalesManListBloc>()
+                                      .add(const ClearsalessmansEvent());
 
-                                context.read<TrackSalesManListBloc>().add(
-                                      GetSalesmanLocationEvent(
-                                          date: _dateController.text,
-                                          rotID: /*  _routeIDCtrl.text */ '44'),
-                                    );
+                                  context.read<TrackSalesManListBloc>().add(
+                                        GetSalesmanLocationEvent(
+                                            date: _dateController.text,
+                                            rotID:
+                                                _routeIDCtrl.text /* '44' */),
+                                      );
+                                }
                               },
                               child: Container(
                                 height: 37.h,
@@ -827,10 +848,30 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  log('message');
-                                  context.read<TrackSalesManListBloc>().add(
-                                      GetAllCustomersLocationEvent(
-                                          date: _dateController.text));
+                                  if (_dateController.text.isEmpty) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text('Alert'),
+                                        content: const Text(
+                                            "Please make sure you have selected a date"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    context.read<TrackSalesManListBloc>().add(
+                                        GetAllCustomersLocationEvent(
+                                            date: _dateController.text));
+                                  }
                                 },
                                 child: Tooltip(
                                   message: 'Track Customers',

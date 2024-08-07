@@ -1,10 +1,15 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
+
 import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandoutofstockdetailscreen.dart';
+
 import 'package:customer_connect/feature/view/merchandising/widget/calenderwidget.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -26,6 +31,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
         '${DateTime.now().year}-${DateTime.now().month}-1';
     todateController.text =
         '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+    context.read<OutofstockcountBloc>().add(const ClearOutOfStockCountEvent());
+
+    context.read<OutofstockcountBloc>().add(GetOutOfStockCountEvent(
+        fromDate: fromdateController.text, toDate: todateController.text));
     super.initState();
   }
 
@@ -59,180 +68,213 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MerchandisingCalender(
-                fromDateController: fromdateController,
-                toDateController: todateController),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              'Inventory Monitoring',
-              style: countHeading(),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.shade200,
-                        spreadRadius: 1.5,
-                        blurRadius: 2)
-                  ]),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/outofstock@2x.png',
-                          height: 28,
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Out Of Stock',
-                            style: kfontstyle(
-                              fontSize: 9.sp,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w500,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 2.h,
+              ),
+              MerchandisingCalender(
+                  fromDateController: fromdateController,
+                  toDateController: todateController),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Inventory Monitoring',
+                style: countHeading(),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Container(
+                width: double.infinity,
+                //height: 80.h,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade200,
+                          spreadRadius: 1.5,
+                          blurRadius: 2)
+                    ]),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //////////////////////////////////
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/outofstock@2x.png',
+                            height: 28,
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Expanded(
+                            child: Text(
+                              'Out Of Stock',
+                              style: kfontstyle(
+                                fontSize: 9.sp,
+                                color: Colors.black87,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        Text('22', style: countHeading())
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 30,
-                          width: 7,
-                          decoration: BoxDecoration(
-                            color: const Color(0xfffee8e0),
-                            borderRadius: BorderRadius.circular(20),
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("0")
+                                          : Text("${count.cusCount}"),
+                                  outOfStockFailedState: () => const Text("0"));
+                            },
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 30,
+                            width: 7,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffee8e0),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OutOfStockScreen(
-                                  fromDateCtrl: fromdateController,
-                                  toDateCtrl: todateController,
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => OutOfStockScreen(
+                                      fromDateCtrl: fromdateController,
+                                      toDateCtrl: todateController,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'OOS Items',
+                                style: kfontstyle(
+                                  fontSize: 8.sp,
+                                  color: Colors.grey.shade600,
                                 ),
                               ),
-                            );
-                          },
-                          child: Text(
-                            'OOS Items',
-                            style: kfontstyle(
-                              fontSize: 8.sp,
-                              color: Colors.grey.shade600,
                             ),
                           ),
-                        ),
-                        Text(
-                          '200',
-                          style: kfontstyle(
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xff413434),
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("0")
+                                          : Text("${count.cusCount}"),
+                                  outOfStockFailedState: () => const Text("0"));
+                            },
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Container(
-                          height: 30,
-                          width: 7,
-                          decoration: BoxDecoration(
-                            color: const Color(0xfffee8e0),
-                            borderRadius: BorderRadius.circular(20),
+                          SizedBox(
+                            width: 10.w,
                           ),
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OutOfCustomerScreen(
-                                  fromDate: fromdateController,
-                                  toDate: todateController,
+                          Container(
+                            height: 30,
+                            width: 7,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffee8e0),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => OutOfCustomerScreen(
+                                      fromDate: fromdateController,
+                                      toDate: todateController,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'OOS Customers',
+                                style: kfontstyle(
+                                  fontSize: 8.sp,
+                                  color: Colors.grey.shade600,
                                 ),
                               ),
-                            );
-                          },
-                          child: Text(
-                            'OOS Customers',
-                            style: kfontstyle(
-                              fontSize: 8.sp,
-                              color: Colors.grey.shade600,
                             ),
                           ),
-                        ),
-                        Text(
-                          '15',
-                          style: kfontstyle(
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xff413434),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("0")
+                                          :
+                                          //counts.saleOrder ?? "",
+                                          Text(count.cusCount ?? ""),
+                                  //Text("${count.cusCount}"),
+                                  outOfStockFailedState: () => const Text("0"));
+                            },
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-            Text(
-              'Outlet Activities',
-              style: countHeading(),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            OutletAcivitiesWidget(
-              fromdatectrl: fromdateController,
-              todatectrl: todateController,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              'Customer Services',
-              style: countHeading(),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            const CustomerServicesWidget()
-          ],
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                'Outlet Activities',
+                style: countHeading(),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              OutletAcivitiesWidget(
+                fromdatecontroller: fromdateController,
+                todatecontroller: todateController,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Customer Services',
+                style: countHeading(),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              CustomerServicesWidget(
+                fromdatecontroller: fromdateController,
+                todatecontroller: fromdateController,
+              )
+            ],
+          ),
         ),
       ),
     );

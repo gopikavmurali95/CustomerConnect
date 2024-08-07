@@ -1,16 +1,35 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/merchcusservicecount/merch_cus_service_count_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/creditnote_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/customer_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/disputenote_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/return_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomerServicesWidget extends StatelessWidget {
-  const CustomerServicesWidget({super.key});
+class CustomerServicesWidget extends StatefulWidget {
+   final TextEditingController fromdatecontroller;
+  final TextEditingController todatecontroller;
+  const CustomerServicesWidget({super.key, required this.fromdatecontroller, required this.todatecontroller});
 
+  @override
+  State<CustomerServicesWidget> createState() => _CustomerServicesWidgetState();
+}
+
+class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
+  @override
+  void initState() {
+    
+    context.read<MerchCusServiceCountBloc>().add(const CusServiceCountClearevent());
+
+     context.read<MerchCusServiceCountBloc>().add(const GetCusserviceCountEvent(
+      fromdate: "2024-1-1",//widget.fromdatecontroller.text,
+       toDate: "2024-8-7",));//widget.todatecontroller.text));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -75,12 +94,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                            BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.newRequest}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         ),
@@ -95,12 +126,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.respondedReq}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         )
@@ -120,7 +163,10 @@ class CustomerServicesWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const MerchandiseCreditNoteRequestScreen()),
+                            MerchandiseCreditNoteRequestScreen(
+                              fromdatectrl: widget.fromdatecontroller,
+                              todatectrl: widget.todatecontroller,
+                            )),
                   );
                 },
                 child: Container(
@@ -169,12 +215,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                            BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.reqCreditNoteReq}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         ),
@@ -189,12 +247,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.approvedCreditNoteReq}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         )
@@ -267,12 +337,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.reqDisputeNoteReq}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         ),
@@ -287,12 +369,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.approvedDisputeNoteReq}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         )
@@ -311,8 +405,10 @@ class CustomerServicesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseReturnRequestScreen()),
+                        builder: (context) => MerchandiseReturnRequestScreen(
+                              fromdatectrl: widget.fromdatecontroller,
+                              todatectrl: widget.todatecontroller,
+                            )),
                   );
                 },
                 child: Container(
@@ -361,12 +457,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.reqReturnRequest}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         ),
@@ -381,12 +489,24 @@ class CustomerServicesWidget extends StatelessWidget {
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
-                            Text(
-                              '200',
-                              style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff413434)),
+                           BlocBuilder<MerchCusServiceCountBloc, MerchCusServiceCountState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  getCusServiceCountState: (cusServicecount) =>
+                                  cusServicecount == null? Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),):
+                                  Text("${cusServicecount.approvedReturnRequest}", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),),
+                                   cusServiceCountFailedstate: () => Text("0", style: kfontstyle(
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff413434)),));
+                               
+                              },
                             )
                           ],
                         )
