@@ -144,99 +144,99 @@ import 'package:customer_connect/feature/domain/repoImpls/vantovanapprovalrepo/v
 import 'package:customer_connect/feature/domain/repoImpls/voidtransactionrepo/voidtransactionrepo.dart'
     as _i67;
 import 'package:customer_connect/feature/state/bloc/activityreviewdetail/activity_review_detail_bloc.dart'
-    as _i168;
-import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart'
     as _i169;
-import 'package:customer_connect/feature/state/bloc/activityreviewtarget/activity_review_targets_bloc.dart'
-    as _i171;
-import 'package:customer_connect/feature/state/bloc/activitysalesdata/activity_review_sales_data_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart'
     as _i170;
-import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart'
-    as _i174;
-import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart'
-    as _i173;
-import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart'
-    as _i175;
-import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart'
-    as _i176;
-import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart'
-    as _i177;
-import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart'
-    as _i178;
-import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart'
-    as _i179;
-import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart'
-    as _i180;
-import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart'
-    as _i181;
-import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart'
-    as _i182;
-import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart'
-    as _i183;
-import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart'
-    as _i184;
-import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart'
-    as _i186;
-import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart'
-    as _i187;
-import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/activityreviewtarget/activity_review_targets_bloc.dart'
     as _i172;
-import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/activitysalesdata/activity_review_sales_data_bloc.dart'
+    as _i171;
+import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart'
+    as _i175;
+import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart'
+    as _i174;
+import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart'
+    as _i176;
+import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_return_product_bloc.dart'
+    as _i177;
+import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart'
+    as _i178;
+import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart'
+    as _i179;
+import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart'
+    as _i180;
+import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart'
+    as _i181;
+import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart'
+    as _i182;
+import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart'
+    as _i183;
+import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart'
+    as _i184;
+import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart'
+    as _i185;
+import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart'
+    as _i187;
+import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart'
     as _i188;
+import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart'
+    as _i173;
+import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart'
+    as _i189;
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart'
-    as _i190;
-import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart'
     as _i191;
-import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart'
     as _i192;
-import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart'
     as _i193;
-import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart'
     as _i194;
-import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart'
     as _i195;
-import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart'
     as _i196;
-import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart'
     as _i197;
-import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart'
     as _i198;
-import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart'
     as _i199;
-import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart'
     as _i200;
-import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart'
     as _i201;
-import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart'
     as _i202;
-import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart'
     as _i203;
-import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart'
     as _i204;
-import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
-    as _i207;
-import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart'
     as _i205;
-import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart'
     as _i208;
-import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart'
     as _i206;
+import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart'
+    as _i209;
+import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart'
+    as _i207;
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart'
-    as _i210;
-import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart'
     as _i211;
-import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart'
     as _i212;
-import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart'
     as _i213;
-import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart'
     as _i214;
-import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart'
     as _i215;
-import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart'
     as _i216;
-import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart'
     as _i217;
+import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart'
+    as _i218;
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmapproval/inventory_reconfirm_approval_bloc.dart'
     as _i71;
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmdetail/inventory_reconfirm_detail_bloc.dart'
@@ -272,7 +272,7 @@ import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_tran
 import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart'
     as _i85;
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart'
-    as _i161;
+    as _i162;
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart'
     as _i89;
 import 'package:customer_connect/feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart'
@@ -282,161 +282,163 @@ import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart'
     as _i92;
 import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart'
-    as _i102;
+    as _i103;
 import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart'
-    as _i101;
+    as _i102;
 import 'package:customer_connect/feature/state/bloc/merchcreditnoterequest/merch_credit_note_request_bloc.dart'
     as _i93;
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart'
     as _i94;
-import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/merchcusservicecount/merch_cus_service_count_bloc.dart'
     as _i95;
-import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart'
     as _i96;
-import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart'
-    as _i103;
-import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart'
     as _i97;
-import 'package:customer_connect/feature/state/bloc/merchreturnrequest/merch_return_request_bloc.dart'
-    as _i98;
-import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart'
-    as _i99;
-import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart'
-    as _i100;
-import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart'
     as _i104;
-import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart'
+    as _i98;
+import 'package:customer_connect/feature/state/bloc/merchreturnrequest/merch_return_request_bloc.dart'
+    as _i99;
+import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart'
+    as _i100;
+import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart'
+    as _i101;
+import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart'
     as _i105;
-import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart'
     as _i106;
-import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart'
     as _i107;
-import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart'
-    as _i109;
-import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart'
-    as _i110;
-import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart'
     as _i108;
-import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart'
-    as _i113;
-import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart'
+    as _i110;
+import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart'
     as _i111;
-import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart'
-    as _i112;
-import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart'
+    as _i109;
+import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart'
     as _i114;
-import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart'
+    as _i112;
+import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart'
+    as _i113;
+import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart'
     as _i115;
-import 'package:customer_connect/feature/state/bloc/partialdeliverydetail/partial_delivery_detail_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart'
     as _i116;
-import 'package:customer_connect/feature/state/bloc/partialdeliverydetailsbloc/partial_delivery_details_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/partialdeliverydetail/partial_delivery_detail_bloc.dart'
     as _i117;
-import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/partialdeliverydetailsbloc/partial_delivery_details_bloc.dart'
     as _i118;
-import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart'
     as _i119;
+import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart'
+    as _i120;
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart'
-    as _i121;
-import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart'
-    as _i123;
-import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart'
     as _i122;
-import 'package:customer_connect/feature/state/bloc/plannedvisits/chart_planned_visits_bloc.dart'
-    as _i185;
-import 'package:customer_connect/feature/state/bloc/pricechangedetails/price_change_details_bloc.dart'
-    as _i125;
-import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart'
-    as _i126;
-import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart'
-    as _i127;
-import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart'
-    as _i128;
-import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart'
-    as _i129;
-import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart'
-    as _i130;
-import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart'
-    as _i131;
-import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart'
-    as _i134;
-import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart'
-    as _i133;
-import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart'
-    as _i136;
-import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart'
-    as _i137;
-import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart'
-    as _i138;
-import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart'
-    as _i139;
-import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart'
-    as _i140;
-import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart'
-    as _i141;
-import 'package:customer_connect/feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart'
     as _i124;
-import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart'
-    as _i142;
-import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart'
-    as _i145;
-import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart'
-    as _i144;
-import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart'
-    as _i143;
-import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart'
-    as _i146;
-import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart'
-    as _i148;
-import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart'
-    as _i147;
-import 'package:customer_connect/feature/state/bloc/targetdetailcount/target_details_count_bloc.dart'
-    as _i150;
-import 'package:customer_connect/feature/state/bloc/targetdetailsgraphamt/target_details_graph_amt_bloc.dart'
-    as _i151;
-import 'package:customer_connect/feature/state/bloc/targetdetailsgraphqty/rarget_details_graph_qty_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart'
+    as _i123;
+import 'package:customer_connect/feature/state/bloc/plannedvisits/chart_planned_visits_bloc.dart'
+    as _i186;
+import 'package:customer_connect/feature/state/bloc/pricechangedetails/price_change_details_bloc.dart'
+    as _i126;
+import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart'
+    as _i127;
+import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart'
+    as _i128;
+import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart'
+    as _i129;
+import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_details_bloc.dart'
+    as _i130;
+import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_header_bloc.dart'
+    as _i131;
+import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart'
     as _i132;
-import 'package:customer_connect/feature/state/bloc/targetdetailslist/target_details_list_bloc.dart'
-    as _i152;
-import 'package:customer_connect/feature/state/bloc/targetheadercount/target_header_count_bloc.dart'
-    as _i153;
-import 'package:customer_connect/feature/state/bloc/targetheaderlist/targer_header_list_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/returnapproval/return_approval_header_bloc.dart'
+    as _i135;
+import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart'
+    as _i134;
+import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart'
+    as _i137;
+import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart'
+    as _i138;
+import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart'
+    as _i139;
+import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart'
+    as _i140;
+import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart'
+    as _i141;
+import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart'
+    as _i142;
+import 'package:customer_connect/feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart'
+    as _i125;
+import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart'
+    as _i143;
+import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart'
+    as _i146;
+import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart'
+    as _i145;
+import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart'
+    as _i144;
+import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart'
+    as _i147;
+import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart'
     as _i149;
-import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart'
+    as _i148;
+import 'package:customer_connect/feature/state/bloc/targetdetailcount/target_details_count_bloc.dart'
+    as _i151;
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphamt/target_details_graph_amt_bloc.dart'
+    as _i152;
+import 'package:customer_connect/feature/state/bloc/targetdetailsgraphqty/rarget_details_graph_qty_bloc.dart'
+    as _i133;
+import 'package:customer_connect/feature/state/bloc/targetdetailslist/target_details_list_bloc.dart'
+    as _i153;
+import 'package:customer_connect/feature/state/bloc/targetheadercount/target_header_count_bloc.dart'
     as _i154;
-import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart'
-    as _i156;
-import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/targetheaderlist/targer_header_list_bloc.dart'
+    as _i150;
+import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart'
     as _i155;
-import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart'
     as _i157;
-import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart'
+    as _i156;
+import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart'
     as _i158;
-import 'package:customer_connect/feature/state/bloc/tracksalesmanlist/track_sales_man_list_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart'
     as _i159;
+import 'package:customer_connect/feature/state/bloc/tracksalesmanlist/track_sales_man_list_bloc.dart'
+    as _i160;
 import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart'
-    as _i162;
-import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart'
     as _i163;
-import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart'
     as _i164;
-import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart'
     as _i165;
-import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart'
     as _i166;
-import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart'
+import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart'
     as _i167;
+import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart'
+    as _i168;
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart'
-    as _i189;
+    as _i190;
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart'
-    as _i209;
+    as _i210;
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart'
     as _i74;
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart'
-    as _i120;
+    as _i121;
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart'
-    as _i135;
+    as _i136;
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart'
-    as _i160;
+    as _i161;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -602,268 +604,270 @@ extension GetItInjectableX on _i1.GetIt {
         _i93.MerchCreditNoteRequestBloc(gh<_i3.IMerchCreditNoteReqRepo>()));
     gh.factory<_i94.MerchCusActCountBloc>(
         () => _i94.MerchCusActCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
-    gh.factory<_i95.MerchCustomerActivitiesBloc>(() =>
-        _i95.MerchCustomerActivitiesBloc(
+    gh.factory<_i95.MerchCusServiceCountBloc>(() =>
+        _i95.MerchCusServiceCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
+    gh.factory<_i96.MerchCustomerActivitiesBloc>(() =>
+        _i96.MerchCustomerActivitiesBloc(
             gh<_i3.IMerchCustomerActivitiesRepo>()));
-    gh.factory<_i96.MerchDisplayAgreementBloc>(
-        () => _i96.MerchDisplayAgreementBloc(gh<_i3.IMerchDisplayAgreement>()));
-    gh.factory<_i97.MerchDisputeNoteReqBloc>(
-        () => _i97.MerchDisputeNoteReqBloc(gh<_i3.IMerchDisputeReqRepo>()));
-    gh.factory<_i98.MerchReturnRequestBloc>(
-        () => _i98.MerchReturnRequestBloc(gh<_i3.IMerchReturnReqRepo>()));
-    gh.factory<_i99.MerchSurveyCountBloc>(
-        () => _i99.MerchSurveyCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
-    gh.factory<_i100.MerchTaskCountBloc>(
-        () => _i100.MerchTaskCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
-    gh.factory<_i101.MerchandTaskHeaderBloc>(() =>
-        _i101.MerchandTaskHeaderBloc(gh<_i3.IMerchandiseTaskHeaderRepo>()));
-    gh.factory<_i102.MerchandisingSurveyBloc>(() =>
-        _i102.MerchandisingSurveyBloc(gh<_i3.IMerchandinsingSurveyRepo>()));
-    gh.factory<_i103.MerchdisplaycountBloc>(() =>
-        _i103.MerchdisplaycountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
-    gh.factory<_i104.MessagesBloc>(
-        () => _i104.MessagesBloc(gh<_i9.IMessageRepo>()));
-    gh.factory<_i105.MustSellApproveBloc>(
-        () => _i105.MustSellApproveBloc(gh<_i3.IMustSellRepo>()));
-    gh.factory<_i106.MustSellDetailBloc>(
-        () => _i106.MustSellDetailBloc(gh<_i3.IMustSellRepo>()));
-    gh.factory<_i107.MustSellHeaderBloc>(
-        () => _i107.MustSellHeaderBloc(gh<_i3.IMustSellRepo>()));
-    gh.factory<_i108.NotiReadFlagUpdateBloc>(
-        () => _i108.NotiReadFlagUpdateBloc(gh<_i3.INotificationRepo>()));
-    gh.factory<_i109.NotificationListingBloc>(
-        () => _i109.NotificationListingBloc(gh<_i3.INotificationRepo>()));
-    gh.factory<_i110.NotificationReplayBlocBloc>(
-        () => _i110.NotificationReplayBlocBloc(gh<_i3.INotificationRepo>()));
-    gh.factory<_i111.OutOfStockItemCustomersBloc>(() =>
-        _i111.OutOfStockItemCustomersBloc(gh<_i3.IOutOfStockProductsRepo>()));
-    gh.factory<_i112.OutOfStockItemsBloc>(
-        () => _i112.OutOfStockItemsBloc(gh<_i3.IOutOfStockProductsRepo>()));
-    gh.factory<_i113.OutofstockcountBloc>(
-        () => _i113.OutofstockcountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
-    gh.factory<_i114.OutstandingBloc>(
-        () => _i114.OutstandingBloc(gh<_i3.IOutStandingHeaderRepo>()));
-    gh.factory<_i115.PartialDeliveryApprovalBloc>(() =>
-        _i115.PartialDeliveryApprovalBloc(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i116.PartialDeliveryDetailBloc>(
-        () => _i116.PartialDeliveryDetailBloc(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i117.PartialDeliveryDetailsBloc>(
-        () => _i117.PartialDeliveryDetailsBloc(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i118.PartialDeliveryHeaderBloc>(
-        () => _i118.PartialDeliveryHeaderBloc(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i119.PartialDeliveryReasonBloc>(
-        () => _i119.PartialDeliveryReasonBloc(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i120.PartialDeliveryReasonCubit>(
-        () => _i120.PartialDeliveryReasonCubit(gh<_i3.IPartialDeliveryRepo>()));
-    gh.factory<_i121.PickingAndLoadingCountBloc>(() =>
-        _i121.PickingAndLoadingCountBloc(gh<_i3.IPickingAndLoadinCountRepo>()));
-    gh.factory<_i122.PickingHeaderBloc>(
-        () => _i122.PickingHeaderBloc(gh<_i3.IPickingHeaderRepo>()));
-    gh.factory<_i123.PickingdetailBloc>(
-        () => _i123.PickingdetailBloc(gh<_i3.IPickingHeaderRepo>()));
-    gh.factory<_i124.PostSettlementApprovalBloc>(() =>
-        _i124.PostSettlementApprovalBloc(
+    gh.factory<_i97.MerchDisplayAgreementBloc>(
+        () => _i97.MerchDisplayAgreementBloc(gh<_i3.IMerchDisplayAgreement>()));
+    gh.factory<_i98.MerchDisputeNoteReqBloc>(
+        () => _i98.MerchDisputeNoteReqBloc(gh<_i3.IMerchDisputeReqRepo>()));
+    gh.factory<_i99.MerchReturnRequestBloc>(
+        () => _i99.MerchReturnRequestBloc(gh<_i3.IMerchReturnReqRepo>()));
+    gh.factory<_i100.MerchSurveyCountBloc>(() =>
+        _i100.MerchSurveyCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
+    gh.factory<_i101.MerchTaskCountBloc>(
+        () => _i101.MerchTaskCountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
+    gh.factory<_i102.MerchandTaskHeaderBloc>(() =>
+        _i102.MerchandTaskHeaderBloc(gh<_i3.IMerchandiseTaskHeaderRepo>()));
+    gh.factory<_i103.MerchandisingSurveyBloc>(() =>
+        _i103.MerchandisingSurveyBloc(gh<_i3.IMerchandinsingSurveyRepo>()));
+    gh.factory<_i104.MerchdisplaycountBloc>(() =>
+        _i104.MerchdisplaycountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
+    gh.factory<_i105.MessagesBloc>(
+        () => _i105.MessagesBloc(gh<_i9.IMessageRepo>()));
+    gh.factory<_i106.MustSellApproveBloc>(
+        () => _i106.MustSellApproveBloc(gh<_i3.IMustSellRepo>()));
+    gh.factory<_i107.MustSellDetailBloc>(
+        () => _i107.MustSellDetailBloc(gh<_i3.IMustSellRepo>()));
+    gh.factory<_i108.MustSellHeaderBloc>(
+        () => _i108.MustSellHeaderBloc(gh<_i3.IMustSellRepo>()));
+    gh.factory<_i109.NotiReadFlagUpdateBloc>(
+        () => _i109.NotiReadFlagUpdateBloc(gh<_i3.INotificationRepo>()));
+    gh.factory<_i110.NotificationListingBloc>(
+        () => _i110.NotificationListingBloc(gh<_i3.INotificationRepo>()));
+    gh.factory<_i111.NotificationReplayBlocBloc>(
+        () => _i111.NotificationReplayBlocBloc(gh<_i3.INotificationRepo>()));
+    gh.factory<_i112.OutOfStockItemCustomersBloc>(() =>
+        _i112.OutOfStockItemCustomersBloc(gh<_i3.IOutOfStockProductsRepo>()));
+    gh.factory<_i113.OutOfStockItemsBloc>(
+        () => _i113.OutOfStockItemsBloc(gh<_i3.IOutOfStockProductsRepo>()));
+    gh.factory<_i114.OutofstockcountBloc>(
+        () => _i114.OutofstockcountBloc(gh<_i3.IMerchandisingDashBoardRepo>()));
+    gh.factory<_i115.OutstandingBloc>(
+        () => _i115.OutstandingBloc(gh<_i3.IOutStandingHeaderRepo>()));
+    gh.factory<_i116.PartialDeliveryApprovalBloc>(() =>
+        _i116.PartialDeliveryApprovalBloc(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i117.PartialDeliveryDetailBloc>(
+        () => _i117.PartialDeliveryDetailBloc(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i118.PartialDeliveryDetailsBloc>(
+        () => _i118.PartialDeliveryDetailsBloc(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i119.PartialDeliveryHeaderBloc>(
+        () => _i119.PartialDeliveryHeaderBloc(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i120.PartialDeliveryReasonBloc>(
+        () => _i120.PartialDeliveryReasonBloc(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i121.PartialDeliveryReasonCubit>(
+        () => _i121.PartialDeliveryReasonCubit(gh<_i3.IPartialDeliveryRepo>()));
+    gh.factory<_i122.PickingAndLoadingCountBloc>(() =>
+        _i122.PickingAndLoadingCountBloc(gh<_i3.IPickingAndLoadinCountRepo>()));
+    gh.factory<_i123.PickingHeaderBloc>(
+        () => _i123.PickingHeaderBloc(gh<_i3.IPickingHeaderRepo>()));
+    gh.factory<_i124.PickingdetailBloc>(
+        () => _i124.PickingdetailBloc(gh<_i3.IPickingHeaderRepo>()));
+    gh.factory<_i125.PostSettlementApprovalBloc>(() =>
+        _i125.PostSettlementApprovalBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i125.PriceChangeDetailsBloc>(
-        () => _i125.PriceChangeDetailsBloc(gh<_i3.IPriceChangeRepo>()));
-    gh.factory<_i126.PriceChangeHeaderBloc>(
-        () => _i126.PriceChangeHeaderBloc(gh<_i3.IPriceChangeRepo>()));
-    gh.factory<_i127.PriceChangeReasonsBloc>(
-        () => _i127.PriceChangeReasonsBloc(gh<_i3.IPriceChangeRepo>()));
-    gh.factory<_i128.PromotionCustomerBloc>(
-        () => _i128.PromotionCustomerBloc(gh<_i3.IPromotionHeaderRepo>()));
-    gh.factory<_i129.PromotionDetailsBloc>(
-        () => _i129.PromotionDetailsBloc(gh<_i3.IPromotionHeaderRepo>()));
-    gh.factory<_i130.PromotionHeaderBloc>(
-        () => _i130.PromotionHeaderBloc(gh<_i3.IPromotionHeaderRepo>()));
-    gh.factory<_i131.QualificationGroupBloc>(
-        () => _i131.QualificationGroupBloc(gh<_i3.IQualificationGroupRepo>()));
-    gh.factory<_i132.RargetDetailsGraphQtyBloc>(
-        () => _i132.RargetDetailsGraphQtyBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i133.ReturnApprovalDetailBloc>(
-        () => _i133.ReturnApprovalDetailBloc(gh<_i3.IReturnApprovalRepo>()));
-    gh.factory<_i134.ReturnApprovalHeaderBloc>(
-        () => _i134.ReturnApprovalHeaderBloc(gh<_i3.IReturnApprovalRepo>()));
-    gh.factory<_i135.RouteForScCubit>(
-        () => _i135.RouteForScCubit(gh<_i3.IScheduledReturnApprovalRepo>()));
-    gh.factory<_i136.SalesOrderCountBloc>(
-        () => _i136.SalesOrderCountBloc(gh<_i3.ISalesOrderRepo>()));
-    gh.factory<_i137.SalesOrderDetailsBloc>(
-        () => _i137.SalesOrderDetailsBloc(gh<_i3.ISalesOrdersRepo>()));
-    gh.factory<_i138.SchduledReturnApprovalBloc>(() =>
-        _i138.SchduledReturnApprovalBloc(
+    gh.factory<_i126.PriceChangeDetailsBloc>(
+        () => _i126.PriceChangeDetailsBloc(gh<_i3.IPriceChangeRepo>()));
+    gh.factory<_i127.PriceChangeHeaderBloc>(
+        () => _i127.PriceChangeHeaderBloc(gh<_i3.IPriceChangeRepo>()));
+    gh.factory<_i128.PriceChangeReasonsBloc>(
+        () => _i128.PriceChangeReasonsBloc(gh<_i3.IPriceChangeRepo>()));
+    gh.factory<_i129.PromotionCustomerBloc>(
+        () => _i129.PromotionCustomerBloc(gh<_i3.IPromotionHeaderRepo>()));
+    gh.factory<_i130.PromotionDetailsBloc>(
+        () => _i130.PromotionDetailsBloc(gh<_i3.IPromotionHeaderRepo>()));
+    gh.factory<_i131.PromotionHeaderBloc>(
+        () => _i131.PromotionHeaderBloc(gh<_i3.IPromotionHeaderRepo>()));
+    gh.factory<_i132.QualificationGroupBloc>(
+        () => _i132.QualificationGroupBloc(gh<_i3.IQualificationGroupRepo>()));
+    gh.factory<_i133.RargetDetailsGraphQtyBloc>(
+        () => _i133.RargetDetailsGraphQtyBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i134.ReturnApprovalDetailBloc>(
+        () => _i134.ReturnApprovalDetailBloc(gh<_i3.IReturnApprovalRepo>()));
+    gh.factory<_i135.ReturnApprovalHeaderBloc>(
+        () => _i135.ReturnApprovalHeaderBloc(gh<_i3.IReturnApprovalRepo>()));
+    gh.factory<_i136.RouteForScCubit>(
+        () => _i136.RouteForScCubit(gh<_i3.IScheduledReturnApprovalRepo>()));
+    gh.factory<_i137.SalesOrderCountBloc>(
+        () => _i137.SalesOrderCountBloc(gh<_i3.ISalesOrderRepo>()));
+    gh.factory<_i138.SalesOrderDetailsBloc>(
+        () => _i138.SalesOrderDetailsBloc(gh<_i3.ISalesOrdersRepo>()));
+    gh.factory<_i139.SchduledReturnApprovalBloc>(() =>
+        _i139.SchduledReturnApprovalBloc(
             gh<_i3.IScheduledReturnApprovalRepo>()));
-    gh.factory<_i139.SchduledReturnHeaderBloc>(() =>
-        _i139.SchduledReturnHeaderBloc(gh<_i3.IScheduledReturnApprovalRepo>()));
-    gh.factory<_i140.ScheduledReturnDetailsBloc>(() =>
-        _i140.ScheduledReturnDetailsBloc(
+    gh.factory<_i140.SchduledReturnHeaderBloc>(() =>
+        _i140.SchduledReturnHeaderBloc(gh<_i3.IScheduledReturnApprovalRepo>()));
+    gh.factory<_i141.ScheduledReturnDetailsBloc>(() =>
+        _i141.ScheduledReturnDetailsBloc(
             gh<_i3.IScheduledReturnApprovalRepo>()));
-    gh.factory<_i141.SettlementApprovalHeaderBloc>(() =>
-        _i141.SettlementApprovalHeaderBloc(
+    gh.factory<_i142.SettlementApprovalHeaderBloc>(() =>
+        _i142.SettlementApprovalHeaderBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i142.SettlementApprovalRejectBloc>(() =>
-        _i142.SettlementApprovalRejectBloc(
+    gh.factory<_i143.SettlementApprovalRejectBloc>(() =>
+        _i143.SettlementApprovalRejectBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i143.SettlementCashDetailsBloc>(() =>
-        _i143.SettlementCashDetailsBloc(
+    gh.factory<_i144.SettlementCashDetailsBloc>(() =>
+        _i144.SettlementCashDetailsBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i144.SettlementPayModeDetailBloc>(() =>
-        _i144.SettlementPayModeDetailBloc(
+    gh.factory<_i145.SettlementPayModeDetailBloc>(() =>
+        _i145.SettlementPayModeDetailBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i145.SettlementPaymentDetailBloc>(() =>
-        _i145.SettlementPaymentDetailBloc(
+    gh.factory<_i146.SettlementPaymentDetailBloc>(() =>
+        _i146.SettlementPaymentDetailBloc(
             gh<_i3.ISettlementApprovalHeaderRepo>()));
-    gh.factory<_i146.SpecialPriceCustomersBloc>(
-        () => _i146.SpecialPriceCustomersBloc(gh<_i3.ISpecialPriceRepo>()));
-    gh.factory<_i147.SpecialPriceDetailsBloc>(
-        () => _i147.SpecialPriceDetailsBloc(gh<_i3.ISpecialPriceRepo>()));
-    gh.factory<_i148.SpecialPriceHeaderBloc>(
-        () => _i148.SpecialPriceHeaderBloc(gh<_i3.ISpecialPriceRepo>()));
-    gh.factory<_i149.TargerHeaderListBloc>(
-        () => _i149.TargerHeaderListBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i150.TargetDetailsCountBloc>(
-        () => _i150.TargetDetailsCountBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i151.TargetDetailsGraphAmtBloc>(
-        () => _i151.TargetDetailsGraphAmtBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i152.TargetDetailsListBloc>(
-        () => _i152.TargetDetailsListBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i153.TargetHeaderCountBloc>(
-        () => _i153.TargetHeaderCountBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i154.TargetPackageListBloc>(
-        () => _i154.TargetPackageListBloc(gh<_i3.ITargetRepo>()));
-    gh.factory<_i155.TodaysDeliveryDetailsBloc>(
-        () => _i155.TodaysDeliveryDetailsBloc(gh<_i3.ITodaysDeliveryRepo>()));
-    gh.factory<_i156.TodaysDeliveryHeaderBloc>(
-        () => _i156.TodaysDeliveryHeaderBloc(gh<_i3.ITodaysDeliveryRepo>()));
-    gh.factory<_i157.TotalOrdersDetailsBloc>(
-        () => _i157.TotalOrdersDetailsBloc(gh<_i3.ITotalOrdersRepo>()));
-    gh.factory<_i158.TotalOrdersHeaderBloc>(
-        () => _i158.TotalOrdersHeaderBloc(gh<_i3.ITotalOrdersRepo>()));
-    gh.factory<_i159.TrackSalesManListBloc>(
-        () => _i159.TrackSalesManListBloc(gh<_i3.ITrackSalesManRepo>()));
-    gh.factory<_i160.UpdateGeoLocationCubit>(
-        () => _i160.UpdateGeoLocationCubit(gh<_i3.ICusGeoLocationRepo>()));
-    gh.factory<_i161.UserLoginBloc>(
-        () => _i161.UserLoginBloc(gh<_i3.ILoginRepo>()));
-    gh.factory<_i162.VanToVanApprovalBloc>(
-        () => _i162.VanToVanApprovalBloc(gh<_i3.IVanToVanApprovalRepo>()));
-    gh.factory<_i163.VanToVanDetailsBloc>(
-        () => _i163.VanToVanDetailsBloc(gh<_i3.IVanToVanApprovalRepo>()));
-    gh.factory<_i164.VanToVanHeaderBloc>(
-        () => _i164.VanToVanHeaderBloc(gh<_i3.IVanToVanApprovalRepo>()));
-    gh.factory<_i165.VoidTransactionApprovalBloc>(() =>
-        _i165.VoidTransactionApprovalBloc(gh<_i3.IVoidTransactionRepo>()));
-    gh.factory<_i166.VoidTransactionHeaderBloc>(
-        () => _i166.VoidTransactionHeaderBloc(gh<_i3.IVoidTransactionRepo>()));
-    gh.factory<_i167.VoidTransactionRejectionBloc>(() =>
-        _i167.VoidTransactionRejectionBloc(gh<_i3.IVoidTransactionRepo>()));
-    gh.factory<_i168.ActivityReviewDetailBloc>(
-        () => _i168.ActivityReviewDetailBloc(gh<_i3.IActivityReviewRepo>()));
-    gh.factory<_i169.ActivityReviewHeaderBloc>(
-        () => _i169.ActivityReviewHeaderBloc(gh<_i3.IActivityReviewRepo>()));
-    gh.factory<_i170.ActivityReviewSalesDataBloc>(
-        () => _i170.ActivityReviewSalesDataBloc(gh<_i3.IActivityReviewRepo>()));
-    gh.factory<_i171.ActivityReviewTargetsBloc>(
-        () => _i171.ActivityReviewTargetsBloc(gh<_i3.IActivityReviewRepo>()));
-    gh.factory<_i172.AllUsersBloc>(
-        () => _i172.AllUsersBloc(gh<_i9.IChatUserRepo>()));
-    gh.factory<_i173.ApprovalCountsBloc>(
-        () => _i173.ApprovalCountsBloc(gh<_i3.IApprovalCountsRepo>()));
-    gh.factory<_i174.ApprovalReasonsBloc>(
-        () => _i174.ApprovalReasonsBloc(gh<_i3.IReturnApprovalRepo>()));
-    gh.factory<_i175.ApprovePriceChangeBloc>(
-        () => _i175.ApprovePriceChangeBloc(gh<_i3.IPriceChangeRepo>()));
-    gh.factory<_i176.ApproveReturnProductBloc>(
-        () => _i176.ApproveReturnProductBloc(gh<_i3.IReturnApprovalRepo>()));
-    gh.factory<_i177.ArDetailsBloc>(
-        () => _i177.ArDetailsBloc(gh<_i3.IArCollectionRepo>()));
-    gh.factory<_i178.ArHeaderBloc>(
-        () => _i178.ArHeaderBloc(gh<_i3.IArCollectionRepo>()));
-    gh.factory<_i179.AssetAddInApprovalHeaderBloc>(() =>
-        _i179.AssetAddInApprovalHeaderBloc(gh<_i3.IAssetAddApprovalRepo>()));
-    gh.factory<_i180.AssetAddingApprovalAndRjectBlocBloc>(() =>
-        _i180.AssetAddingApprovalAndRjectBlocBloc(
+    gh.factory<_i147.SpecialPriceCustomersBloc>(
+        () => _i147.SpecialPriceCustomersBloc(gh<_i3.ISpecialPriceRepo>()));
+    gh.factory<_i148.SpecialPriceDetailsBloc>(
+        () => _i148.SpecialPriceDetailsBloc(gh<_i3.ISpecialPriceRepo>()));
+    gh.factory<_i149.SpecialPriceHeaderBloc>(
+        () => _i149.SpecialPriceHeaderBloc(gh<_i3.ISpecialPriceRepo>()));
+    gh.factory<_i150.TargerHeaderListBloc>(
+        () => _i150.TargerHeaderListBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i151.TargetDetailsCountBloc>(
+        () => _i151.TargetDetailsCountBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i152.TargetDetailsGraphAmtBloc>(
+        () => _i152.TargetDetailsGraphAmtBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i153.TargetDetailsListBloc>(
+        () => _i153.TargetDetailsListBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i154.TargetHeaderCountBloc>(
+        () => _i154.TargetHeaderCountBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i155.TargetPackageListBloc>(
+        () => _i155.TargetPackageListBloc(gh<_i3.ITargetRepo>()));
+    gh.factory<_i156.TodaysDeliveryDetailsBloc>(
+        () => _i156.TodaysDeliveryDetailsBloc(gh<_i3.ITodaysDeliveryRepo>()));
+    gh.factory<_i157.TodaysDeliveryHeaderBloc>(
+        () => _i157.TodaysDeliveryHeaderBloc(gh<_i3.ITodaysDeliveryRepo>()));
+    gh.factory<_i158.TotalOrdersDetailsBloc>(
+        () => _i158.TotalOrdersDetailsBloc(gh<_i3.ITotalOrdersRepo>()));
+    gh.factory<_i159.TotalOrdersHeaderBloc>(
+        () => _i159.TotalOrdersHeaderBloc(gh<_i3.ITotalOrdersRepo>()));
+    gh.factory<_i160.TrackSalesManListBloc>(
+        () => _i160.TrackSalesManListBloc(gh<_i3.ITrackSalesManRepo>()));
+    gh.factory<_i161.UpdateGeoLocationCubit>(
+        () => _i161.UpdateGeoLocationCubit(gh<_i3.ICusGeoLocationRepo>()));
+    gh.factory<_i162.UserLoginBloc>(
+        () => _i162.UserLoginBloc(gh<_i3.ILoginRepo>()));
+    gh.factory<_i163.VanToVanApprovalBloc>(
+        () => _i163.VanToVanApprovalBloc(gh<_i3.IVanToVanApprovalRepo>()));
+    gh.factory<_i164.VanToVanDetailsBloc>(
+        () => _i164.VanToVanDetailsBloc(gh<_i3.IVanToVanApprovalRepo>()));
+    gh.factory<_i165.VanToVanHeaderBloc>(
+        () => _i165.VanToVanHeaderBloc(gh<_i3.IVanToVanApprovalRepo>()));
+    gh.factory<_i166.VoidTransactionApprovalBloc>(() =>
+        _i166.VoidTransactionApprovalBloc(gh<_i3.IVoidTransactionRepo>()));
+    gh.factory<_i167.VoidTransactionHeaderBloc>(
+        () => _i167.VoidTransactionHeaderBloc(gh<_i3.IVoidTransactionRepo>()));
+    gh.factory<_i168.VoidTransactionRejectionBloc>(() =>
+        _i168.VoidTransactionRejectionBloc(gh<_i3.IVoidTransactionRepo>()));
+    gh.factory<_i169.ActivityReviewDetailBloc>(
+        () => _i169.ActivityReviewDetailBloc(gh<_i3.IActivityReviewRepo>()));
+    gh.factory<_i170.ActivityReviewHeaderBloc>(
+        () => _i170.ActivityReviewHeaderBloc(gh<_i3.IActivityReviewRepo>()));
+    gh.factory<_i171.ActivityReviewSalesDataBloc>(
+        () => _i171.ActivityReviewSalesDataBloc(gh<_i3.IActivityReviewRepo>()));
+    gh.factory<_i172.ActivityReviewTargetsBloc>(
+        () => _i172.ActivityReviewTargetsBloc(gh<_i3.IActivityReviewRepo>()));
+    gh.factory<_i173.AllUsersBloc>(
+        () => _i173.AllUsersBloc(gh<_i9.IChatUserRepo>()));
+    gh.factory<_i174.ApprovalCountsBloc>(
+        () => _i174.ApprovalCountsBloc(gh<_i3.IApprovalCountsRepo>()));
+    gh.factory<_i175.ApprovalReasonsBloc>(
+        () => _i175.ApprovalReasonsBloc(gh<_i3.IReturnApprovalRepo>()));
+    gh.factory<_i176.ApprovePriceChangeBloc>(
+        () => _i176.ApprovePriceChangeBloc(gh<_i3.IPriceChangeRepo>()));
+    gh.factory<_i177.ApproveReturnProductBloc>(
+        () => _i177.ApproveReturnProductBloc(gh<_i3.IReturnApprovalRepo>()));
+    gh.factory<_i178.ArDetailsBloc>(
+        () => _i178.ArDetailsBloc(gh<_i3.IArCollectionRepo>()));
+    gh.factory<_i179.ArHeaderBloc>(
+        () => _i179.ArHeaderBloc(gh<_i3.IArCollectionRepo>()));
+    gh.factory<_i180.AssetAddInApprovalHeaderBloc>(() =>
+        _i180.AssetAddInApprovalHeaderBloc(gh<_i3.IAssetAddApprovalRepo>()));
+    gh.factory<_i181.AssetAddingApprovalAndRjectBlocBloc>(() =>
+        _i181.AssetAddingApprovalAndRjectBlocBloc(
             gh<_i3.IAssetAddApprovalRepo>()));
-    gh.factory<_i181.AssetRemovalApprvalBloc>(() =>
-        _i181.AssetRemovalApprvalBloc(gh<_i3.IAssetRemovalRequestRepo>()));
-    gh.factory<_i182.AssetRemovelRequestHeaderBloc>(() =>
-        _i182.AssetRemovelRequestHeaderBloc(
+    gh.factory<_i182.AssetRemovalApprvalBloc>(() =>
+        _i182.AssetRemovalApprvalBloc(gh<_i3.IAssetRemovalRequestRepo>()));
+    gh.factory<_i183.AssetRemovelRequestHeaderBloc>(() =>
+        _i183.AssetRemovelRequestHeaderBloc(
             gh<_i3.IAssetRemovalRequestRepo>()));
-    gh.factory<_i183.ChartActualVisitsBloc>(
-        () => _i183.ChartActualVisitsBloc(gh<_i3.IHomeChartsRepo>()));
-    gh.factory<_i184.ChartNonProductiveBloc>(
-        () => _i184.ChartNonProductiveBloc(gh<_i3.IHomeChartsRepo>()));
-    gh.factory<_i185.ChartPlannedVisitsBloc>(
-        () => _i185.ChartPlannedVisitsBloc(gh<_i3.IHomeChartsRepo>()));
-    gh.factory<_i186.ChartProductiveVisitBloc>(
-        () => _i186.ChartProductiveVisitBloc(gh<_i3.IHomeChartsRepo>()));
-    gh.factory<_i187.ChartRoutsBloc>(
-        () => _i187.ChartRoutsBloc(gh<_i3.IHomeChartsRepo>()));
-    gh.factory<_i188.CreditNoteApprovalAndRejectBloc>(() =>
-        _i188.CreditNoteApprovalAndRejectBloc(
+    gh.factory<_i184.ChartActualVisitsBloc>(
+        () => _i184.ChartActualVisitsBloc(gh<_i3.IHomeChartsRepo>()));
+    gh.factory<_i185.ChartNonProductiveBloc>(
+        () => _i185.ChartNonProductiveBloc(gh<_i3.IHomeChartsRepo>()));
+    gh.factory<_i186.ChartPlannedVisitsBloc>(
+        () => _i186.ChartPlannedVisitsBloc(gh<_i3.IHomeChartsRepo>()));
+    gh.factory<_i187.ChartProductiveVisitBloc>(
+        () => _i187.ChartProductiveVisitBloc(gh<_i3.IHomeChartsRepo>()));
+    gh.factory<_i188.ChartRoutsBloc>(
+        () => _i188.ChartRoutsBloc(gh<_i3.IHomeChartsRepo>()));
+    gh.factory<_i189.CreditNoteApprovalAndRejectBloc>(() =>
+        _i189.CreditNoteApprovalAndRejectBloc(
             gh<_i3.ICreditNoteApprovalRepo>()));
-    gh.factory<_i189.CreditNoteApprovalLevelStatusCubit>(() =>
-        _i189.CreditNoteApprovalLevelStatusCubit(
+    gh.factory<_i190.CreditNoteApprovalLevelStatusCubit>(() =>
+        _i190.CreditNoteApprovalLevelStatusCubit(
             gh<_i3.ICreditNoteApprovalRepo>()));
-    gh.factory<_i190.CreditNoteDetailBloc>(
-        () => _i190.CreditNoteDetailBloc(gh<_i3.ICreditNoteApprovalRepo>()));
-    gh.factory<_i191.CreditNoteHeaderBloc>(
-        () => _i191.CreditNoteHeaderBloc(gh<_i3.ICreditNoteApprovalRepo>()));
-    gh.factory<_i192.CusDocumentsBloc>(
-        () => _i192.CusDocumentsBloc(gh<_i3.IcusDocumentsModel>()));
-    gh.factory<_i193.CusGeoLocationBloc>(
-        () => _i193.CusGeoLocationBloc(gh<_i3.ICusGeoLocationRepo>()));
-    gh.factory<_i194.CusInsArHeaderBloc>(
-        () => _i194.CusInsArHeaderBloc(gh<_i3.ICusInsArRepo>()));
-    gh.factory<_i195.CusInsInvoiceHeaderBloc>(
-        () => _i195.CusInsInvoiceHeaderBloc(gh<_i3.ICusInsInvoiceRepo>()));
-    gh.factory<_i196.CusInsTrnCountBloc>(
-        () => _i196.CusInsTrnCountBloc(gh<_i3.IcusInsCountsRepo>()));
-    gh.factory<_i197.CusInvDetailBlocBloc>(
-        () => _i197.CusInvDetailBlocBloc(gh<_i3.ICusInsInvoiceRepo>()));
-    gh.factory<_i198.CusItemsBloc>(
-        () => _i198.CusItemsBloc(gh<_i3.ICusItemsRepo>()));
-    gh.factory<_i199.CusOutStandingBloc>(
-        () => _i199.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
-    gh.factory<_i200.CusProfileBloc>(
-        () => _i200.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
-    gh.factory<_i201.CusPromoDetailBloc>(
-        () => _i201.CusPromoDetailBloc(gh<_i3.ICusProtionRepo>()));
-    gh.factory<_i202.CusPromotionsHeaderBloc>(
-        () => _i202.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
-    gh.factory<_i203.CusSalesOrdersBloc>(
-        () => _i203.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
-    gh.factory<_i204.CusSpPriceBloc>(
-        () => _i204.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
-    gh.factory<_i205.CustomerInsightGroupBloc>(
-        () => _i205.CustomerInsightGroupBloc(gh<_i3.ICusInsightGroupRepo>()));
-    gh.factory<_i206.CustomerSettingsBloc>(
-        () => _i206.CustomerSettingsBloc(gh<_i3.ICustomerSettingsRepo>()));
-    gh.factory<_i207.CustomerTransactionBloc>(() =>
-        _i207.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
-    gh.factory<_i208.CustomersListBlocBloc>(
-        () => _i208.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
-    gh.factory<_i209.DisputeApprovalStatusLevelCubitCubit>(() =>
-        _i209.DisputeApprovalStatusLevelCubitCubit(
+    gh.factory<_i191.CreditNoteDetailBloc>(
+        () => _i191.CreditNoteDetailBloc(gh<_i3.ICreditNoteApprovalRepo>()));
+    gh.factory<_i192.CreditNoteHeaderBloc>(
+        () => _i192.CreditNoteHeaderBloc(gh<_i3.ICreditNoteApprovalRepo>()));
+    gh.factory<_i193.CusDocumentsBloc>(
+        () => _i193.CusDocumentsBloc(gh<_i3.IcusDocumentsModel>()));
+    gh.factory<_i194.CusGeoLocationBloc>(
+        () => _i194.CusGeoLocationBloc(gh<_i3.ICusGeoLocationRepo>()));
+    gh.factory<_i195.CusInsArHeaderBloc>(
+        () => _i195.CusInsArHeaderBloc(gh<_i3.ICusInsArRepo>()));
+    gh.factory<_i196.CusInsInvoiceHeaderBloc>(
+        () => _i196.CusInsInvoiceHeaderBloc(gh<_i3.ICusInsInvoiceRepo>()));
+    gh.factory<_i197.CusInsTrnCountBloc>(
+        () => _i197.CusInsTrnCountBloc(gh<_i3.IcusInsCountsRepo>()));
+    gh.factory<_i198.CusInvDetailBlocBloc>(
+        () => _i198.CusInvDetailBlocBloc(gh<_i3.ICusInsInvoiceRepo>()));
+    gh.factory<_i199.CusItemsBloc>(
+        () => _i199.CusItemsBloc(gh<_i3.ICusItemsRepo>()));
+    gh.factory<_i200.CusOutStandingBloc>(
+        () => _i200.CusOutStandingBloc(gh<_i3.ICusOutstandingRepo>()));
+    gh.factory<_i201.CusProfileBloc>(
+        () => _i201.CusProfileBloc(gh<_i3.ICusProfileRepo>()));
+    gh.factory<_i202.CusPromoDetailBloc>(
+        () => _i202.CusPromoDetailBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i203.CusPromotionsHeaderBloc>(
+        () => _i203.CusPromotionsHeaderBloc(gh<_i3.ICusProtionRepo>()));
+    gh.factory<_i204.CusSalesOrdersBloc>(
+        () => _i204.CusSalesOrdersBloc(gh<_i3.ISalesOrdersRepo>()));
+    gh.factory<_i205.CusSpPriceBloc>(
+        () => _i205.CusSpPriceBloc(gh<_i3.ICusSpPriceRepo>()));
+    gh.factory<_i206.CustomerInsightGroupBloc>(
+        () => _i206.CustomerInsightGroupBloc(gh<_i3.ICusInsightGroupRepo>()));
+    gh.factory<_i207.CustomerSettingsBloc>(
+        () => _i207.CustomerSettingsBloc(gh<_i3.ICustomerSettingsRepo>()));
+    gh.factory<_i208.CustomerTransactionBloc>(() =>
+        _i208.CustomerTransactionBloc(gh<_i3.ICustomerTransactionRepo>()));
+    gh.factory<_i209.CustomersListBlocBloc>(
+        () => _i209.CustomersListBlocBloc(gh<_i3.ICusInsightsCustomersRepo>()));
+    gh.factory<_i210.DisputeApprovalStatusLevelCubitCubit>(() =>
+        _i210.DisputeApprovalStatusLevelCubitCubit(
             gh<_i3.IDisputeNoteApprovalRepo>()));
-    gh.factory<_i210.DisputeNoteApprovalAndRejectBloc>(() =>
-        _i210.DisputeNoteApprovalAndRejectBloc(
+    gh.factory<_i211.DisputeNoteApprovalAndRejectBloc>(() =>
+        _i211.DisputeNoteApprovalAndRejectBloc(
             gh<_i3.IDisputeNoteApprovalRepo>()));
-    gh.factory<_i211.DisputeNoteDetailBloc>(
-        () => _i211.DisputeNoteDetailBloc(gh<_i3.IDisputeNoteApprovalRepo>()));
-    gh.factory<_i212.DisputeNoteHeaderBloc>(
-        () => _i212.DisputeNoteHeaderBloc(gh<_i3.IDisputeNoteApprovalRepo>()));
-    gh.factory<_i213.EditCusProfileBloc>(
-        () => _i213.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
-    gh.factory<_i214.FIeldServiceDetailBloc>(() => _i214.FIeldServiceDetailBloc(
+    gh.factory<_i212.DisputeNoteDetailBloc>(
+        () => _i212.DisputeNoteDetailBloc(gh<_i3.IDisputeNoteApprovalRepo>()));
+    gh.factory<_i213.DisputeNoteHeaderBloc>(
+        () => _i213.DisputeNoteHeaderBloc(gh<_i3.IDisputeNoteApprovalRepo>()));
+    gh.factory<_i214.EditCusProfileBloc>(
+        () => _i214.EditCusProfileBloc(gh<_i3.IProfileEditRepo>()));
+    gh.factory<_i215.FIeldServiceDetailBloc>(() => _i215.FIeldServiceDetailBloc(
         gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
-    gh.factory<_i215.FieldServiceHeaderBloc>(() => _i215.FieldServiceHeaderBloc(
+    gh.factory<_i216.FieldServiceHeaderBloc>(() => _i216.FieldServiceHeaderBloc(
         gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
-    gh.factory<_i216.FieldServiceInvoiceApprovalBloc>(() =>
-        _i216.FieldServiceInvoiceApprovalBloc(
+    gh.factory<_i217.FieldServiceInvoiceApprovalBloc>(() =>
+        _i217.FieldServiceInvoiceApprovalBloc(
             gh<_i3.IFieldServiceInvoiceApprovalRepo>()));
-    gh.factory<_i217.GetAllRouteBloc>(
-        () => _i217.GetAllRouteBloc(gh<_i3.IGetAllAvailableRoutesRepo>()));
+    gh.factory<_i218.GetAllRouteBloc>(
+        () => _i218.GetAllRouteBloc(gh<_i3.IGetAllAvailableRoutesRepo>()));
     return this;
   }
 }

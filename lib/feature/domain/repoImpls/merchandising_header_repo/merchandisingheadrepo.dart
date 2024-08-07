@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/data/models/get_display_count_model/get
 import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_survey_count_model/get_survey_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_task_count_model/get_task_count_model.dart';
+import 'package:customer_connect/feature/data/models/merch_cu_service_count_model/merch_cu_service_count_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -117,6 +118,28 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusactcount = GetCusActcountModel.fromJson(json["result"][0]);
         return right(cusactcount);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: "Something went wrong"),
+        );
+      }
+    } catch (e) {
+      return left(const MainFailures.serverfailure());
+    }
+  }
+
+  @override
+  Future<Either<MainFailures, MerchCuServiceCountModel>> 
+  getCusServiceCount(String fromDate, String toDate)async {
+    try {
+      final response = await http.post(Uri.parse(baseUrl + merchCusServiceCountUrl),
+          body: {"FromDate": fromDate, "ToDate": toDate});
+
+      if (response.statusCode == 200) {
+        log('cusServicecount: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final cusServicecount = MerchCuServiceCountModel.fromJson(json["result"][0]);
+        return right(cusServicecount);
       } else {
         return left(
           const MainFailures.networkerror(error: "Something went wrong"),
