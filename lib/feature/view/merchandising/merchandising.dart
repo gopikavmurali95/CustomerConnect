@@ -229,7 +229,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
             SizedBox(
               height: 10.h,
             ),
-            const CustomerServicesWidget()
+            CustomerServicesWidget(
+              fromdatectrl: fromdateController,
+              todatectrl: todateController,
+            )
           ],
         ),
       ),

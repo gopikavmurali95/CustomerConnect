@@ -168,3 +168,5 @@ const merchDisplayAgreementUrl = 'CusMerch/GetCCDisplayagreement';
 const merchCustomerActivitiesUrl = 'CusMerch/GetCCCustomerActivity';
 const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
 const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';
+const merchCreditNoteReqUrl = 'CusService/SelectReqCreditNoteReq';
+const merchReturnReqUrl = 'CusService/SelectReqReturnReq';

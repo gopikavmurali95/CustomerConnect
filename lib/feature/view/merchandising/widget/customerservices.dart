@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerServicesWidget extends StatelessWidget {
-  const CustomerServicesWidget({super.key});
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
+  const CustomerServicesWidget(
+      {super.key, required this.fromdatectrl, required this.todatectrl});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +119,10 @@ class CustomerServicesWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const MerchandiseCreditNoteRequestScreen()),
+                            MerchandiseCreditNoteRequestScreen(
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            )),
                   );
                 },
                 child: Container(
@@ -307,8 +313,10 @@ class CustomerServicesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseReturnRequestScreen()),
+                        builder: (context) => MerchandiseReturnRequestScreen(
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            )),
                   );
                 },
                 child: Container(
