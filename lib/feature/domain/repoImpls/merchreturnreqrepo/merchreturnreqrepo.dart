@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -31,6 +32,7 @@ class MerchReturnRequestRepo implements IMerchReturnReqRepo {
         );
       }
     } catch (e) {
+      log(e.toString());
       return left(const MainFailures.serverfailure());
     }
   }
