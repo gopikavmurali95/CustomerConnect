@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/state/cubit/voidtransactionselection/vo
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -212,34 +213,6 @@ class _VoidTranscactioHeaderScreenState
         SizedBox(
           height: 10.h,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Pending Approvals",
-                style: countHeading(),
-              ),
-              BlocBuilder<VoidTransactionHeaderBloc,
-                  VoidTransactionHeaderState>(
-                builder: (context, state) {
-                  return Text(
-                    state.when(
-                      getvoidTransactionHeaderState: (headers) =>
-                          headers == null ? "0" : headers.length.toString(),
-                      voidTransactionHeaderFailure: () => "0",
-                    ),
-                    style: countHeading(),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
         Expanded(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -266,160 +239,196 @@ class _VoidTranscactioHeaderScreenState
                             style: kfontstyle(),
                           ),
                         )
-                      : ListView.separated(
-                          //physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: headers.length,
-                          itemBuilder: (context, index) => Column(
-                            children: [
-                              Row(
+                      : Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    height: 50,
-                                    width: 10,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xfffee8e0),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                  Text(
+                                    selectedVoidTransactionMode == 'P'
+                                        ? "Pending Approvals"
+                                        : selectedVoidTransactionMode == 'A'
+                                            ? 'Approved Transaction'
+                                            : 'RejectedTransactions',
+                                    // _selectedPriceChangeMode == 'P'
+                                    //     ? 'Pending Approvals'
+                                    //     : 'Approved Requests',
+                                    style: countHeading(),
                                   ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                      child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            headers[index].trnNumber ?? '',
-                                            style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff2C6B9E),
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  '${headers[index].rotCode} - ${headers[index].rotName}',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  headers[index].type ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            headers[index].createdDate ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: Colors.grey),
-                                          ),
-                                        ],
-                                      ))
-                                    ],
-                                  )),
-                                  selectedVoidTransactionMode != 'P'
-                                      ? const SizedBox.shrink()
-                                      : IntrinsicHeight(
-                                          child: Row(
-                                            children: [
-                                              VerticalDivider(
-                                                color: Colors.grey[300],
-                                                thickness: 1,
-                                              ),
-                                              BlocBuilder<
-                                                  VoidTransactionSelectionCubit,
-                                                  VoidTransactionSelectionState>(
-                                                builder: (context, state) {
-                                                  return state.when(
-                                                      voidTransactionSelectedState:
-                                                          (selected) =>
-                                                              Checkbox(
-                                                                value: voidTransactionJsonstriongList
-                                                                    .where((element) =>
-                                                                        element
-                                                                            .trnNumber ==
-                                                                        headers[index]
-                                                                            .trnNumber)
-                                                                    .isNotEmpty,
-                                                                side: BorderSide(
-                                                                    color: Colors
-                                                                            .grey[
-                                                                        500]!),
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            4)),
-                                                                activeColor:
-                                                                    Colors.green
-                                                                        .shade300,
-                                                                onChanged:
-                                                                    (value) {
-                                                                  if (voidTransactionJsonstriongList
-                                                                      .where((element) =>
-                                                                          element
-                                                                              .trnNumber ==
-                                                                          headers[index]
-                                                                              .trnNumber)
-                                                                      .isEmpty) {
-                                                                    voidTransactionJsonstriongList.add(VoidTransactionJsonModel(
-                                                                        vtaId: headers[index].vtaId,
-                                                                        type: headers[index].type == "Order"
-                                                                            ? 'OR'
-                                                                            : headers[index].type == "Sales"
-                                                                                ? 'SL'
-                                                                                : 'AR',
-                                                                        trnNumber: headers[index].trnNumber,
-                                                                        udpId: headers[index].udpID,
-                                                                        userId: widget.user.usrId));
-                                                                  } else {
-                                                                    voidTransactionJsonstriongList.removeWhere((element) =>
-                                                                        element
-                                                                            .trnNumber ==
-                                                                        headers[index]
-                                                                            .trnNumber);
-                                                                  }
-                                                                  setState(() {
-                                                                    log(jsonEncode(
-                                                                        voidTransactionJsonstriongList));
-                                                                  });
-                                                                },
-                                                              ));
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        )
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: Text(
+                                      headers.length.toString(),
+                                      style: countHeading(),
+                                    ),
+                                  )
                                 ],
                               ),
-                            ],
-                          ),
-                          separatorBuilder: (context, index) => Divider(
-                            color: Colors.grey[300],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Expanded(
+                              child: ListView.separated(
+                                //physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: headers.length,
+                                itemBuilder: (context, index) => Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 50,
+                                          width: 10,
+                                          decoration: BoxDecoration(
+                                              color: const Color(0xfffee8e0),
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                        ),
+                                        SizedBox(
+                                          width: 10.w,
+                                        ),
+                                        Expanded(
+                                            child: Row(
+                                          children: [
+                                            Expanded(
+                                                child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  headers[index].trnNumber ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff2C6B9E),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        '${headers[index].rotCode} - ${headers[index].rotName}',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        headers[index].type ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Text(
+                                                  headers[index].createdDate ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            ))
+                                          ],
+                                        )),
+                                        selectedVoidTransactionMode != 'P'
+                                            ? const SizedBox.shrink()
+                                            : IntrinsicHeight(
+                                                child: Row(
+                                                  children: [
+                                                    VerticalDivider(
+                                                      color: Colors.grey[300],
+                                                      thickness: 1,
+                                                    ),
+                                                    BlocBuilder<
+                                                        VoidTransactionSelectionCubit,
+                                                        VoidTransactionSelectionState>(
+                                                      builder:
+                                                          (context, state) {
+                                                        return state.when(
+                                                            voidTransactionSelectedState:
+                                                                (selected) =>
+                                                                    Checkbox(
+                                                                      value: voidTransactionJsonstriongList
+                                                                          .where((element) =>
+                                                                              element.trnNumber ==
+                                                                              headers[index].trnNumber)
+                                                                          .isNotEmpty,
+                                                                      side: BorderSide(
+                                                                          color:
+                                                                              Colors.grey[500]!),
+                                                                      shape: RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(4)),
+                                                                      activeColor: Colors
+                                                                          .green
+                                                                          .shade300,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        if (voidTransactionJsonstriongList
+                                                                            .where((element) =>
+                                                                                element.trnNumber ==
+                                                                                headers[index].trnNumber)
+                                                                            .isEmpty) {
+                                                                          voidTransactionJsonstriongList.add(VoidTransactionJsonModel(
+                                                                              vtaId: headers[index].vtaId,
+                                                                              type: headers[index].type == "Order"
+                                                                                  ? 'OR'
+                                                                                  : headers[index].type == "Sales"
+                                                                                      ? 'SL'
+                                                                                      : 'AR',
+                                                                              trnNumber: headers[index].trnNumber,
+                                                                              udpId: headers[index].udpID,
+                                                                              userId: widget.user.usrId));
+                                                                        } else {
+                                                                          voidTransactionJsonstriongList.removeWhere((element) =>
+                                                                              element.trnNumber ==
+                                                                              headers[index].trnNumber);
+                                                                        }
+                                                                        setState(
+                                                                            () {
+                                                                          log(jsonEncode(
+                                                                              voidTransactionJsonstriongList));
+                                                                        });
+                                                                      },
+                                                                    ));
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey[300],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
               voidTransactionHeaderFailure: () => Center(
                 child: Text(

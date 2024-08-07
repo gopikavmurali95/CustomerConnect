@@ -97,7 +97,9 @@ import 'package:customer_connect/feature/data/models/material_req_detail_model/M
 import 'package:customer_connect/feature/data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_in_model/MaterialReqRejectionInModel.dart';
 import 'package:customer_connect/feature/data/models/material_req_rejection_out_model/MaterialReqrejectionOutModel.dart';
+import 'package:customer_connect/feature/data/models/merch_customer_activities_model/merch_customer_activities_model.dart';
 import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
+import 'package:customer_connect/feature/data/models/merchandising_display_agreement_mdel/merchandising_display_agreement_mdel.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_in_model/must_sell_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_approve_resp_model/must_sell_approve_resp_model.dart';
 import 'package:customer_connect/feature/data/models/must_sell_detail_model/must_sell_detail_model.dart';
@@ -709,6 +711,16 @@ abstract class IHomeChartsRepo {
       String fromDate, String toDate);
   Future<Either<MainFailures, ChartNonProductiveModel>> nonProductiveChart(
       String fromDate, String toDate);
+}
+
+abstract class IMerchDisplayAgreement {
+  Future<Either<MainFailures, List<MerchandisingDisplayAgreementMdel>>>
+      getAgreementItems(String fromDate, String toDate, String status);
+}
+
+abstract class IMerchCustomerActivitiesRepo {
+  Future<Either<MainFailures, List<MerchCustomerActivitiesModel>>>
+      getActivityItems(String fromDate, String toDate, String status);
 }
 
 abstract class ITrackSalesManRepo {

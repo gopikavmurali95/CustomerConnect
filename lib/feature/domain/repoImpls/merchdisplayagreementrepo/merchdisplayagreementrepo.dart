@@ -3,27 +3,27 @@ import 'dart:convert';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
-import 'package:customer_connect/feature/data/models/merchanding_survey_model/merchanding_survey_model.dart';
+import 'package:customer_connect/feature/data/models/merchandising_display_agreement_mdel/merchandising_display_agreement_mdel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 
-@LazySingleton(as: IMerchandinsingSurveyRepo)
-class MerchandisingSurveyRepo implements IMerchandinsingSurveyRepo {
+@LazySingleton(as: IMerchDisplayAgreement)
+class MerchDisplayAgreementRepo implements IMerchDisplayAgreement {
   @override
-  Future<Either<MainFailures, List<MerchandingSurveyModel>>> getSurveyItems(
-      String fromDate, String toDate, String status) async {
+  Future<Either<MainFailures, List<MerchandisingDisplayAgreementMdel>>>
+      getAgreementItems(String fromDate, String toDate, String status) async {
     try {
       final response = await http.post(
-          Uri.parse(baseUrl + merchandisingSurveyUrl),
+          Uri.parse(baseUrl + merchDisplayAgreementUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "Status": status});
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> surveydata = json['result'];
-        List<MerchandingSurveyModel> data = surveydata
-            .map<MerchandingSurveyModel>(
-                (json) => MerchandingSurveyModel.fromJson(json))
+        List<MerchandisingDisplayAgreementMdel> data = surveydata
+            .map<MerchandisingDisplayAgreementMdel>(
+                (json) => MerchandisingDisplayAgreementMdel.fromJson(json))
             .toList();
         return right(data);
       } else {

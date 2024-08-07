@@ -251,7 +251,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                 )
                               : tasksheader.isEmpty
                                   ? const Center(
-                                      child: Text('No Data Availablehere'),
+                                      child: Text('No Data Available'),
                                     )
                                   : Column(
                                       children: [

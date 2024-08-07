@@ -169,5 +169,7 @@ const chartActualVisitsUrl = 'CusChartDashboard/GetCCActualVisitCount';
 const chartProductiveVisitsUrl = 'CusChartDashboard/GetCCProductiveVisitCount';
 const chartNonProductiveVistisUrl =
     'CusChartDashboard/GetCCNonProductiveVisitCount';
+const merchDisplayAgreementUrl = 'CusMerch/GetCCDisplayagreement';
+const merchCustomerActivitiesUrl = 'CusMerch/GetCCCustomerActivity';
 const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
 const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';

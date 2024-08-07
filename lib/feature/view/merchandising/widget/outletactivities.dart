@@ -120,12 +120,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getTaskCountState: (taskcount) =>
                                       taskcount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${taskcount.assignedTasks}"),
                                   taskCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -151,12 +151,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getTaskCountState: (taskcount) =>
                                       taskcount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${taskcount.completedTasks}"),
                                   taskCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -238,12 +238,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getSurveyCountState: (survey) =>
                                       survey == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${survey.assignedSurvey}"),
                                   surveyCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -269,12 +269,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getSurveyCountState: (survey) =>
                                       survey == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${survey.completedSurvey}"),
                                   surveyCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -301,8 +301,10 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActDisplayAgreementScreen()),
+                        builder: (context) => OutActDisplayAgreementScreen(
+                              fromdatectrl: fromdateController,
+                              todatectrl: todateController,
+                            )),
                   );
                 },
                 child: Container(
@@ -358,12 +360,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getDisplayCountState: (discount) =>
                                       discount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${discount.neww}"),
                                   dispalyCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -389,12 +391,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getDisplayCountState: (discount) =>
                                       discount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${discount.active}"),
                                   dispalyCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -417,8 +419,10 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActCustomerActivityScreen()),
+                        builder: (context) => OutActCustomerActivityScreen(
+                              fromdatectrl: fromdateController,
+                              todatectrl: todateController,
+                            )),
                   );
                 },
                 child: Container(
@@ -474,12 +478,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getCusActCountState: (cuscount) =>
                                       cuscount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${cuscount.actionTaken}"),
                                   cusActCountFailedState: () => Text(
-                                    "fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
@@ -505,12 +509,12 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                   getCusActCountState: (cuscount) =>
                                       cuscount == null
                                           ? Text(
-                                              "null",
+                                              "0",
                                               style: countHeading(),
                                             )
                                           : Text("${cuscount.total}"),
                                   cusActCountFailedState: () => Text(
-                                    "Fail",
+                                    "0",
                                     style: countHeading(),
                                   ),
                                 );
