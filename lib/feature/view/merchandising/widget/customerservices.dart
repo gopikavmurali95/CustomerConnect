@@ -7,12 +7,17 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomerServicesWidget extends StatelessWidget {
+class CustomerServicesWidget extends StatefulWidget {
   final TextEditingController fromdatectrl;
   final TextEditingController todatectrl;
   const CustomerServicesWidget(
       {super.key, required this.fromdatectrl, required this.todatectrl});
 
+  @override
+  State<CustomerServicesWidget> createState() => _CustomerServicesWidgetState();
+}
+
+class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -120,8 +125,8 @@ class CustomerServicesWidget extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) =>
                             MerchandiseCreditNoteRequestScreen(
-                              fromdatectrl: fromdatectrl,
-                              todatectrl: todatectrl,
+                              fromdatectrl: widget.fromdatectrl,
+                              todatectrl: widget.todatectrl,
                             )),
                   );
                 },
@@ -314,8 +319,8 @@ class CustomerServicesWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => MerchandiseReturnRequestScreen(
-                              fromdatectrl: fromdatectrl,
-                              todatectrl: todatectrl,
+                              fromdatectrl: widget.fromdatectrl,
+                              todatectrl: widget.todatectrl,
                             )),
                   );
                 },

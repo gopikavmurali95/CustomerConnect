@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OutofstockcountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOutOfStockCountEvent,
+    required TResult Function(String fromDate, String toDate)
+        getOutOfStockCountEvent,
     required TResult Function() clearOutOfStockCountEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOutOfStockCountEvent,
+    TResult? Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult? Function()? clearOutOfStockCountEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOutOfStockCountEvent,
+    TResult Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult Function()? clearOutOfStockCountEvent,
     required TResult orElse(),
   }) =>
@@ -85,6 +86,8 @@ abstract class _$$GetOutOfStockCountEventImplCopyWith<$Res> {
           _$GetOutOfStockCountEventImpl value,
           $Res Function(_$GetOutOfStockCountEventImpl) then) =
       __$$GetOutOfStockCountEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String fromDate, String toDate});
 }
 
 /// @nodoc
@@ -96,55 +99,90 @@ class __$$GetOutOfStockCountEventImplCopyWithImpl<$Res>
       _$GetOutOfStockCountEventImpl _value,
       $Res Function(_$GetOutOfStockCountEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fromDate = null,
+    Object? toDate = null,
+  }) {
+    return _then(_$GetOutOfStockCountEventImpl(
+      fromDate: null == fromDate
+          ? _value.fromDate
+          : fromDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      toDate: null == toDate
+          ? _value.toDate
+          : toDate // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetOutOfStockCountEventImpl implements GetOutOfStockCountEvent {
-  const _$GetOutOfStockCountEventImpl();
+  const _$GetOutOfStockCountEventImpl(
+      {required this.fromDate, required this.toDate});
+
+  @override
+  final String fromDate;
+  @override
+  final String toDate;
 
   @override
   String toString() {
-    return 'OutofstockcountEvent.getOutOfStockCountEvent()';
+    return 'OutofstockcountEvent.getOutOfStockCountEvent(fromDate: $fromDate, toDate: $toDate)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetOutOfStockCountEventImpl);
+            other is _$GetOutOfStockCountEventImpl &&
+            (identical(other.fromDate, fromDate) ||
+                other.fromDate == fromDate) &&
+            (identical(other.toDate, toDate) || other.toDate == toDate));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromDate, toDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOutOfStockCountEventImplCopyWith<_$GetOutOfStockCountEventImpl>
+      get copyWith => __$$GetOutOfStockCountEventImplCopyWithImpl<
+          _$GetOutOfStockCountEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOutOfStockCountEvent,
+    required TResult Function(String fromDate, String toDate)
+        getOutOfStockCountEvent,
     required TResult Function() clearOutOfStockCountEvent,
   }) {
-    return getOutOfStockCountEvent();
+    return getOutOfStockCountEvent(fromDate, toDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOutOfStockCountEvent,
+    TResult? Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult? Function()? clearOutOfStockCountEvent,
   }) {
-    return getOutOfStockCountEvent?.call();
+    return getOutOfStockCountEvent?.call(fromDate, toDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOutOfStockCountEvent,
+    TResult Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult Function()? clearOutOfStockCountEvent,
     required TResult orElse(),
   }) {
     if (getOutOfStockCountEvent != null) {
-      return getOutOfStockCountEvent();
+      return getOutOfStockCountEvent(fromDate, toDate);
     }
     return orElse();
   }
@@ -186,7 +224,15 @@ class _$GetOutOfStockCountEventImpl implements GetOutOfStockCountEvent {
 }
 
 abstract class GetOutOfStockCountEvent implements OutofstockcountEvent {
-  const factory GetOutOfStockCountEvent() = _$GetOutOfStockCountEventImpl;
+  const factory GetOutOfStockCountEvent(
+      {required final String fromDate,
+      required final String toDate}) = _$GetOutOfStockCountEventImpl;
+
+  String get fromDate;
+  String get toDate;
+  @JsonKey(ignore: true)
+  _$$GetOutOfStockCountEventImplCopyWith<_$GetOutOfStockCountEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -231,7 +277,8 @@ class _$ClearOutOfStockCountEventImpl implements ClearOutOfStockCountEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOutOfStockCountEvent,
+    required TResult Function(String fromDate, String toDate)
+        getOutOfStockCountEvent,
     required TResult Function() clearOutOfStockCountEvent,
   }) {
     return clearOutOfStockCountEvent();
@@ -240,7 +287,7 @@ class _$ClearOutOfStockCountEventImpl implements ClearOutOfStockCountEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOutOfStockCountEvent,
+    TResult? Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult? Function()? clearOutOfStockCountEvent,
   }) {
     return clearOutOfStockCountEvent?.call();
@@ -249,7 +296,7 @@ class _$ClearOutOfStockCountEventImpl implements ClearOutOfStockCountEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOutOfStockCountEvent,
+    TResult Function(String fromDate, String toDate)? getOutOfStockCountEvent,
     TResult Function()? clearOutOfStockCountEvent,
     required TResult orElse(),
   }) {

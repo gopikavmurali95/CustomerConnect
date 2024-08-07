@@ -69,6 +69,11 @@ import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_heade
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqapproval/material_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqrejection/material_req_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchcreditnoterequest/merch_credit_note_request_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart';
@@ -81,6 +86,7 @@ import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_hea
 import 'package:customer_connect/feature/state/bloc/notificationlisting/notification_listing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
@@ -669,6 +675,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<TargetPackageListBloc>(),
         ),
+        BlocProvider(create: (context) => getit<OutofstockcountBloc>()),
+        BlocProvider(create: (context) => getit<MerchTaskCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchSurveyCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchdisplaycountBloc>()),
+        BlocProvider(create: (context) => getit<MerchCusActCountBloc>()),
+        BlocProvider(create: (context) => getit<MerchandTaskHeaderBloc>()),
         BlocProvider(
           create: (context) => getit<ChartRoutsBloc>(),
         ),
