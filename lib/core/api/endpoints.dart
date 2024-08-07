@@ -175,3 +175,4 @@ const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
 const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';
 const merchCreditNoteReqUrl = 'CusService/SelectReqCreditNoteReq';
 const merchReturnReqUrl = 'CusService/SelectReqReturnReq';
+const merchDisputeRequestUrl = 'CusService/SelectReqDisputeNoteReq';

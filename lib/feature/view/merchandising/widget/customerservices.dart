@@ -225,7 +225,10 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            const MerchandiseDisputeNoteRequestScreen()),
+                            MerchandiseDisputeNoteRequestScreen(
+                              fromdatectrl: widget.fromdatectrl,
+                              todatectrl: widget.todatectrl,
+                            )),
                   );
                 },
                 child: Container(

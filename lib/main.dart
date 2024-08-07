@@ -72,6 +72,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqrejection/materia
 import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
@@ -713,6 +714,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<MerchReturnRequestBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<MerchDisputeNoteReqBloc>(),
         ),
       ],
       child: ScreenUtilInit(
