@@ -22,6 +22,8 @@ import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
@@ -91,6 +93,7 @@ import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/parti
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/plannedvisits/chart_planned_visits_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangedetails/price_change_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_change_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
@@ -124,6 +127,7 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_deliv
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/tracksalesmanlist/track_sales_man_list_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart';
@@ -674,6 +678,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<MerchCusActCountBloc>()),
         BlocProvider(create: (context) => getit<MerchandTaskHeaderBloc>()),
         BlocProvider(
+          create: (context) => getit<ChartRoutsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ChartPlannedVisitsBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<ChartActualVisitsBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<MerchandisingSurveyBloc>(),
         ),
         BlocProvider(
@@ -681,6 +694,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<ChartNonProductiveBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<TrackSalesManListBloc>(),
         ),
       ],
       child: ScreenUtilInit(

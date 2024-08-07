@@ -18,7 +18,7 @@ class CustomerSettingsRepo implements ICustomerSettingsRepo {
       final response = await http
           .post(Uri.parse(baseUrl + cusSettingUrl), body: {"usrID": userID});
 
-      log('Response: ${response.body}');
+      // log('Response: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final userModel = CustomerSettingsModel.fromJson(json["result"][0]);

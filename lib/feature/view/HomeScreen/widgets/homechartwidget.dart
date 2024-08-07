@@ -82,7 +82,7 @@ class SemiCircleProgressPainter extends CustomPainter {
           color: Colors.black, fontSize: 12.sp, fontWeight: FontWeight.normal),
       children: [
         TextSpan(
-            text: '$completedCount\n\n',
+            text: '$totalCount\n\n',
             style: TextStyle(
               color: Colors.black,
               fontSize: 14.sp,

@@ -9,13 +9,45 @@ import 'package:customer_connect/feature/view/merchandising/outletactivitiessect
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OutletAcivitiesWidget extends StatelessWidget {
-  const OutletAcivitiesWidget({super.key});
+class OutletAcivitiesWidget extends StatefulWidget {
+  final TextEditingController fromdatecontroller;
+  final TextEditingController todatecontroller;
+  const OutletAcivitiesWidget(
+      {super.key,
+      required this.fromdatecontroller,
+      required this.todatecontroller});
+
+  @override
+  State<OutletAcivitiesWidget> createState() => _OutletAcivitiesWidgetState();
+}
+
+class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
+  @override
+  void initState() {
+    context.read<MerchTaskCountBloc>().add(const TaskCountClearEvent());
+    context.read<MerchTaskCountBloc>().add(GetTaskCountEvent(
+        fromDate: widget.fromdatecontroller.text,
+        toDate: widget.todatecontroller.text));
+    context.read<MerchSurveyCountBloc>().add(const SurveyCountClearEvent());
+    context.read<MerchSurveyCountBloc>().add(GetSurveyCountEvent(
+        fromDate: widget.fromdatecontroller.text,
+        toDate: widget.todatecontroller.text));
+
+    context.read<MerchCusActCountBloc>().add(const CusActCountClearEvent());
+    context.read<MerchCusActCountBloc>().add(GetCusActCountEvent(
+        fromDate: widget.fromdatecontroller.text,
+        toDate: widget.todatecontroller.text));
+
+    context.read<MerchdisplaycountBloc>().add(const DisplayCountClearEvent());
+    context.read<MerchdisplaycountBloc>().add(GetDisplayCountEvent(
+        fromDate: widget.fromdatecontroller.text,
+        toDate: widget.todatecontroller.text));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +61,10 @@ class OutletAcivitiesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                             OutletActivityTaskHeaderScreen(
+                        builder: (context) => OutletActivityTaskHeaderScreen(
                               fromdatecontroller: fromdateController,
-                               todatecontroller: todateController,)),
+                              todatecontroller: todateController,
+                            )),
                   );
                 },
                 child: Container(
@@ -88,12 +120,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getTaskCountState: (taskcount) =>
                                       taskcount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${taskcount.assignedTasks}"),
                                   taskCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -119,12 +151,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getTaskCountState: (taskcount) =>
                                       taskcount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${taskcount.completedTasks}"),
                                   taskCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -147,10 +179,10 @@ class OutletAcivitiesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                             OutActvitySurveyHeaderScreen(
+                        builder: (context) => OutActvitySurveyHeaderScreen(
                               fromdatectrl: fromdateController,
-                              todatectrl: todateController,)),
+                              todatectrl: todateController,
+                            )),
                   );
                 },
                 child: Container(
@@ -206,12 +238,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getSurveyCountState: (survey) =>
                                       survey == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${survey.assignedSurvey}"),
                                   surveyCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -237,12 +269,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getSurveyCountState: (survey) =>
                                       survey == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${survey.completedSurvey}"),
                                   surveyCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -326,12 +358,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getDisplayCountState: (discount) =>
                                       discount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${discount.neww}"),
                                   dispalyCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -357,12 +389,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getDisplayCountState: (discount) =>
                                       discount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${discount.active}"),
                                   dispalyCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -442,12 +474,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getCusActCountState: (cuscount) =>
                                       cuscount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${cuscount.actionTaken}"),
                                   cusActCountFailedState: () => Text(
-                                    "0",
+                                    "fail",
                                     style: countHeading(),
                                   ),
                                 );
@@ -473,12 +505,12 @@ class OutletAcivitiesWidget extends StatelessWidget {
                                   getCusActCountState: (cuscount) =>
                                       cuscount == null
                                           ? Text(
-                                              "0",
+                                              "null",
                                               style: countHeading(),
                                             )
                                           : Text("${cuscount.total}"),
                                   cusActCountFailedState: () => Text(
-                                    "0",
+                                    "Fail",
                                     style: countHeading(),
                                   ),
                                 );

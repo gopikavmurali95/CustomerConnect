@@ -1,11 +1,14 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 
 import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandoutofstockdetailscreen.dart';
 
 import 'package:customer_connect/feature/view/merchandising/widget/calenderwidget.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,9 +28,13 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
   @override
   void initState() {
     fromdateController.text =
-        '1-${DateTime.now().month}-${DateTime.now().year}';
+        '${DateTime.now().year}-${DateTime.now().month}-1';
     todateController.text =
-        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+        '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+    context.read<OutofstockcountBloc>().add(const ClearOutOfStockCountEvent());
+
+    context.read<OutofstockcountBloc>().add(GetOutOfStockCountEvent(
+        fromDate: fromdateController.text, toDate: todateController.text));
     super.initState();
   }
 
@@ -62,17 +69,18 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
-          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 2.h,),
+              SizedBox(
+                height: 2.h,
+              ),
               MerchandisingCalender(
-                fromDateController: fromdateController,
-                 toDateController: todateController),
-                SizedBox(
+                  fromDateController: fromdateController,
+                  toDateController: todateController),
+              SizedBox(
                 height: 10.h,
-              ),  
+              ),
               Text(
                 'Inventory Monitoring',
                 style: countHeading(),
@@ -119,7 +127,17 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          Text('22', style: countHeading())
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("0")
+                                          : Text("${count.cusCount}"),
+                                  outOfStockFailedState: () => const Text("0"));
+                            },
+                          )
                         ],
                       ),
                       SizedBox(
@@ -140,15 +158,17 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           ),
                           Expanded(
                             child: InkWell(
-                              // onTap: () {
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) =>
-                              //           const OutOfStockScreen(),
-                              //     ),
-                              //   );
-                              // },
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => OutOfStockScreen(
+                                      fromDateCtrl: fromdateController,
+                                      toDateCtrl: todateController,
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'OOS Items',
                                 style: kfontstyle(
@@ -158,13 +178,17 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          Text(
-                            '200',
-                            style: kfontstyle(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff413434),
-                            ),
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("null")
+                                          : Text("${count.cusCount}"),
+                                  outOfStockFailedState: () =>
+                                      const Text("fail"));
+                            },
                           ),
                           SizedBox(
                             width: 10.w,
@@ -200,14 +224,20 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               ),
                             ),
                           ),
-                          Text(
-                            '15',
-                            style: kfontstyle(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff413434),
-                            ),
-                          ),
+                          BlocBuilder<OutofstockcountBloc,
+                              OutofstockcountState>(
+                            builder: (context, state) {
+                              return state.when(
+                                  getOutOfStockCountState: (count) =>
+                                      count == null
+                                          ? const Text("0")
+                                          :
+                                          //counts.saleOrder ?? "",
+                                          Text(count.cusCount ?? ""),
+                                  //Text("${count.cusCount}"),
+                                  outOfStockFailedState: () => const Text("0"));
+                            },
+                          )
                         ],
                       ),
                     ],
@@ -224,7 +254,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
               SizedBox(
                 height: 10.h,
               ),
-              const OutletAcivitiesWidget(),
+              OutletAcivitiesWidget(
+                fromdatecontroller: fromdateController,
+                todatecontroller: todateController,
+              ),
               SizedBox(
                 height: 10.h,
               ),

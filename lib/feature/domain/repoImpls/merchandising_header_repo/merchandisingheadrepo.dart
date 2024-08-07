@@ -55,6 +55,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
         );
       }
     } catch (e) {
+      log(jsonEncode(e));
       return left(const MainFailures.serverfailure());
     }
   }
@@ -67,7 +68,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('taskcount: ${response.body}');
+        log('surveycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final surveycount = GetSurveyCountModel.fromJson(json["result"][0]);
         return right(surveycount);
@@ -77,6 +78,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
         );
       }
     } catch (e) {
+      log(jsonEncode(e));
       return left(const MainFailures.serverfailure());
     }
   }
@@ -89,6 +91,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
+        log('displaycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final displaycount = GetDisplayCountModel.fromJson(json["result"][0]);
         return right(displaycount);
@@ -110,6 +113,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
+        log('cutactcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusactcount = GetCusActcountModel.fromJson(json["result"][0]);
         return right(cusactcount);

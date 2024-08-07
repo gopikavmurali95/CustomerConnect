@@ -7,9 +7,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomerServicesWidget extends StatelessWidget {
+class CustomerServicesWidget extends StatefulWidget {
   const CustomerServicesWidget({super.key});
 
+  @override
+  State<CustomerServicesWidget> createState() => _CustomerServicesWidgetState();
+}
+
+class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(

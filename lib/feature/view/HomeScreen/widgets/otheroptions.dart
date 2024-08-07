@@ -395,7 +395,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.07,
                           child: Image.asset(
-                            "assets/images/os.png",
+                            "assets/images/outs.png",
                             height: 30.h,
                           ),
                         ),
@@ -408,7 +408,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "assets/images/os.png",
+                                "assets/images/outs.png",
                                 height: 23.h,
                               ),
                               SizedBox(
@@ -518,7 +518,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.07,
                           child: Image.asset(
-                            "assets/images/home/act_rev.png",
+                            "assets/images/os.png",
                             height: 30.h,
                           ),
                         ),
@@ -531,7 +531,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "assets/images/home/act_rev.png",
+                                "assets/images/os.png",
                                 height: 23.h,
                               ),
                               SizedBox(

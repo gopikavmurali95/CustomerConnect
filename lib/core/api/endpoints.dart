@@ -156,13 +156,12 @@ const outOfStockitemsUrl = 'CusMerch/GetCCOutOfStockItems';
 const outOfStockitemCustomersUrl = 'CusMerch/GetCCOutOfStockItemsDetail';
 const outOfStockCustomersUrl = 'CusMerch/GetCCOutOfStockCustomers';
 const outOfStockCustomerDetailUrl = 'CusMerch/GetCCOutOfStockCustomersDetail';
-
 const merchandisingGetOutofStockCountUrl = "CusMerch/GetCCOutOfStockCount";
 const getTaskCountUrl = "CusMerch/GetCCTasksCount";
 const getSurveyCountUrl = "CusMerch/GetCCSurveyCount";
 const getDisplayCountUrl = "CusMerch/GetCCDisplayCount";
 const getCusActCountUrl = "CusMerch/GetCCCusActCount";
-const merchandiseTaskHeaderUrl ="CusMerch/GetCCTask";
+const merchandiseTaskHeaderUrl = "CusMerch/GetCCTask";
 const merchandisingSurveyUrl = 'CusMerch/GetCCSurvey';
 const chartRoutesUrl = 'CusChartDashboard/GetCCRouteCount';
 const chartPlannedVisitsUrl = 'CusChartDashboard/GetCCPlanVisitCount';
@@ -170,3 +169,5 @@ const chartActualVisitsUrl = 'CusChartDashboard/GetCCActualVisitCount';
 const chartProductiveVisitsUrl = 'CusChartDashboard/GetCCProductiveVisitCount';
 const chartNonProductiveVistisUrl =
     'CusChartDashboard/GetCCNonProductiveVisitCount';
+const trackSalesManUrl = 'CusTracking/GetTrackingDetails';
+const trackAllCustomersUrl = 'CusTracking/GetCurrentLocation';
