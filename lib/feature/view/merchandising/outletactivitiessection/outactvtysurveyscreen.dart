@@ -8,12 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutActvitySurveyHeaderScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const OutActvitySurveyHeaderScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -40,8 +40,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
         .read<MerchandisingSurveyBloc>()
         .add(const ClearMerchandisingSurveyList());
     context.read<MerchandisingSurveyBloc>().add(GetMerchandisingSurveyEvent(
-        fromDate: widget.fromdatectrl.text,
-        toDate: widget.todatectrl.text,
+        fromDate: widget.fromdateController.text,
+        toDate: widget.todateController.text,
         status: 'AL',
         searchQuery: ''));
     super.initState();
@@ -97,8 +97,9 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                     .add(const ClearMerchandisingSurveyList());
                                 context.read<MerchandisingSurveyBloc>().add(
                                     GetMerchandisingSurveyEvent(
-                                        fromDate: widget.fromdatectrl.text,
-                                        toDate: widget.todatectrl.text,
+                                        fromDate:
+                                            widget.fromdateController.text,
+                                        toDate: widget.todateController.text,
                                         status: selectedMerchSurveyMode,
                                         searchQuery: ''));
                               }
@@ -142,8 +143,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                       ), () async {
                     context.read<MerchandisingSurveyBloc>().add(
                         GetMerchandisingSurveyEvent(
-                            fromDate: widget.fromdatectrl.text,
-                            toDate: widget.todatectrl.text,
+                            fromDate: widget.fromdateController.text,
+                            toDate: widget.todateController.text,
                             status: selectedMerchSurveyMode,
                             searchQuery: value.trim()));
                   });
@@ -198,8 +199,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                       .add(const ClearMerchandisingSurveyList());
                   context.read<MerchandisingSurveyBloc>().add(
                       GetMerchandisingSurveyEvent(
-                          fromDate: widget.fromdatectrl.text,
-                          toDate: widget.todatectrl.text,
+                          fromDate: widget.fromdateController.text,
+                          toDate: widget.todateController.text,
                           status: value,
                           searchQuery: merchSurveySearchCtrl.text));
                 },

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -17,7 +18,7 @@ class MerchDisputeRequestRepo implements IMerchDisputeReqRepo {
       final response = await http.post(
           Uri.parse(baseUrl + merchDisputeRequestUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "Status": status});
-
+      log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> disputedata = json['result'];

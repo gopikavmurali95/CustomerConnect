@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 // import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
@@ -114,7 +115,6 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        // log('cutactcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusactcount = GetCusActcountModel.fromJson(json["result"][0]);
         return right(cusactcount);
@@ -135,9 +135,9 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       final response = await http.post(
           Uri.parse(baseUrl + merchCusServiceCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-
+      log({"FromDate": fromDate, "ToDate": toDate}.toString());
       if (response.statusCode == 200) {
-        // log('cusServicecount: ${response.body}');
+        log('cusServicecount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusServicecount =
             MerchCuServiceCountModel.fromJson(json["result"][0]);

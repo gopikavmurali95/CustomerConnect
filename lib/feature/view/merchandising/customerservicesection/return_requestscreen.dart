@@ -11,12 +11,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseReturnRequestScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const MerchandiseReturnRequestScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -198,8 +198,8 @@ class _CreditNoteHeaderScreenState
                       .add(const ClearMerchReturnRequestData());
                   context.read<MerchReturnRequestBloc>().add(
                         GetMErchReturnRequestDataEvent(
-                          fromDate: fromdateController.text,
-                          toDate: todateController.text,
+                          fromDate: widget.fromdateController.text,
+                          toDate: widget.todateController.text,
                           status: value,
                           searchQuery: _merchReturnReqSearch.text,
                         ),

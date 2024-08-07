@@ -8,20 +8,20 @@ import 'package:injectable/injectable.dart';
 
 part 'merch_cus_service_count_event.dart';
 part 'merch_cus_service_count_state.dart';
- part 'merch_cus_service_count_bloc.freezed.dart';
+part 'merch_cus_service_count_bloc.freezed.dart';
+
 @injectable
-class MerchCusServiceCountBloc extends 
-Bloc<MerchCusServiceCountEvent, MerchCusServiceCountState> {
+class MerchCusServiceCountBloc
+    extends Bloc<MerchCusServiceCountEvent, MerchCusServiceCountState> {
   final IMerchandisingDashBoardRepo cusServicerepo;
-  MerchCusServiceCountBloc(this.cusServicerepo) : super(MerchCusServiceCountState.initial()) {
-    on<GetCusserviceCountEvent>((event, emit)async {
-      Either<MainFailures,MerchCuServiceCountModel> servicecount =
-      await cusServicerepo.getCusServiceCount(event.fromdate, event.toDate);
-      
-      emit(servicecount.fold(
-        (l) => const CusServiceCountFailedstate(),
-         (r) => GetCusServiceCountState(cusServicecount: r)));
-     
+  MerchCusServiceCountBloc(this.cusServicerepo)
+      : super(MerchCusServiceCountState.initial()) {
+    on<GetCusserviceCountEvent>((event, emit) async {
+      Either<MainFailures, MerchCuServiceCountModel> servicecount =
+          await cusServicerepo.getCusServiceCount(event.fromdate, event.toDate);
+
+      emit(servicecount.fold((l) => const CusServiceCountFailedstate(),
+          (r) => GetCusServiceCountState(cusServicecount: r)));
     });
     on<CusServiceCountClearevent>((event, emit) {
       emit(const GetCusServiceCountState(cusServicecount: null));

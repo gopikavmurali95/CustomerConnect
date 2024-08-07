@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
@@ -94,7 +95,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                       const Duration(
                                         milliseconds: 300,
                                       ), () async {
-                                    // log("datesss ${widget.fromDateController.text}---${widget.toDateController.text}");
+                                    log("datesss ${fromdateController.text}---${widget.toDateController.text}");
                                     context
                                         .read<OutofstockcountBloc>()
                                         .add(GetOutOfStockCountEvent(
