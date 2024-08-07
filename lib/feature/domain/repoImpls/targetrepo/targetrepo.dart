@@ -154,7 +154,7 @@ class TargetHeaderCountRepo implements ITargetRepo {
         "FromDate": fromDate,
         "rotID": rotID,
       });
-
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final detailsQty =

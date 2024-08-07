@@ -52,7 +52,7 @@ class _CustomProgressBarState extends State<CustomProgressBar>
             builder: (context, child) {
               return FractionallySizedBox(
                 alignment: Alignment.centerLeft,
-                widthFactor: _animation.value,
+                widthFactor: (_animation.value >= 0.0) ? _animation.value : 0.0,
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: widget.colors,

@@ -218,8 +218,10 @@ class OutletAcivitiesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActDisplayAgreementScreen()),
+                        builder: (context) => OutActDisplayAgreementScreen(
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            )),
                   );
                 },
                 child: Container(
@@ -312,8 +314,10 @@ class OutletAcivitiesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActCustomerActivityScreen()),
+                        builder: (context) => OutActCustomerActivityScreen(
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            )),
                   );
                 },
                 child: Container(

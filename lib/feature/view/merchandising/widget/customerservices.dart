@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/view/merchandising/customerservicesecti
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/customer_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/disputenote_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/return_requestscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,10 @@ class CustomerServicesWidget extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CustomerRequestScreen()),
+                        builder: (context) => CustomerRequestScreen(
+                              fromDateCtrl: fromdateController,
+                              toDateCtrl: todateController,
+                            )),
                   );
                 },
                 child: Container(

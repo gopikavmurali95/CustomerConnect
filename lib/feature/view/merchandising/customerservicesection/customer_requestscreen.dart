@@ -1,12 +1,19 @@
 import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
+import 'package:customer_connect/feature/state/bloc/merchcustomerrequest/merch_customer_request_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerRequestScreen extends StatefulWidget {
+  final TextEditingController fromDateCtrl;
+  final TextEditingController toDateCtrl;
   const CustomerRequestScreen({
     super.key,
+    required this.fromDateCtrl,
+    required this.toDateCtrl,
   });
 
   @override
@@ -14,16 +21,30 @@ class CustomerRequestScreen extends StatefulWidget {
 }
 
 List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
-  ApprovalStatusFilterModel(statusName: "All Requests", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Completed", mode: 'AT'),
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'AT'),
+  ApprovalStatusFilterModel(statusName: "All Requests", mode: 'AL'),
+  ApprovalStatusFilterModel(statusName: "Responded Requests", mode: 'RS'),
+  ApprovalStatusFilterModel(statusName: "New Requests", mode: 'OP'),
 ];
 
 Timer? debounce;
-TextEditingController _priceChangeHeaderSearchCtrl = TextEditingController();
+TextEditingController _customerReqSearchCtrl = TextEditingController();
+TextEditingController _customerReqFilter = TextEditingController();
 
 class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
   @override
+  void initState() {
+    context
+        .read<MerchCustomerRequestBloc>()
+        .add(const ClearMerchCustomerRequestEvent());
+
+    context.read<MerchCustomerRequestBloc>().add(GetMerchCustomerRequestEvent(
+        fromDate: widget.fromDateCtrl.text,
+        toDate: widget.toDateCtrl.text,
+        status: "AL",
+        searchQuery: ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +77,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _priceChangeHeaderSearchCtrl,
+                  controller: _customerReqSearchCtrl,
                   style: kfontstyle(
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
@@ -67,7 +88,23 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                       children: [
                         Expanded(
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                ApprovalStatusFilterModel data =
+                                    filterFieldsPriceChange
+                                        .where((element) =>
+                                            element.statusName ==
+                                            _customerReqFilter.text)
+                                        .first;
+                                context.read<MerchCustomerRequestBloc>().add(
+                                    const ClearMerchCustomerRequestEvent());
+
+                                context.read<MerchCustomerRequestBloc>().add(
+                                    GetMerchCustomerRequestEvent(
+                                        fromDate: widget.fromDateCtrl.text,
+                                        toDate: widget.toDateCtrl.text,
+                                        status: data.mode,
+                                        searchQuery: ''));
+                              },
                               icon: Icon(
                                 Icons.clear,
                                 size: 10.sp,
@@ -100,7 +137,24 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 300,
+                        ), () async {
+                      ApprovalStatusFilterModel data = filterFieldsPriceChange
+                          .where((element) =>
+                              element.statusName == _customerReqFilter.text)
+                          .first;
+
+                      context.read<MerchCustomerRequestBloc>().add(
+                          GetMerchCustomerRequestEvent(
+                              fromDate: widget.fromDateCtrl.text,
+                              toDate: widget.toDateCtrl.text,
+                              status: data.mode,
+                              searchQuery: value.trim()));
+                    });
+                  },
                 ),
               ),
             ),
@@ -144,7 +198,22 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    ApprovalStatusFilterModel data = filterFieldsPriceChange
+                        .where((element) => element.mode == value)
+                        .first;
+                    _customerReqFilter.text = data.statusName;
+                    context
+                        .read<MerchCustomerRequestBloc>()
+                        .add(const ClearMerchCustomerRequestEvent());
+
+                    context.read<MerchCustomerRequestBloc>().add(
+                        GetMerchCustomerRequestEvent(
+                            fromDate: widget.fromDateCtrl.text,
+                            toDate: widget.toDateCtrl.text,
+                            status: value ?? '',
+                            searchQuery: ''));
+                  },
                 ),
               ),
             ),
@@ -156,24 +225,43 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "All Customer Requests",
-                          // _selectedPriceChangeMode == 'P'
-                          //     ? 'Pending Approvals'
-                          //     : 'Approved Requests',
-                          style: countHeading(),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Text(
-                            "13",
-                            style: countHeading(),
-                          ),
-                        )
-                      ],
+                    child: BlocBuilder<MerchCustomerRequestBloc,
+                        MerchCustomerRequestState>(
+                      builder: (context, state) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.when(
+                                getMerchCustomerRequestHeadersState:
+                                    (headers) => headers == null
+                                        ? "All Requests"
+                                        : _customerReqFilter.text,
+                                merchCustomerRequestsFailedState: () =>
+                                    'All Requests',
+                              ),
+                              // _selectedPriceChangeMode == 'P'
+                              //     ? 'Pending Approvals'
+                              //     : 'Approved Requests',
+                              style: countHeading(),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: Text(
+                                state.when(
+                                  getMerchCustomerRequestHeadersState:
+                                      (headers) => headers == null
+                                          ? '0'
+                                          : headers.length.toString(),
+                                  merchCustomerRequestsFailedState: () => '0',
+                                ),
+                                style: countHeading(),
+                              ),
+                            )
+                          ],
+                        );
+                      },
                     ),
                   ),
                   SizedBox(
@@ -181,104 +269,171 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                   ),
                   Expanded(
                       child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ListView.separated(
-                        itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 50,
-                                    width: 10,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xfffee8e0),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("CUSACT01-Customer Request 01",
-                                            style: blueTextStyle()),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "201232-",
-                                              style: kfontstyle(
-                                                fontSize: 11.sp,
-                                                color: const Color(0xff2C6B9E),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  "Emmerch International Hotel",
-                                                  style: subTitleTextStyle()),
-                                            ),
-                                          ],
-                                        ),
-                                        // Text(
-                                        //   overflow:
-                                        //       TextOverflow
-                                        //           .ellipsis,
-                                        //  "",
-                                        //   style: kfontstyle(
-                                        //       fontSize: 12.sp,
-                                        //       color: const Color(
-                                        //           0xff413434)),
-                                        // ),
-                                        Text(
-                                          " 01 Aug 2024 ",
-                                          style: kfontstyle(
-                                              fontSize: 9.sp,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    // height: 10.h,
-                                    // width: 10.h,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffe3f7e2),
-                                      // color: pChange[index]
-                                      //             .pchApprovalStatus! ==
-                                      //         "Pending"
-                                      //     ? const Color(
-                                      //         0xfff7f4e2)
-                                      //     : pChange[index]
-                                      //                 .pchApprovalStatus! ==
-                                      //             "Action Taken"
-                                      //         ? const Color(
-                                      //             0xffe3f7e2)
-                                      //         : Colors
-                                      //             .red[300],
-                                      borderRadius: BorderRadius.circular(
-                                        10,
-                                      ),
-                                    ),
-                                    child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: BlocBuilder<MerchCustomerRequestBloc,
+                        MerchCustomerRequestState>(
+                      builder: (context, state) {
+                        return state.when(
+                          getMerchCustomerRequestHeadersState: (headers) =>
+                              headers == null
+                                  ? Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 5, vertical: 3),
-                                      child: Text(
-                                        "Responded",
-                                        style: kfontstyle(fontSize: 8.sp),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                                          horizontal: 0),
+                                      child: ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) =>
+                                              ShimmerContainers(
+                                                  height: 60.h,
+                                                  width: double.infinity),
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                                color: Colors.grey[300],
+                                              ),
+                                          itemCount: 10),
+                                    )
+                                  : headers.isEmpty
+                                      ? Center(
+                                          child: Text(
+                                            'No Data Available',
+                                            style: kfontstyle(),
+                                          ),
+                                        )
+                                      : ListView.builder(
+                                          itemBuilder:
+                                              (context, index) =>
+                                                  GestureDetector(
+                                                    onTap: () {},
+                                                    child: Column(
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            Container(
+                                                              height: 50,
+                                                              width: 10,
+                                                              decoration: BoxDecoration(
+                                                                  color: const Color(
+                                                                      0xfffee8e0),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20)),
+                                                            ),
+                                                            SizedBox(
+                                                              width: 10.w,
+                                                            ),
+                                                            Expanded(
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                      "${headers[index].reqCode}",
+                                                                      style:
+                                                                          blueTextStyle()),
+                                                                  Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        "${headers[index].cusCode} -",
+                                                                        style:
+                                                                            kfontstyle(
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          color:
+                                                                              const Color(0xff2C6B9E),
+                                                                        ),
+                                                                      ),
+                                                                      Expanded(
+                                                                        child: Text(
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
+                                                                            ' ${headers[index].cusName}',
+                                                                            style: subTitleTextStyle()),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  // Text(
+                                                                  //   overflow:
+                                                                  //       TextOverflow
+                                                                  //           .ellipsis,
+                                                                  //  "",
+                                                                  //   style: kfontstyle(
+                                                                  //       fontSize: 12.sp,
+                                                                  //       color: const Color(
+                                                                  //           0xff413434)),
+                                                                  // ),
+                                                                  Text(
+                                                                    headers[index]
+                                                                            .date ??
+                                                                        '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 9
+                                                                            .sp,
+                                                                        color: Colors
+                                                                            .grey),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              // height: 10.h,
+                                                              // width: 10.h,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: headers[index]
+                                                                            .status ==
+                                                                        'Responded'
+                                                                    ? const Color(
+                                                                        0xffe3f7e2)
+                                                                    : const Color(
+                                                                        0xfff7f4e2),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  10,
+                                                                ),
+                                                              ),
+                                                              child: Padding(
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        5,
+                                                                    vertical:
+                                                                        3),
+                                                                child: Text(
+                                                                  headers[index]
+                                                                          .status ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          8.sp),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                        Divider(
+                                                          color:
+                                                              Colors.grey[300],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                          itemCount: headers.length),
+                          merchCustomerRequestsFailedState: () => SizedBox(
+                            height: MediaQuery.of(context).size.height - 200,
+                            child: Center(
+                              child: Text(
+                                'No Data Available',
+                                style: kfontstyle(),
                               ),
                             ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10),
+                          ),
+                        );
+                      },
+                    ),
                   ))
                 ],
               ),

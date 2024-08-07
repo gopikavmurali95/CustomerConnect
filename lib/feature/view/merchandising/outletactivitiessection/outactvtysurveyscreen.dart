@@ -216,7 +216,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                 return state.when(
                     getMerchandisingSurveyState: (survey) => survey == null
                         ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 0),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: ListView.separated(
                                 //physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -242,10 +242,11 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "All Surveys",
-                                          // _selectedPriceChangeMode == 'P'
-                                          //     ? 'Pending Approvals'
-                                          //     : 'Approved Requests',
+                                          selectedMerchSurveyMode == 'AL'
+                                              ? 'All Surveys'
+                                              : selectedMerchSurveyMode == 'C'
+                                                  ? 'Completed Surveys'
+                                                  : 'Pending Surveys',
                                           style: countHeading(),
                                         ),
                                         Padding(

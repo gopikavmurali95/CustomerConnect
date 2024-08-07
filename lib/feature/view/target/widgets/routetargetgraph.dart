@@ -713,9 +713,16 @@ Map<String, double> calculatePercentages(TargetDetailsGraphAmtModel amt) {
 }
 
 Map<String, double> calculateQtyPercentages(TargetDetailsGraphQtyModel qty) {
-  double achQty = double.parse((qty.achQty ?? '').replaceAll(',', ''));
-  double mtdQty = double.parse((qty.mtdGapQty ?? '').replaceAll(',', ''));
-  double monthQty = double.parse((qty.monthGapQty ?? '').replaceAll(',', ''));
+  double achQty = double.parse(
+      (qty.achQty?.isEmpty ?? true) ? '0.00' : qty.achQty!.replaceAll(',', ''));
+
+  double mtdQty = double.parse((qty.mtdGapQty?.isEmpty ?? true)
+      ? '0.00'
+      : qty.mtdGapQty!.replaceAll(',', ''));
+
+  double monthQty = double.parse((qty.monthGapQty?.isEmpty ?? true)
+      ? '0.00'
+      : qty.monthGapQty!.replaceAll(',', ''));
   double toatalQty = achQty + mtdQty + monthQty;
 
   Map<String, double> qtypercentages = {};

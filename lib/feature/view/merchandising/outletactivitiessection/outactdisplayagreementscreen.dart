@@ -1,12 +1,19 @@
 import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
+import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
+import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart';
+import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutActDisplayAgreementScreen extends StatefulWidget {
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
   const OutActDisplayAgreementScreen({
     super.key,
+    required this.fromdatectrl,
+    required this.todatectrl,
   });
 
   @override
@@ -14,17 +21,33 @@ class OutActDisplayAgreementScreen extends StatefulWidget {
       _PriceChangeHeaderState();
 }
 
-List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
-  ApprovalStatusFilterModel(statusName: "All Agreements", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Completed", mode: 'AT'),
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'AT'),
+List<MerchandisingStatusFilterModel> filterDisplayAgreement = [
+  MerchandisingStatusFilterModel(statusName: "All", mode: 'AL'),
+  MerchandisingStatusFilterModel(statusName: "New", mode: 'NW'),
+  MerchandisingStatusFilterModel(statusName: "Approved", mode: 'AP'),
+  MerchandisingStatusFilterModel(statusName: "Active", mode: 'AC'),
 ];
 
 Timer? debounce;
-TextEditingController _priceChangeHeaderSearchCtrl = TextEditingController();
+TextEditingController _dispAgreementSearchCtrl = TextEditingController();
+String selecteddispAgreementMode = 'AL';
 
 class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
   @override
+  void initState() {
+    selecteddispAgreementMode = 'AL';
+    _dispAgreementSearchCtrl.clear();
+    context
+        .read<MerchDisplayAgreementBloc>()
+        .add(const ClearMerchDisplayAgreementData());
+    context.read<MerchDisplayAgreementBloc>().add(GetMerchDisplayAgreementEvent(
+        fromDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text,
+        status: 'AL',
+        searchQuery: ''));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +80,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _priceChangeHeaderSearchCtrl,
+                  controller: _dispAgreementSearchCtrl,
                   style: kfontstyle(
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
@@ -68,7 +91,20 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                       children: [
                         Expanded(
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (_dispAgreementSearchCtrl.text.isNotEmpty) {
+                                  _dispAgreementSearchCtrl.clear();
+
+                                  context.read<MerchDisplayAgreementBloc>().add(
+                                      const ClearMerchDisplayAgreementData());
+                                  context.read<MerchDisplayAgreementBloc>().add(
+                                      GetMerchDisplayAgreementEvent(
+                                          fromDate: widget.fromdatectrl.text,
+                                          toDate: widget.todatectrl.text,
+                                          status: selecteddispAgreementMode,
+                                          searchQuery: ''));
+                                }
+                              },
                               icon: Icon(
                                 Icons.clear,
                                 size: 10.sp,
@@ -101,7 +137,19 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    debounce = Timer(
+                        const Duration(
+                          milliseconds: 500,
+                        ), () async {
+                      context.read<MerchDisplayAgreementBloc>().add(
+                          GetMerchDisplayAgreementEvent(
+                              fromDate: widget.fromdatectrl.text,
+                              toDate: widget.todatectrl.text,
+                              status: selecteddispAgreementMode,
+                              searchQuery: value.trim()));
+                    });
+                  },
                 ),
               ),
             ),
@@ -115,7 +163,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: DropdownButtonFormField(
                   elevation: 0,
-                  value: filterFieldsPriceChange[0].mode,
+                  value: filterDisplayAgreement[0].mode,
                   dropdownColor: Colors.white,
                   style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
                   decoration: InputDecoration(
@@ -137,7 +185,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  items: filterFieldsPriceChange
+                  items: filterDisplayAgreement
                       .map(
                         (e) => DropdownMenuItem(
                           value: e.mode,
@@ -145,7 +193,18 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    selecteddispAgreementMode = value!;
+                    context
+                        .read<MerchDisplayAgreementBloc>()
+                        .add(const ClearMerchDisplayAgreementData());
+                    context.read<MerchDisplayAgreementBloc>().add(
+                        GetMerchDisplayAgreementEvent(
+                            fromDate: widget.fromdatectrl.text,
+                            toDate: widget.todatectrl.text,
+                            status: value,
+                            searchQuery: _dispAgreementSearchCtrl.text));
+                  },
                 ),
               ),
             ),
@@ -153,134 +212,184 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
               height: 10.h,
             ),
             Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "All Agreements",
-                          // _selectedPriceChangeMode == 'P'
-                          //     ? 'Pending Approvals'
-                          //     : 'Approved Requests',
-                          style: countHeading(),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Text(
-                            "13",
-                            style: countHeading(),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ListView.separated(
-                        itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 50,
-                                    width: 10,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xfffee8e0),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+              child: BlocBuilder<MerchDisplayAgreementBloc,
+                  MerchDisplayAgreementState>(
+                builder: (context, state) {
+                  return state.when(
+                      getMerchDisplayAgreementDataState: (dispData) =>
+                          dispData == null
+                              ? Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: ListView.separated(
+                                      //physics: const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          ShimmerContainers(
+                                              height: 60.h,
+                                              width: double.infinity),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                      itemCount: 10),
+                                )
+                              : dispData.isEmpty
+                                  ? const Center(
+                                      child: Text('No Data Available'),
+                                    )
+                                  : Column(
                                       children: [
-                                        Text("Cus-agr-001",
-                                            style: blueTextStyle()),
-                                        Row(
-                                          children: [
-                                            // Text(
-                                            //   "201232-",
-                                            //   style:
-                                            //       kfontstyle(
-                                            //     fontSize:
-                                            //         11.sp,
-                                            //     color: const Color(
-                                            //         0xff2C6B9E),
-                                            //   ),
-                                            // ),
-                                            Expanded(
-                                              child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  "Agreement type 01",
-                                                  style: subTitleTextStyle()),
-                                            ),
-                                          ],
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                selecteddispAgreementMode ==
+                                                        'AL'
+                                                    ? 'All Agreements'
+                                                    : selecteddispAgreementMode ==
+                                                            'NW'
+                                                        ? 'NewAgreements'
+                                                        : selecteddispAgreementMode ==
+                                                                'AP'
+                                                            ? 'Approved Agreements'
+                                                            : 'Active Agreements',
+                                                style: countHeading(),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 5.0),
+                                                child: Text(
+                                                  dispData.length.toString(),
+                                                  style: countHeading(),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                        Text(
-                                          "202110-Emmerch International Hotel",
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff413434)),
+                                        SizedBox(
+                                          height: 10.h,
                                         ),
-                                        Text(
-                                          "Start: 01 Aug 2024 | End: 05 Aug 2024",
-                                          style: kfontstyle(
-                                              fontSize: 9.sp,
-                                              color: Colors.grey),
-                                        ),
+                                        Expanded(
+                                            child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: ListView.separated(
+                                              itemBuilder: (context, index) =>
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        height: 50,
+                                                        width: 10,
+                                                        decoration: BoxDecoration(
+                                                            color: const Color(
+                                                                0xfffee8e0),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 10.w,
+                                                      ),
+                                                      Expanded(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                                dispData[index]
+                                                                        .number ??
+                                                                    '',
+                                                                style:
+                                                                    blueTextStyle()),
+                                                            Row(
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Text(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      dispData[index]
+                                                                              .type ??
+                                                                          '',
+                                                                      style:
+                                                                          subTitleTextStyle()),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Text(
+                                                              "${dispData[index].cusCode}-${dispData[index].cusName}",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: const Color(
+                                                                      0xff413434)),
+                                                            ),
+                                                            Text(
+                                                              "Start: ${dispData[index].startDate} | End: ${dispData[index].endDate}",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      9.sp,
+                                                                  color: Colors
+                                                                      .grey),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        // height: 10.h,
+                                                        // width: 10.h,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: dispData[index]
+                                                                      .status! ==
+                                                                  "New"
+                                                              ? const Color(
+                                                                  0xfff7f4e2)
+                                                              : const Color(
+                                                                  0xffe3f7e2),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            10,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal: 5,
+                                                                  vertical: 3),
+                                                          child: Text(
+                                                            dispData[index]
+                                                                    .status ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                                fontSize: 8.sp),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                              separatorBuilder:
+                                                  (context, index) => Divider(
+                                                        color: Colors.grey[300],
+                                                      ),
+                                              itemCount: dispData.length),
+                                        ))
                                       ],
                                     ),
-                                  ),
-                                  Container(
-                                    // height: 10.h,
-                                    // width: 10.h,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffe3f7e2),
-                                      // color: pChange[index]
-                                      //             .pchApprovalStatus! ==
-                                      //         "Pending"
-                                      //     ? const Color(
-                                      //         0xfff7f4e2)
-                                      //     : pChange[index]
-                                      //                 .pchApprovalStatus! ==
-                                      //             "Action Taken"
-                                      //         ? const Color(
-                                      //             0xffe3f7e2)
-                                      //         : Colors
-                                      //             .red[300],
-                                      borderRadius: BorderRadius.circular(
-                                        10,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5, vertical: 3),
-                                      child: Text(
-                                        "Active",
-                                        style: kfontstyle(fontSize: 8.sp),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
-                        itemCount: 10),
-                  ))
-                ],
+                      getMerchDisplayAgreementDataFailed: () => const Center(
+                            child: Text('No Data Available'),
+                          ));
+                },
               ),
             ),
           ],
