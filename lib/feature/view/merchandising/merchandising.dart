@@ -131,10 +131,11 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               OutofstockcountState>(
                             builder: (context, state) {
                               return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? const Text("0")
-                                          : Text("${count.cusCount}"),
+                                  getOutOfStockCountState: (count) => count ==
+                                          null
+                                      ? const Text("0")
+                                      : Text(
+                                          "${int.parse(count.cusCount ?? '0') + int.parse(count.itemCount ?? '0')}"),
                                   outOfStockFailedState: () => const Text("0"));
                             },
                           )
@@ -185,7 +186,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                   getOutOfStockCountState: (count) =>
                                       count == null
                                           ? const Text("0")
-                                          : Text("${count.cusCount}"),
+                                          : Text("${count.itemCount}"),
                                   outOfStockFailedState: () => const Text("0"));
                             },
                           ),

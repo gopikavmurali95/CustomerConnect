@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -31,8 +29,7 @@ class MerchandisingCalender extends StatefulWidget {
 }
 
 class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
-
-    Timer? debounce;
+  Timer? debounce;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -92,37 +89,49 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                   widget.fromDateController.text =
                                       DateFormat('yyyy-MM-dd').format(value);
                                   setState(() {});
-                                   
-                    debounce = Timer(
-                        const Duration(
-                          milliseconds: 300,
-                        ), () async {
-                         context.read<OutofstockcountBloc>().add(GetOutOfStockCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text
-                           ));
-                          context.read<MerchTaskCountBloc>().add(GetTaskCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text
-                           ));
-                           context.read<MerchSurveyCountBloc>().add(GetSurveyCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text
-                           ));
-                           context.read<MerchdisplaycountBloc>().add(GetDisplayCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text
-                           ));
-                            context.read<MerchCusActCountBloc>().add(GetCusActCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text
-                           ));
-                            context.read<MerchCusServiceCountBloc>().add(GetCusserviceCountEvent(
-                          fromdate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text,));
-                           
-                    });
-                  
+                                  debounce = Timer(
+                                      const Duration(
+                                        milliseconds: 300,
+                                      ), () async {
+                                    // log("datesss ${widget.fromDateController.text}---${widget.toDateController.text}");
+                                    context.read<OutofstockcountBloc>().add(
+                                        GetOutOfStockCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchTaskCountBloc>().add(
+                                        GetTaskCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchSurveyCountBloc>().add(
+                                        GetSurveyCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchdisplaycountBloc>().add(
+                                        GetDisplayCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchCusActCountBloc>().add(
+                                        GetCusActCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context
+                                        .read<MerchCusServiceCountBloc>()
+                                        .add(GetCusserviceCountEvent(
+                                          fromdate:
+                                              widget.fromDateController.text,
+                                          toDate: widget.toDateController.text,
+                                        ));
+                                  });
                                 },
                                 use24hFormat: true,
                                 mode: CupertinoDatePickerMode.date,
@@ -227,36 +236,52 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                 initialDateTime: DateTime.now(),
                                 maximumDate: DateTime.now(),
                                 onDateTimeChanged: (value) {
-                                   widget.toDateController.text =
+                                  widget.toDateController.text =
                                       DateFormat('yyyy-MM-dd').format(value);
                                   setState(() {});
-                                  
-                    debounce = Timer(
-                        const Duration(
-                          milliseconds: 300,
-                        ), () async {
-                         context.read<OutofstockcountBloc>().add(GetOutOfStockCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text));
-                          context.read<MerchTaskCountBloc>().add(GetTaskCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text));
-                           context.read<MerchSurveyCountBloc>().add(GetSurveyCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text));
-                           context.read<MerchdisplaycountBloc>().add(GetDisplayCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text));
-                            context.read<MerchCusActCountBloc>().add(GetCusActCountEvent(
-                          fromDate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text));
-                            context.read<MerchCusServiceCountBloc>().add(GetCusserviceCountEvent(
-                          fromdate: widget.fromDateController.text,
-                           toDate: widget.toDateController.text,));
-                           
-                    });
-                  
-                                 
+
+                                  debounce = Timer(
+                                      const Duration(
+                                        milliseconds: 300,
+                                      ), () async {
+                                    context.read<OutofstockcountBloc>().add(
+                                        GetOutOfStockCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchTaskCountBloc>().add(
+                                        GetTaskCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchSurveyCountBloc>().add(
+                                        GetSurveyCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchdisplaycountBloc>().add(
+                                        GetDisplayCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context.read<MerchCusActCountBloc>().add(
+                                        GetCusActCountEvent(
+                                            fromDate:
+                                                widget.fromDateController.text,
+                                            toDate:
+                                                widget.toDateController.text));
+                                    context
+                                        .read<MerchCusServiceCountBloc>()
+                                        .add(GetCusserviceCountEvent(
+                                          fromdate:
+                                              widget.fromDateController.text,
+                                          toDate: widget.toDateController.text,
+                                        ));
+                                  });
                                 },
                                 use24hFormat: true,
                                 mode: CupertinoDatePickerMode.date,
