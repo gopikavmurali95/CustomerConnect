@@ -27,11 +27,14 @@ class MerchandTaskHeaderBloc
       emit(taskhead.fold((l) => const TaskHeaderFailedState(), (r) {
         searchitems = r
             .where((element) =>
-                element.cusCode!
+                element.taskName!
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
                 element.cusCode!
                     .toLowerCase()
+                    .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusName!
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))
             .toList();
@@ -41,7 +44,7 @@ class MerchandTaskHeaderBloc
     });
 
     on<TaskHeaderClearEvent>((event, emit) {
-      emit(const GetTaskHeaderSuccessState(tasksheader: []));
+      emit(const GetTaskHeaderSuccessState(tasksheader: null));
     });
   }
 }

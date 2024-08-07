@@ -16,6 +16,8 @@ class GetTaskHeadersOutModel {
   String? compOn;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'TaskCode')
+  String? taskCode;
 
   GetTaskHeadersOutModel({
     this.taskName,
