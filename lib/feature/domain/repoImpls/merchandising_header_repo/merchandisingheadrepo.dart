@@ -23,7 +23,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + merchandisingGetOutofStockCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-      log('outofstockcount: ${response.body}');
+     // log('outofstockcount: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final stockcount = GetOutOfStockCountModel.fromJson(json["result"][0]);
@@ -46,7 +46,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('taskcount: ${response.body}');
+        //log('taskcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final taskcount = GetTaskCountModel.fromJson(json["result"][0]);
         return right(taskcount);
@@ -69,7 +69,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('surveycount: ${response.body}');
+      //  log('surveycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final surveycount = GetSurveyCountModel.fromJson(json["result"][0]);
         return right(surveycount);
@@ -92,7 +92,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('displaycount: ${response.body}');
+       // log('displaycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final displaycount = GetDisplayCountModel.fromJson(json["result"][0]);
         return right(displaycount);
@@ -114,7 +114,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('cutactcount: ${response.body}');
+       // log('cutactcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusactcount = GetCusActcountModel.fromJson(json["result"][0]);
         return right(cusactcount);
@@ -136,7 +136,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        log('cusServicecount: ${response.body}');
+       // log('cusServicecount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusServicecount = MerchCuServiceCountModel.fromJson(json["result"][0]);
         return right(cusServicecount);
