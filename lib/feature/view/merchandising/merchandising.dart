@@ -130,6 +130,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           BlocBuilder<OutofstockcountBloc,
                               OutofstockcountState>(
                             builder: (context, state) {
+                              
                               return state.when(
                                   getOutOfStockCountState: (count) =>
                                       count == null
@@ -185,7 +186,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                   getOutOfStockCountState: (count) =>
                                       count == null
                                           ? const Text("0")
-                                          : Text("${count.cusCount}"),
+                                          : Text("${count.itemCount}"),
                                   outOfStockFailedState: () => const Text("0"));
                             },
                           ),

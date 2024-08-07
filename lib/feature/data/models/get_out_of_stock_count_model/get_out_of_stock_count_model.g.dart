@@ -11,11 +11,12 @@ GetOutOfStockCountModel _$GetOutOfStockCountModelFromJson(
     GetOutOfStockCountModel(
       itemCount: json['ItemCount'] as String?,
       cusCount: json['CusCount'] as String?,
-    );
+    )..transCount = json['TransCount'] as String?;
 
 Map<String, dynamic> _$GetOutOfStockCountModelToJson(
         GetOutOfStockCountModel instance) =>
     <String, dynamic>{
       'ItemCount': instance.itemCount,
       'CusCount': instance.cusCount,
+      'TransCount': instance.transCount,
     };
