@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdispl
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -94,42 +95,41 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                         milliseconds: 300,
                                       ), () async {
                                     // log("datesss ${widget.fromDateController.text}---${widget.toDateController.text}");
-                                    context.read<OutofstockcountBloc>().add(
-                                        GetOutOfStockCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchTaskCountBloc>().add(
-                                        GetTaskCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchSurveyCountBloc>().add(
-                                        GetSurveyCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchdisplaycountBloc>().add(
-                                        GetDisplayCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchCusActCountBloc>().add(
-                                        GetCusActCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
+                                    context
+                                        .read<OutofstockcountBloc>()
+                                        .add(GetOutOfStockCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchTaskCountBloc>()
+                                        .add(GetTaskCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchSurveyCountBloc>()
+                                        .add(GetSurveyCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchdisplaycountBloc>()
+                                        .add(GetDisplayCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchCusActCountBloc>()
+                                        .add(GetCusActCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
                                     context
                                         .read<MerchCusServiceCountBloc>()
                                         .add(GetCusserviceCountEvent(
-                                          fromdate:
-                                              widget.fromDateController.text,
-                                          toDate: widget.toDateController.text,
+                                          fromdate: fromdateController.text,
+                                          toDate: todateController.text,
                                         ));
                                   });
                                 },
@@ -244,42 +244,41 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                       const Duration(
                                         milliseconds: 300,
                                       ), () async {
-                                    context.read<OutofstockcountBloc>().add(
-                                        GetOutOfStockCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchTaskCountBloc>().add(
-                                        GetTaskCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchSurveyCountBloc>().add(
-                                        GetSurveyCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchdisplaycountBloc>().add(
-                                        GetDisplayCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
-                                    context.read<MerchCusActCountBloc>().add(
-                                        GetCusActCountEvent(
-                                            fromDate:
-                                                widget.fromDateController.text,
-                                            toDate:
-                                                widget.toDateController.text));
+                                    context
+                                        .read<OutofstockcountBloc>()
+                                        .add(GetOutOfStockCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchTaskCountBloc>()
+                                        .add(GetTaskCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchSurveyCountBloc>()
+                                        .add(GetSurveyCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchdisplaycountBloc>()
+                                        .add(GetDisplayCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
+                                    context
+                                        .read<MerchCusActCountBloc>()
+                                        .add(GetCusActCountEvent(
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
+                                        ));
                                     context
                                         .read<MerchCusServiceCountBloc>()
                                         .add(GetCusserviceCountEvent(
-                                          fromdate:
-                                              widget.fromDateController.text,
-                                          toDate: widget.toDateController.text,
+                                          fromdate: fromdateController.text,
+                                          toDate: todateController.text,
                                         ));
                                   });
                                 },
