@@ -8,12 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseCreditNoteRequestScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const MerchandiseCreditNoteRequestScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -41,8 +41,8 @@ class _CreditNoteHeaderScreenState
         .add(const ClearMerchCreditNoteRequestData());
     context.read<MerchCreditNoteRequestBloc>().add(
         GetMerchCreditNoteRequestEvent(
-            fromDate: widget.fromdatectrl.text,
-            toDate: widget.todatectrl.text,
+            fromDate: widget.fromdateController.text,
+            toDate: widget.todateController.text,
             status: 'AL',
             searchQuery: ''));
     super.initState();
@@ -94,8 +94,9 @@ class _CreditNoteHeaderScreenState
                                     const ClearMerchCreditNoteRequestData());
                                 context.read<MerchCreditNoteRequestBloc>().add(
                                     GetMerchCreditNoteRequestEvent(
-                                        fromDate: widget.fromdatectrl.text,
-                                        toDate: widget.todatectrl.text,
+                                        fromDate:
+                                            widget.fromdateController.text,
+                                        toDate: widget.todateController.text,
                                         status: _selectedCreditNoteMode,
                                         searchQuery: ''));
                               }
@@ -139,8 +140,8 @@ class _CreditNoteHeaderScreenState
                       ), () async {
                     context.read<MerchCreditNoteRequestBloc>().add(
                         GetMerchCreditNoteRequestEvent(
-                            fromDate: widget.fromdatectrl.text,
-                            toDate: widget.todatectrl.text,
+                            fromDate: widget.fromdateController.text,
+                            toDate: widget.todateController.text,
                             status: _selectedCreditNoteMode,
                             searchQuery: value.trim()));
                   });
@@ -195,8 +196,8 @@ class _CreditNoteHeaderScreenState
                       .add(const ClearMerchCreditNoteRequestData());
                   context.read<MerchCreditNoteRequestBloc>().add(
                       GetMerchCreditNoteRequestEvent(
-                          fromDate: widget.fromdatectrl.text,
-                          toDate: widget.todatectrl.text,
+                          fromDate: widget.fromdateController.text,
+                          toDate: widget.todateController.text,
                           status: value,
                           searchQuery: _merchCreditNoteSearch.text));
                 },

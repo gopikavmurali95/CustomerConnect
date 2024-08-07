@@ -8,12 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerRequestScreen extends StatefulWidget {
-  final TextEditingController fromDateCtrl;
-  final TextEditingController toDateCtrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const CustomerRequestScreen({
     super.key,
-    required this.fromDateCtrl,
-    required this.toDateCtrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -38,8 +38,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
         .add(const ClearMerchCustomerRequestEvent());
 
     context.read<MerchCustomerRequestBloc>().add(GetMerchCustomerRequestEvent(
-        fromDate: widget.fromDateCtrl.text,
-        toDate: widget.toDateCtrl.text,
+        fromDate: widget.fromdateController.text,
+        toDate: widget.todateController.text,
         status: "AL",
         searchQuery: ''));
     super.initState();
@@ -100,8 +100,9 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                                 context.read<MerchCustomerRequestBloc>().add(
                                     GetMerchCustomerRequestEvent(
-                                        fromDate: widget.fromDateCtrl.text,
-                                        toDate: widget.toDateCtrl.text,
+                                        fromDate:
+                                            widget.fromdateController.text,
+                                        toDate: widget.todateController.text,
                                         status: data.mode,
                                         searchQuery: ''));
                               },
@@ -149,8 +150,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                       context.read<MerchCustomerRequestBloc>().add(
                           GetMerchCustomerRequestEvent(
-                              fromDate: widget.fromDateCtrl.text,
-                              toDate: widget.toDateCtrl.text,
+                              fromDate: widget.fromdateController.text,
+                              toDate: widget.todateController.text,
                               status: data.mode,
                               searchQuery: value.trim()));
                     });
@@ -209,8 +210,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                     context.read<MerchCustomerRequestBloc>().add(
                         GetMerchCustomerRequestEvent(
-                            fromDate: widget.fromDateCtrl.text,
-                            toDate: widget.toDateCtrl.text,
+                            fromDate: widget.fromdateController.text,
+                            toDate: widget.todateController.text,
                             status: value ?? '',
                             searchQuery: ''));
                   },

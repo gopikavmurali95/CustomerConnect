@@ -2,18 +2,15 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutActDisplayAgreementScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
   const OutActDisplayAgreementScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
   });
 
   @override
@@ -41,8 +38,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
         .read<MerchDisplayAgreementBloc>()
         .add(const ClearMerchDisplayAgreementData());
     context.read<MerchDisplayAgreementBloc>().add(GetMerchDisplayAgreementEvent(
-        fromDate: widget.fromdatectrl.text,
-        toDate: widget.todatectrl.text,
+        fromDate: fromdateController.text,
+        toDate: todateController.text,
         status: 'AL',
         searchQuery: ''));
     super.initState();
@@ -99,8 +96,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                       const ClearMerchDisplayAgreementData());
                                   context.read<MerchDisplayAgreementBloc>().add(
                                       GetMerchDisplayAgreementEvent(
-                                          fromDate: widget.fromdatectrl.text,
-                                          toDate: widget.todatectrl.text,
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
                                           status: selecteddispAgreementMode,
                                           searchQuery: ''));
                                 }
@@ -144,8 +141,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                         ), () async {
                       context.read<MerchDisplayAgreementBloc>().add(
                           GetMerchDisplayAgreementEvent(
-                              fromDate: widget.fromdatectrl.text,
-                              toDate: widget.todatectrl.text,
+                              fromDate: fromdateController.text,
+                              toDate: todateController.text,
                               status: selecteddispAgreementMode,
                               searchQuery: value.trim()));
                     });
@@ -200,8 +197,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                         .add(const ClearMerchDisplayAgreementData());
                     context.read<MerchDisplayAgreementBloc>().add(
                         GetMerchDisplayAgreementEvent(
-                            fromDate: widget.fromdatectrl.text,
-                            toDate: widget.todatectrl.text,
+                            fromDate: fromdateController.text,
+                            toDate: todateController.text,
                             status: value,
                             searchQuery: _dispAgreementSearchCtrl.text));
                   },

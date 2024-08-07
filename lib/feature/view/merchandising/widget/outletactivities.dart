@@ -3,7 +3,6 @@ import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_a
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
-import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactcustomeractivities.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
@@ -61,10 +60,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OutletActivityTaskHeaderScreen(
-                              fromdatecontroller: fromdateController,
-                              todatecontroller: todateController,
-                            )),
+                        builder: (context) =>
+                            const OutletActivityTaskHeaderScreen()),
                   );
                 },
                 child: Container(
@@ -179,10 +176,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OutActvitySurveyHeaderScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
-                            )),
+                        builder: (context) =>
+                            const OutActvitySurveyHeaderScreen()),
                   );
                 },
                 child: Container(
@@ -301,10 +296,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OutActDisplayAgreementScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
-                            )),
+                        builder: (context) =>
+                            const OutActDisplayAgreementScreen()),
                   );
                 },
                 child: Container(
@@ -419,10 +412,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OutActCustomerActivityScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
-                            )),
+                        builder: (context) =>
+                            const OutActCustomerActivityScreen()),
                   );
                 },
                 child: Container(

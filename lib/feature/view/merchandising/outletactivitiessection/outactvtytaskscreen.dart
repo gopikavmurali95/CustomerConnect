@@ -5,19 +5,15 @@ import 'package:customer_connect/feature/data/models/get_task_header_in_model/ge
 import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
 
 import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutletActivityTaskHeaderScreen extends StatefulWidget {
-  final TextEditingController fromdatecontroller;
-  final TextEditingController todatecontroller;
-
   const OutletActivityTaskHeaderScreen({
     super.key,
-    required this.fromdatecontroller,
-    required this.todatecontroller,
   });
 
   @override
@@ -37,7 +33,6 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
   String selectedMode = "AL";
   @override
   void initState() {
-    
     selectedMode = "AL";
     taskHeaderSearchCtrl.clear();
 
@@ -45,13 +40,11 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
 
     context.read<MerchandTaskHeaderBloc>().add(TaskHeaderGetEvent(
         tasks: GetTaskHeaderInModel(
-            fromDate: widget.fromdatecontroller
-                .text, //"2024-01-01",//widget.fromdatecontroller.text,
-            toDate: widget.todatecontroller
-                .text, //"2024-08-06",//widget.todatecontroller.text,
+            fromDate: fromdateController.text,
+            toDate: todateController.text,
             status: "AL"),
         searchQuery: ''));
-        super.initState();
+    super.initState();
   }
 
   @override
@@ -108,10 +101,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                       TaskHeaderGetEvent(
                                           searchQuery: '',
                                           tasks: GetTaskHeaderInModel(
-                                              fromDate: widget
-                                                  .fromdatecontroller.text,
-                                              toDate:
-                                                  widget.todatecontroller.text,
+                                              fromDate: fromdateController.text,
+                                              toDate: todateController.text,
                                               status: selectedMode)));
                                 }
                               },
@@ -159,8 +150,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                               // status: selectedMerchSurveyMode,
                               searchQuery: value.trim(),
                               tasks: GetTaskHeaderInModel(
-                                  fromDate: widget.fromdatecontroller.text,
-                                  toDate: widget.todatecontroller.text,
+                                  fromDate: fromdateController.text,
+                                  toDate: todateController.text,
                                   status: selectedMode)));
                     });
                   },
@@ -217,8 +208,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                         TaskHeaderGetEvent(
                             searchQuery: taskHeaderSearchCtrl.text,
                             tasks: GetTaskHeaderInModel(
-                                fromDate: widget.fromdatecontroller.text,
-                                toDate: widget.todatecontroller.text,
+                                fromDate: fromdateController.text,
+                                toDate: todateController.text,
                                 status: selectedMode)));
                   },
                 ),
@@ -325,8 +316,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                      "${tasksheader[index].taskCode}-${tasksheader[index].taskName}"
-                                                                      ,
+                                                                      "${tasksheader[index].taskCode}-${tasksheader[index].taskName}",
                                                                       style:
                                                                           blueTextStyle()),
                                                                   Row(
