@@ -2,18 +2,15 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
 import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OutActCustomerActivityScreen extends StatefulWidget {
-  final TextEditingController fromdateController;
-  final TextEditingController todateController;
   const OutActCustomerActivityScreen({
     super.key,
-    required this.fromdateController,
-    required this.todateController,
   });
 
   @override
@@ -41,8 +38,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
         .add(const ClearMerchCustomerActivitiesData());
     context.read<MerchCustomerActivitiesBloc>().add(
         GetMerchCustomerActivitiesData(
-            fromDate: widget.fromdateController.text,
-            toDate: widget.todateController.text,
+            fromDate: fromdateController.text,
+            toDate: todateController.text,
             status: 'AL',
             searchQuery: ''));
     super.initState();
@@ -100,9 +97,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                   context
                                       .read<MerchCustomerActivitiesBloc>()
                                       .add(GetMerchCustomerActivitiesData(
-                                          fromDate:
-                                              widget.fromdateController.text,
-                                          toDate: widget.todateController.text,
+                                          fromDate: fromdateController.text,
+                                          toDate: todateController.text,
                                           status: selectedcusActivityMode,
                                           searchQuery: ''));
                                 }
@@ -146,8 +142,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                         ), () async {
                       context.read<MerchCustomerActivitiesBloc>().add(
                           GetMerchCustomerActivitiesData(
-                              fromDate: widget.fromdateController.text,
-                              toDate: widget.todateController.text,
+                              fromDate: fromdateController.text,
+                              toDate: todateController.text,
                               status: selectedcusActivityMode,
                               searchQuery: value.trim()));
                     });
@@ -202,8 +198,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                         .add(const ClearMerchCustomerActivitiesData());
                     context.read<MerchCustomerActivitiesBloc>().add(
                         GetMerchCustomerActivitiesData(
-                            fromDate: widget.fromdateController.text,
-                            toDate: widget.todateController.text,
+                            fromDate: fromdateController.text,
+                            toDate: todateController.text,
                             status: value,
                             searchQuery: _cusActivitySearchCtrl.text));
                   },
