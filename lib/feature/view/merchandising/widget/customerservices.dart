@@ -29,9 +29,9 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
         .read<MerchCusServiceCountBloc>()
         .add(const CusServiceCountClearevent());
 
-     context.read<MerchCusServiceCountBloc>().add( GetCusserviceCountEvent(
-      fromdate:widget.fromdatecontroller.text,// "2024-1-1",//
-       toDate: widget.todatecontroller.text));//"2024-8-7",));//
+    context.read<MerchCusServiceCountBloc>().add(GetCusserviceCountEvent(
+        fromdate: widget.fromdatecontroller.text, // "2024-1-1",//
+        toDate: widget.todatecontroller.text)); //"2024-8-7",));//
     super.initState();
   }
 
@@ -48,8 +48,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CustomerRequestScreen(
-                              fromDateCtrl: fromdateController,
-                              toDateCtrl: todateController,
+                              fromdateController: fromdateController,
+                              todateController: todateController,
                             )),
                   );
                 },
@@ -195,8 +195,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     MaterialPageRoute(
                         builder: (context) =>
                             MerchandiseCreditNoteRequestScreen(
-                              fromdatectrl: widget.fromdatecontroller,
-                              todatectrl: widget.todatecontroller,
+                              fromdateController: widget.fromdatecontroller,
+                              todateController: widget.todatecontroller,
                             )),
                   );
                 },
@@ -346,8 +346,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     MaterialPageRoute(
                         builder: (context) =>
                             MerchandiseDisputeNoteRequestScreen(
-                              fromdatectrl: widget.fromdatecontroller,
-                              todatectrl: widget.fromdatecontroller,
+                              fromdateController: widget.fromdatecontroller,
+                              todateController: widget.fromdatecontroller,
                             )),
                   );
                 },
@@ -492,8 +492,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => MerchandiseReturnRequestScreen(
-                              fromdatectrl: widget.fromdatecontroller,
-                              todatectrl: widget.todatecontroller,
+                              fromdateController: widget.fromdatecontroller,
+                              todateController: widget.todatecontroller,
                             )),
                   );
                 },

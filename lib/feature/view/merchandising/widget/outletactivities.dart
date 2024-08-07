@@ -62,8 +62,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => OutletActivityTaskHeaderScreen(
-                              fromdatecontroller: fromdateController,
-                              todatecontroller: todateController,
+                              fromdateController: fromdateController,
+                              todateController: todateController,
                             )),
                   );
                 },
@@ -180,8 +180,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => OutActvitySurveyHeaderScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
+                              fromdateController: fromdateController,
+                              todateController: todateController,
                             )),
                   );
                 },
@@ -302,8 +302,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => OutActDisplayAgreementScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
+                              fromdateController: fromdateController,
+                              todateController: todateController,
                             )),
                   );
                 },
@@ -420,8 +420,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => OutActCustomerActivityScreen(
-                              fromdatectrl: fromdateController,
-                              todatectrl: todateController,
+                              fromdateController: fromdateController,
+                              todateController: todateController,
                             )),
                   );
                 },

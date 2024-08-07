@@ -10,12 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseReturnRequestScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const MerchandiseReturnRequestScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -42,8 +42,8 @@ class _CreditNoteHeaderScreenState
         .read<MerchReturnRequestBloc>()
         .add(const ClearMerchReturnRequestData());
     context.read<MerchReturnRequestBloc>().add(GetMErchReturnRequestDataEvent(
-        fromDate: widget.fromdatectrl.text,
-        toDate: widget.todatectrl.text,
+        fromDate: widget.fromdateController.text,
+        toDate: widget.todateController.text,
         status: 'AL',
         searchQuery: ''));
     super.initState();
@@ -96,8 +96,9 @@ class _CreditNoteHeaderScreenState
                                     .add(const ClearMerchReturnRequestData());
                                 context.read<MerchReturnRequestBloc>().add(
                                     GetMErchReturnRequestDataEvent(
-                                        fromDate: widget.fromdatectrl.text,
-                                        toDate: widget.todatectrl.text,
+                                        fromDate:
+                                            widget.fromdateController.text,
+                                        toDate: widget.todateController.text,
                                         status: _selectedReturnReqMode,
                                         searchQuery: ''));
                               }
@@ -141,8 +142,8 @@ class _CreditNoteHeaderScreenState
                       ), () async {
                     context.read<MerchReturnRequestBloc>().add(
                         GetMErchReturnRequestDataEvent(
-                            fromDate: widget.fromdatectrl.text,
-                            toDate: widget.todatectrl.text,
+                            fromDate: widget.fromdateController.text,
+                            toDate: widget.todateController.text,
                             status: _selectedReturnReqMode,
                             searchQuery: value.trim()));
                   });
@@ -197,8 +198,8 @@ class _CreditNoteHeaderScreenState
                       .add(const ClearMerchReturnRequestData());
                   context.read<MerchReturnRequestBloc>().add(
                       GetMErchReturnRequestDataEvent(
-                          fromDate: widget.fromdatectrl.text,
-                          toDate: widget.todatectrl.text,
+                          fromDate: widget.fromdateController.text,
+                          toDate: widget.todateController.text,
                           status: value,
                           searchQuery: _merchReturnReqSearch.text));
                 },

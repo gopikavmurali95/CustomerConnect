@@ -6,17 +6,16 @@ import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_di
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseDisputeNoteRequestScreen extends StatefulWidget {
-  final TextEditingController fromdatectrl;
-  final TextEditingController todatectrl;
+  final TextEditingController fromdateController;
+  final TextEditingController todateController;
   const MerchandiseDisputeNoteRequestScreen({
     super.key,
-    required this.fromdatectrl,
-    required this.todatectrl,
+    required this.fromdateController,
+    required this.todateController,
   });
 
   @override
@@ -41,8 +40,8 @@ class _CreditNoteHeaderScreenState
     _merchDisputeNoteSearch.clear();
     context.read<MerchDisputeNoteReqBloc>().add(const ClearDisputeNoteData());
     context.read<MerchDisputeNoteReqBloc>().add(GetDisputeNoteDataEvent(
-        fromDate: widget.fromdatectrl.text,
-        toDate: widget.todatectrl.text,
+        fromDate: widget.fromdateController.text,
+        toDate: widget.todateController.text,
         status: 'AL',
         searchQuery: ''));
     super.initState();
@@ -95,8 +94,9 @@ class _CreditNoteHeaderScreenState
                                     .add(const ClearDisputeNoteData());
                                 context.read<MerchDisputeNoteReqBloc>().add(
                                     GetDisputeNoteDataEvent(
-                                        fromDate: widget.fromdatectrl.text,
-                                        toDate: widget.todatectrl.text,
+                                        fromDate:
+                                            widget.fromdateController.text,
+                                        toDate: widget.todateController.text,
                                         status: _selectedDisputeNoteMode,
                                         searchQuery: ''));
                               }
@@ -140,8 +140,8 @@ class _CreditNoteHeaderScreenState
                       ), () async {
                     context.read<MerchDisputeNoteReqBloc>().add(
                         GetDisputeNoteDataEvent(
-                            fromDate: widget.fromdatectrl.text,
-                            toDate: widget.todatectrl.text,
+                            fromDate: widget.fromdateController.text,
+                            toDate: widget.todateController.text,
                             status: _selectedDisputeNoteMode,
                             searchQuery: value.trim()));
                   });
@@ -196,8 +196,8 @@ class _CreditNoteHeaderScreenState
                       .add(const ClearDisputeNoteData());
                   context.read<MerchDisputeNoteReqBloc>().add(
                       GetDisputeNoteDataEvent(
-                          fromDate: widget.fromdatectrl.text,
-                          toDate: widget.todatectrl.text,
+                          fromDate: widget.fromdateController.text,
+                          toDate: widget.todateController.text,
                           status: value,
                           searchQuery: _merchDisputeNoteSearch.text));
                 },
