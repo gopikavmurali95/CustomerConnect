@@ -2,18 +2,15 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
 import 'package:customer_connect/feature/state/bloc/merchcustomerrequest/merch_customer_request_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerRequestScreen extends StatefulWidget {
-  final TextEditingController fromdateController;
-  final TextEditingController todateController;
   const CustomerRequestScreen({
     super.key,
-    required this.fromdateController,
-    required this.todateController,
   });
 
   @override
@@ -38,8 +35,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
         .add(const ClearMerchCustomerRequestEvent());
 
     context.read<MerchCustomerRequestBloc>().add(GetMerchCustomerRequestEvent(
-        fromDate: widget.fromdateController.text,
-        toDate: widget.todateController.text,
+        fromDate: fromdateController.text,
+        toDate: todateController.text,
         status: "AL",
         searchQuery: ''));
     super.initState();
@@ -100,9 +97,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                                 context.read<MerchCustomerRequestBloc>().add(
                                     GetMerchCustomerRequestEvent(
-                                        fromDate:
-                                            widget.fromdateController.text,
-                                        toDate: widget.todateController.text,
+                                        fromDate: fromdateController.text,
+                                        toDate: todateController.text,
                                         status: data.mode,
                                         searchQuery: ''));
                               },
@@ -150,8 +146,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                       context.read<MerchCustomerRequestBloc>().add(
                           GetMerchCustomerRequestEvent(
-                              fromDate: widget.fromdateController.text,
-                              toDate: widget.todateController.text,
+                              fromDate: fromdateController.text,
+                              toDate: todateController.text,
                               status: data.mode,
                               searchQuery: value.trim()));
                     });
@@ -210,8 +206,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
 
                     context.read<MerchCustomerRequestBloc>().add(
                         GetMerchCustomerRequestEvent(
-                            fromDate: widget.fromdateController.text,
-                            toDate: widget.todateController.text,
+                            fromDate: fromdateController.text,
+                            toDate: todateController.text,
                             status: value ?? '',
                             searchQuery: ''));
                   },

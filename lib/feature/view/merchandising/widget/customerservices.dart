@@ -4,7 +4,6 @@ import 'package:customer_connect/feature/view/merchandising/customerservicesecti
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/customer_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/disputenote_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/return_requestscreen.dart';
-import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,10 +46,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CustomerRequestScreen(
-                              fromdateController: fromdateController,
-                              todateController: todateController,
-                            )),
+                        builder: (context) => const CustomerRequestScreen()),
                   );
                 },
                 child: Container(
@@ -194,10 +190,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            MerchandiseCreditNoteRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.todatecontroller,
-                            )),
+                            const MerchandiseCreditNoteRequestScreen()),
                   );
                 },
                 child: Container(
@@ -345,10 +338,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            MerchandiseDisputeNoteRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.fromdatecontroller,
-                            )),
+                            const MerchandiseDisputeNoteRequestScreen()),
                   );
                 },
                 child: Container(
@@ -491,10 +481,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => MerchandiseReturnRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.todatecontroller,
-                            )),
+                        builder: (context) =>
+                            const MerchandiseReturnRequestScreen()),
                   );
                 },
                 child: Container(
