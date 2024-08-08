@@ -159,6 +159,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -186,6 +187,9 @@ import 'feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 bool isLoadingProgress = false;
 void main() async {
@@ -224,6 +228,8 @@ void main() async {
   ));
 }
 
+final FlutterLocalization localization = FlutterLocalization.instance;
+Locale? selectedLocale;
 Future<LoginUserModel?> getuserdata() async {
   final SharedPreferences sharedprefs = await SharedPreferences.getInstance();
 
@@ -732,53 +738,72 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MerchDisputeNoteReqBloc>(),
         ),
+        BlocProvider<SelectLanguageLocaleCubit>(
+          create: (context) => SelectLanguageLocaleCubit(),
+        ),
       ],
       child: ScreenUtilInit(
-        child: MaterialApp(
-          navigatorKey: navigatorKey,
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            useMaterial3: true,
-            scaffoldBackgroundColor: Colors.white,
-            textTheme: TextTheme(
-              bodySmall: kfontstyle(),
-              bodyLarge: kfontstyle(),
-              bodyMedium: kfontstyle(),
-              displayLarge: kfontstyle(),
-              displayMedium: kfontstyle(),
-              displaySmall: kfontstyle(),
-              titleLarge: kfontstyle(),
-              titleMedium: kfontstyle(),
-              titleSmall: kfontstyle(),
-            ),
-            primaryTextTheme: TextTheme(
-              bodySmall: kfontstyle(),
-              bodyLarge: kfontstyle(),
-              bodyMedium: kfontstyle(),
-              displayLarge: kfontstyle(),
-              displayMedium: kfontstyle(),
-              displaySmall: kfontstyle(),
-              titleLarge: kfontstyle(),
-              titleMedium: kfontstyle(),
-              titleSmall: kfontstyle(),
-            ),
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              surfaceTintColor: Colors.white,
-            ),
-          ),
-          routes: {
-            "homePage": (context) => user == null
-                ? const LoginScreen()
-                : MessageHandler(child: HomeScreen(user: user!)),
-            "Login": (context) => const LoginScreen(),
+        child:
+            BlocBuilder<SelectLanguageLocaleCubit, SelectLanguageLocaleState>(
+          builder: (context, state) {
+            return MaterialApp(
+              navigatorKey: navigatorKey,
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                useMaterial3: true,
+                scaffoldBackgroundColor: Colors.white,
+                textTheme: TextTheme(
+                  bodySmall: kfontstyle(),
+                  bodyLarge: kfontstyle(),
+                  bodyMedium: kfontstyle(),
+                  displayLarge: kfontstyle(),
+                  displayMedium: kfontstyle(),
+                  displaySmall: kfontstyle(),
+                  titleLarge: kfontstyle(),
+                  titleMedium: kfontstyle(),
+                  titleSmall: kfontstyle(),
+                ),
+                primaryTextTheme: TextTheme(
+                  bodySmall: kfontstyle(),
+                  bodyLarge: kfontstyle(),
+                  bodyMedium: kfontstyle(),
+                  displayLarge: kfontstyle(),
+                  displayMedium: kfontstyle(),
+                  displaySmall: kfontstyle(),
+                  titleLarge: kfontstyle(),
+                  titleMedium: kfontstyle(),
+                  titleSmall: kfontstyle(),
+                ),
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white,
+                  surfaceTintColor: Colors.white,
+                ),
+              ),
+              supportedLocales: const [
+                Locale('en'),
+                Locale('ar'),
+              ],
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              locale: state.locale ?? const Locale('en'),
+              routes: {
+                "homePage": (context) => user == null
+                    ? const LoginScreen()
+                    : MessageHandler(child: HomeScreen(user: user!)),
+                "Login": (context) => const LoginScreen(),
+              },
+              initialRoute: "homePage",
+              /* home: user == null
+                      ? const LoginScreen()
+                      : HomeScreen(
+                          user: user!,
+                        ), */
+            );
           },
-          initialRoute: "homePage",
-          /* home: user == null
-              ? const LoginScreen()
-              : HomeScreen(
-                  user: user!,
-                ), */
         ),
       ),
     );
