@@ -131,11 +131,12 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               OutofstockcountState>(
                             builder: (context, state) {
                               return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? const Text("0")
-                                          : Text("${count.transCount}"),
-                                  outOfStockFailedState: () => const Text("0"));
+                                getOutOfStockCountState: (count) =>
+                                    count == null
+                                        ? const Text("0")
+                                        : Text(count.transCount ?? '0'),
+                                outOfStockFailedState: () => const Text("0"),
+                              );
                             },
                           )
                         ],
