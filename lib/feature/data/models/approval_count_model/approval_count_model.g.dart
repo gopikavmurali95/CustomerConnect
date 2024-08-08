@@ -27,7 +27,10 @@ ApprovalCountModel _$ApprovalCountModelFromJson(Map<String, dynamic> json) =>
           json['PendingPartialDeliveryHeader'] as String?,
       pendingReturnRequestSc: json['PendingReturnRequestSC'] as String?,
       inventoryReconfirm: json['PendingInvReconfirm'] as String?,
-    );
+    )
+      ..mustSellHead = json['MustSellHeader'] as String?
+      ..settlementApprovalHead = json['SettlementApprovalHeader'] as String?
+      ..voidTransactionHead = json['VoidTransactionHeader'] as String?;
 
 Map<String, dynamic> _$ApprovalCountModelToJson(ApprovalCountModel instance) =>
     <String, dynamic>{
@@ -46,4 +49,7 @@ Map<String, dynamic> _$ApprovalCountModelToJson(ApprovalCountModel instance) =>
       'PendingPartialDeliveryHeader': instance.pendingPartialDeliveryHeader,
       'PendingReturnRequestSC': instance.pendingReturnRequestSc,
       'PendingInvReconfirm': instance.inventoryReconfirm,
+      'MustSellHeader': instance.mustSellHead,
+      'SettlementApprovalHeader': instance.settlementApprovalHead,
+      'VoidTransactionHeader': instance.voidTransactionHead,
     };

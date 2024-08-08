@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
@@ -41,6 +42,8 @@ class _CreditNoteHeaderScreenState
         toDate: todateController.text,
         status: 'AL',
         searchQuery: ''));
+
+    log("${fromdateController.text}--${todateController.text}");
     super.initState();
   }
 

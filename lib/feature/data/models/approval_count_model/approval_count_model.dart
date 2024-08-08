@@ -34,6 +34,12 @@ class ApprovalCountModel {
   String? pendingReturnRequestSc;
   @JsonKey(name: 'PendingInvReconfirm')
   String? inventoryReconfirm;
+  @JsonKey(name: 'MustSellHeader')
+  String? mustSellHead;
+  @JsonKey(name: 'SettlementApprovalHeader')
+  String? settlementApprovalHead;
+  @JsonKey(name:'VoidTransactionHeader')
+  String? voidTransactionHead;
 
   ApprovalCountModel(
       {this.pendingReturnHeader,

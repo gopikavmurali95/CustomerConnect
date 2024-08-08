@@ -193,11 +193,13 @@ class _CreditNoteHeaderScreenState
                       .read<MerchReturnRequestBloc>()
                       .add(const ClearMerchReturnRequestData());
                   context.read<MerchReturnRequestBloc>().add(
-                      GetMErchReturnRequestDataEvent(
+                        GetMErchReturnRequestDataEvent(
                           fromDate: fromdateController.text,
                           toDate: todateController.text,
                           status: value,
-                          searchQuery: _merchReturnReqSearch.text));
+                          searchQuery: _merchReturnReqSearch.text,
+                        ),
+                      );
                 },
               ),
             ),

@@ -119,7 +119,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Out Of Stock',
+                              'Out Of Stocks',
                               style: kfontstyle(
                                 fontSize: 9.sp,
                                 color: Colors.black87,
@@ -130,13 +130,13 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           BlocBuilder<OutofstockcountBloc,
                               OutofstockcountState>(
                             builder: (context, state) {
-                              
                               return state.when(
-                                  getOutOfStockCountState: (count) =>
-                                      count == null
-                                          ? const Text("0")
-                                          : Text("${count.cusCount}"),
-                                  outOfStockFailedState: () => const Text("0"));
+                                getOutOfStockCountState: (count) =>
+                                    count == null
+                                        ? const Text("0")
+                                        : Text(count.transCount ?? '0'),
+                                outOfStockFailedState: () => const Text("0"),
+                              );
                             },
                           )
                         ],

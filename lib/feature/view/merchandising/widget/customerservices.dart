@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/view/merchandising/customerservicesecti
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/customer_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/disputenote_requestscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/customerservicesection/return_requestscreen.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,8 +30,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
         .add(const CusServiceCountClearevent());
 
     context.read<MerchCusServiceCountBloc>().add(GetCusserviceCountEvent(
-        fromdate: widget.fromdatecontroller.text, // "2024-1-1",//
-        toDate: widget.todatecontroller.text)); //"2024-8-7",));//
+        fromdate: fromdateController.text, // "2024-1-1",//
+        toDate: todateController.text)); //"2024-8-7",));//
     super.initState();
   }
 

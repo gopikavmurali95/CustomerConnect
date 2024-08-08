@@ -1431,8 +1431,8 @@ class ApprovalScreen extends StatelessWidget {
                                                   ),
                                                 )
                                               : Text(
-                                                  count
-                                                      .pendingMaterialReqApproval!,
+                                                  count.voidTransactionHead ??
+                                                      '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     fontWeight: FontWeight.w500,
@@ -1516,8 +1516,7 @@ class ApprovalScreen extends StatelessWidget {
                                                   ),
                                                 )
                                               : Text(
-                                                  count.inventoryReconfirm ??
-                                                      '0',
+                                                  count.mustSellHead ?? '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     fontWeight: FontWeight.w500,
@@ -1604,8 +1603,8 @@ class ApprovalScreen extends StatelessWidget {
                                                   ),
                                                 )
                                               : Text(
-                                                  count
-                                                      .pendingLoadRequestHeader!,
+                                                  count.settlementApprovalHead ??
+                                                      '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     fontWeight: FontWeight.w500,
