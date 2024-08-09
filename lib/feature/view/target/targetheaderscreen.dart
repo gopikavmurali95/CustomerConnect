@@ -27,8 +27,9 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
     targetHeaderSearchCtrl.clear();
     context.read<TargerHeaderListBloc>().add(const ClearTargetHeaderItems());
     context.read<TargerHeaderListBloc>().add(GetTargetHeaderItemsEvent(
-        fromDate: '2024-05-01',
-        //'${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
+        fromDate:
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        // '${DateTime.now().month}-${DateTime.now().day}-${DateTime.now().year}',
         searchQuery: ''));
     super.initState();
   }
@@ -98,7 +99,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                   context.read<TargerHeaderListBloc>().add(
                                       GetTargetHeaderItemsEvent(
                                           fromDate:
-                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                              '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
                                           searchQuery: ''));
                                 }
                               },
@@ -142,7 +143,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                       context.read<TargerHeaderListBloc>().add(
                           GetTargetHeaderItemsEvent(
                               fromDate:
-                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                                  '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
                               searchQuery: value.trim()));
                     });
                   },

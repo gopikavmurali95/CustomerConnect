@@ -32,6 +32,7 @@ class MerchReturnRequestRepo implements IMerchReturnReqRepo {
         );
       }
     } catch (e) {
+      log(e.toString());
       return left(const MainFailures.serverfailure());
     }
   }

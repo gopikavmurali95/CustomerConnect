@@ -30,8 +30,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
         .add(const CusServiceCountClearevent());
 
     context.read<MerchCusServiceCountBloc>().add(GetCusserviceCountEvent(
-        fromdate: widget.fromdatecontroller.text, // "2024-1-1",//
-        toDate: widget.todatecontroller.text)); //"2024-8-7",));//
+        fromdate: fromdateController.text, // "2024-1-1",//
+        toDate: todateController.text)); //"2024-8-7",));//
     super.initState();
   }
 

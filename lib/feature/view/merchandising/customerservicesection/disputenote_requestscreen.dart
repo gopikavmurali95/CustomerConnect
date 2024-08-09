@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermodel/merchandisingstatusfiltermodel.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart';
+import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
@@ -40,10 +42,12 @@ class _CreditNoteHeaderScreenState
     _merchDisputeNoteSearch.clear();
     context.read<MerchDisputeNoteReqBloc>().add(const ClearDisputeNoteData());
     context.read<MerchDisputeNoteReqBloc>().add(GetDisputeNoteDataEvent(
-        fromDate: widget.fromdateController.text,
-        toDate: widget.todateController.text,
+        fromDate: fromdateController.text,
+        toDate: todateController.text,
         status: 'AL',
         searchQuery: ''));
+
+    log("${fromdateController.text}--${todateController.text}");
     super.initState();
   }
 
@@ -94,9 +98,8 @@ class _CreditNoteHeaderScreenState
                                     .add(const ClearDisputeNoteData());
                                 context.read<MerchDisputeNoteReqBloc>().add(
                                     GetDisputeNoteDataEvent(
-                                        fromDate:
-                                            widget.fromdateController.text,
-                                        toDate: widget.todateController.text,
+                                        fromDate: fromdateController.text,
+                                        toDate: todateController.text,
                                         status: _selectedDisputeNoteMode,
                                         searchQuery: ''));
                               }
@@ -140,8 +143,8 @@ class _CreditNoteHeaderScreenState
                       ), () async {
                     context.read<MerchDisputeNoteReqBloc>().add(
                         GetDisputeNoteDataEvent(
-                            fromDate: widget.fromdateController.text,
-                            toDate: widget.todateController.text,
+                            fromDate: fromdateController.text,
+                            toDate: todateController.text,
                             status: _selectedDisputeNoteMode,
                             searchQuery: value.trim()));
                   });
@@ -196,8 +199,8 @@ class _CreditNoteHeaderScreenState
                       .add(const ClearDisputeNoteData());
                   context.read<MerchDisputeNoteReqBloc>().add(
                       GetDisputeNoteDataEvent(
-                          fromDate: widget.fromdateController.text,
-                          toDate: widget.todateController.text,
+                          fromDate: fromdateController.text,
+                          toDate: todateController.text,
                           status: value,
                           searchQuery: _merchDisputeNoteSearch.text));
                 },

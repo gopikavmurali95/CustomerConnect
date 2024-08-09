@@ -69,7 +69,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
           ),
         ),
         title: Text(
-          "Outstanding ",
+          "Outstandings",
           style: appHeading(),
         ),
         actions: [

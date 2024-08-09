@@ -6,6 +6,8 @@ import 'package:customer_connect/feature/data/models/special_price_header_model/
 
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,13 +56,17 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+          icon: Transform.flip(
+             flipX: selectedLocale?.languageCode == "en" ? false : true,
+            child: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Special Pricing",
+          AppLocalizations.of(context)!.specialpricing,
+          //"Special Pricing",
           style: appHeading(),
         ),
         actions: [
@@ -151,7 +157,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search here..",
+                      hintText:AppLocalizations.of(context)!.searchhere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -192,7 +198,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                       padding: const EdgeInsets.only(
                           left: 10.0, right: 20, top: 10, bottom: 10),
                       child: Text(
-                        "All",
+                       AppLocalizations.of(context)!.all,
                         style: countHeading(),
                       ),
                     ),
