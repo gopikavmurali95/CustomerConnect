@@ -264,7 +264,7 @@ class _SettlementApprovalHeaderScreenState
   }
 }
 
-Future<void> _onRefreshSettlementApprovaalHeaderScreen(
+Future<void> onRefreshSettlementApprovaalHeaderScreen(
     BuildContext context, LoginUserModel model) async {
   context
       .read<SettlementApprovalHeaderBloc>()

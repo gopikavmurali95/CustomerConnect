@@ -21,7 +21,7 @@ class InventoryReconfirmHeadersScreen extends StatefulWidget {
 }
 
 Timer? debounce;
-TextEditingController _InventoryReConfirmHSearchCtrl = TextEditingController();
+TextEditingController inventoryReConfirmHSearchCtrl = TextEditingController();
 String _selectedMode = 'A';
 List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'A'),
@@ -88,7 +88,7 @@ class _InventoryReconfirmHeadersScreenState
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
-                  controller: _InventoryReConfirmHSearchCtrl,
+                  controller: inventoryReConfirmHSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -99,9 +99,9 @@ class _InventoryReconfirmHeadersScreenState
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_InventoryReConfirmHSearchCtrl
+                                if (inventoryReConfirmHSearchCtrl
                                     .text.isNotEmpty) {
-                                  _InventoryReConfirmHSearchCtrl.clear();
+                                  inventoryReConfirmHSearchCtrl.clear();
 
                                   context
                                       .read<InventoryReconfirmHeaderBloc>()
@@ -150,8 +150,7 @@ class _InventoryReconfirmHeadersScreenState
                       context.read<InventoryReconfirmHeaderBloc>().add(
                           GetInventoryReconfirmHeadersEvent(
                               mode: _selectedMode,
-                              searchQuery:
-                                  _InventoryReConfirmHSearchCtrl.text));
+                              searchQuery: inventoryReConfirmHSearchCtrl.text));
                     });
                   },
                 ),
@@ -209,8 +208,7 @@ class _InventoryReconfirmHeadersScreenState
                       context.read<InventoryReconfirmHeaderBloc>().add(
                           GetInventoryReconfirmHeadersEvent(
                               mode: _selectedMode,
-                              searchQuery:
-                                  _InventoryReConfirmHSearchCtrl.text));
+                              searchQuery: inventoryReConfirmHSearchCtrl.text));
                     },
                   ),
                 ),

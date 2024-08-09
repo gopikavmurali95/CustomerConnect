@@ -75,6 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    _scrollController = ScrollController();
+    _centerscrollController = ScrollController();
     tileKeys = List.generate(homegraphList.length, (index) => GlobalKey());
     _scrollController.addListener(() {
       _isScrolled = _scrollController.offset > 0;
