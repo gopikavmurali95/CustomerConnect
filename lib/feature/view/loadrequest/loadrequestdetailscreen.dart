@@ -1512,7 +1512,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
     );
   }
 
-  Future<void> _onRefreshLoadReqDetailscreen(
+  Future<void> onRefreshLoadReqDetailscreen(
       BuildContext context, LoginUserModel model) async {
     context.read<LoadReqDetailBloc>().add(const ClearLodReqDetailEvent());
     context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(

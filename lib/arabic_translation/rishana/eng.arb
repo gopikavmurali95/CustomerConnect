@@ -1,0 +1,107 @@
+
+
+
+---JOURNEY PLAN---
+
+{
+    "journeyPlan" : "Journey plan",
+    "searchItems": "Search Items",
+    "pendingApprovals" : "Pending Approvals",
+    "approvedRequests" : "Approved Requests",
+    "canceledRequests" : "Cancelled Requests",
+    "rejectedRequests" : "Rejected Requests",
+    "noDataAvailable" : "No Data Available",
+    "alert" : "Alert",
+    "proceed" : "Proceed",
+    "somethingWentWrong" : "something went wrong, please try again later",
+    "ok" : "Ok",
+    "doYouWantToApproveThisProduct" : "Do you Want to Approve this product?",
+    "cancel" : "Cancel",
+    "approve" : "Approve",
+    "doYouWantToRejectThisProduct" : "Do you Want to Reject this product?",
+    "reject" : "Reject",
+    "approved" : "Approved",
+    "rejected" : "Rejected"
+}
+
+---FIELD SERVICES---
+
+{
+    "fieldServices" : "Field Services",
+    "fieldServicesDetail" : "Field service detail",
+    "item" : "Item",
+    "uom" : "UOM",
+    "qty" : "Qty"
+}
+
+---MATERIAL REQUEST---
+
+{
+    "materialRequest":"Material Request",
+    "materialRequestDetails":"Material request Detail",
+    "productStatusUpdate":"Product Status Update",
+    "reqQty":"Req Qty",
+    "apprQty":"Appr Qty"
+}
+
+---LOAD REQUEST---
+
+{
+    "loadRequest":"Load Request",
+    "loadRequestDetails":"Load request Details",
+    "expDate":"Exp Date",
+    "trAgain":"Try Again",
+    "pleaseMakeSureToApproveAndReject":"Please make sure you have approved or rejected all the products",
+    "doyouWantToProceed":"Do you Want to Proceed"
+}
+
+---INVENTORY RECONFIRMATION---
+
+{
+    "inventoryReconfirmation":"Inventory Reconfirmation",
+    "searchHere":"Search here",
+    "inventoryReconfirmationDetails":"Inventory Reconfirmation detail",
+    "short":"Short",
+    "excess":"Excess",
+    "selectReason":"Select reason",
+    "youShouldApproveOrRejectAndSpecifyReason":"You should do approve or reject for all the items listed here.In case of rejection please specify the resaon.",
+    "confirm":"Confirm",
+    "voidTransaction":"Void Transaction Approval",
+    "rejectedSuccessfully":"Rejected Successfully",
+    "rejectSelected":"Reject Selected",
+    "approvedSuccessfully":"Approved Successfully",
+    "approveSelected":"Approve Selected",
+    "phyStock":"Phy stk"
+}
+
+---MUST SELL---
+
+{
+    "mustSell":"Must Sell",
+    "route":"route",
+    "msutSellApproval":"Must sell approval",
+    "mustSellDetail":"Must sell detail",
+    "noDataFound":"No Data found"
+}
+
+---SETTLEMENT APPROVAL---
+
+{
+    "settlementApproval":"Settlement Approval",
+    "allRouteTypes":"All Route Types",
+    "settlementApprovalDetail":"Settlement Approval Detail",
+    "varianceLimit":"Variance Limit",
+    "noDataAvailableInVariance":"No Data Available In variance",
+    "totalChecks":"Total Checks",
+    "cashInvoices":"Cash Invoices",
+    "arCollectionCash":"AR Collection Cash",
+    "advanceCollectionCash":"Advance Collection Cash",
+    "inventoryVarianceDebit":"Inventory Variance - Debit Note",
+    "cumulativeVarience":"Cumulative Variance",
+    "pettyCash":"Petty Cash",
+    "totalCash":"Total cash",
+    "noDataAvailableInCashDetails":"No Data Available In Cash Details",
+    "collected":"Collected",
+    "variance":"Variance",
+    "noDataAvailableInPaymentMode":"No Data Available paymode"
+}
