@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickHeaderCompleted extends StatefulWidget {
   final LoginUserModel user;
@@ -69,7 +70,7 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Picking Completed",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.completed}",
           style: appHeading(),
         ),
         actions: [
@@ -206,7 +207,7 @@ class _PickHeaderCompletedState extends State<PickHeaderCompleted> {
                     padding:
                         const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                     child: Text(
-                      "Completed",
+                      AppLocalizations.of(context)!.completed,
                       style: countHeading(),
                     ),
                   ),

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../constants/fonts.dart';
 
@@ -48,7 +49,8 @@ class CustomerTransaction extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Customer Transactions",
+                                    AppLocalizations.of(context)!
+                                        .customer_transactions,
                                     style: countHeading(),
                                   ),
                                 ],
@@ -86,7 +88,10 @@ class CustomerTransaction extends StatelessWidget {
                                             color: Colors.white),
                                         child: Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 15.0, top: 10, bottom: 5),
+                                              left: 15.0,
+                                              top: 10,
+                                              bottom: 5,
+                                              right: 15),
                                           child: Row(
                                             children: [
                                               Column(
@@ -113,7 +118,8 @@ class CustomerTransaction extends StatelessWidget {
                                                       style: countHeading()),
                                                   Row(
                                                     children: [
-                                                      Text("AED ",
+                                                      Text(
+                                                          "${AppLocalizations.of(context)!.aed} ",
                                                           style:
                                                               subTextStyle()),
                                                       Text(
@@ -125,7 +131,9 @@ class CustomerTransaction extends StatelessWidget {
                                                     ],
                                                   ),
                                                   Text(
-                                                    "Invoices",
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .invoices,
                                                     style: statusTextStyle(),
                                                   )
                                                 ],
@@ -164,7 +172,10 @@ class CustomerTransaction extends StatelessWidget {
                                             color: Colors.white),
                                         child: Padding(
                                           padding: const EdgeInsets.only(
-                                              left: 15.0, top: 10, bottom: 5),
+                                              left: 15.0,
+                                              top: 10,
+                                              bottom: 5,
+                                              right: 15),
                                           child: Row(
                                             children: [
                                               Column(
@@ -193,7 +204,8 @@ class CustomerTransaction extends StatelessWidget {
                                                       style: countHeading()),
                                                   Row(
                                                     children: [
-                                                      Text("AED ",
+                                                      Text(
+                                                          "${AppLocalizations.of(context)!.aed} ",
                                                           style:
                                                               subTextStyle()),
                                                       Text(
@@ -205,7 +217,9 @@ class CustomerTransaction extends StatelessWidget {
                                                     ],
                                                   ),
                                                   Text(
-                                                    "Ar Collection ",
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .ar_collection,
                                                     style: statusTextStyle(),
                                                   )
                                                 ],
@@ -258,7 +272,8 @@ class CustomerTransaction extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Customer Transactions",
+                                AppLocalizations.of(context)!
+                                    .customer_transactions,
                                 style: countHeading(),
                               ),
                             ],
@@ -317,14 +332,16 @@ class CustomerTransaction extends StatelessWidget {
                                               Text('0', style: countHeading()),
                                               Row(
                                                 children: [
-                                                  Text("AED ",
+                                                  Text(
+                                                      "${AppLocalizations.of(context)!.aed} ",
                                                       style: subTextStyle()),
                                                   Text('0',
                                                       style: subTextStyle()),
                                                 ],
                                               ),
                                               Text(
-                                                "Invoices",
+                                                AppLocalizations.of(context)!
+                                                    .invoices,
                                                 style: statusTextStyle(),
                                               )
                                             ],
@@ -387,14 +404,16 @@ class CustomerTransaction extends StatelessWidget {
                                               Text('0', style: countHeading()),
                                               Row(
                                                 children: [
-                                                  Text("AED ",
+                                                  Text(
+                                                      "${AppLocalizations.of(context)!.aed} ",
                                                       style: subTextStyle()),
                                                   Text('0',
                                                       style: subTextStyle()),
                                                 ],
                                               ),
                                               Text(
-                                                "Ar Collection ",
+                                                AppLocalizations.of(context)!
+                                                    .ar_collection,
                                                 style: statusTextStyle(),
                                               )
                                             ],

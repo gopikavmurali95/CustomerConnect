@@ -14,6 +14,7 @@ import '../../../../constants/fonts.dart';
 import '../../PickingHeader/pick_completed.dart';
 import '../../PickingHeader/pick_ongoing.dart';
 import '../../PickingHeader/pick_not_started_header.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -40,7 +41,8 @@ class PickingWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Picking", style: countHeading()),
+                            Text(AppLocalizations.of(context)!.picking,
+                                style: countHeading()),
                             Text(
                               count.pickingTotal ?? '',
                               style: countHeading(),
@@ -87,7 +89,7 @@ class PickingWidget extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                                "(${count.pickingNotStartedRoute} Routes)",
+                                                "(${count.pickingNotStartedRoute} ${AppLocalizations.of(context)!.routes})",
                                                 style: subTextStyle()),
                                             /* Text(
                                                 count.pickingNotStartedRoute ??
@@ -110,7 +112,9 @@ class PickingWidget extends StatelessWidget {
                                               width: 8.w,
                                             ),
                                             //Icon(Icons.note_add_outlined,size: 12,),
-                                            Text("Not Started",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .not_started,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -161,7 +165,8 @@ class PickingWidget extends StatelessWidget {
                                             Text(
                                                 count.pickingOngoingRoute ?? '',
                                                 style: subTextStyle()),
-                                            Text(" Routes)",
+                                            Text(
+                                                " ${AppLocalizations.of(context)!.routes})",
                                                 style: subTextStyle()),
                                           ],
                                         ),
@@ -177,7 +182,9 @@ class PickingWidget extends StatelessWidget {
                                             SizedBox(
                                               width: 8.w,
                                             ),
-                                            Text("Ongoing",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .ongoing,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -228,7 +235,8 @@ class PickingWidget extends StatelessWidget {
                                                 count.pickingCompletedRoute ??
                                                     '',
                                                 style: subTextStyle()),
-                                            Text(" Routes)",
+                                            Text(
+                                                " ${AppLocalizations.of(context)!.routes})",
                                                 style: subTextStyle()),
                                           ],
                                         ),
@@ -245,7 +253,9 @@ class PickingWidget extends StatelessWidget {
                                               width: 8.w,
                                             ),
                                             //Icon(Icons.note_add_outlined,size: 12,),
-                                            Text("Completed",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .completed,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -268,7 +278,7 @@ class PickingWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Load in",
+                              AppLocalizations.of(context)!.load_in,
                               style: countHeading(),
                             ),
                             Text(
@@ -320,7 +330,8 @@ class PickingWidget extends StatelessWidget {
                                             Text("(", style: subTextStyle()),
                                             Text(count.loadInPendingRoute ?? '',
                                                 style: subTextStyle()),
-                                            Text(" Routes)",
+                                            Text(
+                                                " ${AppLocalizations.of(context)!.routes})",
                                                 style: subTextStyle()),
                                           ],
                                         ),
@@ -337,7 +348,9 @@ class PickingWidget extends StatelessWidget {
                                               width: 8.w,
                                             ),
                                             //Icon(Icons.note_add_outlined,size: 12,),
-                                            Text("Pending",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .pending,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -388,7 +401,8 @@ class PickingWidget extends StatelessWidget {
                                                 count.loadInCompletedRoute ??
                                                     '',
                                                 style: subTextStyle()),
-                                            Text(" Routes)",
+                                            Text(
+                                                " ${AppLocalizations.of(context)!.routes})",
                                                 style: subTextStyle()),
                                           ],
                                         ),
@@ -405,7 +419,9 @@ class PickingWidget extends StatelessWidget {
                                               width: 8.w,
                                             ),
                                             //Icon(Icons.note_add_outlined,size: 12,),
-                                            Text("Completed",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .completed,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -452,7 +468,7 @@ class PickingWidget extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                                '(${count.loadInCancelledRoute}) Routes',
+                                                '(${count.loadInCancelledRoute}) ${AppLocalizations.of(context)!.routes}',
                                                 style: subTextStyle()),
                                           ],
                                         ),
@@ -469,7 +485,9 @@ class PickingWidget extends StatelessWidget {
                                               width: 8.w,
                                             ),
                                             //Icon(Icons.note_add_outlined,size: 12,),
-                                            Text("Rejected",
+                                            Text(
+                                                AppLocalizations.of(context)!
+                                                    .rejected,
                                                 style: statusTextStyle()),
                                           ],
                                         )
@@ -496,16 +514,17 @@ class PickingWidget extends StatelessWidget {
               }
             },
             plCountFailedState: () => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
               child: Column(
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 2, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 1, vertical: 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Picking", style: countHeading()),
+                        Text(AppLocalizations.of(context)!.picking,
+                            style: countHeading()),
                         Text(
                           '0',
                           style: countHeading(),
@@ -547,8 +566,7 @@ class PickingWidget extends StatelessWidget {
                                     Text('0', style: countHeading()),
                                     Row(
                                       children: [
-                                        Text("(0 Routes)",
-                                            style: subTextStyle()),
+                                        Text("(0)", style: subTextStyle()),
                                         /* Text(
                                                 count.pickingNotStartedRoute ??
                                                     '',
@@ -570,7 +588,9 @@ class PickingWidget extends StatelessWidget {
                                           width: 8.w,
                                         ),
                                         //Icon(Icons.note_add_outlined,size: 12,),
-                                        Text("Not Started",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .not_started,
                                             style: statusTextStyle()),
                                       ],
                                     )
@@ -616,7 +636,9 @@ class PickingWidget extends StatelessWidget {
                                       children: [
                                         Text("(", style: subTextStyle()),
                                         Text('0', style: subTextStyle()),
-                                        Text(" Routes)", style: subTextStyle()),
+                                        Text(
+                                            " ${AppLocalizations.of(context)!.routes})",
+                                            style: subTextStyle()),
                                       ],
                                     ),
                                     SizedBox(
@@ -631,7 +653,9 @@ class PickingWidget extends StatelessWidget {
                                         SizedBox(
                                           width: 8.w,
                                         ),
-                                        Text("Ongoing",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .ongoing,
                                             style: statusTextStyle()),
                                       ],
                                     )
@@ -676,7 +700,9 @@ class PickingWidget extends StatelessWidget {
                                       children: [
                                         Text("(", style: subTextStyle()),
                                         Text('0', style: subTextStyle()),
-                                        Text(" Routes)", style: subTextStyle()),
+                                        Text(
+                                            " ${AppLocalizations.of(context)!.routes})",
+                                            style: subTextStyle()),
                                       ],
                                     ),
                                     SizedBox(
@@ -692,7 +718,9 @@ class PickingWidget extends StatelessWidget {
                                           width: 8.w,
                                         ),
                                         //Icon(Icons.note_add_outlined,size: 12,),
-                                        Text("Completed",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .completed,
                                             style: statusTextStyle()),
                                       ],
                                     )
@@ -715,7 +743,7 @@ class PickingWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Load in",
+                          AppLocalizations.of(context)!.load_in,
                           style: countHeading(),
                         ),
                         Text(
@@ -762,7 +790,9 @@ class PickingWidget extends StatelessWidget {
                                       children: [
                                         Text("(", style: subTextStyle()),
                                         Text('0', style: subTextStyle()),
-                                        Text(" Routes)", style: subTextStyle()),
+                                        Text(
+                                            " ${AppLocalizations.of(context)!.routes})",
+                                            style: subTextStyle()),
                                       ],
                                     ),
                                     SizedBox(
@@ -778,7 +808,9 @@ class PickingWidget extends StatelessWidget {
                                           width: 8.w,
                                         ),
                                         //Icon(Icons.note_add_outlined,size: 12,),
-                                        Text("Pending",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .pending,
                                             style: statusTextStyle()),
                                       ],
                                     )
@@ -823,7 +855,9 @@ class PickingWidget extends StatelessWidget {
                                       children: [
                                         Text("(", style: subTextStyle()),
                                         Text('0', style: subTextStyle()),
-                                        Text(" Routes)", style: subTextStyle()),
+                                        Text(
+                                            " ${AppLocalizations.of(context)!.routes})",
+                                            style: subTextStyle()),
                                       ],
                                     ),
                                     SizedBox(
@@ -839,7 +873,9 @@ class PickingWidget extends StatelessWidget {
                                           width: 8.w,
                                         ),
                                         //Icon(Icons.note_add_outlined,size: 12,),
-                                        Text("Completed",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .completed,
                                             style: statusTextStyle()),
                                       ],
                                     )
@@ -882,7 +918,8 @@ class PickingWidget extends StatelessWidget {
                                     Text('0', style: countHeading()),
                                     Row(
                                       children: [
-                                        Text('(0) Routes',
+                                        Text(
+                                            '(0) ${AppLocalizations.of(context)!.routes}',
                                             style: subTextStyle()),
                                       ],
                                     ),
@@ -899,7 +936,9 @@ class PickingWidget extends StatelessWidget {
                                           width: 8.w,
                                         ),
                                         //Icon(Icons.note_add_outlined,size: 12,),
-                                        Text("Rejected",
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .rejected,
                                             style: statusTextStyle()),
                                       ],
                                     )

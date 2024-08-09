@@ -216,6 +216,14 @@ void main() async {
         await FirebaseMessaging.instance.setAutoInitEnabled(true);
       }
     }
+    final sharedprefs = await SharedPreferences.getInstance();
+
+    String? selectedlocaleString = sharedprefs.getString('SelectedLocale');
+    if (selectedlocaleString != null) {
+      selectedLocale = Locale(selectedlocaleString);
+    } else {
+      selectedLocale = const Locale("en");
+    }
   } catch (e) {
     log('Error initializing Firebase: $e');
   }

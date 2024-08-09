@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../data/models/picking_header_model/PickingInModel.dart';
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickHeaderNotStarted extends StatefulWidget {
   final LoginUserModel user;
@@ -64,7 +65,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Picking Not Started",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.not_started}",
           style: appHeading(),
         ),
         actions: [
@@ -214,7 +215,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                       padding:
                           const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                       child: Text(
-                        "Not Started",
+                        AppLocalizations.of(context)!.not_started,
                         style: countHeading(),
                       ),
                     ),
