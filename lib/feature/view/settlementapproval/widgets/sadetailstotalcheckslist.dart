@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettlmtTotalChecksList extends StatefulWidget {
   const SettlmtTotalChecksList({super.key});
@@ -162,7 +163,7 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                   ),
             paymentDetailFailedState: () => Center(
                   child: Text(
-                    'No Data Available',
+                    AppLocalizations.of(context)!.noDataAvailable,
                     style: kfontstyle(),
                   ),
                 ));

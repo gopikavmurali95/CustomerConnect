@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/view/settlementapproval/settlementappro
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettlementApprovalHeaderListWidget extends StatelessWidget {
@@ -29,7 +30,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                 : headers.isEmpty
                     ? Center(
                         child: Text(
-                          "No Data Found",
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       )
@@ -132,7 +133,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                       ),
             settlementApprovalHeaderFailedState: () => Center(
                   child: Text(
-                    'No Data Available',
+                    AppLocalizations.of(context)!.noDataAvailable,
                     style: kfontstyle(),
                   ),
                 ));

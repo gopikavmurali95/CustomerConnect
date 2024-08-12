@@ -5,6 +5,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettlmntCashDetailsScreen extends StatefulWidget {
   const SettlmntCashDetailsScreen({super.key});
@@ -28,7 +29,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Cash Invoices  ',
+                          '${AppLocalizations.of(context)!.cashInvoices}  ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -61,7 +62,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'AR Collection Cash ',
+                          '${AppLocalizations.of(context)!.arCollectionCash} ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -94,7 +95,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Advance Collection Cash  ',
+                          '${AppLocalizations.of(context)!.advanceCollectionCash}  ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -127,7 +128,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Inventory Variance - Debit Note  ',
+                          '${AppLocalizations.of(context)!.inventoryVarianceDebit}  ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -160,7 +161,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Cumulative Variance  ',
+                          '${AppLocalizations.of(context)!.cumulativeVarience}  ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -193,7 +194,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Petty Cash ',
+                          '${AppLocalizations.of(context)!.pettyCash} ',
                           style: kfontstyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
@@ -226,7 +227,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Total cash",
+                          AppLocalizations.of(context)!.totalCash,
                           // "${cash.cashTotal}",
                           style: kfontstyle(
                             fontSize: 11.sp,
@@ -245,7 +246,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                           ],
                         )),
                         Text(
-                          "AED ${cash.cashTotal}",
+                          "${AppLocalizations.of(context)!.aed} ${cash.cashTotal}",
                           //'AED 7,300.00',
                           style: kfontstyle(
                             fontSize: 11.sp,
@@ -258,7 +259,7 @@ class _SettlmntCashDetailsScreenState extends State<SettlmntCashDetailsScreen> {
                 ),
           cashDetailFailedState: () => Center(
                 child: Text(
-                  'No Data Available In Cash Details',
+                  AppLocalizations.of(context)!.noDataAvailableInCashDetails,
                   style: kfontstyle(),
                 ),
               ));

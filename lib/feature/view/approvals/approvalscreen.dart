@@ -29,6 +29,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../materialrequest/materialrequestdetailheader.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ApprovalScreen extends StatelessWidget {
   final LoginUserModel user;
@@ -972,7 +973,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Journey Plan",
+                                      AppLocalizations.of(context)!.journeyPlan,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -1064,7 +1065,8 @@ class ApprovalScreen extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "Field Service Invoice",
+                                      AppLocalizations.of(context)!
+                                          .fieldServiceInvoice,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -1150,7 +1152,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Material Request",
+                                      AppLocalizations.of(context)!
+                                          .materialRequest,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -1239,7 +1242,7 @@ class ApprovalScreen extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "Load Request",
+                                      AppLocalizations.of(context)!.loadRequest,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -1325,7 +1328,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Inventory Reconfirm",
+                                      AppLocalizations.of(context)!
+                                          .inventoryReconfirmation,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -1411,7 +1415,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Void Transaction",
+                                      AppLocalizations.of(context)!
+                                          .voidTransaction,
                                       //"Inventory Recon",
                                       style: headTextStyle(),
                                     ),
@@ -1496,7 +1501,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Must Sell Approval",
+                                      AppLocalizations.of(context)!
+                                          .msutSellApproval,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -1583,7 +1589,8 @@ class ApprovalScreen extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "Settlement Approval",
+                                      AppLocalizations.of(context)!
+                                          .settlementApproval,
                                       style: headTextStyle(),
                                     ),
                                   ),
