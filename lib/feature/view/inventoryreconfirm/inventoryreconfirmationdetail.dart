@@ -14,10 +14,12 @@ import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inv
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InventoryReconfirmationDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -72,7 +74,7 @@ class _InventoryReconfirmationDetailScreenState
           ),
         ),
         title: Text(
-          "Inventory Reconfirmation detail",
+          AppLocalizations.of(context)!.inventoryReconfirmationDetails,
           style: appHeading(),
         ),
       ),
@@ -94,7 +96,7 @@ class _InventoryReconfirmationDetailScreenState
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
+                      title: Text(AppLocalizations.of(context)!.alert),
                       content: Text("${status.status} "),
                       actions: [
                         TextButton(
@@ -102,7 +104,7 @@ class _InventoryReconfirmationDetailScreenState
                             Navigator.pop(context);
                             Navigator.pop(context);
                           },
-                          child: const Text('Ok'),
+                          child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
                     ),
@@ -114,9 +116,9 @@ class _InventoryReconfirmationDetailScreenState
                 showCupertinoDialog(
                   context: context,
                   builder: (context) => CupertinoAlertDialog(
-                    title: const Text('Alert'),
+                    title: Text(AppLocalizations.of(context)!.alert),
                     content: Text(
-                      "Something Went wrong , please try again later",
+                      AppLocalizations.of(context)!.somethingWentWrong,
                       style: kfontstyle(),
                     ),
                     actions: [
@@ -124,7 +126,7 @@ class _InventoryReconfirmationDetailScreenState
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text('Ok'),
+                        child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
                   ),
@@ -256,7 +258,7 @@ class _InventoryReconfirmationDetailScreenState
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: 'Search here..',
+                        hintText: AppLocalizations.of(context)!.searchHere,
                         suffix: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -340,7 +342,7 @@ class _InventoryReconfirmationDetailScreenState
                           flex: 2,
                           fit: FlexFit.tight,
                           child: Text(
-                            'Item',
+                            AppLocalizations.of(context)!.item,
                             style: kfontstyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
@@ -351,13 +353,13 @@ class _InventoryReconfirmationDetailScreenState
                           width: 8.w,
                         ),
                         Flexible(
-                          flex: 2,
+                          flex: selectedLocale?.languageCode == "en" ? 2 : 3,
                           fit: FlexFit.tight,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'UOM',
+                                AppLocalizations.of(context)!.uom,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
@@ -367,7 +369,7 @@ class _InventoryReconfirmationDetailScreenState
                                 width: 20.w,
                               ), */
                               Text(
-                                'Phy stk',
+                                AppLocalizations.of(context)!.phyStock,
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w400,
@@ -377,7 +379,7 @@ class _InventoryReconfirmationDetailScreenState
                                 width: 20.w,
                               ), */
                               Text(
-                                'Short/\nExcess',
+                                '${AppLocalizations.of(context)!.short}/\n${AppLocalizations.of(context)!.excess}',
                                 style: kfontstyle(
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w400,
@@ -463,7 +465,8 @@ class _InventoryReconfirmationDetailScreenState
                                 : details.isEmpty
                                     ? Center(
                                         child: Text(
-                                          'No Data Available',
+                                          AppLocalizations.of(context)!
+                                              .noDataAvailable,
                                           style: kfontstyle(),
                                         ),
                                       )
@@ -920,7 +923,8 @@ class _InventoryReconfirmationDetailScreenState
                                                                           },
                                                                         ),
                                                                         Text(
-                                                                          'Approve',
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
                                                                           style:
                                                                               kfontstyle(),
                                                                         )
@@ -964,7 +968,8 @@ class _InventoryReconfirmationDetailScreenState
                                                                           },
                                                                         ),
                                                                         Text(
-                                                                          'Reject',
+                                                                          AppLocalizations.of(context)!
+                                                                              .reject,
                                                                           style:
                                                                               kfontstyle(),
                                                                         )
@@ -992,7 +997,7 @@ class _InventoryReconfirmationDetailScreenState
                                       ),
                         inventoryReconfirmDetailFailedState: () => Center(
                           child: Text(
-                            'No Data Available',
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),
@@ -1069,16 +1074,21 @@ class _InventoryReconfirmationDetailScreenState
                                         context: context,
                                         builder: (context) =>
                                             CupertinoAlertDialog(
-                                          title: const Text('Alert'),
-                                          content: const Text(
-                                              "Please make sure you have approved or rejected all the products"),
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
                                                 // Navigator.pop(context);
                                               },
-                                              child: const Text('Ok'),
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
                                             ),
                                           ],
                                         ),
@@ -1088,16 +1098,21 @@ class _InventoryReconfirmationDetailScreenState
                                         context: context,
                                         builder: (context) =>
                                             CupertinoAlertDialog(
-                                          title: const Text('Alert'),
-                                          content: const Text(
-                                              "You should do approve or reject for all the items listed here.In case of rejection please specify the resaon."),
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .youShouldApproveOrRejectAndSpecifyReason),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
                                                 // Navigator.pop(context);
                                               },
-                                              child: const Text('Ok'),
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
                                             ),
                                           ],
                                         ),
@@ -1107,16 +1122,21 @@ class _InventoryReconfirmationDetailScreenState
                                         context: context,
                                         builder: (context) =>
                                             CupertinoAlertDialog(
-                                          title: const Text('Alert'),
-                                          content: const Text(
-                                              "Do you Want to Proceed"),
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
                                           actions: [
                                             TextButton(
                                               onPressed: () {
                                                 setState(() {});
                                                 Navigator.pop(context);
                                               },
-                                              child: const Text('Cancel'),
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
                                             ),
                                             TextButton(
                                               onPressed: () {
@@ -1148,7 +1168,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                 .header
                                                                 .iahUsrId)));
                                               },
-                                              child: const Text('Proceed'),
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
                                             ),
                                           ],
                                         ),
@@ -1157,7 +1179,7 @@ class _InventoryReconfirmationDetailScreenState
                                   }
                                 },
                                 child: Text(
-                                  'Confirm',
+                                  AppLocalizations.of(context)!.confirm,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w500,

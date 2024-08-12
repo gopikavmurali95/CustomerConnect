@@ -120,5 +120,7 @@
   "noDataAvailableInCashDetails": "لا توجد بيانات متاحة في التفاصيل النقدية",
   "collected": "تم جمعها",
   "variance": "التباين",
-  "noDataAvailableInPaymentMode": "لا توجد بيانات متاحة في طريقة الدفع"
+  "noDataAvailableInPaymentMode": "لا توجد بيانات متاحة في طريقة الدفع",
+  "actionTakenRequests": "طلبات الإجراءات المتخذة",
+  "approvedAndHold": "تمت الموافقة على الطلبات وانتظارها"
 }

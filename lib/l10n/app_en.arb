@@ -120,5 +120,7 @@
   "noDataAvailableInCashDetails": "No Data Available In Cash Details",
   "collected": "Collected",
   "variance": "Variance",
-  "noDataAvailableInPaymentMode": "No Data Available paymode"
+  "noDataAvailableInPaymentMode": "No Data Available paymode",
+  "actionTakenRequests": "Action taken requests",
+  "approvedAndHold": "Approved and Hold Requests"
 }
