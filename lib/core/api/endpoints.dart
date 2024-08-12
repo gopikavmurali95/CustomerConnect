@@ -1,15 +1,5 @@
 //Development
 
-<<<<<<< HEAD
- const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
-
-//Demo
- //const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-  //const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
-=======
 const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
 const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
@@ -18,7 +8,6 @@ const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 //  const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
->>>>>>> ed0f10678a98ccde8b83f3d62c481b32a43bc11a
 
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
