@@ -9,10 +9,13 @@ import 'package:customer_connect/feature/state/bloc/promotion_header/promotion_h
 import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PromotionHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -54,17 +57,21 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+        leading: Transform.flip(
+           flipX: selectedLocale?.languageCode == "en" ? false : true,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Promotions",
+           AppLocalizations.of(context)!.promotions,
+         // "Promotions",
           style: appHeading(),
         ),
         actions: [
@@ -156,7 +163,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText: "Search here..",
+                      hintText:  AppLocalizations.of(context)!.searchhere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -190,7 +197,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'All promotions',
+                   AppLocalizations.of(context)!.allpromotions,
+                  // 'All promotions',
                   style: countHeading(),
                 ),
                 Padding(
@@ -344,16 +352,20 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     MainAxisAlignment.end,
                                                 children: [
                                                   Text(
-                                                    'Details',
+                                                   AppLocalizations.of(context)!.details,
+                                                  //'Details',
                                                     style: TextStyle(
                                                         fontSize: 10.sp),
                                                   ),
                                                   SizedBox(
                                                     width: 5.w,
                                                   ),
-                                                  const Icon(
-                                                    Icons.keyboard_arrow_right,
-                                                    size: 18,
+                                                  Transform.flip(
+                                                     flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                                    child: const Icon(
+                                                      Icons.keyboard_arrow_right,
+                                                      size: 18,
+                                                    ),
                                                   )
                                                 ],
                                               ),
@@ -373,7 +385,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                       height: MediaQuery.of(context).size.height / 1.5,
                       child: Center(
                         child: Text(
-                          'No Data Available',
+                           AppLocalizations.of(context)!.noDataAvailable,
+                          // 'No Data Available',
                           style: kfontstyle(),
                         ),
                       ),

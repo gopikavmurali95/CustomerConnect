@@ -4,9 +4,11 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/widgets/qualificationgrouplist.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssignmentGroup extends StatefulWidget {
   final PromotionHeaderModel promotion;
@@ -42,13 +44,17 @@ class _QualificationGroupState extends State<AssignmentGroup> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+          child: Transform.flip(
+             flipX: selectedLocale?.languageCode == "en" ? false : true,
+
+            child: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Assignment Group",
+          AppLocalizations.of(context)!.assignmentgroup,
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -108,7 +114,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
                 Row(
                   children: [
                     Text(
-                      'Assignment Group: ',
+                     "${ AppLocalizations.of(context)!.noDataAvailable}:",
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
@@ -181,7 +187,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
                               ),
                             ],
                           ),
-                          hintText: "Search Items",
+                          hintText:  AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

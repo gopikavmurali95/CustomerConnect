@@ -6,9 +6,12 @@ import 'package:customer_connect/feature/state/bloc/promotion_details/promotion_
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PromotionCustomer extends StatefulWidget {
   final PromotionHeaderModel promotion;
@@ -40,13 +43,17 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+          icon: Transform.flip(
+             flipX: selectedLocale?.languageCode == "en" ? false : true,
+            child: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Promotion Customers",
+            AppLocalizations.of(context)!.promotioncustomers,
+          //"Promotion Customers",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -120,15 +127,18 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                         Row(
                           children: [
                             Text(
-                              'Details',
+                                AppLocalizations.of(context)!.details,
                               style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
                             ),
-                            const Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 18,
+                            Transform.flip(
+                               flipX: selectedLocale?.languageCode == "en" ? false : true,
+                              child: const Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 18,
+                              ),
                             )
                           ],
                         )
@@ -190,7 +200,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search here..",
+                          hintText:  AppLocalizations.of(context)!.searchhere,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -234,7 +244,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Assigned Customers',
+                         AppLocalizations.of(context)!.assignedcustomers,
                         style: countHeading(),
                       ),
                       BlocBuilder<PromotionCustomerBloc,

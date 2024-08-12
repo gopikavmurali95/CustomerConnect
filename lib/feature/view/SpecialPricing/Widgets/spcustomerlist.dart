@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SPCustomerList extends StatelessWidget {
   const SPCustomerList({super.key});
@@ -91,7 +92,7 @@ class SPCustomerList extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Center(
               child: Text(
-                'No data Available',
+                 AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

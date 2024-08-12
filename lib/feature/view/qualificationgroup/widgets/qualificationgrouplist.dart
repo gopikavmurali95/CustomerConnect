@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QualificationGroupList extends StatelessWidget {
   const QualificationGroupList({super.key});
@@ -30,7 +31,7 @@ class QualificationGroupList extends StatelessWidget {
               : groupdata.isEmpty
                   ? Center(
                       child: Text(
-                        'No Data Found',
+                         AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     )
@@ -40,7 +41,7 @@ class QualificationGroupList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Items',
+                               AppLocalizations.of(context)!.items,
                               style: countHeading(),
                             ),
                             Text(
@@ -80,7 +81,7 @@ class QualificationGroupList extends StatelessWidget {
                     ),
           groupWiseDataFailed: () => Center(
             child: Text(
-              'No Data Available',
+               AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),
