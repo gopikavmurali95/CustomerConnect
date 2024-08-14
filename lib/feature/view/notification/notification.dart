@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
         ),
         title: Text(
-          "Notifications ",
+          AppLocalizations.of(context)!.notification,
           style: appHeading(),
         ),
       ),
@@ -208,7 +208,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                         replayctrls[index],
                                                     decoration: InputDecoration(
                                                         hintText:
-                                                            "Type your reply...",
+                                                        "${AppLocalizations.of(context)!.typeyourReply}..",
+                                                            // "Type your reply...",
                                                         hintStyle:
                                                             const TextStyle(
                                                                 fontSize: 14,
@@ -289,7 +290,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       ),
                 getNotificationFailedState: () => Center(
                   child: Text(
-                    'No Data Available',
+                     AppLocalizations.of(context)!.noDataAvailable,
                     style: kfontstyle(),
                   ),
                 ),
