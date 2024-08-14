@@ -11,6 +11,7 @@ import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../../state/bloc/loadreqheader/load_req_header_bloc.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 import 'loadrequestdetailscreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadRequestHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -66,7 +67,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           ),
         ),
         title: Text(
-          "Load Request",
+          AppLocalizations.of(context)!.loadRequest,
           style: appHeading(),
         ),
       ),
@@ -151,7 +152,8 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                   ),
                                 ],
                               ),
-                              hintText: "Search Items",
+                              hintText:
+                                  AppLocalizations.of(context)!.searchItems,
                               hintStyle: TextStyle(
                                   fontSize: 12.sp,
                                   color: Colors.grey,
@@ -257,16 +259,22 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                               state.when(
                                 loadReqheadSuccessState: (loadList) =>
                                     _selectedloadrequest == "P"
-                                        ? "Pending Approvals"
+                                        ? AppLocalizations.of(context)!
+                                            .pendingApprovals
                                         : _selectedloadrequest == "A"
-                                            ? "Approved Requests"
-                                            : "Rejected Requests",
+                                            ? AppLocalizations.of(context)!
+                                                .approvedRequests
+                                            : AppLocalizations.of(context)!
+                                                .rejectedRequests,
                                 loadReqheadFailedState: () =>
                                     _selectedloadrequest == "P"
-                                        ? "Pending Approvals"
+                                        ? AppLocalizations.of(context)!
+                                            .pendingApprovals
                                         : _selectedloadrequest == "A"
-                                            ? "Approved Requests"
-                                            : "Rejected Requests",
+                                            ? AppLocalizations.of(context)!
+                                                .approvedRequests
+                                            : AppLocalizations.of(context)!
+                                                .rejectedRequests,
                               ),
                               style: countHeading(),
                             ),
@@ -314,7 +322,8 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                               : headers.isEmpty
                                   ? Center(
                                       child: Text(
-                                        "No Data Available",
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
                                         style: kfontstyle(),
                                       ),
                                     )
@@ -487,7 +496,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                             height: MediaQuery.of(context).size.height,
                             child: Center(
                               child: Text(
-                                'No Data Available',
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),

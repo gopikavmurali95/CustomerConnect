@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FieldServiceInvoiceDetails extends StatefulWidget {
@@ -50,100 +50,103 @@ class FieldServiceInvoiceDetailsState
           ),
         ),
         title: Text(
-          "Field service detail",
+          AppLocalizations.of(context)!.fieldServicesDetail,
           style: appHeading(),
         ),
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Container(
-                height: 50,
-                width: 10,
-                decoration: BoxDecoration(
-                    color: const Color(0xfffee8e0),
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.header.sjhNumber ?? '',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xff2C6B9E),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${widget.header.cusCode} - ',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  widget.header.cusName ?? '',
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            widget.header.transTime ?? '',
-                            style:
-                                kfontstyle(fontSize: 10.sp, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: widget.header.status!.isEmpty ||
-                                widget.header.status != 'Action Taken'
-                            ? widget.header.status == 'Rejected'
-                                ? Colors.red[300]
-                                : const Color(0xfff7f4e2)
-                            : const Color(0xffe3f7e2),
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 5),
-                        child: Text(
-                          widget.header.status ?? '',
-                          style: kfontstyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w400,
-                              color: widget.header.status == 'Rejected'
-                                  ? Colors.white54
-                                  : Colors.black54),
-                        ),
-                      ),
-                    )
-                  ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Container(
+                  height: 50,
+                  width: 10,
+                  decoration: BoxDecoration(
+                      color: const Color(0xfffee8e0),
+                      borderRadius: BorderRadius.circular(20)),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 10.w,
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.header.sjhNumber ?? '',
+                              style: kfontstyle(
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  '${widget.header.cusCode} - ',
+                                  style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff2C6B9E),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    widget.header.cusName ?? '',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff413434)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              widget.header.transTime ?? '',
+                              style: kfontstyle(
+                                  fontSize: 10.sp, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: widget.header.status!.isEmpty ||
+                                  widget.header.status != 'Action Taken'
+                              ? widget.header.status == 'Rejected'
+                                  ? Colors.red[300]
+                                  : const Color(0xfff7f4e2)
+                              : const Color(0xffe3f7e2),
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          child: Text(
+                            widget.header.status ?? '',
+                            style: kfontstyle(
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.w400,
+                                color: widget.header.status == 'Rejected'
+                                    ? Colors.white54
+                                    : Colors.black54),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 5.h,
@@ -158,7 +161,7 @@ class FieldServiceInvoiceDetailsState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Item',
+                    AppLocalizations.of(context)!.item,
                     style: kfontstyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -170,7 +173,7 @@ class FieldServiceInvoiceDetailsState
                   Row(
                     children: [
                       Text(
-                        'UOM',
+                        AppLocalizations.of(context)!.uom,
                         style: kfontstyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
@@ -180,7 +183,7 @@ class FieldServiceInvoiceDetailsState
                         width: 40.w,
                       ),
                       Text(
-                        'Qty',
+                        AppLocalizations.of(context)!.qty,
                         style: kfontstyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
@@ -464,7 +467,7 @@ class FieldServiceInvoiceDetailsState
                           ),
                     fieldServiceDetailFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -484,7 +487,7 @@ class FieldServiceInvoiceDetailsState
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
+                        title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(response.status ?? ''),
                         actions: [
                           TextButton(
@@ -496,7 +499,7 @@ class FieldServiceInvoiceDetailsState
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
-                            child: const Text('Proceed'),
+                            child: Text(AppLocalizations.of(context)!.proceed),
                           ),
                         ],
                       ),
@@ -509,9 +512,9 @@ class FieldServiceInvoiceDetailsState
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
-                      content: const Text(
-                          "something went wrong, please try again later"),
+                      title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                          AppLocalizations.of(context)!.somethingWentWrong),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -520,7 +523,7 @@ class FieldServiceInvoiceDetailsState
                                     reqId: widget.header.sahId ?? ''));
                             Navigator.pop(context);
                           },
-                          child: const Text('Ok'),
+                          child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
                     ),
@@ -574,16 +577,18 @@ class FieldServiceInvoiceDetailsState
                               showCupertinoDialog(
                                 context: context,
                                 builder: (context) => CupertinoAlertDialog(
-                                  title: const Text('Alert'),
-                                  content: const Text(
-                                      "Do you Want to Reject this request"),
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doYouWantToRejectThisProduct),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
                                         setState(() {});
                                         Navigator.pop(context);
                                       },
-                                      child: const Text('Cancel'),
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
                                     ),
                                     TextButton(
                                       onPressed: () {
@@ -602,14 +607,15 @@ class FieldServiceInvoiceDetailsState
                                                     ''));
                                         Navigator.pop(context);
                                       },
-                                      child: const Text('Proceed'),
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
                                     ),
                                   ],
                                 ),
                               );
                             },
                             child: Text(
-                              'Reject',
+                              AppLocalizations.of(context)!.reject,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,
@@ -637,16 +643,18 @@ class FieldServiceInvoiceDetailsState
                               showCupertinoDialog(
                                 context: context,
                                 builder: (context) => CupertinoAlertDialog(
-                                  title: const Text('Alert'),
-                                  content: const Text(
-                                      "Do you Want to Approve this product"),
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doYouWantToApproveThisProduct),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
                                         setState(() {});
                                         Navigator.pop(context);
                                       },
-                                      child: const Text('Cancel'),
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
                                     ),
                                     TextButton(
                                       onPressed: () {
@@ -669,14 +677,15 @@ class FieldServiceInvoiceDetailsState
 
                                         Navigator.pop(context);
                                       },
-                                      child: const Text('Proceed'),
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
                                     ),
                                   ],
                                 ),
                               );
                             },
                             child: Text(
-                              'Approve',
+                              AppLocalizations.of(context)!.approve,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,

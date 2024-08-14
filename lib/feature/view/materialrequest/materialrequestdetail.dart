@@ -13,6 +13,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqdetail/material_r
 import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MaterialRequestDetailScreen extends StatefulWidget {
   //final ReturnApprovalHeaderModel returnApprovel;
@@ -96,7 +98,7 @@ class _MaterialRequestDetailScreenState
           ),
         ),
         title: Text(
-          "Material request Detail",
+          AppLocalizations.of(context)!.materialRequestDetails,
           style: appHeading(),
         ),
       ),
@@ -134,16 +136,16 @@ class _MaterialRequestDetailScreenState
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "Product Status Update ${response.status} "),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -174,15 +176,15 @@ class _MaterialRequestDetailScreenState
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content: const Text(
-                              "Something Went Wrong, please Try again later"),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              AppLocalizations.of(context)!.somethingWentWrong),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -392,7 +394,8 @@ class _MaterialRequestDetailScreenState
                                             ),
                                           ],
                                         ),
-                                        hintText: "Search Items",
+                                        hintText: AppLocalizations.of(context)!
+                                            .searchItems,
                                         hintStyle: TextStyle(
                                             fontSize: 12.sp,
                                             color: Colors.grey,
@@ -448,7 +451,7 @@ class _MaterialRequestDetailScreenState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Item',
+                                      AppLocalizations.of(context)!.item,
                                       style: boxHeading(),
                                     ),
                                     SizedBox(
@@ -456,15 +459,28 @@ class _MaterialRequestDetailScreenState
                                     ),
                                     Row(
                                       children: [
-                                        Text('UOM', style: boxHeading()),
+                                        Text(AppLocalizations.of(context)!.uom,
+                                            style: boxHeading()),
                                         SizedBox(
-                                          width: 30.w,
+                                          width: selectedLocale?.languageCode ==
+                                                  "en"
+                                              ? 30.w
+                                              : 10.w,
                                         ),
-                                        Text('Req Qty', style: boxHeading()),
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .reqQty,
+                                            style: boxHeading()),
                                         SizedBox(
-                                          width: 30.w,
+                                          width: selectedLocale?.languageCode ==
+                                                  "en"
+                                              ? 30.w
+                                              : 10.w,
                                         ),
-                                        Text('Appr Qty', style: boxHeading()),
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .apprQty,
+                                            style: boxHeading()),
                                         SizedBox(
                                           width: 10.w,
                                         ),
@@ -546,7 +562,9 @@ class _MaterialRequestDetailScreenState
                                             : details.isEmpty
                                                 ? Center(
                                                     child: Text(
-                                                      "No data Available",
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .noDataAvailable,
                                                       style: kfontstyle(),
                                                     ),
                                                   )
@@ -768,7 +786,8 @@ class _MaterialRequestDetailScreenState
                                           MediaQuery.of(context).size.height,
                                       child: Center(
                                         child: Text(
-                                          'No Data Available',
+                                          AppLocalizations.of(context)!
+                                              .noDataAvailable,
                                           style: kfontstyle(),
                                         ),
                                       ),
@@ -811,16 +830,19 @@ class _MaterialRequestDetailScreenState
                                 showCupertinoDialog(
                                   context: context,
                                   builder: (context) => CupertinoAlertDialog(
-                                    title: const Text('Alert'),
-                                    content: const Text(
-                                        "Do you Want to Reject this request"),
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToRejectThisProduct),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
                                           setState(() {});
                                           Navigator.pop(context);
                                         },
-                                        child: const Text('Cancel'),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
                                       ),
                                       TextButton(
                                         onPressed: () {
@@ -846,14 +868,16 @@ class _MaterialRequestDetailScreenState
 
                                           Navigator.pop(context);
                                         },
-                                        child: const Text('Proceed'),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
                                       ),
                                     ],
                                   ),
                                 );
                               },
                               child: Text(
-                                'Reject',
+                                AppLocalizations.of(context)!.reject,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,
@@ -882,16 +906,19 @@ class _MaterialRequestDetailScreenState
                                 showCupertinoDialog(
                                   context: context,
                                   builder: (context) => CupertinoAlertDialog(
-                                    title: const Text('Alert'),
-                                    content: const Text(
-                                        "Do you Want to Approve this product"),
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToApproveThisProduct),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
                                           setState(() {});
                                           Navigator.pop(context);
                                         },
-                                        child: const Text('Cancel'),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
                                       ),
                                       TextButton(
                                         onPressed: () {
@@ -919,14 +946,16 @@ class _MaterialRequestDetailScreenState
 
                                           Navigator.pop(context);
                                         },
-                                        child: const Text('Proceed'),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
                                       ),
                                     ],
                                   ),
                                 );
                               },
                               child: Text(
-                                'Approve',
+                                AppLocalizations.of(context)!.approve,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

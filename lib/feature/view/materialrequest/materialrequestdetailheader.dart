@@ -10,7 +10,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
@@ -65,7 +65,7 @@ class _MaterialRequestHeaderScreenState
           ),
         ),
         title: Text(
-          "Material Request",
+          AppLocalizations.of(context)!.materialRequest,
           style: appHeading(),
         ),
       ),
@@ -165,7 +165,8 @@ class _MaterialRequestHeaderScreenState
                                   ),
                                 ],
                               ),
-                              hintText: "Search Items",
+                              hintText:
+                                  AppLocalizations.of(context)!.searchItems,
                               hintStyle: TextStyle(
                                   fontSize: 12.sp,
                                   color: Colors.grey,
@@ -292,20 +293,27 @@ class _MaterialRequestHeaderScreenState
                               state.when(
                                 materialreqheadsuccess: (materialheader) =>
                                     _selectedMaterialReq == "P"
-                                        ? "Pending Approvals"
+                                        ? AppLocalizations.of(context)!
+                                            .pendingApprovals
                                         : _selectedMaterialReq == "A"
-                                            ? "Approved Requests"
+                                            ? AppLocalizations.of(context)!
+                                                .approvedRequests
                                             : _selectedMaterialReq == "AH"
-                                                ? "Approved and Hold Requests"
-                                                : "Rejected Requests",
+                                                ? AppLocalizations.of(context)!
+                                                    .approvedAndHold
+                                                : AppLocalizations.of(context)!
+                                                    .rejectedRequests,
                                 materialreqheadFailed: () =>
                                     _selectedMaterialReq == "P"
-                                        ? "Pending Approvals"
+                                        ? AppLocalizations.of(context)!
+                                            .pendingApprovals
                                         : _selectedMaterialReq == "A"
-                                            ? "Approved Requests"
+                                            ? AppLocalizations.of(context)!
+                                                .approvedRequests
                                             : _selectedMaterialReq == "AH"
                                                 ? "Approved and Hold Requests"
-                                                : "Rejected Requests",
+                                                : AppLocalizations.of(context)!
+                                                    .rejectedRequests,
                                 // materialreqheadsuccess: (materialheader) =>,
                                 // materialreqheadFailed: () =>,
                               ),
@@ -356,7 +364,8 @@ class _MaterialRequestHeaderScreenState
                               : headers.isEmpty
                                   ? Center(
                                       child: Text(
-                                        "No Data Available",
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
                                         style: boxHeading(),
                                       ),
                                     )
@@ -518,7 +527,7 @@ class _MaterialRequestHeaderScreenState
                             height: MediaQuery.of(context).size.height,
                             child: Center(
                               child: Text(
-                                "no data available",
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),

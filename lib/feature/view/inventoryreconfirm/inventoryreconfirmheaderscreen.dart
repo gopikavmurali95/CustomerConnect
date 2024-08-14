@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InventoryReconfirmHeadersScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -59,7 +60,7 @@ class _InventoryReconfirmHeadersScreenState
           ),
         ),
         title: Text(
-          "Inventory Reconfirmation ",
+          AppLocalizations.of(context)!.inventoryReconfirmation,
           style: appHeading(),
         ),
       ),
@@ -92,7 +93,7 @@ class _InventoryReconfirmHeadersScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -229,12 +230,16 @@ class _InventoryReconfirmHeadersScreenState
                         state.when(
                           getInventoryReconfirmHeaderState: (headers) =>
                               _selectedMode == 'A'
-                                  ? "Pending Approvals"
-                                  : "Action taken requests",
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
+                                  : AppLocalizations.of(context)!
+                                      .actionTakenRequests,
                           inventoryReconfirmheaderFailedState: () =>
                               _selectedMode == 'A'
-                                  ? "Pending Approvals"
-                                  : "Action taken requests",
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
+                                  : AppLocalizations.of(context)!
+                                      .actionTakenRequests,
                         ),
                         style: countHeading(),
                       );
@@ -286,7 +291,8 @@ class _InventoryReconfirmHeadersScreenState
                               : inventory.isEmpty
                                   ? Center(
                                       child: Text(
-                                        'No Data Available',
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
                                         style: kfontstyle(),
                                       ),
                                     )
@@ -455,7 +461,7 @@ class _InventoryReconfirmHeadersScreenState
                                     ),
                       inventoryReconfirmheaderFailedState: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ));

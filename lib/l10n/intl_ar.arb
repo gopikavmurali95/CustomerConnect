@@ -47,7 +47,6 @@
   "doYouWantToRejectThisProduct": "هل تريد رفض هذا المنتج؟",
   "reject": "يرفض",
   "approved": "موافقة",
-  "rejected": "مرفوض",
   "fieldServices": "خدمات ميدانية",
   "fieldServicesDetail": "تفاصيل الخدمة الميدانية",
   "item": "أغراض",
@@ -256,4 +255,6 @@
   "completedTasks":"المهمة المكتملة"
 
 
+
+  "fieldServiceInvoice": "فاتورة الخدمة الميدانية"
 }

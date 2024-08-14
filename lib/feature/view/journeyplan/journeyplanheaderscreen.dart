@@ -7,10 +7,12 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+// import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../../data/models/journey_plan_header_model/journey_plan_header_model.dart';
@@ -73,7 +75,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
           ),
         ),
         title: Text(
-          "Journey plan ",
+          AppLocalizations.of(context)!.journeyPlan,
           style: appHeading(),
         ),
       ),
@@ -148,7 +150,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                             ),
                           ],
                         ),
-                        hintText: "Search Items",
+                        hintText: AppLocalizations.of(context)!.searchItems,
                         hintStyle: TextStyle(
                             fontSize: 12.sp,
                             color: Colors.grey,
@@ -286,20 +288,28 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                           getAllJourneyPlanHeadersState:
                               (List<JourneyPlanHeaderModel>? headers) =>
                                   _selectedJourneyPlan == "P"
-                                      ? "Pending Approvals"
+                                      ? AppLocalizations.of(context)!
+                                          .pendingApprovals
                                       : _selectedJourneyPlan == "A"
-                                          ? "Approved Requests"
+                                          ? AppLocalizations.of(context)!
+                                              .approvedRequests
                                           : _selectedJourneyPlan == "CN"
-                                              ? "Cancelled Requests"
-                                              : "Rejected Requests",
+                                              ? AppLocalizations.of(context)!
+                                                  .canceledRequests
+                                              : AppLocalizations.of(context)!
+                                                  .rejectedRequests,
                           journeyPlanHeadersFailedState: () =>
                               _selectedJourneyPlan == "P"
-                                  ? "Pending Approvals"
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
                                   : _selectedJourneyPlan == "A"
-                                      ? "Approved Requests"
+                                      ? AppLocalizations.of(context)!
+                                          .approvedRequests
                                       : _selectedJourneyPlan == "CN"
-                                          ? "Cancelled Requests"
-                                          : "Rejected Requests",
+                                          ? AppLocalizations.of(context)!
+                                              .canceledRequests
+                                          : AppLocalizations.of(context)!
+                                              .rejectedRequests,
                         ),
                         // state.when(
                         //   getDisputeNoteHeaderState: (headers) =>
@@ -375,7 +385,8 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                               : headers.isEmpty
                                   ? Center(
                                       child: Text(
-                                        "No Data Available",
+                                        AppLocalizations.of(context)!
+                                            .noDataFound,
                                         style: kfontstyle(),
                                       ),
                                     )
@@ -489,7 +500,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                 context,
                                                                             builder: (context) =>
                                                                                 CupertinoAlertDialog(
-                                                                              title: const Text('Alert'),
+                                                                              title: Text(AppLocalizations.of(context)!.alert),
                                                                               content: Text(response.status ?? ''),
                                                                               actions: [
                                                                                 TextButton(
@@ -497,7 +508,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                     context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
                                                                                     Navigator.pop(context);
                                                                                   },
-                                                                                  child: const Text('Proceed'),
+                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -515,16 +526,16 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                           builder: (context) =>
                                                                               CupertinoAlertDialog(
                                                                             title:
-                                                                                const Text('Alert'),
+                                                                                Text(AppLocalizations.of(context)!.alert),
                                                                             content:
-                                                                                const Text("something went wrong, please try again later"),
+                                                                                Text(AppLocalizations.of(context)!.somethingWentWrong),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () {
                                                                                   context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
                                                                                   Navigator.pop(context);
                                                                                 },
-                                                                                child: const Text('Ok'),
+                                                                                child: Text(AppLocalizations.of(context)!.ok),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -587,15 +598,15 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                   showCupertinoDialog(
                                                                                     context: context,
                                                                                     builder: (context) => CupertinoAlertDialog(
-                                                                                      title: const Text('Alert'),
-                                                                                      content: const Text("Do you Want to Approve this product"),
+                                                                                      title: Text(AppLocalizations.of(context)!.alert),
+                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () {
                                                                                             setState(() {});
                                                                                             Navigator.pop(context);
                                                                                           },
-                                                                                          child: const Text('Cancel'),
+                                                                                          child: Text(AppLocalizations.of(context)!.cancel),
                                                                                         ),
                                                                                         TextButton(
                                                                                           onPressed: () {
@@ -615,7 +626,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
 
                                                                                             Navigator.pop(context);
                                                                                           },
-                                                                                          child: const Text('Proceed'),
+                                                                                          child: Text(AppLocalizations.of(context)!.proceed),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -623,7 +634,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                 },
                                                                               ),
                                                                               Text(
-                                                                                'Approve',
+                                                                                AppLocalizations.of(context)!.approve,
                                                                                 style: kfontstyle(),
                                                                               )
                                                                             ],
@@ -653,15 +664,15 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                   showCupertinoDialog(
                                                                                     context: context,
                                                                                     builder: (context) => CupertinoAlertDialog(
-                                                                                      title: const Text('Alert'),
-                                                                                      content: const Text("Do you Want to Reject this product"),
+                                                                                      title: Text(AppLocalizations.of(context)!.alert),
+                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () {
                                                                                             setState(() {});
                                                                                             Navigator.pop(context);
                                                                                           },
-                                                                                          child: const Text('Cancel'),
+                                                                                          child: Text(AppLocalizations.of(context)!.cancel),
                                                                                         ),
                                                                                         TextButton(
                                                                                           onPressed: () {
@@ -681,7 +692,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
 
                                                                                             Navigator.pop(context);
                                                                                           },
-                                                                                          child: const Text('Proceed'),
+                                                                                          child: Text(AppLocalizations.of(context)!.proceed),
                                                                                         ),
                                                                                       ],
                                                                                     ),
@@ -695,7 +706,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                 },
                                                                               ),
                                                                               Text(
-                                                                                'Reject',
+                                                                                AppLocalizations.of(context)!.reject,
                                                                                 style: kfontstyle(),
                                                                               )
                                                                             ],
@@ -769,7 +780,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                       itemCount: headers.length),
                       journeyPlanHeadersFailedState: () => Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),
