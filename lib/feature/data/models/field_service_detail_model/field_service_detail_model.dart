@@ -22,18 +22,20 @@ class FieldServiceDetailModel {
   String? sadDiscount;
   @JsonKey(name: 'sad_LineTotal')
   String? sadLineTotal;
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
 
-  FieldServiceDetailModel({
-    this.sadId,
-    this.prdId,
-    this.prdCode,
-    this.prdName,
-    this.sadUom,
-    this.sadQty,
-    this.sadPrice,
-    this.sadDiscount,
-    this.sadLineTotal,
-  });
+  FieldServiceDetailModel(
+      {this.sadId,
+      this.prdId,
+      this.prdCode,
+      this.prdName,
+      this.sadUom,
+      this.sadQty,
+      this.sadPrice,
+      this.sadDiscount,
+      this.sadLineTotal,
+      this.arprdName});
 
   factory FieldServiceDetailModel.fromJson(Map<String, dynamic> json) {
     return _$FieldServiceDetailModelFromJson(json);

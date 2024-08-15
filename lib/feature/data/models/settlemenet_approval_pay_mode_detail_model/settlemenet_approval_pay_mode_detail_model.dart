@@ -20,6 +20,8 @@ class SettlemenetApprovalPayModeDetailModel {
   String? varianceTotal;
   @JsonKey(name: 'VarianceLimit')
   String? varianceLimit;
+  @JsonKey(name: 'ArMode')
+  String? arMode;
 
   SettlemenetApprovalPayModeDetailModel({
     this.mode,
@@ -30,6 +32,7 @@ class SettlemenetApprovalPayModeDetailModel {
     this.collectedAmountTotal,
     this.varianceTotal,
     this.varianceLimit,
+    this.arMode,
   });
 
   factory SettlemenetApprovalPayModeDetailModel.fromJson(

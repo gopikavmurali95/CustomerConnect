@@ -24,7 +24,8 @@ class LoadReqHeaderModel {
       this.stagingIntegRemarks,
       this.stagingIntegTime,
       this.rotID,
-      this.userID});
+      this.userID,
+      this.arusrName});
 
   LoadReqHeaderModel.fromJson(dynamic json) {
     lrhID = json['lrh_ID'];
@@ -45,6 +46,7 @@ class LoadReqHeaderModel {
     stagingIntegTime = json['StagingIntegTime'];
     rotID = json['rotID'];
     userID = json['UserID'];
+    arusrName = json['Arusr_Name'];
   }
   String? lrhID;
   String? lrhNumber;
@@ -64,6 +66,7 @@ class LoadReqHeaderModel {
   String? stagingIntegTime;
   String? userID;
   String? rotID;
+  String? arusrName;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -85,6 +88,7 @@ class LoadReqHeaderModel {
     map['StagingIntegTime'] = stagingIntegTime;
     map['rotID'] = rotID;
     map['UserID'] = userID;
+    map['Arusr_Name'] = arusrName;
     return map;
   }
 }

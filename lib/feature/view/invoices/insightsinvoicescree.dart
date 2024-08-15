@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InsightsInvoiceScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -97,7 +98,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
           ),
         ),
         title: Text(
-          "Invoices",
+          AppLocalizations.of(context)!.invoices,
           style: appHeading(),
         ),
         actions: [
@@ -237,8 +238,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                       GetCusInvEvent(
                                         searchQuery: value.trim(),
                                         invIn: CusInsInvoiceHeaderInModel(
-                                            cusId: /* widget.customer.cusId */
-                                                '1',
+                                            cusId: widget.customer.cusId,
                                             userId: widget.user.usrId,
                                             area: '',
                                             fromDate: widget.fromdatectrl.text,
@@ -276,8 +276,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                                 searchQuery: '',
                                                 invIn:
                                                     CusInsInvoiceHeaderInModel(
-                                                        cusId: /* widget.customer.cusId */
-                                                            '1',
+                                                        cusId: widget
+                                                            .customer.cusId,
                                                         userId:
                                                             widget.user.usrId,
                                                         area: '',
@@ -301,7 +301,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                   ),
                                 ],
                               ),
-                              hintText: "Search here..",
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHere,
                               hintStyle: kfontstyle(
                                   fontSize: 14,
                                   color: Colors.grey,
@@ -328,7 +329,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 0),
                         child: Text(
-                          "All invoices",
+                          AppLocalizations.of(context)!.allInvoices,
                           style: countHeading(),
                         ),
                       ),
@@ -406,7 +407,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Total Invoice Amount',
+                            AppLocalizations.of(context)!.totalInvoiceAmount,
                             style: TextStyle(
                                 fontSize: 12.sp, fontWeight: FontWeight.w400),
                           ),

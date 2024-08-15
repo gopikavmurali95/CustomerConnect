@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CusInsInvoiceDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -58,7 +59,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          "Invoice Detail",
+          AppLocalizations.of(context)!.invoiceDetails,
           style: appHeading(),
         ),
         actions: [
@@ -209,7 +210,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               ),
                             ],
                           ),
-                          hintText: "Search here..",
+                          hintText: AppLocalizations.of(context)!.searchHere,
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -243,7 +244,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Items',
+                    AppLocalizations.of(context)!.items,
                     style: boxHeading(),
                   ),
                   const Spacer(),
@@ -252,21 +253,21 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Type',
+                          AppLocalizations.of(context)!.type,
                           style: boxHeading(),
                         ),
                         /*  SizedBox(
                           width: 15.h,
                         ), */
                         Text(
-                          'UOM',
+                          AppLocalizations.of(context)!.uom,
                           style: boxHeading(),
                         ),
                         /*  SizedBox(
                           width: 15.h,
                         ), */
                         Text(
-                          'Qty',
+                          AppLocalizations.of(context)!.qty,
                           style: boxHeading(),
                         ),
                         /*  SizedBox(
@@ -299,8 +300,10 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Total Amount', style: bottomTextStyle()),
-                  Text('AED ${widget.invoice.grandTotal}',
+                  Text(AppLocalizations.of(context)!.totalAmount,
+                      style: bottomTextStyle()),
+                  Text(
+                      '${AppLocalizations.of(context)!.aed} ${widget.invoice.grandTotal}',
                       style: bottomTotalAmountStyle())
                 ],
               ),

@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInsightsScreen extends StatefulWidget {
   final CusInsCustomersModel customer;
@@ -64,7 +65,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
           ),
         ),
         title: Text(
-          "Customer Insights",
+          AppLocalizations.of(context)!.customer_insights,
           style: appHeading(),
         ),
       ),
@@ -161,7 +162,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                 Row(
                   children: [
                     Text(
-                      "Other Options  ",
+                      "${AppLocalizations.of(context)!.otherOptions}  ",
                       style: countHeading(),
                     ),
                   ],
@@ -179,7 +180,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Profile Details",
+                      AppLocalizations.of(context)!.profileDetails,
                       style: countHeading(),
                     ),
                     InkWell(
@@ -213,7 +214,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                 width: 6.w,
                               ),
                               Text(
-                                'Edit Profile',
+                                AppLocalizations.of(context)!.editProfile,
                                 style: kfontstyle(
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w400,

@@ -18,6 +18,7 @@ SettlemenetApprovalPayModeDetailModel
           collectedAmountTotal: json['CollectedAmountTotal'] as String?,
           varianceTotal: json['VarianceTotal'] as String?,
           varianceLimit: json['VarianceLimit'] as String?,
+          arMode: json['ArMode'] as String?,
         );
 
 Map<String, dynamic> _$SettlemenetApprovalPayModeDetailModelToJson(
@@ -31,4 +32,5 @@ Map<String, dynamic> _$SettlemenetApprovalPayModeDetailModelToJson(
       'CollectedAmountTotal': instance.collectedAmountTotal,
       'VarianceTotal': instance.varianceTotal,
       'VarianceLimit': instance.varianceLimit,
+      'ArMode': instance.arMode,
     };

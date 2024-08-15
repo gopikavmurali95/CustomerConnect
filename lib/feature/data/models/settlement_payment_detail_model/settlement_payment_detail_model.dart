@@ -18,6 +18,12 @@ class SettlementPaymentDetailModel {
   String? bnkName;
   @JsonKey(name: 'amount')
   String? amount;
+  @JsonKey(name: 'Arbnk_Name')
+  String? arbnkName;
+  @JsonKey(name: 'Arname')
+  String? arname;
+  @JsonKey(name: 'Artype')
+  String? artype;
 
   SettlementPaymentDetailModel({
     this.cusCode,
@@ -27,6 +33,9 @@ class SettlementPaymentDetailModel {
     this.chequeDate,
     this.bnkName,
     this.amount,
+    this.arbnkName,
+    this.arname,
+    this.artype,
   });
 
   factory SettlementPaymentDetailModel.fromJson(Map<String, dynamic> json) {

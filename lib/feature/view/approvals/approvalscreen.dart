@@ -1415,6 +1415,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
+                                      overflow: TextOverflow.ellipsis,
                                       AppLocalizations.of(context)!
                                           .voidTransaction,
                                       //"Inventory Recon",

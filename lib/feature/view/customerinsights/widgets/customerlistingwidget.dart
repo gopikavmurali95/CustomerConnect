@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomersListingWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -21,7 +22,7 @@ class CustomersListingWidget extends StatelessWidget {
             customersResetState: () => Padding(
               padding: const EdgeInsets.only(top: 250),
               child: Text(
-                'Select a Route',
+                AppLocalizations.of(context)!.selectRoute,
                 style: kfontstyle(),
               ),
             ),
@@ -40,7 +41,7 @@ class CustomersListingWidget extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 1.2,
                         child: Center(
                           child: Text(
-                            'No Data found',
+                            AppLocalizations.of(context)!.noDataFound,
                             style: kfontstyle(),
                           ),
                         ),
@@ -152,7 +153,7 @@ class CustomersListingWidget extends StatelessWidget {
             getcustomersFailedState: () => Padding(
               padding: const EdgeInsets.only(top: 250),
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

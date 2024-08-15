@@ -18,6 +18,9 @@ class MaterialReqDetailModel {
     this.requestedLQty,
     this.adjustedHQty,
     this.adjustedLQty,
+    this.arprdName,
+    this.arReqHUOM,
+    this.arReqLUOM,
   });
 
   MaterialReqDetailModel.fromJson(dynamic json) {
@@ -32,6 +35,9 @@ class MaterialReqDetailModel {
     requestedLQty = json['RequestedLQty'];
     adjustedHQty = json['AdjustedHQty'];
     adjustedLQty = json['AdjustedLQty'];
+    arprdName = json['Arprd_Name'];
+    arReqHUOM = json['ArReqHUOM'];
+    arReqLUOM = json['ArReqLUOM'];
   }
   String? mrdID;
   String? mrdMrhID;
@@ -44,6 +50,9 @@ class MaterialReqDetailModel {
   String? requestedLQty;
   String? adjustedHQty;
   String? adjustedLQty;
+  String? arprdName;
+  String? arReqHUOM;
+  String? arReqLUOM;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -58,6 +67,9 @@ class MaterialReqDetailModel {
     map['RequestedLQty'] = requestedLQty;
     map['AdjustedHQty'] = adjustedHQty;
     map['AdjustedLQty'] = adjustedLQty;
+    map['Arprd_Name'] = arprdName;
+    map['ArReqHUOM'] = arReqHUOM;
+    map['ArReqLUOM'] = arReqLUOM;
     return map;
   }
 }

@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomersScren extends StatefulWidget {
   final LoginUserModel user;
@@ -73,7 +74,7 @@ class _CustomersScrenState extends State<CustomersScren> {
           ),
         ),
         title: Text(
-          "Customer",
+          AppLocalizations.of(context)!.customer,
           style: appHeading(),
         ),
       ),
@@ -114,7 +115,8 @@ class _CustomersScrenState extends State<CustomersScren> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
-                          'Kindly select a route to view the customers',
+                          AppLocalizations.of(context)!
+                              .kindlySelectRouteToViewTheCustomers,
                           style: kfontstyle(fontSize: 11.sp),
                         ),
                       )
@@ -221,7 +223,9 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                       decoration:
                                                           InputDecoration(
                                                         hintText:
-                                                            'Search route',
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .searchRoute,
                                                         hintStyle: kfontstyle(),
                                                         border:
                                                             UnderlineInputBorder(
@@ -316,7 +320,8 @@ class _CustomersScrenState extends State<CustomersScren> {
                                     const EdgeInsets.symmetric(vertical: 10),
                                 child: Center(
                                   child: Text(
-                                    'No routes available',
+                                    AppLocalizations.of(context)!
+                                        .noRoutesAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),
@@ -405,7 +410,8 @@ class _CustomersScrenState extends State<CustomersScren> {
                                   ),
                                 ],
                               ),
-                              hintText: "Search here..",
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHere,
                               hintStyle: kfontstyle(
                                   fontSize: 14,
                                   color: Colors.grey,
@@ -432,7 +438,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                         padding: const EdgeInsets.only(
                             left: 20.0, right: 20, top: 5),
                         child: Text(
-                          "Customers",
+                          AppLocalizations.of(context)!.customers,
                           style: countHeading(),
                         ),
                       ),

@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SalesOrderDetailsList extends StatelessWidget {
   final LoginUserModel user;
@@ -47,8 +48,9 @@ class SalesOrderDetailsList extends StatelessWidget {
                                 itemCount: 10),
                           )
                         : orderdetails.isEmpty
-                            ? const Center(
-                                child: Text('No Data Found'),
+                            ? Center(
+                                child: Text(
+                                    AppLocalizations.of(context)!.noDataFound),
                               )
                             : Column(
                                 children: [
@@ -188,7 +190,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                           child: Row(
                                                             children: [
                                                               Text(
-                                                                'AED ',
+                                                                '${AppLocalizations.of(context)!.aed} ',
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
@@ -236,7 +238,8 @@ class SalesOrderDetailsList extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const Text('Sub Total'),
+                                            Text(AppLocalizations.of(context)!
+                                                .subTotal),
                                             Text(salesorders.subTotal ?? '')
                                           ],
                                         ),
@@ -257,7 +260,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 2,
                       child: Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),

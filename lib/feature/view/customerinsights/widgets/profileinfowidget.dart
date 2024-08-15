@@ -3,9 +3,10 @@ import 'dart:developer';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,7 +44,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                         ),
                         Flexible(
                           child: Text(
-                            profile.cusName ?? '',
+                            selectedLocale?.languageCode == "en"
+                                ? profile.cusName ?? ''
+                                : profile.cusNameArabic ?? '',
                             style: kfontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -161,15 +164,19 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             return showCupertinoDialog(
                                 context: context,
                                 builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          'Phone number not available'),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .phoneNumberNotAvailable),
                                       actions: [
                                         TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'))
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok))
                                       ],
                                     ));
                           }
@@ -209,15 +216,19 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             return showCupertinoDialog(
                                 context: context,
                                 builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text('WhatsApp not available'),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .whatsAppNtAvailable),
                                       actions: [
                                         TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'))
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok))
                                       ],
                                     ));
                           }
@@ -258,9 +269,11 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             return showCupertinoDialog(
                                 context: context,
                                 builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text('Location not available'),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .locationNotAvailable),
                                       actions: [
                                         TextButton(
                                             onPressed: () {
@@ -277,14 +290,16 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                       child: ProfileTileRowWidget(
                         fimg: 'assets/svg/address.svg',
                         limg: 'assets/svg/locate.svg',
-                        title: profile.cusAddress ?? '',
+                        title: selectedLocale?.languageCode == "en"
+                            ? profile.cusAddress ?? ''
+                            : profile.cusAddressArabic ?? '',
                       ),
                     ),
                   ],
                 ),
           getcusprofileFailedState: () => Center(
             child: Text(
-              'No Data Available',
+              AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),

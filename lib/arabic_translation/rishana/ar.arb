@@ -104,3 +104,69 @@
     "variance":"التباين",
     "noDataAvailableInPaymentMode":"لا توجد بيانات متاحة في طريقة الدفع"
 }
+
+---CUSTOMER INSIGHTS---
+
+{
+    "customer": "عميل",
+    "kindlySelectRouteToViewTheCustomers": "يرجى تحديد الطريق لعرض العملاء",
+    "searchRoute": "طريق البحث",
+    "noRoutesAvailable": "الطرق غير متوفرة",
+    "customers": "عملاء"
+}
+
+{
+    "customerInsights": "رؤى العملاء",
+    "customerTransaction": "معاملات العملاء",
+    "done": "منتهي",
+    "from": "من",
+    "to": "ل".
+    "serviceJobs": "وظائف الخدمة",
+    "otherOptions": "خيارات أخرى",
+    "profileDetails": "تفاصيل الملف الشخصي",
+    "editProfile": "تحرير الملف الشخصي",
+    "customerItemList": "قائمة عناصر العملاء",
+    "documents": "وثائق",
+    "geolocation": "تحديد الموقع الجغرافي",
+    "phoneNumberNotAvailable": "رقم الهاتف غير متوفر",
+    "whatsAppNtAvailable": "الواتساب غير متوفر",
+    "locationNotAvailable": "الموقع غير متوفر"
+}
+
+---CUSTOMER INSIGHTS INVOICES---
+
+{
+    "allInvoices": "جميع الفواتير",
+    "totalInvoiceAmount": "إجمالي مبلغ الفاتورة",
+    "invoiceDetails": "تفاصيل الفاتورة",
+    "type": "نوع",
+    "totalAmount": "المبلغ الإجمالي",
+    "value": "قيمة",
+    "discount": "تخفيض",
+    "vat": "ضريبة القيمة المضافة",
+    "subTotal": "المجموع الفرعي"
+}
+
+---CUSTOMER INSIGHTS AR COLLECTION---
+
+{
+    "totalCollection": "مجموع التحصيل",
+    "hardCash": "النقد الصعب",
+    "onlinePAyment": "الدفع عبر الإنترنت",
+    "pos": "نقاط البيع",
+    "cheque": "يفحص",
+    "searchARCollections": "بحث في مجموعات AR",
+    "collectedAmount": "المبلغ الذي تم جمعه",
+    "previewImage": "معاينة الصورة",
+    "bank": "بنك",
+    "chequeDate": "تاريخ الشيك",
+    "invoiceNumber": "رقم الفاتورة",
+    "date": "تاريخ",
+    "invoiceAmount": "مبلغ الفاتورة"
+}
+
+---CUSTOMER INSIGHTS SALES ORDER---
+{
+    "salesOrders": "أوامر البيع",
+    "orderDetails": "تفاصيل الطلب"
+}

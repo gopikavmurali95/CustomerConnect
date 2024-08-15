@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -406,9 +407,12 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .usrName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].usrName ??
+                                                                            ''
+                                                                        : headers[index].arusrName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,

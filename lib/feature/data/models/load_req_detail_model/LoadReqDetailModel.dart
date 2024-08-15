@@ -24,6 +24,7 @@ class LoadReqDetailModel {
     this.lrdApvTotalQty,
     this.createdDate,
     this.status,
+    this.arprdName,
   });
 
   LoadReqDetailModel.fromJson(dynamic json) {
@@ -44,6 +45,7 @@ class LoadReqDetailModel {
     lrdApvTotalQty = json['lrd_apv_totalQty'];
     createdDate = json['CreatedDate'];
     status = json['Status'];
+    arprdName = json['Arprd_Name'];
   }
   String? lrdID;
   String? lrdPrdID;
@@ -62,6 +64,7 @@ class LoadReqDetailModel {
   String? lrdApvTotalQty;
   String? createdDate;
   String? status;
+  String? arprdName;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -82,6 +85,7 @@ class LoadReqDetailModel {
     map['lrd_apv_totalQty'] = lrdApvTotalQty;
     map['CreatedDate'] = createdDate;
     map['Status'] = status;
+    map['Arprd_Name'] = arprdName;
     return map;
   }
 }

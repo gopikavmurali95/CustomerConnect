@@ -24,6 +24,12 @@ class MustSellDetailModel {
   String? luom;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
+  @JsonKey(name: 'ArHUOM')
+  String? arHUOM;
+  @JsonKey(name: 'ArLUOM')
+  String? arLUOM;
 
   MustSellDetailModel({
     this.msdId,
@@ -36,6 +42,9 @@ class MustSellDetailModel {
     this.msdLQty,
     this.luom,
     this.status,
+    this.prdArName,
+    this.arHUOM,
+    this.arLUOM,
   });
 
   factory MustSellDetailModel.fromJson(Map<String, dynamic> json) {

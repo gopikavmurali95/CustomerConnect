@@ -606,9 +606,11 @@ class _MaterialRequestDetailScreenState
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      details[index]
-                                                                              .prdName ??
-                                                                          '',
+                                                                      selectedLocale?.languageCode == "en"
+                                                                          ? details[index].prdName ??
+                                                                              ''
+                                                                          : details[index].arprdName ??
+                                                                              '',
                                                                       style: kfontstyle(
                                                                           fontSize: 12
                                                                               .sp,
@@ -634,8 +636,9 @@ class _MaterialRequestDetailScreenState
                                                                     Column(
                                                                       children: [
                                                                         Text(
-                                                                          details[index].reqHUOM ??
-                                                                              '',
+                                                                          selectedLocale?.languageCode == "en"
+                                                                              ? details[index].reqHUOM ?? ''
+                                                                              : details[index].arReqHUOM ?? '',
                                                                           style: kfontstyle(
                                                                               fontSize: 12.sp,
                                                                               fontWeight: FontWeight.w400,
@@ -646,8 +649,9 @@ class _MaterialRequestDetailScreenState
                                                                               5.h,
                                                                         ),
                                                                         Text(
-                                                                          details[index].reqLUOM ??
-                                                                              '',
+                                                                          selectedLocale?.languageCode == "en"
+                                                                              ? details[index].reqLUOM ?? ''
+                                                                              : details[index].arReqLUOM ?? '',
                                                                           style: kfontstyle(
                                                                               fontSize: 12.sp,
                                                                               fontWeight: FontWeight.w400,

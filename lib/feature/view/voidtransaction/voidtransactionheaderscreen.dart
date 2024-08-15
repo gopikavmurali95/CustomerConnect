@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_t
 import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -317,7 +318,7 @@ class _VoidTranscactioHeaderScreenState
                                                       child: Text(
                                                         overflow: TextOverflow
                                                             .ellipsis,
-                                                        '${headers[index].rotCode} - ${headers[index].rotName}',
+                                                        '${headers[index].rotCode} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName : headers[index].rotArName}',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             color: const Color(
@@ -332,8 +333,14 @@ class _VoidTranscactioHeaderScreenState
                                                       child: Text(
                                                         overflow: TextOverflow
                                                             .ellipsis,
-                                                        headers[index].type ??
-                                                            '',
+                                                        selectedLocale?.languageCode ==
+                                                                "en"
+                                                            ? headers[index]
+                                                                    .type ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .artype ??
+                                                                '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             color: const Color(
