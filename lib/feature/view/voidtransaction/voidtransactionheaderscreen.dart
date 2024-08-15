@@ -14,7 +14,6 @@ import 'package:customer_connect/feature/state/cubit/voidtransactionselection/vo
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -235,7 +234,7 @@ class _VoidTranscactioHeaderScreenState
                   : headers.isEmpty
                       ? Center(
                           child: Text(
-                            'No Data Found',
+                            'No Data Available',
                             style: kfontstyle(),
                           ),
                         )
@@ -254,9 +253,6 @@ class _VoidTranscactioHeaderScreenState
                                         : selectedVoidTransactionMode == 'A'
                                             ? 'Approved Transaction'
                                             : 'RejectedTransactions',
-                                    // _selectedPriceChangeMode == 'P'
-                                    //     ? 'Pending Approvals'
-                                    //     : 'Approved Requests',
                                     style: countHeading(),
                                   ),
                                   Padding(

@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DisputeNoteDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -71,7 +72,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
           ),
         ),
         title: Text(
-          "Dispute request detail",
+          "${AppLocalizations.of(context)!.dispute_request} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -189,7 +190,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -285,7 +286,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                         : details.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -326,7 +327,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                       color: Colors.black54),
                                                 ),
                                                 Text(
-                                                  "AED ${details[index].invoiceAmount}",
+                                                  "${AppLocalizations.of(context)!.aed} ${details[index].invoiceAmount}",
                                                   style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w400,
@@ -347,7 +348,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                       horizontal: 8,
                                                       vertical: 5),
                                               child: Text(
-                                                'AED ${details[index].drdInvoiceBalance}',
+                                                '${AppLocalizations.of(context)!.aed} ${details[index].drdInvoiceBalance}',
                                                 style: kfontstyle(
                                                     fontSize: 10.sp,
                                                     fontWeight: FontWeight.w400,
@@ -367,7 +368,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                               ),
                     getdisputenoteDetailFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -389,14 +390,14 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
+                          title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(statuslevel.status ?? ''),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Cancel'),
+                              child: Text(AppLocalizations.of(context)!.cancel),
                             ),
                             TextButton(
                               onPressed: () {
@@ -419,7 +420,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                       ),
                                     );
                               },
-                              child: const Text('Proceed'),
+                              child:
+                                  Text(AppLocalizations.of(context)!.proceed),
                             ),
                           ],
                         ),
@@ -449,11 +451,11 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(
-                          'Alert',
+                          AppLocalizations.of(context)!.alert,
                           style: kfontstyle(),
                         ),
                         content: Text(
-                          'Something went wrong , please try again later',
+                          AppLocalizations.of(context)!.somethingWentWrong,
                           style: kfontstyle(),
                         ),
                         actions: [
@@ -461,7 +463,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -501,13 +503,13 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                             canPop: false,
                             child: CupertinoAlertDialog(
                               title: Text(
-                                'Alert',
+                                AppLocalizations.of(context)!.alert,
                                 style: kfontstyle(),
                               ),
                               content: Text(
                                 isApprove == true
-                                    ? 'Dispute note ${resp.status}'
-                                    : 'Dispute note ${resp.status}',
+                                    ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${resp.status}'
+                                    : '${AppLocalizations.of(context)!.disputeNoteRequest} ${resp.status}',
                                 style: kfontstyle(),
                               ),
                               actions: [
@@ -516,7 +518,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -530,11 +532,11 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(
-                            'Alert',
+                            AppLocalizations.of(context)!.alert,
                             style: kfontstyle(),
                           ),
                           content: Text(
-                            'Something went wrong , please try again later',
+                            AppLocalizations.of(context)!.somethingWentWrong,
                             style: kfontstyle(),
                           ),
                           actions: [
@@ -542,7 +544,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -648,7 +650,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                 }
                                               },
                                               child: Text(
-                                                'Reject',
+                                                AppLocalizations.of(context)!
+                                                    .reject,
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w500,
@@ -689,7 +692,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                 }
                                               },
                                               child: Text(
-                                                'Approve',
+                                                AppLocalizations.of(context)!
+                                                    .approve,
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w500,

@@ -33,6 +33,10 @@ class VanToVanDetailsModel {
   @JsonKey(name: 'Status')
   String? status;
 
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
   VanToVanDetailsModel({
     this.vvdId,
     this.prdCode,
@@ -48,6 +52,8 @@ class VanToVanDetailsModel {
     this.adjHQty,
     this.adjLQty,
     this.status,
+    this.arStatus,
+    this.prdArName,
   });
 
   factory VanToVanDetailsModel.fromJson(Map<String, dynamic> json) {

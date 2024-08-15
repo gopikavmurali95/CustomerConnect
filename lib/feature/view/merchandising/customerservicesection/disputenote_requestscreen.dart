@@ -12,12 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MerchandiseDisputeNoteRequestScreen extends StatefulWidget {
-  final TextEditingController fromdateController;
-  final TextEditingController todateController;
   const MerchandiseDisputeNoteRequestScreen({
     super.key,
-    required this.fromdateController,
-    required this.todateController,
   });
 
   @override

@@ -9,10 +9,12 @@ import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_
 import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VanToVanApprovalDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -76,7 +78,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
           ),
         ),
         title: Text(
-          "Van To Van approval Details",
+          "${AppLocalizations.of(context)!.truck_to_truck} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -168,7 +170,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 5),
                       child: Text(
-                        widget.vanToVanHeader.approvalStatus ?? '',
+                        selectedLocale?.languageCode == "en"
+                            ? widget.vanToVanHeader.approvalStatus ?? ''
+                            : widget.vanToVanHeader.approvalArStatus ?? '',
                         style: kfontstyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w400,
@@ -195,7 +199,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -274,7 +278,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Item',
+                      AppLocalizations.of(context)!.item,
                       style: kfontstyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
@@ -286,7 +290,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                     Row(
                       children: [
                         Text(
-                          'UOM',
+                          AppLocalizations.of(context)!.uom,
                           style: kfontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -296,7 +300,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                           width: 40.w,
                         ),
                         Text(
-                          'Qty',
+                          AppLocalizations.of(context)!.qty,
                           style: kfontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -345,7 +349,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                         : details.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -374,7 +378,15 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  details[index].prdName ?? ' ',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? details[index]
+                                                              .prdName ??
+                                                          ''
+                                                      : details[index]
+                                                              .prdArName ??
+                                                          '',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       fontWeight:
@@ -461,10 +473,16 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                     context: context,
                                                     builder: (context) =>
                                                         CupertinoAlertDialog(
-                                                      title:
-                                                          const Text('Alert'),
-                                                      content: Text(
-                                                          response.status ??
+                                                      title: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .alert),
+                                                      content: Text(selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? response.status ??
+                                                              ''
+                                                          : response.arStatus ??
                                                               ''),
                                                       actions: [
                                                         TextButton(
@@ -476,8 +494,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                             Navigator.pop(
                                                                 context);
                                                           },
-                                                          child: const Text(
-                                                              'Proceed'),
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .ok),
                                                         ),
                                                       ],
                                                     ),
@@ -522,10 +542,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                   builder:
                                                       (context) =>
                                                           CupertinoAlertDialog(
-                                                            title: const Text(
-                                                                'Alert'),
-                                                            content: const Text(
-                                                                "something went wrong, please try again later"),
+                                                            title: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .alert),
+                                                            content: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .somethingWentWrong),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () {
@@ -539,9 +563,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                   Navigator.pop(
                                                                       context);
                                                                 },
-                                                                child:
-                                                                    const Text(
-                                                                        'Ok'),
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok),
                                                               )
                                                             ],
                                                           ));
@@ -634,7 +659,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                           },
                                                         ),
                                                         Text(
-                                                          'Approve',
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .approve,
                                                           style: kfontstyle(),
                                                         )
                                                       ],
@@ -689,7 +716,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                       },
                                                     ),
                                                     Text(
-                                                      'Reject',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .reject,
                                                       style: kfontstyle(),
                                                     )
                                                   ],
@@ -709,7 +738,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                               ),
                     vanToVanDetailFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -749,16 +778,19 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          "Please make sure you have approved or rejected all the products"),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .pleaseMakeSureToApproveAndReject),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                             // Navigator.pop(context);
                                           },
-                                          child: const Text('Ok'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
                                     ),
@@ -767,16 +799,20 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text("Do you Want to Proceed"),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .doyouWantToProceed),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             setState(() {});
                                             Navigator.pop(context);
                                           },
-                                          child: const Text('Cancel'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .cancel),
                                         ),
                                         TextButton(
                                           onPressed: () {
@@ -803,7 +839,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                 .vanToVanHeader
                                                                 .vvhId)));
                                           },
-                                          child: const Text('Proceed'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .proceed),
                                         ),
                                       ],
                                     ),
@@ -812,7 +850,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                               }
                             },
                             child: Text(
-                              'Confirm',
+                              AppLocalizations.of(context)!.confirm,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,

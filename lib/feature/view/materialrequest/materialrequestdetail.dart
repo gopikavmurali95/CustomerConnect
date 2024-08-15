@@ -43,23 +43,23 @@ bool isLoading = false;
 
 int loadingCount = 0;
 List<ApprovalResonModel> availableresons = [];
-int _approvedCount = 0;
+int approvedCount = 0;
 
-int _totalcount = 0;
+int totalcount = 0;
 
 List<MatrialAprReqPrdModel?> _materialreqproducts = [];
-List<MatrialAprReqPrdModel?> _materialreqproductsReject = [];
+List<MatrialAprReqPrdModel?> materialreqproductsReject = [];
 List<MaterialReqDetailModel?> _procechangematerial = [];
 TextEditingController _materialreqdetailSerachController =
     TextEditingController();
-TextEditingController _apprvLQtymqController = TextEditingController();
-TextEditingController _apprvHQtymqController = TextEditingController();
+TextEditingController apprvLQtymqController = TextEditingController();
+TextEditingController apprvHQtymqController = TextEditingController();
 
 class _MaterialRequestDetailScreenState
     extends State<MaterialRequestDetailScreen> {
   @override
   void initState() {
-    _approvedCount = 0;
+    approvedCount = 0;
     loadingCount = 0;
     context.read<MaterialReqDetailBloc>().add(const MaterialDetailClearEvent());
     context.read<MaterialReqDetailBloc>().add(
@@ -488,7 +488,7 @@ class _MaterialRequestDetailScreenState
                                           (index) => null);
                                       statuslist.clear();
 
-                                      _totalcount = materialdetail.length;
+                                      totalcount = materialdetail.length;
 
                                       for (int i = 0;
                                           i < materialdetail.length;

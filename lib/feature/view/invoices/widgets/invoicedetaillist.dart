@@ -4,13 +4,14 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceDetailListWidget extends StatelessWidget {
   final InvoiceHeaderModel invoiceheader;
@@ -51,7 +52,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                               height: 50.h,
                               child: Center(
                                 child: Text(
-                                  'No Data Found',
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               ),
@@ -87,9 +88,15 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                     SizedBox(
                                                       width: 200.w,
                                                       child: Text(
-                                                        invdetails[index]
-                                                                .prdName ??
-                                                            '',
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                "en"
+                                                            ? invdetails[index]
+                                                                    .prdName ??
+                                                                ''
+                                                            : invdetails[index]
+                                                                    .prdArName ??
+                                                                '',
                                                         style:
                                                             subTitleTextStyle(),
                                                       ),
@@ -360,7 +367,7 @@ class InvoiceDetailListWidget extends StatelessWidget {
                         ),
                   typeWiseInvoiceFailedState: () => Center(
                     child: Text(
-                      'No Data Available',
+                      AppLocalizations.of(context)!.noDataAvailable,
                       style: kfontstyle(),
                     ),
                   ),

@@ -26,6 +26,7 @@ LoadTransferDetailModel _$LoadTransferDetailModelFromJson(
       ldrOffloadLuom: json['ldr_OffloadLUOM'] as String?,
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
+      prdArName: json['prd_ArName'] as String?,
     );
 
 Map<String, dynamic> _$LoadTransferDetailModelToJson(
@@ -48,4 +49,5 @@ Map<String, dynamic> _$LoadTransferDetailModelToJson(
       'ldr_OffloadLUOM': instance.ldrOffloadLuom,
       'prd_Code': instance.prdCode,
       'prd_Name': instance.prdName,
+      'prd_ArName': instance.prdArName,
     };

@@ -5,10 +5,12 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderdetailslist.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TotalOrderDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -50,7 +52,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
           ),
         ),
         title: Text(
-          "Order Details",
+          AppLocalizations.of(context)!.order_details,
           style: appHeading(),
         ),
         actions: [
@@ -91,7 +93,9 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                               Expanded(
                                 child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  widget.totalorders.cusName ?? '',
+                                  selectedLocale?.languageCode == "en"
+                                      ? widget.totalorders.cusName ?? ''
+                                      : widget.totalorders.arcusName ?? '',
                                   style: subTitleTextStyle(),
                                 ),
                               ),
@@ -105,7 +109,9 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                               ),
                               Expanded(
                                 child: Text(
-                                  widget.totalorders.cshName ?? '',
+                                  selectedLocale?.languageCode == "en"
+                                      ? widget.totalorders.cshName ?? ''
+                                      : widget.totalorders.arcshName ?? '',
                                   overflow: TextOverflow.ellipsis,
                                   style: subTitleTextStyle(),
                                 ),
@@ -174,7 +180,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search items ",
+                          hintText: AppLocalizations.of(context)!.searchHere,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -237,15 +243,18 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                   Flexible(
                       flex: 4,
                       fit: FlexFit.tight,
-                      child: Text('items', style: boxHeading())),
+                      child: Text(AppLocalizations.of(context)!.items,
+                          style: boxHeading())),
                   Flexible(
                       flex: 1,
                       fit: FlexFit.tight,
-                      child: Text('UOM', style: boxHeading())),
+                      child: Text(AppLocalizations.of(context)!.uom,
+                          style: boxHeading())),
                   Flexible(
                       flex: 0,
                       fit: FlexFit.tight,
-                      child: Text('Qty', style: boxHeading()))
+                      child: Text(AppLocalizations.of(context)!.qty,
+                          style: boxHeading()))
                 ],
               ),
             ),
@@ -269,7 +278,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Total Amount',
+                AppLocalizations.of(context)!.total_amount,
                 style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
               Text(

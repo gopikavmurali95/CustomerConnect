@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PromotionDetailsList extends StatelessWidget {
   const PromotionDetailsList({super.key});
@@ -65,7 +66,7 @@ class PromotionDetailsList extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 2,
             child: Center(
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

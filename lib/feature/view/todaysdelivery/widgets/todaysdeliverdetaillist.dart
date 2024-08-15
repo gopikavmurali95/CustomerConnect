@@ -2,9 +2,11 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodaysDeliveryDetailsList extends StatelessWidget {
   final TodaysDeliveryHeaderModel delivery;
@@ -46,7 +48,7 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                               height: 50.h,
                               child: Center(
                                 child: Text(
-                                  'No Data Found',
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               ),
@@ -81,11 +83,18 @@ class TodaysDeliveryDetailsList extends StatelessWidget {
                                                   SizedBox(
                                                     width: 180.w,
                                                     child: Text(
-                                                        invdetails[index]
-                                                                .prhName ??
-                                                            '',
-                                                        style:
-                                                            subTitleTextStyle()),
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? invdetails[index]
+                                                                  .prhName ??
+                                                              ''
+                                                          : invdetails[index]
+                                                                  .arprdName ??
+                                                              '',
+                                                      style:
+                                                          subTitleTextStyle(),
+                                                    ),
                                                   ),
                                                 ],
                                               ),

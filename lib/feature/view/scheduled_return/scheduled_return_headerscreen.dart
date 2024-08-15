@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduledReturnHEaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -65,7 +66,7 @@ class _ScheduledReturnHEaderScreenState
           ),
         ),
         title: Text(
-          "Scheduled return",
+          AppLocalizations.of(context)!.scheduled_return,
           style: appHeading(),
         ),
       ),
@@ -87,7 +88,7 @@ class _ScheduledReturnHEaderScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -230,8 +231,9 @@ class _ScheduledReturnHEaderScreenState
                                 itemCount: 10),
                           )
                         : headers.isEmpty
-                            ? const Center(
-                                child: Text('No Data Found'),
+                            ? Center(
+                                child: Text(
+                                    AppLocalizations.of(context)!.noDataFound),
                               )
                             : Column(
                                 children: [
@@ -241,8 +243,10 @@ class _ScheduledReturnHEaderScreenState
                                     children: [
                                       Text(
                                         _selectedeMode == 'P'
-                                            ? 'Pending Approvals'
-                                            : 'Approved Requests',
+                                            ? AppLocalizations.of(context)!
+                                                .pendingApprovals
+                                            : AppLocalizations.of(context)!
+                                                .actionTakenRequests,
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -408,7 +412,7 @@ class _ScheduledReturnHEaderScreenState
                               ),
                     scheduledRetunrHEadersFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

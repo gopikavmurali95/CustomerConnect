@@ -6,8 +6,9 @@ part 'van_to_van_approval_model.g.dart';
 class VanToVanApprovalModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  VanToVanApprovalModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  VanToVanApprovalModel({this.status, this.arStatus});
 
   factory VanToVanApprovalModel.fromJson(Map<String, dynamic> json) {
     return _$VanToVanApprovalModelFromJson(json);

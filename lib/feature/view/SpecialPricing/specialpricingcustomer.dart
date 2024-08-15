@@ -5,9 +5,12 @@ import 'package:customer_connect/feature/state/bloc/special_price_customers/spec
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerlist.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricingdetails.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constants/fonts.dart';
 
@@ -49,17 +52,21 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+        leading: Transform.flip(
+          flipX: selectedLocale?.languageCode == "en" ? false : true,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Special Pricing Customers",
+          AppLocalizations.of(context)!.specialpricingcustomers,
+          //"Special Pricing Customers",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -140,15 +147,20 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                         child: Row(
                           children: [
                             Text(
-                              'Details',
+                              AppLocalizations.of(context)!.details,
                               style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
                             ),
-                            const Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 18,
+                            Transform.flip(
+                              flipX: selectedLocale?.languageCode == "en"
+                                  ? false
+                                  : true,
+                              child: const Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 18,
+                              ),
                             )
                           ],
                         ),
@@ -219,7 +231,8 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 size: 14,
                               ),
                             ),
-                            hintText: "Search customers",
+                            hintText:
+                                AppLocalizations.of(context)!.searchcustomers,
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -265,7 +278,8 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Assigned Customers',
+                        AppLocalizations.of(context)!.assignedcustomers,
+                        // 'Assigned Customers',
                         style: countHeading(),
                       ),
                       BlocBuilder<SpecialPriceCustomersBloc,

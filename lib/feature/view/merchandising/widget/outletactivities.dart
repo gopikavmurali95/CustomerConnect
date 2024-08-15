@@ -472,7 +472,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                               "0",
                                               style: countHeading(),
                                             )
-                                          : Text("${cuscount.actionTaken}"),
+                                          : Text("${cuscount.total}"),
                                   cusActCountFailedState: () => Text(
                                     "0",
                                     style: countHeading(),
@@ -503,7 +503,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                               "0",
                                               style: countHeading(),
                                             )
-                                          : Text("${cuscount.total}"),
+                                          : Text("${cuscount.actionTaken}"),
                                   cusActCountFailedState: () => Text(
                                     "0",
                                     style: countHeading(),

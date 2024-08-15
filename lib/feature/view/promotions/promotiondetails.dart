@@ -7,10 +7,14 @@ import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart'
 
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,17 +30,21 @@ class PromotionDetails extends StatelessWidget {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+        leading: Transform.flip(
+          flipX: selectedLocale?.languageCode == "en" ? false : true,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Promotion Details ",
+          AppLocalizations.of(context)!.promotiondetails,
+          //"Promotion Details ",
           style: appHeading(),
         ),
         // bottom: PreferredSize(
@@ -125,15 +133,20 @@ class PromotionDetails extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Text(
-                                    'Customers',
+                                    AppLocalizations.of(context)!.customers,
                                     style: TextStyle(fontSize: 10.sp),
                                   ),
                                   SizedBox(
                                     width: 5.w,
                                   ),
-                                  const Icon(
-                                    Icons.keyboard_arrow_right,
-                                    size: 18,
+                                  Transform.flip(
+                                    flipX: selectedLocale?.languageCode == "en"
+                                        ? false
+                                        : true,
+                                    child: const Icon(
+                                      Icons.keyboard_arrow_right,
+                                      size: 18,
+                                    ),
                                   )
                                 ],
                               ),
@@ -180,7 +193,9 @@ class PromotionDetails extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Qualification Group',
+                                      AppLocalizations.of(context)!
+                                          .qualificationgroup,
+                                      // 'Qualification Group',
                                       style: subTitleTextStyle(),
                                     ),
                                     Text(promotion.qCode!,
@@ -190,10 +205,16 @@ class PromotionDetails extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      'View Items',
+                                      AppLocalizations.of(context)!.viewitems,
                                       style: subTitleTextStyle(),
                                     ),
-                                    const Icon(Icons.keyboard_arrow_right)
+                                    Transform.flip(
+                                        flipX:
+                                            selectedLocale?.languageCode == "en"
+                                                ? false
+                                                : true,
+                                        child: const Icon(
+                                            Icons.keyboard_arrow_right))
                                   ],
                                 )
                               ],
@@ -240,7 +261,8 @@ class PromotionDetails extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Assignment Group',
+                                      AppLocalizations.of(context)!
+                                          .assignmentgroup,
                                       style: subTitleTextStyle(),
                                     ),
                                     Text(promotion.aCode ?? '',
@@ -249,9 +271,17 @@ class PromotionDetails extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Text('View Items',
+                                    Text(
+                                        AppLocalizations.of(context)!.viewitems,
+                                        //'View Items',
                                         style: subTitleTextStyle()),
-                                    const Icon(Icons.keyboard_arrow_right)
+                                    Transform.flip(
+                                        flipX:
+                                            selectedLocale?.languageCode == "en"
+                                                ? false
+                                                : true,
+                                        child: const Icon(
+                                            Icons.keyboard_arrow_right))
                                   ],
                                 )
                               ],
@@ -275,15 +305,18 @@ class PromotionDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Min Qua. Qty",
+                          AppLocalizations.of(context)!.minquaqty,
+                          //"Min Qua. Qty",
                           style: boxHeading(),
                         ),
                         Text(
-                          "Max Qua. Qty",
+                          AppLocalizations.of(context)!.maxquaqty,
+                          //"Max Qua. Qty",
                           style: boxHeading(),
                         ),
                         Text(
-                          "Ass. Qty",
+                          AppLocalizations.of(context)!.assignmentgroup,
+                          //"Ass. Qty",
                           style: boxHeading(),
                         ),
                       ],

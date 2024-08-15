@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homegraphmodel.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_graph_switch_state.dart';

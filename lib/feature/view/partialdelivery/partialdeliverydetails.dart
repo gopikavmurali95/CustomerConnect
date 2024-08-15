@@ -24,6 +24,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PArtialDeliveryDetails extends StatefulWidget {
   final PartialDeliveryHeaderModel header;
@@ -89,7 +90,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
           ),
         ),
         title: Text(
-          "Partial Delivery Detail",
+          "${AppLocalizations.of(context)!.partial_delivery} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -170,7 +171,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchhere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -285,15 +286,15 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
-                        content: const Text(
-                            "Something Went Wrong, please Try again later"),
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -641,11 +642,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                     builder:
                                                                         (context) =>
                                                                             CupertinoAlertDialog(
-                                                                      title: const Text(
-                                                                          'Alert'),
-                                                                      content:
-                                                                          const Text(
-                                                                              "Plese select a reason"),
+                                                                      title: Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .alert),
+                                                                      content: Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .selectReason),
                                                                       actions: [
                                                                         TextButton(
                                                                           onPressed:
@@ -653,7 +655,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                             Navigator.pop(context);
                                                                           },
                                                                           child:
-                                                                              const Text('Ok'),
+                                                                              Text(AppLocalizations.of(context)!.ok),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -679,7 +681,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                               },
                                                             ),
                                                             Text(
-                                                              'Approve',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .approve,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -729,11 +733,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                     builder:
                                                                         (context) =>
                                                                             CupertinoAlertDialog(
-                                                                      title: const Text(
-                                                                          'Alert'),
-                                                                      content:
-                                                                          const Text(
-                                                                              "Plese select a reason"),
+                                                                      title: Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .alert),
+                                                                      content: Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .selectReason),
                                                                       actions: [
                                                                         TextButton(
                                                                           onPressed:
@@ -741,7 +746,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                             Navigator.pop(context);
                                                                           },
                                                                           child:
-                                                                              const Text('Ok'),
+                                                                              Text(AppLocalizations.of(context)!.ok),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -767,7 +772,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                               },
                                                             ),
                                                             Text(
-                                                              'Reject',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .reject,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -791,7 +798,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                 ),
                           partialDeliveryDetailsFailedState: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ),
@@ -837,16 +844,19 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          "Please make sure you have approved or rejected all the products"),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .pleaseMakeSureToApproveAndReject),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                             // Navigator.pop(context);
                                           },
-                                          child: const Text('Ok'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
                                     ),
@@ -855,16 +865,20 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content:
-                                          const Text("Do you Want to Proceed"),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .doyouWantToProceed),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             setState(() {});
                                             Navigator.pop(context);
                                           },
-                                          child: const Text('Cancel'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .cancel),
                                         ),
                                         TextButton(
                                           onPressed: () {
@@ -891,7 +905,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                             userId: widget
                                                                 .user.usrId)));
                                           },
-                                          child: const Text('Proceed'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .proceed),
                                         ),
                                       ],
                                     ),
@@ -900,7 +916,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               }
                             },
                             child: Text(
-                              'Approve',
+                              AppLocalizations.of(context)!.confirm,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,

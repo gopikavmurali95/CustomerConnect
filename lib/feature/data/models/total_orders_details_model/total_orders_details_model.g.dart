@@ -30,6 +30,7 @@ TotalOrdersDetailsModel _$TotalOrdersDetailsModelFromJson(
       oddVatAmount: json['odd_VATAmount'] as String?,
       oddGrandTotal: json['odd_GrandTotal'] as String?,
       oddTransType: json['odd_TransType'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
     );
 
 Map<String, dynamic> _$TotalOrdersDetailsModelToJson(
@@ -56,4 +57,5 @@ Map<String, dynamic> _$TotalOrdersDetailsModelToJson(
       'odd_VATAmount': instance.oddVatAmount,
       'odd_GrandTotal': instance.oddGrandTotal,
       'odd_TransType': instance.oddTransType,
+      'Arprd_Name': instance.arprdName,
     };

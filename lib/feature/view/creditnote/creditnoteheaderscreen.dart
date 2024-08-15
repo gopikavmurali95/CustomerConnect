@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreditNoteHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -59,7 +60,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
           ),
         ),
         title: Text(
-          "Credit note",
+          AppLocalizations.of(context)!.credit_memo,
           style: appHeading(),
         ),
       ),
@@ -80,7 +81,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -212,20 +213,27 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                         state.when(
                           getCreditNoteHeadersState: (headers) =>
                               _selectedMode == 'P'
-                                  ? "Pending Approvals"
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
                                   : _selectedMode == "AT"
-                                      ? "Action Taken Requests"
+                                      ? AppLocalizations.of(context)!
+                                          .actionTakenRequests
                                       : _selectedMode == "A"
-                                          ? "Approved Requests"
-                                          : "Rejected Requests",
-                          creditNoteHeaderFailedState: () =>
-                              _selectedMode == 'P'
-                                  ? "Pending Approvals"
-                                  : _selectedMode == "AT"
-                                      ? "Action Taken Requests"
-                                      : _selectedMode == "A"
-                                          ? "Approved Requests"
-                                          : "Rejected Requests",
+                                          ? AppLocalizations.of(context)!
+                                              .approvedRequests
+                                          : AppLocalizations.of(context)!
+                                              .rejectedRequests,
+                          creditNoteHeaderFailedState: () => _selectedMode ==
+                                  'P'
+                              ? AppLocalizations.of(context)!.pendingApprovals
+                              : _selectedMode == "AT"
+                                  ? AppLocalizations.of(context)!
+                                      .actionTakenRequests
+                                  : _selectedMode == "A"
+                                      ? AppLocalizations.of(context)!
+                                          .approvedRequests
+                                      : AppLocalizations.of(context)!
+                                          .rejectedRequests,
                         ),
                         style: countHeading(),
                       ),
@@ -268,7 +276,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                         : headers.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -413,7 +421,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                                 itemCount: headers.length),
                     creditNoteHeaderFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

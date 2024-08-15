@@ -4,11 +4,14 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../constants/fonts.dart';
 import '../specialpricingcustomer.dart';
@@ -37,14 +40,17 @@ class _SpecialPricingState extends State<SpecialPricing> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.2,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_rounded),
+        leading: Transform.flip(
+          flipX: selectedLocale?.languageCode == "en" ? false : true,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_rounded),
+          ),
         ),
         title: Text(
-          "Special Pricing",
+          AppLocalizations.of(context)!.specialpricing,
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -128,15 +134,20 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         child: Row(
                           children: [
                             Text(
-                              'Customer',
+                              AppLocalizations.of(context)!.customers,
                               style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
                             ),
-                            const Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 18,
+                            Transform.flip(
+                              flipX: selectedLocale?.languageCode == "en"
+                                  ? false
+                                  : true,
+                              child: const Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 18,
+                              ),
                             )
                           ],
                         ),
@@ -200,7 +211,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               size: 14,
                             ),
                           ),
-                          hintText: "Search product",
+                          hintText: AppLocalizations.of(context)!.searchproduct,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -248,7 +259,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 4,
                           fit: FlexFit.tight,
                           child: Text(
-                            "Items",
+                            AppLocalizations.of(context)!.items,
                             style: boxHeading(),
                           ),
                         ),
@@ -256,7 +267,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                            "UOM",
+                            AppLocalizations.of(context)!.uom,
                             style: boxHeading(),
                           ),
                         ),
@@ -264,7 +275,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                            "std Price",
+                            AppLocalizations.of(context)!.stdPrice,
+                            // "std Price",
                             style: boxHeading(),
                           ),
                         ),
@@ -272,7 +284,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 0,
                           fit: FlexFit.tight,
                           child: Text(
-                            "Spcl Price",
+                            AppLocalizations.of(context)!.spclprice,
+                            // "Spcl Price",
                             style: boxHeading(),
                           ),
                         ),
@@ -413,7 +426,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         height: MediaQuery.of(context).size.height / 1.4,
                         child: Center(
                           child: Text(
-                            'NoData Available',
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),

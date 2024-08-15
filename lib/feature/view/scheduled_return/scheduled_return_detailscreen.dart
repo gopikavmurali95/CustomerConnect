@@ -22,6 +22,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduledReturnDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -99,7 +100,7 @@ class _ScheduledReturnDetailScreenState
           ),
         ),
         title: Text(
-          "Scheduled return detail",
+          "${AppLocalizations.of(context)!.scheduled_return} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -143,7 +144,7 @@ class _ScheduledReturnDetailScreenState
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
+                        title: Text(AppLocalizations.of(context)!.alert),
                         content: Text("${status.status} "),
                         actions: [
                           TextButton(
@@ -151,7 +152,7 @@ class _ScheduledReturnDetailScreenState
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -163,9 +164,9 @@ class _ScheduledReturnDetailScreenState
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
+                      title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
-                        "Something Went wrong , please try again later",
+                        AppLocalizations.of(context)!.somethingWentWrong,
                         style: kfontstyle(),
                       ),
                       actions: [
@@ -173,7 +174,7 @@ class _ScheduledReturnDetailScreenState
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text('Ok'),
+                          child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
                     ),
@@ -299,7 +300,7 @@ class _ScheduledReturnDetailScreenState
                             kfontstyle(fontSize: 13.sp, color: Colors.black87),
                         decoration: InputDecoration(
                           isDense: true,
-                          hintText: 'Search here..',
+                          hintText: AppLocalizations.of(context)!.searchhere,
                           suffix: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -458,8 +459,10 @@ class _ScheduledReturnDetailScreenState
                                           itemCount: 10),
                                     )
                                   : details.isEmpty
-                                      ? const Center(
-                                          child: Text('No Data Found'),
+                                      ? Center(
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .noDataFound),
                                         )
                                       : ListView.separated(
                                           shrinkWrap: true,
@@ -753,7 +756,8 @@ class _ScheduledReturnDetailScreenState
                                                                           },
                                                                         ),
                                                                         Text(
-                                                                          'Approve',
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
                                                                           style:
                                                                               kfontstyle(),
                                                                         )
@@ -802,7 +806,8 @@ class _ScheduledReturnDetailScreenState
                                                                           },
                                                                         ),
                                                                         Text(
-                                                                          'Reject',
+                                                                          AppLocalizations.of(context)!
+                                                                              .reject,
                                                                           style:
                                                                               kfontstyle(),
                                                                         )
@@ -829,7 +834,7 @@ class _ScheduledReturnDetailScreenState
                                         ),
                           scheduledReturnDetailFailedState: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ),
@@ -911,7 +916,8 @@ class _ScheduledReturnDetailScreenState
                                           RouteModel(
                                               rotId: '-1',
                                               rotName:
-                                                  'No Routes Available, Please try again laters')
+                                                  AppLocalizations.of(context)!
+                                                      .noRoutesAvailable)
                                         ];
                                       },
                                     );
@@ -1079,16 +1085,22 @@ class _ScheduledReturnDetailScreenState
                                             context: context,
                                             builder: (context) =>
                                                 CupertinoAlertDialog(
-                                              title: const Text('Alert'),
-                                              content: const Text(
-                                                  "Please make sure you have approved or rejected all the products"),
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .pleaseMakeSureToApproveAndReject),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                     // Navigator.pop(context);
                                                   },
-                                                  child: const Text('Ok'),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
                                                 ),
                                               ],
                                             ),
@@ -1099,16 +1111,22 @@ class _ScheduledReturnDetailScreenState
                                             context: context,
                                             builder: (context) =>
                                                 CupertinoAlertDialog(
-                                              title: const Text('Alert'),
-                                              content: const Text(
-                                                  "You should do approve or reject for all the items listed here.In case of rejection please specify the resaon."),
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .youShouldApproveOrRejectAndSpecifyReason),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                     // Navigator.pop(context);
                                                   },
-                                                  child: const Text('Ok'),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
                                                 ),
                                               ],
                                             ),
@@ -1118,16 +1136,22 @@ class _ScheduledReturnDetailScreenState
                                             context: context,
                                             builder: (context) =>
                                                 CupertinoAlertDialog(
-                                              title: const Text('Alert'),
-                                              content: const Text(
-                                                  "Do you Want to Proceed"),
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
                                                     setState(() {});
                                                     Navigator.pop(context);
                                                   },
-                                                  child: const Text('Cancel'),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
                                                 ),
                                                 TextButton(
                                                   onPressed: () {
@@ -1161,7 +1185,10 @@ class _ScheduledReturnDetailScreenState
                                                           ),
                                                         );
                                                   },
-                                                  child: const Text('Proceed'),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
                                                 ),
                                               ],
                                             ),
@@ -1172,16 +1199,21 @@ class _ScheduledReturnDetailScreenState
                                           context: context,
                                           builder: (context) =>
                                               CupertinoAlertDialog(
-                                            title: const Text('Alert'),
-                                            content: const Text(
-                                                "Please make sure you have selected a route"),
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .selectRoute),
                                             actions: [
                                               TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                   // Navigator.pop(context);
                                                 },
-                                                child: const Text('Ok'),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
                                               ),
                                             ],
                                           ),
@@ -1190,7 +1222,7 @@ class _ScheduledReturnDetailScreenState
                                     }
                                   },
                                   child: Text(
-                                    'Confirm',
+                                    AppLocalizations.of(context)!.confirm,
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w500,

@@ -47,10 +47,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CustomerRequestScreen(
-                              fromdateController: fromdateController,
-                              todateController: todateController,
-                            )),
+                        builder: (context) => const CustomerRequestScreen()),
                   );
                 },
                 child: Container(
@@ -194,10 +191,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            MerchandiseCreditNoteRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.todatecontroller,
-                            )),
+                            const MerchandiseCreditNoteRequestScreen()),
                   );
                 },
                 child: Container(
@@ -345,10 +339,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            MerchandiseDisputeNoteRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.fromdatecontroller,
-                            )),
+                            const MerchandiseDisputeNoteRequestScreen()),
                   );
                 },
                 child: Container(
@@ -491,10 +482,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => MerchandiseReturnRequestScreen(
-                              fromdateController: widget.fromdatecontroller,
-                              todateController: widget.todatecontroller,
-                            )),
+                        builder: (context) =>
+                            const MerchandiseReturnRequestScreen()),
                   );
                 },
                 child: Container(

@@ -8,9 +8,11 @@ import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_he
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovaldetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VanToVanApprovalHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -54,7 +56,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
           ),
         ),
         title: Text(
-          "Van To Van Approval  ",
+          AppLocalizations.of(context)!.truck_to_truck,
           style: appHeading(),
         ),
       ),
@@ -76,7 +78,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -206,17 +208,21 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                     children: [
                       Text(
                         state.when(
-                          getVanToVanHeaderState: (headers) =>
-                              _selectedMode == "P"
-                                  ? "Pending Approvals"
-                                  : _selectedMode == "AT"
-                                      ? "Approved Requests"
-                                      : "Rejected Requests",
-                          vanToVanHeaderFailedstate: () => _selectedMode == "P"
-                              ? "Pending Approvals"
+                          getVanToVanHeaderState: (headers) => _selectedMode ==
+                                  "P"
+                              ? AppLocalizations.of(context)!.pendingApprovals
                               : _selectedMode == "AT"
-                                  ? "Approved Requests"
-                                  : "Rejected Requests",
+                                  ? AppLocalizations.of(context)!
+                                      .approvedRequests
+                                  : AppLocalizations.of(context)!
+                                      .rejectedRequests,
+                          vanToVanHeaderFailedstate: () => _selectedMode == "P"
+                              ? AppLocalizations.of(context)!.pendingApprovals
+                              : _selectedMode == "AT"
+                                  ? AppLocalizations.of(context)!
+                                      .approvedRequests
+                                  : AppLocalizations.of(context)!
+                                      .rejectedRequests,
                         ),
                         style: countHeading(),
                       ),
@@ -258,7 +264,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                           : pChange.isEmpty
                               ? Center(
                                   child: Text(
-                                    'No Data Available',
+                                    AppLocalizations.of(context)!.noDataFound,
                                     style: kfontstyle(),
                                   ),
                                 )
@@ -398,9 +404,15 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                                 horizontal: 8,
                                                                 vertical: 5),
                                                         child: Text(
-                                                          pChange[index]
-                                                                  .approvalStatus ??
-                                                              '',
+                                                          selectedLocale
+                                                                      ?.languageCode ==
+                                                                  "en"
+                                                              ? pChange[index]
+                                                                      .approvalStatus ??
+                                                                  ''
+                                                              : pChange[index]
+                                                                      .approvalArStatus ??
+                                                                  '',
                                                           style: kfontstyle(
                                                               fontSize: 10.sp,
                                                               fontWeight:
@@ -429,7 +441,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                 ),
                       vanToVanHeaderFailedstate: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ));

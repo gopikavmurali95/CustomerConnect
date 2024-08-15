@@ -9,12 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomerRequestScreen extends StatefulWidget {
-  final TextEditingController fromdateController;
-  final TextEditingController todateController;
   const CustomerRequestScreen({
     super.key,
-    required this.fromdateController,
-    required this.todateController,
   });
 
   @override

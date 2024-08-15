@@ -173,6 +173,9 @@ import 'package:customer_connect/feature/data/models/total_orders_details_model/
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/data/models/tracking_sales_man_model/tracking_sales_man_model.dart';
+import 'package:customer_connect/feature/data/models/un_scheduled_approval_header_model/un_scheduled_approval_header_model.dart';
+import 'package:customer_connect/feature/data/models/un_scheduled_approval_resp_model/un_scheduled_approval_resp_model.dart';
+import 'package:customer_connect/feature/data/models/un_scheduled_visit_approve_in_model/un_scheduled_visit_approve_in_model.dart';
 import 'package:customer_connect/feature/data/models/user_notification_model/user_notification_model.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_in_paras/van_to_van_approval_in_paras.dart';
 import 'package:customer_connect/feature/data/models/van_to_van_approval_model/van_to_van_approval_model.dart';
@@ -757,4 +760,15 @@ abstract class IMerchReturnReqRepo {
 abstract class IMerchDisputeReqRepo {
   Future<Either<MainFailures, List<MerchDisputeRequestModel>>> getDisputeItems(
       String fromDate, String toDate, String status);
+}
+
+abstract class IUnScheduledVisitApprovalRepo {
+  Future<Either<MainFailures, List<UnScheduledApprovalHeaderModel>>>
+      getUnScheduledApprovalHeaders(String mode);
+
+  Future<Either<MainFailures, UnScheduledApprovalRespModel>>
+      approveUnscheduledVisit(List<UnScheduledVisitApproveInModel> approve);
+
+  Future<Either<MainFailures, UnScheduledApprovalRespModel>>
+      rejectUnscheduledVisit(List<UnScheduledVisitApproveInModel> reject);
 }

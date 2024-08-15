@@ -3,10 +3,12 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/imagepreveiewscreen.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ARDetailScreen extends StatefulWidget {
   final ArHeaderModel arheader;
@@ -44,7 +46,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
           ),
         ),
         title: Text(
-          "AR Detail ",
+          AppLocalizations.of(context)!.ar_detail,
           style: appHeading(),
         ),
         actions: [
@@ -96,7 +98,9 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              widget.arheader.cusName ?? '',
+                              selectedLocale?.languageCode == "en"
+                                  ? widget.arheader.cusName ?? ''
+                                  : widget.arheader.arcusName ?? '',
                               overflow: TextOverflow.ellipsis,
                               style: subTitleTextStyle(),
                             ),
@@ -104,7 +108,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                         ],
                       ),
                       Text(
-                        '${widget.arheader.arhPayType?.trim()} | Route ${widget.arheader.rotName} | ${widget.arheader.date} | ${widget.arheader.time}',
+                        '${widget.arheader.arhPayType?.trim()} | ${AppLocalizations.of(context)!.route} ${widget.arheader.rotName} | ${widget.arheader.date} | ${widget.arheader.time}',
                         style: TextStyle(fontSize: 10.sp, color: Colors.grey),
                       ),
                     ],
@@ -124,7 +128,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                 Row(
                   children: [
                     Text(
-                      'Collected Amount:',
+                      '${AppLocalizations.of(context)!.collected_amount}:',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     SizedBox(
@@ -164,7 +168,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                       );
                     },
                     child: Text(
-                      'Preview Image',
+                      AppLocalizations.of(context)!.preview_image,
                       style: kfontstyle(
                         fontSize: 12.sp,
                         color: const Color(0xff899fc6),
@@ -188,7 +192,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                         Row(
                           children: [
                             Text(
-                              'Mode :',
+                              '${AppLocalizations.of(context)!.mode} :',
                               style: kfontstyle(fontSize: 12.sp),
                             ),
                             SizedBox(
@@ -211,7 +215,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                           child: Row(
                             children: [
                               Text(
-                                'Cheque # :',
+                                '${AppLocalizations.of(context)!.cheque} # :',
                                 style: kfontstyle(fontSize: 12.sp),
                               ),
                               SizedBox(
@@ -247,7 +251,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                               ),
                               Expanded(
                                 child: Text(
-                                  "Bank : ${widget.arheader.bankName}",
+                                  "${AppLocalizations.of(context)!.bank} : ${widget.arheader.bankName}",
                                   style: kfontstyle(
                                     fontSize: 12.sp,
                                   ),
@@ -261,7 +265,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                           Row(
                             children: [
                               Text(
-                                'Cheque Date :',
+                                '${AppLocalizations.of(context)!.cheque} ${AppLocalizations.of(context)!.date} :',
                                 style: kfontstyle(fontSize: 12.sp),
                               ),
                               SizedBox(

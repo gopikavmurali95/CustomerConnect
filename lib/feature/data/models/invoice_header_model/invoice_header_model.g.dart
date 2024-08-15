@@ -24,6 +24,9 @@ InvoiceHeaderModel _$InvoiceHeaderModelFromJson(Map<String, dynamic> json) =>
       id: json['ID'] as String?,
       grandTotal: json['GrandTotal'] as String?,
       invoiceType: json['InvoiceType'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arcusName: json['ArcusName'] as String?,
+      arcusOutName: json['ArcusOutName'] as String?,
     );
 
 Map<String, dynamic> _$InvoiceHeaderModelToJson(InvoiceHeaderModel instance) =>
@@ -44,4 +47,7 @@ Map<String, dynamic> _$InvoiceHeaderModelToJson(InvoiceHeaderModel instance) =>
       'ID': instance.id,
       'GrandTotal': instance.grandTotal,
       'InvoiceType': instance.invoiceType,
+      'ArcusName': instance.arcusName,
+      'ArStatus': instance.arStatus,
+      'ArcusOutName': instance.arcusOutName,
     };

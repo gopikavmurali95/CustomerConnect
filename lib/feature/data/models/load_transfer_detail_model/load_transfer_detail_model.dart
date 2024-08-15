@@ -38,7 +38,8 @@ class LoadTransferDetailModel {
   String? prdCode;
   @JsonKey(name: 'prd_Name')
   String? prdName;
-
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
   LoadTransferDetailModel({
     this.ldrId,
     this.ldrPrdId,
@@ -57,6 +58,7 @@ class LoadTransferDetailModel {
     this.ldrOffloadLuom,
     this.prdCode,
     this.prdName,
+    this.prdArName,
   });
 
   factory LoadTransferDetailModel.fromJson(Map<String, dynamic> json) {

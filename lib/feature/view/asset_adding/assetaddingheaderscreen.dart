@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssetAddingApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -69,7 +70,7 @@ class _AssetAddingApprovalHeaderScreenState
           ),
         ),
         title: Text(
-          "Asset Adding",
+          AppLocalizations.of(context)!.add_assets,
           style: appHeading(),
         ),
       ),
@@ -91,7 +92,7 @@ class _AssetAddingApprovalHeaderScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -339,7 +340,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             (context) =>
                                                                                 CupertinoAlertDialog(
                                                                           title:
-                                                                              const Text('Alert'),
+                                                                              Text(AppLocalizations.of(context)!.alert),
                                                                           content:
                                                                               Text(response.status ?? ''),
                                                                           actions: [
@@ -348,7 +349,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
-                                                                              child: const Text('Proceed'),
+                                                                              child: Text(AppLocalizations.of(context)!.proceed),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -366,21 +367,21 @@ class _AssetAddingApprovalHeaderScreenState
                                                                       builder:
                                                                           (context) =>
                                                                               CupertinoAlertDialog(
-                                                                        title: const Text(
-                                                                            'Alert'),
+                                                                        title: Text(
+                                                                            AppLocalizations.of(context)!.alert),
                                                                         content:
-                                                                            const Text("something went wrong, please try again later"),
+                                                                            Text(AppLocalizations.of(context)!.somethingWentWrong),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed:
                                                                                 () {
                                                                               context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                    GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''),
+                                                                                    GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: ''),
                                                                                   );
                                                                               Navigator.pop(context);
                                                                             },
                                                                             child:
-                                                                                const Text('Ok'),
+                                                                                Text(AppLocalizations.of(context)!.ok),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -472,7 +473,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 showCupertinoDialog(
                                                                                   context: context,
                                                                                   builder: (context) => CupertinoAlertDialog(
-                                                                                    title: const Text('Alert'),
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
                                                                                     content: const Text("Please Enter Sl:No"),
                                                                                     actions: [
                                                                                       TextButton(
@@ -480,7 +481,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                           // setState(() {});
                                                                                           Navigator.pop(context);
                                                                                         },
-                                                                                        child: const Text('ok'),
+                                                                                        child: Text(AppLocalizations.of(context)!.ok),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -489,15 +490,15 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 showCupertinoDialog(
                                                                                   context: context,
                                                                                   builder: (context) => CupertinoAlertDialog(
-                                                                                    title: const Text('Alert'),
-                                                                                    content: const Text("Do you Want to Approve this product"),
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () {
                                                                                           setState(() {});
                                                                                           Navigator.pop(context);
                                                                                         },
-                                                                                        child: const Text('Cancel'),
+                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () {
@@ -513,7 +514,7 @@ class _AssetAddingApprovalHeaderScreenState
 
                                                                                           Navigator.pop(context);
                                                                                         },
-                                                                                        child: const Text('Proceed'),
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -522,7 +523,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             },
                                                                           ),
                                                                           Text(
-                                                                            'Approve',
+                                                                            AppLocalizations.of(context)!.approve,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
@@ -556,15 +557,15 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               showCupertinoDialog(
                                                                                 context: context,
                                                                                 builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Do you Want to Reject this product"),
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () {
                                                                                         setState(() {});
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Cancel'),
+                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () {
@@ -583,7 +584,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                             );
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Proceed'),
+                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -597,7 +598,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             },
                                                                           ),
                                                                           Text(
-                                                                            'Reject',
+                                                                            AppLocalizations.of(context)!.reject,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
@@ -623,7 +624,7 @@ class _AssetAddingApprovalHeaderScreenState
                                   itemCount: headers.length),
                       assetAddingHeaderFailedState: () => Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),

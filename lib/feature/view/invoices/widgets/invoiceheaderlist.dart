@@ -3,9 +3,11 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceHeaderListWidget extends StatelessWidget {
   final bool isfromUser;
@@ -43,7 +45,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
               : invheader.isEmpty
                   ? Center(
                       child: Text(
-                        'No Data Found',
+                        AppLocalizations.of(context)!.noDataFound,
                         style: kfontstyle(),
                       ),
                     )
@@ -111,8 +113,15 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                 child: Text(
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    invheader[index].cusName ??
-                                                        '',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? invheader[index]
+                                                                .cusName ??
+                                                            ''
+                                                        : invheader[index]
+                                                                .arcusName ??
+                                                            '',
                                                     style: subTitleTextStyle()),
                                               ),
                                             ],
@@ -129,8 +138,15 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  invheader[index].cusOutName ??
-                                                      '',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? invheader[index]
+                                                              .cusOutName ??
+                                                          ''
+                                                      : invheader[index]
+                                                              .arcusOutName ??
+                                                          '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: subTitleTextStyle(),
@@ -196,7 +212,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 1.5,
             child: Center(
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

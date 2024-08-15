@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TotalOrders extends StatefulWidget {
   final LoginUserModel user;
@@ -63,7 +64,7 @@ class _TotalOrdersState extends State<TotalOrders> {
           ),
         ),
         title: Text(
-          "Total Orders ",
+          AppLocalizations.of(context)!.total_orders,
           style: appHeading(),
         ),
         actions: [
@@ -137,7 +138,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                               Icons.search,
                               size: 20,
                             ),
-                            hintText: "Search here.. ",
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -190,7 +191,7 @@ class _TotalOrdersState extends State<TotalOrders> {
                       padding:
                           const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
-                        "All ",
+                        AppLocalizations.of(context)!.all,
                         style: countHeading(),
                       ),
                     ),

@@ -7,12 +7,12 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 // import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceDetailScreen extends StatefulWidget {
   final bool isfromUser;
@@ -66,7 +66,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          "Invoice Details",
+          AppLocalizations.of(context)!.invoice_details,
           style: appHeading(),
         ),
         actions: [
@@ -106,7 +106,9 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               Expanded(
                                 child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    widget.invoiceheader.cusName ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? widget.invoiceheader.cusName ?? ''
+                                        : widget.invoiceheader.arcusName ?? '',
                                     style: subTitleTextStyle()),
                               ),
                             ],
@@ -117,7 +119,10 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                                   style: subTitleTextStyle()),
                               Expanded(
                                 child: Text(
-                                    widget.invoiceheader.cusOutName ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? widget.invoiceheader.cusOutName ?? ''
+                                        : widget.invoiceheader.arcusOutName ??
+                                            '',
                                     overflow: TextOverflow.ellipsis,
                                     style: subTitleTextStyle()),
                               ),
@@ -191,7 +196,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchHere,
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -241,7 +246,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                     flex: 3,
                     fit: FlexFit.tight,
                     child: Text(
-                      'Items',
+                      AppLocalizations.of(context)!.items,
                       style: boxHeading(),
                     ),
                   ),
@@ -266,7 +271,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                            'UOM',
+                            AppLocalizations.of(context)!.uom,
                             style: boxHeading(),
                           ),
                         ),
@@ -274,7 +279,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           width: 22.h,
                         ), */
                         Text(
-                          'Qty',
+                          AppLocalizations.of(context)!.qty,
                           style: boxHeading(),
                         ),
                         SizedBox(
@@ -312,7 +317,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total Amount',
+                    AppLocalizations.of(context)!.total_amount,
                     style:
                         TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
                   ),
