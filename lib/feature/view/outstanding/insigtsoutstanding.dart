@@ -12,7 +12,6 @@ import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart
 import 'package:customer_connect/feature/view/outstanding/widgets/insightoutstandinglist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -281,7 +280,8 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                         ),
                                       ],
                                     ),
-                                    hintText: "${ AppLocalizations.of(context)!.searchHere}..",
+                                    hintText:
+                                        "${AppLocalizations.of(context)!.searchHere}..",
                                     hintStyle: kfontstyle(
                                         fontSize: 14,
                                         color: Colors.grey,
@@ -457,7 +457,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     .spaceBetween,
                                                             children: [
                                                               Text(
-                                                                 AppLocalizations.of(context)!.totaloutstanding,
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .totaloutstanding,
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         10.sp),
@@ -484,7 +486,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                 '${counts.dueCount}/${counts.dueAmount}',
                                                             color: const Color(
                                                                 0xff9ce895),
-                                                            title: AppLocalizations.of(context)!.due,
+                                                            title: AppLocalizations
+                                                                    .of(context)!
+                                                                .due,
                                                           ),
                                                           SizedBox(
                                                             height: 10.h,
@@ -494,7 +498,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                 '${counts.overDueCount}/${counts.overDueAmount}',
                                                             color: const Color(
                                                                 0xffe18484),
-                                                            title: AppLocalizations.of(context)!.overdue,
+                                                            title: AppLocalizations
+                                                                    .of(context)!
+                                                                .overdue,
                                                           ),
                                                         ],
                                                       ),
@@ -523,7 +529,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                           padding: const EdgeInsets.only(
                               left: 10.0, right: 10, top: 0),
                           child: Text(
-                             AppLocalizations.of(context)!.outStandingInvoices,
+                            AppLocalizations.of(context)!.outStandingInvoices,
                             // "Outstanding invoices",
                             style: countHeading(),
                           ),

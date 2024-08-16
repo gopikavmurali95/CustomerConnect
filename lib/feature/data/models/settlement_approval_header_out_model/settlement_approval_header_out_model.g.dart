@@ -18,6 +18,9 @@ SettlementApprovalHeaderOutModel _$SettlementApprovalHeaderOutModelFromJson(
       cusCode: json['cus_Code'] as String?,
       cusName: json['cus_Name'] as String?,
       usrName: json['usr_Name'] as String?,
+      arrotName: json['Arrot_Name'] as String?,
+      arusrName: json['Arusr_Name'] as String?,
+      arrotType: json['Arrot_Type'] as String?,
     );
 
 Map<String, dynamic> _$SettlementApprovalHeaderOutModelToJson(
@@ -32,4 +35,7 @@ Map<String, dynamic> _$SettlementApprovalHeaderOutModelToJson(
       'cus_Code': instance.cusCode,
       'cus_Name': instance.cusName,
       'usr_Name': instance.usrName,
+      'Arrot_Name': instance.arrotName,
+      'Arusr_Name': instance.arusrName,
+      'Arrot_Type': instance.arrotType,
     };

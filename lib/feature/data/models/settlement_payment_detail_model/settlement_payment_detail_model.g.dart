@@ -16,6 +16,9 @@ SettlementPaymentDetailModel _$SettlementPaymentDetailModelFromJson(
       chequeDate: json['chequeDate'] as String?,
       bnkName: json['bnk_Name'] as String?,
       amount: json['amount'] as String?,
+      arbnkName: json['Arbnk_Name'] as String?,
+      arname: json['Arname'] as String?,
+      artype: json['Artype'] as String?,
     );
 
 Map<String, dynamic> _$SettlementPaymentDetailModelToJson(
@@ -28,4 +31,7 @@ Map<String, dynamic> _$SettlementPaymentDetailModelToJson(
       'chequeDate': instance.chequeDate,
       'bnk_Name': instance.bnkName,
       'amount': instance.amount,
+      'Arbnk_Name': instance.arbnkName,
+      'Arname': instance.arname,
+      'Artype': instance.artype,
     };

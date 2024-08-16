@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/journeyplanapproval/jourey_plan_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/journeyplanheader/journey_plan_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 // import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -463,8 +464,11 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                           Text(
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        headers[index].cusName ??
-                                                                            '',
+                                                                        selectedLocale?.languageCode == "en"
+                                                                            ? headers[index].cusName ??
+                                                                                ''
+                                                                            : headers[index].arcusName ??
+                                                                                '',
                                                                         style: kfontstyle(
                                                                             fontSize:
                                                                                 12.sp,
@@ -501,7 +505,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                             builder: (context) =>
                                                                                 CupertinoAlertDialog(
                                                                               title: Text(AppLocalizations.of(context)!.alert),
-                                                                              content: Text(response.status ?? ''),
+                                                                              content: Text(selectedLocale?.languageCode == "en" ? response.status ?? '' : response.arstatus ?? ''),
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () {

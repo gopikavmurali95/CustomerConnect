@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -97,7 +98,7 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  '${payment[index].bnkName}',
+                                                  '${selectedLocale?.languageCode == "en" ? payment[index].bnkName : payment[index].arbnkName}',
                                                   //"Emirates MBD,Abu Dhabi",
                                                   // '${spHeader[index].startDate} To ${spHeader[index].endDate}',
                                                   style: subTextStyle(),
@@ -114,7 +115,7 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                                                           .width /
                                                       2,
                                                   child: Text(
-                                                    '${payment[index].cusCode} - ${payment[index].name}',
+                                                    '${payment[index].cusCode} - ${selectedLocale?.languageCode == "en" ? payment[index].name : payment[index].arname}',
                                                     //'${spHeader[index].prhCode}',
                                                     style: subTextStyle(),
                                                   ),
@@ -138,7 +139,7 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                                           width: 5.w,
                                         ),
                                         Text(
-                                          '${payment[index].type}',
+                                          '${selectedLocale?.languageCode == "en" ? payment[index].type : payment[index].artype}',
                                           style: const TextStyle(fontSize: 10),
                                         )
                                       ],

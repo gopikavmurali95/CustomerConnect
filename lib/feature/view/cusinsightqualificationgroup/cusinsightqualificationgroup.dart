@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/view/cusinsighassignmentgroup/widget/gr
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CusInsightQualificationGroup extends StatefulWidget {
   final CusPromotionHeader header;
@@ -47,7 +48,7 @@ class _CusInsightQualificationGroup
           ),
         ),
         title: Text(
-          "Qualification Group",
+          AppLocalizations.of(context)!.qualificationgroup,
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -107,7 +108,7 @@ class _CusInsightQualificationGroup
                 Row(
                   children: [
                     Text(
-                      'Qualification Group: ',
+                      '${AppLocalizations.of(context)!.qualificationgroup}: ',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
@@ -183,7 +184,7 @@ class _CusInsightQualificationGroup
                               ),
                             ],
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

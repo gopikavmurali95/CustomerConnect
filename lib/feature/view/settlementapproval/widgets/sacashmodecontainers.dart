@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${paymode[0].mode}",
+                                        "${selectedLocale?.languageCode == "en" ? paymode[0].mode : paymode[0].arMode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
                                       Text("${paymode[0].expectedAmount}",
@@ -137,7 +138,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${paymode[1].mode}",
+                                        "${selectedLocale?.languageCode == "en" ? paymode[1].mode : paymode[1].arMode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
                                       Text("${paymode[1].expectedAmount}",
@@ -175,7 +176,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${paymode[2].mode}",
+                                        "${selectedLocale?.languageCode == "en" ? paymode[2].mode : paymode[2].arMode}",
                                         style: kfontstyle(fontSize: 10.sp),
                                       ),
                                       Text("${paymode[2].expectedAmount}",

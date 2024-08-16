@@ -1,10 +1,10 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInsightGroupList extends StatelessWidget {
   const CustomerInsightGroupList({super.key});
@@ -30,7 +30,7 @@ class CustomerInsightGroupList extends StatelessWidget {
               : groupdata.isEmpty
                   ? Center(
                       child: Text(
-                        'No Data Found',
+                        AppLocalizations.of(context)!.noDataFound,
                         style: kfontstyle(),
                       ),
                     )
@@ -40,7 +40,7 @@ class CustomerInsightGroupList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Items',
+                              AppLocalizations.of(context)!.items,
                               style: countHeading(),
                             ),
                             Text(
@@ -80,7 +80,7 @@ class CustomerInsightGroupList extends StatelessWidget {
                     ),
           customerInsightGroupFailedState: () => Center(
             child: Text(
-              'No Data Available',
+              AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),

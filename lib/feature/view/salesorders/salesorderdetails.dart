@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SalesOrderDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -62,7 +63,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
           ),
         ),
         title: Text(
-          "Order Details",
+          AppLocalizations.of(context)!.order_details,
           style: appHeading(),
         ),
         actions: [
@@ -177,6 +178,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)
@@ -211,7 +213,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search items ",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -267,7 +269,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Items',
+                    AppLocalizations.of(context)!.items,
                     style: boxHeading(),
                   ),
                   Row(
@@ -277,14 +279,14 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                         width: 20.h,
                       ),
                       Text(
-                        'UOM',
+                        AppLocalizations.of(context)!.uom,
                         style: boxHeading(),
                       ),
                       SizedBox(
                         width: 20.h,
                       ),
                       Text(
-                        'Qty',
+                        AppLocalizations.of(context)!.qty,
                         style: boxHeading(),
                       ),
                     ],
@@ -310,7 +312,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Total Amount', style: bottomTextStyle()),
+              Text(AppLocalizations.of(context)!.total_amount,
+                  style: bottomTextStyle()),
               Text(widget.salesorders.grandTotal ?? '',
                   style: bottomTotalAmountStyle())
             ],

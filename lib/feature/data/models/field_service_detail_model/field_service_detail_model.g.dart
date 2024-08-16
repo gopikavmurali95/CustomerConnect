@@ -18,6 +18,7 @@ FieldServiceDetailModel _$FieldServiceDetailModelFromJson(
       sadPrice: json['sad_Price'] as String?,
       sadDiscount: json['sad_Discount'] as String?,
       sadLineTotal: json['sad_LineTotal'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
     );
 
 Map<String, dynamic> _$FieldServiceDetailModelToJson(
@@ -32,4 +33,5 @@ Map<String, dynamic> _$FieldServiceDetailModelToJson(
       'sad_Price': instance.sadPrice,
       'sad_Discount': instance.sadDiscount,
       'sad_LineTotal': instance.sadLineTotal,
+      'Arprd_Name': instance.arprdName,
     };

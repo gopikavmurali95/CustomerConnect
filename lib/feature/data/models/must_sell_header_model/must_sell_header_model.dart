@@ -32,23 +32,36 @@ class MustSellHeaderModel {
   String? cuscode;
   @JsonKey(name: 'cus_Name')
   String? cusname;
+  @JsonKey(name: 'Artype')
+  String? artype;
+  @JsonKey(name: 'rot_ArName')
+  String? rotArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
-  MustSellHeaderModel(
-      {this.msaId,
-      this.msaTransId,
-      this.msaUsrId,
-      this.userName,
-      this.rotCode,
-      this.rotName,
-      this.createdDate,
-      this.msaRotId,
-      this.ordNumber,
-      this.salNumber,
-      this.status,
-      this.createdBy,
-      this.cuscode,
-      this.cusname,
-      this.type});
+  MustSellHeaderModel({
+    this.msaId,
+    this.msaTransId,
+    this.msaUsrId,
+    this.userName,
+    this.rotCode,
+    this.rotName,
+    this.createdDate,
+    this.msaRotId,
+    this.ordNumber,
+    this.salNumber,
+    this.status,
+    this.createdBy,
+    this.cuscode,
+    this.cusname,
+    this.type,
+    this.artype,
+    this.rotArName,
+    this.cusArName,
+    this.arStatus,
+  });
 
   factory MustSellHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$MustSellHeaderModelFromJson(json);

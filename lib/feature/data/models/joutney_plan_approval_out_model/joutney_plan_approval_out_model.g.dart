@@ -10,10 +10,12 @@ JoutneyPlanApprovalOutModel _$JoutneyPlanApprovalOutModelFromJson(
         Map<String, dynamic> json) =>
     JoutneyPlanApprovalOutModel(
       status: json['Status'] as String?,
+      arstatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$JoutneyPlanApprovalOutModelToJson(
         JoutneyPlanApprovalOutModel instance) =>
     <String, dynamic>{
       'Status': instance.status,
+      'ArStatus': instance.arstatus,
     };

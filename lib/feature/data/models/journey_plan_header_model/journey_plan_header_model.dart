@@ -28,6 +28,10 @@ class JourneyPlanHeaderModel {
   String? userID;
   @JsonKey(name: 'rotID')
   String? rotID;
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   JourneyPlanHeaderModel(
       {this.jpsId,
@@ -41,7 +45,9 @@ class JourneyPlanHeaderModel {
       this.rsnName,
       this.status,
       this.rotID,
-      this.userID});
+      this.userID,
+      this.arcusName,
+      this.arStatus});
 
   factory JourneyPlanHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$JourneyPlanHeaderModelFromJson(json);

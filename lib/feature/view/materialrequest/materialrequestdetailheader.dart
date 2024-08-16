@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
 import 'package:customer_connect/feature/view/materialrequest/materialrequestdetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -430,7 +431,7 @@ class _MaterialRequestHeaderScreenState
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  '${headers[index].strName} - ',
+                                                                  '${selectedLocale?.languageCode == "en" ? headers[index].strName : headers[index].strArName} - ',
                                                                   style:
                                                                       kfontstyle(
                                                                     fontSize:
@@ -444,9 +445,12 @@ class _MaterialRequestHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .warName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].warName ??
+                                                                            ''
+                                                                        : headers[index].warArName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,

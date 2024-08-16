@@ -636,9 +636,15 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                         .width /
                                                                     3,
                                                                 child: Text(
-                                                                  details[index]
-                                                                          .prdName ??
-                                                                      '',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          "en"
+                                                                      ? details[index]
+                                                                              .prdName ??
+                                                                          ''
+                                                                      : details[index]
+                                                                              .arprdName ??
+                                                                          '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           10.sp,

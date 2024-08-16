@@ -23,6 +23,10 @@ MustSellHeaderModel _$MustSellHeaderModelFromJson(Map<String, dynamic> json) =>
       cuscode: json['cus_Code'] as String?,
       cusname: json['cus_Name'] as String?,
       type: json['type'] as String?,
+      artype: json['Artype'] as String?,
+      rotArName: json['rot_ArName'] as String?,
+      cusArName: json['cus_ArName'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$MustSellHeaderModelToJson(
@@ -43,4 +47,8 @@ Map<String, dynamic> _$MustSellHeaderModelToJson(
       'type': instance.type,
       'cus_Code': instance.cuscode,
       'cus_Name': instance.cusname,
+      'Artype': instance.artype,
+      'rot_ArName': instance.rotArName,
+      'cus_ArName': instance.cusArName,
+      'ArStatus': instance.arStatus,
     };

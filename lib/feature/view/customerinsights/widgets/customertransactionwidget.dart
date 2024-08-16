@@ -5,11 +5,13 @@ import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_
 import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
 import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerTraansactionWidget extends StatefulWidget {
   final LoginUserModel user;
@@ -65,7 +67,7 @@ class _CustomerTraansactionWidgetState
                   Row(
                     children: [
                       Text(
-                        'Customer Transactions',
+                        AppLocalizations.of(context)!.customerTransaction,
                         style: kfontstyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -108,9 +110,10 @@ class _CustomerTraansactionWidgetState
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: const Text(
-                                                  'Done',
-                                                  style: TextStyle(
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .done,
+                                                  style: const TextStyle(
                                                     color: Colors.black87,
                                                   ),
                                                 ),
@@ -159,12 +162,20 @@ class _CustomerTraansactionWidgetState
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'From ',
-                                    style: kfontstyle(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey,
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      right:
+                                          selectedLocale?.languageCode == "en"
+                                              ? 0
+                                              : 10,
+                                    ),
+                                    child: Text(
+                                      '${AppLocalizations.of(context)!.from} ',
+                                      style: kfontstyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ),
                                   Text(
@@ -230,9 +241,10 @@ class _CustomerTraansactionWidgetState
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: const Text(
-                                                  'Done',
-                                                  style: TextStyle(
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .done,
+                                                  style: const TextStyle(
                                                     color: Colors.black87,
                                                   ),
                                                 ),
@@ -263,12 +275,20 @@ class _CustomerTraansactionWidgetState
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'To  ',
-                                    style: kfontstyle(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey,
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      right:
+                                          selectedLocale?.languageCode == "en"
+                                              ? 0
+                                              : 10,
+                                    ),
+                                    child: Text(
+                                      '${AppLocalizations.of(context)!.to}  ',
+                                      style: kfontstyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ),
                                   Text(
@@ -327,7 +347,7 @@ class _CustomerTraansactionWidgetState
                             );
                           },
                           child: CusTransNavWIdget(
-                            title: 'Invoices',
+                            title: AppLocalizations.of(context)!.invoices,
                             imagepath: 'assets/images/invoice.png',
                             count: state.when(
                               getTransactionCountState: (counts) =>
@@ -357,7 +377,7 @@ class _CustomerTraansactionWidgetState
                                 ));
                           },
                           child: CusTransNavWIdget(
-                            title: 'AR Collections',
+                            title: AppLocalizations.of(context)!.ar_collection,
                             imagepath: 'assets/images/ar.png',
                             count: state.when(
                               getTransactionCountState: (counts) =>
@@ -391,7 +411,7 @@ class _CustomerTraansactionWidgetState
                                 ));
                           },
                           child: CusTransNavWIdget(
-                            title: 'Sales Orders',
+                            title: AppLocalizations.of(context)!.sales_orders,
                             imagepath: 'assets/images/order.png',
                             count: state.when(
                               getTransactionCountState: (counts) =>
@@ -404,13 +424,13 @@ class _CustomerTraansactionWidgetState
                       SizedBox(
                         width: 10.w,
                       ),
-                      const Flexible(
+                      Flexible(
                         flex: 2,
                         fit: FlexFit.tight,
                         child: Visibility(
                           visible: false,
                           child: CusTransNavWIdget(
-                            title: 'Service Jobs',
+                            title: AppLocalizations.of(context)!.serviceJobs,
                             imagepath: 'assets/images/sj.png',
                             count: '6',
                           ),

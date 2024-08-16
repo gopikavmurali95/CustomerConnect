@@ -6,12 +6,11 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/sales_orders_in_model/sales_orders_in_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/view/salesorders/widget/salesorderslistwidget.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SalesrdersScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -91,7 +90,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
           ),
         ),
         title: Text(
-          "Sales Orders",
+          AppLocalizations.of(context)!.sales_orders,
           style: appHeading(),
         ),
         actions: [
@@ -224,8 +223,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                       searchQuery: value.trim(),
                                       salesIn: SalesOrdersInModel(
                                           userId: widget.user.usrId,
-                                          cusId: /* widget.customer.cusId */
-                                              '1',
+                                          cusId: widget.customer.cusId,
                                           area: '',
                                           fromDate:
                                               widget.fromdatecontroller.text,
@@ -258,8 +256,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                               searchQuery: '',
                                               salesIn: SalesOrdersInModel(
                                                   userId: widget.user.usrId,
-                                                  cusId: /* widget.customer.cusId */
-                                                      '1',
+                                                  cusId: widget.customer.cusId,
                                                   area: '',
                                                   fromDate: widget
                                                       .fromdatecontroller.text,
@@ -278,7 +275,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                 ),
                               ],
                             ),
-                            hintText: "Search here..",
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: kfontstyle(
                                 fontSize: 14,
                                 color: Colors.grey,

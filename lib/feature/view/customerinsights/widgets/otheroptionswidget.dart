@@ -8,7 +8,7 @@ import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../custinsightpromotion/custinsightpromotion.dart';
 
 class OtherOptionsWidget extends StatelessWidget {
@@ -46,9 +46,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/outs.png',
-                  title: 'Outstanding',
+                  title: AppLocalizations.of(context)!.outstanding,
                 ),
               ),
             ),
@@ -69,9 +69,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/spec.png',
-                  title: 'Special pricing',
+                  title: AppLocalizations.of(context)!.specialpricing,
                 ),
               ),
             )
@@ -96,9 +96,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/promo.png',
-                  title: 'Promotions',
+                  title: AppLocalizations.of(context)!.promotions,
                 ),
               ),
             ),
@@ -117,9 +117,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/itemlist.png',
-                  title: 'Customer Item list',
+                  title: AppLocalizations.of(context)!.customerItemList,
                 ),
               ),
             )
@@ -142,9 +142,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/document.png',
-                  title: 'Documents',
+                  title: AppLocalizations.of(context)!.documents,
                 ),
               ),
             ),
@@ -165,9 +165,9 @@ class OtherOptionsWidget extends StatelessWidget {
                     ),
                   );
                 },
-                child: const OtherOptionsTilesWideget(
+                child: OtherOptionsTilesWideget(
                   imgpath: 'assets/images/location.png',
-                  title: 'Geolocation',
+                  title: AppLocalizations.of(context)!.geolocation,
                 ),
               ),
             )

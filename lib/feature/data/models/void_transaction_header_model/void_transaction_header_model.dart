@@ -24,6 +24,10 @@ class VoidTransactionHeaderModel {
   String? udpID;
   @JsonKey(name: 'Status ')
   String? status;
+  @JsonKey(name: 'rot_ArName')
+  String? rotArName;
+  @JsonKey(name: 'Artype')
+  String? artype;
 
   VoidTransactionHeaderModel({
     this.vtaId,
@@ -35,6 +39,8 @@ class VoidTransactionHeaderModel {
     this.cusName,
     this.createdDate,
     this.status,
+    this.rotArName,
+    this.artype,
   });
 
   factory VoidTransactionHeaderModel.fromJson(Map<String, dynamic> json) {

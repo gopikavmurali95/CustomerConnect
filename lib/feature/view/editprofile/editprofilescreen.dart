@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -52,7 +53,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
         ),
         title: Text(
-          "Edit Profile",
+          AppLocalizations.of(context)!.editProfile,
           style: appHeading(),
         ),
       ),
@@ -70,11 +71,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
                       title: Text(editrep.title ?? ''),
-                      content: const Text('Your profile has been updated'),
+                      content: Text(AppLocalizations.of(context)!
+                          .yourProfileHasbeenUpdated),
                       actions: [
                         CupertinoDialogAction(
                           child: Text(
-                            'Ok',
+                            AppLocalizations.of(context)!.ok,
                             style: kfontstyle(),
                           ),
                           onPressed: () {
@@ -91,11 +93,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
                       title: Text(editrep.title ?? ''),
-                      content: const Text('Your profile has been Failed'),
+                      content: Text(AppLocalizations.of(context)!
+                          .yourProfileUpdationFailed),
                       actions: [
                         CupertinoDialogAction(
                           child: Text(
-                            'Ok',
+                            AppLocalizations.of(context)!.ok,
                             style: kfontstyle(),
                           ),
                           onPressed: () {
@@ -152,17 +155,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         child: Column(
                           children: [
                             EditProfilefieldWidget(
-                              title: 'Mail ID',
+                              title: AppLocalizations.of(context)!.mailId,
                               icon: 'assets/svg/mail.svg',
                               controller: _mailctrl,
                             ),
                             EditProfilefieldWidget(
-                              title: 'Mobile Number',
+                              title: AppLocalizations.of(context)!.mobileNumber,
                               icon: 'assets/svg/phone.svg',
                               controller: _mobctrl,
                             ),
                             EditProfilefieldWidget(
-                              title: 'Whatsapp Number',
+                              title: AppLocalizations.of(context)!.whatspNo,
                               icon: 'assets/svg/whatsapp_1.svg',
                               controller: _whatsappctrl,
                             )
@@ -172,7 +175,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
               getcusprofileFailedState: () => Center(
                 child: Text(
-                  'No Data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),
@@ -212,7 +215,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         side: const BorderSide(color: Colors.grey)),
                     // minWidth: MediaQuery.of(context).size.width / 2,
                     child: Text(
-                      'Cancel',
+                      AppLocalizations.of(context)!.cancel,
                       style: kfontstyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
@@ -238,7 +241,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     color: const Color(0xff7abc77),
                     // minWidth: MediaQuery.of(context).size.width / 2,
                     child: Text(
-                      'Update',
+                      AppLocalizations.of(context)!.update,
                       style: kfontstyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,

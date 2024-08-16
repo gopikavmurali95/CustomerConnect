@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,7 +101,10 @@ class FieldServiceInvoiceDetailsState
                                 Expanded(
                                   child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    widget.header.cusName ?? '',
+                                    //widget.header.cusName ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? widget.header.cusName ?? ''
+                                        : widget.header.arcusName ?? '',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff413434)),
@@ -251,7 +255,12 @@ class FieldServiceInvoiceDetailsState
                                               ),
                                             ),
                                             Text(
-                                              details[index].prdName ?? '',
+                                              selectedLocale?.languageCode ==
+                                                      "en"
+                                                  ? details[index].prdName ?? ''
+                                                  : details[index].arprdName ??
+                                                      '',
+                                              // details[index].prdName ?? '',
                                               style: kfontstyle(
                                                   fontSize: 12.sp,
                                                   fontWeight: FontWeight.w400,
