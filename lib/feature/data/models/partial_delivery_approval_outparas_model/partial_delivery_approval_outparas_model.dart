@@ -6,8 +6,9 @@ part 'partial_delivery_approval_outparas_model.g.dart';
 class PartialDeliveryApprovalOutparasModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  PartialDeliveryApprovalOutparasModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  PartialDeliveryApprovalOutparasModel({this.status, this.arStatus});
 
   factory PartialDeliveryApprovalOutparasModel.fromJson(
       Map<String, dynamic> json) {

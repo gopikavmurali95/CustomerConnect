@@ -6,8 +6,10 @@ part 'joutney_plan_approval_out_model.g.dart';
 class JoutneyPlanApprovalOutModel {
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'ArStatus')
+  String? arstatus;
 
-  JoutneyPlanApprovalOutModel({this.status});
+  JoutneyPlanApprovalOutModel({this.status, this.arstatus});
 
   factory JoutneyPlanApprovalOutModel.fromJson(Map<String, dynamic> json) {
     return _$JoutneyPlanApprovalOutModelFromJson(json);

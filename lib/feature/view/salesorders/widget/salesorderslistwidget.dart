@@ -4,9 +4,9 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SalesOrdersListingWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -32,7 +32,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                 : orders.isEmpty
                     ? Center(
                         child: Text(
-                          'No Data Found',
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       )
@@ -130,7 +130,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
             salesOrdersFailedState: () => Padding(
               padding: EdgeInsets.only(top: 250.h),
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

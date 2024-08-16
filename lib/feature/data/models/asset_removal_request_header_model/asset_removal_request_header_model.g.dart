@@ -29,6 +29,11 @@ AssetRemovalRequestHeaderModel _$AssetRemovalRequestHeaderModelFromJson(
       image: json['Image'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      astArName: json['ast_ArName'] as String?,
+      atmArName: json['atm_ArName'] as String?,
+      cusArName: json['cus_ArName'] as String?,
+      rsnArName: json['rsn_ArName'] as String?,
+      rsnArType: json['rsn_ArType'] as String?,
     );
 
 Map<String, dynamic> _$AssetRemovalRequestHeaderModelToJson(
@@ -54,4 +59,9 @@ Map<String, dynamic> _$AssetRemovalRequestHeaderModelToJson(
       'Image': instance.image,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'ast_ArName': instance.astArName,
+      'rsn_ArName': instance.rsnArName,
+      'rsn_ArType': instance.rsnArType,
+      'cus_ArName': instance.cusArName,
+      'atm_ArName': instance.atmArName,
     };

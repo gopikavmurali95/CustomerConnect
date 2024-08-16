@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../data/models/picking_header_model/PickingInModel.dart';
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickHeaderOngoing extends StatefulWidget {
   final LoginUserModel user;
@@ -64,7 +65,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Picking Ongoing",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.ongoing}",
           style: appHeading(),
         ),
         actions: [
@@ -191,7 +192,7 @@ class _PickHeaderOngoingState extends State<PickHeaderOngoing> {
                     padding:
                         const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                     child: Text(
-                      "Ongoing",
+                      AppLocalizations.of(context)!.ongoing,
                       style: countHeading(),
                     ),
                   ),

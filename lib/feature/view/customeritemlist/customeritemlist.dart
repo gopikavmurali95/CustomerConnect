@@ -6,13 +6,10 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
-
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerItemList extends StatefulWidget {
   final CusInsCustomersModel customer;
@@ -68,7 +65,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
           ),
         ),
         title: Text(
-          "Customer Item List",
+          AppLocalizations.of(context)!.customerItemList,
           style: appHeading(),
         ),
       ),
@@ -226,7 +223,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                 ),
                               ],
                             ),
-                            hintText: "Search here..",
+                            hintText:
+                                "${AppLocalizations.of(context)!.searchHere}..",
                             hintStyle: kfontstyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -258,7 +256,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                           flex: 2,
                           fit: FlexFit.tight,
                           child: Text(
-                            'Item',
+                            AppLocalizations.of(context)!.item,
                             style: boxHeading(),
                           ),
                         ),
@@ -271,14 +269,14 @@ class _CustomerItemListState extends State<CustomerItemList> {
                           child: Row(
                             children: [
                               Text(
-                                'UOM',
+                                AppLocalizations.of(context)!.uom,
                                 style: boxHeading(),
                               ),
                               SizedBox(
                                 width: 60.w,
                               ),
                               Text(
-                                'Price',
+                                AppLocalizations.of(context)!.price,
                                 style: boxHeading(),
                               )
                             ],

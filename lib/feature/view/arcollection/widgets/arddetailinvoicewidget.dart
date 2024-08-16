@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ARDetailInvoiceWidget extends StatelessWidget {
   final ArHeaderModel arheader;
@@ -28,7 +29,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     flex: 3,
                     fit: FlexFit.tight,
                     child: Text(
-                      'Invoice No.',
+                      AppLocalizations.of(context)!.invoice_no,
                       style: boxHeading(),
                     ),
                   ),
@@ -36,7 +37,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     flex: 2,
                     fit: FlexFit.tight,
                     child: Text(
-                      'Date',
+                      AppLocalizations.of(context)!.date,
                       style: boxHeading(),
                     ),
                   ),
@@ -44,7 +45,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     flex: 2,
                     fit: FlexFit.tight,
                     child: Text(
-                      'Inv Amt',
+                      AppLocalizations.of(context)!.inv_amt,
                       style: boxHeading(),
                     ),
                   ),
@@ -52,7 +53,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     flex: 0,
                     fit: FlexFit.tight,
                     child: Text(
-                      'Alct Amt',
+                      AppLocalizations.of(context)!.alct_amt,
                       style: boxHeading(),
                     ),
                   ),
@@ -164,7 +165,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     height: MediaQuery.of(context).size.height - 50.h,
                     child: Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

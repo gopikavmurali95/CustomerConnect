@@ -38,7 +38,7 @@ class ApprovalCountModel {
   String? mustSellHead;
   @JsonKey(name: 'SettlementApprovalHeader')
   String? settlementApprovalHead;
-  @JsonKey(name:'VoidTransactionHeader')
+  @JsonKey(name: 'VoidTransactionHeader')
   String? voidTransactionHead;
 
   ApprovalCountModel(

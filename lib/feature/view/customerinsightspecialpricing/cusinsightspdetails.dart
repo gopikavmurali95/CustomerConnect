@@ -1,10 +1,22 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/widgets/cusinsightspdetailslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInsightSpecialPriceDetails extends StatelessWidget {
-  const CustomerInsightSpecialPriceDetails({super.key});
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+  final CusSpPriceModel spPriceHeader;
+  const CustomerInsightSpecialPriceDetails({
+    super.key,
+    required this.user,
+    required this.customer,
+    required this.spPriceHeader,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +36,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Special Pricing",
+          AppLocalizations.of(context)!.specialpricing,
           style: appHeading(),
         ),
       ),
@@ -52,7 +64,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'A025206 ',
+                          '${customer.cusCode} ',
                           style: kfontstyle(
                             fontSize: 12.sp,
                             color: const Color(0xff413434),
@@ -62,7 +74,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         Expanded(
                           child: Text(
                             overflow: TextOverflow.ellipsis,
-                            'Tromp, Muller and Mitchell',
+                            customer.cusName ?? '',
                             style: kfontstyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w500,
@@ -74,13 +86,13 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '199525 - ',
+                          '${customer.headerCode} - ',
                           style: kfontstyle(
                               fontSize: 11.sp, color: const Color(0xff413434)),
                         ),
                         Expanded(
                           child: Text(
-                            'Carrefour Hypermarket',
+                            customer.headerName ?? '',
                             overflow: TextOverflow.ellipsis,
                             style: kfontstyle(fontSize: 12.sp),
                           ),
@@ -88,7 +100,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Virtual | Supermarket | Dubai ',
+                      '${customer.cusType} | ${customer.className} | ${customer.areaName} ',
                       style: kfontstyle(fontSize: 10.sp, color: Colors.grey),
                     ),
                   ],
@@ -126,7 +138,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         backgroundColor: const Color(0xffB3DAF7),
                         child: Center(
                           child: Text(
-                            'FG',
+                            spPriceHeader.prhName!.split('').toList()[0],
                             style: TextStyle(
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.bold,
@@ -142,15 +154,15 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Special Pricing 01',
+                            spPriceHeader.prhName ?? '',
                             style: blueTextStyle(),
                           ),
                           Text(
-                            '21 Feb 2021 to 24 Feb 2021',
+                            '${spPriceHeader.startDate} to ${spPriceHeader.endDate}',
                             style: subTextStyle(),
                           ),
                           Text(
-                            'PR10021',
+                            spPriceHeader.prhCode ?? '',
                             style: subTextStyle(),
                           )
                         ],
@@ -184,7 +196,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search special pricing ",
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -216,7 +228,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Items',
+                    AppLocalizations.of(context)!.items,
                     style: boxHeading(),
                   ),
                   Row(
@@ -226,21 +238,21 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         width: 30.h,
                       ),
                       Text(
-                        'Uom',
+                        AppLocalizations.of(context)!.uom,
                         style: boxHeading(),
                       ),
                       SizedBox(
                         width: 15.h,
                       ),
                       Text(
-                        'Std Price',
+                        AppLocalizations.of(context)!.stdPrice,
                         style: boxHeading(),
                       ),
                       SizedBox(
                         width: 15.h,
                       ),
                       Text(
-                        'Spcl Price',
+                        AppLocalizations.of(context)!.spclprice,
                         style: boxHeading(),
                       ),
                     ],

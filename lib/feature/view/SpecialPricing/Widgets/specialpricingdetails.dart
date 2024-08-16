@@ -41,7 +41,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
       appBar: AppBar(
         titleSpacing: 0.2,
         leading: Transform.flip(
-           flipX: selectedLocale?.languageCode == "en" ? false : true,
+          flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -50,7 +50,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
           ),
         ),
         title: Text(
-            AppLocalizations.of(context)!.specialpricing,
+          AppLocalizations.of(context)!.specialpricing,
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -134,14 +134,16 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         child: Row(
                           children: [
                             Text(
-                                AppLocalizations.of(context)!.customers,
+                              AppLocalizations.of(context)!.customers,
                               style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
                             ),
                             Transform.flip(
-                               flipX: selectedLocale?.languageCode == "en" ? false : true,
+                              flipX: selectedLocale?.languageCode == "en"
+                                  ? false
+                                  : true,
                               child: const Icon(
                                 Icons.keyboard_arrow_right,
                                 size: 18,
@@ -209,7 +211,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               size: 14,
                             ),
                           ),
-                          hintText:   AppLocalizations.of(context)!.searchproduct,
+                          hintText: AppLocalizations.of(context)!.searchproduct,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -257,7 +259,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 4,
                           fit: FlexFit.tight,
                           child: Text(
-                             AppLocalizations.of(context)!.items,
+                            AppLocalizations.of(context)!.items,
                             style: boxHeading(),
                           ),
                         ),
@@ -265,7 +267,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                             AppLocalizations.of(context)!.uom,
+                            AppLocalizations.of(context)!.uom,
                             style: boxHeading(),
                           ),
                         ),
@@ -273,7 +275,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                              AppLocalizations.of(context)!.stdPrice,
+                            AppLocalizations.of(context)!.stdPrice,
                             // "std Price",
                             style: boxHeading(),
                           ),
@@ -282,7 +284,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 0,
                           fit: FlexFit.tight,
                           child: Text(
-                              AppLocalizations.of(context)!.spclprice,
+                            AppLocalizations.of(context)!.spclprice,
                             // "Spcl Price",
                             style: boxHeading(),
                           ),
@@ -424,7 +426,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                         height: MediaQuery.of(context).size.height / 1.4,
                         child: Center(
                           child: Text(
-                             AppLocalizations.of(context)!.noDataAvailable,
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),

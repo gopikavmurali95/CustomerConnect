@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceHeaderScreen extends StatefulWidget {
   final bool isfromUser;
@@ -67,7 +68,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
           ),
         ),
         title: Text(
-          "Invoice",
+          AppLocalizations.of(context)!.invoices,
           style: appHeading(),
         ),
         actions: [
@@ -143,7 +144,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                               Icons.search,
                               size: 20,
                             ),
-                            hintText: "Search here..",
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: kfontstyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -196,7 +197,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
                       padding:
                           const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
-                        "All invoices",
+                        "${AppLocalizations.of(context)!.all} ${AppLocalizations.of(context)!.invoices}",
                         style: countHeading(),
                       ),
                     ),
@@ -271,7 +272,7 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Total Invoice Amount',
+                AppLocalizations.of(context)!.total_invoice_amount,
                 style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
               ),
               // BlocBuilder<CusInvTotalCounterCubit, CusInvTotalCounterState>(

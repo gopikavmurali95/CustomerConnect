@@ -1,19 +1,9 @@
 //Development
 
- //const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-//const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
-
-//Demo
- //const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-  //const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
 const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
 //Demo
-//  const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//  const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
@@ -190,3 +180,9 @@ const merchCusServiceCountUrl = "CusService/SelectCusServiceCount";
 const merchCreditNoteReqUrl = 'CusService/SelectReqCreditNoteReq';
 const merchReturnReqUrl = 'CusService/SelectReqReturnReq';
 const merchDisputeRequestUrl = 'CusService/SelectReqDisputeNoteReq';
+const unScheduledVisitApproveHeaderUrl =
+    'UnshceduledCusVisitApproval/UnSchCusVisitApprovalHeader';
+const unScheduledVisitApproveUrl =
+    'UnshceduledCusVisitApproval/ApproveUnSchCusVisit';
+const unScheduledVisitRejectUrl =
+    'UnshceduledCusVisitApproval/RejectUnSchCusVisit';

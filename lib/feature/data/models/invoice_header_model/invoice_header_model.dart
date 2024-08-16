@@ -36,24 +36,33 @@ class InvoiceHeaderModel {
   String? grandTotal;
   @JsonKey(name: 'InvoiceType')
   String? invoiceType;
-
-  InvoiceHeaderModel(
-      {this.invoiceNo,
-      this.rotId,
-      this.rotCode,
-      this.rotName,
-      this.status,
-      this.cusName,
-      this.cusCode,
-      this.cusOutName,
-      this.cusOutCode,
-      this.payType,
-      this.payMode,
-      this.date,
-      this.time,
-      this.id,
-      this.grandTotal,
-      this.invoiceType});
+  @JsonKey(name: 'ArcusName')
+  String? arcusName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  @JsonKey(name: 'ArcusOutName')
+  String? arcusOutName;
+  InvoiceHeaderModel({
+    this.invoiceNo,
+    this.rotId,
+    this.rotCode,
+    this.rotName,
+    this.status,
+    this.cusName,
+    this.cusCode,
+    this.cusOutName,
+    this.cusOutCode,
+    this.payType,
+    this.payMode,
+    this.date,
+    this.time,
+    this.id,
+    this.grandTotal,
+    this.invoiceType,
+    this.arStatus,
+    this.arcusName,
+    this.arcusOutName,
+  });
 
   factory InvoiceHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$InvoiceHeaderModelFromJson(json);

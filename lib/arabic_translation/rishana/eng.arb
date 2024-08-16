@@ -105,3 +105,109 @@
     "variance":"Variance",
     "noDataAvailableInPaymentMode":"No Data Available paymode"
 }
+
+_____________________________________________________________________________
+
+---CUSTOMER INSIGHTS---
+
+{
+    "customer": "Customer",
+    "kindlySelectRouteToViewTheCustomers": "Kindly select a route to view the customers",
+    "searchRoute": "Search route",
+    "noRoutesAvailable": "No routes available",
+    "customers": "Customers"
+}
+
+{
+    "customerInsights": "Customer Insights",
+    "customerTransaction": "Customer Transactions",
+    "done": "Done",
+    "from": "From",
+    "to": "To",
+    "serviceJobs": "Service Jobs",
+    "otherOptions":"Other Options",
+    "profileDetails": "Profile Details",
+    "editProfile": "Edit Profile",
+    "customerItemList": "Customer Item list",
+    "documents": "Documents",
+    "geolocation": "Geolocation",
+    "phoneNumberNotAvailable": "Phone number not available",
+    "whatsAppNtAvailable": "WhatsApp not available",
+    "locationNotAvailable": "Location not available"
+}
+
+
+---CUSTOMER INSIGHTS INVOICES---
+
+{
+    "allInvoices": "All invoices",
+    "totalInvoiceAmount": "Total Invoice Amount",
+    "invoiceDetails": "Invoice Detail",
+    "type": "Type",
+    "totalAmount": "Total Amount",
+    "value": "Value",
+    "discount": "Discount",
+    "vat": "Vat",
+    "subTotal": "Subtotal"
+}
+
+---CUSTOMER INSIGHTS AR COLLECTION---
+{
+    "totalCollection": "Total Collection",
+    "hardCash": "Hard Cash",
+    "onlinePAyment": "Online Payment",
+    "pos": "POS",
+    "cheque": "Cheque",
+    "searchARCollections": "Search AR Collections",
+    "collectedAmount": "Collected Amount",
+    "previewImage": "Preview Image",
+    "bank": "Bank",
+    "chequeDate": "Cheque Date",
+    "invoiceNumber": "Invoice No",
+    "date": "Date",
+    "invoiceAmount": "Inv Amt"
+}
+
+---CUSTOMER INSIGHTS SALES ORDER---
+{
+    "salesOrders": "Sales Orders",
+    "orderDetails": "Order Details"
+}
+
+---CUSTOMER INSIGHTS CUSTOMER LISTING---
+
+{
+    "price": "Price"
+}
+
+---CUSTOMER INSIGHTS CUSTOMER Documents---
+
+{
+    "attachments": "Attachments",
+    "viewFile": "View File",
+    "startDate": "Start Date",
+    "expiryDate": "Expiry Date",
+    "other": "Other",
+    "attachedDocumentType": "Attached document type",
+    "userLicenseAgreement": "User license agreement"
+}
+
+---GEOCODE---
+{
+    "updateGeocode": "Update Geocode",
+    "updateGeocodeFailed": "Update Geocode Failed",
+    "viewOnMap": "View On Map",
+    "doYouWantToConfirmThisGeocode": "Do you want to confirm this Geocode",
+    "no": "No",
+    "confirmGeocode": "Confirm Geocode"
+}
+
+---EDIT PROFILE---
+{
+    "yourProfileHasbeenUpdated": "Your profile has been updated",
+    "yourProfileUpdationFailed": "Your profile updation has been Failed",
+    "mailId": "Mail ID",
+    "mobileNumber": "Mobile Number",
+    "whatspNo": "Whatsapp Number",
+    "update": "Update"
+}

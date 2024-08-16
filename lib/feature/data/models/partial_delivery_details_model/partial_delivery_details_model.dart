@@ -27,6 +27,14 @@ class PartialDeliveryDetailsModel {
   String? rsnId;
   @JsonKey(name: 'rsn_Type')
   String? rsnType;
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
+  @JsonKey(name: 'Arrsn_Name')
+  String? arrsnName;
+  @JsonKey(name: 'prd_ArabicDescription')
+  String? prdArabicDescription;
+  @JsonKey(name: 'Arrsn_Type')
+  String? arrsnType;
 
   PartialDeliveryDetailsModel({
     this.dadId,
@@ -41,6 +49,10 @@ class PartialDeliveryDetailsModel {
     this.prdDescription,
     this.rsnId,
     this.rsnType,
+    this.arprdName,
+    this.arrsnName,
+    this.arrsnType,
+    this.prdArabicDescription,
   });
 
   factory PartialDeliveryDetailsModel.fromJson(Map<String, dynamic> json) {

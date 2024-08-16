@@ -3,9 +3,11 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdeliverydetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodaysDeliveryList extends StatelessWidget {
   final LoginUserModel user;
@@ -80,7 +82,10 @@ class TodaysDeliveryList extends StatelessWidget {
                                         Expanded(
                                           child: Text(
                                             overflow: TextOverflow.ellipsis,
-                                            delivery[index].cusName ?? '',
+                                            selectedLocale?.languageCode == "en"
+                                                ? delivery[index].cusName ?? ''
+                                                : delivery[index].arcusName ??
+                                                    '',
                                             style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: const Color(0xff413434)),
@@ -98,7 +103,12 @@ class TodaysDeliveryList extends StatelessWidget {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            delivery[index].cusOutName ?? '',
+                                            selectedLocale?.languageCode == "en"
+                                                ? delivery[index].cusOutName ??
+                                                    ''
+                                                : delivery[index]
+                                                        .arcusOutName ??
+                                                    '',
                                             overflow: TextOverflow.ellipsis,
                                             style: kfontstyle(fontSize: 12.sp),
                                           ),
@@ -145,7 +155,7 @@ class TodaysDeliveryList extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
                 child: Text(
-                  'No data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

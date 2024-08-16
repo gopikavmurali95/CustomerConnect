@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodaysDelivery extends StatefulWidget {
   final LoginUserModel user;
@@ -33,12 +34,12 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                 customer: '',
                 customerOutlet: '',
                 fromDate:
-                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                    /* '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}' */ "01-01-2024",
                 mode: '',
                 route: '',
                 subArea: '',
                 toDate:
-                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                    /*  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}' */ "13-08-2024",
                 userId: widget.user.usrId),
             searchQuery: '',
           ),
@@ -64,7 +65,7 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
           ),
         ),
         title: Text(
-          "Todays Delivery ",
+          AppLocalizations.of(context)!.todays_deliveries,
           style: appHeading(),
         ),
         actions: [
@@ -139,7 +140,7 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                               Icons.search,
                               size: 20,
                             ),
-                            hintText: "Search here.. ",
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -193,7 +194,7 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                       padding:
                           const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                       child: Text(
-                        "Today's Deliveries ",
+                        AppLocalizations.of(context)!.todays_deliveries,
                         style: countHeading(),
                       ),
                     ),

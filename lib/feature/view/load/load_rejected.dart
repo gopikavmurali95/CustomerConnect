@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/load/widgets/RejectedList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadRejected extends StatefulWidget {
   final LoginUserModel user;
@@ -80,7 +81,7 @@ class _LoadRejectedState extends State<LoadRejected> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Load In Rejected",
+          "${AppLocalizations.of(context)!.load_in} ${AppLocalizations.of(context)!.rejected}",
           style: appHeading(),
         ),
         actions: [

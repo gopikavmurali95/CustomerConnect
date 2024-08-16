@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashd
 import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashmodecontainers.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/sadetailstotalcheckslist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ class _SettlementApprovalDetailScreenState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${widget.header.rotCode} -${widget.header.rotName}",
+                                  "${widget.header.rotCode} -${selectedLocale?.languageCode == "en" ? widget.header.rotName : widget.header.arrotName}",
                                   //'Tfsh003 - RTL route 03',
                                   style: kfontstyle(
                                     fontSize: 12.sp,
@@ -115,7 +116,7 @@ class _SettlementApprovalDetailScreenState
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        "${widget.header.usrName}",
+                                        "${selectedLocale?.languageCode == "en" ? widget.header.usrName : widget.header.arusrName}",
                                         overflow: TextOverflow.ellipsis,
                                         //'Tfsh03U03 - Fayis M ',
                                         style: kfontstyle(
@@ -140,7 +141,7 @@ class _SettlementApprovalDetailScreenState
                                   ],
                                 ),
                                 Text(
-                                  "${widget.header.rotType}",
+                                  "${selectedLocale?.languageCode == "en" ? widget.header.rotType : widget.header.arrotType}",
                                   // 'Sales Route',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),

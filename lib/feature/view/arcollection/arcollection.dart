@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ssun_chart/pie_chart.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ArCollectionScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -88,7 +89,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
           ),
         ),
         title: Text(
-          "AR Collection",
+          AppLocalizations.of(context)!.ar_collection,
           style: appHeading(),
         ),
         actions: [
@@ -306,7 +307,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                   .spaceBetween,
                                                           children: [
                                                             Text(
-                                                              'Total Collection',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .total_collection,
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       10.sp),
@@ -335,7 +338,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               '${artotal.hcCount ?? '0'}/${artotal.hcAmount ?? '0'}',
                                                           color: const Color(
                                                               0xff9ce2f5),
-                                                          title: 'Hard Cash',
+                                                          title: AppLocalizations
+                                                                  .of(context)!
+                                                              .hard_cash,
                                                         ),
                                                         SizedBox(
                                                           height: 10.h,
@@ -345,8 +350,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               '${artotal.opCount ?? '0'}/${artotal.opAmount ?? '0'}',
                                                           color: const Color(
                                                               0xffe6dd94),
-                                                          title:
-                                                              'Online Payment',
+                                                          title: AppLocalizations
+                                                                  .of(context)!
+                                                              .online_payment,
                                                         ),
                                                         SizedBox(
                                                           height: 10.h,
@@ -356,7 +362,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               '${artotal.posCount ?? '0'}/${artotal.posAmount ?? '0'}',
                                                           color: const Color(
                                                               0xff93e1b2),
-                                                          title: 'POS',
+                                                          title: AppLocalizations
+                                                                  .of(context)!
+                                                              .pos,
                                                         ),
                                                         SizedBox(
                                                           height: 10.h,
@@ -366,7 +374,9 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               '${artotal.chequeCount ?? '0'}/${artotal.chequeAmount ?? '0'}',
                                                           color: const Color(
                                                               0xffdf936e),
-                                                          title: 'Cheque',
+                                                          title: AppLocalizations
+                                                                  .of(context)!
+                                                              .cheque,
                                                         )
                                                       ],
                                                     ),
@@ -432,7 +442,8 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                 Icons.search,
                                 size: 20,
                               ),
-                              hintText: "Search here..",
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHere,
                               hintStyle: const TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,
@@ -505,7 +516,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                           padding: const EdgeInsets.only(
                               left: 10.0, right: 10, top: 0),
                           child: Text(
-                            "All",
+                            AppLocalizations.of(context)!.all,
                             style: countHeading(),
                           ),
                         ),

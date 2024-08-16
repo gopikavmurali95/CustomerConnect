@@ -6,12 +6,11 @@ import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_s
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/widgets/insightspecialpricelist.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInsightSpecialPricing extends StatefulWidget {
   final LoginUserModel user;
@@ -92,7 +91,7 @@ class _CustomerInsightSpecialPricingState
           ),
         ),
         title: Text(
-          "Special Pricing ",
+          AppLocalizations.of(context)!.specialpricing,
           style: appHeading(),
         ),
         actions: [
@@ -276,7 +275,8 @@ class _CustomerInsightSpecialPricingState
                                     ),
                                   ],
                                 ),
-                                hintText: "Search here..",
+                                hintText:
+                                    "${AppLocalizations.of(context)!.searchHere}..",
                                 hintStyle: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.grey,
@@ -305,7 +305,7 @@ class _CustomerInsightSpecialPricingState
                       padding:
                           const EdgeInsets.only(left: 10.0, right: 10, top: 0),
                       child: Text(
-                        "All ",
+                        AppLocalizations.of(context)!.all,
                         style: countHeading(),
                       ),
                     ),
@@ -339,9 +339,12 @@ class _CustomerInsightSpecialPricingState
                 SizedBox(
                   height: 8.h,
                 ),
-                const SizedBox(
+                SizedBox(
                     // height: MediaQuery.of(context).size.height,
-                    child: InsightSpecialPriceList()),
+                    child: InsightSpecialPriceList(
+                  user: widget.user,
+                  customer: widget.customer,
+                )),
                 SizedBox(
                   height: 8.h,
                 )

@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PartialDeliveryHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -61,7 +62,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
           ),
         ),
         title: Text(
-          "Partial Delivery",
+          AppLocalizations.of(context)!.partial_delivery,
           style: appHeading(),
         ),
       ),
@@ -83,7 +84,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -237,8 +238,10 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                   children: [
                                     Text(
                                       _selectedeMode == 'P'
-                                          ? 'Pending Approvals'
-                                          : 'Approved Requests',
+                                          ? AppLocalizations.of(context)!
+                                              .pendingApprovals
+                                          : AppLocalizations.of(context)!
+                                              .approvedRequests,
                                       style: countHeading(),
                                     ),
                                     Text(
@@ -398,7 +401,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                           ),
                     getPartialDeliveryFailed: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

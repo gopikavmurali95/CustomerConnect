@@ -10,8 +10,14 @@ class ReturnApproveOutModel {
   String? status;
   @JsonKey(name: 'TransID')
   String? transId;
-
-  ReturnApproveOutModel({this.mode, this.status, this.transId});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  ReturnApproveOutModel({
+    this.mode,
+    this.status,
+    this.transId,
+    this.arStatus,
+  });
 
   factory ReturnApproveOutModel.fromJson(Map<String, dynamic> json) {
     return _$ReturnApproveOutModelFromJson(json);

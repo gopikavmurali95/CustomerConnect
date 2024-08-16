@@ -17,6 +17,8 @@ VanToVanHeaderModel _$VanToVanHeaderModelFromJson(Map<String, dynamic> json) =>
       approvalStatus: json['Approval_Status'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      approvalArStatus: json['Approval_ArStatus'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$VanToVanHeaderModelToJson(
@@ -31,4 +33,6 @@ Map<String, dynamic> _$VanToVanHeaderModelToJson(
       'Approval_Status': instance.approvalStatus,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'ArStatus': instance.arStatus,
+      'Approval_ArStatus': instance.approvalArStatus,
     };

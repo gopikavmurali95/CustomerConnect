@@ -9,8 +9,8 @@ import 'package:customer_connect/feature/view/cusinsightqualificationgroup/cusin
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustInsightPromotionDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -56,7 +56,7 @@ class _CustInsightPromotionDetailsState
           ),
         ),
         title: Text(
-          "Promotion Detail ",
+          AppLocalizations.of(context)!.promotiondetails,
           style: appHeading(),
         ),
       ),
@@ -232,7 +232,8 @@ class _CustInsightPromotionDetailsState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Qualification Group',
+                                AppLocalizations.of(context)!
+                                    .qualificationgroup,
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
@@ -246,7 +247,7 @@ class _CustInsightPromotionDetailsState
                           Row(
                             children: [
                               Text(
-                                'View Items',
+                                AppLocalizations.of(context)!.viewitems,
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               const Icon(Icons.keyboard_arrow_right)
@@ -304,7 +305,7 @@ class _CustInsightPromotionDetailsState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Assignment Group',
+                                AppLocalizations.of(context)!.assignmentgroup,
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               Text(
@@ -318,7 +319,7 @@ class _CustInsightPromotionDetailsState
                           Row(
                             children: [
                               Text(
-                                'View Items',
+                                AppLocalizations.of(context)!.viewitems,
                                 style: kfontstyle(fontSize: 11.sp),
                               ),
                               const Icon(Icons.keyboard_arrow_right)
@@ -348,7 +349,7 @@ class _CustInsightPromotionDetailsState
                     flex: 8,
                     fit: FlexFit.tight,
                     child: Text(
-                      "Min Qua. Qty",
+                      AppLocalizations.of(context)!.minquaqty,
                       style: boxHeading(),
                     ),
                   ),
@@ -356,7 +357,7 @@ class _CustInsightPromotionDetailsState
                     flex: 6,
                     fit: FlexFit.tight,
                     child: Text(
-                      "Max Qua. Qty",
+                      AppLocalizations.of(context)!.maxquaqty,
                       style: boxHeading(),
                     ),
                   ),
@@ -364,7 +365,7 @@ class _CustInsightPromotionDetailsState
                     flex: 4,
                     fit: FlexFit.tight,
                     child: Text(
-                      "Ass. Qty",
+                      AppLocalizations.of(context)!.assigmntqty,
                       style: boxHeading(),
                     ),
                   ),

@@ -6,8 +6,9 @@ part 'load_transfer_approval_out_model.g.dart';
 class LoadTransferApprovalOutModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  LoadTransferApprovalOutModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  LoadTransferApprovalOutModel({this.status, this.arStatus});
 
   factory LoadTransferApprovalOutModel.fromJson(Map<String, dynamic> json) {
     return _$LoadTransferApprovalOutModelFromJson(json);

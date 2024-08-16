@@ -17,6 +17,7 @@ TodaysDeliveryDetailsModel _$TodaysDeliveryDetailsModelFromJson(
       lQty: json['LowerQty'] as String?,
       lUom: json['LowerUOM'] as String?,
       total: json['Total'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
     );
 
 Map<String, dynamic> _$TodaysDeliveryDetailsModelToJson(
@@ -30,4 +31,5 @@ Map<String, dynamic> _$TodaysDeliveryDetailsModelToJson(
       'HigherQty': instance.hQty,
       'LowerQty': instance.lQty,
       'Total': instance.total,
+      'Arprd_Name': instance.arprdName,
     };

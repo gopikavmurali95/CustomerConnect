@@ -41,25 +41,42 @@ class DisputeNoteHeaderModel {
   @JsonKey(name: 'rotID')
   String? rotID;
 
-  DisputeNoteHeaderModel(
-      {this.drhId,
-      this.cusCode,
-      this.cusName,
-      this.rotName,
-      this.rotCode,
-      this.drhRotId,
-      this.drhTransId,
-      this.usrName,
-      this.drhAmount,
-      this.drhDisputeType,
-      this.transTime,
-      this.drhOtherInfo,
-      this.disputeType,
-      this.drhRemarks,
-      this.status,
-      this.image,
-      this.rotID,
-      this.userID});
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'Arusr_Name')
+  String? arusrName;
+  @JsonKey(name: 'Ardrh_OtherInfo')
+  String? ardrhOtherInfo;
+  @JsonKey(name: 'ArDisputeType')
+  String? arDisputeType;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+
+  DisputeNoteHeaderModel({
+    this.drhId,
+    this.cusCode,
+    this.cusName,
+    this.rotName,
+    this.rotCode,
+    this.drhRotId,
+    this.drhTransId,
+    this.usrName,
+    this.drhAmount,
+    this.drhDisputeType,
+    this.transTime,
+    this.drhOtherInfo,
+    this.disputeType,
+    this.drhRemarks,
+    this.status,
+    this.image,
+    this.rotID,
+    this.userID,
+    this.arDisputeType,
+    this.arStatus,
+    this.arcusName,
+    this.ardrhOtherInfo,
+    this.arusrName,
+  });
 
   factory DisputeNoteHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$DisputeNoteHeaderModelFromJson(json);

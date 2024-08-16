@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_hea
 import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/view/mustsell/mustsellheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -312,7 +313,15 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  details[index].prdName ?? '',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? details[index]
+                                                              .prdName ??
+                                                          ''
+                                                      : details[index]
+                                                              .prdArName ??
+                                                          '',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       fontWeight:
@@ -330,7 +339,14 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                               Column(
                                                 children: [
                                                   Text(
-                                                    details[index].huom ?? '',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? details[index].huom ??
+                                                            ''
+                                                        : details[index]
+                                                                .arHUOM ??
+                                                            '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         fontWeight:
@@ -341,7 +357,14 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                     height: 10.h,
                                                   ),
                                                   Text(
-                                                    details[index].luom ?? '',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? details[index].luom ??
+                                                            ''
+                                                        : details[index]
+                                                                .arLUOM ??
+                                                            '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         fontWeight:

@@ -42,7 +42,14 @@ class ReturnApprovalDetailModel {
   String? invInvoiceId;
   @JsonKey(name: 'rad_ApprovalStatus')
   String? radApprovalStatus;
-
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
+  @JsonKey(name: 'Arrsn_Name')
+  String? arrsnName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  @JsonKey(name: 'Arrsn_Type')
+  String? arrsnType;
   ReturnApprovalDetailModel({
     this.radId,
     this.radPrdId,
@@ -63,6 +70,10 @@ class ReturnApprovalDetailModel {
     this.zsnName,
     this.invInvoiceId,
     this.radApprovalStatus,
+    this.arStatus,
+    this.arprdName,
+    this.arrsnName,
+    this.arrsnType,
   });
 
   factory ReturnApprovalDetailModel.fromJson(Map<String, dynamic> json) {

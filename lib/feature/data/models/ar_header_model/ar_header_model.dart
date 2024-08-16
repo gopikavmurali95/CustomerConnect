@@ -45,30 +45,35 @@ class ArHeaderModel {
   @JsonKey(name: 'Image')
   String? image;
   String? bankName;
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arcshName;
 
-  ArHeaderModel({
-    this.arhId,
-    this.arhArNumber,
-    this.cusId,
-    this.cusCode,
-    this.cusName,
-    this.cshId,
-    this.cshCode,
-    this.cshName,
-    this.date,
-    this.time,
-    this.rotId,
-    this.rotCode,
-    this.rotName,
-    this.arhPayMode,
-    this.arhPayType,
-    this.arhCollectedAmount,
-    this.arhBalanceAmount,
-    this.arpChequeNo,
-    this.arpChequeDate,
-    this.image,
-    this.bankName,
-  });
+  ArHeaderModel(
+      {this.arhId,
+      this.arhArNumber,
+      this.cusId,
+      this.cusCode,
+      this.cusName,
+      this.cshId,
+      this.cshCode,
+      this.cshName,
+      this.date,
+      this.time,
+      this.rotId,
+      this.rotCode,
+      this.rotName,
+      this.arhPayMode,
+      this.arhPayType,
+      this.arhCollectedAmount,
+      this.arhBalanceAmount,
+      this.arpChequeNo,
+      this.arpChequeDate,
+      this.image,
+      this.bankName,
+      this.arcshName,
+      this.arcusName});
 
   factory ArHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$ArHeaderModelFromJson(json);

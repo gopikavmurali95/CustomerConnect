@@ -36,6 +36,14 @@ class TodaysDeliveryHeaderModel {
   String? vat;
   @JsonKey(name: 'GrandTotal')
   String? grandTotal;
+  @JsonKey(name: 'ArcusName')
+  String? arcusName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  @JsonKey(name: 'ArcusOutName')
+  String? arcusOutName;
+  @JsonKey(name: 'Arsalesman')
+  String? arsalesman;
 
   TodaysDeliveryHeaderModel({
     this.orderId,
@@ -54,6 +62,10 @@ class TodaysDeliveryHeaderModel {
     this.subTotal,
     this.vat,
     this.grandTotal,
+    this.arStatus,
+    this.arcusName,
+    this.arcusOutName,
+    this.arsalesman,
   });
 
   factory TodaysDeliveryHeaderModel.fromJson(Map<String, dynamic> json) {

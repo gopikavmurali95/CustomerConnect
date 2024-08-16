@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
 import 'package:customer_connect/feature/view/settlementapproval/settlementapprovaldetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -71,7 +72,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "${headers[index].rotCode ?? ''} - ${headers[index].rotName ?? ''}",
+                                            "${headers[index].rotCode ?? ''} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName ?? '' : headers[index].arrotName}",
                                             //'Tfsh0$index - RTL route $index',
                                             style: kfontstyle(
                                               fontSize: 12.sp,
@@ -85,7 +86,15 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  headers[index].usrName ?? '',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? headers[index]
+                                                              .usrName ??
+                                                          ''
+                                                      : headers[index]
+                                                              .arusrName ??
+                                                          '',
                                                   //'Tfsh03U03 - Fayis M ',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
@@ -113,7 +122,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            "${headers[index].rotType}",
+                                            "${selectedLocale?.languageCode == "en" ? headers[index].rotType : headers[index].arrotType}",
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: Colors.grey),

@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_hea
 import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/view/mustsell/mustselldetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -303,7 +304,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        '${headers[index].msaTransId} | ${headers[index].type}',
+                                                        '${headers[index].msaTransId} | ${selectedLocale?.languageCode == "en" ? headers[index].type : headers[index].artype}',
                                                         style: kfontstyle(
                                                           fontSize: 12.sp,
                                                           color: const Color(
@@ -319,7 +320,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
+                                                              '${headers[index].rotCode} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName : headers[index].rotArName} ${AppLocalizations.of(context)!.route}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -336,7 +337,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].cuscode} - ${headers[index].cusname}',
+                                                              '${headers[index].cuscode} - ${selectedLocale?.languageCode == "en" ? headers[index].cusname : headers[index].cusArName}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,

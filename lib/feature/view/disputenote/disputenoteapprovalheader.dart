@@ -14,6 +14,7 @@ import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DisputeNoteApprovalHEaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -68,7 +69,7 @@ class _DisputeNoteApprovalHEaderScreenState
           ),
         ),
         title: Text(
-          "Dispute request",
+          AppLocalizations.of(context)!.dispute_request,
           style: appHeading(),
         ),
       ),
@@ -89,7 +90,7 @@ class _DisputeNoteApprovalHEaderScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -224,16 +225,22 @@ class _DisputeNoteApprovalHEaderScreenState
                         state.when(
                           getDisputeNoteHeaderState: (headers) =>
                               _selectedDisputeMode == "P"
-                                  ? "Pending Approvals"
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
                                   : _selectedDisputeMode == "AT"
-                                      ? "Approved Requests"
-                                      : "Rejected Requests",
+                                      ? AppLocalizations.of(context)!
+                                          .approvedRequests
+                                      : AppLocalizations.of(context)!
+                                          .rejectedRequests,
                           disputeNoteHeaderFailedState: () =>
                               _selectedDisputeMode == "P"
-                                  ? "Pending Approvals"
+                                  ? AppLocalizations.of(context)!
+                                      .pendingApprovals
                                   : _selectedDisputeMode == "AT"
-                                      ? "Approved Requests"
-                                      : "Rejected Requests",
+                                      ? AppLocalizations.of(context)!
+                                          .approvedRequests
+                                      : AppLocalizations.of(context)!
+                                          .rejectedRequests,
                         ),
                         style: countHeading(),
                       ),
@@ -290,7 +297,7 @@ class _DisputeNoteApprovalHEaderScreenState
                           : headers.isEmpty
                               ? Center(
                                   child: Text(
-                                    'No Data Available',
+                                    AppLocalizations.of(context)!.noDataFound,
                                     style: kfontstyle(),
                                   ),
                                 )
@@ -443,7 +450,7 @@ class _DisputeNoteApprovalHEaderScreenState
                                   itemCount: headers.length),
                       disputeNoteHeaderFailedState: () => Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),

@@ -30,21 +30,27 @@ class LoadTransferApprovalHeaderModel {
   String? userID;
   @JsonKey(name: 'rotID')
   String? rotID;
-
-  LoadTransferApprovalHeaderModel(
-      {this.ltrId,
-      this.ltrReqNo,
-      this.ltrUsrId,
-      this.usrName,
-      this.rotCode,
-      this.rotName,
-      this.createdDate,
-      this.ltrRotId,
-      this.ltrType,
-      this.ltrRemarks,
-      this.ltrApprovalStatus,
-      this.rotID,
-      this.userID});
+  @JsonKey(name: 'usr_ArName')
+  String? usrArName;
+  @JsonKey(name: 'ltr_ArApprovalStatus')
+  String? ltrArApprovalStatus;
+  LoadTransferApprovalHeaderModel({
+    this.ltrId,
+    this.ltrReqNo,
+    this.ltrUsrId,
+    this.usrName,
+    this.rotCode,
+    this.rotName,
+    this.createdDate,
+    this.ltrRotId,
+    this.ltrType,
+    this.ltrRemarks,
+    this.ltrApprovalStatus,
+    this.rotID,
+    this.userID,
+    this.ltrArApprovalStatus,
+    this.usrArName,
+  });
 
   factory LoadTransferApprovalHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$LoadTransferApprovalHeaderModelFromJson(json);

@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CusInsInvoiceDetailListWidget extends StatelessWidget {
   const CusInsInvoiceDetailListWidget({super.key});
@@ -31,7 +32,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             height: 100.h,
                             child: Center(
                               child: Text(
-                                'No Data Found',
+                                AppLocalizations.of(context)!.noDataFound,
                                 style: kfontstyle(),
                               ),
                             ),
@@ -178,7 +179,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                                   padding: const EdgeInsets
                                                       .symmetric(horizontal: 5),
                                                   child: Text(
-                                                    'AED ${details[index].amount}',
+                                                    '${AppLocalizations.of(context)!.aed} ${details[index].amount}',
                                                     style: TextStyle(
                                                       fontSize: 8.sp,
                                                       color: Colors.black,
@@ -201,7 +202,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             itemCount: details.length),
                 getcusInvFailedState: () => Center(
                   child: Text(
-                    'No Data Available',
+                    AppLocalizations.of(context)!.noDataAvailable,
                     style: kfontstyle(),
                   ),
                 ),
@@ -228,12 +229,16 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text('Type', style: boxHeading()),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.type,
+                                        style: boxHeading()),
                                   ),
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text('Value', style: boxHeading()),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.value,
+                                        style: boxHeading()),
                                   ),
                                   // SizedBox(
                                   //   width: 20.h,
@@ -241,8 +246,9 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child:
-                                        Text('Discount', style: boxHeading()),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.discount,
+                                        style: boxHeading()),
                                   ),
                                   SizedBox(
                                     width: 10.h,
@@ -250,7 +256,9 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     fit: FlexFit.tight,
-                                    child: Text('Vat', style: boxHeading()),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.vat,
+                                        style: boxHeading()),
                                   ),
                                   // SizedBox(
                                   //   width: 20.h,
@@ -258,8 +266,9 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                   Flexible(
                                     fit: FlexFit.tight,
                                     flex: 0,
-                                    child:
-                                        Text('Subtotal', style: boxHeading()),
+                                    child: Text(
+                                        AppLocalizations.of(context)!.sub_total,
+                                        style: boxHeading()),
                                   ),
                                 ],
                               ),

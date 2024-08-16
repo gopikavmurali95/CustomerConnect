@@ -45,7 +45,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
             Navigator.pop(context);
           },
           child: Transform.flip(
-             flipX: selectedLocale?.languageCode == "en" ? false : true,
+            flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
@@ -53,7 +53,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
           ),
         ),
         title: Text(
-           AppLocalizations.of(context)!.qualificationgroup,
+          AppLocalizations.of(context)!.qualificationgroup,
           //"Qualification Group",
           style: appHeading(),
         ),
@@ -114,7 +114,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                 Row(
                   children: [
                     Text(
-                      "${ AppLocalizations.of(context)!.qualificationgroup}:",
+                      "${AppLocalizations.of(context)!.qualificationgroup}:",
                       // 'Qualification Group: ',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
@@ -188,7 +188,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
                               ),
                             ],
                           ),
-                          hintText:  AppLocalizations.of(context)!.searchhere,
+                          hintText: AppLocalizations.of(context)!.searchhere,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

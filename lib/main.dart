@@ -137,6 +137,8 @@ import 'package:customer_connect/feature/state/bloc/todays_delivery_details/toda
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/tracksalesmanlist/track_sales_man_list_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/unscheduledapproval/un_scheduled_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/unscheduledvisit/un_scheduled_visit_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionapproval/void_transaction_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionheader/void_transaction_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/voidtransactionrejection/void_transaction_rejection_bloc.dart';
@@ -160,6 +162,7 @@ import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/parti
 import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/unscheduledvisit/un_scheduled_visit_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -215,6 +218,14 @@ void main() async {
       if (Platform.isAndroid) {
         await FirebaseMessaging.instance.setAutoInitEnabled(true);
       }
+    }
+    final sharedprefs = await SharedPreferences.getInstance();
+
+    String? selectedlocaleString = sharedprefs.getString('SelectedLocale');
+    if (selectedlocaleString != null) {
+      selectedLocale = Locale(selectedlocaleString);
+    } else {
+      selectedLocale = const Locale("en");
     }
   } catch (e) {
     log('Error initializing Firebase: $e');
@@ -740,6 +751,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SelectLanguageLocaleCubit>(
           create: (context) => SelectLanguageLocaleCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<UnScheduledVisitHeaderBloc>(),
+        ),
+        BlocProvider<UnScheduledVisitSelectionCubit>(
+          create: (context) => UnScheduledVisitSelectionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<UnScheduledApprovalBloc>(),
         ),
       ],
       child: ScreenUtilInit(

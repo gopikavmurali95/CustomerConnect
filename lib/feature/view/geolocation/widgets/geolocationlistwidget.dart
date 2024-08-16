@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GeoLocationListWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -52,13 +53,14 @@ class GeoLocationListWidget extends StatelessWidget {
                   context: context,
                   builder: (context) => CupertinoAlertDialog(
                     title: Text(
-                      'Alert',
+                      AppLocalizations.of(context)!.alert,
                       style: kfontstyle(),
                     ),
-                    content: Text('Update Geocode ${result.title}'),
+                    content: Text(
+                        '${AppLocalizations.of(context)!.updateGeocode} ${result.title}'),
                     actions: [
                       CupertinoDialogAction(
-                        child: const Text('Ok'),
+                        child: Text(AppLocalizations.of(context)!.ok),
                         onPressed: () {
                           Navigator.pop(context);
                         },
@@ -74,13 +76,14 @@ class GeoLocationListWidget extends StatelessWidget {
                 context: context,
                 builder: (context) => CupertinoAlertDialog(
                   title: Text(
-                    'Alert',
+                    AppLocalizations.of(context)!.alert,
                     style: kfontstyle(),
                   ),
-                  content: const Text('Update Geocode Failed'),
+                  content:
+                      Text(AppLocalizations.of(context)!.updateGeocodeFailed),
                   actions: [
                     CupertinoDialogAction(
-                      child: const Text('Ok'),
+                      child: Text(AppLocalizations.of(context)!.ok),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -200,19 +203,24 @@ class GeoLocationListWidget extends StatelessWidget {
                                                     context: context,
                                                     builder: (context) =>
                                                         CupertinoAlertDialog(
-                                                          title: const Text(
-                                                              'Alert'),
-                                                          content: const Text(
-                                                              'Location not available'),
+                                                          title: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .alert),
+                                                          content: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .locationNotAvailable),
                                                           actions: [
                                                             TextButton(
                                                                 onPressed: () {
                                                                   Navigator.pop(
                                                                       context);
                                                                 },
-                                                                child:
-                                                                    const Text(
-                                                                        'Ok'))
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok))
                                                           ],
                                                         ));
                                               }
@@ -225,7 +233,8 @@ class GeoLocationListWidget extends StatelessWidget {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'View On Map',
+                                              AppLocalizations.of(context)!
+                                                  .viewOnMap,
                                               style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 fontWeight: FontWeight.w400,
@@ -248,21 +257,28 @@ class GeoLocationListWidget extends StatelessWidget {
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
                                                 title: Text(
-                                                  'Alert',
+                                                  AppLocalizations.of(context)!
+                                                      .alert,
                                                   style: kfontstyle(),
                                                 ),
-                                                content: const Text(
-                                                    'Do you want to confirm this Geocode'),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
+                                                    .doYouWantToConfirmThisGeocode),
                                                 actions: [
                                                   CupertinoDialogAction(
-                                                    child: const Text('No'),
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .no),
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
                                                   ),
                                                   CupertinoDialogAction(
-                                                    child:
-                                                        const Text('Confirm'),
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .confirm),
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                       context
@@ -316,7 +332,8 @@ class GeoLocationListWidget extends StatelessWidget {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'Confirm Geocode',
+                                              AppLocalizations.of(context)!
+                                                  .confirmGeocode,
                                               style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 fontWeight: FontWeight.w400,
@@ -338,7 +355,7 @@ class GeoLocationListWidget extends StatelessWidget {
                       itemCount: geolocations.length),
               getgeolocationFailedState: () => Center(
                 child: Text(
-                  'No Data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

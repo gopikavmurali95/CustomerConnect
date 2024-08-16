@@ -53,7 +53,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: Transform.flip(
-           flipX: selectedLocale?.languageCode == "en" ? false : true,
+          flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -65,7 +65,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
           ),
         ),
         title: Text(
-           AppLocalizations.of(context)!.specialpricingcustomers,
+          AppLocalizations.of(context)!.specialpricingcustomers,
           //"Special Pricing Customers",
           style: appHeading(),
         ),
@@ -154,7 +154,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                               width: 5.w,
                             ),
                             Transform.flip(
-                               flipX: selectedLocale?.languageCode == "en" ? false : true,
+                              flipX: selectedLocale?.languageCode == "en"
+                                  ? false
+                                  : true,
                               child: const Icon(
                                 Icons.keyboard_arrow_right,
                                 size: 18,
@@ -229,7 +231,8 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 size: 14,
                               ),
                             ),
-                            hintText:  AppLocalizations.of(context)!.searchcustomers,
+                            hintText:
+                                AppLocalizations.of(context)!.searchcustomers,
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,

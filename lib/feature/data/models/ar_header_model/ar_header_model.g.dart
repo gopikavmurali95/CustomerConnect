@@ -29,6 +29,8 @@ ArHeaderModel _$ArHeaderModelFromJson(Map<String, dynamic> json) =>
       arpChequeDate: json['arp_ChequeDate'] as String?,
       image: json['Image'] as String?,
       bankName: json['bankName'] as String?,
+      arcshName: json['Arcsh_Name'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
     );
 
 Map<String, dynamic> _$ArHeaderModelToJson(ArHeaderModel instance) =>
@@ -54,4 +56,6 @@ Map<String, dynamic> _$ArHeaderModelToJson(ArHeaderModel instance) =>
       'arp_ChequeDate': instance.arpChequeDate,
       'Image': instance.image,
       'bankName': instance.bankName,
+      'Arcus_Name': instance.arcusName,
+      'Arcsh_Name': instance.arcshName,
     };

@@ -22,6 +22,12 @@ class SettlementApprovalHeaderOutModel {
   String? cusName;
   @JsonKey(name: 'usr_Name')
   String? usrName;
+  @JsonKey(name: 'Arrot_Name')
+  String? arrotName;
+  @JsonKey(name: 'Arusr_Name')
+  String? arusrName;
+  @JsonKey(name: 'Arrot_Type')
+  String? arrotType;
 
   SettlementApprovalHeaderOutModel({
     this.staId,
@@ -33,6 +39,9 @@ class SettlementApprovalHeaderOutModel {
     this.cusCode,
     this.cusName,
     this.usrName,
+    this.arrotName,
+    this.arusrName,
+    this.arrotType,
   });
 
   factory SettlementApprovalHeaderOutModel.fromJson(Map<String, dynamic> json) {

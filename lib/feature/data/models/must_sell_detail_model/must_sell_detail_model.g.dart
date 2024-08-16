@@ -18,6 +18,9 @@ MustSellDetailModel _$MustSellDetailModelFromJson(Map<String, dynamic> json) =>
       msdLQty: json['msd_LQty'] as String?,
       luom: json['LUOM'] as String?,
       status: json['Status'] as String?,
+      prdArName: json['prd_ArName'] as String?,
+      arHUOM: json['ArHUOM'] as String?,
+      arLUOM: json['ArLUOM'] as String?,
     );
 
 Map<String, dynamic> _$MustSellDetailModelToJson(
@@ -33,4 +36,7 @@ Map<String, dynamic> _$MustSellDetailModelToJson(
       'msd_LQty': instance.msdLQty,
       'LUOM': instance.luom,
       'Status': instance.status,
+      'prd_ArName': instance.prdArName,
+      'ArHUOM': instance.arHUOM,
+      'ArLUOM': instance.arLUOM,
     };

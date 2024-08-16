@@ -58,6 +58,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
           },
           icon: Transform.flip(
              flipX: selectedLocale?.languageCode == "en" ? true : false,
+            //flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
@@ -157,7 +158,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText:AppLocalizations.of(context)!.searchhere,
+                      hintText: AppLocalizations.of(context)!.searchhere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -198,7 +199,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
                       padding: const EdgeInsets.only(
                           left: 10.0, right: 20, top: 10, bottom: 10),
                       child: Text(
-                       AppLocalizations.of(context)!.all,
+                        AppLocalizations.of(context)!.all,
                         style: countHeading(),
                       ),
                     ),

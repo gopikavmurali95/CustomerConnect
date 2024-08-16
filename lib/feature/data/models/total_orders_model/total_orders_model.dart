@@ -40,7 +40,10 @@ class TotalOrdersModel {
   String? grandTotal;
   @JsonKey(name: 'ord_Type')
   String? ordType;
-
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arcshName;
   TotalOrdersModel({
     this.ordId,
     this.orderId,
@@ -60,6 +63,8 @@ class TotalOrdersModel {
     this.vat,
     this.grandTotal,
     this.ordType,
+    this.arcshName,
+    this.arcusName,
   });
 
   factory TotalOrdersModel.fromJson(Map<String, dynamic> json) {

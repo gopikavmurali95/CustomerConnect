@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OtherOptionsHomeWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -90,7 +91,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                   height: 8.w,
                                 ),
                                 Text(
-                                  "Approvals",
+                                  AppLocalizations.of(context)!.approvals,
                                   style: headTextStyle(),
                                 ),
                               ],
@@ -155,7 +156,9 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 SizedBox(
                                   height: 8.w,
                                 ),
-                                Text("Customer Insights",
+                                Text(
+                                    AppLocalizations.of(context)!
+                                        .customer_insights,
                                     textAlign: TextAlign.center,
                                     style: headTextStyle()),
                               ],
@@ -218,7 +221,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                   height: 8.w,
                                 ),
                                 Text(
-                                  "Tracking",
+                                  AppLocalizations.of(context)!.tracking,
                                   textAlign: TextAlign.center,
                                   style: headTextStyle(),
                                 ),
@@ -286,7 +289,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                   height: 8.w,
                                 ),
                                 Text(
-                                  "Promotions",
+                                  AppLocalizations.of(context)!.promotions,
                                   textAlign: TextAlign.center,
                                   style: headTextStyle(),
                                 ),
@@ -350,7 +353,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 height: 8.w,
                               ),
                               Text(
-                                "Special Price",
+                                AppLocalizations.of(context)!.special_price,
                                 style: headTextStyle(),
                               ),
                             ],
@@ -415,7 +418,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 height: 8.w,
                               ),
                               Text(
-                                "Outstanding",
+                                AppLocalizations.of(context)!.outstanding,
                                 style: headTextStyle(),
                               ),
                             ],
@@ -476,7 +479,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 height: 8.w,
                               ),
                               Text(
-                                "Target",
+                                AppLocalizations.of(context)!.target,
                                 style: headTextStyle(),
                               ),
                             ],
@@ -538,7 +541,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 height: 8.w,
                               ),
                               Text(
-                                "Activity Review",
+                                AppLocalizations.of(context)!.activity_review,
                                 textAlign: TextAlign.center,
                                 style: headTextStyle(),
                               ),
@@ -600,7 +603,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                                 height: 8.w,
                               ),
                               Text(
-                                "Merchandising",
+                                AppLocalizations.of(context)!.merchandising,
                                 textAlign: TextAlign.center,
                                 style: headTextStyle(),
                               ),

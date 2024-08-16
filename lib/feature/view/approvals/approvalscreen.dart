@@ -20,6 +20,7 @@ import 'package:customer_connect/feature/view/pricechangeapproval/pricechangehea
 import 'package:customer_connect/feature/view/returnapproval/returnapprovalheader.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
+import 'package:customer_connect/feature/view/unscheduledvisit/unscheduledvisitappoval.dart';
 // import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
@@ -112,7 +113,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Price Change",
+                                      AppLocalizations.of(context)!
+                                          .price_change,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -197,7 +199,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Partial Delivery",
+                                      AppLocalizations.of(context)!
+                                          .partial_delivery,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -283,7 +286,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Scheduled Return",
+                                      AppLocalizations.of(context)!
+                                          .scheduled_return,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -371,7 +375,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Return",
+                                      AppLocalizations.of(context)!.ret_urn,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -454,7 +458,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Dispute Request",
+                                      AppLocalizations.of(context)!
+                                          .dispute_request,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -540,7 +545,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Credit Note",
+                                      AppLocalizations.of(context)!.credit_memo,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -626,7 +631,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Asset Adding",
+                                      AppLocalizations.of(context)!.add_assets,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -713,7 +718,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Asset Removal",
+                                      AppLocalizations.of(context)!
+                                          .remove_assets,
                                       overflow: TextOverflow.ellipsis,
                                       style: headTextStyle(),
                                     ),
@@ -804,7 +810,8 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Van To Van",
+                                      AppLocalizations.of(context)!
+                                          .truck_to_truck,
                                       style: headTextStyle(),
                                     ),
                                   ),
@@ -889,11 +896,11 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Load Transfer",
+                                      AppLocalizations.of(context)!
+                                          .load_transfer,
                                       style: headTextStyle(),
                                     ),
                                   ),
-
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
@@ -1415,6 +1422,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
+                                      overflow: TextOverflow.ellipsis,
                                       AppLocalizations.of(context)!
                                           .voidTransaction,
                                       //"Inventory Recon",
@@ -1633,6 +1641,91 @@ class ApprovalScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const UnScheduledVisitScreen()),
+                            );
+                          },
+                          child: Container(
+                            //height: 50,
+                            // width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      spreadRadius: 1,
+                                      blurRadius: 1)
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Image.asset(
+                                      "assets/images/sev@2x.png",
+                                      height: 18.3.h,
+                                    ),
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(
+                                    width: 8.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      "Unscheduled Visit",
+                                      style: headTextStyle(),
+                                    ),
+                                  ),
+
+                                  BlocBuilder<ApprovalCountsBloc,
+                                      ApprovalCountsState>(
+                                    builder: (context, state) {
+                                      return state.when(
+                                          getApprovalsCount: (count) => count ==
+                                                  null
+                                              ? Text(
+                                                  '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  count.settlementApprovalHead ??
+                                                      '0',
+                                                  style: kfontstyle(
+                                                    fontSize: 11.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black87,
+                                                  ),
+                                                ),
+                                          getApprovalCountsFailed: () => Text(
+                                                '0',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black87,
+                                                ),
+                                              ));
+                                    },
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ], visibility: [
                         state.when(
                           getCustomerSettingsState: (settings) =>
@@ -1766,6 +1859,14 @@ class ApprovalScreen extends StatelessWidget {
                           getCustomerSettingsState: (settings) =>
                               settings?.mustSellAppr == null ||
                                       settings?.mustSellAppr != 'Y'
+                                  ? false
+                                  : true,
+                          customerSettingsFailedState: () => true,
+                        ),
+                        state.when(
+                          getCustomerSettingsState: (settings) =>
+                              settings?.settleAppr == null ||
+                                      settings?.settleAppr != 'Y'
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,

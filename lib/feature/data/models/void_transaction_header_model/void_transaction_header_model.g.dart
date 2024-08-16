@@ -18,6 +18,8 @@ VoidTransactionHeaderModel _$VoidTransactionHeaderModelFromJson(
       cusName: json['cus_Name'] as String?,
       createdDate: json['CreatedDate'] as String?,
       status: json['Status '] as String?,
+      rotArName: json['rot_ArName'] as String?,
+      artype: json['Artype'] as String?,
     )..udpID = json['udpID'] as String?;
 
 Map<String, dynamic> _$VoidTransactionHeaderModelToJson(
@@ -33,4 +35,6 @@ Map<String, dynamic> _$VoidTransactionHeaderModelToJson(
       'CreatedDate': instance.createdDate,
       'udpID': instance.udpID,
       'Status ': instance.status,
+      'rot_ArName': instance.rotArName,
+      'Artype': instance.artype,
     };

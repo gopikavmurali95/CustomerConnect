@@ -4,12 +4,11 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/view/geolocation/widgets/geolocationlistwidget.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GeoLocationScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -81,7 +80,7 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
           ),
         ),
         title: Text(
-          "Geolocation  ",
+          AppLocalizations.of(context)!.geolocation,
           style: appHeading(),
         ),
         actions: [
