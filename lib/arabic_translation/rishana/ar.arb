@@ -170,3 +170,42 @@
     "salesOrders": "أوامر البيع",
     "orderDetails": "تفاصيل الطلب"
 }
+
+---CUSTOMER INSIGHTS CUSTOMER LISTING---
+
+{
+    "price": "سعر"
+}
+
+---CUSTOMER INSIGHTS CUSTOMER Documents---
+
+{
+    "attachments": "المرفقات",
+    "viewFile": "عرض الملف",
+    "startDate": "تاريخ البدء",
+    "expiryDate": "تاريخ انتهاء الصلاحية",
+    "other": "آحرون",
+    "attachedDocumentType": "نوع الوثيقة المرفقة",
+    "userLicenseAgreement": "اتفاقية ترخيص المستخدم"
+}
+
+---GEOCODE---
+{
+    "updateGeocode": "تحديث الرمز الجغرافي",
+    "updateGeocodeFailed":"فشل تحديث الرمز الجغرافي",
+    "viewOnMap": "عرض على الخريطة",
+    "doYouWantToConfirmThisGeocode": "هل تريد تأكيد هذا الرمز الجغرافي",
+    "no": "لا",
+    "confirmGeocode": "تأكيد الرمز الجغرافي"
+}
+
+
+---EDIT PROFILE---
+{
+    "yourProfileHasbeenUpdated": "تم تحديث ملفك الشخصي",
+    "yourProfileUpdationFailed": "لقد فشل تحديث ملفك الشخصي",
+    "mailId": "معرف البريد",
+    "mobileNumber": "رقم الهاتف المحمول",
+    "whatspNo": "رقم الواتساب",
+    "update": "للتحديث"
+}

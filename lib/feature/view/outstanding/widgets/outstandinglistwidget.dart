@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutstandingListWidget extends StatelessWidget {
   const OutstandingListWidget({super.key});
@@ -26,7 +27,7 @@ class OutstandingListWidget extends StatelessWidget {
                 : headers.isEmpty
                     ? Center(
                         child: Text(
-                          'No Data Found',
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       )
@@ -165,7 +166,7 @@ class OutstandingListWidget extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
                 child: Text(
-                  'No Data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

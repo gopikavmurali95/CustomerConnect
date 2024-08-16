@@ -173,3 +173,41 @@ _____________________________________________________________________________
     "salesOrders": "Sales Orders",
     "orderDetails": "Order Details"
 }
+
+---CUSTOMER INSIGHTS CUSTOMER LISTING---
+
+{
+    "price": "Price"
+}
+
+---CUSTOMER INSIGHTS CUSTOMER Documents---
+
+{
+    "attachments": "Attachments",
+    "viewFile": "View File",
+    "startDate": "Start Date",
+    "expiryDate": "Expiry Date",
+    "other": "Other",
+    "attachedDocumentType": "Attached document type",
+    "userLicenseAgreement": "User license agreement"
+}
+
+---GEOCODE---
+{
+    "updateGeocode": "Update Geocode",
+    "updateGeocodeFailed": "Update Geocode Failed",
+    "viewOnMap": "View On Map",
+    "doYouWantToConfirmThisGeocode": "Do you want to confirm this Geocode",
+    "no": "No",
+    "confirmGeocode": "Confirm Geocode"
+}
+
+---EDIT PROFILE---
+{
+    "yourProfileHasbeenUpdated": "Your profile has been updated",
+    "yourProfileUpdationFailed": "Your profile updation has been Failed",
+    "mailId": "Mail ID",
+    "mobileNumber": "Mobile Number",
+    "whatspNo": "Whatsapp Number",
+    "update": "Update"
+}

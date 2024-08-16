@@ -125,7 +125,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                 Row(
                   children: [
                     Text(
-                      '${AppLocalizations.of(context)!.collectedAmount}:',
+                      '${AppLocalizations.of(context)!.collected_amount}:',
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     SizedBox(
@@ -165,7 +165,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                       );
                     },
                     child: Text(
-                      AppLocalizations.of(context)!.previewImage,
+                      AppLocalizations.of(context)!.preview_image,
                       style: kfontstyle(
                         fontSize: 12.sp,
                         color: const Color(0xff899fc6),

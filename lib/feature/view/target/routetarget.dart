@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RouteTargetWidget extends StatefulWidget {
   final TargetHeaderListModel headr;
@@ -53,7 +54,8 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
           ),
         ),
         title: Text(
-          "Route Target",
+          AppLocalizations.of(context)!.routeTarget,
+          // "Route Target",
           style: appHeading(),
         ),
       ),
@@ -82,7 +84,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search packages..',
+                    hintText: "${AppLocalizations.of(context)!.searchPackages}..",//'Search packages..',
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -174,7 +176,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                         : details.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Found',
+                                 AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -188,7 +190,8 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Package Wise Target',
+                                          AppLocalizations.of(context)!.packageWiseTarget,
+                                         // 'Package Wise Target',
                                           style: countHeading(),
                                         ),
                                         Text(
@@ -265,7 +268,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Target Amount : ${details[index].targetAmt}',
+                                                                      '${AppLocalizations.of(context)!.targetAmount} : ${details[index].targetAmt}',
                                                                       style: kfontstyle(
                                                                           fontSize:
                                                                               11,
@@ -275,7 +278,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Target Quantity : ${details[index].targetQty}',
+                                                                      '${AppLocalizations.of(context)!.targetQuantity}: ${details[index].targetQty}',
                                                                       style: kfontstyle(
                                                                           fontSize:
                                                                               11,
@@ -292,7 +295,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Achieved Amount : ${details[index].achAmt}',
+                                                                      '${AppLocalizations.of(context)!.achievedAmount}: ${details[index].achAmt}',
                                                                       style: kfontstyle(
                                                                           fontSize:
                                                                               11,
@@ -302,7 +305,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Achieved Quantity : ${details[index].achQty}',
+                                                                      '${AppLocalizations.of(context)!.achievedQuantity} : ${details[index].achQty}',
                                                                       style: kfontstyle(
                                                                           fontSize:
                                                                               11,
@@ -331,7 +334,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                               )),
                     getTargetDetailsListFailed: () => Center(
                           child: Text(
-                            'No Data Available',
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ));

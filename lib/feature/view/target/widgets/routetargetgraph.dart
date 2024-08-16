@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ssun_chart/pie_chart.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RouteTargetGraphWidget extends StatefulWidget {
   final TargetHeaderListModel header;
@@ -131,7 +132,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                 gradient: containerGradients[0][0]),
                             child: Center(
                               child: Text(
-                                'No Data Available',
+                               AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),
@@ -169,7 +170,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Target Amount',
+                                        AppLocalizations.of(context)!.targetAmount,
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -320,7 +321,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                             ArChartItemWidget(
                                               amount: amount.achAmt ?? '',
                                               color: const Color(0xff3DDB7C),
-                                              title: 'Achieved',
+                                              title:  AppLocalizations.of(context)!.achieved,
                                             ),
                                             SizedBox(
                                               height: 15.h,
@@ -328,7 +329,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                             ArChartItemWidget(
                                               amount: amount.mtdGapAmt ?? '',
                                               color: const Color(0xffE07744),
-                                              title: 'MTD Gap',
+                                              title: "MTD${ AppLocalizations.of(context)!.gap}"
                                             ),
                                             SizedBox(
                                               height: 15.h,
@@ -336,7 +337,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                             ArChartItemWidget(
                                               amount: amount.monthGapAmt ?? '',
                                               color: const Color(0xffEAD846),
-                                              title: 'Monthly Gap',
+                                              title:  AppLocalizations.of(context)!.monthlyGap,
                                             ),
                                           ],
                                         ),
@@ -360,7 +361,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                     gradient: containerGradients[0][0]),
                                 child: Center(
                                   child: Text(
-                                    'No Data Available',
+                                     AppLocalizations.of(context)!.noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),
@@ -408,7 +409,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                 gradient: containerGradients[1][0]),
                             child: Center(
                               child: Text(
-                                'No Data Available',
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),
@@ -447,7 +448,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Target Quantity',
+                                         AppLocalizations.of(context)!.targetQuantity,
                                           style: countHeading(),
                                         ),
                                         Text(
@@ -623,7 +624,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               ArChartItemWidget(
                                                 amount: qty.achQty ?? '',
                                                 color: const Color(0xff3DDB7C),
-                                                title: 'Achieved',
+                                                title:  AppLocalizations.of(context)!.achieved,
                                               ),
                                               SizedBox(
                                                 height: 15.h,
@@ -631,7 +632,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               ArChartItemWidget(
                                                 amount: qty.mtdGapQty ?? '',
                                                 color: const Color(0xffE07744),
-                                                title: 'MTD Gap',
+                                                title: "MTD${ AppLocalizations.of(context)!.gap}"
                                               ),
                                               SizedBox(
                                                 height: 15.h,
@@ -639,7 +640,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               ArChartItemWidget(
                                                 amount: qty.monthGapQty ?? '',
                                                 color: const Color(0xffEAD846),
-                                                title: 'Monthly Gap',
+                                                title:  AppLocalizations.of(context)!.monthlyGap
                                               ),
                                             ],
                                           ),
@@ -664,7 +665,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                     gradient: containerGradients[1][0]),
                                 child: Center(
                                   child: Text(
-                                    'No Data Available',
+                                    AppLocalizations.of(context)!.noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),

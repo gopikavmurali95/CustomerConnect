@@ -59,7 +59,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
           ),
         ),
         title: Text(
-          AppLocalizations.of(context)!.invoiceDetails,
+          AppLocalizations.of(context)!.invoice_details,
           style: appHeading(),
         ),
         actions: [
@@ -300,7 +300,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context)!.totalAmount,
+                  Text(AppLocalizations.of(context)!.total_amount,
                       style: bottomTextStyle()),
                   Text(
                       '${AppLocalizations.of(context)!.aed} ${widget.invoice.grandTotal}',

@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'custinsightpromodetails.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerInsightPromotion extends StatefulWidget {
   final LoginUserModel user;
@@ -96,7 +96,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
           ),
         ),
         title: Text(
-          "Promotions",
+          AppLocalizations.of(context)!.promotions,
           style: appHeading(),
         ),
         actions: [
@@ -299,7 +299,8 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                 ),
                               ],
                             ),
-                            hintText: "Search here..",
+                            hintText:
+                                "${AppLocalizations.of(context)!.searchHere}..",
                             hintStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey,
@@ -327,7 +328,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'All promotions',
+                        AppLocalizations.of(context)!.allpromotions,
                         style: countHeading(),
                       ),
                       BlocBuilder<CusPromotionsHeaderBloc,
@@ -375,7 +376,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                 ? Padding(
                                     padding: const EdgeInsets.only(top: 250),
                                     child: Text(
-                                      'No Data Found',
+                                      AppLocalizations.of(context)!.noDataFound,
                                       style: kfontstyle(),
                                     ),
                                   )
@@ -498,7 +499,9 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                             );
                                                           },
                                                           child: Text(
-                                                            'Details',
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .details,
                                                             style: TextStyle(
                                                                 fontSize:
                                                                     10.sp),
@@ -526,7 +529,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                         cusPromotionHeaderFailedState: () => Padding(
                           padding: const EdgeInsets.only(top: 250),
                           child: Text(
-                            'No Data Available',
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),

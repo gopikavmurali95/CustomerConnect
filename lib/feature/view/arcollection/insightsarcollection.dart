@@ -378,7 +378,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                       Text(
                                                         AppLocalizations.of(
                                                                 context)!
-                                                            .totalCollection,
+                                                            .total_collection,
                                                         style: kfontstyle(
                                                             fontSize: 10.sp),
                                                       ),
@@ -405,7 +405,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                         const Color(0xff9ce2f5),
                                                     title: AppLocalizations.of(
                                                             context)!
-                                                        .hardCash,
+                                                        .hard_cash,
                                                   ),
                                                   SizedBox(
                                                     height: 10.h,
@@ -417,7 +417,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                         const Color(0xffe6dd94),
                                                     title: AppLocalizations.of(
                                                             context)!
-                                                        .onlinePAyment,
+                                                        .online_payment,
                                                   ),
                                                   SizedBox(
                                                     height: 10.h,

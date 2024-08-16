@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodaysSalesWidget extends StatelessWidget {
   const TodaysSalesWidget({
@@ -39,7 +40,7 @@ class TodaysSalesWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Todays Sales',
+                                 AppLocalizations.of(context)!.todaysSales,
                                 style: countHeading(),
                               ),
                               Text(
@@ -75,7 +76,7 @@ class TodaysSalesWidget extends StatelessWidget {
                                         style: countHeading(),
                                       ),
                                       Text(
-                                        'Total Visits',
+                                         AppLocalizations.of(context)!.totalVisits,
                                         style: TextStyle(
                                             fontSize: 12.sp,
                                             color: Colors.black54),
@@ -107,7 +108,7 @@ class TodaysSalesWidget extends StatelessWidget {
                                         style: countHeading(),
                                       ),
                                       Text(
-                                        'Productive Visits',
+                                         AppLocalizations.of(context)!.productiveVisits,
                                         style: TextStyle(
                                             fontSize: 12.sp,
                                             color: Colors.black54),
@@ -123,8 +124,8 @@ class TodaysSalesWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-            activitySalesFailedState: () => const Center(
-              child: Text('No Sales Data Available'),
+            activitySalesFailedState: () =>  Center(
+              child: Text(  AppLocalizations.of(context)!.noDataAvailable,),
             ),
           );
         },

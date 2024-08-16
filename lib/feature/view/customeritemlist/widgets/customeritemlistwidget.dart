@@ -1,11 +1,10 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerItemListWidget extends StatelessWidget {
   const CustomerItemListWidget({super.key});
@@ -29,7 +28,7 @@ class CustomerItemListWidget extends StatelessWidget {
                   ? Padding(
                       padding: const EdgeInsets.only(top: 250),
                       child: Text(
-                        'No Data Found',
+                        AppLocalizations.of(context)!.noDataFound,
                         style: kfontstyle(),
                       ),
                     )
@@ -149,7 +148,7 @@ class CustomerItemListWidget extends StatelessWidget {
           getitemsFailedState: () => Padding(
             padding: const EdgeInsets.only(top: 250),
             child: Text(
-              'No Data Available',
+              AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),

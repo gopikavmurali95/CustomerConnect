@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/target_details_list_model/t
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TargetPAckageContainerWidget extends StatelessWidget {
   final TargetDetailsListModel details;
@@ -65,7 +66,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Target Amount',
+                    AppLocalizations.of(context)!.targetAmount,
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
@@ -80,7 +81,8 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'Achieved Amount',
+                    AppLocalizations.of(context)!.achievedAmount,
+                    // 'Achieved Amount',
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Row(
@@ -104,7 +106,8 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'MTD Gap Amount',
+                    "MTD ${AppLocalizations.of(context)!.gapAmount}",
+                    // 'MTD Gap Amount',
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
@@ -119,7 +122,8 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'Monthly Gap Amount',
+                    AppLocalizations.of(context)!.monthlyGapAmount,
+                    // 'Monthly Gap Amount',
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Row(
@@ -164,7 +168,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Target Quantity',
+                    AppLocalizations.of(context)!.targetQuantity,
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
@@ -179,7 +183,7 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'Achieved Quantity',
+                    AppLocalizations.of(context)!.achievedQuantity,
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Row(
@@ -203,7 +207,8 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'MTD Gap Quantity',
+                    "MTD${AppLocalizations.of(context)!.gapQuantity}",
+                    // 'MTD Gap Quantity',
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Text(
@@ -218,7 +223,8 @@ class TargetPAckageContainerWidget extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'Monthly Gap Quantity',
+                    AppLocalizations.of(context)!.monthlyGapQuantity,
+                    // 'Monthly Gap Quantity',
                     style: kfontstyle(fontSize: 9.sp, color: Colors.black54),
                   ),
                   Row(

@@ -1,4 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/cusinsightspdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
@@ -6,9 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InsightSpecialPriceList extends StatelessWidget {
-  const InsightSpecialPriceList({super.key});
+  final LoginUserModel user;
+  final CusInsCustomersModel customer;
+
+  const InsightSpecialPriceList(
+      {super.key, required this.user, required this.customer});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,7 @@ class InsightSpecialPriceList extends StatelessWidget {
                     ? Padding(
                         padding: const EdgeInsets.only(top: 250),
                         child: Text(
-                          'No Data Found',
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       )
@@ -54,7 +61,11 @@ class InsightSpecialPriceList extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const CustomerInsightSpecialPriceDetails()));
+                                              CustomerInsightSpecialPriceDetails(
+                                                user: user,
+                                                customer: customer,
+                                                spPriceHeader: headers[index],
+                                              )));
                                 },
                                 child: Row(
                                   mainAxisAlignment:
@@ -107,7 +118,7 @@ class InsightSpecialPriceList extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          "Details   ",
+                                          "${AppLocalizations.of(context)!.details}   ",
                                           style: TextStyle(
                                             fontSize: 10.sp,
                                           ),
@@ -131,7 +142,7 @@ class InsightSpecialPriceList extends StatelessWidget {
             cusSpPriceHeaderFailedState: () => Padding(
               padding: const EdgeInsets.only(top: 250),
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

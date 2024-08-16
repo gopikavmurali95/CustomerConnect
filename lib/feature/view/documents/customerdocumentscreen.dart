@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerDocumentScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -50,7 +51,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
             ),
           ),
           title: Text(
-            "Documents ",
+            AppLocalizations.of(context)!.documents,
             style: appHeading(),
           ),
         ),
@@ -94,7 +95,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           Row(
                                             children: [
                                               Text(
-                                                'A025206 - ',
+                                                '${widget.customer.cusCode} - ',
                                                 style: kfontstyle(
                                                   fontSize: 12.sp,
                                                   color:
@@ -106,7 +107,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  'Tromp, Muller and Mitchell',
+                                                  widget.customer.cusName ?? '',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(
@@ -118,7 +119,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           Row(
                                             children: [
                                               Text(
-                                                '199525 - ',
+                                                '${widget.customer.headerCode} - ',
                                                 style: kfontstyle(
                                                     fontSize: 11.sp,
                                                     color: const Color(
@@ -126,7 +127,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  'Carrefour Hypermarket',
+                                                  widget.customer.headerName ??
+                                                      '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: kfontstyle(
@@ -136,7 +138,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                             ],
                                           ),
                                           Text(
-                                            'Virtual | Supermarket | Dubai ',
+                                            '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: Colors.grey),
@@ -160,7 +162,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 20),
                                 child: Text(
-                                  "Attachments",
+                                  AppLocalizations.of(context)!.attachments,
                                   style: countHeading(),
                                 ),
                               ),
@@ -214,7 +216,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                                 width: 10.w,
                                               ),
                                               Text(
-                                                'View File',
+                                                AppLocalizations.of(context)!
+                                                    .viewFile,
                                                 style: kfontstyle(
                                                   fontSize: 12.sp,
                                                   color: Colors.black54,
@@ -285,7 +288,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                                   width: 10.w,
                                                 ),
                                                 Text(
-                                                  'View File',
+                                                  AppLocalizations.of(context)!
+                                                      .viewFile,
                                                   style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     color: Colors.black54,
@@ -308,7 +312,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Start Date',
+                                              AppLocalizations.of(context)!
+                                                  .startDate,
                                               style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: Colors.black54,
@@ -359,7 +364,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Expiry Date',
+                                              AppLocalizations.of(context)!
+                                                  .expiryDate,
                                               style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: Colors.black54,
@@ -424,7 +430,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '3) Other',
+                                          '3) ${AppLocalizations.of(context)!.other}',
                                           style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: Colors.black,
@@ -469,7 +475,9 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                                       width: 10.w,
                                                     ),
                                                     Text(
-                                                      'View File',
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .viewFile,
                                                       style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         color: Colors.black54,
@@ -497,7 +505,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Attached document type: ${docs.length > 2 ? docs[2].docName : ''}',
+                                          '${AppLocalizations.of(context)!.attachedDocumentType}: ${docs.length > 2 ? docs[2].docName : ''}',
                                           style: kfontstyle(
                                             fontSize: 11.sp,
                                             color: Colors.black,
@@ -508,7 +516,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           height: 10.h,
                                         ),
                                         Text(
-                                          'User license agreement',
+                                          AppLocalizations.of(context)!
+                                              .userLicenseAgreement,
                                           style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: Colors.black,
@@ -527,7 +536,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                     ),
               getCusDOcsFailedState: () => Center(
                 child: Text(
-                  'No Data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

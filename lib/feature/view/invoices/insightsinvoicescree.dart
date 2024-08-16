@@ -407,7 +407,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!.totalInvoiceAmount,
+                            AppLocalizations.of(context)!.total_invoice_amount,
                             style: TextStyle(
                                 fontSize: 12.sp, fontWeight: FontWeight.w400),
                           ),

@@ -267,7 +267,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                     fit: FlexFit.tight,
                                     flex: 0,
                                     child: Text(
-                                        AppLocalizations.of(context)!.subTotal,
+                                        AppLocalizations.of(context)!.sub_total,
                                         style: boxHeading()),
                                   ),
                                 ],

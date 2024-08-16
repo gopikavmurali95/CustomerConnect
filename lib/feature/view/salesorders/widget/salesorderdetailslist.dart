@@ -239,7 +239,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(AppLocalizations.of(context)!
-                                                .subTotal),
+                                                .sub_total),
                                             Text(salesorders.subTotal ?? '')
                                           ],
                                         ),

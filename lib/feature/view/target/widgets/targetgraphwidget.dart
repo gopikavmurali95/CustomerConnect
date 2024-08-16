@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TargetGraphWidget extends StatefulWidget {
   const TargetGraphWidget({
@@ -131,7 +132,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Target Amount',
+                                         AppLocalizations.of(context)!.targetAmount,
                                           style: countHeading(),
                                         )
                                       ],
@@ -226,7 +227,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Target Amount',
+                                                   AppLocalizations.of(context)!.targetAmount,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -272,7 +273,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Achieved',
+                                                  AppLocalizations.of(context)!.achieved,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -317,7 +318,8 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Gap Amount',
+                                                    AppLocalizations.of(context)!.gapAmount,
+                                                    // 'Gap Amount',
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -352,7 +354,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Target Quantity',
+                                        AppLocalizations.of(context)!.targetQuantity,
                                           style: countHeading(),
                                         )
                                       ],
@@ -447,7 +449,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Target Quantity',
+                                                  AppLocalizations.of(context)!.targetQuantity,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -493,7 +495,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Achieved',
+                                                   AppLocalizations.of(context)!.achieved,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -538,7 +540,8 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    'Gap Qty',
+                                                    AppLocalizations.of(context)!.gapQty,
+                                                    // 'Gap Qty',
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -580,7 +583,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                   gradient: containerGradients[0][0]),
                               child: Center(
                                 child: Text(
-                                  'No Data Available',
+                                AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               ),
@@ -597,7 +600,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                   gradient: containerGradients[1][0]),
                               child: Center(
                                 child: Text(
-                                  'No Data Available',
+                                 AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               ),

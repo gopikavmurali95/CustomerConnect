@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ActivityReviewHeaderScreen extends StatefulWidget {
   const ActivityReviewHeaderScreen({super.key});
@@ -71,7 +72,8 @@ class _ActivityReviewHeaderScreenState
           ),
         ),
         title: Text(
-          "Daily Activity Review",
+           AppLocalizations.of(context)!.dailyActivityReview,
+          // "Daily Activity Reviews",
           style: appHeading(),
         ),
         actions: [
@@ -135,7 +137,7 @@ class _ActivityReviewHeaderScreenState
                           size: 14,
                         ),
                       ),
-                      hintText: "Search here..",
+                      hintText: "${ AppLocalizations.of(context)!.searchHere}..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -220,7 +222,7 @@ class _ActivityReviewHeaderScreenState
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Pending Review",
+                      AppLocalizations.of(context)!.pendingReview,
                       style: countHeading(),
                     ),
                     Text(
@@ -257,8 +259,8 @@ class _ActivityReviewHeaderScreenState
                                 ),
                             itemCount: 10)
                         : headers.isEmpty
-                            ? const Center(
-                                child: Text('No Data Available'),
+                            ?  Center(
+                                child: Text( AppLocalizations.of(context)!.noDataAvailable,),
                               )
                             : ListView.builder(
                                 shrinkWrap: true,
@@ -328,7 +330,7 @@ class _ActivityReviewHeaderScreenState
                                                         child: Text(
                                                           overflow: TextOverflow
                                                               .ellipsis,
-                                                          'Start: ${headers[index].startTime} | End ${headers[index].endTime}',
+                                                          '${ AppLocalizations.of(context)!.start}: ${headers[index].startTime} | ${ AppLocalizations.of(context)!.end} : ${headers[index].endTime}',
                                                           style: kfontstyle(
                                                               fontSize: 9.sp,
                                                               color: const Color(
@@ -338,7 +340,7 @@ class _ActivityReviewHeaderScreenState
                                                     ],
                                                   ),
                                                   Text(
-                                                    '${headers[index].rotType} Route',
+                                                    '${headers[index].rotType} ${AppLocalizations.of(context)!.route}',
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: Colors.grey),
@@ -356,8 +358,8 @@ class _ActivityReviewHeaderScreenState
                                   ),
                                 ),
                               ),
-                    actvityReviewHeaderFailedState: () => const Center(
-                      child: Text('No Data Available'),
+                    actvityReviewHeaderFailedState: () =>  Center(
+                      child: Text( AppLocalizations.of(context)!.noDataAvailable),
                     ),
                   );
                 },

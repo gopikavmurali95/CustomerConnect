@@ -312,7 +312,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(AppLocalizations.of(context)!.totalAmount,
+              Text(AppLocalizations.of(context)!.total_amount,
                   style: bottomTextStyle()),
               Text(widget.salesorders.grandTotal ?? '',
                   style: bottomTotalAmountStyle())
