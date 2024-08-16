@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutActCustomerActivityScreen extends StatefulWidget {
   const OutActCustomerActivityScreen({
@@ -63,7 +64,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
           ),
         ),
         title: Text(
-          "Customer Activity",
+          AppLocalizations.of(context)!.customerActivities,
+         //"Customer Activity",
           style: appHeading(),
         ),
       ),
@@ -82,7 +84,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -233,8 +235,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                       itemCount: 10),
                                 )
                               : activityData.isEmpty
-                                  ? const Center(
-                                      child: Text('No Data Available'),
+                                  ?  Center(
+                                      child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                                     )
                                   : Column(
                                       children: [
@@ -247,11 +249,11 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                             children: [
                                               Text(
                                                 selectedcusActivityMode == 'AL'
-                                                    ? 'All Activities'
+                                                    ? AppLocalizations.of(context)!.allActivities
                                                     : selectedcusActivityMode ==
                                                             'C'
-                                                        ? 'Completed Activities'
-                                                        : 'Pending Activities',
+                                                        ? AppLocalizations.of(context)!.completedActivities
+                                                        : AppLocalizations.of(context)!.pendingActivities,
                                                 style: countHeading(),
                                               ),
                                               Padding(
@@ -326,7 +328,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                               ],
                                                             ),
                                                             Text(
-                                                              "Due on: ${activityData[index].startDate} | Completed on: ${activityData[index].endDate}4",
+                                                              "${AppLocalizations.of(context)!.dueon}: ${activityData[index].startDate} | ${AppLocalizations.of(context)!.completedon}: ${activityData[index].endDate}4",
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       9.sp,
@@ -344,7 +346,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                           color: activityData[
                                                                           index]
                                                                       .status! ==
-                                                                  "Pending"
+                                                                  AppLocalizations.of(context)!.pending
                                                               ? const Color(
                                                                   0xfff7f4e2)
                                                               : const Color(
@@ -378,8 +380,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                         ))
                                       ],
                                     ),
-                      getMerchCustomerActivitiesDataFailed: () => const Center(
-                            child: Text('No Data Available'),
+                      getMerchCustomerActivitiesDataFailed: () => Center(
+                            child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                           ));
                 },
               ),

@@ -70,9 +70,9 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text(
-                                    'Done',
-                                    style: TextStyle(
+                                  child: Text(
+                                    AppLocalizations.of(context)!.done,
+                                    style: const TextStyle(
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -148,7 +148,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'From ',
+                      AppLocalizations.of(context)!.from,
                       style: kfontstyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
@@ -223,9 +223,9 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text(
-                                    'Done',
-                                    style: TextStyle(
+                                  child:  Text(
+                                    AppLocalizations.of(context)!.done,
+                                    style: const TextStyle(
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -297,7 +297,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'To  ',
+                     AppLocalizations.of(context)!.to,
                       style: kfontstyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,

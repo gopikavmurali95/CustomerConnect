@@ -51,7 +51,8 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
           ),
         ),
         title: Text(
-          "Out Of Stock Customers",
+          AppLocalizations.of(context)!.outOfStockCustomers,
+          // "Out Of Stock Customers",
           style: appHeading(),
         ),
       ),
@@ -124,7 +125,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                           ),
                         ],
                       ),
-                      hintText: "Search here",
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       hintStyle: TextStyle(
                         fontSize: 12.sp,
                         color: Colors.grey,
@@ -155,7 +156,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Out of stock items",
+                     AppLocalizations.of(context)!.outOfStockCustomers,
                       style: countHeading(),
                     ),
                     BlocBuilder<OosCustomersBloc, OosCustomersState>(
@@ -201,7 +202,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                           : headers.isEmpty
                               ? Center(
                                   child: Text(
-                                    'No Data Available',
+                                   AppLocalizations.of(context)!.noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 )
@@ -297,7 +298,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                         height: MediaQuery.of(context).size.height - 200,
                         child: Center(
                           child: Text(
-                            'No Data Available',
+                           AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),
