@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DailyActivityReviewDetailScreen extends StatefulWidget {
   final ActivityReviewHeaderModel header;
@@ -72,7 +73,8 @@ class _DailyActivityReviewDetailScreenState
           ),
         ),
         title: Text(
-          "Daily Activity Review",
+          AppLocalizations.of(context)!.dailyActivityReview,
+          // "Daily Activity Reviews",
           style: appHeading(),
         ),
         actions: [
@@ -147,7 +149,8 @@ class _DailyActivityReviewDetailScreenState
                                     Expanded(
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
-                                        'Start: ${widget.header.startTime} | End ${widget.header.endTime}',
+                                         "${AppLocalizations.of(context)!.start}${widget.header.startTime} |${AppLocalizations.of(context)!.end}: ${widget.header.endTime}",
+                                       // 'Start: ${widget.header.startTime} | End ${widget.header.endTime}',
                                         style: kfontstyle(
                                             fontSize: 9.sp,
                                             color: const Color(0xff413434)),
@@ -156,7 +159,8 @@ class _DailyActivityReviewDetailScreenState
                                   ],
                                 ),
                                 Text(
-                                  'Duration: ${widget.header.duration}  ',
+                                  "${AppLocalizations.of(context)!.duration}:  ${widget.header.duration}",
+                                 // 'Duration: ${widget.header.duration}  ',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),
@@ -189,7 +193,7 @@ class _DailyActivityReviewDetailScreenState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Visits",
+                          AppLocalizations.of(context)!.visits,
                           style: countHeading(),
                         ),
                         Text(
@@ -329,7 +333,8 @@ class _DailyActivityReviewDetailScreenState
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Start: ${details[index].startTime} | End ${details[index].endTime}',
+                                                                              "${AppLocalizations.of(context)!.start}:${details[index].startTime}|${AppLocalizations.of(context)!.end}:${details[index].endTime}",
+                                                                     // 'Start: ${details[index].startTime} | End ${details[index].endTime}',
                                                                       style: kfontstyle(
                                                                           fontSize: 10
                                                                               .sp,
@@ -346,7 +351,8 @@ class _DailyActivityReviewDetailScreenState
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      'Duration : ${details[index].duration}',
+                                                                       "${AppLocalizations.of(context)!.duration}: ${details[index].duration}",
+                                                                      //'Duration : ${details[index].duration}',
                                                                       style: kfontstyle(
                                                                           fontSize: 10
                                                                               .sp,
@@ -394,14 +400,14 @@ class _DailyActivityReviewDetailScreenState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      'Sales',
+                                                                                      AppLocalizations.of(context)!.sales,
                                                                                       style: TextStyle(color: const Color(0xff6d9d6a), fontSize: 10.sp),
                                                                                     ),
                                                                                     SizedBox(
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Cash',
+                                                                                      AppLocalizations.of(context)!.cash,
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -412,7 +418,7 @@ class _DailyActivityReviewDetailScreenState
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Credit',
+                                                                                      AppLocalizations.of(context)!.credit,
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -445,14 +451,14 @@ class _DailyActivityReviewDetailScreenState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      'Return',
+                                                                                      AppLocalizations.of(context)!.returns,
                                                                                       style: TextStyle(color: const Color(0xffc78080), fontSize: 10.sp),
                                                                                     ),
                                                                                     SizedBox(
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Cash',
+                                                                                      AppLocalizations.of(context)!.cash,
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -463,7 +469,7 @@ class _DailyActivityReviewDetailScreenState
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Credit',
+                                                                                      AppLocalizations.of(context)!.credit,
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -493,14 +499,14 @@ class _DailyActivityReviewDetailScreenState
                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      'Collection',
+                                                                                      AppLocalizations.of(context)!.collection,
                                                                                       style: TextStyle(color: const Color(0xff9fadd2), fontSize: 10.sp),
                                                                                     ),
                                                                                     SizedBox(
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Cash',
+                                                                                      AppLocalizations.of(context)!.cash,
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -511,7 +517,9 @@ class _DailyActivityReviewDetailScreenState
                                                                                       height: 5.h,
                                                                                     ),
                                                                                     Text(
-                                                                                      'Cheque & online',
+                                                                                      "${AppLocalizations.of(context)!.cheque} & ${AppLocalizations.of(context)!.online}",
+
+                                                                                      // 'Cheque & online',
                                                                                       style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                     ),
                                                                                     Text(
@@ -545,8 +553,10 @@ class _DailyActivityReviewDetailScreenState
                                         ),
                                       ),
                                     ),
-                          activityReviewDetailFailedState: () => const Center(
-                            child: Text('No Data Available'),
+                          activityReviewDetailFailedState: () => Center(
+                            child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable,
+                            ),
                           ),
                         );
                       },

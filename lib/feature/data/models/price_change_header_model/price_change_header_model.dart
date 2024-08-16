@@ -35,22 +35,42 @@ class PriceChangeHeaderModel {
   @JsonKey(name: 'rotID')
   String? rotID;
 
-  PriceChangeHeaderModel(
-      {this.cusCode,
-      this.cusName,
-      this.rotName,
-      this.rotCode,
-      this.pchRotId,
-      this.usrName,
-      this.pchId,
-      this.cshCode,
-      this.cshName,
-      this.pchReqId,
-      this.createdDate,
-      this.type,
-      this.pchApprovalStatus,
-      this.rotID,
-      this.userID});
+  @JsonKey(name: 'sp_Approvals')
+  String? spApprovals;
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'Arusr_Name')
+  String? arusrName;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arcshName;
+  @JsonKey(name: 'Arpch_ApprovalStatus')
+  String? arpchApprovalStatus;
+  @JsonKey(name: 'ArType')
+  String? arType;
+
+  PriceChangeHeaderModel({
+    this.cusCode,
+    this.cusName,
+    this.rotName,
+    this.rotCode,
+    this.pchRotId,
+    this.usrName,
+    this.pchId,
+    this.cshCode,
+    this.cshName,
+    this.pchReqId,
+    this.createdDate,
+    this.type,
+    this.pchApprovalStatus,
+    this.rotID,
+    this.userID,
+    this.arType,
+    this.arcshName,
+    this.arcusName,
+    this.arpchApprovalStatus,
+    this.arusrName,
+    this.spApprovals,
+  });
 
   factory PriceChangeHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$PriceChangeHeaderModelFromJson(json);

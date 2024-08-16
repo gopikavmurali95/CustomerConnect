@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MustSellHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -73,7 +74,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
           ),
         ),
         title: Text(
-          "Must Sell",
+          AppLocalizations.of(context)!.mustSell,
           style: appHeading(),
         ),
       ),
@@ -89,7 +90,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
-                  hintText: 'Search here..',
+                  hintText: AppLocalizations.of(context)!.searchHere,
                   suffix: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -215,7 +216,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Pending Approvals",
+                  AppLocalizations.of(context)!.pendingApprovals,
                   style: countHeading(),
                 ),
                 BlocBuilder<MustSellHeaderBloc, MustSellHeaderState>(
@@ -259,7 +260,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                         : headers.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -318,7 +319,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].rotCode} - ${headers[index].rotName} route',
+                                                              '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -438,7 +439,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                 itemCount: headers.length),
                     mustSellHeadersFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -472,15 +473,15 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content:
-                              Text("Must sell approval ${resp.status ?? ''}"),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.msutSellApproval} ${resp.status ?? ''}"),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -492,15 +493,15 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
-                        content: const Text(
-                            "Something Went Wrong, please Try again later"),
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -551,16 +552,21 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Do you Want to Proceed"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               setState(() {});
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Cancel'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
                                           ),
                                           TextButton(
                                             onPressed: () {
@@ -588,7 +594,9 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                     ),
                                                   );
                                             },
-                                            child: const Text('Proceed'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
                                           ),
                                         ],
                                       ),
@@ -596,7 +604,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                   }
                                 },
                                 child: Text(
-                                  'Reject Selected',
+                                  AppLocalizations.of(context)!.rejectSelected,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w500,
@@ -623,16 +631,21 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Do you Want to Proceed"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               setState(() {});
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Cancel'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
                                           ),
                                           TextButton(
                                             onPressed: () {
@@ -659,7 +672,9 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                     ),
                                                   );
                                             },
-                                            child: const Text('Proceed'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
                                           ),
                                         ],
                                       ),
@@ -667,7 +682,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                   }
                                 },
                                 child: Text(
-                                  'Approve Selected',
+                                  AppLocalizations.of(context)!.approveSelected,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w500,

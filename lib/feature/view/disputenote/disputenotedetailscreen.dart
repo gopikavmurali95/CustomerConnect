@@ -592,7 +592,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                             ? true
                                             : false,
                                         decoration: InputDecoration(
-                                          hintText: 'Remarks',
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .remarks,
                                           hintStyle: kfontstyle(
                                             fontSize: 12.sp,
                                             color: widget.disputenote.status ==

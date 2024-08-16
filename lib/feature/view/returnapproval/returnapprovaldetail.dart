@@ -14,9 +14,9 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../data/models/return_approval_product/ReturnApprovalProductModel.dart';
 
@@ -91,7 +91,7 @@ class _ReturnApprovalDetailScreenState
           ),
         ),
         title: Text(
-          "Return Detail",
+          "${AppLocalizations.of(context)!.ret_urn} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -202,7 +202,7 @@ class _ReturnApprovalDetailScreenState
                     style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     decoration: InputDecoration(
                       isDense: true,
-                      hintText: 'Search here..',
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       suffix: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -283,17 +283,20 @@ class _ReturnApprovalDetailScreenState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Item', style: boxHeading()),
+                      Text(AppLocalizations.of(context)!.item,
+                          style: boxHeading()),
                       SizedBox(
                         width: 10.w,
                       ),
                       Row(
                         children: [
-                          Text('UOM', style: boxHeading()),
+                          Text(AppLocalizations.of(context)!.uom,
+                              style: boxHeading()),
                           SizedBox(
                             width: 40.w,
                           ),
-                          Text('Qty', style: boxHeading())
+                          Text(AppLocalizations.of(context)!.qty,
+                              style: boxHeading())
                         ],
                       )
                     ],
@@ -349,8 +352,9 @@ class _ReturnApprovalDetailScreenState
                                 itemCount: 10),
                           )
                         : details.isEmpty
-                            ? const Center(
-                                child: Text('No Data Found'),
+                            ? Center(
+                                child: Text(
+                                    AppLocalizations.of(context)!.noDataFound),
                               )
                             : ListView.separated(
                                 shrinkWrap: true,
@@ -369,16 +373,21 @@ class _ReturnApprovalDetailScreenState
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: const Text('Alert'),
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
                                                 content: Text(
-                                                    "Product Status Update ${response.status} "),
+                                                    "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Ok'),
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
                                                   ),
                                                 ],
                                               ),
@@ -391,15 +400,20 @@ class _ReturnApprovalDetailScreenState
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: const Text('Alert'),
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
                                                 content: Text(
-                                                    "Product Status Update ${response.status} ,Try Again"),
+                                                    "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} ,${AppLocalizations.of(context)!.tryAgain}"),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Ok'),
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
                                                   ),
                                                 ],
                                               ),
@@ -443,15 +457,20 @@ class _ReturnApprovalDetailScreenState
                                           context: context,
                                           builder: (context) =>
                                               CupertinoAlertDialog(
-                                            title: const Text('Alert'),
-                                            content: const Text(
-                                                "Something Went Wrong, please Try again later"),
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .somethingWentWrong),
                                             actions: [
                                               TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: const Text('Ok'),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
                                               ),
                                             ],
                                           ),
@@ -755,7 +774,9 @@ class _ReturnApprovalDetailScreenState
                                                               },
                                                             ),
                                                             Text(
-                                                              'Approve',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .approve,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -818,7 +839,9 @@ class _ReturnApprovalDetailScreenState
                                                               },
                                                             ),
                                                             Text(
-                                                              'Reject',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .reject,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -843,7 +866,7 @@ class _ReturnApprovalDetailScreenState
                               ),
                     returnApprovalDetailFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -883,16 +906,21 @@ class _ReturnApprovalDetailScreenState
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Please make sure you have approved or rejected all the products"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                               // Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -902,15 +930,20 @@ class _ReturnApprovalDetailScreenState
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content:
-                                            const Text("Plese select a reason"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .selectReason),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -920,16 +953,21 @@ class _ReturnApprovalDetailScreenState
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Do you Want to Proceed"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               setState(() {});
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Cancel'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
                                           ),
                                           TextButton(
                                             onPressed: () {
@@ -959,7 +997,9 @@ class _ReturnApprovalDetailScreenState
                                                     ),
                                                   );
                                             },
-                                            child: const Text('Proceed'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
                                           ),
                                         ],
                                       ),
@@ -968,7 +1008,7 @@ class _ReturnApprovalDetailScreenState
                                 }
                               },
                               child: Text(
-                                'Confirm',
+                                AppLocalizations.of(context)!.confirm,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

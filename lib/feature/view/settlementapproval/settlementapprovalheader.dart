@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettlementApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel users;
@@ -69,7 +70,7 @@ class _SettlementApprovalHeaderScreenState
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Settlement Approval",
+          AppLocalizations.of(context)!.settlementApproval,
           style: appHeading(),
         ),
         actions: [
@@ -94,7 +95,7 @@ class _SettlementApprovalHeaderScreenState
               style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
               decoration: InputDecoration(
                 isDense: true,
-                hintText: 'Search here..',
+                hintText: AppLocalizations.of(context)!.searchHere,
                 suffix: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -174,7 +175,7 @@ class _SettlementApprovalHeaderScreenState
               dropdownColor: Colors.white,
               style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
               decoration: InputDecoration(
-                hintText: "All Route Types",
+                hintText: AppLocalizations.of(context)!.allRouteTypes,
                 hintStyle: kfontstyle(fontSize: 10.sp, color: Colors.black87),
                 filled: true,
                 fillColor: Colors.white,
@@ -232,7 +233,7 @@ class _SettlementApprovalHeaderScreenState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Pending Approvals",
+                AppLocalizations.of(context)!.pendingApprovals,
                 style: countHeading(),
               ),
               BlocBuilder<SettlementApprovalHeaderBloc,

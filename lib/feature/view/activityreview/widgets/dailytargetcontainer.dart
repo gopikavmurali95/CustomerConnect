@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DailyTargetContainer extends StatelessWidget {
   const DailyTargetContainer({
@@ -42,7 +43,8 @@ class DailyTargetContainer extends StatelessWidget {
                               Column(
                                 children: [
                                   Text(
-                                    'Total Target',
+                                       AppLocalizations.of(context)!.totalTarget,
+                                    //'Total Target',
                                     style: TextStyle(
                                         fontSize: 11.sp,
                                         fontWeight: FontWeight.w300,
@@ -74,7 +76,8 @@ class DailyTargetContainer extends StatelessWidget {
                                       Column(
                                         children: [
                                           Text(
-                                            'MTD Working Days',
+                                            "MTD${AppLocalizations.of(context)!.workingDays}",
+                                            // 'MTD Working Days',
                                             style: TextStyle(
                                                 fontSize: 8.sp,
                                                 fontWeight: FontWeight.w300,
@@ -105,7 +108,7 @@ class DailyTargetContainer extends StatelessWidget {
                                             Column(
                                               children: [
                                                 Text(
-                                                  'Total Working Days',
+                                                    AppLocalizations.of(context)!.totalworkingDays,
                                                   style: TextStyle(
                                                       fontSize: 8.sp,
                                                       fontWeight:
@@ -160,7 +163,7 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          'Pro rated Target',
+                                           AppLocalizations.of(context)!.proRatedTarget,
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,
@@ -198,7 +201,8 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          'MTD Sales',
+                                          "MTD${AppLocalizations.of(context)!.sales}",
+                                          // 'MTD Sales',
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,
@@ -240,7 +244,8 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          'Excess/Shortage',
+                                          "${AppLocalizations.of(context)!.excess}/${AppLocalizations.of(context)!.shortage}",
+                                          // 'Excess/Shortage',
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,
@@ -278,7 +283,8 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          'Sales/Day to achive target',
+                                           "${AppLocalizations.of(context)!.sales}/${AppLocalizations.of(context)!.daytoAcieveTarget}",
+                                         // 'Sales/Day to achive target',
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,
@@ -295,8 +301,8 @@ class DailyTargetContainer extends StatelessWidget {
                       ),
                     ),
                   ),
-            actvitytargetFailedState: () => const Center(
-              child: Text('No Data Available'),
+            actvitytargetFailedState: () => Center(
+              child: Text(AppLocalizations.of(context)!.noDataAvailable),
             ),
           );
         },

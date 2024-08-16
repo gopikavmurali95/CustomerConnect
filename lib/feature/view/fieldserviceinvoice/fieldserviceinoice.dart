@@ -9,7 +9,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 
 class FieldServiceInvoiceHeader extends StatelessWidget {
@@ -37,7 +37,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Field Services",
+          AppLocalizations.of(context)!.fieldServices,
           style: appHeading(),
         ),
       ),
@@ -108,7 +108,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                             ),
                           ],
                         ),
-                        hintText: "Search Items",
+                        hintText: AppLocalizations.of(context)!.searchItems,
                         hintStyle: TextStyle(
                             fontSize: 12.sp,
                             color: Colors.grey,
@@ -304,7 +304,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                             itemCount: headers.length),
                     fieldServiceInvoiceHeaderFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

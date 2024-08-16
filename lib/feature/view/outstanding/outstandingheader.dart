@@ -7,11 +7,13 @@ import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ssun_chart/pie_chart.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutstandingHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -59,17 +61,21 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 20,
+        leading: Transform.flip(
+           flipX: selectedLocale?.languageCode == "en" ? false : true,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
+            ),
           ),
         ),
         title: Text(
-          "Outstandings",
+           AppLocalizations.of(context)!.outstanding,
+         // "Outstanding",
           style: appHeading(),
         ),
         actions: [
@@ -140,7 +146,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search here..",
+                          hintText: "${ AppLocalizations.of(context)!.searchHere}..",
                           hintStyle: kfontstyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -348,7 +354,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      'Total Outstanding',
+                                                       AppLocalizations.of(context)!.totaloutstanding,
+                                                       //'Total Outstanding',
                                                       style: kfontstyle(
                                                           fontSize: 10.sp),
                                                     ),
@@ -372,7 +379,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                       '${counts.dueCount}/${counts.dueAmount}',
                                                   color:
                                                       const Color(0xff9ce895),
-                                                  title: 'Due',
+                                                  title: AppLocalizations.of(context)!.due,
                                                 ),
                                                 SizedBox(
                                                   height: 10.h,
@@ -382,7 +389,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                       '${counts.overDueCount}/${counts.overDueAmount}',
                                                   color:
                                                       const Color(0xffe18484),
-                                                  title: 'Overdue',
+                                                  title: AppLocalizations.of(context)!.overdue,
                                                 ),
                                               ],
                                             ),
@@ -405,7 +412,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                           padding: const EdgeInsets.only(
                               left: 10.0, right: 10, top: 0),
                           child: Text(
-                            "Outstanding invoices",
+                             AppLocalizations.of(context)!.outStandingInvoices,
+                             //"Outstanding invoices",
                             style: countHeading(),
                           ),
                         ),

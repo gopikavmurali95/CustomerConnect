@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/view/target/widgets/targetpackagetiles.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TargetPackageScreen extends StatefulWidget {
   final TargetHeaderListModel header;
@@ -54,7 +55,8 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
           ),
         ),
         title: Text(
-          "Target Package",
+          AppLocalizations.of(context)!.targetPackage,
+          // "Target Package",
           style: appHeading(),
         ),
       ),
@@ -88,7 +90,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: 'Search items..',
+                        hintText: "${ AppLocalizations.of(context)!.searchItems}..",
                         suffix: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -167,7 +169,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Items',
+                        AppLocalizations.of(context)!.items,
                         style: countHeading(),
                       ),
                       BlocBuilder<TargetPackageListBloc,
@@ -208,7 +210,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                             flex: 4,
                             fit: FlexFit.tight,
-                            child: Text('Item',
+                            child: Text( AppLocalizations.of(context)!.item,
                                 style: kfontstyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
@@ -216,7 +218,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text('Achvd Amt',
+                          child: Text( AppLocalizations.of(context)!.achvdAmt,//"Achvd amt"
                               style: kfontstyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
@@ -228,7 +230,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text('Achvd Qty',
+                          child: Text( AppLocalizations.of(context)!.achvdQty,//'Achvd Qty',
                               style: kfontstyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,

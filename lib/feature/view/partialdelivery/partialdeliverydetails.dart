@@ -246,16 +246,16 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content:
-                              Text("Product Status Update ${response.status} "),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -314,29 +314,29 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                         child: Row(
                           children: [
                             Text(
-                              'Item',
+                              AppLocalizations.of(context)!.item,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black54),
                             ),
                             SizedBox(
-                              width: 135.w,
+                              width: 120.w,
                             ),
                             Row(
                               children: [
                                 Text(
-                                  'Ord.Qty',
+                                  AppLocalizations.of(context)!.ordQty,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.black54),
                                 ),
                                 SizedBox(
-                                  width: 55.w,
+                                  width: 50.w,
                                 ),
                                 Text(
-                                  'Del.Qty',
+                                  AppLocalizations.of(context)!.del_qty,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,

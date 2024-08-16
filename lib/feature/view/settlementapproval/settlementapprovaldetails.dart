@@ -14,6 +14,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettlementApprovalDetailScreen extends StatefulWidget {
   final SettlementApprovalHeaderOutModel header;
@@ -67,7 +68,7 @@ class _SettlementApprovalDetailScreenState
           ),
         ),
         title: Text(
-          "Settlement Approval Detail",
+          AppLocalizations.of(context)!.settlementApprovalDetail,
           style: appHeading(),
         ),
       ),
@@ -173,7 +174,9 @@ class _SettlementApprovalDetailScreenState
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('Variance Limit',
+                                      Text(
+                                          AppLocalizations.of(context)!
+                                              .varianceLimit,
                                           style: TextStyle(
                                             color: const Color.fromARGB(
                                                 255, 137, 10, 3),
@@ -203,7 +206,8 @@ class _SettlementApprovalDetailScreenState
                                   ),
                         paymodeDetailFailedState: () => Center(
                               child: Text(
-                                'No Data Available In variance',
+                                AppLocalizations.of(context)!
+                                    .noDataAvailableInVariance,
                                 style: kfontstyle(),
                               ),
                             ));
@@ -217,7 +221,7 @@ class _SettlementApprovalDetailScreenState
                     children: [
                       //SizedBox(width: 05,),
                       Text(
-                        "Total Checks",
+                        AppLocalizations.of(context)!.totalChecks,
                         style: countHeading(),
                       ),
                       BlocBuilder<SettlementPaymentDetailBloc,
@@ -264,8 +268,9 @@ class _SettlementApprovalDetailScreenState
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content: const Text("Rejected Successfully"),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(AppLocalizations.of(context)!
+                              .rejectedSuccessfully),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -276,7 +281,7 @@ class _SettlementApprovalDetailScreenState
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -289,15 +294,15 @@ class _SettlementApprovalDetailScreenState
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
-                        content: const Text(
-                            "Something Went Wrong, please Try again later"),
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -332,16 +337,16 @@ class _SettlementApprovalDetailScreenState
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content:
-                              const Text("Do you Want to Reject this request"),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(AppLocalizations.of(context)!
+                              .doYouWantToRejectThisProduct),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 setState(() {});
                                 Navigator.pop(context);
                               },
-                              child: const Text('Cancel'),
+                              child: Text(AppLocalizations.of(context)!.cancel),
                             ),
                             TextButton(
                               onPressed: () {
@@ -357,14 +362,15 @@ class _SettlementApprovalDetailScreenState
 
                                 Navigator.pop(context);
                               },
-                              child: const Text('Proceed'),
+                              child:
+                                  Text(AppLocalizations.of(context)!.proceed),
                             ),
                           ],
                         ),
                       );
                     },
                     child: Text(
-                      "Reject",
+                      AppLocalizations.of(context)!.reject,
                       style: kfontstyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -385,9 +391,9 @@ class _SettlementApprovalDetailScreenState
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: const Text('Alert'),
-                        content: const Text(
-                            "Approved Successfully"), //Text("${response.status}"),
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(AppLocalizations.of(context)!
+                            .approvedSuccessfully), //Text("${response.status}"),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -397,7 +403,7 @@ class _SettlementApprovalDetailScreenState
 
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -409,15 +415,15 @@ class _SettlementApprovalDetailScreenState
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
-                      content: const Text(
-                          "Something Went Wrong, please Try again later"),
+                      title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                          AppLocalizations.of(context)!.somethingWentWrong),
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text('Ok'),
+                          child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
                     ),
@@ -451,16 +457,17 @@ class _SettlementApprovalDetailScreenState
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
-                              content: const Text(
-                                  "Do you Want to Approve this product"),
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .doYouWantToApproveThisProduct),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     setState(() {});
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Cancel'),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -477,14 +484,15 @@ class _SettlementApprovalDetailScreenState
 
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Proceed'),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
                                 ),
                               ],
                             ),
                           );
                         },
                         child: Text(
-                          "Approve",
+                          AppLocalizations.of(context)!.approve,
                           style: kfontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,

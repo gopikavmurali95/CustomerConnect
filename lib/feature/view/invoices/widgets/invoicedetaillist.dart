@@ -258,12 +258,16 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                     Flexible(
                                       flex: 1,
                                       fit: FlexFit.tight,
-                                      child: Text('Type', style: boxHeading()),
+                                      child: Text(
+                                          AppLocalizations.of(context)!.type,
+                                          style: boxHeading()),
                                     ),
                                     Flexible(
                                       flex: 1,
                                       fit: FlexFit.tight,
-                                      child: Text('Value', style: boxHeading()),
+                                      child: Text(
+                                          AppLocalizations.of(context)!.value,
+                                          style: boxHeading()),
                                     ),
                                     // SizedBox(
                                     //   width: 20.h,
@@ -271,8 +275,10 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                     Flexible(
                                       flex: 1,
                                       fit: FlexFit.tight,
-                                      child:
-                                          Text('Discount', style: boxHeading()),
+                                      child: Text(
+                                          AppLocalizations.of(context)!
+                                              .discount,
+                                          style: boxHeading()),
                                     ),
                                     SizedBox(
                                       width: 10.h,
@@ -280,7 +286,9 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                     Flexible(
                                       flex: 1,
                                       fit: FlexFit.tight,
-                                      child: Text('Vat', style: boxHeading()),
+                                      child: Text(
+                                          AppLocalizations.of(context)!.vat,
+                                          style: boxHeading()),
                                     ),
                                     // SizedBox(
                                     //   width: 20.h,
@@ -288,8 +296,10 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                     Flexible(
                                       fit: FlexFit.tight,
                                       flex: 0,
-                                      child:
-                                          Text('Subtotal', style: boxHeading()),
+                                      child: Text(
+                                          AppLocalizations.of(context)!
+                                              .subTotal,
+                                          style: boxHeading()),
                                     ),
                                   ],
                                 ),

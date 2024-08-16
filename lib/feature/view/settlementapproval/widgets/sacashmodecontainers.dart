@@ -1,6 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +41,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                 padding:
                                     const EdgeInsets.only(top: 10, left: 10),
                                 child: Text(
-                                  "Total Cash",
+                                  AppLocalizations.of(context)!.totalCash,
                                   style: kfontstyle(fontSize: 8.sp),
                                 ),
                               ),
@@ -194,7 +194,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                         ),
                         Expanded(
                           child: Container(
-                            height: 180,
+                            //height: 180,
                             //width: MediaQuery.of(context).size.width/3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -209,7 +209,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                     top: 10,
                                   ),
                                   child: Text(
-                                    "Collected",
+                                    AppLocalizations.of(context)!.collected,
                                     style: kfontstyle(fontSize: 8.sp),
                                   ),
                                 ),
@@ -264,7 +264,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                         ),
                         Expanded(
                           child: Container(
-                            height: 180,
+                            //height: 180,
                             //width: MediaQuery.of(context).size.width/3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -277,7 +277,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                                     top: 10,
                                   ),
                                   child: Text(
-                                    "Variance",
+                                    AppLocalizations.of(context)!.variance,
                                     style: kfontstyle(fontSize: 8.sp),
                                   ),
                                 ),
@@ -330,7 +330,8 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                     ),
               paymodeDetailFailedState: () => Center(
                     child: Text(
-                      'No Data Available paymode',
+                      AppLocalizations.of(context)!
+                          .noDataAvailableInPaymentMode,
                       style: kfontstyle(),
                     ),
                   ));

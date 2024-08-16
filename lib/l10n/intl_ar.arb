@@ -285,5 +285,20 @@
   "type": "النوع",
   "remarks": "الملاحظات",
   "slNo": "الرقم التسلسلي",
-  "pleaseEnterSlNo": "الرجاء إدخال الرقم التسلسلي"
+  "pleaseEnterSlNo": "الرجاء إدخال الرقم التسلسلي",
+  "dueon":"مستحق على",
+  "completedon":"اكتمل على",
+  "allTasks":"جميع المهام",
+  "pendingTasks":"المهام المعلقة",
+  "allSurveys":"جميع الاستطلاعات",
+  "pendingSurveys":"المسوحات المعلقة",
+  "neww":"جديد",
+  "allAgreements":"جميع الاتفاقيات",
+  "approvedAgreements":"الاتفاقيات المعتمدة",
+  "allActivities":"جميع الأنشطة",
+  "pendingActivities":"الأنشطة المعلقة",
+  "allRequests":"جميع الطلبات",
+  "requestedRequest":"الطلب المطلوب",
+  "responded":"استجاب",
+  "del_qty": "الكمية المسلّمة"
 }

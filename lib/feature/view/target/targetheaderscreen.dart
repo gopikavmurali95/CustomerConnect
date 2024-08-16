@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TargetHeaderScreen extends StatefulWidget {
   const TargetHeaderScreen({super.key});
@@ -52,7 +54,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
           ),
         ),
         title: Text(
-          "Target",
+          AppLocalizations.of(context)!.target,
+          //"Target",
           style: appHeading(),
         ),
         actions: [
@@ -83,7 +86,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search routes..',
+                    hintText: "${AppLocalizations.of(context)!.searchRoutes}...",
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -173,7 +176,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                       : header.isEmpty
                           ? Center(
                               child: Text(
-                                'No Data Found',
+                                AppLocalizations.of(context)!.noDataFound,
                                 style: kfontstyle(),
                               ),
                             )
@@ -187,7 +190,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "Route Wise Targets",
+                                        AppLocalizations.of(context)!.routeWisetargets,
+                                       // "Route Wise Targets",
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -259,7 +263,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    'Target Amount : ${header[index].targetAmt}',
+                                                                           // "${AppLocalizations.of(context)!.targrtAmount} : header[index].targetAmt}",
+                                                                  '${AppLocalizations.of(context)!.targetAmount} : ${header[index].targetAmt}',
                                                                     style:
                                                                         subTitleTextStyle(),
                                                                   ),
@@ -273,7 +278,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    'Target Quantity : ${header[index].targetQty}',
+                                                                    '${AppLocalizations.of(context)!.targetQuantity}: ${header[index].targetQty}',
                                                                     style:
                                                                         subTitleTextStyle(),
                                                                   ),
@@ -301,7 +306,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                             ),
                   targetHeaderItemsFailed: () => Center(
                     child: Text(
-                      'No Data Available',
+                    AppLocalizations.of(context)!.noDataAvailable,
                       style: kfontstyle(),
                     ),
                   ),

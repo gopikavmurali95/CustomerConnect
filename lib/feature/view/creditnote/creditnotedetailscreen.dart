@@ -673,7 +673,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                             ? true
                                             : false,
                                         decoration: InputDecoration(
-                                          hintText: 'Remarks',
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .remarks,
                                           hintStyle: kfontstyle(
                                             fontSize: 12.sp,
                                             color: widget.creditNote.status ==

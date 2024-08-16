@@ -380,17 +380,20 @@ class _ScheduledReturnDetailScreenState
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Item', style: boxHeading()),
+                          Text(AppLocalizations.of(context)!.item,
+                              style: boxHeading()),
                           SizedBox(
                             width: 10.w,
                           ),
                           Row(
                             children: [
-                              Text('UOM', style: boxHeading()),
+                              Text(AppLocalizations.of(context)!.uom,
+                                  style: boxHeading()),
                               SizedBox(
                                 width: 40.w,
                               ),
-                              Text('Qty', style: boxHeading())
+                              Text(AppLocalizations.of(context)!.qty,
+                                  style: boxHeading())
                             ],
                           )
                         ],

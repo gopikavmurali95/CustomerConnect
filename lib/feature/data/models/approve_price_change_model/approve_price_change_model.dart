@@ -10,8 +10,14 @@ class ApprovePriceChangeModel {
   String? status;
   @JsonKey(name: 'TransID')
   String? transId;
-
-  ApprovePriceChangeModel({this.mode, this.status, this.transId});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  ApprovePriceChangeModel({
+    this.mode,
+    this.status,
+    this.transId,
+    this.arStatus,
+  });
 
   factory ApprovePriceChangeModel.fromJson(Map<String, dynamic> json) {
     return _$ApprovePriceChangeModelFromJson(json);

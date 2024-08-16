@@ -259,9 +259,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "Product Status Update ${response.status} "),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -274,7 +274,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -287,15 +287,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "Product Status Update ${response.status} ,Try Again"),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} ,Try Again"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -357,14 +357,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                   flex: 3,
                                   fit: FlexFit.tight,
-                                  child: Text('Item', style: boxHeading())),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.item,
+                                      style: boxHeading())),
                               /* SizedBox(
                                 width: 140.w,
                               ), */
                               Flexible(
                                 flex: 1,
                                 fit: FlexFit.tight,
-                                child: Text('UOM', style: boxHeading()),
+                                child: Text(AppLocalizations.of(context)!.uom,
+                                    style: boxHeading()),
                               ),
                               /* SizedBox(
                                 width: 18.w,
@@ -372,7 +375,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                 flex: 2,
                                 fit: FlexFit.tight,
-                                child: Text('Req Price', style: boxHeading()),
+                                child: Text(
+                                    AppLocalizations.of(context)!.reqPrice,
+                                    style: boxHeading()),
                               ),
                               /* SizedBox(
                                 width: 35.w,
@@ -380,7 +385,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                 flex: 1,
                                 fit: FlexFit.tight,
-                                child: Text('Appr Price', style: boxHeading()),
+                                child: Text(
+                                    AppLocalizations.of(context)!.apprPrice,
+                                    style: boxHeading()),
                               )
                             ],
                           ),
@@ -820,14 +827,14 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                 children: [
                                                   Expanded(
                                                     child: Text(
-                                                      'Ord Qty : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
+                                                      '${AppLocalizations.of(context)!.ordQty} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      'Std Price : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
+                                                      '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),

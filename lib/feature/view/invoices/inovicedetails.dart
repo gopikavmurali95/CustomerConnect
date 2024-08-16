@@ -260,7 +260,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                            'Type',
+                            AppLocalizations.of(context)!.type,
                             style: boxHeading(),
                           ),
                         ),

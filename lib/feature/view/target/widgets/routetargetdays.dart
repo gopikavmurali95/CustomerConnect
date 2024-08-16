@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RouteTargetDaysWidget extends StatefulWidget {
   final TargetHeaderListModel headr;
@@ -56,7 +57,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                             Column(
                               children: [
                                 Text(
-                                  'Month',
+                                  AppLocalizations.of(context)!.month,
                                   style: kfontstyle(
                                       fontSize: 9.sp,
                                       color: Colors.grey.shade600),
@@ -84,7 +85,8 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Working \n   Days',
+                                      "${ AppLocalizations.of(context)!.working} \n ${ AppLocalizations.of(context)!.days}",
+                                      //'Working \n   Days',
                                       style: kfontstyle(
                                           fontSize: 9.sp,
                                           color: Colors.grey.shade600),
@@ -92,7 +94,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                     Column(
                                       children: [
                                         Text(
-                                          'Total',
+                                          AppLocalizations.of(context)!.total,
                                           style: kfontstyle(
                                               fontSize: 9.sp,
                                               color: Colors.grey.shade600),
@@ -109,7 +111,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                     Column(
                                       children: [
                                         Text(
-                                          'Completed',
+                                           AppLocalizations.of(context)!.completed,
                                           style: kfontstyle(
                                               fontSize: 9.sp,
                                               color: Colors.grey.shade600),
@@ -146,7 +148,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                         ]),
                     child: Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

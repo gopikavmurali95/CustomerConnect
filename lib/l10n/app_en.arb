@@ -285,5 +285,20 @@
   "type": "Type",
   "remarks": "Remarks",
   "slNo": "Sl:No",
-  "pleaseEnterSlNo": "Please Enter Sl:No"
+  "pleaseEnterSlNo": "Please Enter Sl:No",
+  "dueon":"Due on",
+  "completedon":"Completed on",
+  "allTasks":"All Tasks",
+  "pendingTasks":"Pending Tasks",
+  "allSurveys":"All Surveys",
+  "pendingSurveys":"Pending Surveys",
+  "neww":"New",
+  "allAgreements":"All Agreements",
+  "approvedAgreements":"Approved Agreements",
+  "allActivities":"All Activities",
+  "pendingActivities":"Pending Activities",
+  "allRequests":"All Requests",
+  "requestedRequest":"Requested Requests",
+  "responded":"Responded",
+  "del_qty": "Del.Qty"
 }
