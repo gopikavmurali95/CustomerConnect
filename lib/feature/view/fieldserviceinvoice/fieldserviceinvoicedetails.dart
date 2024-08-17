@@ -497,7 +497,9 @@ class FieldServiceInvoiceDetailsState
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(response.status ?? ''),
+                        content: Text(selectedLocale?.languageCode == "en"
+                            ? response.status ?? ''
+                            : response.arStatus ?? ''),
                         actions: [
                           TextButton(
                             onPressed: () {

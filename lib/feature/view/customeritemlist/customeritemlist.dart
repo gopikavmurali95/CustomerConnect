@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -273,7 +274,9 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                 style: boxHeading(),
                               ),
                               SizedBox(
-                                width: 60.w,
+                                width: selectedLocale?.languageCode == "en"
+                                    ? 60.w
+                                    : 50.w,
                               ),
                               Text(
                                 AppLocalizations.of(context)!.price,

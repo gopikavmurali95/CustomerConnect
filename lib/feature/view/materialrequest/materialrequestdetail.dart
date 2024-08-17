@@ -138,7 +138,7 @@ class _MaterialRequestDetailScreenState
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {

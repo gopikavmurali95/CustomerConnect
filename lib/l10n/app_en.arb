@@ -321,5 +321,15 @@
   "mobileNumber": "Mobile Number",
   "whatspNo": "Whatsapp Number",
   "update": "Update",
-  "cantBeEmpty": "can't be empty"
+  "cantBeEmpty": "can't be empty",
+  "close": "Close",
+  "selectdate": "Select date",
+  "pleaseMakeSureYouHaveSelectedaRouteAndDate": "Please make sure you have selected a route and date",
+  "pleaseMakeSureYouHaveSelectedaDate": "Please make sure you have selected a date",
+  "trackCustomers": "Track Customers",
+  "showRoute": "Show Route",
+  "start": "Start",
+  "current": "Current",
+  "time": "Time"
 }
+  

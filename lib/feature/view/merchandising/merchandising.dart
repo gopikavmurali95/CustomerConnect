@@ -9,7 +9,7 @@ import 'package:customer_connect/feature/view/merchandising/widget/customerservi
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +53,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
           ),
         ),
         title: Text(
-          "Merchandising Dashboard",
+          AppLocalizations.of(context)!.merchandisingDashBoard,
+          //"Merchandising Dashboard",
           style: appHeading(),
         ),
         actions: [
@@ -83,7 +84,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                 height: 10.h,
               ),
               Text(
-                'Inventory Monitoring',
+                AppLocalizations.of(context)!.inventoryMonitoring,
+                //'Inventory Monitoring',
                 style: countHeading(),
               ),
               SizedBox(
@@ -120,7 +122,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Out Of Stocks',
+                              AppLocalizations.of(context)!.outOfStocks,
+                              // 'Out Of Stocks',
                               style: kfontstyle(
                                 fontSize: 9.sp,
                                 color: Colors.black87,
@@ -172,7 +175,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                 );
                               },
                               child: Text(
-                                'OOS Items',
+                                "OOS ${AppLocalizations.of(context)!.items}",
+                                // 'OOS Items',
                                 style: kfontstyle(
                                   fontSize: 8.sp,
                                   color: Colors.grey.shade600,
@@ -219,7 +223,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                 );
                               },
                               child: Text(
-                                'OOS Customers',
+                                'OOS ${AppLocalizations.of(context)!.customers}',
                                 style: kfontstyle(
                                   fontSize: 8.sp,
                                   color: Colors.grey.shade600,
@@ -251,7 +255,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                 height: 15.h,
               ),
               Text(
-                'Outlet Activities',
+                AppLocalizations.of(context)!.outletActivities,
+                // 'Outlet Activities',
                 style: countHeading(),
               ),
               SizedBox(
@@ -265,7 +270,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                 height: 10.h,
               ),
               Text(
-                'Customer Services',
+                AppLocalizations.of(context)!.customerServices,
+                // 'Customer Services',
                 style: countHeading(),
               ),
               SizedBox(

@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/view/merchandising/customerservicesecti
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -77,7 +77,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Customer Requests',
+                                AppLocalizations.of(context)!.customerRequests,
+                                // 'Customer Requests',
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -93,7 +94,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'New Requests',
+                              AppLocalizations.of(context)!.newRequests,
+                              // 'New Requests',
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -138,7 +140,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Responded Requests',
+                              AppLocalizations.of(context)!.respondedRequests,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -221,7 +223,9 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Credit Note Requests',
+                                AppLocalizations.of(context)!
+                                    .creditNoteRequests,
+                                // 'Credit Note Requests',
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -237,7 +241,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Requested',
+                              AppLocalizations.of(context)!.requested,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -282,7 +286,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Approved',
+                              AppLocalizations.of(context)!.approved,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -369,7 +373,9 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Dispute Note Requests',
+                                AppLocalizations.of(context)!
+                                    .disputeNoteRequest,
+                                // 'Dispute Note Requests',
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -385,7 +391,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Requested',
+                              AppLocalizations.of(context)!.requested,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -430,7 +436,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Approved',
+                              AppLocalizations.of(context)!.approved,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -513,7 +519,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Return Requests',
+                                AppLocalizations.of(context)!.returnRequest,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -529,7 +535,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Requested',
+                              AppLocalizations.of(context)!.requested,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -574,7 +580,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Approved',
+                              AppLocalizations.of(context)!.approved,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),

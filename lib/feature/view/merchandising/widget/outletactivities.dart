@@ -9,7 +9,7 @@ import 'package:customer_connect/feature/view/merchandising/outletactivitiessect
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -91,7 +91,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Tasks',
+                                AppLocalizations.of(context)!.tasks,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -107,7 +107,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Assigned Tasks',
+                              AppLocalizations.of(context)!.assignedTasks,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -138,7 +138,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Completed Tasks',
+                              AppLocalizations.of(context)!.completedTasks,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -207,7 +207,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Survey',
+                                AppLocalizations.of(context)!.survey,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -223,7 +223,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Assigned Surveys',
+                              AppLocalizations.of(context)!.assignedSurveys,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -254,7 +254,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Completed Surveys',
+                              AppLocalizations.of(context)!.completedSurveys,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -327,7 +327,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Display Agreement',
+                                AppLocalizations.of(context)!.displayAgreement,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -343,7 +343,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'New Agreements',
+                              AppLocalizations.of(context)!.newAgreements,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -374,7 +374,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Active Agreements',
+                              AppLocalizations.of(context)!.activeAgreements,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -443,7 +443,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                'Customer Activities',
+                                AppLocalizations.of(context)!
+                                    .customerActivities,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -459,7 +460,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Open Activities',
+                              AppLocalizations.of(context)!.openActivities,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -490,7 +491,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Completed Activities',
+                              AppLocalizations.of(context)!.completedActivities,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),

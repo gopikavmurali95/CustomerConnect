@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MerchandiseCreditNoteRequestScreen extends StatefulWidget {
   const MerchandiseCreditNoteRequestScreen({
@@ -63,7 +64,8 @@ class _CreditNoteHeaderScreenState
             ),
           ),
           title: Text(
-            "Credit note Requests",
+            AppLocalizations.of(context)!.creditNoteRequests,
+            //"Credit note Requests",
             style: appHeading(),
           ),
         ),
@@ -77,7 +79,7 @@ class _CreditNoteHeaderScreenState
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
-                  hintText: 'Search here..',
+                  hintText: AppLocalizations.of(context)!.searchHere,
                   suffix: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -228,8 +230,8 @@ class _CreditNoteHeaderScreenState
                                     itemCount: 10),
                               )
                             : creditNote.isEmpty
-                                ? const Center(
-                                    child: Text('No Data Available'),
+                                ? Center(
+                                    child: Text(AppLocalizations.of(context)!.noDataAvailable),
                                   )
                                 : Column(
                                     children: [
@@ -242,11 +244,11 @@ class _CreditNoteHeaderScreenState
                                           children: [
                                             Text(
                                               _selectedCreditNoteMode == 'AL'
-                                                  ? 'All Requests'
+                                                  ? AppLocalizations.of(context)!.allRequests
                                                   : _selectedCreditNoteMode ==
                                                           'AP'
-                                                      ? 'ApprovedRequests'
-                                                      : 'Requested Requets',
+                                                      ? AppLocalizations.of(context)!.approvedRequests
+                                                      : AppLocalizations.of(context)!.requestedRequest,
                                               style: countHeading(),
                                             ),
                                             Text(
@@ -333,7 +335,7 @@ class _CreditNoteHeaderScreenState
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: creditNote[index].status ==
-                                                                                'Requested'
+                                                                                AppLocalizations.of(context)!.requested
                                                                             ? const Color(0xfff7f4e2)
                                                                             : const Color(0xffe3f7e2),
                                                                         borderRadius:
@@ -375,8 +377,8 @@ class _CreditNoteHeaderScreenState
                                       ),
                                     ],
                                   ),
-                    merchCreditRequestFailed: () => const Center(
-                          child: Text('No Data Available'),
+                    merchCreditRequestFailed: () =>  Center(
+                          child: Text(AppLocalizations.of(context)!.noDataAvailable),
                         ));
               },
             ),

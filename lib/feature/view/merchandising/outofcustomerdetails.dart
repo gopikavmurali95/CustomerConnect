@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +53,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
           ),
         ),
         title: Text(
-          "Out Of Stock Customers",
+          AppLocalizations.of(context)!.outOfStockCustomers,
           style: appHeading(),
         ),
       ),
@@ -173,7 +173,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                 ),
                               ],
                             ),
-                            hintText: "Search here",
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: TextStyle(
                                 fontSize: 12.sp,
                                 color: Colors.grey,
@@ -201,7 +201,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Out of stock Items",
+                        AppLocalizations.of(context)!.outOfStockItems,
                         style: countHeading(),
                       ),
                       Padding(
@@ -256,7 +256,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                               : details.isEmpty
                                   ? Center(
                                       child: Text(
-                                        'No Data Available',
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
                                         style: kfontstyle(),
                                       ),
                                     )
@@ -341,7 +342,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                             height: MediaQuery.of(context).size.height - 200,
                             child: Center(
                               child: Text(
-                                'No Data Available',
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),

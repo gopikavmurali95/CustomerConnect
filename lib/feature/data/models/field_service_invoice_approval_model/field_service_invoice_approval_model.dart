@@ -6,6 +6,8 @@ part 'field_service_invoice_approval_model.g.dart';
 class FieldServiceInvoiceApprovalModel {
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   FieldServiceInvoiceApprovalModel({this.status});
 

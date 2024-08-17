@@ -8,8 +8,10 @@ class MustSellApproveRespModel {
   String? status;
   @JsonKey(name: 'Res')
   String? res;
+  @JsonKey(name: 'ArStatus')
+  String? arstatus;
 
-  MustSellApproveRespModel({this.status, this.res});
+  MustSellApproveRespModel({this.status, this.res, this.arstatus});
 
   factory MustSellApproveRespModel.fromJson(Map<String, dynamic> json) {
     return _$MustSellApproveRespModelFromJson(json);

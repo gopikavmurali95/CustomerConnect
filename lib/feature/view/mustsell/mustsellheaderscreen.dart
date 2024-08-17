@@ -476,7 +476,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
-                              "${AppLocalizations.of(context)!.msutSellApproval} ${resp.status ?? ''}"),
+                              "${AppLocalizations.of(context)!.msutSellApproval} ${selectedLocale?.languageCode == "en" ? resp.status ?? '' : resp.arstatus}"),
                           actions: [
                             TextButton(
                               onPressed: () {
