@@ -209,3 +209,16 @@
     "whatspNo": "رقم الواتساب",
     "update": "للتحديث"
 }
+
+---TRACKING---
+{
+    "close": "يغلق",
+    "selectdate": "اختر التاريخ",
+    "pleaseMakeSureYouHaveSelectedaRouteAndDate": "يرجى التأكد من تحديد المسار والتاريخ",
+    "pleaseMakeSureYouHaveSelectedaDate": "الرجاء التأكد من تحديد التاريخ",
+    "trackCustomers": "تتبع العملاء",
+    "showRoute": "عرض الطريق",
+    "start": "يبدأ",
+    "current": "حاضِر",
+    "time": "وقت"
+}

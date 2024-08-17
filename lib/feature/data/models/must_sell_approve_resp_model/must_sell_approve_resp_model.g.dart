@@ -11,6 +11,7 @@ MustSellApproveRespModel _$MustSellApproveRespModelFromJson(
     MustSellApproveRespModel(
       status: json['Status'] as String?,
       res: json['Res'] as String?,
+      arstatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$MustSellApproveRespModelToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$MustSellApproveRespModelToJson(
     <String, dynamic>{
       'Status': instance.status,
       'Res': instance.res,
+      'ArStatus': instance.arstatus,
     };

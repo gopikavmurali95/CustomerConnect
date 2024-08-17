@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfilefieldWidget extends StatelessWidget {
   final String title;
@@ -62,7 +63,7 @@ class EditProfilefieldWidget extends StatelessWidget {
                   controller: controller,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "$title can't be empty";
+                      return "$title ${AppLocalizations.of(context)!.cantBeEmpty}";
                     } else {
                       return null;
                     }
