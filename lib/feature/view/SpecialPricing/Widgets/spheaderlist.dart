@@ -155,7 +155,7 @@ class SpPrHeaderList extends StatelessWidget {
                                                       )));
                                         },
                                         child: Text(
-                                         AppLocalizations.of(context)!.details,
+                                          AppLocalizations.of(context)!.details,
                                           style: TextStyle(fontSize: 10.sp),
                                         ),
                                       ),
@@ -163,7 +163,12 @@ class SpPrHeaderList extends StatelessWidget {
                                         width: 5.w,
                                       ),
                                       Transform.flip(
-                                         flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                        flipX: selectedLocale?.languageCode == "en" ? true : false,
+                                         //flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                        // flipX:
+                                        //     selectedLocale?.languageCode == "en"
+                                        //         ? false
+                                        //         : true,
                                         child: const Icon(
                                           Icons.keyboard_arrow_right,
                                           size: 18,

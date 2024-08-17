@@ -6,8 +6,9 @@ part 'asset_removal_approve_out_model.g.dart';
 class AssetRemovalApproveOutModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  AssetRemovalApproveOutModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  AssetRemovalApproveOutModel({this.status, this.arStatus});
 
   factory AssetRemovalApproveOutModel.fromJson(Map<String, dynamic> json) {
     return _$AssetRemovalApproveOutModelFromJson(json);

@@ -24,7 +24,10 @@ class CreditNoteDetailModel {
   String? cndCrdAmount;
   @JsonKey(name: 'Status')
   String? status;
-
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
   CreditNoteDetailModel({
     this.cndId,
     this.invInvoiceId,
@@ -36,6 +39,8 @@ class CreditNoteDetailModel {
     this.crdLQty,
     this.cndCrdAmount,
     this.status,
+    this.arStatus,
+    this.arprdName,
   });
 
   factory CreditNoteDetailModel.fromJson(Map<String, dynamic> json) {

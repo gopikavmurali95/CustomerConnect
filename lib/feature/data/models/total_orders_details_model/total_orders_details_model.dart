@@ -46,6 +46,8 @@ class TotalOrdersDetailsModel {
   String? oddGrandTotal;
   @JsonKey(name: 'odd_TransType')
   String? oddTransType;
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
 
   TotalOrdersDetailsModel({
     this.oddId,
@@ -69,6 +71,7 @@ class TotalOrdersDetailsModel {
     this.oddVatAmount,
     this.oddGrandTotal,
     this.oddTransType,
+    this.arprdName,
   });
 
   factory TotalOrdersDetailsModel.fromJson(Map<String, dynamic> json) {

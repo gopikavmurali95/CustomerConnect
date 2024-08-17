@@ -17,6 +17,7 @@ InvoiceDetailsModel _$InvoiceDetailsModelFromJson(Map<String, dynamic> json) =>
       lowerQty: json['LowerQty'] as String?,
       higherQty: json['HigherQty'] as String?,
       amount: json['Amount'] as String?,
+      prdArName: json['prd_ArName'] as String?,
     );
 
 Map<String, dynamic> _$InvoiceDetailsModelToJson(
@@ -31,4 +32,5 @@ Map<String, dynamic> _$InvoiceDetailsModelToJson(
       'LowerQty': instance.lowerQty,
       'HigherQty': instance.higherQty,
       'Amount': instance.amount,
+      'prd_ArName': instance.prdArName,
     };

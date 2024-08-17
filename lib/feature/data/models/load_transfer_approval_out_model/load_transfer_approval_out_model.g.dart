@@ -10,10 +10,12 @@ LoadTransferApprovalOutModel _$LoadTransferApprovalOutModelFromJson(
         Map<String, dynamic> json) =>
     LoadTransferApprovalOutModel(
       status: json['Status'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$LoadTransferApprovalOutModelToJson(
         LoadTransferApprovalOutModel instance) =>
     <String, dynamic>{
       'Status': instance.status,
+      'ArStatus': instance.arStatus,
     };

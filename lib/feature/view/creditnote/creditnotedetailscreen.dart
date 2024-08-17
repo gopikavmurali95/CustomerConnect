@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreditNoteDetailScreen extends StatefulWidget {
   final CreditNoteHeaderModel creditNote;
@@ -70,7 +71,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
           ),
         ),
         title: Text(
-          "Credit note detail",
+          "${AppLocalizations.of(context)!.credit_memo} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -94,13 +95,13 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                       canPop: false,
                       child: CupertinoAlertDialog(
                         title: Text(
-                          'Alert',
+                          AppLocalizations.of(context)!.alert,
                           style: kfontstyle(),
                         ),
                         content: Text(
                           isApprove == true
-                              ? 'Credit note ${resp.status}'
-                              : 'Credit note ${resp.status}',
+                              ? '${AppLocalizations.of(context)!.credit_memo} ${resp.status}'
+                              : '${AppLocalizations.of(context)!.credit_memo} ${resp.status}',
                           style: kfontstyle(),
                         ),
                         actions: [
@@ -109,7 +110,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
-                            child: const Text('Ok'),
+                            child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
                       ),
@@ -123,11 +124,11 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                   context: context,
                   builder: (context) => CupertinoAlertDialog(
                     title: Text(
-                      'Alert',
+                      AppLocalizations.of(context)!.alert,
                       style: kfontstyle(),
                     ),
                     content: Text(
-                      'Something went wrong , please try again later',
+                      AppLocalizations.of(context)!.somethingWentWrong,
                       style: kfontstyle(),
                     ),
                     actions: [
@@ -135,7 +136,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text('Ok'),
+                        child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
                   ),
@@ -271,7 +272,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: 'Search here..',
+                        hintText: AppLocalizations.of(context)!.searchHere,
                         suffix: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -348,7 +349,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Item',
+                          AppLocalizations.of(context)!.item,
                           style: kfontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
@@ -360,7 +361,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                         Row(
                           children: [
                             Text(
-                              'UOM',
+                              AppLocalizations.of(context)!.uom,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
@@ -370,7 +371,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                               width: 40.w,
                             ),
                             Text(
-                              'Qty',
+                              AppLocalizations.of(context)!.qty,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
@@ -408,7 +409,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                             : details.isEmpty
                                 ? Center(
                                     child: Text(
-                                      'No Data Available',
+                                      AppLocalizations.of(context)!.noDataFound,
                                       style: kfontstyle(),
                                     ),
                                   )
@@ -545,14 +546,15 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(statuslevel.status ?? ''),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Cancel'),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -579,7 +581,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                           ),
                                         );
                                   },
-                                  child: const Text('Proceed'),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
                                 ),
                               ],
                             ),
@@ -609,11 +612,11 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                           context: context,
                           builder: (context) => CupertinoAlertDialog(
                             title: Text(
-                              'Alert',
+                              AppLocalizations.of(context)!.alert,
                               style: kfontstyle(),
                             ),
                             content: Text(
-                              'Something went wrong , please try again later',
+                              AppLocalizations.of(context)!.somethingWentWrong,
                               style: kfontstyle(),
                             ),
                             actions: [
@@ -621,7 +624,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('Ok'),
+                                child: Text(AppLocalizations.of(context)!.ok),
                               ),
                             ],
                           ),
@@ -670,7 +673,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                             ? true
                                             : false,
                                         decoration: InputDecoration(
-                                          hintText: 'Remarks',
+                                          hintText:
+                                              AppLocalizations.of(context)!
+                                                  .remarks,
                                           hintStyle: kfontstyle(
                                             fontSize: 12.sp,
                                             color: widget.creditNote.status ==
@@ -727,7 +732,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                 }
                                               },
                                               child: Text(
-                                                'Reject',
+                                                AppLocalizations.of(context)!
+                                                    .reject,
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w500,
@@ -767,7 +773,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                 }
                                               },
                                               child: Text(
-                                                'Approve',
+                                                AppLocalizations.of(context)!
+                                                    .approve,
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w500,

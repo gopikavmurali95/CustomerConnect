@@ -4,9 +4,11 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ARHeaderListWidget extends StatelessWidget {
   const ARHeaderListWidget({super.key});
@@ -29,8 +31,8 @@ class ARHeaderListWidget extends StatelessWidget {
                         ),
                     itemCount: 10)
                 : arHeaders.isEmpty
-                    ? const Center(
-                        child: Text('No Data Found'),
+                    ? Center(
+                        child: Text(AppLocalizations.of(context)!.noDataFound),
                       )
                     : ListView.separated(
                         physics: const NeverScrollableScrollPhysics(),
@@ -80,7 +82,14 @@ class ARHeaderListWidget extends StatelessWidget {
                                             Expanded(
                                               child: Text(
                                                 overflow: TextOverflow.ellipsis,
-                                                arHeaders[index].cshName ?? "",
+                                                selectedLocale?.languageCode ==
+                                                        "en"
+                                                    ? arHeaders[index]
+                                                            .cshName ??
+                                                        ""
+                                                    : arHeaders[index]
+                                                            .arcshName ??
+                                                        '',
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     color: const Color(
@@ -96,8 +105,14 @@ class ARHeaderListWidget extends StatelessWidget {
                                                 style: subTitleTextStyle()),
                                             Expanded(
                                               child: Text(
-                                                  arHeaders[index].cusName ??
-                                                      "",
+                                                  selectedLocale?.languageCode ==
+                                                          "en"
+                                                      ? arHeaders[index]
+                                                              .cusName ??
+                                                          ""
+                                                      : arHeaders[index]
+                                                              .arcusName ??
+                                                          '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: subTitleTextStyle()),
@@ -105,7 +120,7 @@ class ARHeaderListWidget extends StatelessWidget {
                                           ],
                                         ),
                                         Text(
-                                          '${arHeaders[index].arhPayMode?.trim()} | Route ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
+                                          '${arHeaders[index].arhPayMode?.trim()} | ${AppLocalizations.of(context)!.route} ${arHeaders[index].rotName} | ${arHeaders[index].date} | ${arHeaders[index].time}',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
                                               color: Colors.grey),
@@ -156,7 +171,7 @@ class ARHeaderListWidget extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.4,
               child: Center(
                 child: Text(
-                  'No Data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

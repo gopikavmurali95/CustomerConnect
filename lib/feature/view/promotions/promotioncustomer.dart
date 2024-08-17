@@ -44,7 +44,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
             Navigator.pop(context);
           },
           icon: Transform.flip(
-             flipX: selectedLocale?.languageCode == "en" ? false : true,
+            flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
@@ -52,7 +52,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
           ),
         ),
         title: Text(
-            AppLocalizations.of(context)!.promotioncustomers,
+          AppLocalizations.of(context)!.promotioncustomers,
           //"Promotion Customers",
           style: appHeading(),
         ),
@@ -127,14 +127,16 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                         Row(
                           children: [
                             Text(
-                                AppLocalizations.of(context)!.details,
+                              AppLocalizations.of(context)!.details,
                               style: TextStyle(fontSize: 10.sp),
                             ),
                             SizedBox(
                               width: 5.w,
                             ),
                             Transform.flip(
-                               flipX: selectedLocale?.languageCode == "en" ? false : true,
+                              flipX: selectedLocale?.languageCode == "en"
+                                  ? false
+                                  : true,
                               child: const Icon(
                                 Icons.keyboard_arrow_right,
                                 size: 18,
@@ -200,7 +202,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                               size: 14,
                             ),
                           ),
-                          hintText:  AppLocalizations.of(context)!.searchhere,
+                          hintText: AppLocalizations.of(context)!.searchhere,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -244,7 +246,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                         AppLocalizations.of(context)!.assignedcustomers,
+                        AppLocalizations.of(context)!.assignedcustomers,
                         style: countHeading(),
                       ),
                       BlocBuilder<PromotionCustomerBloc,

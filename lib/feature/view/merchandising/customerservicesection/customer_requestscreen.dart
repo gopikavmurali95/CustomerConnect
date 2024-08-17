@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerRequestScreen extends StatefulWidget {
   const CustomerRequestScreen({
@@ -60,7 +61,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
           ),
         ),
         title: Text(
-          "Customer Request",
+          AppLocalizations.of(context)!.customerRequests,
+         // "Customer Request",
           style: appHeading(),
         ),
       ),
@@ -79,7 +81,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -232,10 +234,10 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                               state.when(
                                 getMerchCustomerRequestHeadersState:
                                     (headers) => headers == null
-                                        ? "All Requests"
+                                        ? AppLocalizations.of(context)!.allRequests
                                         : _customerReqFilter.text,
                                 merchCustomerRequestsFailedState: () =>
-                                    'All Requests',
+                                    AppLocalizations.of(context)!.allRequests,
                               ),
                               // _selectedPriceChangeMode == 'P'
                               //     ? 'Pending Approvals'
@@ -293,7 +295,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                   : headers.isEmpty
                                       ? Center(
                                           child: Text(
-                                            'No Data Available',
+                                           AppLocalizations.of(context)!.noDataAvailable,
                                             style: kfontstyle(),
                                           ),
                                         )
@@ -381,7 +383,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                   BoxDecoration(
                                                                 color: headers[index]
                                                                             .status ==
-                                                                        'Responded'
+                                                                        '${AppLocalizations.of(context)!.responded}'
                                                                     ? const Color(
                                                                         0xffe3f7e2)
                                                                     : const Color(
@@ -423,7 +425,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                             height: MediaQuery.of(context).size.height - 200,
                             child: Center(
                               child: Text(
-                                'No Data Available',
+                               AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),

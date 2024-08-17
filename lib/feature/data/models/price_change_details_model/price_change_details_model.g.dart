@@ -29,6 +29,8 @@ PriceChangeDetailsModel _$PriceChangeDetailsModelFromJson(
       minLowerLimit: json['MinLowerLimit'] as String?,
       maxLowerlimit: json['maxLowerlimit'] as String?,
       pcdApprovalStatus: json['pcd_ApprovalStatus'] as String?,
+      arpcdApprovalStatus: json['Arpcd_ApprovalStatus'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
     );
 
 Map<String, dynamic> _$PriceChangeDetailsModelToJson(
@@ -54,4 +56,6 @@ Map<String, dynamic> _$PriceChangeDetailsModelToJson(
       'MinLowerLimit': instance.minLowerLimit,
       'maxLowerlimit': instance.maxLowerlimit,
       'pcd_ApprovalStatus': instance.pcdApprovalStatus,
+      'Arprd_Name': instance.arprdName,
+      'Arpcd_ApprovalStatus': instance.arpcdApprovalStatus,
     };

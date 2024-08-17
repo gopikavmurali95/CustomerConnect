@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriceChangeHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -62,7 +63,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
           ),
         ),
         title: Text(
-          "Price Change  ",
+          AppLocalizations.of(context)!.price_change,
           style: appHeading(),
         ),
       ),
@@ -85,7 +86,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -228,8 +229,9 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                   itemCount: 10),
                             )
                           : pChange.isEmpty
-                              ? const Center(
-                                  child: Text('No Data Available'),
+                              ? Center(
+                                  child: Text(AppLocalizations.of(context)!
+                                      .noDataFound),
                                 )
                               : Column(
                                   children: [
@@ -402,7 +404,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                 ),
                       priceChangeFailureState: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ));

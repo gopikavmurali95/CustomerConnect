@@ -22,6 +22,8 @@ class InvoiceDetailsModel {
   String? higherQty;
   @JsonKey(name: 'Amount')
   String? amount;
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
 
   InvoiceDetailsModel({
     this.prdId,
@@ -33,6 +35,7 @@ class InvoiceDetailsModel {
     this.lowerQty,
     this.higherQty,
     this.amount,
+    this.prdArName,
   });
 
   factory InvoiceDetailsModel.fromJson(Map<String, dynamic> json) {

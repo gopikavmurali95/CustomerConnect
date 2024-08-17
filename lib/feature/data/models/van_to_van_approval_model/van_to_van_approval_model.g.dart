@@ -10,10 +10,12 @@ VanToVanApprovalModel _$VanToVanApprovalModelFromJson(
         Map<String, dynamic> json) =>
     VanToVanApprovalModel(
       status: json['Status'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$VanToVanApprovalModelToJson(
         VanToVanApprovalModel instance) =>
     <String, dynamic>{
       'Status': instance.status,
+      'ArStatus': instance.arStatus,
     };

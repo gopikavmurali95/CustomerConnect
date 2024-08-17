@@ -13,10 +13,12 @@ import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_tran
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadTransferDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -85,7 +87,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
           ),
         ),
         title: Text(
-          "Load transfer detail",
+          "${AppLocalizations.of(context)!.load_transfer} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -195,7 +197,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 5),
                             child: Text(
-                              widget.header.ltrApprovalStatus ?? '',
+                              selectedLocale?.languageCode == "en"
+                                  ? widget.header.ltrApprovalStatus ?? ''
+                                  : widget.header.ltrArApprovalStatus ?? '',
                               style: kfontstyle(
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w400,
@@ -224,7 +228,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                     style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     decoration: InputDecoration(
                       isDense: true,
-                      hintText: 'Search here..',
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       suffix: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -304,7 +308,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Item',
+                              AppLocalizations.of(context)!.item,
                               style: kfontstyle(
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
@@ -316,7 +320,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                             Row(
                               children: [
                                 Text(
-                                  'UOM',
+                                  AppLocalizations.of(context)!.uom,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
@@ -326,7 +330,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                   width: 40.w,
                                 ),
                                 Text(
-                                  'Qty',
+                                  AppLocalizations.of(context)!.qty,
                                   style: kfontstyle(
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
@@ -413,16 +417,21 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: const Text('Alert'),
-                                                content:
-                                                    Text("${response.status}"),
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    "${AppLocalizations.of(context)!.load_transfer}  ${response.status}"),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                       Navigator.pop(context);
                                                     },
-                                                    child: const Text('Ok'),
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
                                                   ),
                                                 ],
                                               ),
@@ -473,15 +482,21 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                             context: context,
                                             builder: (context) =>
                                                 CupertinoAlertDialog(
-                                              title: const Text('Alert'),
-                                              content: const Text(
-                                                  "Something Went Wrong, please Try again later"),
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .somethingWentWrong),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                   },
-                                                  child: const Text('Ok'),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
                                                 ),
                                               ],
                                             ),
@@ -515,8 +530,15 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      details[index].prdName ??
-                                                          '',
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? details[index]
+                                                                  .prdName ??
+                                                              ''
+                                                          : details[index]
+                                                                  .prdArName ??
+                                                              '',
                                                       style: kfontstyle(
                                                           fontSize: 12.sp,
                                                           fontWeight:
@@ -689,7 +711,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                               },
                                                             ),
                                                             Text(
-                                                              'Approve',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .approve,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -748,7 +772,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                               },
                                                             ),
                                                             Text(
-                                                              'Reject',
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .reject,
                                                               style:
                                                                   kfontstyle(),
                                                             )
@@ -772,7 +798,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                 ),
                           loadTransferDetailFailedState: () => Center(
                             child: Text(
-                              'No Data Available',
+                              AppLocalizations.of(context)!.noDataAvailable,
                               style: kfontstyle(),
                             ),
                           ),
@@ -815,16 +841,21 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Please make sure you have approved or rejected all the products"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                               // Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -834,16 +865,21 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Do you Want to Proceed"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               setState(() {});
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Cancel'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
                                           ),
                                           TextButton(
                                             onPressed: () {
@@ -873,7 +909,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     ),
                                                   );
                                             },
-                                            child: const Text('Proceed'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
                                           ),
                                         ],
                                       ),
@@ -882,7 +920,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                 }
                               },
                               child: Text(
-                                'Confirm',
+                                AppLocalizations.of(context)!.confirm,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ReturnApprovalHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -59,7 +60,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
           ),
         ),
         title: Text(
-          "Return",
+          AppLocalizations.of(context)!.ret_urn,
           style: appHeading(),
         ),
       ),
@@ -81,7 +82,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -224,8 +225,9 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                 itemCount: 10),
                           )
                         : headers.isEmpty
-                            ? const Center(
-                                child: Text('No Data Found'),
+                            ? Center(
+                                child: Text(
+                                    AppLocalizations.of(context)!.noDataFound),
                               )
                             : Column(
                                 children: [
@@ -235,8 +237,10 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                     children: [
                                       Text(
                                         _selectedeMode == 'P'
-                                            ? 'Pending Approvals'
-                                            : 'Approved Requests',
+                                            ? AppLocalizations.of(context)!
+                                                .pendingApprovals
+                                            : AppLocalizations.of(context)!
+                                                .actionTakenRequests,
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -389,7 +393,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                               ),
                     returnHeaderFailedstate: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

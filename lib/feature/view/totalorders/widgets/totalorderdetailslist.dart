@@ -2,9 +2,11 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/total_orders_model/total_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_details/total_orders_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TotalOrderDetailsList extends StatelessWidget {
   final TotalOrdersModel totalorders;
@@ -45,8 +47,9 @@ class TotalOrderDetailsList extends StatelessWidget {
                                     itemCount: 10),
                               )
                             : orderdetails.isEmpty
-                                ? const Center(
-                                    child: Text('No Data Found'),
+                                ? Center(
+                                    child: Text(AppLocalizations.of(context)!
+                                        .noDataFound),
                                   )
                                 : Column(
                                     children: [
@@ -80,9 +83,11 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                       style:
                                                                           loadTextStyle()),
                                                                   Text(
-                                                                      orderdetails[index]
-                                                                              .prdName ??
-                                                                          '',
+                                                                      selectedLocale?.languageCode == "en"
+                                                                          ? orderdetails[index].prdName ??
+                                                                              ''
+                                                                          : orderdetails[index].arprdName ??
+                                                                              '',
                                                                       style:
                                                                           subTitleTextStyle()),
                                                                 ],
@@ -189,7 +194,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                                   child: Row(
                                                                     children: [
                                                                       Text(
-                                                                        'AED ',
+                                                                        '${AppLocalizations.of(context)!.aed} ',
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
@@ -238,7 +243,8 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  'Sub Total',
+                                                  AppLocalizations.of(context)!
+                                                      .sub_total,
                                                   style: subTitleTextStyle(),
                                                 ),
                                                 Text(
@@ -253,7 +259,8 @@ class TotalOrderDetailsList extends StatelessWidget {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  'VAT',
+                                                  AppLocalizations.of(context)!
+                                                      .vat,
                                                   style: subTitleTextStyle(),
                                                 ),
                                                 Text(
@@ -271,7 +278,7 @@ class TotalOrderDetailsList extends StatelessWidget {
                       height: MediaQuery.of(context).size.height / 2,
                       child: Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),

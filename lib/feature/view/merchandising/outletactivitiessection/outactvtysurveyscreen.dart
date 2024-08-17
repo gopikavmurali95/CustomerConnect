@@ -7,7 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class OutActvitySurveyHeaderScreen extends StatefulWidget {
   const OutActvitySurveyHeaderScreen({
     super.key,
@@ -62,7 +62,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
           ),
         ),
         title: Text(
-          "Survey",
+         AppLocalizations.of(context)!.survey,
           style: appHeading(),
         ),
       ),
@@ -79,7 +79,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                     kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                 decoration: InputDecoration(
                   isDense: true,
-                  hintText: 'Search here..',
+                  hintText: AppLocalizations.of(context)!.searchHere,
                   suffix: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -226,8 +226,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                 itemCount: 10),
                           )
                         : survey.isEmpty
-                            ? const Center(
-                                child: Text('No Data Available'),
+                            ?  Center(
+                                child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                               )
                             : Column(
                                 children: [
@@ -240,10 +240,10 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                       children: [
                                         Text(
                                           selectedMerchSurveyMode == 'AL'
-                                              ? 'All Surveys'
+                                              ? AppLocalizations.of(context)!.allSurveys
                                               : selectedMerchSurveyMode == 'C'
-                                                  ? 'Completed Surveys'
-                                                  : 'Pending Surveys',
+                                                  ? AppLocalizations.of(context)!.completedSurveys
+                                                  : AppLocalizations.of(context)!.pendingSurveys,
                                           style: countHeading(),
                                         ),
                                         Padding(
@@ -313,7 +313,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                           ],
                                                         ),
                                                         Text(
-                                                          "Due on: ${survey[index].dueOn} ",
+                                                          "${AppLocalizations.of(context)!.dueon}: ${survey[index].dueOn} ",
                                                           style: kfontstyle(
                                                               fontSize: 9.sp,
                                                               color:
@@ -328,7 +328,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                     decoration: BoxDecoration(
                                                       color: survey[index]
                                                                   .status! ==
-                                                              "Pending"
+                                                              AppLocalizations.of(context)!.pending
                                                           ? const Color(
                                                               0xfff7f4e2)
                                                           : const Color(
@@ -361,8 +361,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                   )
                                 ],
                               ),
-                    getMerchandisingSurveyFailedState: () => const Center(
-                          child: Text('No Data Available'),
+                    getMerchandisingSurveyFailedState: () => Center(
+                          child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                         ));
               },
             ),

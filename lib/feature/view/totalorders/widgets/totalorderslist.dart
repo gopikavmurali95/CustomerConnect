@@ -3,9 +3,11 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/totalorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TotalOrderList extends StatelessWidget {
   final LoginUserModel user;
@@ -77,7 +79,9 @@ class TotalOrderList extends StatelessWidget {
                                         Expanded(
                                           child: Text(
                                             overflow: TextOverflow.ellipsis,
-                                            header[index].cusName ?? '',
+                                            selectedLocale?.languageCode == "en"
+                                                ? header[index].cusName ?? ''
+                                                : header[index].arcusName ?? '',
                                             style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: const Color(0xff413434)),
@@ -95,7 +99,9 @@ class TotalOrderList extends StatelessWidget {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            header[index].cshName ?? '',
+                                            selectedLocale?.languageCode == "en"
+                                                ? header[index].cshName ?? ''
+                                                : header[index].arcshName ?? '',
                                             overflow: TextOverflow.ellipsis,
                                             style: kfontstyle(fontSize: 12.sp),
                                           ),
@@ -147,7 +153,7 @@ class TotalOrderList extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
                 child: Text(
-                  'No data Available',
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

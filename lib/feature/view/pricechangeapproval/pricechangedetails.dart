@@ -19,6 +19,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriceChangeDetail extends StatefulWidget {
   final PriceChangeHeaderModel priceChangeApprovel;
@@ -86,7 +87,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
           ),
         ),
         title: Text(
-          "Price Change Detail",
+          "${AppLocalizations.of(context)!.price_change} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
       ),
@@ -180,7 +181,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                     style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     decoration: InputDecoration(
                       isDense: true,
-                      hintText: 'Search here..',
+                      hintText: AppLocalizations.of(context)!.searchhere,
                       suffix: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -258,9 +259,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "Product Status Update ${response.status} "),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -273,7 +274,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     Navigator.pop(context);
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -286,15 +287,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                           showCupertinoDialog(
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
+                              title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "Product Status Update ${response.status} ,Try Again"),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} ,Try Again"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('Ok'),
+                                  child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
                             ),
@@ -326,15 +327,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                       showCupertinoDialog(
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
-                          title: const Text('Alert'),
-                          content: const Text(
-                              "Something Went Wrong, please Try again later"),
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              AppLocalizations.of(context)!.somethingWentWrong),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text('Ok'),
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
                         ),
@@ -356,14 +357,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                   flex: 3,
                                   fit: FlexFit.tight,
-                                  child: Text('Item', style: boxHeading())),
+                                  child: Text(
+                                      AppLocalizations.of(context)!.item,
+                                      style: boxHeading())),
                               /* SizedBox(
                                 width: 140.w,
                               ), */
                               Flexible(
                                 flex: 1,
                                 fit: FlexFit.tight,
-                                child: Text('UOM', style: boxHeading()),
+                                child: Text(AppLocalizations.of(context)!.uom,
+                                    style: boxHeading()),
                               ),
                               /* SizedBox(
                                 width: 18.w,
@@ -371,7 +375,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                 flex: 2,
                                 fit: FlexFit.tight,
-                                child: Text('Req Price', style: boxHeading()),
+                                child: Text(
+                                    AppLocalizations.of(context)!.reqPrice,
+                                    style: boxHeading()),
                               ),
                               /* SizedBox(
                                 width: 35.w,
@@ -379,7 +385,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               Flexible(
                                 flex: 1,
                                 fit: FlexFit.tight,
-                                child: Text('Appr Price', style: boxHeading()),
+                                child: Text(
+                                    AppLocalizations.of(context)!.apprPrice,
+                                    style: boxHeading()),
                               )
                             ],
                           ),
@@ -440,8 +448,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                     ),
                                   )
                                 : pdet.isEmpty
-                                    ? const Center(
-                                        child: Text('No Data Available'),
+                                    ? Center(
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .noDataFound),
                                       )
                                     : ListView.separated(
                                         shrinkWrap: true,
@@ -817,14 +827,14 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                 children: [
                                                   Expanded(
                                                     child: Text(
-                                                      'Ord Qty : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
+                                                      '${AppLocalizations.of(context)!.ordQty} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      'Std Price : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
+                                                      '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
                                                       style:
                                                           subTitleTextStyle(),
                                                     ),
@@ -1038,7 +1048,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     },
                                                                   ),
                                                                   Text(
-                                                                    'Approve',
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .approve,
                                                                     style:
                                                                         kfontstyle(),
                                                                   )
@@ -1103,7 +1115,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     },
                                                                   ),
                                                                   Text(
-                                                                    'Reject',
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .reject,
                                                                     style:
                                                                         kfontstyle(),
                                                                   )
@@ -1128,7 +1142,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                       ),
                             priceChangedetailsFailed: () => Center(
                               child: Text(
-                                'No Data Available',
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),
@@ -1174,16 +1188,21 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Please make sure you have approved or rejected all the products"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                               // Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -1193,15 +1212,20 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content:
-                                            const Text("Plese select a reason"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .selectReason),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -1211,16 +1235,21 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Do you Want to Proceed"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               setState(() {});
                                               Navigator.pop(context);
                                             },
-                                            child: const Text('Cancel'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
                                           ),
                                           TextButton(
                                             onPressed: () {
@@ -1251,7 +1280,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                     ),
                                                   );
                                             },
-                                            child: const Text('Proceed'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
                                           ),
                                         ],
                                       ),
@@ -1260,7 +1291,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 }
                               },
                               child: Text(
-                                'Confirm',
+                                AppLocalizations.of(context)!.confirm,
                                 style: kfontstyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,

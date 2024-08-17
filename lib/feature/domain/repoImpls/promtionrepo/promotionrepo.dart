@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -22,7 +23,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
       final response = await http.post(Uri.parse(baseUrl + promotionheaderurl),
           body: inpromtionIn.toJson());
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        log('promotion header response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> promotionheaderdata = json['result'];
         List<PromotionHeaderModel> promotions = promotionheaderdata

@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/imagepreveiewscreen.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -97,7 +98,9 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              widget.arheader.cusName ?? '',
+                              selectedLocale?.languageCode == "en"
+                                  ? widget.arheader.cusName ?? ''
+                                  : widget.arheader.arcusName ?? '',
                               overflow: TextOverflow.ellipsis,
                               style: subTitleTextStyle(),
                             ),
@@ -262,7 +265,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                           Row(
                             children: [
                               Text(
-                                '${AppLocalizations.of(context)!.chequeDate} :',
+                                '${AppLocalizations.of(context)!.cheque} ${AppLocalizations.of(context)!.date} :',
                                 style: kfontstyle(fontSize: 12.sp),
                               ),
                               SizedBox(

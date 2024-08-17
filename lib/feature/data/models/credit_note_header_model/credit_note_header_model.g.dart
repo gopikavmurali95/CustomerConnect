@@ -24,6 +24,10 @@ CreditNoteHeaderModel _$CreditNoteHeaderModelFromJson(
       status: json['Status'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arcnhCreditType: json['Arcnh_CreditType'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      arusrName: json['Arusr_Name'] as String?,
     );
 
 Map<String, dynamic> _$CreditNoteHeaderModelToJson(
@@ -44,4 +48,8 @@ Map<String, dynamic> _$CreditNoteHeaderModelToJson(
       'Status': instance.status,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'Arcus_Name': instance.arcusName,
+      'Arusr_Name': instance.arusrName,
+      'Arcnh_CreditType': instance.arcnhCreditType,
+      'ArStatus': instance.arStatus,
     };

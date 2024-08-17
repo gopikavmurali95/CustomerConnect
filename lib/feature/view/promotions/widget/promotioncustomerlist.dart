@@ -121,7 +121,7 @@ class PromotionCustomerList extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             child: Center(
               child: Text(
-                 AppLocalizations.of(context)!.noDataAvailable,
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

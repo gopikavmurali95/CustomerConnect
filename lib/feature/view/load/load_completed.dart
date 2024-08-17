@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadCompleted extends StatefulWidget {
   final LoginUserModel user;
@@ -82,7 +83,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
         //   child: SvgPicture.asset("assets/svg/path.svg",height: 60,fit: BoxFit.scaleDown,),
         // ),
         title: Text(
-          "Load In Completed",
+          "${AppLocalizations.of(context)!.load_in} ${AppLocalizations.of(context)!.completed}",
           style: appHeading(),
         ),
         actions: [
@@ -210,7 +211,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                       padding:
                           const EdgeInsets.only(left: 20.0, right: 20, top: 10),
                       child: Text(
-                        "Completed",
+                        AppLocalizations.of(context)!.completed,
                         style: countHeading(),
                       ),
                     ),

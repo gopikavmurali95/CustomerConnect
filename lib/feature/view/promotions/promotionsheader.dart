@@ -70,8 +70,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
           ),
         ),
         title: Text(
-           AppLocalizations.of(context)!.promotions,
-         // "Promotions",
+          AppLocalizations.of(context)!.promotions,
+          // "Promotions",
           style: appHeading(),
         ),
         actions: [
@@ -163,7 +163,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                           size: 14,
                         ),
                       ),
-                      hintText:  AppLocalizations.of(context)!.searchhere,
+                      hintText: AppLocalizations.of(context)!.searchhere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -197,7 +197,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                   AppLocalizations.of(context)!.allpromotions,
+                  AppLocalizations.of(context)!.allpromotions,
                   // 'All promotions',
                   style: countHeading(),
                 ),
@@ -303,7 +303,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                   SizedBox(
                                                     width: 200.w,
                                                     child: Text(
-                                                      '${promoheader[index].prmName}',
+                                                      //selectedLocale?.languageCode == "en" ? promoheader[index].prmName ?? '' : promoheader[index].arPrmName ?? '',
+                                                      '${promoheader[index].arPname}',
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       maxLines: 2,
@@ -352,8 +353,10 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     MainAxisAlignment.end,
                                                 children: [
                                                   Text(
-                                                   AppLocalizations.of(context)!.details,
-                                                  //'Details',
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .details,
+                                                    //'Details',
                                                     style: TextStyle(
                                                         fontSize: 10.sp),
                                                   ),
@@ -363,7 +366,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                   Transform.flip(
                                                      flipX: selectedLocale?.languageCode == "en" ? true : false,
                                                     child: const Icon(
-                                                      Icons.keyboard_arrow_right,
+                                                      Icons
+                                                          .keyboard_arrow_right,
                                                       size: 18,
                                                     ),
                                                   )
@@ -385,7 +389,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                       height: MediaQuery.of(context).size.height / 1.5,
                       child: Center(
                         child: Text(
-                           AppLocalizations.of(context)!.noDataAvailable,
+                          AppLocalizations.of(context)!.noDataAvailable,
                           // 'No Data Available',
                           style: kfontstyle(),
                         ),

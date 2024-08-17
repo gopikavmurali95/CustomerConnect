@@ -43,6 +43,11 @@ class PriceChangeDetailsModel {
   @JsonKey(name: 'pcd_ApprovalStatus')
   String? pcdApprovalStatus;
 
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
+  @JsonKey(name: 'Arpcd_ApprovalStatus')
+  String? arpcdApprovalStatus;
+
   PriceChangeDetailsModel({
     this.pcdId,
     this.pcdPchId,
@@ -64,6 +69,8 @@ class PriceChangeDetailsModel {
     this.minLowerLimit,
     this.maxLowerlimit,
     this.pcdApprovalStatus,
+    this.arpcdApprovalStatus,
+    this.arprdName,
   });
 
   factory PriceChangeDetailsModel.fromJson(Map<String, dynamic> json) {

@@ -7,10 +7,12 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssetRemovalApprovalScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -58,7 +60,7 @@ class _AssetRemovalApprovalScreenState
           ),
         ),
         title: Text(
-          "Asset removal",
+          AppLocalizations.of(context)!.remove_assets,
           style: appHeading(),
         ),
       ),
@@ -80,7 +82,7 @@ class _AssetRemovalApprovalScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchhere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -152,7 +154,7 @@ class _AssetRemovalApprovalScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Pending Approvals",
+                    AppLocalizations.of(context)!.pendingApprovals,
                     style: countHeading(),
                   ),
                   BlocBuilder<AssetRemovelRequestHeaderBloc,
@@ -255,9 +257,15 @@ class _AssetRemovalApprovalScreenState
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              headers[index]
-                                                                      .rsnName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? headers[index]
+                                                                          .rsnName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .rsnArName ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                 fontSize: 12.sp,
                                                                 color: const Color(
@@ -283,9 +291,12 @@ class _AssetRemovalApprovalScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .astName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].astName ??
+                                                                            ''
+                                                                        : headers[index].astArName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -312,9 +323,12 @@ class _AssetRemovalApprovalScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .cusName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].cusName ??
+                                                                            ''
+                                                                        : headers[index].cusArName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -353,16 +367,16 @@ class _AssetRemovalApprovalScreenState
                                                                             (context) =>
                                                                                 CupertinoAlertDialog(
                                                                           title:
-                                                                              const Text('Alert'),
+                                                                              Text(AppLocalizations.of(context)!.alert),
                                                                           content:
-                                                                              Text(response.status ?? ''),
+                                                                              Text("${AppLocalizations.of(context)!.remove_assets} ${selectedLocale?.languageCode == "en" ? response.status ?? '' : response.arStatus ?? ''}"),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
                                                                                 context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
-                                                                              child: const Text('Proceed'),
+                                                                              child: Text(AppLocalizations.of(context)!.alert),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -380,10 +394,10 @@ class _AssetRemovalApprovalScreenState
                                                                       builder:
                                                                           (context) =>
                                                                               CupertinoAlertDialog(
-                                                                        title: const Text(
-                                                                            'Alert'),
+                                                                        title: Text(
+                                                                            AppLocalizations.of(context)!.alert),
                                                                         content:
-                                                                            const Text("something went wrong, please try again later"),
+                                                                            Text(AppLocalizations.of(context)!.somethingWentWrong),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed:
@@ -392,7 +406,7 @@ class _AssetRemovalApprovalScreenState
                                                                               Navigator.pop(context);
                                                                             },
                                                                             child:
-                                                                                const Text('Ok'),
+                                                                                Text(AppLocalizations.of(context)!.ok),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -460,15 +474,15 @@ class _AssetRemovalApprovalScreenState
                                                                               showCupertinoDialog(
                                                                                 context: context,
                                                                                 builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Do you Want to Approve this product"),
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () {
                                                                                         setState(() {});
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Cancel'),
+                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () {
@@ -479,7 +493,7 @@ class _AssetRemovalApprovalScreenState
                                                                                         context.read<AssetRemovalApprvalBloc>().add(
                                                                                               ApproveAssetRemovalEvent(
                                                                                                 approve: AssetRemovalApprovalInModel(
-                                                                                                  userId: /* widget.user.usrId */ '64',
+                                                                                                  userId: widget.user.usrId ?? '',
                                                                                                   arqId: headers[index].arqId,
                                                                                                   ascId: headers[index].arqAscId,
                                                                                                 ),
@@ -488,7 +502,7 @@ class _AssetRemovalApprovalScreenState
 
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Proceed'),
+                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -496,7 +510,7 @@ class _AssetRemovalApprovalScreenState
                                                                             },
                                                                           ),
                                                                           Text(
-                                                                            'Approve',
+                                                                            AppLocalizations.of(context)!.approve,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
@@ -530,15 +544,15 @@ class _AssetRemovalApprovalScreenState
                                                                               showCupertinoDialog(
                                                                                 context: context,
                                                                                 builder: (context) => CupertinoAlertDialog(
-                                                                                  title: const Text('Alert'),
-                                                                                  content: const Text("Do you Want to Reject this product"),
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () {
                                                                                         setState(() {});
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Cancel'),
+                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () {
@@ -549,7 +563,7 @@ class _AssetRemovalApprovalScreenState
                                                                                         context.read<AssetRemovalApprvalBloc>().add(
                                                                                               AssetRemovalRejectEvent(
                                                                                                 reject: AssetRemovalApprovalInModel(
-                                                                                                  userId: /* widget.user.usrId */ '64',
+                                                                                                  userId: widget.user.usrId ?? '',
                                                                                                   arqId: headers[index].arqId,
                                                                                                   ascId: headers[index].arqAscId,
                                                                                                 ),
@@ -557,21 +571,15 @@ class _AssetRemovalApprovalScreenState
                                                                                             );
                                                                                         Navigator.pop(context);
                                                                                       },
-                                                                                      child: const Text('Proceed'),
+                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
                                                                                     ),
                                                                                   ],
                                                                                 ),
                                                                               );
-
-                                                                              /* context
-                                                                                                                                                                                            .read<
-                                                                                                                                                                                                AapprovalOrRejectRadioCubit>()
-                                                                                                                                                                                            .changeApprovalStatus(
-                                                                                                                                                                                                statuslist[index]); */
                                                                             },
                                                                           ),
                                                                           Text(
-                                                                            'Reject',
+                                                                            AppLocalizations.of(context)!.reject,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
@@ -597,7 +605,7 @@ class _AssetRemovalApprovalScreenState
                                   itemCount: headers.length),
                       assetRemovalRequestHeaderFailedState: () => Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
                       ),

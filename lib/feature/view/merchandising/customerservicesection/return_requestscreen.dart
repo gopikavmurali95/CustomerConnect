@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MerchandiseReturnRequestScreen extends StatefulWidget {
   const MerchandiseReturnRequestScreen({
@@ -64,7 +65,7 @@ class _CreditNoteHeaderScreenState
             ),
           ),
           title: Text(
-            "Return Requests",
+            AppLocalizations.of(context)!.returnRequest,
             style: appHeading(),
           ),
         ),
@@ -78,7 +79,7 @@ class _CreditNoteHeaderScreenState
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
-                  hintText: 'Search here..',
+                  hintText: AppLocalizations.of(context)!.searchHere,
                   suffix: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -231,8 +232,8 @@ class _CreditNoteHeaderScreenState
                                     itemCount: 10),
                               )
                             : returnData.isEmpty
-                                ? const Center(
-                                    child: Text('No Data Available'),
+                                ?  Center(
+                                    child: Text(AppLocalizations.of(context)!.noDataAvailable),
                                   )
                                 : Column(
                                     children: [
@@ -245,11 +246,11 @@ class _CreditNoteHeaderScreenState
                                           children: [
                                             Text(
                                               _selectedReturnReqMode == 'AL'
-                                                  ? 'All Requests'
+                                                  ? AppLocalizations.of(context)!.allRequests
                                                   : _selectedReturnReqMode ==
                                                           'AP'
-                                                      ? 'Approved Requests'
-                                                      : 'Requested Request',
+                                                      ? AppLocalizations.of(context)!.approvedRequests
+                                                      : AppLocalizations.of(context)!.requestedRequest,
                                               style: countHeading(),
                                             ),
                                             Text(
@@ -342,7 +343,7 @@ class _CreditNoteHeaderScreenState
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: returnData[index].status ==
-                                                                              'Requested'
+                                                                              AppLocalizations.of(context)!.requested
                                                                           ? const Color(
                                                                               0xfff7f4e2)
                                                                           : const Color(
@@ -388,8 +389,8 @@ class _CreditNoteHeaderScreenState
                                       ),
                                     ],
                                   ),
-                    merchReturnRequestDataFailed: () => const Center(
-                          child: Text('No Data Available'),
+                    merchReturnRequestDataFailed: () =>  Center(
+                          child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                         ));
               },
             ),

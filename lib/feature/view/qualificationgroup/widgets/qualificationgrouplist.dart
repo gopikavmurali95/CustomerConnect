@@ -31,7 +31,7 @@ class QualificationGroupList extends StatelessWidget {
               : groupdata.isEmpty
                   ? Center(
                       child: Text(
-                         AppLocalizations.of(context)!.noDataAvailable,
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     )
@@ -41,7 +41,7 @@ class QualificationGroupList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                               AppLocalizations.of(context)!.items,
+                              AppLocalizations.of(context)!.items,
                               style: countHeading(),
                             ),
                             Text(
@@ -81,7 +81,7 @@ class QualificationGroupList extends StatelessWidget {
                     ),
           groupWiseDataFailed: () => Center(
             child: Text(
-               AppLocalizations.of(context)!.noDataAvailable,
+              AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),

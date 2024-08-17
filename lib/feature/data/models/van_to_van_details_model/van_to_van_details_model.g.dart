@@ -23,6 +23,8 @@ VanToVanDetailsModel _$VanToVanDetailsModelFromJson(
       adjHQty: json['AdjHQty'] as String?,
       adjLQty: json['AdjLQty'] as String?,
       status: json['Status'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      prdArName: json['prd_ArName'] as String?,
     );
 
 Map<String, dynamic> _$VanToVanDetailsModelToJson(
@@ -42,4 +44,6 @@ Map<String, dynamic> _$VanToVanDetailsModelToJson(
       'AdjHQty': instance.adjHQty,
       'AdjLQty': instance.adjLQty,
       'Status': instance.status,
+      'prd_ArName': instance.prdArName,
+      'ArStatus': instance.arStatus,
     };

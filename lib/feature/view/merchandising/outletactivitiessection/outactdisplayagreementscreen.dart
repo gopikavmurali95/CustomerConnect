@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutActDisplayAgreementScreen extends StatefulWidget {
   const OutActDisplayAgreementScreen({
@@ -63,7 +64,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
           ),
         ),
         title: Text(
-          "Display Agreement",
+          AppLocalizations.of(context)!.displayAgreement,
           style: appHeading(),
         ),
       ),
@@ -82,7 +83,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -232,8 +233,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                       itemCount: 10),
                                 )
                               : dispData.isEmpty
-                                  ? const Center(
-                                      child: Text('No Data Available'),
+                                  ? Center(
+                                      child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                                     )
                                   : Column(
                                       children: [
@@ -247,14 +248,14 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                               Text(
                                                 selecteddispAgreementMode ==
                                                         'AL'
-                                                    ? 'All Agreements'
+                                                    ? AppLocalizations.of(context)!.allAgreements
                                                     : selecteddispAgreementMode ==
                                                             'NW'
-                                                        ? 'NewAgreements'
+                                                        ? AppLocalizations.of(context)!.newAgreements
                                                         : selecteddispAgreementMode ==
                                                                 'AP'
-                                                            ? 'Approved Agreements'
-                                                            : 'Active Agreements',
+                                                            ? AppLocalizations.of(context)!.approvedAgreements
+                                                            : AppLocalizations.of(context)!.activeAgreements,
                                                 style: countHeading(),
                                               ),
                                               Padding(
@@ -330,7 +331,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                                                       0xff413434)),
                                                             ),
                                                             Text(
-                                                              "Start: ${dispData[index].startDate} | End: ${dispData[index].endDate}",
+                                                              "${AppLocalizations.of(context)!.start}: ${dispData[index].startDate} | ${AppLocalizations.of(context)!.end}: ${dispData[index].endDate}",
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       9.sp,
@@ -347,7 +348,7 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                                             BoxDecoration(
                                                           color: dispData[index]
                                                                       .status! ==
-                                                                  "New"
+                                                                  AppLocalizations.of(context)!.neww
                                                               ? const Color(
                                                                   0xfff7f4e2)
                                                               : const Color(
@@ -383,8 +384,8 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                         ))
                                       ],
                                     ),
-                      getMerchDisplayAgreementDataFailed: () => const Center(
-                            child: Text('No Data Available'),
+                      getMerchDisplayAgreementDataFailed: () => Center(
+                            child: Text(AppLocalizations.of(context)!.noDataAvailable,),
                           ));
                 },
               ),

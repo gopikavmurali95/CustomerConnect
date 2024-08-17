@@ -27,6 +27,11 @@ DisputeNoteHeaderModel _$DisputeNoteHeaderModelFromJson(
       image: json['Image'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      arDisputeType: json['ArDisputeType'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      ardrhOtherInfo: json['Ardrh_OtherInfo'] as String?,
+      arusrName: json['Arusr_Name'] as String?,
     );
 
 Map<String, dynamic> _$DisputeNoteHeaderModelToJson(
@@ -50,4 +55,9 @@ Map<String, dynamic> _$DisputeNoteHeaderModelToJson(
       'Image': instance.image,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'Arcus_Name': instance.arcusName,
+      'Arusr_Name': instance.arusrName,
+      'Ardrh_OtherInfo': instance.ardrhOtherInfo,
+      'ArDisputeType': instance.arDisputeType,
+      'ArStatus': instance.arStatus,
     };

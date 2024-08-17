@@ -7,9 +7,11 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferdetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadTransferApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -59,7 +61,7 @@ class _LoadTransferApprovalHeaderScreenState
           ),
         ),
         title: Text(
-          "Load transfer",
+          AppLocalizations.of(context)!.load_transfer,
           style: appHeading(),
         ),
       ),
@@ -81,7 +83,7 @@ class _LoadTransferApprovalHeaderScreenState
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchhere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -209,7 +211,7 @@ class _LoadTransferApprovalHeaderScreenState
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Pending Approvals",
+                    AppLocalizations.of(context)!.pendingApprovals,
                     style: countHeading(),
                   ),
                   BlocBuilder<LoadTransferHeaderBloc, LoadTransferHeaderState>(
@@ -254,7 +256,7 @@ class _LoadTransferApprovalHeaderScreenState
                         : headers.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -326,9 +328,15 @@ class _LoadTransferApprovalHeaderScreenState
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              headers[index]
-                                                                      .usrName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? headers[index]
+                                                                          .usrName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .usrArName ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -376,9 +384,15 @@ class _LoadTransferApprovalHeaderScreenState
                                                         horizontal: 8,
                                                         vertical: 5),
                                                     child: Text(
-                                                      headers[index]
-                                                              .ltrApprovalStatus ??
-                                                          '',
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? headers[index]
+                                                                  .ltrApprovalStatus ??
+                                                              ''
+                                                          : headers[index]
+                                                                  .ltrArApprovalStatus ??
+                                                              '',
                                                       style: kfontstyle(
                                                           fontSize: 10.sp,
                                                           fontWeight:
@@ -403,7 +417,7 @@ class _LoadTransferApprovalHeaderScreenState
                                 itemCount: headers.length),
                     loadTransferHeaderFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),

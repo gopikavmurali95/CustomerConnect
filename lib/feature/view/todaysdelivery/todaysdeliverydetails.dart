@@ -5,11 +5,13 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/todays_delivery_header_model/todays_delivery_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/todays_delivery_details/todays_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/widgets/todaysdeliverdetaillist.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TodaysDeliveryDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -54,7 +56,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
           ),
         ),
         title: Text(
-          "Order Details",
+          AppLocalizations.of(context)!.order_details,
           style: appHeading(),
         ),
         actions: [
@@ -89,7 +91,9 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                               Expanded(
                                 child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    '${widget.todaysdelivery.cusName}',
+                                    selectedLocale?.languageCode == "en"
+                                        ? '${widget.todaysdelivery.cusName}'
+                                        : widget.todaysdelivery.arcusName ?? '',
                                     style: subTitleTextStyle()),
                               ),
                             ],
@@ -100,7 +104,10 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                                   style: subTitleTextStyle()),
                               Expanded(
                                 child: Text(
-                                    '${widget.todaysdelivery.cusOutName}',
+                                    selectedLocale?.languageCode == "en"
+                                        ? '${widget.todaysdelivery.cusOutName}'
+                                        : widget.todaysdelivery.arcusOutName ??
+                                            '',
                                     overflow: TextOverflow.ellipsis,
                                     style: subTitleTextStyle()),
                               ),
@@ -174,7 +181,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search deliveries ",
+                          hintText: AppLocalizations.of(context)!.searchHere,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -222,18 +229,18 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('items'),
+                  Text(AppLocalizations.of(context)!.items),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Uom'),
+                      Text(AppLocalizations.of(context)!.uom),
                       SizedBox(
                         width: 15.h,
                       ),
-                      const Text('Qty'),
+                      Text(AppLocalizations.of(context)!.qty),
                       /*  SizedBox(
                         width: 15.h,
                       ),
@@ -259,7 +266,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Sub Total',
+                      AppLocalizations.of(context)!.sub_total,
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
@@ -272,7 +279,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'VAT',
+                      AppLocalizations.of(context)!.vat,
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
@@ -296,11 +303,11 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Total Amount',
+                AppLocalizations.of(context)!.total_amount,
                 style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w400),
               ),
               Text(
-                'AED ${widget.todaysdelivery.grandTotal}',
+                '${AppLocalizations.of(context)!.aed} ${widget.todaysdelivery.grandTotal}',
                 style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
               )
             ],

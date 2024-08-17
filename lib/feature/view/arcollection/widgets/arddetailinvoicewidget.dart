@@ -45,7 +45,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
                     flex: 2,
                     fit: FlexFit.tight,
                     child: Text(
-                      AppLocalizations.of(context)!.invoiceAmount,
+                      AppLocalizations.of(context)!.inv_amt,
                       style: boxHeading(),
                     ),
                   ),

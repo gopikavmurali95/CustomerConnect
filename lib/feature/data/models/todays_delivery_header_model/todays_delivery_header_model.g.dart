@@ -25,6 +25,10 @@ TodaysDeliveryHeaderModel _$TodaysDeliveryHeaderModelFromJson(
       subTotal: json['SubTotal'] as String?,
       vat: json['VAT'] as String?,
       grandTotal: json['GrandTotal'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arcusName: json['ArcusName'] as String?,
+      arcusOutName: json['ArcusOutName'] as String?,
+      arsalesman: json['Arsalesman'] as String?,
     );
 
 Map<String, dynamic> _$TodaysDeliveryHeaderModelToJson(
@@ -46,4 +50,8 @@ Map<String, dynamic> _$TodaysDeliveryHeaderModelToJson(
       'SubTotal': instance.subTotal,
       'VAT': instance.vat,
       'GrandTotal': instance.grandTotal,
+      'ArcusName': instance.arcusName,
+      'ArStatus': instance.arStatus,
+      'ArcusOutName': instance.arcusOutName,
+      'Arsalesman': instance.arsalesman,
     };

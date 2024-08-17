@@ -45,8 +45,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
             Navigator.pop(context);
           },
           child: Transform.flip(
-             flipX: selectedLocale?.languageCode == "en" ? false : true,
-
+            flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
@@ -114,7 +113,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
                 Row(
                   children: [
                     Text(
-                     "${ AppLocalizations.of(context)!.noDataAvailable}:",
+                      "${AppLocalizations.of(context)!.noDataAvailable}:",
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
@@ -187,7 +186,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
                               ),
                             ],
                           ),
-                          hintText:  AppLocalizations.of(context)!.searchItems,
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

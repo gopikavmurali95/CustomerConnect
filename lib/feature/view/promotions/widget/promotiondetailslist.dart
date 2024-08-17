@@ -66,7 +66,7 @@ class PromotionDetailsList extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 2,
             child: Center(
               child: Text(
-                 AppLocalizations.of(context)!.noDataAvailable,
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

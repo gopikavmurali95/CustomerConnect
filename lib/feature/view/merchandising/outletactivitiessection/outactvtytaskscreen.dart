@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutletActivityTaskHeaderScreen extends StatefulWidget {
   const OutletActivityTaskHeaderScreen({
@@ -65,7 +66,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
           ),
         ),
         title: Text(
-          "Tasks",
+          AppLocalizations.of(context)!.tasks,
           style: appHeading(),
         ),
       ),
@@ -84,7 +85,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Search here..',
+                    hintText: AppLocalizations.of(context)!.searchHere,
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -242,8 +243,11 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                       itemCount: 10),
                                 )
                               : tasksheader.isEmpty
-                                  ? const Center(
-                                      child: Text('No Data Available here '),
+                                  ? Center(
+                                      child: Text(
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
+                                      ),
                                     )
                                   : Column(
                                       children: [
@@ -256,10 +260,10 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                             children: [
                                               Text(
                                                 selectedMode == 'AL'
-                                                    ? 'All Tasks'
+                                                    ? AppLocalizations.of(context)!.allTasks
                                                     : selectedMode == 'C'
-                                                        ? 'Completed Tasks'
-                                                        : 'Pending Tasks',
+                                                        ? AppLocalizations.of(context)!.completedTasks
+                                                        : AppLocalizations.of(context)!.pendingTasks,
                                                 style: countHeading(),
                                               ),
                                               // Text(
@@ -344,7 +348,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                   Row(
                                                                     children: [
                                                                       Text(
-                                                                        "Due on:${tasksheader[index].dueOn}",
+                                                                        "${AppLocalizations.of(context)!.dueon}:${tasksheader[index].dueOn}",
                                                                         style: kfontstyle(
                                                                             fontSize:
                                                                                 9.sp,
@@ -357,7 +361,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                             : false,
                                                                         child:
                                                                             Text(
-                                                                          "| Completed on: ${tasksheader[index].compOn}",
+                                                                          "| ${AppLocalizations.of(context)!.completedon}: ${tasksheader[index].compOn}",
                                                                           style: kfontstyle(
                                                                               fontSize: 9.sp,
                                                                               color: Colors.grey),
@@ -373,11 +377,11 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                   BoxDecoration(
                                                                 color: tasksheader[index]
                                                                             .status! ==
-                                                                        "Pending"
+                                                                        AppLocalizations.of(context)!.pending
                                                                     ? const Color(
                                                                         0xfff7f4e2)
                                                                     : tasksheader[index].status! ==
-                                                                            "Completed"
+                                                                            AppLocalizations.of(context)!.completed
                                                                         ? const Color(
                                                                             0xffe3f7e2)
                                                                         : Colors
@@ -414,8 +418,10 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                         ))
                                       ],
                                     )),
-                      taskHeaderFailedState: () => const Center(
-                            child: Text('No Data Available'),
+                      taskHeaderFailedState: () => Center(
+                            child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable,
+                            ),
                           ));
                 },
               ),

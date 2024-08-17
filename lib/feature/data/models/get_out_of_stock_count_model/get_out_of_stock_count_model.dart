@@ -8,7 +8,7 @@ class GetOutOfStockCountModel {
   String? itemCount;
   @JsonKey(name: 'CusCount')
   String? cusCount;
-  @JsonKey(name:'TransCount')
+  @JsonKey(name: 'TransCount')
   String? transCount;
 
   GetOutOfStockCountModel({this.itemCount, this.cusCount});

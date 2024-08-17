@@ -20,16 +20,20 @@ class TodaysDeliveryDetailsModel {
   String? lQty;
   @JsonKey(name: 'Total')
   String? total;
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
 
-  TodaysDeliveryDetailsModel(
-      {this.prhId,
-      this.prhCode,
-      this.prhName,
-      this.hQty,
-      this.hUom,
-      this.lQty,
-      this.lUom,
-      this.total});
+  TodaysDeliveryDetailsModel({
+    this.prhId,
+    this.prhCode,
+    this.prhName,
+    this.hQty,
+    this.hUom,
+    this.lQty,
+    this.lUom,
+    this.total,
+    this.arprdName,
+  });
 
   factory TodaysDeliveryDetailsModel.fromJson(Map<String, dynamic> json) {
     return _$TodaysDeliveryDetailsModelFromJson(json);
