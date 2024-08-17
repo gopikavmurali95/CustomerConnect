@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,8 +101,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                         ),
                         content: Text(
                           isApprove == true
-                              ? '${AppLocalizations.of(context)!.credit_memo} ${resp.status}'
-                              : '${AppLocalizations.of(context)!.credit_memo} ${resp.status}',
+                              ? '${AppLocalizations.of(context)!.credit_memo} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
+                              : '${AppLocalizations.of(context)!.credit_memo} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
                           style: kfontstyle(),
                         ),
                         actions: [
@@ -209,7 +210,10 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                       Expanded(
                                         child: Text(
                                           overflow: TextOverflow.ellipsis,
-                                          widget.creditNote.cusName ?? '',
+                                          selectedLocale?.languageCode == 'en'
+                                              ? widget.creditNote.cusName ?? ''
+                                              : widget.creditNote.arcusName ??
+                                                  '',
                                           style: kfontstyle(
                                               fontSize: 12.sp,
                                               color: const Color(0xff413434)),
@@ -242,7 +246,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 5),
                                 child: Text(
-                                  widget.creditNote.status ?? '',
+                                  selectedLocale?.languageCode == 'en'
+                                      ? widget.creditNote.status ?? ''
+                                      : widget.creditNote.arStatus ?? "",
                                   style: kfontstyle(
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w400,
@@ -439,8 +445,15 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      details[index].prdName ??
-                                                          '',
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              'en'
+                                                          ? details[index]
+                                                                  .prdName ??
+                                                              ''
+                                                          : details[index]
+                                                                  .arprdName ??
+                                                              '',
                                                       style: kfontstyle(
                                                           fontSize: 12.sp,
                                                           fontWeight:

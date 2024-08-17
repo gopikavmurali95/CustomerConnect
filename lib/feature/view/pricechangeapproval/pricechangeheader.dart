@@ -24,7 +24,10 @@ class PriceChangeHeader extends StatefulWidget {
 }
 
 List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
-  ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
+  ApprovalStatusFilterModel(
+      statusName:
+          selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+      mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
 ];
 
@@ -37,6 +40,17 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
   @override
   void initState() {
     _priceChangeHeaderSearchCtrl.clear();
+    filterFieldsPriceChange = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     context.read<PriceChangeHeaderBloc>().add(const ClearPriceChangeHeader());
     context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
         rotID: widget.user.usrId!, mode: 'P', searchQuery: ''));

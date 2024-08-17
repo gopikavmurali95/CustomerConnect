@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_no
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,7 +131,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                   Expanded(
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      widget.disputenote.cusName ?? '',
+                                      selectedLocale?.languageCode == 'en'
+                                          ? widget.disputenote.cusName ?? ''
+                                          : widget.disputenote.arcusName ?? '',
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           color: const Color(0xff413434)),
@@ -391,7 +394,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(statuslevel.status ?? ''),
+                          content: Text(selectedLocale?.languageCode == 'en'
+                              ? statuslevel.status ?? ''
+                              : statuslevel.arStatus ?? ''),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -508,8 +513,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                               ),
                               content: Text(
                                 isApprove == true
-                                    ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${resp.status}'
-                                    : '${AppLocalizations.of(context)!.disputeNoteRequest} ${resp.status}',
+                                    ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
+                                    : '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
                                 style: kfontstyle(),
                               ),
                               actions: [

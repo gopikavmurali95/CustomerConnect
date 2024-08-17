@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -345,9 +346,15 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              headers[index]
-                                                                      .cusName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? headers[index]
+                                                                          .cusName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .arcusName ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -395,8 +402,14 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                                                         horizontal: 8,
                                                         vertical: 5),
                                                     child: Text(
-                                                      headers[index].status ??
-                                                          '',
+                                                      selectedLocale?.languageCode ==
+                                                              'en'
+                                                          ? headers[index]
+                                                                  .status ??
+                                                              ''
+                                                          : headers[index]
+                                                                  .arStatus ??
+                                                              '',
                                                       style: kfontstyle(
                                                           fontSize: 10.sp,
                                                           fontWeight:

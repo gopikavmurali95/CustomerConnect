@@ -34,6 +34,18 @@ Timer? debounce;
 class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
   @override
   void initState() {
+    filterFieldsPartialDelivery = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
+
     context
         .read<PartialDeliveryHeaderBloc>()
         .add(const ClearPartialDeliveryHeaderEvent());
