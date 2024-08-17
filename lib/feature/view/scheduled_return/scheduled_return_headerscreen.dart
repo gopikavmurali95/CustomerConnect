@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schdul
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -328,10 +329,10 @@ class _ScheduledReturnHEaderScreenState
                                                                         child: Text(
                                                                             overflow: TextOverflow
                                                                                 .ellipsis,
-                                                                            headers[index].cusName ??
-                                                                                '',
-                                                                            style:
-                                                                                subTitleTextStyle()),
+                                                                            selectedLocale?.languageCode == 'en'
+                                                                                ? headers[index].cusName ?? ''
+                                                                                : headers[index].arcusName ?? '',
+                                                                            style: subTitleTextStyle()),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -378,9 +379,15 @@ class _ScheduledReturnHEaderScreenState
                                                                     vertical:
                                                                         5),
                                                                 child: Text(
-                                                                  headers[index]
-                                                                          .status ??
-                                                                      '',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? headers[index]
+                                                                              .status ??
+                                                                          ''
+                                                                      : headers[index]
+                                                                              .arStatus ??
+                                                                          '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           10.sp,

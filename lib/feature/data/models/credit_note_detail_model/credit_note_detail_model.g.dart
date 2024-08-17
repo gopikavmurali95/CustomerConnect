@@ -19,6 +19,8 @@ CreditNoteDetailModel _$CreditNoteDetailModelFromJson(
       crdLQty: json['crd_LQty'] as String?,
       cndCrdAmount: json['cnd_crd_Amount'] as String?,
       status: json['Status'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
     );
 
 Map<String, dynamic> _$CreditNoteDetailModelToJson(
@@ -34,4 +36,6 @@ Map<String, dynamic> _$CreditNoteDetailModelToJson(
       'crd_LQty': instance.crdLQty,
       'cnd_crd_Amount': instance.cndCrdAmount,
       'Status': instance.status,
+      'Arprd_Name': instance.arprdName,
+      'ArStatus': instance.arStatus,
     };

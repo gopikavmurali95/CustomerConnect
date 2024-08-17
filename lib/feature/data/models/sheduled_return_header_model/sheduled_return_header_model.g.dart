@@ -21,6 +21,11 @@ SheduledReturnHeaderModel _$SheduledReturnHeaderModelFromJson(
       status: json['Status'] as String?,
       userID: json['UserID'] as String?,
       rotID: json['rotID'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      arrrhReturnType: json['Arrrh_ReturnType'] as String?,
+      arrrhType: json['Arrrh_Type'] as String?,
+      arusrName: json['Arusr_Name'] as String?,
     );
 
 Map<String, dynamic> _$SheduledReturnHeaderModelToJson(
@@ -38,4 +43,9 @@ Map<String, dynamic> _$SheduledReturnHeaderModelToJson(
       'Status': instance.status,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'Arcus_Name': instance.arcusName,
+      'Arusr_Name': instance.arusrName,
+      'Arrrh_ReturnType': instance.arrrhReturnType,
+      'Arrrh_Type': instance.arrrhType,
+      'ArStatus': instance.arStatus,
     };

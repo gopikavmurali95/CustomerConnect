@@ -34,7 +34,14 @@ class SheduledReturnDetailModel {
   String? image;
   @JsonKey(name: 'rsn_Type')
   String? rsnType;
-
+  @JsonKey(name: 'Arprd_Name')
+  String? arprdName;
+  @JsonKey(name: 'Arrsn_Name')
+  String? arrsnName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  @JsonKey(name: 'Arrsn_Type')
+  String? arrsnType;
   SheduledReturnDetailModel({
     this.rrdId,
     this.rrdRrhId,
@@ -51,6 +58,10 @@ class SheduledReturnDetailModel {
     this.rsnId,
     this.image,
     this.rsnType,
+    this.arStatus,
+    this.arprdName,
+    this.arrsnName,
+    this.arrsnType,
   });
 
   factory SheduledReturnDetailModel.fromJson(Map<String, dynamic> json) {

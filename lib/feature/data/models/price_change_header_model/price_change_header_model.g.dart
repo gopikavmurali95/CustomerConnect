@@ -24,6 +24,12 @@ PriceChangeHeaderModel _$PriceChangeHeaderModelFromJson(
       pchApprovalStatus: json['pch_ApprovalStatus'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      arType: json['ArType'] as String?,
+      arcshName: json['Arcsh_Name'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      arpchApprovalStatus: json['Arpch_ApprovalStatus'] as String?,
+      arusrName: json['Arusr_Name'] as String?,
+      spApprovals: json['sp_Approvals'] as String?,
     );
 
 Map<String, dynamic> _$PriceChangeHeaderModelToJson(
@@ -44,4 +50,10 @@ Map<String, dynamic> _$PriceChangeHeaderModelToJson(
       'pch_ApprovalStatus': instance.pchApprovalStatus,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'sp_Approvals': instance.spApprovals,
+      'Arcus_Name': instance.arcusName,
+      'Arusr_Name': instance.arusrName,
+      'Arcsh_Name': instance.arcshName,
+      'Arpch_ApprovalStatus': instance.arpchApprovalStatus,
+      'ArType': instance.arType,
     };

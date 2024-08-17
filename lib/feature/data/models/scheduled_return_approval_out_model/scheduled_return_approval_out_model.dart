@@ -6,8 +6,13 @@ part 'scheduled_return_approval_out_model.g.dart';
 class ScheduledReturnApprovalOutModel {
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
-  ScheduledReturnApprovalOutModel({this.status});
+  ScheduledReturnApprovalOutModel({
+    this.status,
+    this.arStatus,
+  });
 
   factory ScheduledReturnApprovalOutModel.fromJson(Map<String, dynamic> json) {
     return _$ScheduledReturnApprovalOutModelFromJson(json);

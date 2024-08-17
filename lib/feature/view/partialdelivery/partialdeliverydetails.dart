@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 
@@ -18,6 +16,7 @@ import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/parti
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -142,7 +141,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               fit: FlexFit.tight,
                               child: Text(
                                   overflow: TextOverflow.ellipsis,
-                                  "${widget.header.cusName}",
+                                  selectedLocale?.languageCode == 'en'
+                                      ? "${widget.header.cusName}"
+                                      : widget.header.arcusName ?? '',
                                   style: subTitleTextStyle()),
                             ),
                           ],
@@ -248,7 +249,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
-                              "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
+                              "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} "),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -426,7 +427,14 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    pdet[index].prdName ?? '',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? pdet[index].prdName ??
+                                                            ''
+                                                        : pdet[index]
+                                                                .arprdName ??
+                                                            '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         fontWeight:
@@ -836,7 +844,6 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                     ? Colors.green.shade300
                                     : Colors.grey[300],
                             onPressed: () {
-                              log(jsonEncode(_partialdeliveryapproved));
                               if (widget.header.dahApprovalStatus ==
                                       'Pending' ||
                                   widget.header.dahApprovalStatus!.isEmpty) {

@@ -320,5 +320,6 @@
   "mailId": "Mail ID",
   "mobileNumber": "Mobile Number",
   "whatspNo": "Whatsapp Number",
-  "update": "Update"
+  "update": "Update",
+  "cantBeEmpty": "can't be empty"
 }

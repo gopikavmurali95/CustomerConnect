@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_chan
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/pricechangeapproval/pricechangedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -244,8 +245,10 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                         children: [
                                           Text(
                                             _selectedPriceChangeMode == 'P'
-                                                ? 'Pending Approvals'
-                                                : 'Approved Requests',
+                                                ? AppLocalizations.of(context)!
+                                                    .pendingApprovals
+                                                : AppLocalizations.of(context)!
+                                                    .approvedRequests,
                                             style: countHeading(),
                                           ),
                                           Text(
@@ -328,7 +331,11 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    "${pChange[index].cusName}",
+                                                                    selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? "${pChange[index].cusName}"
+                                                                        : pChange[index].arcusName ??
+                                                                            '',
                                                                     style:
                                                                         subTitleTextStyle()),
                                                               ),
@@ -338,7 +345,13 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                             overflow:
                                                                 TextOverflow
                                                                     .ellipsis,
-                                                            "${pChange[index].type}",
+                                                            selectedLocale
+                                                                        ?.languageCode ==
+                                                                    'en'
+                                                                ? "${pChange[index].type}"
+                                                                : pChange[index]
+                                                                        .arType ??
+                                                                    '',
                                                             style: kfontstyle(
                                                                 fontSize: 12.sp,
                                                                 color: const Color(
@@ -383,9 +396,15 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                                 horizontal: 5,
                                                                 vertical: 3),
                                                         child: Text(
-                                                          pChange[index]
-                                                                  .pchApprovalStatus ??
-                                                              '',
+                                                          selectedLocale
+                                                                      ?.languageCode ==
+                                                                  'en'
+                                                              ? pChange[index]
+                                                                      .pchApprovalStatus ??
+                                                                  ''
+                                                              : pChange[index]
+                                                                      .arpchApprovalStatus ??
+                                                                  '',
                                                           style: kfontstyle(
                                                               fontSize: 8.sp),
                                                         ),

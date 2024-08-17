@@ -28,6 +28,10 @@ ReturnApprovalDetailModel _$ReturnApprovalDetailModelFromJson(
       zsnName: json['zsn_Name'] as String?,
       invInvoiceId: json['inv_InvoiceID'] as String?,
       radApprovalStatus: json['rad_ApprovalStatus'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
+      arrsnName: json['Arrsn_Name'] as String?,
+      arrsnType: json['Arrsn_Type'] as String?,
     );
 
 Map<String, dynamic> _$ReturnApprovalDetailModelToJson(
@@ -52,4 +56,8 @@ Map<String, dynamic> _$ReturnApprovalDetailModelToJson(
       'zsn_Name': instance.zsnName,
       'inv_InvoiceID': instance.invInvoiceId,
       'rad_ApprovalStatus': instance.radApprovalStatus,
+      'Arprd_Name': instance.arprdName,
+      'Arrsn_Name': instance.arrsnName,
+      'ArStatus': instance.arStatus,
+      'Arrsn_Type': instance.arrsnType,
     };

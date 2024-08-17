@@ -20,6 +20,8 @@ PartialDeliveryHeaderModel _$PartialDeliveryHeaderModelFromJson(
       dahApprovalStatus: json['dah_ApprovalStatus'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      ardahApprovalStatus: json['Ardah_ApprovalStatus'] as String?,
     );
 
 Map<String, dynamic> _$PartialDeliveryHeaderModelToJson(
@@ -36,4 +38,6 @@ Map<String, dynamic> _$PartialDeliveryHeaderModelToJson(
       'dah_ApprovalStatus': instance.dahApprovalStatus,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'Arcus_Name': instance.arcusName,
+      'Ardah_ApprovalStatus': instance.ardahApprovalStatus,
     };

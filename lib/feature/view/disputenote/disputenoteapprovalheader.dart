@@ -372,9 +372,14 @@ class _DisputeNoteApprovalHEaderScreenState
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
-                                                                headers[index]
-                                                                        .cusName ??
-                                                                    '',
+                                                                selectedLocale?.languageCode ==
+                                                                        'en'
+                                                                    ? headers[index]
+                                                                            .cusName ??
+                                                                        ''
+                                                                    : headers[index]
+                                                                            .arcusName ??
+                                                                        '',
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
@@ -423,8 +428,15 @@ class _DisputeNoteApprovalHEaderScreenState
                                                           horizontal: 8,
                                                           vertical: 5),
                                                       child: Text(
-                                                        headers[index].status ??
-                                                            '',
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? headers[index]
+                                                                    .status ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .arStatus ??
+                                                                '',
                                                         style: kfontstyle(
                                                             fontSize: 10.sp,
                                                             fontWeight:

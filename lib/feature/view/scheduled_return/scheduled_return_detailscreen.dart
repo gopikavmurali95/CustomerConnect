@@ -18,6 +18,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -145,7 +146,8 @@ class _ScheduledReturnDetailScreenState
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text("${status.status} "),
+                        content: Text(
+                            "${AppLocalizations.of(context)!.partial_delivery} ${selectedLocale?.languageCode == 'en' ? status.status : status.arStatus} "),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -236,8 +238,14 @@ class _ScheduledReturnDetailScreenState
                                         Expanded(
                                           child: Text(
                                               overflow: TextOverflow.ellipsis,
-                                              widget.scheduledreturn.cusName ??
-                                                  '',
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? widget.scheduledreturn
+                                                          .cusName ??
+                                                      ''
+                                                  : widget.scheduledreturn
+                                                          .arcusName ??
+                                                      '',
                                               style: subTitleTextStyle()),
                                         ),
                                       ],
@@ -269,7 +277,9 @@ class _ScheduledReturnDetailScreenState
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 5),
                                   child: Text(
-                                    widget.scheduledreturn.status ?? '',
+                                    selectedLocale?.languageCode == 'en'
+                                        ? widget.scheduledreturn.status ?? ''
+                                        : widget.scheduledreturn.arStatus ?? '',
                                     style: kfontstyle(
                                         fontSize: 10.sp,
                                         fontWeight: FontWeight.w400,
@@ -493,9 +503,15 @@ class _ScheduledReturnDetailScreenState
                                                               style:
                                                                   loadTextStyle()),
                                                           Text(
-                                                              details[index]
-                                                                      .prdName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? details[index]
+                                                                          .prdName ??
+                                                                      ''
+                                                                  : details[index]
+                                                                          .arprdName ??
+                                                                      '',
                                                               style:
                                                                   subTitleTextStyle()),
                                                         ],

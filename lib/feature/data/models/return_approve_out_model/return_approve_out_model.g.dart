@@ -12,6 +12,7 @@ ReturnApproveOutModel _$ReturnApproveOutModelFromJson(
       mode: json['Mode'] as String?,
       status: json['Status'] as String?,
       transId: json['TransID'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$ReturnApproveOutModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ReturnApproveOutModelToJson(
       'Mode': instance.mode,
       'Status': instance.status,
       'TransID': instance.transId,
+      'ArStatus': instance.arStatus,
     };

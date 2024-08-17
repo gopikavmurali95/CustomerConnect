@@ -12,6 +12,7 @@ DisputeApprovalStatusModel _$DisputeApprovalStatusModelFromJson(
       status: json['Status'] as String?,
       currentLevel: json['CurrentLevel'] as String?,
       nextLevel: json['NextLevel'] as String?,
+      arStatus: json['ArStatus'] as String?,
     );
 
 Map<String, dynamic> _$DisputeApprovalStatusModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$DisputeApprovalStatusModelToJson(
       'Status': instance.status,
       'CurrentLevel': instance.currentLevel,
       'NextLevel': instance.nextLevel,
+      'ArStatus': instance.arStatus,
     };
