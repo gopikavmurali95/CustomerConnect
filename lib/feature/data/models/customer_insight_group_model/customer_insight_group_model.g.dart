@@ -11,6 +11,7 @@ CustomerInsightGroupModel _$CustomerInsightGroupModelFromJson(
     CustomerInsightGroupModel(
       prdCode: json['prdCode'] as String?,
       prdName: json['prdName'] as String?,
+      prdArName: json['prd_ArName'] as String?,
     );
 
 Map<String, dynamic> _$CustomerInsightGroupModelToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$CustomerInsightGroupModelToJson(
     <String, dynamic>{
       'prdCode': instance.prdCode,
       'prdName': instance.prdName,
+      'prd_ArName': instance.prdArName,
     };

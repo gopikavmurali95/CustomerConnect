@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/cus
 import 'package:customer_connect/feature/view/cusinsighassignmentgroup/cusinsighassignmentgroup.dart';
 import 'package:customer_connect/feature/view/cusinsightqualificationgroup/cusinsightqualificationgroup.dart';
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -166,7 +167,9 @@ class _CustInsightPromotionDetailsState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.header.pName!,
+                                  selectedLocale?.languageCode == "en"
+                                      ? widget.header.pName ?? ''
+                                      : widget.header.arPName ?? '',
                                   style: blueTextStyle(),
                                 ),
                                 Text(

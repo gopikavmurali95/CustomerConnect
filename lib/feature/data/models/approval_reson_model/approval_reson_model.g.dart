@@ -11,6 +11,7 @@ ApprovalResonModel _$ApprovalResonModelFromJson(Map<String, dynamic> json) =>
       rsnId: json['rsn_ID'] as String?,
       rsnName: json['rsn_Name'] as String?,
       rsnType: json['rsn_Type'] as String?,
+      rsnArName: json['rsn_ArName'] as String?,
     );
 
 Map<String, dynamic> _$ApprovalResonModelToJson(ApprovalResonModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$ApprovalResonModelToJson(ApprovalResonModel instance) =>
       'rsn_ID': instance.rsnId,
       'rsn_Name': instance.rsnName,
       'rsn_Type': instance.rsnType,
+      'rsn_ArName': instance.rsnArName,
     };

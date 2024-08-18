@@ -16,6 +16,7 @@ CusPromotionHeader _$CusPromotionHeaderFromJson(Map<String, dynamic> json) =>
       aCode: json['ACode'] as String?,
       qid: json['QID'] as String?,
       aid: json['AID'] as String?,
+      arPName: json['ArPName'] as String?,
     );
 
 Map<String, dynamic> _$CusPromotionHeaderToJson(CusPromotionHeader instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$CusPromotionHeaderToJson(CusPromotionHeader instance) =>
       'ACode': instance.aCode,
       'QID': instance.qid,
       'AID': instance.aid,
+      'ArPName': instance.arPName,
     };

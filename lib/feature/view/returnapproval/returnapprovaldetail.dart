@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -578,8 +579,9 @@ class _ReturnApprovalDetailScreenState
                                                           availableresons = [
                                                             ApprovalResonModel(
                                                                 rsnId: '-1',
-                                                                rsnName:
-                                                                    'Select reason',
+                                                                rsnName: AppLocalizations.of(
+                                                                        context)!
+                                                                    .selectReason,
                                                                 rsnType: 'null')
                                                           ];
 
@@ -691,8 +693,9 @@ class _ReturnApprovalDetailScreenState
                                                                               Text(
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
-                                                                            item.rsnName ??
-                                                                                '',
+                                                                            selectedLocale?.languageCode == "en"
+                                                                                ? item.rsnName ?? ''
+                                                                                : item.rsnArName ?? '',
                                                                             style:
                                                                                 kfontstyle(fontSize: 9.sp),
                                                                           ),

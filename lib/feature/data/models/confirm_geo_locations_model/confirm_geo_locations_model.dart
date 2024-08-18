@@ -10,8 +10,10 @@ class ConfirmGeoLocationsModel {
   String? title;
   @JsonKey(name: 'Descr')
   String? descr;
+  @JsonKey(name: 'ArTitle')
+  String? arTitle;
 
-  ConfirmGeoLocationsModel({this.res, this.title, this.descr});
+  ConfirmGeoLocationsModel({this.res, this.title, this.descr, this.arTitle});
 
   factory ConfirmGeoLocationsModel.fromJson(Map<String, dynamic> json) {
     return _$ConfirmGeoLocationsModelFromJson(json);

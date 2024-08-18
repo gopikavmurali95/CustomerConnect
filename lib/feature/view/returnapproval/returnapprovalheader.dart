@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/returnapproval/return_approv
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovaldetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,13 +28,24 @@ List<ApprovalStatusFilterModel> filterFieldsReturn = [
 ];
 
 String _selectedeMode = 'P';
-TextEditingController _SearchCtrl = TextEditingController();
+TextEditingController searchCtrl = TextEditingController();
 Timer? debounce;
 
 class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
   @override
   void initState() {
-    _SearchCtrl.clear();
+    searchCtrl.clear();
+    filterFieldsReturn = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     context
         .read<ReturnApprovalHeaderBloc>()
         .add(const ClearReturnHeaderState());
@@ -78,7 +90,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _SearchCtrl,
+                  controller: searchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -89,8 +101,8 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_SearchCtrl.text.isNotEmpty) {
-                                  _SearchCtrl.clear();
+                                if (searchCtrl.text.isNotEmpty) {
+                                  searchCtrl.clear();
 
                                   context.read<ReturnApprovalHeaderBloc>().add(
                                       GetReturnApprovalHeaders(

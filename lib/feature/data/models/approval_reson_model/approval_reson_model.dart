@@ -10,8 +10,10 @@ class ApprovalResonModel {
   String? rsnName;
   @JsonKey(name: 'rsn_Type')
   String? rsnType;
+  @JsonKey(name: 'rsn_ArName')
+  String? rsnArName;
 
-  ApprovalResonModel({this.rsnId, this.rsnName, this.rsnType});
+  ApprovalResonModel({this.rsnId, this.rsnName, this.rsnType, this.rsnArName});
 
   factory ApprovalResonModel.fromJson(Map<String, dynamic> json) {
     return _$ApprovalResonModelFromJson(json);

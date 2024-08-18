@@ -8,10 +8,12 @@ import 'package:customer_connect/feature/state/bloc/unscheduledvisit/un_schedule
 import 'package:customer_connect/feature/state/cubit/unscheduledvisit/un_scheduled_visit_selection_cubit.dart';
 import 'package:customer_connect/feature/view/mustsell/mustsellheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UnScheduledVisitScreen extends StatefulWidget {
   const UnScheduledVisitScreen({super.key});
@@ -38,6 +40,28 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
     unScheduledHeaderSearchCtrl.clear();
     unScheduledJsonstriongList.clear();
     selectedUnScheduledMode = 'P';
+    ddfilterUnScheduled = [
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Pending Approvals"
+              : "الموافقات في انتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Approved Requests"
+              : "الطلبات الموافق عليها",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Rejected Requests"
+              : "تم رفض الطلبات",
+          mode: 'R'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "All Requests"
+              : "جميع الطلبات",
+          mode: 'AL'),
+    ];
     context
         .read<UnScheduledVisitHeaderBloc>()
         .add(const ClearUnScheduledVisitEvent());
@@ -65,7 +89,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
           ),
         ),
         title: Text(
-          "UnScheduled Visit",
+          AppLocalizations.of(context)!.unscheduledVisit,
           style: appHeading(),
         ),
       ),
@@ -81,7 +105,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                 style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                 decoration: InputDecoration(
                   isDense: true,
-                  hintText: 'Search here..',
+                  hintText: '${AppLocalizations.of(context)!.searchhere}..',
                   suffix: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -212,20 +236,24 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                       state.when(
                         getUnScheduledVistHeadersState: (headers) =>
                             selectedUnScheduledMode == 'P'
-                                ? "Pending Approvals"
+                                ? AppLocalizations.of(context)!.pendingApprovals
                                 : selectedUnScheduledMode == 'AL'
-                                    ? 'ALL Requests'
+                                    ? AppLocalizations.of(context)!.allRequests
                                     : selectedUnScheduledMode == 'A'
-                                        ? 'Approved Requests'
-                                        : 'Rejected Requests',
+                                        ? AppLocalizations.of(context)!
+                                            .approvedRequests
+                                        : AppLocalizations.of(context)!
+                                            .rejectedRequests,
                         unScheduledVisitFailedState: () =>
                             selectedUnScheduledMode == 'P'
-                                ? "Pending Approvals"
+                                ? AppLocalizations.of(context)!.pendingApprovals
                                 : selectedUnScheduledMode == 'AL'
-                                    ? 'ALL Requests'
+                                    ? AppLocalizations.of(context)!.allRequests
                                     : selectedUnScheduledMode == 'A'
-                                        ? 'Approved Requests'
-                                        : 'Rejected Requests',
+                                        ? AppLocalizations.of(context)!
+                                            .approvedRequests
+                                        : AppLocalizations.of(context)!
+                                            .rejectedRequests,
                       ),
                       style: countHeading(),
                     ),
@@ -269,7 +297,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                         : headers.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data Available',
+                                  AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -318,7 +346,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].rotCode} - ${headers[index].rotName} route',
+                                                              '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -437,7 +465,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                 itemCount: headers.length),
                     unScheduledVisitFailedState: () => Center(
                       child: Text(
-                        'No Data Available',
+                        AppLocalizations.of(context)!.noDataAvailable,
                         style: kfontstyle(),
                       ),
                     ),
@@ -448,261 +476,273 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
           ),
         ],
       ),
-      bottomNavigationBar:
-          unScheduledJsonstriongList.isEmpty || selectedUnScheduledMode != 'P'
-              ? null
-              : BlocConsumer<UnScheduledApprovalBloc, UnScheduledApprovalState>(
-                  listener: (context, state) {
-                    state.when(
-                      approveUnScheduledVisitState: (resp) {
-                        if (resp != null) {
-                          unScheduledHeaderSearchCtrl.clear();
-                          unScheduledHeaderSearchCtrl.clear();
-                          unScheduledJsonstriongList.clear();
-                          context
-                              .read<UnScheduledVisitHeaderBloc>()
-                              .add(const ClearUnScheduledVisitEvent());
-                          context.read<UnScheduledVisitHeaderBloc>().add(
-                              GetUnScheduledHeadersEvent(
-                                  searchQuery: '',
-                                  mode: selectedUnScheduledMode));
-                          Navigator.pop(context);
-                          showCupertinoDialog(
-                            context: context,
-                            builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
-                              content: Text(
-                                  "Unscheduled Visit Approval ${resp.descr ?? ''}"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Ok'),
-                                ),
-                              ],
+      bottomNavigationBar: unScheduledJsonstriongList.isEmpty ||
+              selectedUnScheduledMode != 'P'
+          ? null
+          : BlocConsumer<UnScheduledApprovalBloc, UnScheduledApprovalState>(
+              listener: (context, state) {
+                state.when(
+                  approveUnScheduledVisitState: (resp) {
+                    if (resp != null) {
+                      unScheduledHeaderSearchCtrl.clear();
+                      unScheduledHeaderSearchCtrl.clear();
+                      unScheduledJsonstriongList.clear();
+                      context
+                          .read<UnScheduledVisitHeaderBloc>()
+                          .add(const ClearUnScheduledVisitEvent());
+                      context.read<UnScheduledVisitHeaderBloc>().add(
+                          GetUnScheduledHeadersEvent(
+                              searchQuery: '', mode: selectedUnScheduledMode));
+                      Navigator.pop(context);
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''}"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
-                          );
-                          setState(() {});
-                        }
-                      },
-                      rejectUnScheduledVisitState: (resp) {
-                        if (resp != null) {
-                          unScheduledHeaderSearchCtrl.clear();
-                          unScheduledJsonstriongList.clear();
-                          context
-                              .read<UnScheduledVisitHeaderBloc>()
-                              .add(const ClearUnScheduledVisitEvent());
-                          context.read<UnScheduledVisitHeaderBloc>().add(
-                              GetUnScheduledHeadersEvent(
-                                  searchQuery: '',
-                                  mode: selectedUnScheduledMode));
-                          Navigator.pop(context);
-                          showCupertinoDialog(
-                            context: context,
-                            builder: (context) => CupertinoAlertDialog(
-                              title: const Text('Alert'),
-                              content: Text(
-                                  "Unscheduled Visit Rejection ${resp.descr ?? ''}"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Ok'),
-                                ),
-                              ],
-                            ),
-                          );
-                          setState(() {});
-                        }
-                      },
-                      unScheduledVisitApprovalFailedState: () {
-                        Navigator.pop(context);
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: const Text('Alert'),
-                            content: const Text(
-                                "Something Went Wrong, please Try again later"),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      unScheduledApprovalLoadingEvent: () {
-                        showCupertinoModalPopup(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (context) => SizedBox(
-                                  height: MediaQuery.of(context).size.height,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: const PopScope(
-                                    canPop: true,
-                                    child: CupertinoActivityIndicator(
-                                      animating: true,
-                                      color: Colors.red,
-                                      radius: 30,
-                                    ),
-                                  ),
-                                ));
-                      },
-                    );
+                          ],
+                        ),
+                      );
+                      setState(() {});
+                    }
                   },
-                  builder: (context, state) {
-                    return SizedBox(
-                      height: 42.h,
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              children: [
-                                Flexible(
-                                  flex: 1,
-                                  fit: FlexFit.tight,
-                                  child: MaterialButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    color: selectedUnScheduledMode == 'P'
-                                        ? Colors.red.shade300
-                                        : Colors.grey[300],
-                                    onPressed: () {
-                                      if (selectedUnScheduledMode == 'P') {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: const Text('Alert'),
-                                            content: const Text(
-                                                "Do you Want to Proceed"),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: const Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-
-                                                  context
-                                                      .read<
-                                                          UnScheduledApprovalBloc>()
-                                                      .add(
-                                                          const UnScheuledLoadingEvent());
-
-                                                  context
-                                                      .read<
-                                                          UnScheduledApprovalBloc>()
-                                                      .add(
-                                                        ApproveUnScheduledVisitEvent(
-                                                          approve:
-                                                              unScheduledJsonstriongList,
-                                                        ),
-                                                      );
-                                                },
-                                                child: const Text('Proceed'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                    },
-                                    child: Text(
-                                      'Reject Selected',
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Flexible(
-                                  flex: 1,
-                                  fit: FlexFit.tight,
-                                  child: MaterialButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    color: selectedUnScheduledMode == 'P'
-                                        ? Colors.green.shade300
-                                        : Colors.grey[300],
-                                    onPressed: () {
-                                      if (selectedUnScheduledMode == 'P') {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: const Text('Alert'),
-                                            content: const Text(
-                                                "Do you Want to Proceed"),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: const Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-
-                                                  context
-                                                      .read<
-                                                          UnScheduledApprovalBloc>()
-                                                      .add(
-                                                          const UnScheuledLoadingEvent());
-
-                                                  context
-                                                      .read<
-                                                          UnScheduledApprovalBloc>()
-                                                      .add(
-                                                        ApproveUnScheduledVisitEvent(
-                                                          approve:
-                                                              unScheduledJsonstriongList,
-                                                        ),
-                                                      );
-                                                },
-                                                child: const Text('Proceed'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                    },
-                                    child: Text(
-                                      'Approve Selected',
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                )
-                              ],
+                  rejectUnScheduledVisitState: (resp) {
+                    if (resp != null) {
+                      unScheduledHeaderSearchCtrl.clear();
+                      unScheduledJsonstriongList.clear();
+                      context
+                          .read<UnScheduledVisitHeaderBloc>()
+                          .add(const ClearUnScheduledVisitEvent());
+                      context.read<UnScheduledVisitHeaderBloc>().add(
+                          GetUnScheduledHeadersEvent(
+                              searchQuery: '', mode: selectedUnScheduledMode));
+                      Navigator.pop(context);
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoAlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''}"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
                             ),
-                          )
+                          ],
+                        ),
+                      );
+                      setState(() {});
+                    }
+                  },
+                  unScheduledVisitApprovalFailedState: () {
+                    Navigator.pop(context);
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (context) => CupertinoAlertDialog(
+                        title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
                         ],
                       ),
                     );
                   },
-                ),
+                  unScheduledApprovalLoadingEvent: () {
+                    showCupertinoModalPopup(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: const PopScope(
+                                canPop: true,
+                                child: CupertinoActivityIndicator(
+                                  animating: true,
+                                  color: Colors.red,
+                                  radius: 30,
+                                ),
+                              ),
+                            ));
+                  },
+                );
+              },
+              builder: (context, state) {
+                return SizedBox(
+                  height: 42.h,
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: selectedUnScheduledMode == 'P'
+                                    ? Colors.red.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  if (selectedUnScheduledMode == 'P') {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                      const UnScheuledLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                    ApproveUnScheduledVisitEvent(
+                                                      approve:
+                                                          unScheduledJsonstriongList,
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.rejectSelected,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: selectedUnScheduledMode == 'P'
+                                    ? Colors.green.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  if (selectedUnScheduledMode == 'P') {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                      const UnScheuledLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                    ApproveUnScheduledVisitEvent(
+                                                      approve:
+                                                          unScheduledJsonstriongList,
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.approveSelected,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
     );
   }
 }

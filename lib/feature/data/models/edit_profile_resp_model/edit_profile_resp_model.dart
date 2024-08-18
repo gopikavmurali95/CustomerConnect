@@ -10,8 +10,10 @@ class EditProfileRespModel {
   String? title;
   @JsonKey(name: 'Descr')
   String? descr;
+  @JsonKey(name: 'ArTitle')
+  String? arTitle;
 
-  EditProfileRespModel({this.res, this.title, this.descr});
+  EditProfileRespModel({this.res, this.title, this.descr, this.arTitle});
 
   factory EditProfileRespModel.fromJson(Map<String, dynamic> json) {
     return _$EditProfileRespModelFromJson(json);

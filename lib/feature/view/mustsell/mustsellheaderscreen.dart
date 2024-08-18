@@ -47,6 +47,26 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
     selectedMustSellMode = 'P';
     mustSellHeaderSearchCtrl.clear();
 
+    ddfilterMustSell = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
+
     context.read<MustSellHeaderBloc>().add(const ClearMustSellHeadersEvent());
     context
         .read<MustSellHeaderBloc>()

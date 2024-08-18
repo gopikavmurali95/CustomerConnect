@@ -20,6 +20,8 @@ class CusItemsModel {
   String? prdName;
   @JsonKey(name: 'uom_Name')
   String? uomName;
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
 
   CusItemsModel({
     this.crpPrhId,
@@ -30,6 +32,7 @@ class CusItemsModel {
     this.prdCode,
     this.prdName,
     this.uomName,
+    this.prdArName,
   });
 
   factory CusItemsModel.fromJson(Map<String, dynamic> json) {

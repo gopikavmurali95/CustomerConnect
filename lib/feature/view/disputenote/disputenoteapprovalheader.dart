@@ -40,6 +40,20 @@ class _DisputeNoteApprovalHEaderScreenState
   @override
   void initState() {
     _disputeHeaderSearchCtrl.clear();
+    ddfilterFieldsDisputeNote = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'AT'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     context.read<ProgressIndicatorCubit>().removeProgressIndicator();
     context
         .read<DisputeNoteHeaderBloc>()

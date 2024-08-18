@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/saheaderlistwidget.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,6 +41,36 @@ class _SettlementApprovalHeaderScreenState
   void initState() {
     selectedSettlmtApprovalmode = "AL";
     settlementApprovalHeaderSearchCtrl.clear();
+    ddfilterSettlementApproval = [
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en" ? "All" : "الجميع",
+          mode: 'AL'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en" ? "Sales" : "مبيعات",
+          mode: 'SL'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en" ? "Order" : "طلب",
+          mode: 'OR'),
+      ApprovalStatusFilterModel(statusName: "AR", mode: 'AR'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Order & AR" : "طلب & AR",
+          mode: 'OA'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Delivery" : "توصيل",
+          mode: 'DL'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Merchandising"
+              : "التجارة",
+          mode: 'MER'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Field Service"
+              : "الخدمة الميدانية",
+          mode: 'FS'),
+    ];
     context
         .read<SettlementApprovalHeaderBloc>()
         .add(const ClearSettlementApprovalHeaderEvent());
