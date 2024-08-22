@@ -10,6 +10,8 @@ class OutOfStockCustomersModedl {
   String? cusName;
   @JsonKey(name: 'cus_ID')
   String? cusId;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
 
   OutOfStockCustomersModedl({this.cusCode, this.cusName, this.cusId});
 

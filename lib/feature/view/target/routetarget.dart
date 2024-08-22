@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/view/target/targetpackage.dart';
 import 'package:customer_connect/feature/view/target/widgets/routetargetdays.dart';
 import 'package:customer_connect/feature/view/target/widgets/routetargetgraph.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -254,9 +255,9 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                  details[index]
+                                                                  selectedLocale?.languageCode == 'en'?details[index]
                                                                           .pkgName ??
-                                                                      '',
+                                                                      '':details[index].arpkgName??'',
                                                                   style:
                                                                       blueTextStyle()),
                                                               Row(

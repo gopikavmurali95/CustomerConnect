@@ -10,8 +10,10 @@ class UnScheduledApprovalRespModel {
   String? res;
   @JsonKey(name: 'Title')
   String? title;
+  @JsonKey(name: 'ArDescr')
+  String? arDescr;
 
-  UnScheduledApprovalRespModel({this.descr, this.res, this.title});
+  UnScheduledApprovalRespModel({this.descr, this.res, this.title, this.arDescr});
 
   factory UnScheduledApprovalRespModel.fromJson(Map<String, dynamic> json) {
     return _$UnScheduledApprovalRespModelFromJson(json);

@@ -24,7 +24,7 @@ InventoryReconfirmDetailModel _$InventoryReconfirmDetailModelFromJson(
       iadDescLuom: json['iad_DescLUOM'] as String?,
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
-    );
+    )..arprdName = json['Arprd_Name'] as String?;
 
 Map<String, dynamic> _$InventoryReconfirmDetailModelToJson(
         InventoryReconfirmDetailModel instance) =>
@@ -44,4 +44,5 @@ Map<String, dynamic> _$InventoryReconfirmDetailModelToJson(
       'iad_DescLUOM': instance.iadDescLuom,
       'prd_Code': instance.prdCode,
       'prd_Name': instance.prdName,
+      'Arprd_Name': instance.arprdName,
     };

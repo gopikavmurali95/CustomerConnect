@@ -21,6 +21,10 @@ class MerchCustomerRequestHeaderModel {
   @JsonKey(name: 'Date')
   String? date;
   String? status;
+   @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+   @JsonKey(name: 'Arstatus')
+  String? arstatus;
 
   MerchCustomerRequestHeaderModel({
     this.reqId,

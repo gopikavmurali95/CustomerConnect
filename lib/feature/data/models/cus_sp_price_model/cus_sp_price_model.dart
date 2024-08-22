@@ -16,6 +16,8 @@ class CusSpPriceModel {
   String? endDate;
   @JsonKey(name: 'prh_PayMode')
   String? prhPayMode;
+  @JsonKey(name: 'Arprh_Name')
+  String? arPrhName;
 
   CusSpPriceModel({
     this.prhId,

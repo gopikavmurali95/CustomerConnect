@@ -14,7 +14,7 @@ CusSpPriceModel _$CusSpPriceModelFromJson(Map<String, dynamic> json) =>
       startDate: json['StartDate'] as String?,
       endDate: json['EndDate'] as String?,
       prhPayMode: json['prh_PayMode'] as String?,
-    );
+    )..arPrhName = json['Arprh_Name'] as String?;
 
 Map<String, dynamic> _$CusSpPriceModelToJson(CusSpPriceModel instance) =>
     <String, dynamic>{
@@ -24,4 +24,5 @@ Map<String, dynamic> _$CusSpPriceModelToJson(CusSpPriceModel instance) =>
       'StartDate': instance.startDate,
       'EndDate': instance.endDate,
       'prh_PayMode': instance.prhPayMode,
+      'Arprh_Name': instance.arPrhName,
     };

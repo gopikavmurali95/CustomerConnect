@@ -18,6 +18,8 @@ class CusInsInvoiceModel {
   String? id;
   @JsonKey(name: 'GrandTotal')
   String? grandTotal;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   CusInsInvoiceModel({
     this.invoiceNo,

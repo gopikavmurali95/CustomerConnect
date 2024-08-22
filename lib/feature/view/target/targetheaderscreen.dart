@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/state/bloc/targetheaderlist/targer_head
 import 'package:customer_connect/feature/view/target/routetarget.dart';
 import 'package:customer_connect/feature/view/target/widgets/targetgraphwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -253,7 +254,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                                '${header[index].rotCode} - ${header[index].rotName}',
+                                                                '${header[index].rotCode} - ${selectedLocale?.languageCode == 'en'?header[index].rotName:header[index].arrotName}',
                                                                 style:
                                                                     blueTextStyle()),
                                                             Row(

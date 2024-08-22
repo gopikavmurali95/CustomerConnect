@@ -18,7 +18,9 @@ InventoryReconfirmHeaderModel _$InventoryReconfirmHeaderModelFromJson(
       createdDate: json['CreatedDate'] as String?,
       iahRotId: json['iah_rot_ID'] as String?,
       iahStatus: json['iah_Status'] as String?,
-    );
+    )
+      ..arusrName = json['Arusr_Name'] as String?
+      ..ariahStatus = json['Ariah_Status'] as String?;
 
 Map<String, dynamic> _$InventoryReconfirmHeaderModelToJson(
         InventoryReconfirmHeaderModel instance) =>
@@ -32,4 +34,6 @@ Map<String, dynamic> _$InventoryReconfirmHeaderModelToJson(
       'CreatedDate': instance.createdDate,
       'iah_rot_ID': instance.iahRotId,
       'iah_Status': instance.iahStatus,
+      'Arusr_Name': instance.arusrName,
+      'Ariah_Status': instance.ariahStatus,
     };

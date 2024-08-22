@@ -20,6 +20,10 @@ class UnScheduledApprovalHeaderModel {
   String? createdDate;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'rot_ArName')
+  String? rotArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
 
   UnScheduledApprovalHeaderModel({
     this.uvaId,
@@ -30,6 +34,8 @@ class UnScheduledApprovalHeaderModel {
     this.cusName,
     this.createdDate,
     this.status,
+    this.rotArName,
+    this.cusArName,
   });
 
   factory UnScheduledApprovalHeaderModel.fromJson(Map<String, dynamic> json) {

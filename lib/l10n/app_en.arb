@@ -333,6 +333,9 @@
   "time": "Time",
   "unscheduledVisit": "UnScheduled Visit",
   "unschedVisitApproval": "Unscheduled Visit Approval",
-  "unscheduledVisitRejection": "Unscheduled Visit Rejection"
+  "unscheduledVisitRejection": "Unscheduled Visit Rejection",
+  "sysQty": "Sys Qty",
+  "pkdQty": "Pkd Qty",
+  "liQty": "LI Qty"
 }
   

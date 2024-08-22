@@ -22,6 +22,10 @@ class InventoryReconfirmHeaderModel {
   String? iahRotId;
   @JsonKey(name: 'iah_Status')
   String? iahStatus;
+  @JsonKey(name: 'Arusr_Name')
+  String? arusrName;
+  @JsonKey(name: 'Ariah_Status')
+  String? ariahStatus;
 
   InventoryReconfirmHeaderModel({
     this.iahId,

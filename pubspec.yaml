@@ -54,9 +54,9 @@ dependencies:
   get_it: ^7.6.7
   google_fonts: ^6.2.1
   google_maps_flutter: ^2.6.0
-  grouped_list: ^5.1.2
+  grouped_list: ^6.0.0
   http: ^1.2.0
-  injectable: 2.3.5
+  injectable: ^2.4.2
   injectable_generator: ^2.5.1
   intl: ^0.18.1
   json_annotation: ^4.8.1
@@ -71,7 +71,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.8
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
 

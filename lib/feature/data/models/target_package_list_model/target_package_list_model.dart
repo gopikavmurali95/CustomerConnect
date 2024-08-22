@@ -8,6 +8,8 @@ class TargetPackageListModel {
   String? prdId;
   String? prdCode;
   String? prdName;
+  @JsonKey(name: 'ArprdName')
+  String? arprdName;
   @JsonKey(name: 'AchAmt')
   String? achAmt;
   @JsonKey(name: 'AchQty')

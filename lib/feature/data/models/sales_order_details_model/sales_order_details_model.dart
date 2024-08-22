@@ -38,6 +38,8 @@ class SalesOrderDetailsModel {
   String? vat;
   @JsonKey(name: 'GrandTotal')
   String? grandTotal;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arcshName;
 
   SalesOrderDetailsModel({
     this.ordId,

@@ -18,7 +18,9 @@ MerchCustomerRequestHeaderModel _$MerchCustomerRequestHeaderModelFromJson(
       cusName: json['cus_Name'] as String?,
       date: json['Date'] as String?,
       status: json['status'] as String?,
-    );
+    )
+      ..arcusName = json['Arcus_Name'] as String?
+      ..arstatus = json['Arstatus'] as String?;
 
 Map<String, dynamic> _$MerchCustomerRequestHeaderModelToJson(
         MerchCustomerRequestHeaderModel instance) =>
@@ -32,4 +34,6 @@ Map<String, dynamic> _$MerchCustomerRequestHeaderModelToJson(
       'cus_Name': instance.cusName,
       'Date': instance.date,
       'status': instance.status,
+      'Arcus_Name': instance.arcusName,
+      'Arstatus': instance.arstatus,
     };

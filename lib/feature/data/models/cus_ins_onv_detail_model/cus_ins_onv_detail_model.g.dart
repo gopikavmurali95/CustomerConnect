@@ -18,6 +18,8 @@ CusInsOnvDetailModel _$CusInsOnvDetailModelFromJson(
       higherQty: json['HigherQty'] as String?,
       amount: json['Amount'] as String?,
       prdtype: json['prd_Type'] as String?,
+      arPrdName: json['Arprd_Name'] as String?,
+      arPrdType: json['Arprd_Type'] as String?,
     );
 
 Map<String, dynamic> _$CusInsOnvDetailModelToJson(
@@ -32,4 +34,6 @@ Map<String, dynamic> _$CusInsOnvDetailModelToJson(
       'HigherQty': instance.higherQty,
       'Amount': instance.amount,
       'prd_Type': instance.prdtype,
+      'Arprd_Name': instance.arPrdName,
+      'Arprd_Type': instance.arPrdType,
     };

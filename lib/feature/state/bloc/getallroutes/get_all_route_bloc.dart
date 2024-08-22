@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
+import 'package:customer_connect/main.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,7 +22,7 @@ class GetAllRouteBloc extends Bloc<GetAllRouteEvent, GetAllRouteState> {
       emit(routes.fold((l) => const GetAllRoutesFailedState(), (r) {
         availableroutes.clear();
         availableroutes
-            .add(CuSInsRotList(rotId: '-1', rotName: 'Select Route'));
+            .add(CuSInsRotList(rotId: '-1', rotName: selectedLocale?.languageCode == 'en'?'Select Route':'حدد الطريق'));
 
         availableroutes.addAll(r);
         return GetAllRoutesSuccessState(routes: availableroutes);

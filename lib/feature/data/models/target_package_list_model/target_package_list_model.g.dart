@@ -14,7 +14,7 @@ TargetPackageListModel _$TargetPackageListModelFromJson(
       prdName: json['prdName'] as String?,
       achAmt: json['AchAmt'] as String?,
       achQty: json['AchQty'] as String?,
-    );
+    )..arprdName = json['ArprdName'] as String?;
 
 Map<String, dynamic> _$TargetPackageListModelToJson(
         TargetPackageListModel instance) =>
@@ -22,6 +22,7 @@ Map<String, dynamic> _$TargetPackageListModelToJson(
       'prdID': instance.prdId,
       'prdCode': instance.prdCode,
       'prdName': instance.prdName,
+      'ArprdName': instance.arprdName,
       'AchAmt': instance.achAmt,
       'AchQty': instance.achQty,
     };

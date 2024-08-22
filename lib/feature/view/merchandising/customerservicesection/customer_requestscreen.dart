@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/approvalstatusfilter/approv
 import 'package:customer_connect/feature/state/bloc/merchcustomerrequest/merch_customer_request_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -348,7 +349,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                         child: Text(
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
-                                                                            ' ${headers[index].cusName}',
+                                                                            ' ${selectedLocale?.languageCode == 'en'?headers[index].cusName:headers[index].arcusName}',
                                                                             style: subTitleTextStyle()),
                                                                       ),
                                                                     ],
@@ -383,7 +384,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                   BoxDecoration(
                                                                 color: headers[index]
                                                                             .status ==
-                                                                        '${AppLocalizations.of(context)!.responded}'
+                                                                        AppLocalizations.of(context)!.responded
                                                                     ? const Color(
                                                                         0xffe3f7e2)
                                                                     : const Color(
@@ -402,9 +403,9 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                     vertical:
                                                                         3),
                                                                 child: Text(
-                                                                  headers[index]
+                                                                  selectedLocale?.languageCode == 'en'?headers[index]
                                                                           .status ??
-                                                                      '',
+                                                                      '':headers[index].arstatus??'',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           8.sp),

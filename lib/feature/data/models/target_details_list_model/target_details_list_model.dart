@@ -8,6 +8,8 @@ class TargetDetailsListModel {
   String? pkgId;
   @JsonKey(name: 'pkgName')
   String? pkgName;
+  @JsonKey(name: 'ArpkgName')
+  String? arpkgName;
   @JsonKey(name: 'TargetAmt')
   String? targetAmt;
   @JsonKey(name: 'TargetQty')

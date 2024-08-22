@@ -12,6 +12,9 @@ class OutOfStockItemsModel {
   String? osiId;
   @JsonKey(name: 'cusCount')
   String? cusCount;
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
+
   OutOfStockItemsModel({this.prdCode, this.prdName, this.osiId, this.cusCount});
 
   factory OutOfStockItemsModel.fromJson(Map<String, dynamic> json) {

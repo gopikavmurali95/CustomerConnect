@@ -22,6 +22,10 @@ class CusInsOnvDetailModel {
   String? amount;
   @JsonKey(name: 'prd_Type')
   String? prdtype;
+  @JsonKey(name: 'Arprd_Name')
+  String? arPrdName;
+  @JsonKey(name: 'Arprd_Type')
+  String? arPrdType;
 
   CusInsOnvDetailModel({
     this.prdId,
@@ -33,6 +37,8 @@ class CusInsOnvDetailModel {
     this.higherQty,
     this.amount,
     this.prdtype,
+    this.arPrdName,
+    this.arPrdType,
   });
 
   factory CusInsOnvDetailModel.fromJson(Map<String, dynamic> json) {

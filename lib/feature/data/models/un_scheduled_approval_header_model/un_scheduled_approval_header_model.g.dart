@@ -17,6 +17,8 @@ UnScheduledApprovalHeaderModel _$UnScheduledApprovalHeaderModelFromJson(
       cusName: json['cus_Name'] as String?,
       createdDate: json['CreatedDate'] as String?,
       status: json['Status'] as String?,
+      rotArName: json['rot_ArName'] as String?,
+      cusArName: json['cus_ArName'] as String?,
     );
 
 Map<String, dynamic> _$UnScheduledApprovalHeaderModelToJson(
@@ -30,4 +32,6 @@ Map<String, dynamic> _$UnScheduledApprovalHeaderModelToJson(
       'cus_Name': instance.cusName,
       'CreatedDate': instance.createdDate,
       'Status': instance.status,
+      'rot_ArName': instance.rotArName,
+      'cus_ArName': instance.cusArName,
     };

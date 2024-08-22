@@ -15,7 +15,7 @@ CusInsInvoiceModel _$CusInsInvoiceModelFromJson(Map<String, dynamic> json) =>
       time: json['Time'] as String?,
       id: json['ID'] as String?,
       grandTotal: json['GrandTotal'] as String?,
-    );
+    )..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$CusInsInvoiceModelToJson(CusInsInvoiceModel instance) =>
     <String, dynamic>{
@@ -26,4 +26,5 @@ Map<String, dynamic> _$CusInsInvoiceModelToJson(CusInsInvoiceModel instance) =>
       'Time': instance.time,
       'ID': instance.id,
       'GrandTotal': instance.grandTotal,
+      'ArStatus': instance.arStatus,
     };
