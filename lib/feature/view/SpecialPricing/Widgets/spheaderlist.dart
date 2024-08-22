@@ -116,7 +116,7 @@ class SpPrHeaderList extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                '${spHeader[index].startDate} To ${spHeader[index].endDate}',
+                                                '${spHeader[index].startDate} ${AppLocalizations.of(context)!.to} ${spHeader[index].endDate}',
                                                 style: subTextStyle(),
                                               ),
                                               Text(
@@ -163,8 +163,8 @@ class SpPrHeaderList extends StatelessWidget {
                                         width: 5.w,
                                       ),
                                       Transform.flip(
-                                        flipX: selectedLocale?.languageCode == "en" ? true : false,
-                                         //flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                        //flipX: selectedLocale?.languageCode == "en" ? true : false,
+                                         flipX: selectedLocale?.languageCode == "en" ? false : true,
                                         // flipX:
                                         //     selectedLocale?.languageCode == "en"
                                         //         ? false

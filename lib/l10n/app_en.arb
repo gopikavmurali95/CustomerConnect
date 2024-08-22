@@ -320,7 +320,25 @@
   "mailId": "Mail ID",
   "mobileNumber": "Mobile Number",
   "whatspNo": "Whatsapp Number",
-  "update": "Update"
+  "update": "Update",
+  "cantBeEmpty": "can't be empty",
+  "close": "Close",
+  "selectdate": "Select date",
+  "pleaseMakeSureYouHaveSelectedaRouteAndDate": "Please make sure you have selected a route and date",
+  "pleaseMakeSureYouHaveSelectedaDate": "Please make sure you have selected a date",
+  "trackCustomers": "Track Customers",
+  "showRoute": "Show Route",
+  "start": "Start",
+  "current": "Current",
+  "time": "Time",
+  "unscheduledVisit": "UnScheduled Visit",
+  "unschedVisitApproval": "Unscheduled Visit Approval",
+  "unscheduledVisitRejection": "Unscheduled Visit Rejection",
+  "sysQty": "Sys Qty",
+  "pkdQty": "Pkd Qty",
+  "liQty": "LI Qty"
+  
+
  
 
 }

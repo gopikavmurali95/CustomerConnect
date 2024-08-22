@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -314,16 +315,18 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      dispData[index]
-                                                                              .type ??
-                                                                          '',
+                                                                              selectedLocale?.languageCode == "en" ? dispData[index].type ?? '' : dispData[index].arType?? '',
+                                                                      // dispData[index]
+                                                                      //         .type ??
+                                                                      //     '',
                                                                       style:
                                                                           subTitleTextStyle()),
                                                                 ),
                                                               ],
                                                             ),
                                                             Text(
-                                                              "${dispData[index].cusCode}-${dispData[index].cusName}",
+                                                              selectedLocale?.languageCode == "en" ? dispData[index].cusName ?? '' : dispData[index].cusArName?? '',
+                                                              //"${dispData[index].cusCode}-${dispData[index].cusName}",
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
@@ -366,9 +369,10 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                                                   horizontal: 5,
                                                                   vertical: 3),
                                                           child: Text(
-                                                            dispData[index]
-                                                                    .status ??
-                                                                '',
+                                                            selectedLocale?.languageCode == "en" ? dispData[index].status ?? '' : dispData[index].arStatus?? '',
+                                                            // dispData[index]
+                                                            //         .status ??
+                                                            //     '',
                                                             style: kfontstyle(
                                                                 fontSize: 8.sp),
                                                           ),

@@ -15,7 +15,10 @@ MerchCustomerActivitiesModel _$MerchCustomerActivitiesModelFromJson(
       startDate: json['StartDate'] as String?,
       endDate: json['EndDate'] as String?,
       status: json['Status'] as String?,
-    );
+    )
+      ..actArName = json['Act_ArName'] as String?
+      ..cusrName = json['cus_ArName'] as String?
+      ..arstatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$MerchCustomerActivitiesModelToJson(
         MerchCustomerActivitiesModel instance) =>
@@ -26,4 +29,7 @@ Map<String, dynamic> _$MerchCustomerActivitiesModelToJson(
       'StartDate': instance.startDate,
       'EndDate': instance.endDate,
       'Status': instance.status,
+      'Act_ArName': instance.actArName,
+      'cus_ArName': instance.cusrName,
+      'ArStatus': instance.arstatus,
     };

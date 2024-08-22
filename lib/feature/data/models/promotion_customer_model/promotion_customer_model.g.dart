@@ -15,7 +15,9 @@ PromotionCustomerModel _$PromotionCustomerModelFromJson(
       areaName: json['AreaName'] as String?,
       promotionCustomerModelClass: json['Class'] as String?,
       id: json['ID'] as String?,
-    );
+    )
+      ..arCusName = json['ArCusName'] as String?
+      ..arareaName = json['ArAreaName'] as String?;
 
 Map<String, dynamic> _$PromotionCustomerModelToJson(
         PromotionCustomerModel instance) =>
@@ -26,4 +28,6 @@ Map<String, dynamic> _$PromotionCustomerModelToJson(
       'AreaName': instance.areaName,
       'Class': instance.promotionCustomerModelClass,
       'ID': instance.id,
+      'ArCusName': instance.arCusName,
+      'ArAreaName': instance.arareaName,
     };

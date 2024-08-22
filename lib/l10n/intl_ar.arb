@@ -320,7 +320,24 @@
   "mailId": "معرف البريد",
   "mobileNumber": "رقم الهاتف المحمول",
   "whatspNo": "رقم الواتساب",
-  "update": "للتحديث"
+  "update": "للتحديث",
+  "cantBeEmpty": "لا يمكن أن تكون فارغة",
+  "close": "يغلق",
+  "selectdate": "اختر التاريخ",
+  "pleaseMakeSureYouHaveSelectedaRouteAndDate": "يرجى التأكد من تحديد المسار والتاريخ",
+  "pleaseMakeSureYouHaveSelectedaDate": "الرجاء التأكد من تحديد التاريخ",
+  "trackCustomers": "تتبع العملاء",
+  "showRoute": "عرض الطريق",
+  "start": "يبدأ",
+  "current": "حاضِر",
+  "time": "وقت",
+  "unscheduledVisit": "زيارة غير مجدولة",
+  "unschedVisitApproval": "الموافقة على الزيارة غير المجدولة",
+  "unscheduledVisitRejection": "رفض الزيارة غير المجدولة",
+  "sysQty": "الكمية في النظام",
+  "pkdQty": "الكمية المغلفة",
+  "liQty": "الكمية الفعلية"
+
 
 
 }

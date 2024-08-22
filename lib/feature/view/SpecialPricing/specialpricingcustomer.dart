@@ -53,7 +53,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: Transform.flip(
-          flipX: selectedLocale?.languageCode == "en" ? false : true,
+         // flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);

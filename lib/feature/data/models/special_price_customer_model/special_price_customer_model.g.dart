@@ -12,7 +12,7 @@ SpecialPriceCustomerModel _$SpecialPriceCustomerModelFromJson(
       cusId: json['CusID'] as String?,
       cusCode: json['CusCode'] as String?,
       cusName: json['CusName'] as String?,
-    );
+    )..arcusName = json['ArCusName'] as String?;
 
 Map<String, dynamic> _$SpecialPriceCustomerModelToJson(
         SpecialPriceCustomerModel instance) =>
@@ -20,4 +20,5 @@ Map<String, dynamic> _$SpecialPriceCustomerModelToJson(
       'CusID': instance.cusId,
       'CusCode': instance.cusCode,
       'CusName': instance.cusName,
+      'ArCusName': instance.arcusName,
     };

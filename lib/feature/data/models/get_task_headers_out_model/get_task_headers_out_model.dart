@@ -18,6 +18,12 @@ class GetTaskHeadersOutModel {
   String? status;
   @JsonKey(name: 'TaskCode')
   String? taskCode;
+  @JsonKey(name: 'TaskArName')
+  String? taskArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   GetTaskHeadersOutModel({
     this.taskName,

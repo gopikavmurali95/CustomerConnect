@@ -26,6 +26,10 @@ class OutStandOutModel {
     this.status,
     this.id,
     this.invPayType,
+    this.arStatus,
+    this.cusArName,
+    this.cshArName,
+    this.rotArName
   });
 
   OutStandOutModel.fromJson(dynamic json) {
@@ -48,6 +52,11 @@ class OutStandOutModel {
     status = json['Status'];
     id = json['ID'];
     invPayType = json['inv_PayType'];
+    arStatus = json['ArStatus'];
+    cusArName =json['cus_ArName'];
+    cshArName = json['csh_ArName'];
+    rotArName =json['rot_ArName'];
+    
   }
   String? invoiceID;
   String? invoicedOn;
@@ -68,6 +77,10 @@ class OutStandOutModel {
   String? status;
   String? id;
   String? invPayType;
+  String? arStatus;
+  String? cusArName;
+  String? cshArName;
+  String? rotArName;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -90,6 +103,10 @@ class OutStandOutModel {
     map['Status'] = status;
     map['ID'] = id;
     map['inv_PayType'] = invPayType;
-    return map;
+    map['ArStatus']=arStatus;
+    map['cus_ArName']= cusArName;
+    map['csh_ArName']=cshArName;
+    map['rot_ArName']= rotArName;
+        return map;
   }
 }

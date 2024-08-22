@@ -31,7 +31,7 @@ class PromotionDetails extends StatelessWidget {
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: Transform.flip(
-          flipX: selectedLocale?.languageCode == "en" ? false : true,
+         // flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -98,7 +98,8 @@ class PromotionDetails extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        promotion.pName ?? '',
+                                       selectedLocale?.languageCode == "en" ? promotion.pName ?? '' : promotion.arPname?? '',
+                                       // promotion.pName ?? '',
                                         style: blueTextStyle(),
                                       ),
                                       Text(

@@ -15,7 +15,11 @@ GetTaskHeadersOutModel _$GetTaskHeadersOutModelFromJson(
       dueOn: json['DueOn'] as String?,
       compOn: json['CompOn'] as String?,
       status: json['Status'] as String?,
-    )..taskCode = json['TaskCode'] as String?;
+    )
+      ..taskCode = json['TaskCode'] as String?
+      ..taskArName = json['TaskArName'] as String?
+      ..cusArName = json['cus_ArName'] as String?
+      ..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$GetTaskHeadersOutModelToJson(
         GetTaskHeadersOutModel instance) =>
@@ -27,4 +31,7 @@ Map<String, dynamic> _$GetTaskHeadersOutModelToJson(
       'CompOn': instance.compOn,
       'Status': instance.status,
       'TaskCode': instance.taskCode,
+      'TaskArName': instance.taskArName,
+      'cus_ArName': instance.cusArName,
+      'ArStatus': instance.arStatus,
     };
