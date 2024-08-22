@@ -6,6 +6,8 @@ part 'target_details_count_model.g.dart';
 class TargetDetailsCountModel {
   @JsonKey(name: 'Month')
   String? month;
+  @JsonKey(name: 'ArMonth')
+  String? arMonth;
   @JsonKey(name: 'TotWorkingDays')
   String? totWorkingDays;
   @JsonKey(name: 'CompletedDays')

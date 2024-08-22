@@ -13,7 +13,9 @@ OutOfStockItemsCustomersModel _$OutOfStockItemsCustomersModelFromJson(
       rotName: json['rot_Name'] as String?,
       cusCode: json['cus_Code'] as String?,
       cusName: json['cus_Name'] as String?,
-    );
+    )
+      ..rotArName = json['rot_ArName'] as String?
+      ..cusArName = json['cus_ArName'] as String?;
 
 Map<String, dynamic> _$OutOfStockItemsCustomersModelToJson(
         OutOfStockItemsCustomersModel instance) =>
@@ -22,4 +24,6 @@ Map<String, dynamic> _$OutOfStockItemsCustomersModelToJson(
       'rot_Name': instance.rotName,
       'cus_Code': instance.cusCode,
       'cus_Name': instance.cusName,
+      'rot_ArName': instance.rotArName,
+      'cus_ArName': instance.cusArName,
     };

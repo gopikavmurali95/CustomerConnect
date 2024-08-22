@@ -12,12 +12,13 @@ TargetDetailsCountModel _$TargetDetailsCountModelFromJson(
       month: json['Month'] as String?,
       totWorkingDays: json['TotWorkingDays'] as String?,
       completedDays: json['CompletedDays'] as String?,
-    );
+    )..arMonth = json['ArMonth'] as String?;
 
 Map<String, dynamic> _$TargetDetailsCountModelToJson(
         TargetDetailsCountModel instance) =>
     <String, dynamic>{
       'Month': instance.month,
+      'ArMonth': instance.arMonth,
       'TotWorkingDays': instance.totWorkingDays,
       'CompletedDays': instance.completedDays,
     };

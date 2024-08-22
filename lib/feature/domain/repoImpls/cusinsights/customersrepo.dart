@@ -52,7 +52,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
           'Route': message['route'],
         },
       );
-      // log(response.body);
+      log(response.body);
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         final List<dynamic> cusdetaildata = json['result'];

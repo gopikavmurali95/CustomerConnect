@@ -23,13 +23,14 @@ TargetDetailsListModel _$TargetDetailsListModelFromJson(
       monthGapAmtPerc: json['MonthGapAmtPerc'] as String?,
       monthGapQty: json['MonthGapQty'] as String?,
       monthGapQtyPerc: json['MonthGapQtyPerc'] as String?,
-    );
+    )..arpkgName = json['ArpkgName'] as String?;
 
 Map<String, dynamic> _$TargetDetailsListModelToJson(
         TargetDetailsListModel instance) =>
     <String, dynamic>{
       'pkgID': instance.pkgId,
       'pkgName': instance.pkgName,
+      'ArpkgName': instance.arpkgName,
       'TargetAmt': instance.targetAmt,
       'TargetQty': instance.targetQty,
       'AchAmt': instance.achAmt,

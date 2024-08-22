@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inventory_reconfirm_header_bloc.dart';
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmationdetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +35,18 @@ class _InventoryReconfirmHeadersScreenState
   @override
   void initState() {
     _selectedMode = "A";
+
+    ddfilterFieldsVanToVan = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     context
         .read<InventoryReconfirmHeaderBloc>()
         .add(const ClearInventoryReconfirmHeaders());
@@ -373,7 +386,7 @@ class _InventoryReconfirmHeadersScreenState
                                                                             Text(
                                                                           overflow:
                                                                               TextOverflow.ellipsis,
-                                                                          "${inventory[index].usrName}",
+                                                                          "${selectedLocale?.languageCode == 'en'?inventory[index].usrName:inventory[index].arusrName}",
                                                                           style: kfontstyle(
                                                                               fontSize: 12.sp,
                                                                               color: const Color(0xff413434)),
@@ -430,9 +443,9 @@ class _InventoryReconfirmHeadersScreenState
                                                                     vertical:
                                                                         5),
                                                                 child: Text(
-                                                                  inventory[index]
+                                                                  selectedLocale?.languageCode == 'en'?inventory[index]
                                                                           .iahStatus ??
-                                                                      '',
+                                                                      '':inventory[index].ariahStatus??'',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           10.sp,

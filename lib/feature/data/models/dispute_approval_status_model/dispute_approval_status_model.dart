@@ -10,11 +10,13 @@ class DisputeApprovalStatusModel {
   String? currentLevel;
   @JsonKey(name: 'NextLevel')
   String? nextLevel;
-
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
   DisputeApprovalStatusModel({
     this.status,
     this.currentLevel,
     this.nextLevel,
+    this.arStatus,
   });
 
   factory DisputeApprovalStatusModel.fromJson(Map<String, dynamic> json) {

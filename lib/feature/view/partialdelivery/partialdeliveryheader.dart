@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partial_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliverydetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +34,18 @@ Timer? debounce;
 class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
   @override
   void initState() {
+    filterFieldsPartialDelivery = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
+
     context
         .read<PartialDeliveryHeaderBloc>()
         .add(const ClearPartialDeliveryHeaderEvent());
@@ -317,9 +330,12 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    header[index]
-                                                                            .cusName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? header[index].cusName ??
+                                                                            ''
+                                                                        : header[index].arcusName ??
+                                                                            '',
                                                                     style:
                                                                         subTitleTextStyle()),
                                                               ),
@@ -367,9 +383,15 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                 horizontal: 8,
                                                                 vertical: 5),
                                                         child: Text(
-                                                          header[index]
-                                                                  .dahApprovalStatus ??
-                                                              '',
+                                                          selectedLocale
+                                                                      ?.languageCode ==
+                                                                  'en'
+                                                              ? header[index]
+                                                                      .dahApprovalStatus ??
+                                                                  ''
+                                                              : header[index]
+                                                                      .ardahApprovalStatus ??
+                                                                  '',
                                                           style: kfontstyle(
                                                               fontSize: 10.sp,
                                                               fontWeight:

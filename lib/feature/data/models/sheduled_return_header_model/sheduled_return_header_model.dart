@@ -28,20 +28,35 @@ class SheduledReturnHeaderModel {
   String? userID;
   @JsonKey(name: 'rotID')
   String? rotID;
-
-  SheduledReturnHeaderModel(
-      {this.cusCode,
-      this.cusName,
-      this.rrhInvId,
-      this.rrhRequestNumber,
-      this.usrName,
-      this.rrhId,
-      this.rrhType,
-      this.rrhReturnType,
-      this.createdDate,
-      this.status,
-      this.userID,
-      this.rotID});
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'Arusr_Name')
+  String? arusrName;
+  @JsonKey(name: 'Arrrh_ReturnType')
+  String? arrrhReturnType;
+  @JsonKey(name: 'Arrrh_Type')
+  String? arrrhType;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  SheduledReturnHeaderModel({
+    this.cusCode,
+    this.cusName,
+    this.rrhInvId,
+    this.rrhRequestNumber,
+    this.usrName,
+    this.rrhId,
+    this.rrhType,
+    this.rrhReturnType,
+    this.createdDate,
+    this.status,
+    this.userID,
+    this.rotID,
+    this.arStatus,
+    this.arcusName,
+    this.arrrhReturnType,
+    this.arrrhType,
+    this.arusrName,
+  });
 
   factory SheduledReturnHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$SheduledReturnHeaderModelFromJson(json);

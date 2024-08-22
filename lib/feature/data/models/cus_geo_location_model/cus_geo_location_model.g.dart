@@ -21,6 +21,8 @@ CusGeoLocationModel _$CusGeoLocationModelFromJson(Map<String, dynamic> json) =>
       usrCode: json['usr_Code'] as String?,
       geolocurl: json['geolocurl'] as String?,
       status: json['Status'] as String?,
+      usrArName: json['usr_ArName'] as String?,
+      cusArName: json['cus_ArName'] as String?,
     );
 
 Map<String, dynamic> _$CusGeoLocationModelToJson(
@@ -39,4 +41,6 @@ Map<String, dynamic> _$CusGeoLocationModelToJson(
       'usr_Code': instance.usrCode,
       'geolocurl': instance.geolocurl,
       'Status': instance.status,
+      'usr_ArName': instance.usrArName,
+      'cus_ArName': instance.cusArName,
     };

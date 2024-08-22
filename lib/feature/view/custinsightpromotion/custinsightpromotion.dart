@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -173,7 +174,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                   width: 200.w,
                                   child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    widget.customer.cusName ?? "",
+                                    selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? "":widget.customer.arcusName??'',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff413434)),
@@ -192,7 +193,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                 SizedBox(
                                   width: 150.w,
                                   child: Text(
-                                    widget.customer.headerName ?? "",
+                                    selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? "":widget.customer.arheaderName??'',
                                     overflow: TextOverflow.ellipsis,
                                     style: kfontstyle(fontSize: 12.sp),
                                   ),
@@ -200,7 +201,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                               ],
                             ),
                             Text(
-                              '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                              '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arAreaName??''} ',
                               style: kfontstyle(
                                   fontSize: 10.sp, color: Colors.grey),
                             ),
@@ -445,9 +446,14 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                headers[index]
-                                                                        .pName ??
-                                                                    '',
+                                                                selectedLocale?.languageCode ==
+                                                                        "en"
+                                                                    ? headers[index]
+                                                                            .pName ??
+                                                                        ''
+                                                                    : headers[index]
+                                                                            .arPName ??
+                                                                        '',
                                                                 style:
                                                                     blueTextStyle(),
                                                               ),

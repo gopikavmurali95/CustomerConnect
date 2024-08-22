@@ -40,6 +40,20 @@ class _DisputeNoteApprovalHEaderScreenState
   @override
   void initState() {
     _disputeHeaderSearchCtrl.clear();
+    ddfilterFieldsDisputeNote = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'AT'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     context.read<ProgressIndicatorCubit>().removeProgressIndicator();
     context
         .read<DisputeNoteHeaderBloc>()
@@ -372,9 +386,14 @@ class _DisputeNoteApprovalHEaderScreenState
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
-                                                                headers[index]
-                                                                        .cusName ??
-                                                                    '',
+                                                                selectedLocale?.languageCode ==
+                                                                        'en'
+                                                                    ? headers[index]
+                                                                            .cusName ??
+                                                                        ''
+                                                                    : headers[index]
+                                                                            .arcusName ??
+                                                                        '',
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
@@ -423,8 +442,15 @@ class _DisputeNoteApprovalHEaderScreenState
                                                           horizontal: 8,
                                                           vertical: 5),
                                                       child: Text(
-                                                        headers[index].status ??
-                                                            '',
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? headers[index]
+                                                                    .status ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .arStatus ??
+                                                                '',
                                                         style: kfontstyle(
                                                             fontSize: 10.sp,
                                                             fontWeight:

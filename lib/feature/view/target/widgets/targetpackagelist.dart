@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/target_details_list_model/t
 import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
 import 'package:customer_connect/feature/state/bloc/targetpackagelist/target_package_list_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,7 +72,7 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
                                             style: loadTextStyle(),
                                           ),
                                           Text(
-                                            '${list[index].prdName}  ',
+                                            '${selectedLocale?.languageCode == 'en'?list[index].prdName:list[index].arprdName}  ',
                                             style: subTitleTextStyle(),
                                           )
                                         ],

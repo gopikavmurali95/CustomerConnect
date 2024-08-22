@@ -20,6 +20,10 @@ CusInsCustomersModel _$CusInsCustomersModelFromJson(
       rotId: json['rot_ID'] as String?,
       rotCode: json['rot_Code'] as String?,
       rotName: json['rot_Name'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
+      arheaderName: json['ArHeader_Name'] as String?,
+      arrotName: json['Arrot_Name'] as String?,
+      arAreaName: json['ArArea_Name'] as String?,
     );
 
 Map<String, dynamic> _$CusInsCustomersModelToJson(
@@ -36,4 +40,8 @@ Map<String, dynamic> _$CusInsCustomersModelToJson(
       'rot_ID': instance.rotId,
       'rot_Code': instance.rotCode,
       'rot_Name': instance.rotName,
+      'Arcus_Name': instance.arcusName,
+      'ArHeader_Name': instance.arheaderName,
+      'Arrot_Name': instance.arrotName,
+      'ArArea_Name': instance.arAreaName,
     };

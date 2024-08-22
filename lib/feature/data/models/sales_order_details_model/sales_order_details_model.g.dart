@@ -26,7 +26,7 @@ SalesOrderDetailsModel _$SalesOrderDetailsModelFromJson(
       subTotal: json['SubTotal'] as String?,
       vat: json['VAT'] as String?,
       grandTotal: json['GrandTotal'] as String?,
-    );
+    )..arcshName = json['Arcsh_Name'] as String?;
 
 Map<String, dynamic> _$SalesOrderDetailsModelToJson(
         SalesOrderDetailsModel instance) =>
@@ -48,4 +48,5 @@ Map<String, dynamic> _$SalesOrderDetailsModelToJson(
       'SubTotal': instance.subTotal,
       'VAT': instance.vat,
       'GrandTotal': instance.grandTotal,
+      'Arcsh_Name': instance.arcshName,
     };

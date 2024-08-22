@@ -4,10 +4,12 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/out_of_stock_customer_model/out_of_stock_customer_model.dart';
 import 'package:customer_connect/feature/state/bloc/ooscustomerdetail/oos_customer_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -96,7 +98,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                        widget.header.cusName ?? '',
+                                       selectedLocale?.languageCode == 'en'? widget.header.cusName ?? '':widget.header.cusArName??'',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -173,7 +175,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                 ),
                               ],
                             ),
-                            hintText:AppLocalizations.of(context)!.searchHere,
+                            hintText: AppLocalizations.of(context)!.searchHere,
                             hintStyle: TextStyle(
                                 fontSize: 12.sp,
                                 color: Colors.grey,
@@ -201,7 +203,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                     AppLocalizations.of(context)!.outOfStockItems,
+                        AppLocalizations.of(context)!.outOfStockItems,
                         style: countHeading(),
                       ),
                       Padding(
@@ -256,7 +258,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                               : details.isEmpty
                                   ? Center(
                                       child: Text(
-                                       AppLocalizations.of(context)!.noDataAvailable,
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
                                         style: kfontstyle(),
                                       ),
                                     )
@@ -309,8 +312,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                                                       Text(
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        details[index].prdName ??
-                                                                            '',
+                                                                        selectedLocale?.languageCode == 'en'?details[index].prdName ??
+                                                                            '':details[index].prdArName??'',
                                                                         style: kfontstyle(
                                                                             fontSize: 10
                                                                                 .sp,

@@ -29,6 +29,10 @@ CusInsArHEaderModel _$CusInsArHEaderModelFromJson(Map<String, dynamic> json) =>
       chequeDate: json['ChequeDate'] as String?,
       arpImage1: json['arp_Image1'] as String?,
       bankName: json['bank_Name'] as String?,
+      arBankName: json['Arbank_Name'] as String?,
+      arCshName: json['Arcsh_Name'] as String?,
+      arPayMode: json['ArPayMode'] as String?,
+      arcusName: json['Arcus_Name'] as String?,
     );
 
 Map<String, dynamic> _$CusInsArHEaderModelToJson(
@@ -55,4 +59,8 @@ Map<String, dynamic> _$CusInsArHEaderModelToJson(
       'ChequeDate': instance.chequeDate,
       'arp_Image1': instance.arpImage1,
       'bank_Name': instance.bankName,
+      'Arcus_Name': instance.arcusName,
+      'ArPayMode': instance.arPayMode,
+      'Arbank_Name': instance.arBankName,
+      'Arcsh_Name': instance.arCshName,
     };

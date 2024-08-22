@@ -10,10 +10,11 @@ FieldServiceInvoiceApprovalModel _$FieldServiceInvoiceApprovalModelFromJson(
         Map<String, dynamic> json) =>
     FieldServiceInvoiceApprovalModel(
       status: json['Status'] as String?,
-    );
+    )..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$FieldServiceInvoiceApprovalModelToJson(
         FieldServiceInvoiceApprovalModel instance) =>
     <String, dynamic>{
       'Status': instance.status,
+      'ArStatus': instance.arStatus,
     };

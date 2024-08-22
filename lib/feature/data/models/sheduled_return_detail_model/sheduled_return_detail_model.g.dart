@@ -24,6 +24,10 @@ SheduledReturnDetailModel _$SheduledReturnDetailModelFromJson(
       rsnId: json['rsn_ID'] as String?,
       image: json['Image'] as String?,
       rsnType: json['rsn_Type'] as String?,
+      arStatus: json['ArStatus'] as String?,
+      arprdName: json['Arprd_Name'] as String?,
+      arrsnName: json['Arrsn_Name'] as String?,
+      arrsnType: json['Arrsn_Type'] as String?,
     );
 
 Map<String, dynamic> _$SheduledReturnDetailModelToJson(
@@ -44,4 +48,8 @@ Map<String, dynamic> _$SheduledReturnDetailModelToJson(
       'rsn_ID': instance.rsnId,
       'Image': instance.image,
       'rsn_Type': instance.rsnType,
+      'Arprd_Name': instance.arprdName,
+      'Arrsn_Name': instance.arrsnName,
+      'ArStatus': instance.arStatus,
+      'Arrsn_Type': instance.arrsnType,
     };

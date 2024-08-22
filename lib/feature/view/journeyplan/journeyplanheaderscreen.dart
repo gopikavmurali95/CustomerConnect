@@ -43,18 +43,35 @@ TextEditingController _journeyplanSearchController = TextEditingController();
 class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
   @override
   void initState() {
+    _journeyplanSearchController.clear();
+    ddfilterJourneyPlan = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en' ? "Cancel" : "يلغي",
+          mode: 'CN'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en" ? "Reject" : "مرفوض",
+          mode: 'R'),
+    ];
     context
         .read<JourneyPlanHeaderBloc>()
         .add(const ClearJourneyPlanHeadersEvent());
-    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
-        userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+   /*  context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
+        userID: widget.user.usrId ?? '', mode: '', searchQuery: '')); */
     context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
           userID: widget.user.usrId ?? '',
           mode: 'P', searchQuery: '',
           // mode:'P',
           // searchQuery:''
         ));
-    _journeyplanSearchController.clear();
+
     super.initState();
   }
 

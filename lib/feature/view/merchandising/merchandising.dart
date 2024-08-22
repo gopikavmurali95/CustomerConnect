@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/view/merchandising/widget/outletactivit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +54,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
           ),
         ),
         title: Text(
-           AppLocalizations.of(context)!.merchandisingDashBoard,
+          AppLocalizations.of(context)!.merchandisingDashBoard,
           //"Merchandising Dashboard",
           style: appHeading(),
         ),

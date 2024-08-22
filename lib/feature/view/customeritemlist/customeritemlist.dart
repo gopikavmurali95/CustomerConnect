@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -116,7 +117,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                       width: 160.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
-                                        widget.customer.cusName ?? "",
+                                        selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? "":widget.customer.arcusName??'',
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: const Color(0xff413434)),
@@ -135,7 +136,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                     SizedBox(
                                       width: 200.w,
                                       child: Text(
-                                        widget.customer.headerName ?? "",
+                                       selectedLocale?.languageCode == 'en'? widget.customer.headerName ?? "":widget.customer.arheaderName??'',
                                         overflow: TextOverflow.ellipsis,
                                         style: kfontstyle(fontSize: 12.sp),
                                       ),
@@ -143,7 +144,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                   ],
                                 ),
                                 Text(
-                                  '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                                  '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arcusName} ',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),
@@ -273,7 +274,9 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                 style: boxHeading(),
                               ),
                               SizedBox(
-                                width: 60.w,
+                                width: selectedLocale?.languageCode == "en"
+                                    ? 60.w
+                                    : 50.w,
                               ),
                               Text(
                                 AppLocalizations.of(context)!.price,

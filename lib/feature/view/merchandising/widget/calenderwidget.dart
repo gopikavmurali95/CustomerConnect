@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -223,7 +224,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     AppLocalizations.of(context)!.done,
                                     style: const TextStyle(
                                       color: Colors.black87,
@@ -297,7 +298,7 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                     AppLocalizations.of(context)!.to,
+                      AppLocalizations.of(context)!.to,
                       style: kfontstyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,

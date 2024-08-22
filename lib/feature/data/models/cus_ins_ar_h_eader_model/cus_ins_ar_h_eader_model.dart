@@ -46,6 +46,14 @@ class CusInsArHEaderModel {
   String? arpImage1;
   @JsonKey(name: 'bank_Name')
   String? bankName;
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'ArPayMode')
+  String? arPayMode;
+  @JsonKey(name: 'Arbank_Name')
+  String? arBankName;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arCshName;
 
   CusInsArHEaderModel({
     this.arhId,
@@ -69,6 +77,10 @@ class CusInsArHEaderModel {
     this.chequeDate,
     this.arpImage1,
     this.bankName,
+    this.arBankName,
+    this.arCshName, 
+    this.arPayMode,
+    this.arcusName
   });
 
   factory CusInsArHEaderModel.fromJson(Map<String, dynamic> json) {

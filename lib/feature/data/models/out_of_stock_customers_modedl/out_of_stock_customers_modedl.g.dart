@@ -12,7 +12,7 @@ OutOfStockCustomersModedl _$OutOfStockCustomersModedlFromJson(
       cusCode: json['cus_Code'] as String?,
       cusName: json['cus_Name'] as String?,
       cusId: json['cus_ID'] as String?,
-    );
+    )..cusArName = json['cus_ArName'] as String?;
 
 Map<String, dynamic> _$OutOfStockCustomersModedlToJson(
         OutOfStockCustomersModedl instance) =>
@@ -20,4 +20,5 @@ Map<String, dynamic> _$OutOfStockCustomersModedlToJson(
       'cus_Code': instance.cusCode,
       'cus_Name': instance.cusName,
       'cus_ID': instance.cusId,
+      'cus_ArName': instance.cusArName,
     };

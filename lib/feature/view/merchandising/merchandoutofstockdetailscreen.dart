@@ -4,11 +4,13 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outofstockitemsdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:developer';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutOfStockScreen extends StatefulWidget {
   final TextEditingController fromDateCtrl;
@@ -133,7 +135,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                     ),
                                   ],
                                 ),
-                                hintText: AppLocalizations.of(context)!.searchHere,
+                                hintText:
+                                    AppLocalizations.of(context)!.searchHere,
                                 hintStyle: TextStyle(
                                     fontSize: 12.sp,
                                     color: Colors.grey,
@@ -161,7 +164,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                           AppLocalizations.of(context)!.outOfStockItems,
+                            AppLocalizations.of(context)!.outOfStockItems,
                             style: countHeading(),
                           ),
                           Padding(
@@ -215,7 +218,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                   : headers.isEmpty
                                       ? Center(
                                           child: Text(
-                                            AppLocalizations.of(context)!.noDataAvailable,
+                                            AppLocalizations.of(context)!
+                                                .noDataAvailable,
                                             style: kfontstyle(),
                                           ),
                                         )
@@ -282,8 +286,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                       Expanded(
                                                                         child:
                                                                             Text(
-                                                                          headers[index].prdName ??
-                                                                              '',
+                                                                          selectedLocale?.languageCode == 'en'?headers[index].prdName ??
+                                                                              '':headers[index].prdArName??'',
                                                                           style: kfontstyle(
                                                                               fontSize: 10.sp,
                                                                               color: const Color.fromARGB(255, 64, 65, 67)),
@@ -325,7 +329,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                     MediaQuery.of(context).size.height - 200,
                                 child: Center(
                                   child: Text(
-                                    AppLocalizations.of(context)!.noDataAvailable,
+                                    AppLocalizations.of(context)!
+                                        .noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),

@@ -4,10 +4,12 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/ooscustomers/oos_customers_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outofcustomerdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutOfCustomerScreen extends StatefulWidget {
   final TextEditingController fromDate;
@@ -156,7 +158,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                     AppLocalizations.of(context)!.outOfStockCustomers,
+                      AppLocalizations.of(context)!.outOfStockCustomers,
                       style: countHeading(),
                     ),
                     BlocBuilder<OosCustomersBloc, OosCustomersState>(
@@ -202,7 +204,8 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                           : headers.isEmpty
                               ? Center(
                                   child: Text(
-                                   AppLocalizations.of(context)!.noDataAvailable,
+                                    AppLocalizations.of(context)!
+                                        .noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 )
@@ -259,8 +262,8 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      headers[index].cusName ??
-                                                          '',
+                                                      selectedLocale?.languageCode == 'en'?headers[index].cusName ??
+                                                          '':headers[index].cusArName??'',
                                                       style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: const Color
@@ -298,7 +301,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                         height: MediaQuery.of(context).size.height - 200,
                         child: Center(
                           child: Text(
-                           AppLocalizations.of(context)!.noDataAvailable,
+                            AppLocalizations.of(context)!.noDataAvailable,
                             style: kfontstyle(),
                           ),
                         ),

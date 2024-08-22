@@ -10,6 +10,8 @@ class TargetHeaderListModel {
   String? rotCode;
   @JsonKey(name: 'rot_Name')
   String? rotName;
+  @JsonKey(name: 'Arrot_Name')
+  String? arrotName;
   @JsonKey(name: 'TargetAmt')
   String? targetAmt;
   @JsonKey(name: 'TargetQty')

@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
  import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -140,7 +141,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                             AppLocalizations.of(context)!.respondedRequests,
+                              AppLocalizations.of(context)!.respondedRequests,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -223,7 +224,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                AppLocalizations.of(context)!.creditNoteRequests,
+                                AppLocalizations.of(context)!
+                                    .creditNoteRequests,
                                 // 'Credit Note Requests',
                                 style: kfontstyle(
                                     fontSize: 9.sp,
@@ -240,7 +242,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                             AppLocalizations.of(context)!.requested,
+                              AppLocalizations.of(context)!.requested,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -285,7 +287,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                             AppLocalizations.of(context)!.approved,
+                              AppLocalizations.of(context)!.approved,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),
@@ -372,7 +374,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                                AppLocalizations.of(context)!.disputeNoteRequest,
+                                AppLocalizations.of(context)!
+                                    .disputeNoteRequest,
                                 // 'Dispute Note Requests',
                                 style: kfontstyle(
                                     fontSize: 9.sp,
@@ -517,7 +520,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             ),
                             Expanded(
                               child: Text(
-                               AppLocalizations.of(context)!.returnRequest,
+                                AppLocalizations.of(context)!.returnRequest,
                                 style: kfontstyle(
                                     fontSize: 9.sp,
                                     color: Colors.black87,
@@ -533,7 +536,7 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                             AppLocalizations.of(context)!.requested,
+                              AppLocalizations.of(context)!.requested,
                               style: kfontstyle(
                                   fontSize: 8.sp, color: Colors.grey.shade600),
                             ),

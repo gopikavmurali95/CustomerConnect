@@ -26,7 +26,6 @@ class LoadRequestHeaderScreen extends StatefulWidget {
 List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
   ApprovalStatusFilterModel(mode: 'P', statusName: 'Pending'),
   ApprovalStatusFilterModel(mode: 'A', statusName: 'Approved'),
-  // ApprovalStatusFilterModel(mode: 'AL', statusName: 'All'),
   ApprovalStatusFilterModel(mode: 'R', statusName: 'Reject'),
 ];
 
@@ -36,6 +35,21 @@ TextEditingController _loadqSearchController = TextEditingController();
 class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
+    _loadqSearchController.clear();
+    ddfilterLoadRequest = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
     // context
     //     .read<LoadReqHeaderBloc>()
@@ -46,7 +60,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           // mode:'P',
           // searchQuery:''
         ));
-    _loadqSearchController.clear();
+
     super.initState();
   }
 
@@ -411,7 +425,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                             "en"
                                                                         ? headers[index].usrName ??
                                                                             ''
-                                                                        : headers[index].arusrName ??
+                                                                        : headers[index].usrArabicName ??
                                                                             '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12

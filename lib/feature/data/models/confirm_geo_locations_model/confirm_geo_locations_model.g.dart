@@ -12,6 +12,7 @@ ConfirmGeoLocationsModel _$ConfirmGeoLocationsModelFromJson(
       res: json['Res'] as String?,
       title: json['Title'] as String?,
       descr: json['Descr'] as String?,
+      arTitle: json['ArTitle'] as String?,
     );
 
 Map<String, dynamic> _$ConfirmGeoLocationsModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ConfirmGeoLocationsModelToJson(
       'Res': instance.res,
       'Title': instance.title,
       'Descr': instance.descr,
+      'ArTitle': instance.arTitle,
     };

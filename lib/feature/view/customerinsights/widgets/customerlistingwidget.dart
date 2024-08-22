@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/customerinsights/customerinsightsscree.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -103,7 +104,7 @@ class CustomersListingWidget extends StatelessWidget {
                                             Expanded(
                                               child: Text(
                                                 overflow: TextOverflow.ellipsis,
-                                                customers[index].cusName ?? '',
+                                                selectedLocale?.languageCode == 'en'?customers[index].cusName ?? '':customers[index].arcusName??'',
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     color: const Color(
@@ -125,8 +126,8 @@ class CustomersListingWidget extends StatelessWidget {
                                             ),
                                             Expanded(
                                               child: Text(
-                                                customers[index].headerName ??
-                                                    '',
+                                               selectedLocale?.languageCode == 'en'? customers[index].headerName ??
+                                                    '':customers[index].arheaderName??'',
                                                 overflow: TextOverflow.ellipsis,
                                                 style:
                                                     kfontstyle(fontSize: 11.sp),
@@ -135,7 +136,7 @@ class CustomersListingWidget extends StatelessWidget {
                                           ],
                                         ),
                                         Text(
-                                          '${customers[index].cusType} | ${customers[index].rotName} ',
+                                          '${customers[index].cusType} | ${selectedLocale?.languageCode == 'en'?customers[index].rotName:customers[index].arrotName} ',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
                                               color: Colors.grey),

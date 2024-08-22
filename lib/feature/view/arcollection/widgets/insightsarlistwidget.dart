@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_m
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,18 +50,18 @@ class InsightArListWidget extends StatelessWidget {
                                               headers[index].balanceAmount,
                                           arhCollectedAmount:
                                               headers[index].collectedAmount,
-                                          arhPayMode: headers[index].payMode,
+                                          arhPayMode: selectedLocale?.languageCode == 'en'?headers[index].payMode:headers[index].arPayMode,
                                           arhPayType: headers[index].payType,
                                           arpChequeDate:
                                               headers[index].chequeDate,
                                           arpChequeNo: headers[index].chequeNo,
-                                          bankName: headers[index].bankName,
+                                          bankName: selectedLocale?.languageCode == 'en'?headers[index].bankName:headers[index].arBankName,
                                           cshCode: headers[index].cshCode,
                                           cshId: headers[index].cshId,
-                                          cshName: headers[index].cshName,
+                                          cshName: selectedLocale?.languageCode == 'en'?headers[index].cshName:headers[index].arCshName,
                                           cusCode: headers[index].cusCode,
                                           cusId: headers[index].cusId,
-                                          cusName: headers[index].cusName,
+                                          cusName: selectedLocale?.languageCode == 'en'?headers[index].cusName:headers[index].cusName,
                                           date: headers[index].date,
                                           image: headers[index].arpImage1,
                                           rotCode: headers[index].rotCode,
@@ -137,7 +138,7 @@ class InsightArListWidget extends StatelessWidget {
                                         child: Center(
                                           child: Text(
                                             textAlign: TextAlign.center,
-                                            headers[index].payMode ?? '',
+                                            selectedLocale?.languageCode == 'en'?headers[index].payMode ?? '':headers[index].arPayMode??'',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434)),

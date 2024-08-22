@@ -16,8 +16,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrackSalesManScreen extends StatefulWidget {
   const TrackSalesManScreen({super.key});
@@ -72,9 +72,9 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
   Future<BitmapDescriptor> _createCustomMarkerIcon(
       int index, List<TrackingSalesManModel> salesman) async {
     final String label = salesman[index].moveStatus == 'Start Day'
-        ? 'Start'
+        ? AppLocalizations.of(context)!.start
         : salesman[index].moveStatus == 'Current Location'
-            ? 'Current'
+            ? AppLocalizations.of(context)!.current
             : (index).toString();
 
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
@@ -130,7 +130,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
             : const LatLng(0, 0),
         infoWindow: InfoWindow(
           title: coord.customer,
-          snippet: 'Duration: ${coord.time}',
+          snippet: '${AppLocalizations.of(context)!.duration}: ${coord.time}',
           onTap: () {
             _showDetailDialog(coord);
           },
@@ -154,7 +154,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
             : const LatLng(0, 0),
         infoWindow: InfoWindow(
           title: coord.user,
-          snippet: 'Duration: ${coord.time}',
+          snippet: '${AppLocalizations.of(context)!.duration}: ${coord.time}',
           onTap: () {
             _showCustomerDetailDialog(coord);
           },
@@ -168,9 +168,9 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
   Future<BitmapDescriptor> _createCustomerCustomMarkerIcon(
       int index, List<CustomerLiveLocationModel> salesman) async {
     final String label = index == 0
-        ? 'Start'
+        ? AppLocalizations.of(context)!.start
         : index == salesman.length - 1
-            ? 'Current'
+            ? AppLocalizations.of(context)!.current
             : (index).toString();
 
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
@@ -220,14 +220,15 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('Date: \$${salesman.date}'),
-              Text('Duration: ${salesman.duration}'),
-              Text('Time: ${salesman.time}'),
+              Text('${AppLocalizations.of(context)!.date}: \$${salesman.date}'),
+              Text(
+                  '${AppLocalizations.of(context)!.duration}: ${salesman.duration}'),
+              Text('${AppLocalizations.of(context)!.time}: ${salesman.time}'),
             ],
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -247,14 +248,15 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('Date: \$${salesman.date}'),
-              Text('Duration: ${salesman.duration}'),
-              Text('Time: ${salesman.time}'),
+              Text('${AppLocalizations.of(context)!.date}: \$${salesman.date}'),
+              Text(
+                  '${AppLocalizations.of(context)!.duration}: ${salesman.duration}'),
+              Text('${AppLocalizations.of(context)!.time}: ${salesman.time}'),
             ],
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Close'),
+              child: Text(AppLocalizations.of(context)!.close),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -662,7 +664,8 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                                                     decoration:
                                                                         InputDecoration(
                                                                       hintText:
-                                                                          'Search route',
+                                                                          AppLocalizations.of(context)!
+                                                                              .searchRoute,
                                                                       hintStyle:
                                                                           kfontstyle(),
                                                                       border:
@@ -722,7 +725,8 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                           vertical: 10),
                                       child: Center(
                                         child: Text(
-                                          'No routes available',
+                                          AppLocalizations.of(context)!
+                                              .noRoutesAvailable,
                                           style: kfontstyle(),
                                         ),
                                       ),
@@ -760,10 +764,13 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                       Expanded(
                                         child: TextFormField(
                                           controller: _dateController,
-                                          decoration: const InputDecoration(
+                                          decoration: InputDecoration(
                                             border: InputBorder.none,
-                                            hintText: 'Select date',
-                                            hintStyle: TextStyle(fontSize: 11),
+                                            hintText:
+                                                AppLocalizations.of(context)!
+                                                    .selectdate,
+                                            hintStyle:
+                                                const TextStyle(fontSize: 11),
                                           ),
                                           style: const TextStyle(fontSize: 11),
                                           enabled: false,
@@ -784,16 +791,19 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
-                                      title: const Text('Alert'),
-                                      content: const Text(
-                                          "Please make sure you have selected a route and date"),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .pleaseMakeSureYouHaveSelectedaRouteAndDate),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                             // Navigator.pop(context);
                                           },
-                                          child: const Text('Ok'),
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
                                     ),
@@ -853,16 +863,21 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                       context: context,
                                       builder: (context) =>
                                           CupertinoAlertDialog(
-                                        title: const Text('Alert'),
-                                        content: const Text(
-                                            "Please make sure you have selected a date"),
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureYouHaveSelectedaDate),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                               // Navigator.pop(context);
                                             },
-                                            child: const Text('Ok'),
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -874,7 +889,8 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                   }
                                 },
                                 child: Tooltip(
-                                  message: 'Track Customers',
+                                  message: AppLocalizations.of(context)!
+                                      .trackCustomers,
                                   child: Image.asset(
                                     'assets/images/salesman.png',
                                     height: 40.h,
@@ -903,7 +919,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                         onPressed: () async {
                           _getRoutePolyline(salesman);
                         },
-                        label: const Text("Show Route"),
+                        label: Text(AppLocalizations.of(context)!.showRoute),
                         icon: Image.asset(
                           "assets/images/ts.png",
                           height: 23.h,
@@ -919,7 +935,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                         onPressed: () async {
                           _getCustomerRoutePolyline(customers);
                         },
-                        label: const Text("Show Route"),
+                        label: Text(AppLocalizations.of(context)!.showRoute),
                         icon: Image.asset(
                           "assets/images/ts.png",
                           height: 23.h,

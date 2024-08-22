@@ -15,6 +15,7 @@ import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_cha
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -152,7 +153,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 fit: FlexFit.tight,
                                 child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    "${widget.priceChangeApprovel.cusName}",
+                                    selectedLocale?.languageCode == 'en'
+                                        ? "${widget.priceChangeApprovel.cusName}"
+                                        : widget.priceChangeApprovel
+                                                .arcusName ??
+                                            '',
                                     style: subTitleTextStyle()),
                               ),
                             ],
@@ -261,7 +266,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -289,7 +294,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} ,Try Again"),
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -480,8 +485,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             style:
                                                                 loadTextStyle()),
                                                         Text(
-                                                          pdet[index].prdName ??
-                                                              '',
+                                                          selectedLocale
+                                                                      ?.languageCode ==
+                                                                  'en'
+                                                              ? pdet[index]
+                                                                      .prdName ??
+                                                                  ''
+                                                              : pdet[index]
+                                                                      .arprdName ??
+                                                                  '',
                                                           style:
                                                               subTitleTextStyle(),
                                                         ),

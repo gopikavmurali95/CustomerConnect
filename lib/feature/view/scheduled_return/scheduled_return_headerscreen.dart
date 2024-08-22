@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schdul
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,14 +29,25 @@ List<ApprovalStatusFilterModel> filterFieldsScheduledReturn = [
 ];
 
 String _selectedeMode = 'P';
-TextEditingController _SearchCtrl = TextEditingController();
+TextEditingController searchCtrl = TextEditingController();
 Timer? debounce;
 
 class _ScheduledReturnHEaderScreenState
     extends State<ScheduledReturnHEaderScreen> {
   @override
   void initState() {
-    _SearchCtrl.clear();
+    searchCtrl.clear();
+    filterFieldsScheduledReturn = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     context
         .read<SchduledReturnHeaderBloc>()
         .add(const ClearScheduledReturnHeadersEvent());
@@ -84,7 +96,7 @@ class _ScheduledReturnHEaderScreenState
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _SearchCtrl,
+                  controller: searchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -95,8 +107,8 @@ class _ScheduledReturnHEaderScreenState
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_SearchCtrl.text.isNotEmpty) {
-                                  _SearchCtrl.clear();
+                                if (searchCtrl.text.isNotEmpty) {
+                                  searchCtrl.clear();
 
                                   context.read<SchduledReturnHeaderBloc>().add(
                                       GetAllScheduledReturnHeadersEvent(
@@ -328,10 +340,10 @@ class _ScheduledReturnHEaderScreenState
                                                                         child: Text(
                                                                             overflow: TextOverflow
                                                                                 .ellipsis,
-                                                                            headers[index].cusName ??
-                                                                                '',
-                                                                            style:
-                                                                                subTitleTextStyle()),
+                                                                            selectedLocale?.languageCode == 'en'
+                                                                                ? headers[index].cusName ?? ''
+                                                                                : headers[index].arcusName ?? '',
+                                                                            style: subTitleTextStyle()),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -378,9 +390,15 @@ class _ScheduledReturnHEaderScreenState
                                                                     vertical:
                                                                         5),
                                                                 child: Text(
-                                                                  headers[index]
-                                                                          .status ??
-                                                                      '',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? headers[index]
+                                                                              .status ??
+                                                                          ''
+                                                                      : headers[index]
+                                                                              .arStatus ??
+                                                                          '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           10.sp,

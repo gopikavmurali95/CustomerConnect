@@ -97,7 +97,7 @@ class _InventoryReconfirmationDetailScreenState
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text("${status.status} "),
+                      content: Text("${selectedLocale?.languageCode == 'en'?status.status:status.arStatus} "),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -195,7 +195,7 @@ class _InventoryReconfirmationDetailScreenState
                                       Expanded(
                                         child: Text(
                                           overflow: TextOverflow.ellipsis,
-                                          widget.header.usrName ?? '',
+                                          selectedLocale?.languageCode == 'en'?widget.header.usrName ?? '':widget.header.arusrName??'',
                                           style: kfontstyle(
                                               fontSize: 12.sp,
                                               color: const Color(0xff413434)),
@@ -228,7 +228,7 @@ class _InventoryReconfirmationDetailScreenState
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 5),
                                 child: Text(
-                                  widget.header.iahStatus ?? '',
+                                  selectedLocale?.languageCode == 'en'?widget.header.iahStatus ?? '':widget.header.ariahStatus??'',
                                   style: kfontstyle(
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w400,
@@ -504,9 +504,9 @@ class _InventoryReconfirmationDetailScreenState
                                                           ),
                                                         ),
                                                         Text(
-                                                          details[index]
+                                                          selectedLocale?.languageCode == 'en'?details[index]
                                                                   .prdName ??
-                                                              '',
+                                                              '':details[index].arprdName??'',
                                                           style: kfontstyle(
                                                               fontSize: 12.sp,
                                                               fontWeight:
@@ -750,8 +750,8 @@ class _InventoryReconfirmationDetailScreenState
                                                                     InventoryReconfirmReasonModel(
                                                                       rsnId:
                                                                           '-1',
-                                                                      rsnName:
-                                                                          'Select reason',
+                                                                      rsnName: 'Select Reason',
+                                                                      rsnArName: "اختر السبب"
                                                                     )
                                                                   ];
 
@@ -836,7 +836,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                                 value: item.rsnId,
                                                                                 child: Text(
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  item.rsnName ?? '',
+                                                                                  selectedLocale?.languageCode == 'en'?item.rsnName ?? '':item.rsnArName??'',
                                                                                   style: kfontstyle(fontSize: 8.sp),
                                                                                 ),
                                                                               );

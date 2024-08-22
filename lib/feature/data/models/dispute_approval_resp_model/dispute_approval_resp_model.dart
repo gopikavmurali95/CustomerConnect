@@ -6,8 +6,9 @@ part 'dispute_approval_resp_model.g.dart';
 class DisputeApprovalRespModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  DisputeApprovalRespModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arstatus;
+  DisputeApprovalRespModel({this.status, this.arstatus});
 
   factory DisputeApprovalRespModel.fromJson(Map<String, dynamic> json) {
     return _$DisputeApprovalRespModelFromJson(json);

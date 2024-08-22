@@ -153,7 +153,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     fit: FlexFit.tight,
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "${widget.loadrequest.usrName}",
+                                      "${selectedLocale?.languageCode == 'en'?widget.loadrequest.usrName:widget.loadrequest.usrArabicName}",
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           color: const Color(0xff413434)),
@@ -1262,7 +1262,9 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(response.status ?? ''),
+                          content: Text(selectedLocale?.languageCode == "en"
+                              ? response.status ?? ''
+                              : response.arstatus ?? ''),
                           actions: [
                             TextButton(
                               onPressed: () {

@@ -118,7 +118,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                 Expanded(
                                   child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    '${widget.header.cuscode} - ${widget.header.cusname}',
+                                    '${widget.header.cuscode} - ${selectedLocale?.languageCode == 'en'?widget.header.cusname:widget.header.cusArName}',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff413434)),
@@ -451,7 +451,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
-                              "${AppLocalizations.of(context)!.msutSellApproval} ${resp.status ?? ''}"),
+                              "${AppLocalizations.of(context)!.msutSellApproval} ${selectedLocale?.languageCode == "en" ? resp.status ?? '' : resp.arstatus}"),
                           actions: [
                             TextButton(
                               onPressed: () {

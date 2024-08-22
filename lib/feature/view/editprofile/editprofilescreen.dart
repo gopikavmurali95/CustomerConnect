@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
 import 'package:customer_connect/feature/view/editprofile/widgets/editfieldwidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,7 +71,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: Text(editrep.title ?? ''),
+                      title: Text(selectedLocale?.languageCode == "en"
+                          ? editrep.title ?? ''
+                          : editrep.arTitle ?? ''),
                       content: Text(AppLocalizations.of(context)!
                           .yourProfileHasbeenUpdated),
                       actions: [
@@ -92,7 +95,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: Text(editrep.title ?? ''),
+                      title: Text(selectedLocale?.languageCode == "en"
+                          ? editrep.title ?? ''
+                          : editrep.arTitle ?? ''),
                       content: Text(AppLocalizations.of(context)!
                           .yourProfileUpdationFailed),
                       actions: [

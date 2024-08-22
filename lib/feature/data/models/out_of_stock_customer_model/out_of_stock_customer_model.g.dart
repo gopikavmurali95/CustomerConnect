@@ -13,7 +13,7 @@ OutOfStockCustomerModel _$OutOfStockCustomerModelFromJson(
       cusName: json['cus_Name'] as String?,
       cusId: json['cus_ID'] as String?,
       prodCount: json['ProdCount'] as String?,
-    );
+    )..cusArName = json['cus_ArName'] as String?;
 
 Map<String, dynamic> _$OutOfStockCustomerModelToJson(
         OutOfStockCustomerModel instance) =>
@@ -22,4 +22,5 @@ Map<String, dynamic> _$OutOfStockCustomerModelToJson(
       'cus_Name': instance.cusName,
       'cus_ID': instance.cusId,
       'ProdCount': instance.prodCount,
+      'cus_ArName': instance.cusArName,
     };

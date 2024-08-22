@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
 import 'package:customer_connect/feature/state/bloc/targetdetailcount/target_details_count_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,7 +64,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                       color: Colors.grey.shade600),
                                 ),
                                 Text(
-                                  count.month ?? '',
+                                  selectedLocale?.languageCode == 'en'?count.month ?? '':count.arMonth??'',
                                   style: kfontstyle(
                                       fontSize: 10.sp,
                                       color: Colors.black,

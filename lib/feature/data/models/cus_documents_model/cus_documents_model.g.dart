@@ -12,7 +12,7 @@ CusDocumentsModel _$CusDocumentsModelFromJson(Map<String, dynamic> json) =>
       docUrl: json['DocUrl'] as String?,
       fromDate: json['FromDate'] as String?,
       endDate: json['EndDate'] as String?,
-    );
+    )..arDocName = json['ArDocName'] as String?;
 
 Map<String, dynamic> _$CusDocumentsModelToJson(CusDocumentsModel instance) =>
     <String, dynamic>{
@@ -20,4 +20,5 @@ Map<String, dynamic> _$CusDocumentsModelToJson(CusDocumentsModel instance) =>
       'DocUrl': instance.docUrl,
       'FromDate': instance.fromDate,
       'EndDate': instance.endDate,
+      'ArDocName': instance.arDocName,
     };

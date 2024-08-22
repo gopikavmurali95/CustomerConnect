@@ -25,7 +25,10 @@ SalesOrdersModel _$SalesOrdersModelFromJson(Map<String, dynamic> json) =>
       subTotal: json['SubTotal'] as String?,
       vat: json['VAT'] as String?,
       grandTotal: json['GrandTotal'] as String?,
-    );
+    )
+      ..arcusName = json['Arcus_Name'] as String?
+      ..arStatus = json['ArStatus'] as String?
+      ..arcshName = json['Arcsh_Name'] as String?;
 
 Map<String, dynamic> _$SalesOrdersModelToJson(SalesOrdersModel instance) =>
     <String, dynamic>{
@@ -46,4 +49,7 @@ Map<String, dynamic> _$SalesOrdersModelToJson(SalesOrdersModel instance) =>
       'SubTotal': instance.subTotal,
       'VAT': instance.vat,
       'GrandTotal': instance.grandTotal,
+      'Arcus_Name': instance.arcusName,
+      'ArStatus': instance.arStatus,
+      'Arcsh_Name': instance.arcshName,
     };

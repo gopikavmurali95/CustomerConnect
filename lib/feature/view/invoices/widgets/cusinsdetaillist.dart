@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,8 +62,8 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                                         '',
                                                     style: loadTextStyle()),
                                                 Text(
-                                                    details[index].prdName ??
-                                                        '',
+                                                    selectedLocale?.languageCode == 'en'?details[index].prdName ??
+                                                        '':details[index].arPrdName??'',
                                                     style: /* kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: Colors.black,
@@ -76,7 +77,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             width: 15.h,
                                           ),
                                           Text(
-                                            details[index].prdtype ?? '',
+                                            selectedLocale?.languageCode == 'en'?details[index].prdtype ?? '':details[index].arPrdType??'',
                                             style: subTitleTextStyle(),
                                           ),
                                           SizedBox(
