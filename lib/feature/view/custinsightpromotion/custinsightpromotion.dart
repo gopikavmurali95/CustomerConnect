@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -445,9 +446,14 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                headers[index]
-                                                                        .pName ??
-                                                                    '',
+                                                                selectedLocale?.languageCode ==
+                                                                        "en"
+                                                                    ? headers[index]
+                                                                            .pName ??
+                                                                        ''
+                                                                    : headers[index]
+                                                                            .arPName ??
+                                                                        '',
                                                                 style:
                                                                     blueTextStyle(),
                                                               ),

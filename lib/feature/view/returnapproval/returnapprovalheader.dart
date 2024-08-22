@@ -28,7 +28,7 @@ List<ApprovalStatusFilterModel> filterFieldsReturn = [
 ];
 
 String _selectedeMode = 'P';
-TextEditingController _SearchCtrl = TextEditingController();
+TextEditingController searchCtrl = TextEditingController();
 Timer? debounce;
 
 class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
@@ -45,7 +45,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
               : "طلبات الإجراءات المتخذة",
           mode: 'AT'),
     ];
-    _SearchCtrl.clear();
+    searchCtrl.clear();
     context
         .read<ReturnApprovalHeaderBloc>()
         .add(const ClearReturnHeaderState());
@@ -90,7 +90,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _SearchCtrl,
+                  controller: searchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -101,8 +101,8 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_SearchCtrl.text.isNotEmpty) {
-                                  _SearchCtrl.clear();
+                                if (searchCtrl.text.isNotEmpty) {
+                                  searchCtrl.clear();
 
                                   context.read<ReturnApprovalHeaderBloc>().add(
                                       GetReturnApprovalHeaders(

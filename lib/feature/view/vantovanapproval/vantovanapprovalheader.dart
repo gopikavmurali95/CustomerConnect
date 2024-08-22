@@ -53,6 +53,20 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
     ];
 
     _vanToVanHSearchCtrl.clear();
+    ddfilterFieldsVanToVan = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'AT'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     super.initState();
   }
 

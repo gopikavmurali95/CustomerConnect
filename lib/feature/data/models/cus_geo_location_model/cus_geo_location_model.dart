@@ -29,6 +29,10 @@ class CusGeoLocationModel {
   String? geolocurl;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'usr_ArName')
+  String? usrArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
 
   CusGeoLocationModel({
     this.cglId,
@@ -44,6 +48,8 @@ class CusGeoLocationModel {
     this.usrCode,
     this.geolocurl,
     this.status,
+    this.usrArName,
+    this.cusArName,
   });
 
   factory CusGeoLocationModel.fromJson(Map<String, dynamic> json) {

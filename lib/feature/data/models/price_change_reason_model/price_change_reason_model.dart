@@ -13,7 +13,8 @@ class PriceChangeReasonModel {
   @JsonKey(name: 'rsn_ArName')
   String? rsnArName;
 
-  PriceChangeReasonModel({this.rsnId, this.rsnName, this.rsnType,this.rsnArName});
+  PriceChangeReasonModel(
+      {this.rsnId, this.rsnName, this.rsnType, this.rsnArName});
 
   factory PriceChangeReasonModel.fromJson(Map<String, dynamic> json) {
     return _$PriceChangeReasonModelFromJson(json);

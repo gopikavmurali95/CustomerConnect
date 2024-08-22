@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +66,9 @@ class CustomerInsightGroupList extends StatelessWidget {
                                     style: loadTextStyle(),
                                   ),
                                   Text(
-                                    groupdata[index].prdName ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? groupdata[index].prdName ?? ''
+                                        : groupdata[index].prdArName ?? '',
                                     style: subTitleTextStyle(),
                                   ),
                                   /* Text(

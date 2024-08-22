@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +66,9 @@ class CustomerItemListWidget extends StatelessWidget {
                                           //         .width /
                                           //     2,
                                           child: Text(
-                                            items[index].prdName ?? '',
+                                            selectedLocale?.languageCode == "en"
+                                                ? items[index].prdName ?? ''
+                                                : items[index].prdArName ?? '',
                                             style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 fontWeight: FontWeight.w400,

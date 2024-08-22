@@ -38,13 +38,33 @@ class _MaterialRequestHeaderScreenState
     extends State<MaterialRequestHeaderScreen> {
   @override
   void initState() {
+    _materialReqSearchController.clear();
+    ddfilterMaterialReq = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Approved and Hold"
+              : "تمت الموافقة عليه وعقده",
+          mode: 'AH'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
     context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
           userId: widget.user.usrId ?? '',
           mode: 'P',
           searchQuery: '',
         ));
-    _materialReqSearchController.clear();
+
     super.initState();
   }
 
@@ -226,7 +246,6 @@ class _MaterialRequestHeaderScreenState
                         child: DropdownButtonFormField(
                           elevation: 0,
                           value: ddfilterMaterialReq[0].mode,
-                          // value: ddfilterFieldsDisputeNote[0].mode,
                           dropdownColor: Colors.white,
                           style: kfontstyle(
                               fontSize: 10.sp, color: Colors.black87),

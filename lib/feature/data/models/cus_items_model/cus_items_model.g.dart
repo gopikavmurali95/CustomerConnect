@@ -16,6 +16,7 @@ CusItemsModel _$CusItemsModelFromJson(Map<String, dynamic> json) =>
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
       uomName: json['uom_Name'] as String?,
+      prdArName: json['prd_ArName'] as String?,
     );
 
 Map<String, dynamic> _$CusItemsModelToJson(CusItemsModel instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$CusItemsModelToJson(CusItemsModel instance) =>
       'prd_Code': instance.prdCode,
       'prd_Name': instance.prdName,
       'uom_Name': instance.uomName,
+      'prd_ArName': instance.prdArName,
     };

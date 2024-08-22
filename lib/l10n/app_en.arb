@@ -337,5 +337,6 @@
   "sysQty": "Sys Qty",
   "pkdQty": "Pkd Qty",
   "liQty": "LI Qty"
+  "unscheduledVisitRejection": "Unscheduled Visit Rejection"
 }
   

@@ -20,6 +20,8 @@ class CusPromotionHeader {
   String? qid;
   @JsonKey(name: 'AID')
   String? aid;
+  @JsonKey(name: 'ArPName')
+  String? arPName;
 
   CusPromotionHeader({
     this.id,
@@ -30,6 +32,7 @@ class CusPromotionHeader {
     this.aCode,
     this.qid,
     this.aid,
+    this.arPName,
   });
 
   factory CusPromotionHeader.fromJson(Map<String, dynamic> json) {

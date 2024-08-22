@@ -12,6 +12,7 @@ EditProfileRespModel _$EditProfileRespModelFromJson(
       res: json['Res'] as String?,
       title: json['Title'] as String?,
       descr: json['Descr'] as String?,
+      arTitle: json['ArTitle'] as String?,
     );
 
 Map<String, dynamic> _$EditProfileRespModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$EditProfileRespModelToJson(
       'Res': instance.res,
       'Title': instance.title,
       'Descr': instance.descr,
+      'ArTitle': instance.arTitle,
     };

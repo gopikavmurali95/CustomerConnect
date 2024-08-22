@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +58,7 @@ class GeoLocationListWidget extends StatelessWidget {
                       style: kfontstyle(),
                     ),
                     content: Text(
-                        '${AppLocalizations.of(context)!.updateGeocode} ${result.title}'),
+                        '${AppLocalizations.of(context)!.updateGeocode} ${selectedLocale?.languageCode == "en" ? result.title : result.arTitle}'),
                     actions: [
                       CupertinoDialogAction(
                         child: Text(AppLocalizations.of(context)!.ok),
@@ -128,7 +129,7 @@ class GeoLocationListWidget extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${geolocations[index].usrName} - ${geolocations[index].cusName}',
+                                '${selectedLocale?.languageCode == "en" ? geolocations[index].usrName : geolocations[index].usrArName} - ${selectedLocale?.languageCode == "en" ? geolocations[index].cusName : geolocations[index].cusArName}',
                                 style: kfontstyle(
                                   fontSize: 12.sp,
                                   color: Colors.black,

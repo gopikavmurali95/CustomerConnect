@@ -78,6 +78,7 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
           Uri.parse(approvalBaseUrl + approvalReasonUrl),
           body: {"rsn_Type": rsnType});
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> returnheaderdata = json['result'];
         List<ApprovalResonModel> reasons = returnheaderdata

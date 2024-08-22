@@ -45,6 +45,20 @@ class _VoidTranscactioHeaderScreenState
   void initState() {
     selectedVoidTransactionMode = 'P';
     _voidTranHeaderSearchCtrl.clear();
+    ddfilterVoidTransaction = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
+          mode: 'R'),
+    ];
     context
         .read<VoidTransactionHeaderBloc>()
         .add(const ClearVoidTransactionHeader());
