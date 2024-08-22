@@ -35,6 +35,19 @@ class _LoadTransferApprovalHeaderScreenState
   @override
   void initState() {
     _vanLoadTransSearchCtrl.clear();
+    ddfilterLoadTransfer = [
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Pending Requests"
+              : "قيد الانتظار",
+          mode: 'N'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken Requests"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'A'),
+    ];
+
     context
         .read<LoadTransferHeaderBloc>()
         .add(const ClearLoadtransferHeaderEvent());

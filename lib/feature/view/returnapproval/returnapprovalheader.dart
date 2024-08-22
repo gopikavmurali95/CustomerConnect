@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/returnapproval/return_approv
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/returnapproval/returnapprovaldetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,6 +34,17 @@ Timer? debounce;
 class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
   @override
   void initState() {
+    filterFieldsReturn = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     _SearchCtrl.clear();
     context
         .read<ReturnApprovalHeaderBloc>()
@@ -321,8 +333,11 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                                         overflow:
                                                                             TextOverflow
                                                                                 .ellipsis,
-                                                                        headers[index].cusName ??
-                                                                            '',
+                                                                        selectedLocale?.languageCode == 'en'
+                                                                            ? headers[index].cusName ??
+                                                                                ''
+                                                                            : headers[index].arcusName ??
+                                                                                '',
                                                                         style:
                                                                             subTitleTextStyle()),
                                                                   ),
@@ -368,9 +383,15 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                                     vertical:
                                                                         3),
                                                             child: Text(
-                                                              headers[index]
-                                                                      .rahApprovalStatus ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? headers[index]
+                                                                          .rahApprovalStatus ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .arapprStatus ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       9.sp),

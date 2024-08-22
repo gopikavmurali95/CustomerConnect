@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
 import 'package:customer_connect/main.dart';
@@ -37,16 +36,17 @@ class MessageHandlerState extends State<MessageHandler> {
 
     // Handle messages when the app is in the background and opened from the terminated state
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      log('Happenign open');
+      log('Happening  open');
       handleMessage(message);
     });
 
     FirebaseMessaging.onBackgroundMessage((message) async {
-      FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
+      // FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
 
-      groupNotifications(flp);
+      // groupNotifications(flp);
+      handleMessage(message);
     });
-    checkForInitialMessage();
+    // checkForInitialMessage();
     // Handle messages when the app is opened from a terminated state
     // _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
     //   if (message != null) {
@@ -73,18 +73,15 @@ class MessageHandlerState extends State<MessageHandler> {
     var ios = const DarwinInitializationSettings();
 
     var inisettings = InitializationSettings(android: androidi, iOS: ios);
-    LoginUserModel? user = await getuserdata();
+    // LoginUserModel? user = await getuserdata();
     await flp.initialize(
       inisettings,
-      onDidReceiveBackgroundNotificationResponse: (details) {
-        if (details.payload != null) {
-// final screen = details.payload!['Key
-
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => NotificationScreen(user: user!),
-          ));
-        }
+      onDidReceiveNotificationResponse: (details) {
+/*         Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => NotificationScreen(user: user!),
+        )); */
       },
+      onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
   }
 
@@ -104,6 +101,22 @@ class MessageHandlerState extends State<MessageHandler> {
         }
       });
     }
+  }
+
+  @pragma('vm:entry-point')
+  void notificationTapBackground(
+      NotificationResponse notificationResponse) async {
+    /* final String? payload = notificationResponse.payload;
+    if (notificationResponse.payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+    await Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+          builder: (context) => NotificationScreen(
+                user: LoginUserModel(),
+              )),
+    ); */
   }
 
   @override

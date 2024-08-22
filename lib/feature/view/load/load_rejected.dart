@@ -146,7 +146,7 @@ class _LoadRejectedState extends State<LoadRejected> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search here..",
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

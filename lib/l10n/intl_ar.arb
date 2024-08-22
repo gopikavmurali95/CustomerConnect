@@ -330,6 +330,12 @@
   "showRoute": "عرض الطريق",
   "start": "يبدأ",
   "current": "حاضِر",
-  "time": "وقت"
+  "time": "وقت",
+  "unscheduledVisit": "زيارة غير مجدولة",
+  "unschedVisitApproval": "الموافقة على الزيارة غير المجدولة",
+  "unscheduledVisitRejection": "رفض الزيارة غير المجدولة",
+  "sysQty": "الكمية في النظام",
+  "pkdQty": "الكمية المغلفة",
+  "liQty": "الكمية الفعلية"
 }
   

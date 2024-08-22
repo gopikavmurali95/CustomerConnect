@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -241,9 +242,15 @@ class _AssetAddingApprovalHeaderScreenState
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              headers[index]
-                                                                      .rsnName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? headers[index]
+                                                                          .rsnName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .rsnArName ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                 fontSize: 12.sp,
                                                                 color: const Color(
@@ -269,9 +276,12 @@ class _AssetAddingApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .astName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].astName ??
+                                                                            ''
+                                                                        : headers[index].astArName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -298,9 +308,12 @@ class _AssetAddingApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .cusName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].cusName ??
+                                                                            ''
+                                                                        : headers[index].cusArName ??
+                                                                            "",
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -342,7 +355,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                           title:
                                                                               Text(AppLocalizations.of(context)!.alert),
                                                                           content:
-                                                                              Text(response.status ?? ''),
+                                                                              Text("${AppLocalizations.of(context)!.add_assets} ${selectedLocale?.languageCode == "en" ? response.status ?? '' : response.arStatus ?? ''}"),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
@@ -432,7 +445,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                         decoration:
                                                                             InputDecoration(
                                                                           hintText:
-                                                                              'Sl:No',
+                                                                              AppLocalizations.of(context)!.slNo,
                                                                           hintStyle:
                                                                               kfontstyle(
                                                                             fontSize:
@@ -474,7 +487,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                   context: context,
                                                                                   builder: (context) => CupertinoAlertDialog(
                                                                                     title: Text(AppLocalizations.of(context)!.alert),
-                                                                                    content: const Text("Please Enter Sl:No"),
+                                                                                    content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () {

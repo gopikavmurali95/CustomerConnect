@@ -8,8 +8,9 @@ class PartialDeliveryReasonModel {
   String? rsnId;
   @JsonKey(name: 'rsn_Name')
   String? rsnName;
-
-  PartialDeliveryReasonModel({this.rsnId, this.rsnName});
+  @JsonKey(name: 'rsn_ArName')
+  String? rsnArName;
+  PartialDeliveryReasonModel({this.rsnId, this.rsnName, this.rsnArName});
 
   factory PartialDeliveryReasonModel.fromJson(Map<String, dynamic> json) {
     return _$PartialDeliveryReasonModelFromJson(json);

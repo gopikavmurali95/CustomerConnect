@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:customer_connect/feature/data/models/loading_headermodel/loading_headermodel.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants/fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadDetailCompleted extends StatefulWidget {
   final LoadingHeadermodel loadingheader;
@@ -44,7 +46,7 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
           ),
         ),
         title: Text(
-          "Load In Detail",
+          "${AppLocalizations.of(context)!.load_in} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -71,10 +73,10 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: const Color(0xffBDF1B7)),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "Completed",
-                        style: TextStyle(fontSize: 10),
+                        AppLocalizations.of(context)!.completed,
+                        style: const TextStyle(fontSize: 10),
                       )))),
               Padding(
                 padding:
@@ -115,7 +117,7 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -171,8 +173,8 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                         itemCount: 10),
                   )
                 : detail.isEmpty
-                    ? const Center(
-                        child: Text('No Data Found'),
+                    ? Center(
+                        child: Text(AppLocalizations.of(context)!.noDataFound),
                       )
                     : SingleChildScrollView(
                         child: Column(
@@ -181,144 +183,119 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                               width: MediaQuery.of(context).size.width,
                               height: 30,
                               color: Colors.grey.shade200,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 140),
-                                    child: Text(
-                                      "Items",
-                                      style: boxHeading(),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 0),
+                                          child: Text(
+                                            AppLocalizations.of(context)!.items,
+                                            style: boxHeading(),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 50),
-                                    child: Text(
-                                      "Sys Qty",
-                                      style: boxHeading(),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 30),
-                                    child: Text(
-                                      "LI Qty",
-                                      style: boxHeading(),
-                                    ),
-                                  ),
-                                ],
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 0),
+                                          child: Text(
+                                            AppLocalizations.of(context)!
+                                                .sysQty,
+                                            style: boxHeading(),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 30.h,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 0),
+                                          child: Text(
+                                            AppLocalizations.of(context)!.liQty,
+                                            style: boxHeading(),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            ListView.separated(
-                              itemCount: detail.length,
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15.0, top: 2),
-                                          child: Container(
-                                            height: 55,
-                                            width: 200,
-                                            color: Colors.white,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                    detail[index].prdCode ?? '',
-                                                    style: loadTextStyle()),
-                                                Text(
-                                                  detail[index].prdName ?? "",
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                              ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: ListView.separated(
+                                itemCount: detail.length,
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15.0, top: 2),
+                                            child: Container(
+                                              height: 55,
+                                              width: 200,
+                                              color: Colors.white,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                      detail[index].prdCode ??
+                                                          '',
+                                                      style: loadTextStyle()),
+                                                  Text(
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? detail[index]
+                                                                .prdName ??
+                                                            ""
+                                                        : detail[index]
+                                                                .arprdname ??
+                                                            '',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Column(
-                                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          // crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Visibility(
-                                              visible:
-                                                  detail[index].liHigherUom ==
-                                                              null ||
-                                                          detail[index]
-                                                              .liHigherUom!
-                                                              .isEmpty
-                                                      ? false
-                                                      : true,
-                                              child: Text(
-                                                detail[index].liHigherUom ?? "",
-                                                style: subTitleTextStyle(),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Visibility(
-                                              visible:
-                                                  detail[index].liLowerUom ==
-                                                              null ||
-                                                          detail[index]
-                                                              .liLowerUom!
-                                                              .isEmpty
-                                                      ? false
-                                                      : true,
-                                              child: Text(
-                                                detail[index].liLowerUom ?? "",
-                                                style: subTitleTextStyle(),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              detail[index].higherQty ?? '',
-                                              style: subTitleTextStyle(),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              detail[index].lowerQty ?? "",
-                                              style: subTitleTextStyle(),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10.0),
-                                          child: Column(
+                                          Column(
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             // crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Visibility(
                                                 visible:
-                                                    detail[index].higherUom ==
+                                                    detail[index].liHigherUom ==
                                                                 null ||
                                                             detail[index]
-                                                                .higherUom!
+                                                                .liHigherUom!
                                                                 .isEmpty
                                                         ? false
                                                         : true,
                                                 child: Text(
-                                                  detail[index].higherUom ?? "",
+                                                  detail[index].liHigherUom ??
+                                                      "",
                                                   style: subTitleTextStyle(),
                                                 ),
                                               ),
@@ -327,30 +304,27 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                               ),
                                               Visibility(
                                                 visible:
-                                                    detail[index].lowerUom ==
+                                                    detail[index].liLowerUom ==
                                                                 null ||
                                                             detail[index]
-                                                                .lowerUom!
+                                                                .liLowerUom!
                                                                 .isEmpty
                                                         ? false
                                                         : true,
                                                 child: Text(
-                                                  detail[index].lowerUom ?? '',
+                                                  detail[index].liLowerUom ??
+                                                      "",
                                                   style: subTitleTextStyle(),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 0, right: 10.0),
-                                          child: Column(
+                                          Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
                                               Text(
-                                                detail[index].higherQty ?? "",
+                                                detail[index].higherQty ?? '',
                                                 style: subTitleTextStyle(),
                                               ),
                                               const SizedBox(
@@ -362,29 +336,94 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                               ),
                                             ],
                                           ),
-                                        ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10.0),
+                                            child: Column(
+                                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              // crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Visibility(
+                                                  visible:
+                                                      detail[index].higherUom ==
+                                                                  null ||
+                                                              detail[index]
+                                                                  .higherUom!
+                                                                  .isEmpty
+                                                          ? false
+                                                          : true,
+                                                  child: Text(
+                                                    detail[index].higherUom ??
+                                                        "",
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Visibility(
+                                                  visible:
+                                                      detail[index].lowerUom ==
+                                                                  null ||
+                                                              detail[index]
+                                                                  .lowerUom!
+                                                                  .isEmpty
+                                                          ? false
+                                                          : true,
+                                                  child: Text(
+                                                    detail[index].lowerUom ??
+                                                        '',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 0, right: 10.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  detail[index].higherQty ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  detail[index].lowerQty ?? "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
 
-                                        //  SizedBox(width: 0,)
-                                      ],
-                                    ),
-                                    //  Divider(),
-                                  ],
-                                );
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return const Padding(
-                                  padding: EdgeInsets.only(left: 0.0, right: 0),
-                                  child: Divider(),
-                                );
-                              },
+                                          //  SizedBox(width: 0,)
+                                        ],
+                                      ),
+                                      //  Divider(),
+                                    ],
+                                  );
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return const Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 0.0, right: 0),
+                                    child: Divider(),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
                       ),
             loadingDetailFailedState: () => Center(
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../constants/fonts.dart';
 
@@ -36,7 +37,7 @@ class PendingList extends StatelessWidget {
                       height: MediaQuery.of(context).size.height - 50,
                       child: Center(
                         child: Text(
-                          'No Data Available',
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       ),
@@ -114,7 +115,7 @@ class PendingList extends StatelessWidget {
             height: MediaQuery.of(context).size.height - 50,
             child: Center(
               child: Text(
-                'No Data Available',
+                AppLocalizations.of(context)!.noDataAvailable,
                 style: kfontstyle(),
               ),
             ),

@@ -1,5 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +13,11 @@ class OutstandingListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: BlocBuilder<OutstandingBloc, OutstandingState>(
+      child:
+          BlocBuilder<OutStandingPaginationCubit, OutStandingPaginationState>(
         builder: (context, state) {
           return state.when(
-            getOutstandingDataState: (headers, counts) => headers == null
+            getOutStandingHeadersPageState: (headers) => headers == null
                 ? ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -162,15 +163,6 @@ class OutstandingListWidget extends StatelessWidget {
                               ],
                             ),
                         itemCount: headers.length),
-            outstandingFailedState: () => SizedBox(
-              height: MediaQuery.of(context).size.height / 1.5,
-              child: Center(
-                child: Text(
-                  AppLocalizations.of(context)!.noDataAvailable,
-                  style: kfontstyle(),
-                ),
-              ),
-            ),
           );
         },
       ),

@@ -36,6 +36,17 @@ class _ScheduledReturnHEaderScreenState
     extends State<ScheduledReturnHEaderScreen> {
   @override
   void initState() {
+    filterFieldsScheduledReturn = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
     _SearchCtrl.clear();
     context
         .read<SchduledReturnHeaderBloc>()

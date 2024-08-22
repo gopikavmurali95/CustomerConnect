@@ -14,6 +14,7 @@ CustomerLiveLocationModel _$CustomerLiveLocationModelFromJson(
       date: json['Date'] as String?,
       time: json['Time'] as String?,
       geocode: json['Geocode'] as String?,
+      userAr: json['UserAr'] as String?,
     );
 
 Map<String, dynamic> _$CustomerLiveLocationModelToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$CustomerLiveLocationModelToJson(
       'Date': instance.date,
       'Time': instance.time,
       'Geocode': instance.geocode,
+      'UserAr': instance.userAr,
     };

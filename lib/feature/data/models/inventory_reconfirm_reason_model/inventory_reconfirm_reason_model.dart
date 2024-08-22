@@ -8,8 +8,10 @@ class InventoryReconfirmReasonModel {
   String? rsnId;
   @JsonKey(name: 'rsn_Name')
   String? rsnName;
+  @JsonKey(name: 'rsn_ArName')
+  String? rsnArName;
 
-  InventoryReconfirmReasonModel({this.rsnId, this.rsnName});
+  InventoryReconfirmReasonModel({this.rsnId, this.rsnName, this.rsnArName});
 
   factory InventoryReconfirmReasonModel.fromJson(Map<String, dynamic> json) {
     return _$InventoryReconfirmReasonModelFromJson(json);

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 import '../../data/models/picking_header_model/PickingOutModel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingCompleted extends StatefulWidget {
   final PickingOutModel picking;
@@ -39,7 +40,7 @@ class _PickingCompletedState extends State<PickingCompleted> {
           ),
         ),
         title: Text(
-          "Picking Detail",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -62,10 +63,10 @@ class _PickingCompletedState extends State<PickingCompleted> {
                         borderRadius: BorderRadius.circular(20),
                         color: const Color(0xffBDF1B7),
                       ),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "Completed",
-                        style: TextStyle(fontSize: 10),
+                        AppLocalizations.of(context)!.completed,
+                        style: const TextStyle(fontSize: 10),
                       )))),
               Padding(
                 padding:
@@ -106,7 +107,7 @@ class _PickingCompletedState extends State<PickingCompleted> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -158,28 +159,28 @@ class _PickingCompletedState extends State<PickingCompleted> {
                   Padding(
                     padding: const EdgeInsets.only(left: 15, right: 140),
                     child: Text(
-                      "Items",
+                      AppLocalizations.of(context)!.items,
                       style: boxHeading(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
-                      "UOM",
+                      AppLocalizations.of(context)!.uom,
                       style: boxHeading(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Text(
-                      "Sys Qty",
+                      AppLocalizations.of(context)!.sysQty,
                       style: boxHeading(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 0),
                     child: Text(
-                      "Pkd Qty",
+                      AppLocalizations.of(context)!.pkdQty,
                       style: boxHeading(),
                     ),
                   ),

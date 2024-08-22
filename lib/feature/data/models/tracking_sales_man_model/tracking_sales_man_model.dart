@@ -16,15 +16,17 @@ class TrackingSalesManModel {
   String? moveStatus;
   @JsonKey(name: 'Geocode')
   String? geocode;
+  @JsonKey(name: 'CustomerAr')
+  String? customerAr;
 
-  TrackingSalesManModel({
-    this.customer,
-    this.duration,
-    this.date,
-    this.time,
-    this.moveStatus,
-    this.geocode,
-  });
+  TrackingSalesManModel(
+      {this.customer,
+      this.duration,
+      this.date,
+      this.time,
+      this.moveStatus,
+      this.geocode,
+      this.customerAr});
 
   factory TrackingSalesManModel.fromJson(Map<String, dynamic> json) {
     return _$TrackingSalesManModelFromJson(json);

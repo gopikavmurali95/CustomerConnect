@@ -147,7 +147,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                         Icons.search,
                         size: 20,
                       ),
-                      hintText: "Search here..",
+                      hintText: AppLocalizations.of(context)!.searchHere,
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,

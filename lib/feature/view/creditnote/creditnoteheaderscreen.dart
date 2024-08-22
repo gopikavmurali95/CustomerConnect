@@ -35,6 +35,28 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
   @override
   void initState() {
     _creditNoteHSearch.clear();
+    ddfilterFieldscreditNote = [
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Pending Requests"
+              : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken Requests"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Approved Requests"
+              : "الطلبات الموافق عليها",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Rejected Requests"
+              : "تم رفض الطلبات",
+          mode: 'R'),
+    ];
     context
         .read<CreditNoteHeaderBloc>()
         .add(const ClearCreditNoteHeadersEvent());

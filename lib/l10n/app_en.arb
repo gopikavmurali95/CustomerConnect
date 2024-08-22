@@ -330,6 +330,12 @@
   "showRoute": "Show Route",
   "start": "Start",
   "current": "Current",
-  "time": "Time"
+  "time": "Time",
+  "unscheduledVisit": "UnScheduled Visit",
+  "unschedVisitApproval": "Unscheduled Visit Approval",
+  "unscheduledVisitRejection": "Unscheduled Visit Rejection",
+  "sysQty": "Sys Qty",
+  "pkdQty": "Pkd Qty",
+  "liQty": "LI Qty"
 }
   

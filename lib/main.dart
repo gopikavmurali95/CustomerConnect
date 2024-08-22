@@ -158,6 +158,7 @@ import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/i
 import 'package:customer_connect/feature/state/cubit/invnttransexpand/inverntory_trans_ex_pand_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/mustsellselectedheader/mustsell_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/partialdeliveryreason/partial_delivery_reason_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_indicator_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
@@ -760,6 +761,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<UnScheduledApprovalBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OutStandingPaginationCubit>(),
         ),
       ],
       child: ScreenUtilInit(
