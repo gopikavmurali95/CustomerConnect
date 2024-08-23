@@ -11,11 +11,12 @@ QualificationGroupModel _$QualificationGroupModelFromJson(
     QualificationGroupModel(
       prdCode: json['prdCode'] as String?,
       prdName: json['prdName'] as String?,
-    );
+    )..arprdName = json['ArprdName'] as String?;
 
 Map<String, dynamic> _$QualificationGroupModelToJson(
         QualificationGroupModel instance) =>
     <String, dynamic>{
       'prdCode': instance.prdCode,
       'prdName': instance.prdName,
+      'ArprdName': instance.arprdName,
     };

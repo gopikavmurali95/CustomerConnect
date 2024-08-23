@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchcreditnoterequest/merch_credit_note_request_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -316,7 +317,8 @@ class _CreditNoteHeaderScreenState
                                                                               Expanded(
                                                                                 child: Text(
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  creditNote[index].cusName ?? '',
+                                                                                  selectedLocale?.languageCode == "en" ? creditNote[index].cusName ?? '' : creditNote[index].arCusName?? '',
+                                                                                  //creditNote[index].cusName ?? '',
                                                                                   style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                                 ),
                                                                               ),
@@ -353,8 +355,9 @@ class _CreditNoteHeaderScreenState
                                                                                 5),
                                                                         child:
                                                                             Text(
-                                                                          creditNote[index].status ??
-                                                                              '',
+                                                                              selectedLocale?.languageCode == "en" ? creditNote[index].status ?? '' : creditNote[index].arStatus?? '',
+                                                                          // creditNote[index].status ??
+                                                                          //     '',
                                                                           style: kfontstyle(
                                                                               fontSize: 10.sp,
                                                                               fontWeight: FontWeight.w400,

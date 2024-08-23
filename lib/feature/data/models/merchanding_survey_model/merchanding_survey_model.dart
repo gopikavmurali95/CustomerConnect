@@ -16,6 +16,12 @@ class MerchandingSurveyModel {
   String? compOn;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'SurveyArName')
+  String? surveyArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   MerchandingSurveyModel({
     this.surveyName,

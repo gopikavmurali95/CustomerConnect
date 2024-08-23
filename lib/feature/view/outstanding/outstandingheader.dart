@@ -8,7 +8,7 @@ import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_s
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:customer_connect/main.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -146,7 +146,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: Transform.flip(
-          flipX: selectedLocale?.languageCode == "en" ? false : true,
+          // flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);

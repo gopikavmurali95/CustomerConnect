@@ -17,7 +17,9 @@ MerchReturnRequestModel _$MerchReturnRequestModelFromJson(
       cusName: json['cus_Name'] as String?,
       date: json['Date'] as String?,
       status: json['status'] as String?,
-    );
+    )
+      ..arcusName = json[' Arcus_Name'] as String?
+      ..arStatus = json[' Arstatus'] as String?;
 
 Map<String, dynamic> _$MerchReturnRequestModelToJson(
         MerchReturnRequestModel instance) =>
@@ -30,4 +32,6 @@ Map<String, dynamic> _$MerchReturnRequestModelToJson(
       'cus_Name': instance.cusName,
       'Date': instance.date,
       'status': instance.status,
+      ' Arcus_Name': instance.arcusName,
+      ' Arstatus': instance.arStatus,
     };

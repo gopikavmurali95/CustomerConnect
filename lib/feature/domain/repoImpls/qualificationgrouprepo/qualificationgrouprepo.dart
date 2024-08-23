@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -20,7 +21,7 @@ class QualificationGroupREpo implements IQualificationGroupRepo {
           Uri.parse(baseUrl + qualificationgroupurl),
           body: {"ID": iD, "Mode": mode});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        log('qualification response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> groupdata = json['result'];
         List<QualificationGroupModel> group = groupdata

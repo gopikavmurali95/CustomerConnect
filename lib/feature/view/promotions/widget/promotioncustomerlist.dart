@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -72,7 +73,7 @@ class PromotionCustomerList extends StatelessWidget {
                                           flex: 1,
                                           fit: FlexFit.tight,
                                           child: Text(
-                                            ' - ${promocustomer[index].cusName}',
+                                            ' - ${selectedLocale?.languageCode == "en" ? promocustomer[index].cusName ?? '' : promocustomer[index].arCusName ?? ''}',
                                             overflow: TextOverflow.ellipsis,
                                             style: subTitleTextStyle(),
                                           ),
@@ -90,7 +91,8 @@ class PromotionCustomerList extends StatelessWidget {
                                           style: subTitleTextStyle(),
                                         ),
                                         Text(
-                                          promocustomer[index].areaName ?? '',
+                                          selectedLocale?.languageCode == "en" ? promocustomer[index].areaName ?? '' : promocustomer[index].arareaName?? '',
+                                          // promocustomer[index].areaName ?? '',
                                           style: subTitleTextStyle(),
                                         ),
                                       ],
@@ -98,7 +100,7 @@ class PromotionCustomerList extends StatelessWidget {
                                     Text(
                                       '${promocustomer[index].cusType} | '
                                       '${promocustomer[index].promotionCustomerModelClass} | '
-                                      '${promocustomer[index].areaName}',
+                                      '${selectedLocale?.languageCode == "en" ? promocustomer[index].areaName ?? '' : promocustomer[index].arareaName?? ''}',
                                       style: statusTextStyle(),
                                     )
                                   ],

@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchandtaskheader/merchand_task_header_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -320,7 +321,7 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                         .start,
                                                                 children: [
                                                                   Text(
-                                                                      "${tasksheader[index].taskCode}-${tasksheader[index].taskName}",
+                                                                      "${tasksheader[index].taskCode}-${selectedLocale?.languageCode == "en" ? tasksheader[index].taskName ?? '' : tasksheader[index].taskArName ?? ''}",
                                                                       style:
                                                                           blueTextStyle()),
                                                                   Row(
@@ -339,7 +340,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                       Expanded(
                                                                         child: Text(
                                                                             overflow: TextOverflow.ellipsis,
-                                                                            "${tasksheader[index].cusName}",
+                                                                           " ${selectedLocale?.languageCode == "en" ? tasksheader[index].cusName?? '' : tasksheader[index].cusArName ?? ''}",
+                                                                           // "${tasksheader[index].cusName}",
                                                                             // "Emmerch International Hotel",
                                                                             style: subTitleTextStyle()),
                                                                       ),
@@ -376,12 +378,12 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: tasksheader[index]
-                                                                            .status! ==
-                                                                        AppLocalizations.of(context)!.pending
+                                                                            .status! == 'Pending'
+                                                                        //AppLocalizations.of(context)!.pending
                                                                     ? const Color(
                                                                         0xfff7f4e2)
-                                                                    : tasksheader[index].status! ==
-                                                                            AppLocalizations.of(context)!.completed
+                                                                    : tasksheader[index].status! == 'Completed'
+                                                                           // AppLocalizations.of(context)!.completed
                                                                         ? const Color(
                                                                             0xffe3f7e2)
                                                                         : Colors
@@ -400,7 +402,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                     vertical:
                                                                         3),
                                                                 child: Text(
-                                                                  "${tasksheader[index].status}",
+                                                                  selectedLocale?.languageCode == "en" ? tasksheader[index].status ?? '' : tasksheader[index].arStatus?? '',
+                                                                  //"${tasksheader[index].status}",
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           8.sp),

@@ -41,7 +41,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
       appBar: AppBar(
         titleSpacing: 0.2,
         leading: Transform.flip(
-          flipX: selectedLocale?.languageCode == "en" ? false : true,
+         // flipX: selectedLocale?.languageCode == "en" ? false : true,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -352,7 +352,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                                           '',
                                                       style: loadTextStyle()),
                                                   Text(
-                                                    spPrice[index].prdName ??
+                                                    selectedLocale?.languageCode == "en" ? spPrice[index].prdName ?? '' : spPrice[index].prdNameArabic ?? ''
+                                                    //spPrice[index].prdName ??
                                                         '',
                                                     style: subTitleTextStyle(),
                                                   ),

@@ -6,6 +6,8 @@ part 'qualification_group_model.g.dart';
 class QualificationGroupModel {
   String? prdCode;
   String? prdName;
+  @JsonKey(name:'ArprdName')
+  String? arprdName;
 
   QualificationGroupModel({this.prdCode, this.prdName});
 

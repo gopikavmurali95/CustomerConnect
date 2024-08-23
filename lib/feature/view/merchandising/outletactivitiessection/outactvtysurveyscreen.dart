@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchandisingsurvey/merchandising_survey_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -288,7 +289,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                            "${survey[index].cusCode} - ${survey[index].surveyName}",
+                                                            "${survey[index].cusCode} - ${selectedLocale?.languageCode == "en" ? survey[index].surveyName ?? '' : survey[index].surveyArName?? ''}",
                                                             style:
                                                                 blueTextStyle()),
                                                         Row(
@@ -306,7 +307,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
-                                                                  "${survey[index].cusName}",
+                                                                          selectedLocale?.languageCode == "en" ? survey[index].cusName ?? '' : survey[index].cusArName?? '',
+                                                                  //"${survey[index].cusName}",
                                                                   style:
                                                                       subTitleTextStyle()),
                                                             ),
@@ -344,7 +346,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                           horizontal: 5,
                                                           vertical: 3),
                                                       child: Text(
-                                                        "${survey[index].status}",
+                                                        selectedLocale?.languageCode == "en" ? survey[index].status ?? '' : survey[index].arStatus?? '',
+                                                        // "${survey[index].status}",
                                                         style: kfontstyle(
                                                             fontSize: 8.sp),
                                                       ),

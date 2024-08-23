@@ -44,7 +44,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
             Navigator.pop(context);
           },
           icon: Transform.flip(
-            flipX: selectedLocale?.languageCode == "en" ? false : true,
+            //flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
@@ -108,7 +108,8 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.promotion.pName!,
+                                    selectedLocale?.languageCode == "en" ? widget.promotion.pName ?? '' : widget.promotion.arPname ?? '',
+                                    //widget.promotion.pName!,
                                     style: blueTextStyle(),
                                   ),
                                   Text(

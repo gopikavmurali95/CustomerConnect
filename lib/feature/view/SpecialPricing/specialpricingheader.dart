@@ -57,7 +57,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
             Navigator.pop(context);
           },
           icon: Transform.flip(
-             flipX: selectedLocale?.languageCode == "en" ? true : false,
+             //flipX: selectedLocale?.languageCode == "en" ? true : false,
             //flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,

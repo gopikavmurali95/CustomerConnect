@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -301,7 +302,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                                "${activityData[index].cusCode}-${activityData[index].actName}",
+                                                              selectedLocale?.languageCode == "en" ? activityData[index].actName ?? '' : activityData[index].actArName?? '',
+                                                               // "${activityData[index].cusCode}-${activityData[index].actName}",
                                                                 style:
                                                                     blueTextStyle()),
                                                             Row(
@@ -321,7 +323,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                      "${activityData[index].cusName}",
+                                                                              selectedLocale?.languageCode == "en" ? activityData[index].cusName?? '' : activityData[index].cusrName?? '',
+                                                                      // "${activityData[index].cusName}",
                                                                       style:
                                                                           subTitleTextStyle()),
                                                                 ),
@@ -364,7 +367,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                                   horizontal: 5,
                                                                   vertical: 3),
                                                           child: Text(
-                                                            "${activityData[index].status}",
+                                                           selectedLocale?.languageCode == "en" ? activityData[index].status ?? '' : activityData[index].arstatus?? '',
                                                             style: kfontstyle(
                                                                 fontSize: 8.sp),
                                                           ),

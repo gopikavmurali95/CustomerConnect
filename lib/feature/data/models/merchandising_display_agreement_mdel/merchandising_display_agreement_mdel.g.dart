@@ -16,7 +16,10 @@ MerchandisingDisplayAgreementMdel _$MerchandisingDisplayAgreementMdelFromJson(
       startDate: json['StartDate'] as String?,
       endDate: json['EndDate'] as String?,
       status: json['Status'] as String?,
-    );
+    )
+      ..arType = json['ArType'] as String?
+      ..cusArName = json['cus_ArName'] as String?
+      ..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$MerchandisingDisplayAgreementMdelToJson(
         MerchandisingDisplayAgreementMdel instance) =>
@@ -28,4 +31,7 @@ Map<String, dynamic> _$MerchandisingDisplayAgreementMdelToJson(
       'StartDate': instance.startDate,
       'EndDate': instance.endDate,
       'Status': instance.status,
+      'ArType': instance.arType,
+      'cus_ArName': instance.cusArName,
+      'ArStatus': instance.arStatus,
     };

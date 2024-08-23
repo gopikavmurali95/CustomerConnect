@@ -26,7 +26,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
 
       log(specialPriceIn.toJson().toString());
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        //logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceData = json['result'];
         List<SpecialPriceHeaderOutparas> price = specialPriceData
@@ -54,7 +54,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
           Uri.parse(baseUrl + specialPriceDetailsUrl),
           body: {"prh_id": prdID});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        //log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceDetails = json['result'];
         List<SpecialPriceDetailsModel> pricedetails = specialPriceDetails
@@ -82,7 +82,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
           Uri.parse(baseUrl + specialPRiceCustomerurl),
           body: {"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        log('special pricing customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceCustomers = json['result'];
         List<SpecialPriceCustomerModel> customerdetails = specialPriceCustomers
