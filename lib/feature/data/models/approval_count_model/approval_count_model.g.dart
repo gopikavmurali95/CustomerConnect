@@ -30,7 +30,8 @@ ApprovalCountModel _$ApprovalCountModelFromJson(Map<String, dynamic> json) =>
     )
       ..mustSellHead = json['MustSellHeader'] as String?
       ..settlementApprovalHead = json['SettlementApprovalHeader'] as String?
-      ..voidTransactionHead = json['VoidTransactionHeader'] as String?;
+      ..voidTransactionHead = json['VoidTransactionHeader'] as String?
+      ..unschVisit = json['UnschVisit'] as String?;
 
 Map<String, dynamic> _$ApprovalCountModelToJson(ApprovalCountModel instance) =>
     <String, dynamic>{
@@ -52,4 +53,5 @@ Map<String, dynamic> _$ApprovalCountModelToJson(ApprovalCountModel instance) =>
       'MustSellHeader': instance.mustSellHead,
       'SettlementApprovalHeader': instance.settlementApprovalHead,
       'VoidTransactionHeader': instance.voidTransactionHead,
+      'UnschVisit': instance.unschVisit,
     };

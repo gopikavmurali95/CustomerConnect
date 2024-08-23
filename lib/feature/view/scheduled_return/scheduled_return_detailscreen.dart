@@ -740,47 +740,64 @@ class _ScheduledReturnDetailScreenState
                                                                         const Offset(
                                                                             -120,
                                                                             0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          /* activeColor: isselected == true
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            statuslist[index] =
-                                                                                true;
-                                                                            loadingCount =
-                                                                                0;
-                                                                            setState(() {});
-                                                                            approvedProducts[index] =
-                                                                                ScheduledReturnPrdModel(
-                                                                              reason: selectedresons[index],
-                                                                              rrdId: details[index].rrdId,
-                                                                              status: "A",
-                                                                            );
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
+                                                                    child: InkWell(
+                                                                      onTap: () {
+                                                                        setState(() {
+                                                                          statuslist[index] =
+                                                                                  true;
+                                                                              loadingCount =
+                                                                                  0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "A",
+                                                                              );
+                                                                        });
+                                                                      },
+                                                                      child: Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] == true)
+                                                                                  ? Colors.green.shade300
+                                                                                  : Colors.grey;
+                                                                            }),
+                                                                            /* activeColor: isselected == true
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? false
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                true,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              statuslist[index] =
+                                                                                  true;
+                                                                              loadingCount =
+                                                                                  0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "A",
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!
+                                                                                .approve,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Transform
@@ -790,47 +807,64 @@ class _ScheduledReturnDetailScreenState
                                                                         const Offset(
                                                                             -120,
                                                                             0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          /*  activeColor: isselected == false
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            statuslist[index] =
-                                                                                false;
-                                                                            loadingCount =
-                                                                                0;
-                                                                            setState(() {});
-                                                                            approvedProducts[index] =
-                                                                                ScheduledReturnPrdModel(
-                                                                              reason: selectedresons[index],
-                                                                              rrdId: details[index].rrdId,
-                                                                              status: "R",
-                                                                            );
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
+                                                                    child: InkWell(
+                                                                      onTap: () {
+                                                                        setState(() {
+                                                                           statuslist[index] =
+                                                                                  false;
+                                                                              loadingCount =
+                                                                                  0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "R",
+                                                                              );
+                                                                        });
+                                                                      },
+                                                                      child: Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] != null && !statuslist[index]!)
+                                                                                  ? Colors.red.shade300
+                                                                                  : Colors.grey;
+                                                                            }),
+                                                                            /*  activeColor: isselected == false
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? true
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                false,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              statuslist[index] =
+                                                                                  false;
+                                                                              loadingCount =
+                                                                                  0;
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  ScheduledReturnPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                rrdId: details[index].rrdId,
+                                                                                status: "R",
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!
+                                                                                .reject,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],

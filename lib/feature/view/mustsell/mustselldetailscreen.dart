@@ -339,13 +339,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                               Column(
                                                 children: [
                                                   Text(
-                                                    selectedLocale
-                                                                ?.languageCode ==
-                                                            "en"
-                                                        ? details[index].huom ??
-                                                            ''
-                                                        : details[index]
-                                                                .arHUOM ??
+                                                    details[index].huom ??
                                                             '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
@@ -357,13 +351,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                     height: 10.h,
                                                   ),
                                                   Text(
-                                                    selectedLocale
-                                                                ?.languageCode ==
-                                                            "en"
-                                                        ? details[index].luom ??
-                                                            ''
-                                                        : details[index]
-                                                                .arLUOM ??
+                                                    details[index].luom ??
                                                             '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
@@ -374,7 +362,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: 50.w,
+                                                width: 35.w,
                                               ),
                                               Column(
                                                 children: [

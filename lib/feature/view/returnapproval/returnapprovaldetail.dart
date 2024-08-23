@@ -43,8 +43,8 @@ bool isLoading = false;
 
 int loadingCount = 0;
 List<ApprovalResonModel> availableresons = [];
-int _approvedCount = 0;
-int _totalCount = 0;
+int approvedCount = 0;
+int totalCount = 0;
 TextEditingController _searchctrls = TextEditingController();
 Timer? debounce;
 
@@ -53,7 +53,7 @@ class _ReturnApprovalDetailScreenState
   @override
   void initState() {
     _searchctrls.clear();
-    _approvedCount = 0;
+    approvedCount = 0;
     loadingCount = 0;
     context
         .read<ReturnApprovalDetailBloc>()
@@ -294,7 +294,7 @@ class _ReturnApprovalDetailScreenState
                           Text(AppLocalizations.of(context)!.uom,
                               style: boxHeading()),
                           SizedBox(
-                            width: 40.w,
+                            width: 50.w,
                           ),
                           Text(AppLocalizations.of(context)!.qty,
                               style: boxHeading())
@@ -311,7 +311,7 @@ class _ReturnApprovalDetailScreenState
                   state.when(
                     getReturnApprovelDetailState: (details) {
                       if (details != null) {
-                        _totalCount = details.length;
+                        totalCount = details.length;
                         _returnProducts =
                             List.generate(details.length, (index) => null);
                         context.read<ApprovalReasonsBloc>().add(
@@ -323,7 +323,7 @@ class _ReturnApprovalDetailScreenState
 
                         for (int i = 0; i < details.length; i++) {
                           if (details[i].radApprovalStatus!.isNotEmpty) {
-                            _approvedCount++;
+                            approvedCount++;
                             if (details[i].radApprovalStatus == 'A') {
                               statuslist[i] = true;
                             } else {
@@ -425,7 +425,7 @@ class _ReturnApprovalDetailScreenState
                                       approveReturnLoadingState: () {
                                         if (loadingCount == 0) {
                                           loadingCount = 1;
-                                          _approvedCount += 1;
+                                          approvedCount += 1;
                                           showCupertinoModalPopup(
                                               context: context,
                                               barrierDismissible: false,
@@ -727,128 +727,173 @@ class _ReturnApprovalDetailScreenState
                                                         scale: 0.8,
                                                         origin: const Offset(
                                                             -120, 0),
-                                                        child: Row(
-                                                          children: [
-                                                            Radio(
-                                                              fillColor: MaterialStateProperty
-                                                                  .resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                return (statuslist[
-                                                                            index] ==
-                                                                        true)
-                                                                    ? Colors
-                                                                        .green
-                                                                        .shade300
-                                                                    : Colors
-                                                                        .grey;
-                                                              }),
-                                                              /* activeColor: isselected == true
-                                                                                                             : Colors.grey, */
-                                                              value: statuslist[
-                                                                          index] ==
-                                                                      null
-                                                                  ? false
-                                                                  : statuslist[
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            setState(() {
+                                                              statuslist[
+                                                                          index] =
+                                                                      true;
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _returnProducts[
+                                                                          index] =
+                                                                      ReturnApprovalProductModel(
+                                                                          radID: details[index]
+                                                                              .radId,
+                                                                          reason: selectedresons[
+                                                                              index],
+                                                                          status:
+                                                                              "A");
+                                                            });
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              Radio(
+                                                                fillColor: MaterialStateProperty
+                                                                    .resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                  return (statuslist[
                                                                               index] ==
-                                                                          true
-                                                                      ? true
-                                                                      : false,
-                                                              groupValue: true,
-                                                              onChanged:
-                                                                  (value) {
-                                                                statuslist[
-                                                                        index] =
-                                                                    true;
-                                                                loadingCount =
-                                                                    0;
-                                                                setState(() {});
-
-                                                                _returnProducts[
-                                                                        index] =
-                                                                    ReturnApprovalProductModel(
-                                                                        radID: details[index]
-                                                                            .radId,
-                                                                        reason: selectedresons[
-                                                                            index],
-                                                                        status:
-                                                                            "A");
-                                                              },
-                                                            ),
-                                                            Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .approve,
-                                                              style:
-                                                                  kfontstyle(),
-                                                            )
-                                                          ],
+                                                                          true)
+                                                                      ? Colors
+                                                                          .green
+                                                                          .shade300
+                                                                      : Colors
+                                                                          .grey;
+                                                                }),
+                                                                /* activeColor: isselected == true
+                                                                                                               : Colors.grey, */
+                                                                value: statuslist[
+                                                                            index] ==
+                                                                        null
+                                                                    ? false
+                                                                    : statuslist[
+                                                                                index] ==
+                                                                            true
+                                                                        ? true
+                                                                        : false,
+                                                                groupValue: true,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  statuslist[
+                                                                          index] =
+                                                                      true;
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _returnProducts[
+                                                                          index] =
+                                                                      ReturnApprovalProductModel(
+                                                                          radID: details[index]
+                                                                              .radId,
+                                                                          reason: selectedresons[
+                                                                              index],
+                                                                          status:
+                                                                              "A");
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .approve,
+                                                                style:
+                                                                    kfontstyle(),
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                       Transform.scale(
                                                         scale: 0.8,
                                                         origin: const Offset(
                                                             -120, 0),
-                                                        child: Row(
-                                                          children: [
-                                                            Radio(
-                                                              fillColor: MaterialStateProperty
-                                                                  .resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                return (statuslist[index] !=
-                                                                            null &&
-                                                                        !statuslist[
-                                                                            index]!)
-                                                                    ? Colors.red
-                                                                        .shade300
-                                                                    : Colors
-                                                                        .grey;
-                                                              }),
-                                                              /*  activeColor: isselected == false
-                                                                                                                                                                                                  ? const Color(0xff0075ff)
-                                                                                                                                                                                                  : Colors.grey, */
-                                                              value: statuslist[
-                                                                          index] ==
-                                                                      null
-                                                                  ? true
-                                                                  : statuslist[
-                                                                              index] ==
-                                                                          true
-                                                                      ? true
-                                                                      : false,
-                                                              groupValue: false,
-                                                              onChanged:
-                                                                  (value) {
-                                                                statuslist[
-                                                                        index] =
-                                                                    false;
-
-                                                                loadingCount =
-                                                                    0;
-                                                                setState(() {});
-
-                                                                _returnProducts[
-                                                                        index] =
-                                                                    ReturnApprovalProductModel(
-                                                                        radID: details[index]
-                                                                            .radId,
-                                                                        reason: selectedresons[
-                                                                            index],
-                                                                        status:
-                                                                            "R");
-                                                              },
-                                                            ),
-                                                            Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .reject,
-                                                              style:
-                                                                  kfontstyle(),
-                                                            )
-                                                          ],
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            setState(() {
+                                                              statuslist[
+                                                                          index] =
+                                                                      false;
+                                                          
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _returnProducts[
+                                                                          index] =
+                                                                      ReturnApprovalProductModel(
+                                                                          radID: details[index]
+                                                                              .radId,
+                                                                          reason: selectedresons[
+                                                                              index],
+                                                                          status:
+                                                                              "R");
+                                                            });
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              Radio(
+                                                                fillColor: MaterialStateProperty
+                                                                    .resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                  return (statuslist[index] !=
+                                                                              null &&
+                                                                          !statuslist[
+                                                                              index]!)
+                                                                      ? Colors.red
+                                                                          .shade300
+                                                                      : Colors
+                                                                          .grey;
+                                                                }),
+                                                                /*  activeColor: isselected == false
+                                                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                                                    : Colors.grey, */
+                                                                value: statuslist[
+                                                                            index] ==
+                                                                        null
+                                                                    ? true
+                                                                    : statuslist[
+                                                                                index] ==
+                                                                            true
+                                                                        ? true
+                                                                        : false,
+                                                                groupValue: false,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  statuslist[
+                                                                          index] =
+                                                                      false;
+                                                          
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _returnProducts[
+                                                                          index] =
+                                                                      ReturnApprovalProductModel(
+                                                                          radID: details[index]
+                                                                              .radId,
+                                                                          reason: selectedresons[
+                                                                              index],
+                                                                          status:
+                                                                              "R");
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .reject,
+                                                                style:
+                                                                    kfontstyle(),
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
