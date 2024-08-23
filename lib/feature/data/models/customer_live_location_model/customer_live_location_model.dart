@@ -14,14 +14,15 @@ class CustomerLiveLocationModel {
   String? time;
   @JsonKey(name: 'Geocode')
   String? geocode;
-
-  CustomerLiveLocationModel({
-    this.user,
-    this.duration,
-    this.date,
-    this.time,
-    this.geocode,
-  });
+  @JsonKey(name: 'UserAr')
+  String? userAr;
+  CustomerLiveLocationModel(
+      {this.user,
+      this.duration,
+      this.date,
+      this.time,
+      this.geocode,
+      this.userAr});
 
   factory CustomerLiveLocationModel.fromJson(Map<String, dynamic> json) {
     return _$CustomerLiveLocationModelFromJson(json);

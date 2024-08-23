@@ -15,7 +15,10 @@ MerchandingSurveyModel _$MerchandingSurveyModelFromJson(
       dueOn: json['DueOn'] as String?,
       compOn: json['CompOn'] as String?,
       status: json['Status'] as String?,
-    );
+    )
+      ..surveyArName = json['SurveyArName'] as String?
+      ..cusArName = json['cus_ArName'] as String?
+      ..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$MerchandingSurveyModelToJson(
         MerchandingSurveyModel instance) =>
@@ -26,4 +29,7 @@ Map<String, dynamic> _$MerchandingSurveyModelToJson(
       'DueOn': instance.dueOn,
       'CompOn': instance.compOn,
       'Status': instance.status,
+      'SurveyArName': instance.surveyArName,
+      'cus_ArName': instance.cusArName,
+      'ArStatus': instance.arStatus,
     };

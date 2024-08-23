@@ -17,7 +17,9 @@ MerchCreditNoteRequestModel _$MerchCreditNoteRequestModelFromJson(
       cusName: json['cus_Name'] as String?,
       date: json['Date'] as String?,
       status: json['status'] as String?,
-    );
+    )
+      ..arCusName = json['Arcus_Name'] as String?
+      ..arStatus = json['Arstatus'] as String?;
 
 Map<String, dynamic> _$MerchCreditNoteRequestModelToJson(
         MerchCreditNoteRequestModel instance) =>
@@ -30,4 +32,6 @@ Map<String, dynamic> _$MerchCreditNoteRequestModelToJson(
       'cus_Name': instance.cusName,
       'Date': instance.date,
       'status': instance.status,
+      'Arcus_Name': instance.arCusName,
+      'Arstatus': instance.arStatus,
     };

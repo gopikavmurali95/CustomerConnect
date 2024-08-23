@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
-import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
 import 'package:dartz/dartz.dart';
@@ -18,18 +17,18 @@ class OutstandingBloc extends Bloc<OutstandingEvent, OutstandingState> {
   OutstandingBloc(this.outStandingHeaderRepo)
       : super(OutstandingState.initial()) {
     on<GetOutstandingDataEvent>((event, emit) async {
-      Either<MainFailures, List<OutStandOutModel>> headers =
-          await outStandingHeaderRepo.getOutStandingHeaders(event.outIn);
+      /*   Either<MainFailures, List<OutStandOutModel>> headers =
+          await outStandingHeaderRepo.getOutStandingHeaders(event.outIn); */
       Either<MainFailures, OutstandingCountModel> counts =
           await outStandingHeaderRepo.getoutstandingTotal(event.outIn);
-      List<OutStandOutModel> searcheditems = [];
+      // List<OutStandOutModel> searcheditems = [];
       emit(
-        headers.fold(
+        counts.fold(
           (l) => const OutstandingFailedState(),
           (r) => counts.fold(
             (l) => const OutstandingFailedState(),
             (c) {
-              searcheditems = r
+              /*  searcheditems = r
                   .where((element) =>
                       element.invoiceID!
                           .toLowerCase()
@@ -39,10 +38,8 @@ class OutstandingBloc extends Bloc<OutstandingEvent, OutstandingState> {
                           .toLowerCase()
                           .toUpperCase()
                           .contains(event.searchQuery.toUpperCase()))
-                  .toList();
-              return GetOutstandingDataState(
-                  headers: event.searchQuery.isEmpty ? r : searcheditems,
-                  counts: c);
+                  .toList(); */
+              return GetOutstandingDataState(counts: c);
             },
           ),
         ),
@@ -50,7 +47,7 @@ class OutstandingBloc extends Bloc<OutstandingEvent, OutstandingState> {
     });
 
     on<ClearOutStandingEvent>((event, emit) {
-      emit(const GetOutstandingDataState(headers: null, counts: null));
+      emit(const GetOutstandingDataState(counts: null));
     });
   }
 }

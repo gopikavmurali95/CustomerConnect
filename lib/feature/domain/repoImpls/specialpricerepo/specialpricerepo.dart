@@ -10,7 +10,6 @@ import 'package:customer_connect/feature/data/models/special_price_header_model/
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 import 'package:http/http.dart' as http;
 
 @LazySingleton(as: ISpecialPriceRepo)
@@ -18,7 +17,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceHeaderOutparas>>>
       getSpecialPrice(SpecialPriceHeaderModel specialPriceIn) async {
-    var logger = Logger();
+   
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialpriceheaderurl),
@@ -26,7 +25,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
 
       log(specialPriceIn.toJson().toString());
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        //log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceData = json['result'];
         List<SpecialPriceHeaderOutparas> price = specialPriceData
@@ -40,7 +39,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
         );
       }
     } catch (e) {
-      logger.e('Special Price error$e');
+      log('Special Price error$e');
       return left(const MainFailures.serverfailure());
     }
   }
@@ -48,13 +47,13 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceDetailsModel>>> getPriceDetail(
       String prdID) async {
-    var logger = Logger();
+   
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialPriceDetailsUrl),
           body: {"prh_id": prdID});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+        //log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceDetails = json['result'];
         List<SpecialPriceDetailsModel> pricedetails = specialPriceDetails
@@ -68,7 +67,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
         );
       }
     } catch (e) {
-      logger.e('Special Price Details error$e');
+      //log('Special Price Details error$e');
       return left(const MainFailures.serverfailure());
     }
   }
@@ -76,13 +75,13 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceCustomerModel>>>
       getPriceCustomer(String userID, String fromDate, String toDate) async {
-    var logger = Logger();
+    
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialPRiceCustomerurl),
           body: {"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+       // log('special pricing customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceCustomers = json['result'];
         List<SpecialPriceCustomerModel> customerdetails = specialPriceCustomers
@@ -96,7 +95,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
         );
       }
     } catch (e) {
-      logger.e('Special Price Customers error$e');
+      //log('Special Price Customers error$e');
       return left(const MainFailures.serverfailure());
     }
   }

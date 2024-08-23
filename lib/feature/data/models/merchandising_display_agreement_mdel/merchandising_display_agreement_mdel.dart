@@ -18,6 +18,14 @@ class MerchandisingDisplayAgreementMdel {
   String? endDate;
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'ArType')
+  String? arType;
+   @JsonKey(name: 'cus_ArName')
+  String? cusArName;
+  @JsonKey(name:'ArStatus')
+  String? arStatus;
+
+  
 
   MerchandisingDisplayAgreementMdel({
     this.number,

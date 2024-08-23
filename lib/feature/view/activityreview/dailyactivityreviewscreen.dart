@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/dail
 import 'package:customer_connect/feature/view/activityreview/widgets/dailytargetcontainer.dart';
 import 'package:customer_connect/feature/view/activityreview/widgets/todayssaleswidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -312,9 +313,11 @@ class _DailyActivityReviewDetailScreenState
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                details[index]
-                                                                        .cusName ??
-                                                                    '',
+                                                                selectedLocale?.languageCode == "en" ? details[index].cusName
+                                                                 ?? '' : details[index].cusArname?? '',
+                                                                // details[index]
+                                                                //         .cusName ??
+                                                                //     '',
                                                                 style:
                                                                     kfontstyle(
                                                                   fontSize:

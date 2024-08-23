@@ -19,6 +19,10 @@ class MerchCreditNoteRequestModel {
   @JsonKey(name: 'Date')
   String? date;
   String? status;
+  @JsonKey(name: 'Arcus_Name')
+  String? arCusName;
+  @JsonKey(name: 'Arstatus')
+  String? arStatus;
 
   MerchCreditNoteRequestModel({
     this.cnhId,

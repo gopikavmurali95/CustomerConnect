@@ -19,7 +19,10 @@ UserNotificationModel _$UserNotificationModelFromJson(
       createdDate: json['CreatedDate'] as String?,
       status: json['Status'] as String?,
       rntUsrId: json['rnt_usr_ID'] as String?,
-    );
+    )
+      ..arStatus = json['ArStatus'] as String?
+      ..rntArDesc = json['rnt_ArDesc'] as String?
+      ..rntArHeader = json['rnt_ArHeader'] as String?;
 
 Map<String, dynamic> _$UserNotificationModelToJson(
         UserNotificationModel instance) =>
@@ -34,4 +37,7 @@ Map<String, dynamic> _$UserNotificationModelToJson(
       'CreatedDate': instance.createdDate,
       'Status': instance.status,
       'rnt_usr_ID': instance.rntUsrId,
+      'ArStatus': instance.arStatus,
+      'rnt_ArDesc': instance.rntArDesc,
+      'rnt_ArHeader': instance.rntArHeader,
     };

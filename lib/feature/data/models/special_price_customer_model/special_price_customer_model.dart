@@ -10,6 +10,8 @@ class SpecialPriceCustomerModel {
   String? cusCode;
   @JsonKey(name: 'CusName')
   String? cusName;
+  @JsonKey(name: 'ArCusName')
+  String? arcusName;
 
   SpecialPriceCustomerModel({this.cusId, this.cusCode, this.cusName});
 

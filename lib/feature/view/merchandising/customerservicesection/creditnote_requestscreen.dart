@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchcreditnoterequest/merch_credit_note_request_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +35,20 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedCreditNoteMode = 'AL';
     _merchCreditNoteSearch.clear();
+   filterCreditNoteReq= [
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
+          mode: 'AL'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+          mode: 'AP'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
+          mode: 'RQ'),
+    ];
     context
         .read<MerchCreditNoteRequestBloc>()
         .add(const ClearMerchCreditNoteRequestData());
@@ -316,7 +331,8 @@ class _CreditNoteHeaderScreenState
                                                                               Expanded(
                                                                                 child: Text(
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  creditNote[index].cusName ?? '',
+                                                                                  selectedLocale?.languageCode == "en" ? creditNote[index].cusName ?? '' : creditNote[index].arCusName?? '',
+                                                                                  //creditNote[index].cusName ?? '',
                                                                                   style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                                 ),
                                                                               ),
@@ -334,8 +350,8 @@ class _CreditNoteHeaderScreenState
                                                                     Container(
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: creditNote[index].status ==
-                                                                                AppLocalizations.of(context)!.requested
+                                                                        color: creditNote[index].status =="Requested"
+                                                                               // AppLocalizations.of(context)!.requested
                                                                             ? const Color(0xfff7f4e2)
                                                                             : const Color(0xffe3f7e2),
                                                                         borderRadius:
@@ -353,8 +369,9 @@ class _CreditNoteHeaderScreenState
                                                                                 5),
                                                                         child:
                                                                             Text(
-                                                                          creditNote[index].status ??
-                                                                              '',
+                                                                              selectedLocale?.languageCode == "en" ? creditNote[index].status ?? '' : creditNote[index].arStatus?? '',
+                                                                          // creditNote[index].status ??
+                                                                          //     '',
                                                                           style: kfontstyle(
                                                                               fontSize: 10.sp,
                                                                               fontWeight: FontWeight.w400,

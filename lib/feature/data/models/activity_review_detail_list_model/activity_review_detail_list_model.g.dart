@@ -26,7 +26,7 @@ ActivityReviewDetailListModel _$ActivityReviewDetailListModelFromJson(
       totReturnCr: json['TotReturnCR'] as String?,
       totCollectCs: json['TotCollectCS'] as String?,
       totCollectCr: json['TotCollectCR'] as String?,
-    );
+    )..cusArname = json['cus_ArName'] as String?;
 
 Map<String, dynamic> _$ActivityReviewDetailListModelToJson(
         ActivityReviewDetailListModel instance) =>
@@ -48,4 +48,5 @@ Map<String, dynamic> _$ActivityReviewDetailListModelToJson(
       'TotReturnCR': instance.totReturnCr,
       'TotCollectCS': instance.totCollectCs,
       'TotCollectCR': instance.totCollectCr,
+      'cus_ArName': instance.cusArname,
     };

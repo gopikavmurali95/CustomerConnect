@@ -22,7 +22,10 @@ class LoadingDetailModel {
   String? liHigherUom;
   @JsonKey(name: 'LiLowerUom')
   String? liLowerUom;
-
+  @JsonKey(name: 'Arprd_name')
+  String? arprdname;
+  @JsonKey(name: 'Arprd_desc')
+  String? arprddesc;
   LoadingDetailModel({
     this.prdId,
     this.prdCode,
@@ -33,6 +36,8 @@ class LoadingDetailModel {
     this.higherQty,
     this.liHigherUom,
     this.liLowerUom,
+    this.arprddesc,
+    this.arprdname,
   });
 
   factory LoadingDetailModel.fromJson(Map<String, dynamic> json) {

@@ -242,9 +242,15 @@ class _AssetAddingApprovalHeaderScreenState
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              headers[index]
-                                                                      .rsnName ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? headers[index]
+                                                                          .rsnName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .rsnArName ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                 fontSize: 12.sp,
                                                                 color: const Color(
@@ -270,9 +276,12 @@ class _AssetAddingApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .astName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].astName ??
+                                                                            ''
+                                                                        : headers[index].astArName ??
+                                                                            '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -299,9 +308,12 @@ class _AssetAddingApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    headers[index]
-                                                                            .cusName ??
-                                                                        '',
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? headers[index].cusName ??
+                                                                            ''
+                                                                        : headers[index].cusArName ??
+                                                                            "",
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -343,7 +355,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                           title:
                                                                               Text(AppLocalizations.of(context)!.alert),
                                                                           content:
-                                                                              Text(response.status ?? ''),
+                                                                              Text("${AppLocalizations.of(context)!.add_assets} ${selectedLocale?.languageCode == "en" ? response.status ?? '' : response.arStatus ?? ''}"),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
@@ -433,7 +445,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                         decoration:
                                                                             InputDecoration(
                                                                           hintText:
-                                                                              'Sl:No',
+                                                                              AppLocalizations.of(context)!.slNo,
                                                                           hintStyle:
                                                                               kfontstyle(
                                                                             fontSize:
@@ -455,60 +467,60 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             onTap: () {
                                                                               setState(() {
                                                                                 if (_slNoCtrls[index].text.isEmpty) {
-                                                                                  showCupertinoDialog(
-                                                                                    context: context,
-                                                                                    builder: (context) => CupertinoAlertDialog(
-                                                                                      title: Text(AppLocalizations.of(context)!.alert),
-                                                                                      content:  Text(selectedLocale?.languageCode == 'en'?"Please Enter Sl:No":"الرجاء إدخال الرقم التسلسلي"),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () {
-                                                                                            // setState(() {});
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                          child: Text(AppLocalizations.of(context)!.ok),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  );
-                                                                                } else {
-                                                                                  showCupertinoDialog(
-                                                                                    context: context,
-                                                                                    builder: (context) => CupertinoAlertDialog(
-                                                                                      title: Text(AppLocalizations.of(context)!.alert),
-                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () {
-                                                                                            setState(() {});
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                          child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                        ),
-                                                                                        TextButton(
-                                                                                          onPressed: () {
-                                                                                            statuslist[index] = true;
-                                                                                            loadingCount = 0;
-                                                                                            setState(() {});
-                                                                                            context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                                            context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                                  AssetAddingApproveEvent(
-                                                                                                    approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
-                                                                                                  ),
-                                                                                                );
-                                                                            
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                          child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  );
-                                                                                }
+                                                                                showCupertinoDialog(
+                                                                                  context: context,
+                                                                                  builder: (context) => CupertinoAlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          // setState(() {});
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.ok),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                              } else {
+                                                                                showCupertinoDialog(
+                                                                                  context: context,
+                                                                                  builder: (context) => CupertinoAlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          setState(() {});
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          statuslist[index] = true;
+                                                                                          loadingCount = 0;
+                                                                                          setState(() {});
+                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                                AssetAddingApproveEvent(
+                                                                                                  approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
+                                                                                                ),
+                                                                                              );
+
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                              }
                                                                               });
                                                                             },
                                                                             child: Row(
-                                                                            children: [
+                                                                                                                                                    children: [
                                                                             Radio(
                                                                               fillColor:
                                                                                   MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
@@ -531,7 +543,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                     context: context,
                                                                                     builder: (context) => CupertinoAlertDialog(
                                                                                       title: Text(AppLocalizations.of(context)!.alert),
-                                                                                      content:  Text(selectedLocale?.languageCode == 'en'?"Please Enter Sl:No":"الرجاء إدخال الرقم التسلسلي"),
+                                                                                      content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () {
@@ -584,8 +596,8 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               style:
                                                                                   kfontstyle(),
                                                                             )
-                                                                            ],
-                                                                          ),
+                                                                                                                                                    ],
+                                                                                                                                                  ),
                                                                           ),
                                                                     ),
                                                                     Transform
@@ -634,7 +646,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               });
                                                                             },
                                                                             child: Row(
-                                                                            children: [
+                                                                                                                                                    children: [
                                                                             Radio(
                                                                               fillColor:
                                                                                   MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
@@ -688,6 +700,11 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                   ),
                                                                                 );
                                                                             
+                                                                                /* context
+                                                                                                                                                                                              .read<
+                                                                                                                                                                                                  AapprovalOrRejectRadioCubit>()
+                                                                                                                                                                                              .changeApprovalStatus(
+                                                                                                                                                                                                  statuslist[index]); */
                                                                               },
                                                                             ),
                                                                             Text(

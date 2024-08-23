@@ -28,6 +28,11 @@ AssetAddRequestHeaderModel _$AssetAddRequestHeaderModelFromJson(
       image: json['Image'] as String?,
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
+      aahArName: json['aah_ArName'] as String?,
+      aahArRemarks: json['aah_ArRemarks'] as String?,
+      astArName: json['ast_ArName'] as String?,
+      cusArName: json['cus_ArName'] as String?,
+      rsnArName: json['rsn_ArName'] as String?,
     );
 
 Map<String, dynamic> _$AssetAddRequestHeaderModelToJson(
@@ -52,4 +57,9 @@ Map<String, dynamic> _$AssetAddRequestHeaderModelToJson(
       'Image': instance.image,
       'UserID': instance.userID,
       'rotID': instance.rotID,
+      'aah_ArName': instance.aahArName,
+      'aah_ArRemarks': instance.aahArRemarks,
+      'ast_ArName': instance.astArName,
+      'cus_ArName': instance.cusArName,
+      'rsn_ArName': instance.rsnArName,
     };

@@ -78,8 +78,8 @@ class _SettlementApprovalDetailScreenState
         child: SizedBox(
           height: double.infinity,
           child: SingleChildScrollView(
-            // physics: const NeverScrollableScrollPhysics(),
-            physics: const AlwaysScrollableScrollPhysics(),
+             physics: const NeverScrollableScrollPhysics(),
+            //physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
                 Column(

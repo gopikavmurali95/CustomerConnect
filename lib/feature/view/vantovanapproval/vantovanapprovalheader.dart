@@ -34,6 +34,24 @@ List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
 class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
   @override
   void initState() {
+    ddfilterFieldsVanToVan = [
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Pending Requests"
+              : "قيد الانتظار",
+          mode: 'P'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Approved Requests"
+              : "الطلبات الموافق عليها",
+          mode: 'AT'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Rejected Requests"
+              : "تم رفض الطلبات",
+          mode: 'R'),
+    ];
+
     _vanToVanHSearchCtrl.clear();
     ddfilterFieldsVanToVan = [
       ApprovalStatusFilterModel(

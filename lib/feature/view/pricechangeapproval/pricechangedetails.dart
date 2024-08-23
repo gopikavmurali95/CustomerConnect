@@ -65,7 +65,6 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
 
   @override
   Widget build(BuildContext context) {
-    log(jsonEncode(_procechangeapproved));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -884,8 +883,14 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                   PriceChangeReasonModel(
                                                                       rsnId:
                                                                           '-1',
-                                                                      rsnName:
-                                                                          'Select reason',
+                                                                      rsnName: selectedLocale?.languageCode ==
+                                                                              'en'
+                                                                          ? 'Select reason'
+                                                                          : AppLocalizations.of(context)!
+                                                                              .selectReason,
+                                                                      rsnArName:
+                                                                          AppLocalizations.of(context)!
+                                                                              .selectReason,
                                                                       rsnType:
                                                                           'null')
                                                                 ];
@@ -979,7 +984,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 value: item.rsnId,
                                                                                 child: Text(
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  item.rsnName ?? '',
+                                                                                  selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
                                                                                   style: kfontstyle(fontSize: 10.sp),
                                                                                 ),
                                                                               );

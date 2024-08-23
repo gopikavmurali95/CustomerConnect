@@ -15,6 +15,7 @@ TrackingSalesManModel _$TrackingSalesManModelFromJson(
       time: json['Time'] as String?,
       moveStatus: json['MoveStatus'] as String?,
       geocode: json['Geocode'] as String?,
+      customerAr: json['CustomerAr'] as String?,
     );
 
 Map<String, dynamic> _$TrackingSalesManModelToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$TrackingSalesManModelToJson(
       'Time': instance.time,
       'MoveStatus': instance.moveStatus,
       'Geocode': instance.geocode,
+      'CustomerAr': instance.customerAr,
     };

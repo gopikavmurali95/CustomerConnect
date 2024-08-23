@@ -6,7 +6,6 @@ import 'package:customer_connect/feature/data/models/special_price_header_model/
 
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spheaderlist.dart';
-import 'package:customer_connect/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
@@ -57,7 +56,7 @@ class _SpecialPricingHeaderState extends State<SpecialPricingHeader> {
             Navigator.pop(context);
           },
           icon: Transform.flip(
-             flipX: selectedLocale?.languageCode == "en" ? true : false,
+             //flipX: selectedLocale?.languageCode == "en" ? true : false,
             //flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,

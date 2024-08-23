@@ -20,6 +20,12 @@ class ActivityReviewHeaderModel {
   String? udpId;
   @JsonKey(name: 'duration')
   String? duration;
+  @JsonKey(name: 'rot_ArType')
+  String? rotArType;
+  @JsonKey(name: 'rot_ArName')
+  String? rotArName;
+  @JsonKey(name: 'usr_ArName')
+  String? userArname;
 
   ActivityReviewHeaderModel({
     this.rotCode,

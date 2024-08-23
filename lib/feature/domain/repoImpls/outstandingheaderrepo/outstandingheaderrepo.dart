@@ -22,6 +22,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
           Uri.parse(baseUrl + outStandingHeaderUrl),
           body: outStandIn.toJson());
       if (response.statusCode == 200) {
+        //log("outstanding response: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> outstanddata = json['result'];
@@ -47,7 +48,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
       final response = await http.post(Uri.parse(baseUrl + outStandingCountUrl),
           body: outin.toJson());
       if (response.statusCode == 200) {
-        log(response.body);
+      //  log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final outstandtotal = OutstandingCountModel.fromJson(json["result"][0]);
         return right(outstandtotal);
@@ -57,7 +58,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
         );
       }
     } catch (e) {
-      log('Outstand error : $e');
+    //  log('Outstand error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

@@ -524,7 +524,14 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                             PartialDeliveryReasonModel(
                                                               rsnId: '-1',
                                                               rsnName:
-                                                                  'Select reason',
+                                                                  selectedLocale?.languageCode ==
+                                                                              'en'
+                                                                          ? 'Select reason'
+                                                                          : AppLocalizations.of(context)!
+                                                                              .selectReason,
+                                                                      rsnArName:
+                                                                          AppLocalizations.of(context)!
+                                                                              .selectReason,
                                                             )
                                                           ];
                                           
@@ -608,8 +615,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                               Text(
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
-                                                                            item.rsnName ??
-                                                                                '',
+                                                                            selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
                                                                             style: kfontstyle(
                                                                                 fontSize:
                                                                                     9.sp),

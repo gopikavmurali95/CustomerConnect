@@ -34,7 +34,6 @@ Timer? debounce;
 class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
   @override
   void initState() {
-    searchCtrl.clear();
     filterFieldsReturn = [
       ApprovalStatusFilterModel(
           statusName:
@@ -46,6 +45,7 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
               : "طلبات الإجراءات المتخذة",
           mode: 'AT'),
     ];
+    searchCtrl.clear();
     context
         .read<ReturnApprovalHeaderBloc>()
         .add(const ClearReturnHeaderState());
@@ -333,8 +333,11 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                                         overflow:
                                                                             TextOverflow
                                                                                 .ellipsis,
-                                                                        headers[index].cusName ??
-                                                                            '',
+                                                                        selectedLocale?.languageCode == 'en'
+                                                                            ? headers[index].cusName ??
+                                                                                ''
+                                                                            : headers[index].arcusName ??
+                                                                                '',
                                                                         style:
                                                                             subTitleTextStyle()),
                                                                   ),
@@ -380,9 +383,15 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                                     vertical:
                                                                         3),
                                                             child: Text(
-                                                              headers[index]
-                                                                      .rahApprovalStatus ??
-                                                                  '',
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? headers[index]
+                                                                          .rahApprovalStatus ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .arapprStatus ??
+                                                                      '',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       9.sp),

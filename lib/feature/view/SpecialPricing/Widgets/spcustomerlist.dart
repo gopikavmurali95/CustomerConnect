@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,7 +64,9 @@ class SPCustomerList extends StatelessWidget {
                                   style: blueTextStyle(),
                                 ),
                                 Expanded(
-                                  child: Text(' -${customer[index].cusName}',
+                                  child: Text(
+                                    //' -${customer[index].cusName}',
+                                   " - ${selectedLocale?.languageCode == "en" ? customer[index].cusName ?? '' : customer[index].arcusName ?? ''}",
                                       overflow: TextOverflow.ellipsis,
                                       style: subTitleTextStyle()),
                                 )

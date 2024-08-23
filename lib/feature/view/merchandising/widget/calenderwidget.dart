@@ -8,10 +8,9 @@ import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_surve
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';

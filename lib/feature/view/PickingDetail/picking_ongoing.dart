@@ -2,12 +2,11 @@ import 'dart:async';
 
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/widgets/ongoing_detail.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 import '../../data/models/picking_header_model/PickingOutModel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingOgoing extends StatefulWidget {
   final PickingOutModel picking;
@@ -39,7 +38,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
           icon: const Icon(Icons.arrow_back_ios_rounded),
         ),
         title: Text(
-          "Picking Detail",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -62,9 +61,9 @@ class _PickingOgoingState extends State<PickingOgoing> {
                         borderRadius: BorderRadius.circular(20),
                         color: const Color(0xffECEFBE),
                       ),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "Ongoing",
+                        AppLocalizations.of(context)!.ongoing,
                         style: TextStyle(fontSize: 10),
                       )))),
               Padding(
@@ -106,7 +105,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -161,7 +160,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                       flex: 5,
                       fit: FlexFit.tight,
                       child: Text(
-                        "Items",
+                        AppLocalizations.of(context)!.items,
                         style: boxHeading(),
                       ),
                     ),
@@ -169,7 +168,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                       flex: 1,
                       fit: FlexFit.tight,
                       child: Text(
-                        "UOM",
+                        AppLocalizations.of(context)!.uom,
                         style: boxHeading(),
                       ),
                     ),
@@ -177,7 +176,7 @@ class _PickingOgoingState extends State<PickingOgoing> {
                       flex: 0,
                       fit: FlexFit.tight,
                       child: Text(
-                        "Qty",
+                        AppLocalizations.of(context)!.qty,
                         style: boxHeading(),
                       ),
                     ),

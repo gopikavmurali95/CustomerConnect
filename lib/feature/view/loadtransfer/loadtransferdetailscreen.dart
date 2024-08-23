@@ -584,7 +584,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    width: 50.w,
+                                                    width: selectedLocale?.languageCode == 'en'?50.w:70.w,
                                                   ),
                                                   Column(
                                                     children: [

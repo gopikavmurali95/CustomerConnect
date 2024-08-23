@@ -1,10 +1,12 @@
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/fonts.dart';
 import '../../../state/bloc/picking_detail/pickingdetail_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OngoingDetail extends StatelessWidget {
   const OngoingDetail({super.key});
@@ -28,109 +30,101 @@ class OngoingDetail extends StatelessWidget {
                       itemCount: 10),
                 )
               : pdetailList.isEmpty
-                  ? const Center(
-                      child: Text('No Data Found'),
+                  ? Center(
+                      child: Text(AppLocalizations.of(context)!.noDataFound),
                     )
-                  : ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: pdetailList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: ListView.separated(
+                        itemCount: pdetailList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Flexible(
-                                    flex: 4,
-                                    fit: FlexFit.tight,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(pdetailList[index].prdCode ?? '',
-                                            style: loadTextStyle()),
-                                        Text(
-                                          pdetailList[index].prdName ?? '',
-                                          style: subTitleTextStyle(),
-                                        ),
-                                        Text(
-                                          pdetailList[index].prdDescription ??
-                                              '',
-                                          style: subTitleTextStyle(),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    fit: FlexFit.tight,
-                                    /* child: Column(
-                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      // crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Visibility(
-                                          visible:
-                                              pdetailList[index].pkdHigherUom ==
-                                                          null ||
-                                                      pdetailList[index]
-                                                          .pkdHigherUom!
-                                                          .isEmpty
-                                                  ? false
-                                                  : true,
-                                          child: Text(
-                                            pdetailList[index].pkdHigherUom ??
-                                                '',
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10.0, top: 2, right: 10),
+                                    child: Container(
+                                      height: 70,
+                                      width: 200,
+                                      color: Colors.white,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text("${pdetailList[index].prdCode}",
+                                              style: loadTextStyle()),
+                                          Text(
+                                            selectedLocale?.languageCode == 'en'
+                                                ? "${pdetailList[index].prdName}"
+                                                : pdetailList[index]
+                                                        .prdArname ??
+                                                    '',
                                             style: subTitleTextStyle(),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
-                                        Visibility(
-                                          visible:
-                                              pdetailList[index].pkdLowerUom ==
-                                                          null ||
-                                                      pdetailList[index]
-                                                          .pkdLowerUom!
-                                                          .isEmpty
-                                                  ? false
-                                                  : true,
-                                          child: Text(
-                                            pdetailList[index].pkdLowerUom!,
-                                            style: subTitleTextStyle(),
-                                          ),
-                                        ),
-                                      ],
-                                    ), */
-                                    child: Text(
-                                      'CTN',
-                                      //'pdetailList[index].pkdLowerUom!',
-                                      style: subTitleTextStyle(),
+                                        ],
+                                      ),
                                     ),
                                   ),
-
-                                  Flexible(
-                                    flex: 0,
-                                    fit: FlexFit.tight,
+                                  Column(
+                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    // crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Visibility(
+                                        visible:
+                                            pdetailList[index].pkdHigherUom ==
+                                                        null ||
+                                                    pdetailList[index]
+                                                        .pkdHigherUom!
+                                                        .isEmpty
+                                                ? false
+                                                : true,
+                                        child: Text(
+                                          "${pdetailList[index].pkdHigherUom}",
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Visibility(
+                                        visible:
+                                            pdetailList[index].pkdLowerUom ==
+                                                        null ||
+                                                    pdetailList[index]
+                                                        .pkdLowerUom!
+                                                        .isEmpty
+                                                ? false
+                                                : true,
+                                        child: Text(
+                                          "${pdetailList[index].pkdLowerUom}",
+                                          style: subTitleTextStyle(),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5, right: 20.0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          pdetailList[index].pkdPickedHQty!,
+                                          "${pdetailList[index].pkdPickedHQty}",
                                           style: subTitleTextStyle(),
                                         ),
                                         const SizedBox(
                                           height: 5,
                                         ),
                                         Text(
-                                          pdetailList[index].pkdPickedLQty!,
+                                          "${pdetailList[index].pkdPickedLQty}",
                                           style: subTitleTextStyle(),
                                         ),
                                       ],
@@ -139,21 +133,21 @@ class OngoingDetail extends StatelessWidget {
                                   //  SizedBox(width: 0,)
                                 ],
                               ),
-                            ),
-                            //  Divider(),
-                          ],
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const Padding(
-                          padding: EdgeInsets.only(left: 0, right: 0),
-                          child: Divider(),
-                        );
-                      },
+                              //  Divider(),
+                            ],
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const Padding(
+                            padding: EdgeInsets.only(left: 0.0, right: 0),
+                            child: Divider(),
+                          );
+                        },
+                      ),
                     ),
           pickingFailedState: () => Center(
             child: Text(
-              'No Data Available',
+              AppLocalizations.of(context)!.noDataAvailable,
               style: kfontstyle(),
             ),
           ),

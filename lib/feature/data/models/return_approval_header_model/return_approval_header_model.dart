@@ -36,12 +36,10 @@ class ReturnApprovalHeaderModel {
   String? arcusName;
   @JsonKey(name: 'Arusr_Name')
   String? arusrName;
-  @JsonKey(name: 'Arrrh_ReturnType')
-  String? arrrhReturnType;
-  @JsonKey(name: 'Arrrh_Type')
-  String? arrrhType;
-  @JsonKey(name: 'ArStatus')
-  String? arStatus;
+  @JsonKey(name: 'Arcsh_Name')
+  String? arcshName;
+  @JsonKey(name: 'Arrah_ApprovalStatus')
+  String? arapprStatus;
 
   ReturnApprovalHeaderModel({
     this.cusCode,
@@ -58,11 +56,10 @@ class ReturnApprovalHeaderModel {
     this.rahApprovalStatus,
     this.userID,
     this.rotID,
-    this.arStatus,
     this.arcusName,
-    this.arrrhReturnType,
-    this.arrrhType,
     this.arusrName,
+    this.arapprStatus,
+    this.arcshName,
   });
 
   factory ReturnApprovalHeaderModel.fromJson(Map<String, dynamic> json) {

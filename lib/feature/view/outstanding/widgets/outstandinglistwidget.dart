@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,10 +14,11 @@ class OutstandingListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: BlocBuilder<OutstandingBloc, OutstandingState>(
+      child:
+          BlocBuilder<OutStandingPaginationCubit, OutStandingPaginationState>(
         builder: (context, state) {
           return state.when(
-            getOutstandingDataState: (headers, counts) => headers == null
+            getOutStandingHeadersPageState: (headers) => headers == null
                 ? ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -77,7 +79,8 @@ class OutstandingListWidget extends StatelessWidget {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  headers[index].cusName ?? '',
+                                                      selectedLocale?.languageCode == "en" ? headers[index].cusName ?? '' : headers[index].cusArName ?? '',
+                                                 // headers[index].cusName ?? '',
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(
@@ -97,7 +100,7 @@ class OutstandingListWidget extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  headers[index].cshName ?? '',
+                                                  selectedLocale?.languageCode == "en" ? headers[index].cshName ?? '' : headers[index].cshArName ?? '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: kfontstyle(
@@ -144,7 +147,8 @@ class OutstandingListWidget extends StatelessWidget {
                                                   BorderRadius.circular(10)),
                                           child: Center(
                                             child: Text(
-                                              headers[index].status ?? '',
+                                              selectedLocale?.languageCode == "en" ? headers[index].status ?? '' : headers[index].arStatus ?? '',
+                                              // headers[index].status ?? '',
                                               style: kfontstyle(
                                                   fontSize: 10.sp,
                                                   color:
@@ -162,15 +166,6 @@ class OutstandingListWidget extends StatelessWidget {
                               ],
                             ),
                         itemCount: headers.length),
-            outstandingFailedState: () => SizedBox(
-              height: MediaQuery.of(context).size.height / 1.5,
-              child: Center(
-                child: Text(
-                  AppLocalizations.of(context)!.noDataAvailable,
-                  style: kfontstyle(),
-                ),
-              ),
-            ),
           );
         },
       ),

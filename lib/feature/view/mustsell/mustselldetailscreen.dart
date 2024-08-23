@@ -247,7 +247,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                 color: Colors.black54),
                           ),
                           SizedBox(
-                            width: 40.w,
+                            width: 35.w,
                           ),
                           Text(
                             AppLocalizations.of(context)!.qty,
@@ -362,7 +362,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: 35.w,
+                                                width: selectedLocale?.languageCode == 'en'?50.w:70.w,
                                               ),
                                               Column(
                                                 children: [

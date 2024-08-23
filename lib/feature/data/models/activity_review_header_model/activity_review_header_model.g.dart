@@ -17,7 +17,10 @@ ActivityReviewHeaderModel _$ActivityReviewHeaderModelFromJson(
       endTime: json['EndTime'] as String?,
       udpId: json['udpID'] as String?,
       duration: json['duration'] as String?,
-    );
+    )
+      ..rotArType = json['rot_ArType'] as String?
+      ..rotArName = json['rot_ArName'] as String?
+      ..userArname = json['usr_ArName'] as String?;
 
 Map<String, dynamic> _$ActivityReviewHeaderModelToJson(
         ActivityReviewHeaderModel instance) =>
@@ -30,4 +33,7 @@ Map<String, dynamic> _$ActivityReviewHeaderModelToJson(
       'EndTime': instance.endTime,
       'udpID': instance.udpId,
       'duration': instance.duration,
+      'rot_ArType': instance.rotArType,
+      'rot_ArName': instance.rotArName,
+      'usr_ArName': instance.userArname,
     };

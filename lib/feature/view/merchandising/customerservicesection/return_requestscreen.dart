@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchreturnrequest/merch_return_request_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +37,21 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedReturnReqMode = 'AL';
     _merchReturnReqSearch.clear();
+    filterReturnReqReq = [
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
+          mode: 'AL'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+          mode: 'AP'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
+          mode: 'RQ'),
+    ];
+    
     context
         .read<MerchReturnRequestBloc>()
         .add(const ClearMerchReturnRequestData());
@@ -323,7 +339,8 @@ class _CreditNoteHeaderScreenState
                                                                             Expanded(
                                                                               child: Text(
                                                                                 overflow: TextOverflow.ellipsis,
-                                                                                returnData[index].cusName ?? '',
+                                                                                selectedLocale?.languageCode == "en" ? returnData[index].cusName ?? '' : returnData[index].arcusName?? '',
+                                                                               // returnData[index].cusName ?? '',
                                                                                 style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                               ),
                                                                             ),
@@ -342,8 +359,8 @@ class _CreditNoteHeaderScreenState
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: returnData[index].status ==
-                                                                              AppLocalizations.of(context)!.requested
+                                                                      color: returnData[index].status == "Requested"
+                                                                             // AppLocalizations.of(context)!.requested
                                                                           ? const Color(
                                                                               0xfff7f4e2)
                                                                           : const Color(
@@ -364,8 +381,9 @@ class _CreditNoteHeaderScreenState
                                                                               5),
                                                                       child:
                                                                           Text(
-                                                                        returnData[index].status ??
-                                                                            '',
+                                                                            selectedLocale?.languageCode == "en" ? returnData[index].status ?? '' : returnData[index].arStatus?? '',
+                                                                        // returnData[index].status ??
+                                                                        //     '',
                                                                         style: kfontstyle(
                                                                             fontSize:
                                                                                 10.sp,

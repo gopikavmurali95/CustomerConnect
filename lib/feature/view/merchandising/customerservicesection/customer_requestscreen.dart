@@ -32,6 +32,20 @@ TextEditingController _customerReqFilter = TextEditingController();
 class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
   @override
   void initState() {
+    filterFieldsPriceChange= [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All Requests" : "جميع الطلبات",
+          mode: 'AL'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Responded Requests" : "الطلبات المستجابة",
+          mode: 'RS'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "New Requests" : "طلبات جديدة",
+          mode: 'OP'),
+    ];
     context
         .read<MerchCustomerRequestBloc>()
         .add(const ClearMerchCustomerRequestEvent());
@@ -383,8 +397,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: headers[index]
-                                                                            .status ==
-                                                                        AppLocalizations.of(context)!.responded
+                                                                            .status =="Responded"
+                                                                      //  AppLocalizations.of(context)!.responded
                                                                     ? const Color(
                                                                         0xffe3f7e2)
                                                                     : const Color(

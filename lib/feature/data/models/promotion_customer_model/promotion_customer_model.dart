@@ -16,6 +16,10 @@ class PromotionCustomerModel {
   String? promotionCustomerModelClass;
   @JsonKey(name: 'ID')
   String? id;
+  @JsonKey(name: 'ArCusName')
+  String? arCusName;
+  @JsonKey(name: 'ArAreaName')
+  String? arareaName;
 
   PromotionCustomerModel({
     this.cusCode,

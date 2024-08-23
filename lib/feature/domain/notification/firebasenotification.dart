@@ -98,8 +98,9 @@ class PushNotificationService {
       importance: Importance.max,
       groupKey: 'com.android.example.CCGROup',
       autoCancel: true,
+      fullScreenIntent: true,
     );
-
+// onSelectNotification
     var platform = NotificationDetails(
       android: android,
       iOS: const DarwinNotificationDetails(),

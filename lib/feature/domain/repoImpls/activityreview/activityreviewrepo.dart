@@ -22,7 +22,7 @@ class ActivityReviewRepo implements IActivityReviewRepo {
           Uri.parse(baseUrl + activtyReviewHeaderUrl),
           body: {"rotType": routeType});
       if (response.statusCode == 200) {
-        // log(response.body);
+         //log("activity review response:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> headerdata = json['result'];
@@ -59,7 +59,7 @@ class ActivityReviewRepo implements IActivityReviewRepo {
         );
       }
     } catch (e) {
-      log(' activity targets error : $e');
+      //log(' activity targets error : $e');
       return left(const MainFailures.serverfailure());
     }
   }
