@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchdisputenotereq/merch_dispute_note_req_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -318,7 +319,7 @@ class _CreditNoteHeaderScreenState
                                                                             child:
                                                                                 Text(
                                                                               overflow: TextOverflow.ellipsis,
-                                                                              dispute[index].cusName ?? '',
+                                                                              selectedLocale?.languageCode == 'en'?dispute[index].cusName ?? '':dispute[index].arcusName??'',
                                                                               style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                             ),
                                                                           ),
@@ -359,9 +360,9 @@ class _CreditNoteHeaderScreenState
                                                                         vertical:
                                                                             5),
                                                                     child: Text(
-                                                                      dispute[index]
+                                                                      selectedLocale?.languageCode == 'en'?dispute[index]
                                                                               .status ??
-                                                                          '',
+                                                                          '':dispute[index].arstatus??'',
                                                                       style: kfontstyle(
                                                                           fontSize: 10
                                                                               .sp,

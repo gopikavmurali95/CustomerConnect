@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outofstockitemsdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -284,8 +285,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                       Expanded(
                                                                         child:
                                                                             Text(
-                                                                          headers[index].prdName ??
-                                                                              '',
+                                                                          selectedLocale?.languageCode == 'en'?headers[index].prdName ??
+                                                                              '':headers[index].prdArName??'',
                                                                           style: kfontstyle(
                                                                               fontSize: 10.sp,
                                                                               color: const Color.fromARGB(255, 64, 65, 67)),

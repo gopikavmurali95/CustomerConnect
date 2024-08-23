@@ -21,11 +21,9 @@ import 'package:customer_connect/feature/view/returnapproval/returnapprovalheade
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/unscheduledvisit/unscheduledvisitappoval.dart';
-// import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -54,7 +52,7 @@ class ApprovalScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Approval",
+          AppLocalizations.of(context)!.approvals,
           style: appHeading(),
         ),
       ),
@@ -1683,7 +1681,8 @@ class ApprovalScreen extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "Unscheduled Visit",
+                                      AppLocalizations.of(context)!
+                                          .unscheduledVisit ,
                                       style: headTextStyle(),
                                     ),
                                   ),

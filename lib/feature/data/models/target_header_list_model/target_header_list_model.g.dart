@@ -16,7 +16,7 @@ TargetHeaderListModel _$TargetHeaderListModelFromJson(
       targetQty: json['TargetQty'] as String?,
       achAmt: json['AchAmt'] as String?,
       achQty: json['AchQty'] as String?,
-    );
+    )..arrotName = json['Arrot_Name'] as String?;
 
 Map<String, dynamic> _$TargetHeaderListModelToJson(
         TargetHeaderListModel instance) =>
@@ -24,6 +24,7 @@ Map<String, dynamic> _$TargetHeaderListModelToJson(
       'rot_ID': instance.rotID,
       'rot_Code': instance.rotCode,
       'rot_Name': instance.rotName,
+      'Arrot_Name': instance.arrotName,
       'TargetAmt': instance.targetAmt,
       'TargetQty': instance.targetQty,
       'AchAmt': instance.achAmt,

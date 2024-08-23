@@ -6,6 +6,8 @@ part 'inventory_reconfirm_approval_resp_model.g.dart';
 class InventoryReconfirmApprovalRespModel {
   @JsonKey(name: 'Status')
   String? status;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   InventoryReconfirmApprovalRespModel({this.status});
 

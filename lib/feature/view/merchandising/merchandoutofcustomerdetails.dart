@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/ooscustomers/oos_customers_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/outofcustomerdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -260,8 +261,8 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      headers[index].cusName ??
-                                                          '',
+                                                      selectedLocale?.languageCode == 'en'?headers[index].cusName ??
+                                                          '':headers[index].cusArName??'',
                                                       style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: const Color

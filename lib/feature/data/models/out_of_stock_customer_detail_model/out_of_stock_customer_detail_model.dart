@@ -8,6 +8,8 @@ class OutOfStockCustomerDetailModel {
   String? prdCode;
   @JsonKey(name: 'prd_Name')
   String? prdName;
+  @JsonKey(name: 'prd_ArName')
+  String? prdArName;
 
   OutOfStockCustomerDetailModel({this.prdCode, this.prdName});
 

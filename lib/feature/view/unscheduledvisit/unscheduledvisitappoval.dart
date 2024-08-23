@@ -363,7 +363,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].cusCode} - ${headers[index].cusName}',
+                                                              '${headers[index].cusCode} - ${selectedLocale?.languageCode == 'en'?headers[index].cusName:headers[index].cusArName??''}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,

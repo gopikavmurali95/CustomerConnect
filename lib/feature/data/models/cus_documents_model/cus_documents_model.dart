@@ -12,6 +12,8 @@ class CusDocumentsModel {
   String? fromDate;
   @JsonKey(name: 'EndDate')
   String? endDate;
+  @JsonKey(name: 'ArDocName')
+  String? arDocName;
 
   CusDocumentsModel({
     this.docName,

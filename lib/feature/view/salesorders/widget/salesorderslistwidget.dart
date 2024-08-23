@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,7 +84,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                "${orders[index].cusCode} - ${orders[index].cusName}",
+                                                "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en'?orders[index].cusName:orders[index].arcusName}",
                                                 overflow: TextOverflow.ellipsis,
                                                 style:
                                                     kfontstyle(fontSize: 11.sp),
@@ -109,7 +110,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                   BorderRadius.circular(10)),
                                           child: Center(
                                             child: Text(
-                                              orders[index].status ?? '',
+                                             selectedLocale?.languageCode == 'en'? orders[index].status ?? '':orders[index].arStatus??'',
                                               style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434),

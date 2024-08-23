@@ -12,6 +12,10 @@ class OutOfStockItemsCustomersModel {
   String? cusCode;
   @JsonKey(name: 'cus_Name')
   String? cusName;
+  @JsonKey(name: 'rot_ArName')
+  String? rotArName;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
 
   OutOfStockItemsCustomersModel({
     this.rotCode,

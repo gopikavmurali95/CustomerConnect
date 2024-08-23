@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/sales_orders_in_model/sales_orders_in_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/view/salesorders/widget/salesorderslistwidget.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -151,7 +152,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                       width: 200.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
-                                        widget.customer.cusName ?? "",
+                                        selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? "":widget.customer.arcusName??'',
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: const Color(0xff413434)),
@@ -170,7 +171,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                     SizedBox(
                                       width: 150.w,
                                       child: Text(
-                                        widget.customer.headerName ?? "",
+                                        selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? "":widget.customer.arheaderName??'',
                                         overflow: TextOverflow.ellipsis,
                                         style: kfontstyle(fontSize: 12.sp),
                                       ),
@@ -178,7 +179,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                   ],
                                 ),
                                 Text(
-                                  '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                                  '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arAreaName} ',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),

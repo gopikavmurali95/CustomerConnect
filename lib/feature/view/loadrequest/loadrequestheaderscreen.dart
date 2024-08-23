@@ -425,7 +425,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                             "en"
                                                                         ? headers[index].usrName ??
                                                                             ''
-                                                                        : headers[index].arusrName ??
+                                                                        : headers[index].usrArabicName ??
                                                                             '',
                                                                     style: kfontstyle(
                                                                         fontSize: 12

@@ -26,6 +26,15 @@ class CusInsCustomersModel {
   String? rotCode;
   @JsonKey(name: 'rot_Name')
   String? rotName;
+  @JsonKey(name: 'Arcus_Name')
+  String? arcusName;
+  @JsonKey(name: 'ArHeader_Name')
+  String? arheaderName;
+  @JsonKey(name: 'Arrot_Name')
+  String? arrotName;
+  @JsonKey(name: 'ArArea_Name')
+  String? arAreaName;
+  
 
   CusInsCustomersModel({
     this.cusId,
@@ -39,7 +48,12 @@ class CusInsCustomersModel {
     this.rotId,
     this.rotCode,
     this.rotName,
+    this.arcusName,
+    this.arheaderName,
+    this.arrotName,
+    this.arAreaName,
   });
+
 
   factory CusInsCustomersModel.fromJson(Map<String, dynamic> json) {
     return _$CusInsCustomersModelFromJson(json);

@@ -12,6 +12,7 @@ UnScheduledApprovalRespModel _$UnScheduledApprovalRespModelFromJson(
       descr: json['Descr'] as String?,
       res: json['Res'] as String?,
       title: json['Title'] as String?,
+      arDescr: json['ArDescr'] as String?,
     );
 
 Map<String, dynamic> _$UnScheduledApprovalRespModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$UnScheduledApprovalRespModelToJson(
       'Descr': instance.descr,
       'Res': instance.res,
       'Title': instance.title,
+      'ArDescr': instance.arDescr,
     };

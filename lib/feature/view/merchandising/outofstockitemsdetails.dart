@@ -4,6 +4,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/out_of_stock_items_model/out_of_stock_items_model.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_of_stock_item_customers_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -96,7 +97,7 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                        widget.header.prdName ?? '',
+                                        selectedLocale?.languageCode == 'en'?widget.header.prdName ?? '':widget.header.prdArName??'',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -305,8 +306,8 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                                                       Text(
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        details[index].cusName ??
-                                                                            '',
+                                                                        selectedLocale?.languageCode == 'en'?details[index].cusName ??
+                                                                            '':details[index].cusArName??'',
                                                                         style: kfontstyle(
                                                                             fontSize: 10
                                                                                 .sp,

@@ -12,6 +12,9 @@ class OutOfStockCustomerModel {
   String? cusId;
   @JsonKey(name: 'ProdCount')
   String? prodCount;
+  @JsonKey(name: 'cus_ArName')
+  String? cusArName;
+  
   OutOfStockCustomerModel(
       {this.cusCode, this.cusName, this.cusId, this.prodCount});
 

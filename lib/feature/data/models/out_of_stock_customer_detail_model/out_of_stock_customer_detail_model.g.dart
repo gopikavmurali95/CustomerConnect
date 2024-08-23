@@ -11,11 +11,12 @@ OutOfStockCustomerDetailModel _$OutOfStockCustomerDetailModelFromJson(
     OutOfStockCustomerDetailModel(
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
-    );
+    )..prdArName = json['prd_ArName'] as String?;
 
 Map<String, dynamic> _$OutOfStockCustomerDetailModelToJson(
         OutOfStockCustomerDetailModel instance) =>
     <String, dynamic>{
       'prd_Code': instance.prdCode,
       'prd_Name': instance.prdName,
+      'prd_ArName': instance.prdArName,
     };

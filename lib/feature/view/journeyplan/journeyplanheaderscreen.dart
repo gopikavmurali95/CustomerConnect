@@ -63,8 +63,8 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
     context
         .read<JourneyPlanHeaderBloc>()
         .add(const ClearJourneyPlanHeadersEvent());
-    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
-        userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+   /*  context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
+        userID: widget.user.usrId ?? '', mode: '', searchQuery: '')); */
     context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(
           userID: widget.user.usrId ?? '',
           mode: 'P', searchQuery: '',

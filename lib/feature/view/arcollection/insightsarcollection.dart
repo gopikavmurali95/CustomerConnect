@@ -10,6 +10,7 @@ import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -152,7 +153,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                 Expanded(
                                   child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    widget.customer.cusName ?? "",
+                                    selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? "":widget.customer.arcusName??'',
                                     style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: const Color(0xff413434)),
@@ -170,7 +171,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    widget.customer.headerName ?? "",
+                                    selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? "":widget.customer.arheaderName??'',
                                     overflow: TextOverflow.ellipsis,
                                     style: kfontstyle(fontSize: 12.sp),
                                   ),
@@ -178,7 +179,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                               ],
                             ),
                             Text(
-                              '${widget.customer.cusType} | ${widget.customer.className} | ${widget.customer.areaName} ',
+                              '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arAreaName} ',
                               style: kfontstyle(
                                   fontSize: 10.sp, color: Colors.grey),
                             ),

@@ -4,6 +4,7 @@ import 'package:customer_connect/feature/data/models/sales_order_details_inparas
 import 'package:customer_connect/feature/data/models/sales_orders_model/sales_orders_model.dart';
 import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,9 +92,9 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                             ),
                                                           ),
                                                           Text(
-                                                            orderdetails[index]
+                                                            selectedLocale?.languageCode == 'en'?orderdetails[index]
                                                                     .cshName ??
-                                                                '',
+                                                                '':orderdetails[index].arcshName??'',
                                                             style: kfontstyle(
                                                               fontSize: 12.sp,
                                                               color:
