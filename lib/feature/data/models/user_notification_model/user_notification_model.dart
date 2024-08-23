@@ -24,6 +24,12 @@ class UserNotificationModel {
   String? status;
   @JsonKey(name: 'rnt_usr_ID')
   String? rntUsrId;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  @JsonKey(name: 'rnt_ArDesc')
+  String? rntArDesc;
+  @JsonKey(name: 'rnt_ArHeader')
+  String? rntArHeader;
 
   UserNotificationModel({
     this.rntId,

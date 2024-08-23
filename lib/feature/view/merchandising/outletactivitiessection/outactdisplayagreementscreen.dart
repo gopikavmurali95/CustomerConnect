@@ -36,6 +36,24 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
   void initState() {
     selecteddispAgreementMode = 'AL';
     _dispAgreementSearchCtrl.clear();
+    filterDisplayAgreement = [
+      MerchandisingStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          mode: 'AL'),
+      MerchandisingStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en' ? "New" : "جديد",
+          mode: 'NW'),
+      MerchandisingStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Approved"
+              : "مصدق عليه",
+          mode: 'AP'),
+      MerchandisingStatusFilterModel(
+          statusName: selectedLocale?.languageCode == "en"
+              ? "Active"
+              : "نشيط",
+          mode: 'AC'),
+    ];
     context
         .read<MerchDisplayAgreementBloc>()
         .add(const ClearMerchDisplayAgreementData());
@@ -235,7 +253,10 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                 )
                               : dispData.isEmpty
                                   ? Center(
-                                      child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                                      child: Text(
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
+                                      ),
                                     )
                                   : Column(
                                       children: [
@@ -249,14 +270,23 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                               Text(
                                                 selecteddispAgreementMode ==
                                                         'AL'
-                                                    ? AppLocalizations.of(context)!.allAgreements
+                                                    ? AppLocalizations.of(
+                                                            context)!
+                                                        .allAgreements
                                                     : selecteddispAgreementMode ==
                                                             'NW'
-                                                        ? AppLocalizations.of(context)!.newAgreements
+                                                        ? AppLocalizations.of(
+                                                                context)!
+                                                            .newAgreements
                                                         : selecteddispAgreementMode ==
                                                                 'AP'
-                                                            ? AppLocalizations.of(context)!.approvedAgreements
-                                                            : AppLocalizations.of(context)!.activeAgreements,
+                                                            ? AppLocalizations
+                                                                    .of(
+                                                                        context)!
+                                                                .approvedAgreements
+                                                            : AppLocalizations
+                                                                    .of(context)!
+                                                                .activeAgreements,
                                                 style: countHeading(),
                                               ),
                                               Padding(
@@ -279,107 +309,124 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 15),
                                           child: ListView.separated(
-                                              itemBuilder: (context, index) =>
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        height: 50,
-                                                        width: 10,
-                                                        decoration: BoxDecoration(
-                                                            color: const Color(
-                                                                0xfffee8e0),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10.w,
-                                                      ),
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                dispData[index]
-                                                                        .number ??
-                                                                    '',
-                                                                style:
-                                                                    blueTextStyle()),
-                                                            Row(
+                                              itemBuilder:
+                                                  (context, index) => Row(
+                                                        children: [
+                                                          Container(
+                                                            height: 50,
+                                                            width: 10,
+                                                            decoration: BoxDecoration(
+                                                                color: const Color(
+                                                                    0xfffee8e0),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20)),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                              selectedLocale?.languageCode == "en" ? dispData[index].type ?? '' : dispData[index].arType?? '',
-                                                                      // dispData[index]
-                                                                      //         .type ??
-                                                                      //     '',
-                                                                      style:
-                                                                          subTitleTextStyle()),
+                                                                Text(
+                                                                    dispData[index]
+                                                                            .number ??
+                                                                        '',
+                                                                    style:
+                                                                        blueTextStyle()),
+                                                                Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          overflow: TextOverflow.ellipsis,
+                                                                          selectedLocale?.languageCode == "en" ? dispData[index].type ?? '' : dispData[index].arType ?? '',
+                                                                          // dispData[index]
+                                                                          //         .type ??
+                                                                          //     '',
+                                                                          style: subTitleTextStyle()),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Text(
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          "en"
+                                                                      ? dispData[index]
+                                                                              .cusName ??
+                                                                          ''
+                                                                      : dispData[index]
+                                                                              .cusArName ??
+                                                                          '',
+                                                                  //"${dispData[index].cusCode}-${dispData[index].cusName}",
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff413434)),
+                                                                ),
+                                                                Text(
+                                                                  "${AppLocalizations.of(context)!.start}: ${dispData[index].startDate} | ${AppLocalizations.of(context)!.end}: ${dispData[index].endDate}",
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          9.sp,
+                                                                      color: Colors
+                                                                          .grey),
                                                                 ),
                                                               ],
                                                             ),
-                                                            Text(
-                                                              selectedLocale?.languageCode == "en" ? dispData[index].cusName ?? '' : dispData[index].cusArName?? '',
-                                                              //"${dispData[index].cusCode}-${dispData[index].cusName}",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  color: const Color(
-                                                                      0xff413434)),
+                                                          ),
+                                                          Container(
+                                                            // height: 10.h,
+                                                            // width: 10.h,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: dispData[index]
+                                                                          .status! == "New"
+                                                                      // AppLocalizations.of(
+                                                                      //         context)!
+                                                                      //  .neww
+                                                                  ? const Color(
+                                                                      0xfff7f4e2)
+                                                                  : const Color(
+                                                                      0xffe3f7e2),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                10,
+                                                              ),
                                                             ),
-                                                            Text(
-                                                              "${AppLocalizations.of(context)!.start}: ${dispData[index].startDate} | ${AppLocalizations.of(context)!.end}: ${dispData[index].endDate}",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      9.sp,
-                                                                  color: Colors
-                                                                      .grey),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          5,
+                                                                      vertical:
+                                                                          3),
+                                                              child: Text(
+                                                                selectedLocale?.languageCode ==
+                                                                        "en"
+                                                                    ? dispData[index]
+                                                                            .status ??
+                                                                        ''
+                                                                    : dispData[index]
+                                                                            .arStatus ??
+                                                                        '',
+                                                                // dispData[index]
+                                                                //         .status ??
+                                                                //     '',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        8.sp),
+                                                              ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                          )
+                                                        ],
                                                       ),
-                                                      Container(
-                                                        // height: 10.h,
-                                                        // width: 10.h,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: dispData[index]
-                                                                      .status! ==
-                                                                  AppLocalizations.of(context)!.neww
-                                                              ? const Color(
-                                                                  0xfff7f4e2)
-                                                              : const Color(
-                                                                  0xffe3f7e2),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            10,
-                                                          ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .symmetric(
-                                                                  horizontal: 5,
-                                                                  vertical: 3),
-                                                          child: Text(
-                                                            selectedLocale?.languageCode == "en" ? dispData[index].status ?? '' : dispData[index].arStatus?? '',
-                                                            // dispData[index]
-                                                            //         .status ??
-                                                            //     '',
-                                                            style: kfontstyle(
-                                                                fontSize: 8.sp),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
                                               separatorBuilder:
                                                   (context, index) => Divider(
                                                         color: Colors.grey[300],
@@ -389,7 +436,9 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                       ],
                                     ),
                       getMerchDisplayAgreementDataFailed: () => Center(
-                            child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                            child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable,
+                            ),
                           ));
                 },
               ),

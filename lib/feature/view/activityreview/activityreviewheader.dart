@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/approvalstatusfilter/approv
 import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart';
 import 'package:customer_connect/feature/view/activityreview/dailyactivityreviewscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,6 +40,40 @@ class _ActivityReviewHeaderScreenState
   void initState() {
     selectedActivityFilter = 'AL';
     activityreviewHeaderctrl.clear();
+    activtyreview = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All Route Types" : "جميع أنواع الطرق",
+          mode: 'AL'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Sales" : "مبيعات",
+          mode: 'SL'),
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Order" : "طلب",
+          mode: 'OR'),
+          ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "AR" : "AR",
+          mode: 'AR'),
+          ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Order & AR" : "طلب & AR",
+          mode: 'OA'),
+          ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Delivery" : "توصيل",
+          mode: 'DL'),
+          ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Merchandising" : "عمل في التجارة",
+          mode: 'MER'),
+          ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Field Service" : "الخدمة الميدانية",
+          mode: 'FS'),
+    ];
     context
         .read<ActivityReviewHeaderBloc>()
         .add(const ClearActivityReviewHeaderEvent());
@@ -340,7 +375,8 @@ class _ActivityReviewHeaderScreenState
                                                     ],
                                                   ),
                                                   Text(
-                                                    '${headers[index].rotType} ${AppLocalizations.of(context)!.route}',
+                                                    "${selectedLocale?.languageCode == "en" ? headers[index].rotType ?? '' : headers[index].rotArType?? ''}  ${AppLocalizations.of(context)!.route}",
+                                                    //'${headers[index].rotType} ${AppLocalizations.of(context)!.route}',
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
                                                         color: Colors.grey),

@@ -35,6 +35,20 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
   void initState() {
     selectedcusActivityMode = 'AL';
     _cusActivitySearchCtrl.clear();
+    filterCusActivity = [
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          mode: 'AL'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Completed" : "مكتمل",
+          mode: 'C'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+    ];
     context
         .read<MerchCustomerActivitiesBloc>()
         .add(const ClearMerchCustomerActivitiesData());
@@ -348,8 +362,8 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                             BoxDecoration(
                                                           color: activityData[
                                                                           index]
-                                                                      .status! ==
-                                                                  AppLocalizations.of(context)!.pending
+                                                                      .status! == "Pending"
+                                                                 // AppLocalizations.of(context)!.pending
                                                               ? const Color(
                                                                   0xfff7f4e2)
                                                               : const Color(

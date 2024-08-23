@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/state/bloc/notificationlisting/notifica
 import 'package:customer_connect/feature/state/bloc/notificationreplay/notification_replay_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/notireadflagupdate/noti_read_flag_update_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -156,7 +157,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                       fontWeight: FontWeight.w300),
                                 ),
                                 subtitle: Text(
-                                  notifications[index].rntHeader ?? '',
+                                  selectedLocale?.languageCode == "en" ? notifications[index].rntHeader ?? '' : notifications[index].rntArHeader ?? '',
+                                  //notifications[index].rntHeader ?? '',
                                   style: kfontstyle(
                                       fontSize: 13.sp,
                                       fontWeight: FontWeight.w400),

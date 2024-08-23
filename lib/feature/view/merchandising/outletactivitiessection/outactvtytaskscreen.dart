@@ -37,6 +37,20 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
   void initState() {
     selectedMode = "AL";
     taskHeaderSearchCtrl.clear();
+   filterTaskHeaderMerchnd = [
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          mode: 'AL'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Completed" : "مكتمل",
+          mode: 'C'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+    ];
 
     context.read<MerchandTaskHeaderBloc>().add(const TaskHeaderClearEvent());
 

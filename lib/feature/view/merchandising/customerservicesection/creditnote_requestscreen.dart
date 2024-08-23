@@ -35,6 +35,20 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedCreditNoteMode = 'AL';
     _merchCreditNoteSearch.clear();
+   filterCreditNoteReq= [
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
+          mode: 'AL'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+          mode: 'AP'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
+          mode: 'RQ'),
+    ];
     context
         .read<MerchCreditNoteRequestBloc>()
         .add(const ClearMerchCreditNoteRequestData());
@@ -336,8 +350,8 @@ class _CreditNoteHeaderScreenState
                                                                     Container(
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: creditNote[index].status ==
-                                                                                AppLocalizations.of(context)!.requested
+                                                                        color: creditNote[index].status =="Requested"
+                                                                               // AppLocalizations.of(context)!.requested
                                                                             ? const Color(0xfff7f4e2)
                                                                             : const Color(0xffe3f7e2),
                                                                         borderRadius:

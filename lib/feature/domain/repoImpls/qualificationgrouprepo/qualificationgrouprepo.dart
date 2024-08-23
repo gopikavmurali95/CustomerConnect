@@ -21,7 +21,7 @@ class QualificationGroupREpo implements IQualificationGroupRepo {
           Uri.parse(baseUrl + qualificationgroupurl),
           body: {"ID": iD, "Mode": mode});
       if (response.statusCode == 200) {
-        log('qualification response: ${response.body}');
+        //log('qualification response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> groupdata = json['result'];
         List<QualificationGroupModel> group = groupdata
@@ -35,7 +35,7 @@ class QualificationGroupREpo implements IQualificationGroupRepo {
         );
       }
     } catch (e) {
-      logger.e('Total Order error$e');
+      log('Total Order error$e');
       return left(const MainFailures.serverfailure());
     }
   }

@@ -34,6 +34,20 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
   void initState() {
     selectedMerchSurveyMode = 'AL';
     merchSurveySearchCtrl.clear();
+    filterMerchandisingSurvey = [
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          mode: 'AL'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Completed" : "مكتمل",
+          mode: 'C'),
+      MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Pending" : "قيد الانتظار",
+          mode: 'P'),
+    ];
     context
         .read<MerchandisingSurveyBloc>()
         .add(const ClearMerchandisingSurveyList());
@@ -329,8 +343,8 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                     // width: 10.h,
                                                     decoration: BoxDecoration(
                                                       color: survey[index]
-                                                                  .status! ==
-                                                              AppLocalizations.of(context)!.pending
+                                                                  .status! =="Pending"
+                                                              //AppLocalizations.of(context)!.pending
                                                           ? const Color(
                                                               0xfff7f4e2)
                                                           : const Color(

@@ -38,6 +38,20 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedDisputeNoteMode = 'AL';
     _merchDisputeNoteSearch.clear();
+    filterDisputeNoteReq= [
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
+          mode: 'AL'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+          mode: 'AP'),
+       MerchandisingStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
+          mode: 'RQ'),
+    ];
     context.read<MerchDisputeNoteReqBloc>().add(const ClearDisputeNoteData());
     context.read<MerchDisputeNoteReqBloc>().add(GetDisputeNoteDataEvent(
         fromDate: fromdateController.text,
@@ -339,8 +353,8 @@ class _CreditNoteHeaderScreenState
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: dispute[index].status ==
-                                                                            AppLocalizations.of(context)!.requested
+                                                                    color: dispute[index].status == "Requested"
+                                                                          //  AppLocalizations.of(context)!.requested
                                                                         ? const Color(
                                                                             0xfff7f4e2)
                                                                         : const Color(

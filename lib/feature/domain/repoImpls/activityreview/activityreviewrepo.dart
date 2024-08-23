@@ -59,7 +59,7 @@ class ActivityReviewRepo implements IActivityReviewRepo {
         );
       }
     } catch (e) {
-      log(' activity targets error : $e');
+      //log(' activity targets error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

@@ -18,7 +18,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
   @override
   Future<Either<MainFailures, List<PromotionHeaderModel>>> getPromotionHeader(
       PromotionHeaderInParas inpromtionIn) async {
-    var logger = Logger();
+  
     try {
       final response = await http.post(Uri.parse(baseUrl + promotionheaderurl),
           body: inpromtionIn.toJson());
@@ -37,7 +37,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
         );
       }
     } catch (e) {
-      logger.e('Promotion Header error$e');
+      log('Promotion Header error$e');
       return left(const MainFailures.serverfailure());
     }
   }
@@ -45,12 +45,12 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
   @override
   Future<Either<MainFailures, List<PromotionCustomerModel>>>
       getPromotionCustomer(String iD) async {
-    // var logger = Logger();
+   
     try {
       final response = await http
           .post(Uri.parse(baseUrl + promotioncustomerurl), body: {"ID": iD});
       if (response.statusCode == 200) {
-       log('promotion customer response: ${response.body}');
+      // log('promotion customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> pCustomer = json['result'];
         List<PromotionCustomerModel> customerdata = pCustomer
@@ -72,12 +72,12 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
   @override
   Future<Either<MainFailures, List<PromotionDetailsModel>>> getPromotionDetails(
       String iD) async {
-    var logger = Logger();
+    
     try {
       final response = await http
           .post(Uri.parse(baseUrl + promotiondetailsurl), body: {"ID": iD});
       if (response.statusCode == 200) {
-        logger.w('response: ${response.body}');
+       // log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> custdetails = json['result'];
         List<PromotionDetailsModel> details = custdetails
@@ -91,7 +91,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
         );
       }
     } catch (e) {
-      logger.e('Promotion Details error$e');
+     // logger.e('Promotion Details error$e');
       return left(const MainFailures.serverfailure());
     }
   }
