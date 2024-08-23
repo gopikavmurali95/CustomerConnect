@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/data/models/tracking_sales_man_model/tr
 import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/tracksalesmanlist/track_sales_man_list_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -129,7 +130,9 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                 double.parse(coord.geocode?.split(',').toList()[1] ?? '0.00'))
             : const LatLng(0, 0),
         infoWindow: InfoWindow(
-          title: coord.customer,
+          title: selectedLocale?.languageCode == 'en'
+              ? coord.customer
+              : coord.customerAr,
           snippet: '${AppLocalizations.of(context)!.duration}: ${coord.time}',
           onTap: () {
             _showDetailDialog(coord);
@@ -146,14 +149,17 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
       int index = entry.key;
       CustomerLiveLocationModel coord = entry.value;
       return Marker(
-        markerId: MarkerId(coord.user ?? ''),
+        markerId: MarkerId(selectedLocale?.languageCode == 'en'
+            ? coord.user ?? ''
+            : coord.userAr ?? ''),
         position: coord.geocode != null
             ? LatLng(
                 double.parse(coord.geocode?.split(',').toList()[0] ?? '0.00'),
                 double.parse(coord.geocode?.split(',').toList()[1] ?? '0.00'))
             : const LatLng(0, 0),
         infoWindow: InfoWindow(
-          title: coord.user,
+          title:
+              selectedLocale?.languageCode == 'en' ? coord.user : coord.userAr,
           snippet: '${AppLocalizations.of(context)!.duration}: ${coord.time}',
           onTap: () {
             _showCustomerDetailDialog(coord);
@@ -244,7 +250,9 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(salesman.user ?? ''),
+          title: Text(selectedLocale?.languageCode == 'en'
+              ? salesman.user ?? ''
+              : salesman.userAr ?? ''),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[

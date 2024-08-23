@@ -5,7 +5,9 @@ import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail
 import 'package:customer_connect/feature/view/PickingDetail/widgets/notstarted_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../constants/fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingDetailNotStarted extends StatefulWidget {
   final PickingOutModel picking;
@@ -39,7 +41,7 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
           ),
         ),
         title: Text(
-          "Picking Detail",
+          "${AppLocalizations.of(context)!.picking} ${AppLocalizations.of(context)!.details}",
           style: appHeading(),
         ),
         bottom: PreferredSize(
@@ -62,10 +64,10 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                         borderRadius: BorderRadius.circular(20),
                         color: const Color(0xffCFE8FF),
                       ),
-                      child: const Center(
+                      child: Center(
                           child: Text(
-                        "Not Started",
-                        style: TextStyle(fontSize: 10),
+                        AppLocalizations.of(context)!.not_started,
+                        style: const TextStyle(fontSize: 10),
                       )))),
               Padding(
                 padding:
@@ -106,7 +108,7 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
                             Icons.search,
                             size: 20,
                           ),
-                          hintText: "Search Items",
+                          hintText: AppLocalizations.of(context)!.searchItems,
                           hintStyle: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -152,31 +154,45 @@ class _PickingDetailNotStartedState extends State<PickingDetailNotStarted> {
               width: MediaQuery.of(context).size.width,
               height: 30,
               color: Colors.grey.shade200,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 160),
-                    child: Text(
-                      "Items",
-                      style: boxHeading(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 0),
+                          child: Text(
+                            AppLocalizations.of(context)!.items,
+                            style: boxHeading(),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 50),
-                    child: Text(
-                      "UOM",
-                      style: boxHeading(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 28),
-                    child: Text(
-                      "Qty",
-                      style: boxHeading(),
-                    ),
-                  ),
-                ],
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Text(
+                            AppLocalizations.of(context)!.uom,
+                            style: boxHeading(),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 50.w,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Text(
+                            AppLocalizations.of(context)!.qty,
+                            style: boxHeading(),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
             const SizedBox(

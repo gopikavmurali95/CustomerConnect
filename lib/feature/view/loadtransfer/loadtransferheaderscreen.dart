@@ -37,14 +37,17 @@ class _LoadTransferApprovalHeaderScreenState
     _vanLoadTransSearchCtrl.clear();
     ddfilterLoadTransfer = [
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Pending Requests"
+              : "قيد الانتظار",
           mode: 'N'),
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Approved" : "موافقة",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken Requests"
+              : "طلبات الإجراءات المتخذة",
           mode: 'A'),
     ];
+
     context
         .read<LoadTransferHeaderBloc>()
         .add(const ClearLoadtransferHeaderEvent());

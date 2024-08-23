@@ -6,8 +6,12 @@ part 'asset_add_resp_out_model.g.dart';
 class AssetAddRespOutModel {
   @JsonKey(name: 'Status')
   String? status;
-
-  AssetAddRespOutModel({this.status});
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
+  AssetAddRespOutModel({
+    this.status,
+    this.arStatus,
+  });
 
   factory AssetAddRespOutModel.fromJson(Map<String, dynamic> json) {
     return _$AssetAddRespOutModelFromJson(json);

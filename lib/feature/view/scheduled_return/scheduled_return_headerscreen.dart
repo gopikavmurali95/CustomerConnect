@@ -36,7 +36,6 @@ class _ScheduledReturnHEaderScreenState
     extends State<ScheduledReturnHEaderScreen> {
   @override
   void initState() {
-    searchCtrl.clear();
     filterFieldsScheduledReturn = [
       ApprovalStatusFilterModel(
           statusName:
@@ -48,6 +47,7 @@ class _ScheduledReturnHEaderScreenState
               : "طلبات الإجراءات المتخذة",
           mode: 'AT'),
     ];
+    searchCtrl.clear();
     context
         .read<SchduledReturnHeaderBloc>()
         .add(const ClearScheduledReturnHeadersEvent());

@@ -6,22 +6,23 @@ String pickingDetailModelToJson(PickingDetailModel data) =>
     json.encode(data.toJson());
 
 class PickingDetailModel {
-  PickingDetailModel({
-    this.pkdID,
-    this.pkdPkhID,
-    this.prdID,
-    this.prdCode,
-    this.prdName,
-    this.prdNameArabic,
-    this.prdDescription,
-    this.pkdHigherUom,
-    this.pkdLowerUom,
-    this.pkdPickedHQty,
-    this.pkdPickedLQty,
-    this.pkdRequestedHQty,
-    this.pkdRequestedLQty,
-    this.pkdTransType,
-  });
+  PickingDetailModel(
+      {this.pkdID,
+      this.pkdPkhID,
+      this.prdID,
+      this.prdCode,
+      this.prdName,
+      this.prdNameArabic,
+      this.prdDescription,
+      this.pkdHigherUom,
+      this.pkdLowerUom,
+      this.pkdPickedHQty,
+      this.pkdPickedLQty,
+      this.pkdRequestedHQty,
+      this.pkdRequestedLQty,
+      this.pkdTransType,
+      this.prdArDescr,
+      this.prdArname});
 
   PickingDetailModel.fromJson(dynamic json) {
     pkdID = json['pkd_ID'];
@@ -38,6 +39,8 @@ class PickingDetailModel {
     pkdRequestedHQty = json['pkd_RequestedHQty'];
     pkdRequestedLQty = json['pkd_RequestedLQty'];
     pkdTransType = json['pkd_TransType'];
+    prdArname = json['prd_NameArabic'];
+    prdArDescr = json['prd_ArabicDescription'];
   }
   String? pkdID;
   String? pkdPkhID;
@@ -53,6 +56,8 @@ class PickingDetailModel {
   String? pkdRequestedHQty;
   String? pkdRequestedLQty;
   String? pkdTransType;
+  String? prdArname;
+  String? prdArDescr;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -70,6 +75,8 @@ class PickingDetailModel {
     map['pkd_RequestedHQty'] = pkdRequestedHQty;
     map['pkd_RequestedLQty'] = pkdRequestedLQty;
     map['pkd_TransType'] = pkdTransType;
+    map['prd_ArabicDescription'] = pkdRequestedLQty;
+    map['prd_NameArabic'] = pkdTransType;
     return map;
   }
 }

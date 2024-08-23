@@ -6,16 +6,17 @@ String outStandingHeaderModelToJson(OutStandingHeaderModel data) =>
     json.encode(data.toJson());
 
 class OutStandingHeaderModel {
-  OutStandingHeaderModel({
-    this.userID,
-    this.fromDate,
-    this.toDate,
-    this.area,
-    this.subArea,
-    this.route,
-    this.customer,
-    this.outlet,
-  });
+  OutStandingHeaderModel(
+      {this.userID,
+      this.fromDate,
+      this.toDate,
+      this.area,
+      this.subArea,
+      this.route,
+      this.customer,
+      this.outlet,
+      this.pageNum,
+      this.searchQuery});
 
   OutStandingHeaderModel.fromJson(dynamic json) {
     userID = json['UserID'];
@@ -26,6 +27,8 @@ class OutStandingHeaderModel {
     route = json['Route'];
     customer = json['Customer'];
     outlet = json['Outlet'];
+    pageNum = json['Pagenum'];
+    searchQuery = json['SearchString'];
   }
   String? userID;
   String? fromDate;
@@ -35,7 +38,8 @@ class OutStandingHeaderModel {
   String? route;
   String? customer;
   String? outlet;
-
+  String? pageNum;
+  String? searchQuery;
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['UserID'] = userID;
@@ -46,6 +50,9 @@ class OutStandingHeaderModel {
     map['Route'] = route;
     map['Customer'] = customer;
     map['Outlet'] = outlet;
+    map['Pagenum'] = pageNum;
+    map['SearchString'] = searchQuery;
+
     return map;
   }
 }

@@ -346,25 +346,20 @@ abstract class ClearOutStandingEvent implements OutstandingEvent {
 mixin _$OutstandingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)
+    required TResult Function(OutstandingCountModel? counts)
         getOutstandingDataState,
     required TResult Function() outstandingFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult? Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult? Function()? outstandingFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult Function()? outstandingFailedState,
     required TResult orElse(),
   }) =>
@@ -417,7 +412,7 @@ abstract class _$$GetOutstandingDataStateImplCopyWith<$Res> {
           $Res Function(_$GetOutstandingDataStateImpl) then) =
       __$$GetOutstandingDataStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<OutStandOutModel>? headers, OutstandingCountModel? counts});
+  $Res call({OutstandingCountModel? counts});
 }
 
 /// @nodoc
@@ -432,14 +427,9 @@ class __$$GetOutstandingDataStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? headers = freezed,
     Object? counts = freezed,
   }) {
     return _then(_$GetOutstandingDataStateImpl(
-      headers: freezed == headers
-          ? _value._headers
-          : headers // ignore: cast_nullable_to_non_nullable
-              as List<OutStandOutModel>?,
       counts: freezed == counts
           ? _value.counts
           : counts // ignore: cast_nullable_to_non_nullable
@@ -451,26 +441,14 @@ class __$$GetOutstandingDataStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetOutstandingDataStateImpl implements GetOutstandingDataState {
-  const _$GetOutstandingDataStateImpl(
-      {required final List<OutStandOutModel>? headers, required this.counts})
-      : _headers = headers;
-
-  final List<OutStandOutModel>? _headers;
-  @override
-  List<OutStandOutModel>? get headers {
-    final value = _headers;
-    if (value == null) return null;
-    if (_headers is EqualUnmodifiableListView) return _headers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  const _$GetOutstandingDataStateImpl({required this.counts});
 
   @override
   final OutstandingCountModel? counts;
 
   @override
   String toString() {
-    return 'OutstandingState.getOutstandingDataState(headers: $headers, counts: $counts)';
+    return 'OutstandingState.getOutstandingDataState(counts: $counts)';
   }
 
   @override
@@ -478,13 +456,11 @@ class _$GetOutstandingDataStateImpl implements GetOutstandingDataState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOutstandingDataStateImpl &&
-            const DeepCollectionEquality().equals(other._headers, _headers) &&
             (identical(other.counts, counts) || other.counts == counts));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_headers), counts);
+  int get hashCode => Object.hash(runtimeType, counts);
 
   @JsonKey(ignore: true)
   @override
@@ -496,36 +472,31 @@ class _$GetOutstandingDataStateImpl implements GetOutstandingDataState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)
+    required TResult Function(OutstandingCountModel? counts)
         getOutstandingDataState,
     required TResult Function() outstandingFailedState,
   }) {
-    return getOutstandingDataState(headers, counts);
+    return getOutstandingDataState(counts);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult? Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult? Function()? outstandingFailedState,
   }) {
-    return getOutstandingDataState?.call(headers, counts);
+    return getOutstandingDataState?.call(counts);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult Function()? outstandingFailedState,
     required TResult orElse(),
   }) {
     if (getOutstandingDataState != null) {
-      return getOutstandingDataState(headers, counts);
+      return getOutstandingDataState(counts);
     }
     return orElse();
   }
@@ -566,11 +537,9 @@ class _$GetOutstandingDataStateImpl implements GetOutstandingDataState {
 
 abstract class GetOutstandingDataState implements OutstandingState {
   const factory GetOutstandingDataState(
-          {required final List<OutStandOutModel>? headers,
-          required final OutstandingCountModel? counts}) =
+          {required final OutstandingCountModel? counts}) =
       _$GetOutstandingDataStateImpl;
 
-  List<OutStandOutModel>? get headers;
   OutstandingCountModel? get counts;
   @JsonKey(ignore: true)
   _$$GetOutstandingDataStateImplCopyWith<_$GetOutstandingDataStateImpl>
@@ -618,8 +587,7 @@ class _$OutstandingFailedStateImpl implements OutstandingFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)
+    required TResult Function(OutstandingCountModel? counts)
         getOutstandingDataState,
     required TResult Function() outstandingFailedState,
   }) {
@@ -629,9 +597,7 @@ class _$OutstandingFailedStateImpl implements OutstandingFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult? Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult? Function()? outstandingFailedState,
   }) {
     return outstandingFailedState?.call();
@@ -640,9 +606,7 @@ class _$OutstandingFailedStateImpl implements OutstandingFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            List<OutStandOutModel>? headers, OutstandingCountModel? counts)?
-        getOutstandingDataState,
+    TResult Function(OutstandingCountModel? counts)? getOutstandingDataState,
     TResult Function()? outstandingFailedState,
     required TResult orElse(),
   }) {

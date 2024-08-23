@@ -135,6 +135,27 @@ class _HomeScreenState extends State<HomeScreen> {
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
   }
 
+  getnoti() async {
+    var initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+    if (initialMessage != null) {
+      final screen = initialMessage.data['Key'];
+      if (screen != null) {
+        LoginUserModel? user = await getuserdata();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (screen == "val1") {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => NotificationScreen(user: user!),
+            ));
+          } else if (screen == "val2") {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => NotificationScreen(user: user!),
+            ));
+          }
+        });
+      }
+    }
+  }
+
 /* 
   void _centerItem(int index) {
     SchedulerBinding.instance.addPostFrameCallback((_) {

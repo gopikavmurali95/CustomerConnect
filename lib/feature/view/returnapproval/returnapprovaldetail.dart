@@ -150,7 +150,12 @@ class _ReturnApprovalDetailScreenState
                                     Expanded(
                                       child: Text(
                                           overflow: TextOverflow.ellipsis,
-                                          widget.returnApprovel.cusName ?? '',
+                                          selectedLocale?.languageCode == 'en'
+                                              ? widget.returnApprovel.cusName ??
+                                                  ''
+                                              : widget.returnApprovel
+                                                      .arcusName ??
+                                                  '',
                                           style: subTitleTextStyle()),
                                     ),
                                   ],
@@ -378,7 +383,7 @@ class _ReturnApprovalDetailScreenState
                                                         context)!
                                                     .alert),
                                                 content: Text(
-                                                    "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
+                                                    "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} "),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
@@ -498,8 +503,15 @@ class _ReturnApprovalDetailScreenState
                                                           '',
                                                       style: loadTextStyle()),
                                                   Text(
-                                                      details[index].prdName ??
-                                                          '',
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              'en'
+                                                          ? details[index]
+                                                                  .prdName ??
+                                                              ''
+                                                          : details[index]
+                                                                  .arprdName ??
+                                                              '',
                                                       style:
                                                           subTitleTextStyle()),
                                                 ],
@@ -579,7 +591,14 @@ class _ReturnApprovalDetailScreenState
                                                           availableresons = [
                                                             ApprovalResonModel(
                                                                 rsnId: '-1',
-                                                                rsnName: AppLocalizations.of(
+                                                                rsnName: selectedLocale
+                                                                            ?.languageCode ==
+                                                                        'en'
+                                                                    ? 'Select reason'
+                                                                    : AppLocalizations.of(
+                                                                            context)!
+                                                                        .selectReason,
+                                                                rsnArName: AppLocalizations.of(
                                                                         context)!
                                                                     .selectReason,
                                                                 rsnType: 'null')
@@ -693,9 +712,9 @@ class _ReturnApprovalDetailScreenState
                                                                               Text(
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
-                                                                            selectedLocale?.languageCode == "en"
+                                                                            selectedLocale?.languageCode == 'en'
                                                                                 ? item.rsnName ?? ''
-                                                                                : item.rsnArName ?? '',
+                                                                                : item.rsnArName ?? "",
                                                                             style:
                                                                                 kfontstyle(fontSize: 9.sp),
                                                                           ),
