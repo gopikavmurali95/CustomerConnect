@@ -4,7 +4,6 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusinsinv/cus_ins_invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/cusinsinvdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
-import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +21,7 @@ class InsightInvoiceListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: BlocBuilder<CusInsInvoiceHeaderBloc, CusInsInvoiceHeaderState>(
         builder: (context, state) {
           return state.when(
@@ -124,7 +123,7 @@ class InsightInvoiceListWidget extends StatelessWidget {
                                                 BorderRadius.circular(10)),
                                         child: Center(
                                           child: Text(
-                                           selectedLocale?.languageCode == 'en'? headers[index].status ?? '':headers[index].arStatus??'',
+                                            headers[index].status ?? '',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434)),

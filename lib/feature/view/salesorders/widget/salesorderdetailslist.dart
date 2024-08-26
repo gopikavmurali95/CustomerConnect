@@ -232,7 +232,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                                       itemCount: orderdetails.length),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                        horizontal: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -248,7 +248,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const Text('VAT'),
+                                             Text(AppLocalizations.of(context)!.vat),
                                             Text(salesorders.vat ?? '')
                                           ],
                                         ),

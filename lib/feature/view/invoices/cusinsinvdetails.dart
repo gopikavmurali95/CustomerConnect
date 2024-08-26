@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_invoice_model/cus_i
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/cusinsdetaillist.dart';
+import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,7 +100,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               Expanded(
                                 child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    widget.customer.cusName ?? '',
+                                    selectedLocale?.languageCode == 'en'?widget.customer.cusName ??'':widget.customer.arcusName??'',
                                     style: subTitleTextStyle()),
                               ),
                             ],
@@ -109,14 +110,14 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               Text('${widget.customer.headerCode} - ',
                                   style: subTitleTextStyle()),
                               Expanded(
-                                child: Text(widget.customer.headerName ?? '',
+                                child: Text(selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? '':widget.customer.arheaderName??'',
                                     overflow: TextOverflow.ellipsis,
                                     style: subTitleTextStyle()),
                               ),
                             ],
                           ),
                           Text(
-                            '${widget.invoice.invoiceType} | ${widget.customer.rotName} | ${widget.invoice.date} | ${widget.invoice.time}',
+                            '${widget.invoice.invoiceType} | ${selectedLocale?.languageCode == 'en'?widget.customer.rotName:widget.customer.arAreaName} | ${widget.invoice.date} | ${widget.invoice.time}',
                             style:
                                 TextStyle(fontSize: 10.sp, color: Colors.grey),
                           ),
@@ -239,7 +240,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding:  EdgeInsets.only(left: selectedLocale?.languageCode == 'en'?10:0, right: selectedLocale?.languageCode == 'en'?0:10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -296,7 +297,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
               color: Colors.grey[300],
             ), */
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

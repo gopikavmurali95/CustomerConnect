@@ -99,7 +99,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+            padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
             child: Container(
                 height: 40,
                 decoration: BoxDecoration(
@@ -209,7 +209,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                     //SizedBox(width: 05,),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 20, top: 10),
                       child: Text(
                         AppLocalizations.of(context)!.completed,
                         style: countHeading(),
@@ -222,7 +222,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                               loadingheaders != null
                                   ? Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 20.0, right: 20, top: 10),
+                                          left: 10.0, right: 10, top: 10),
                                       child: Text(
                                         "${loadingheaders.length}",
                                         style: countHeading(),
@@ -230,7 +230,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                                     )
                                   : Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 20.0, right: 20, top: 10),
+                                          left: 10.0, right: 10, top: 10),
                                       child: Text(
                                         "0",
                                         style: countHeading(),
@@ -238,7 +238,7 @@ class _LoadCompletedState extends State<LoadCompleted> {
                                     ),
                           loadingHeaderFailedState: () => Padding(
                             padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 10),
+                                left: 10.0, right: 10, top: 10),
                             child: Text(
                               "0",
                               style: countHeading(),

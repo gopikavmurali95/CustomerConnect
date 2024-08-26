@@ -281,37 +281,33 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 15.0, top: 2),
-                                            child: Container(
-                                              height: 55,
-                                              width: 200,
-                                              color: Colors.white,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                      detail[index].prdCode ??
+                                          Container(
+                                            height: 55,
+                                            width: 200,
+                                            color: Colors.white,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                    detail[index].prdCode ??
+                                                        '',
+                                                    style: loadTextStyle()),
+                                                Text(
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? detail[index]
+                                                              .prdName ??
+                                                          ""
+                                                      : detail[index]
+                                                              .arprdname ??
                                                           '',
-                                                      style: loadTextStyle()),
-                                                  Text(
-                                                    selectedLocale
-                                                                ?.languageCode ==
-                                                            'en'
-                                                        ? detail[index]
-                                                                .prdName ??
-                                                            ""
-                                                        : detail[index]
-                                                                .arprdname ??
-                                                            '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
-                                                ],
-                                              ),
+                                                  style: subTitleTextStyle(),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           Column(

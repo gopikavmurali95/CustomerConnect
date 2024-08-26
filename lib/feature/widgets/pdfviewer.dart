@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:developer';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PdfViewScreen extends StatefulWidget {
   final String pdfUrl;
@@ -49,8 +50,8 @@ class _PdfViewScreenState extends State<PdfViewScreen> {
             size: 20,
           ),
         ),
-        title: Text(
-          'Document',
+        title: Text
+          (AppLocalizations.of(context)!.documents,
           style: TextStyle(fontSize: 17.sp),
         ),
       ),

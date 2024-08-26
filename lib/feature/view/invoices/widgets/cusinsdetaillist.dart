@@ -42,7 +42,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) => Padding(
-                                  padding: const EdgeInsets.only(left: 10),
+                                  padding:  EdgeInsets.only(left: selectedLocale?.languageCode == 'en'?10:0, right: selectedLocale?.languageCode == 'en'?0:10),
                                   child: Column(
                                     children: [
                                       Row(
@@ -120,7 +120,7 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             ],
                                           ),
                                           SizedBox(
-                                            width: 30.h,
+                                            width: selectedLocale?.languageCode == 'en'?30.w:40.w,
                                           ),
                                           Column(
                                             children: [

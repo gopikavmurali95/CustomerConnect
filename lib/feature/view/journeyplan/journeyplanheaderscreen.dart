@@ -526,7 +526,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () {
-                                                                                    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                                                                                    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
                                                                                     Navigator.pop(context);
                                                                                   },
                                                                                   child: Text(AppLocalizations.of(context)!.proceed),

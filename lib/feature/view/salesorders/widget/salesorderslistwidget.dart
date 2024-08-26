@@ -110,7 +110,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                   BorderRadius.circular(10)),
                                           child: Center(
                                             child: Text(
-                                             selectedLocale?.languageCode == 'en'? orders[index].status ?? '':orders[index].arStatus??'',
+                                             orders[index].status ?? '',
                                               style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434),

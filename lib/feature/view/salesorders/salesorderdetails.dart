@@ -34,8 +34,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
     context.read<SalesOrderDetailsBloc>().add(GetSalesOrderDetailsEvent(
         salesin: SalesOrderDetailsInparasModel(
             userId: widget.user.usrId,
-            fromDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            fromDate:'01-01-2024',
+                // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             area: '',
@@ -160,7 +160,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                         selectedLocale?.languageCode == 'en'? widget.salesorders.status ?? '':widget.salesorders.arStatus??'',
+                         widget.salesorders.status ?? '',
                           style: kfontstyle(
                               fontSize: 10.sp, color: const Color(0xff413434)),
                         ),
@@ -309,7 +309,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
         height: 40.h,
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -234,6 +234,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                 ),
               ),
             ),
+             SizedBox(
+                            height: 10.h,
+                          ),
             BlocListener<PartialDeliveryApprovalBloc,
                 PartialDeliveryApprovalState>(
               listener: (context, state) {
@@ -310,7 +313,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                       width: double.infinity,
                       color: const Color(0xfff5f5f5),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        padding: const EdgeInsets.only(left: 10,right: 10),
                         child: Row(
                           children: [
                             Flexible(
@@ -318,10 +321,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               flex: 3,
                               child: Text(
                                 AppLocalizations.of(context)!.item,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
+                                style: boxHeading(),
                               ),
                             ),
                             /* SizedBox(
@@ -332,10 +332,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               flex: 2,
                               child: Text(
                                 AppLocalizations.of(context)!.ordQty,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
+                                style: boxHeading(),
                               ),
                             ),
                                                            /*  SizedBox(
@@ -343,13 +340,10 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                             ), */
                             Flexible(
                               fit: FlexFit.tight,
-                              flex: 1,
+                              flex: 0,
                               child: Text(
                                 AppLocalizations.of(context)!.del_qty,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
+                                style: boxHeading(),
                               ),
                             )
                           ],
@@ -413,7 +407,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) => Padding(
                                     padding:  EdgeInsets.only(
-                                        left: selectedLocale?.languageCode == 'en'?20:45, right: 25),
+                                        left: selectedLocale?.languageCode == 'en'?10:45, right: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -425,13 +419,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                 children: [
                                                   Text(
                                                     pdet[index].prdCode ?? '',
-                                                    style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff7b70ac),
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                                    style: loadTextStyle(),
                                                   ),
                                                   Text(
                                                     selectedLocale
@@ -442,11 +430,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                         : pdet[index]
                                                                 .arprdName ??
                                                             '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
+                                                    style: subTitleTextStyle()
                                                   ),
                                                 ],
                                               ),
@@ -458,21 +442,13 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                               children: [
                                                 Text(
                                                   pdet[index].orderedHQty ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
+                                                  style: subTitleTextStyle(),
                                                 ),
                                                 
                                                 Text(
                                                   pdet[index].deliveringLQty ??
                                                       '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
+                                                  style: subTitleTextStyle(),
                                                 )
                                               ],
                                             ),
@@ -484,20 +460,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                 Text(
                                                   pdet[index].deliveringHQty ??
                                                       '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
+                                                  style:subTitleTextStyle(),
                                                 ),
                                                 Text(
                                                   pdet[index].deliveringLQty ??
                                                       '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.black54),
+                                                  style: subTitleTextStyle(),
                                                 )
                                               ],
                                             ),

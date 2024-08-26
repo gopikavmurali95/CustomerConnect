@@ -961,7 +961,7 @@ class _ScheduledReturnDetailScreenState
                                         availableroutes = [
                                           RouteModel(
                                               rotId: '-1',
-                                              rotName: 'Select a Route')
+                                              rotName: selectedLocale?.languageCode == 'en'?'Select a Route':'حدد الطريق')
                                         ];
 
                                         if (routes != null) {
