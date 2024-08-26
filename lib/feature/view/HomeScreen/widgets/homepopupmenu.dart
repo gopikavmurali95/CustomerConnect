@@ -5,7 +5,6 @@ import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,7 +60,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   radius: 14.sp,
                 ),
                 title: Text(
-                  "${user.firstName} ${user.lastName}",
+                  "${selectedLocale?.languageCode == 'en'?user.firstName:user.arfirstName} ${selectedLocale?.languageCode == 'en'?user.lastName:user.arlastName}",
                   style: kfontstyle(
                     fontSize: 11.sp,
                     color: Colors.black87,
@@ -90,7 +89,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                     width: 10.w,
                   ),
                   Text(
-                    'About',
+                    AppLocalizations.of(context)!.about,
                     style: kfontstyle(
                       fontSize: 12.sp,
                       color: Colors.black87,
@@ -194,9 +193,9 @@ class HomePopUPMenuButton extends StatelessWidget {
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title: const Text('Alert'),
+                      title:  Text(AppLocalizations.of(context)!.alert),
                       content: Text(
-                        'Do you want to logout',
+                        AppLocalizations.of(context)!.doYouWantToLogout,
                         style: kfontstyle(),
                       ),
                       actions: [
@@ -204,7 +203,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                           onPressed: () async {
                             Navigator.pop(context);
                           },
-                          child: const Text('cancel'),
+                          child:  Text(AppLocalizations.of(context)!.cancel),
                         ),
                         TextButton(
                           onPressed: () async {
@@ -222,7 +221,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                                   (route) => false);
                             });
                           },
-                          child: const Text('proceed'),
+                          child:  Text(AppLocalizations.of(context)!.proceed),
                         ),
                       ],
                     ),
@@ -238,7 +237,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                       width: 10.w,
                     ),
                     Text(
-                      'Logout',
+                      AppLocalizations.of(context)!.logout,
                       style: kfontstyle(
                         fontSize: 12.sp,
                         color: Colors.black87,

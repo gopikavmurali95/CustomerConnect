@@ -337,7 +337,10 @@
   "sysQty": "Sys Qty",
   "pkdQty": "Pkd Qty",
   "liQty": "LI Qty",
-  "unscheduledVisitRejection": "Unscheduled Visit Rejection"
-  "liQty": "LI Qty"
+  "unscheduledVisitRejection": "Unscheduled Visit Rejection",
+  "liQty": "LI Qty",
+  "about": "About",
+  "doYouWantToLogout": "Do you want to logout",
+  "logout": "Logout"
 }
   

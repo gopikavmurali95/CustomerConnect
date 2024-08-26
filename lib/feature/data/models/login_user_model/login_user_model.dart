@@ -6,8 +6,12 @@ part 'login_user_model.g.dart';
 class LoginUserModel {
   @JsonKey(name: 'FirstName')
   String? firstName;
+   @JsonKey(name: 'ArFirstName')
+  String? arfirstName;
   @JsonKey(name: 'LastName')
   String? lastName;
+   @JsonKey(name: 'ArLastName')
+  String? arlastName;
   @JsonKey(name: 'Email')
   String? email;
   @JsonKey(name: 'ContacInfo')

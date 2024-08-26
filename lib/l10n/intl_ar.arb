@@ -337,7 +337,10 @@
   "sysQty": "الكمية في النظام",
   "pkdQty": "الكمية المغلفة",
   "liQty": "الكمية الفعلية",
-  "unscheduledVisitRejection": "رفض الزيارة غير المجدولة"
-  "liQty": "الكمية الفعلية"
+  "unscheduledVisitRejection": "رفض الزيارة غير المجدولة",
+  "liQty": "الكمية الفعلية",
+  "about": "عن",
+  "doYouWantToLogout": "هل تريد تسجيل الخروج",
+  "logout": "تسجيل الخروج"
 }
   
