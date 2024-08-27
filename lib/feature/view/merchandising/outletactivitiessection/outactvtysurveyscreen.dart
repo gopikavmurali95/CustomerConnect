@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class OutActvitySurveyHeaderScreen extends StatefulWidget {
   const OutActvitySurveyHeaderScreen({
     super.key,
@@ -36,8 +37,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
     merchSurveySearchCtrl.clear();
     filterMerchandisingSurvey = [
       MerchandisingStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          statusName: selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
           mode: 'AL'),
       MerchandisingStatusFilterModel(
           statusName:
@@ -77,7 +77,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
           ),
         ),
         title: Text(
-         AppLocalizations.of(context)!.survey,
+          AppLocalizations.of(context)!.survey,
           style: appHeading(),
         ),
       ),
@@ -241,8 +241,10 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                 itemCount: 10),
                           )
                         : survey.isEmpty
-                            ?  Center(
-                                child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                            ? Center(
+                                child: Text(
+                                  AppLocalizations.of(context)!.noDataAvailable,
+                                ),
                               )
                             : Column(
                                 children: [
@@ -255,10 +257,15 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                       children: [
                                         Text(
                                           selectedMerchSurveyMode == 'AL'
-                                              ? AppLocalizations.of(context)!.allSurveys
+                                              ? AppLocalizations.of(context)!
+                                                  .allSurveys
                                               : selectedMerchSurveyMode == 'C'
-                                                  ? AppLocalizations.of(context)!.completedSurveys
-                                                  : AppLocalizations.of(context)!.pendingSurveys,
+                                                  ? AppLocalizations.of(
+                                                          context)!
+                                                      .completedSurveys
+                                                  : AppLocalizations.of(
+                                                          context)!
+                                                      .pendingSurveys,
                                           style: countHeading(),
                                         ),
                                         Padding(
@@ -303,7 +310,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                            "${survey[index].cusCode} - ${selectedLocale?.languageCode == "en" ? survey[index].surveyName ?? '' : survey[index].surveyArName?? ''}",
+                                                            "${survey[index].cusCode} - ${selectedLocale?.languageCode == "en" ? survey[index].surveyName ?? '' : survey[index].surveyArName ?? ''}",
                                                             style:
                                                                 blueTextStyle()),
                                                         Row(
@@ -321,7 +328,15 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
-                                                                          selectedLocale?.languageCode == "en" ? survey[index].cusName ?? '' : survey[index].cusArName?? '',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          "en"
+                                                                      ? survey[index]
+                                                                              .cusName ??
+                                                                          ''
+                                                                      : survey[index]
+                                                                              .cusArName ??
+                                                                          '',
                                                                   //"${survey[index].cusName}",
                                                                   style:
                                                                       subTitleTextStyle()),
@@ -343,8 +358,9 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                     // width: 10.h,
                                                     decoration: BoxDecoration(
                                                       color: survey[index]
-                                                                  .status! =="Pending"
-                                                              //AppLocalizations.of(context)!.pending
+                                                                  .status! ==
+                                                              "Pending"
+                                                          //AppLocalizations.of(context)!.pending
                                                           ? const Color(
                                                               0xfff7f4e2)
                                                           : const Color(
@@ -360,7 +376,15 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                           horizontal: 5,
                                                           vertical: 3),
                                                       child: Text(
-                                                        selectedLocale?.languageCode == "en" ? survey[index].status ?? '' : survey[index].arStatus?? '',
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                "en"
+                                                            ? survey[index]
+                                                                    .status ??
+                                                                ''
+                                                            : survey[index]
+                                                                    .arStatus ??
+                                                                '',
                                                         // "${survey[index].status}",
                                                         style: kfontstyle(
                                                             fontSize: 8.sp),
@@ -379,7 +403,9 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                 ],
                               ),
                     getMerchandisingSurveyFailedState: () => Center(
-                          child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                          child: Text(
+                            AppLocalizations.of(context)!.noDataAvailable,
+                          ),
                         ));
               },
             ),

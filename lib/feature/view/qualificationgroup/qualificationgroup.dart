@@ -4,7 +4,6 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/qualification_group/qualification_group_bloc.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/widgets/qualificationgrouplist.dart';
-import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +44,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
             Navigator.pop(context);
           },
           child: Transform.flip(
-            flipX: selectedLocale?.languageCode == "en" ? false : true,
+           // flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,

@@ -11,7 +11,7 @@ import 'package:customer_connect/feature/data/models/promotion_header_model/prom
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:logger/web.dart';
+
 
 @LazySingleton(as: IPromotionHeaderRepo)
 class PromotionHeaderRepo implements IPromotionHeaderRepo {

@@ -40,7 +40,7 @@ class TodaysSalesWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                 AppLocalizations.of(context)!.todaysSales,
+                                AppLocalizations.of(context)!.todaysSales,
                                 style: countHeading(),
                               ),
                               Text(
@@ -76,7 +76,8 @@ class TodaysSalesWidget extends StatelessWidget {
                                         style: countHeading(),
                                       ),
                                       Text(
-                                         AppLocalizations.of(context)!.totalVisits,
+                                        AppLocalizations.of(context)!
+                                            .totalVisits,
                                         style: TextStyle(
                                             fontSize: 12.sp,
                                             color: Colors.black54),
@@ -108,7 +109,8 @@ class TodaysSalesWidget extends StatelessWidget {
                                         style: countHeading(),
                                       ),
                                       Text(
-                                         AppLocalizations.of(context)!.productiveVisits,
+                                        AppLocalizations.of(context)!
+                                            .productiveVisits,
                                         style: TextStyle(
                                             fontSize: 12.sp,
                                             color: Colors.black54),
@@ -124,8 +126,10 @@ class TodaysSalesWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-            activitySalesFailedState: () =>  Center(
-              child: Text(  AppLocalizations.of(context)!.noDataAvailable,),
+            activitySalesFailedState: () => Center(
+              child: Text(
+                AppLocalizations.of(context)!.noDataAvailable,
+              ),
             ),
           );
         },

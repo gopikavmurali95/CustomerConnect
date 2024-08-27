@@ -108,7 +108,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    selectedLocale?.languageCode == "en" ? widget.promotion.pName ?? '' : widget.promotion.arPname ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? widget.promotion.pName ?? ''
+                                        : widget.promotion.arPname ?? '',
                                     //widget.promotion.pName!,
                                     style: blueTextStyle(),
                                   ),

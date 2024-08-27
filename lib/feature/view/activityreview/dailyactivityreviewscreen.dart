@@ -150,8 +150,8 @@ class _DailyActivityReviewDetailScreenState
                                     Expanded(
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
-                                         "${AppLocalizations.of(context)!.start}${widget.header.startTime} |${AppLocalizations.of(context)!.end}: ${widget.header.endTime}",
-                                       // 'Start: ${widget.header.startTime} | End ${widget.header.endTime}',
+                                        "${AppLocalizations.of(context)!.start}${widget.header.startTime} |${AppLocalizations.of(context)!.end}: ${widget.header.endTime}",
+                                        // 'Start: ${widget.header.startTime} | End ${widget.header.endTime}',
                                         style: kfontstyle(
                                             fontSize: 9.sp,
                                             color: const Color(0xff413434)),
@@ -161,7 +161,7 @@ class _DailyActivityReviewDetailScreenState
                                 ),
                                 Text(
                                   "${AppLocalizations.of(context)!.duration}:  ${widget.header.duration}",
-                                 // 'Duration: ${widget.header.duration}  ',
+                                  // 'Duration: ${widget.header.duration}  ',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),
@@ -313,8 +313,14 @@ class _DailyActivityReviewDetailScreenState
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                selectedLocale?.languageCode == "en" ? details[index].cusName
-                                                                 ?? '' : details[index].cusArname?? '',
+                                                                selectedLocale?.languageCode ==
+                                                                        "en"
+                                                                    ? details[index]
+                                                                            .cusName ??
+                                                                        ''
+                                                                    : details[index]
+                                                                            .cusArname ??
+                                                                        '',
                                                                 // details[index]
                                                                 //         .cusName ??
                                                                 //     '',
@@ -336,8 +342,8 @@ class _DailyActivityReviewDetailScreenState
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                              "${AppLocalizations.of(context)!.start}:${details[index].startTime}|${AppLocalizations.of(context)!.end}:${details[index].endTime}",
-                                                                     // 'Start: ${details[index].startTime} | End ${details[index].endTime}',
+                                                                      "${AppLocalizations.of(context)!.start}:${details[index].startTime}|${AppLocalizations.of(context)!.end}:${details[index].endTime}",
+                                                                      // 'Start: ${details[index].startTime} | End ${details[index].endTime}',
                                                                       style: kfontstyle(
                                                                           fontSize: 10
                                                                               .sp,
@@ -354,7 +360,7 @@ class _DailyActivityReviewDetailScreenState
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
-                                                                       "${AppLocalizations.of(context)!.duration}: ${details[index].duration}",
+                                                                      "${AppLocalizations.of(context)!.duration}: ${details[index].duration}",
                                                                       //'Duration : ${details[index].duration}',
                                                                       style: kfontstyle(
                                                                           fontSize: 10

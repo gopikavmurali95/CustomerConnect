@@ -37,10 +37,9 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
   void initState() {
     selectedMode = "AL";
     taskHeaderSearchCtrl.clear();
-   filterTaskHeaderMerchnd = [
+    filterTaskHeaderMerchnd = [
       MerchandisingStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          statusName: selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
           mode: 'AL'),
       MerchandisingStatusFilterModel(
           statusName:
@@ -275,10 +274,16 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                             children: [
                                               Text(
                                                 selectedMode == 'AL'
-                                                    ? AppLocalizations.of(context)!.allTasks
+                                                    ? AppLocalizations.of(
+                                                            context)!
+                                                        .allTasks
                                                     : selectedMode == 'C'
-                                                        ? AppLocalizations.of(context)!.completedTasks
-                                                        : AppLocalizations.of(context)!.pendingTasks,
+                                                        ? AppLocalizations.of(
+                                                                context)!
+                                                            .completedTasks
+                                                        : AppLocalizations.of(
+                                                                context)!
+                                                            .pendingTasks,
                                                 style: countHeading(),
                                               ),
                                               // Text(
@@ -354,8 +359,8 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                       Expanded(
                                                                         child: Text(
                                                                             overflow: TextOverflow.ellipsis,
-                                                                           " ${selectedLocale?.languageCode == "en" ? tasksheader[index].cusName?? '' : tasksheader[index].cusArName ?? ''}",
-                                                                           // "${tasksheader[index].cusName}",
+                                                                            " ${selectedLocale?.languageCode == "en" ? tasksheader[index].cusName ?? '' : tasksheader[index].cusArName ?? ''}",
+                                                                            // "${tasksheader[index].cusName}",
                                                                             // "Emmerch International Hotel",
                                                                             style: subTitleTextStyle()),
                                                                       ),
@@ -392,12 +397,14 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: tasksheader[index]
-                                                                            .status! == 'Pending'
-                                                                        //AppLocalizations.of(context)!.pending
+                                                                            .status! ==
+                                                                        'Pending'
+                                                                    //AppLocalizations.of(context)!.pending
                                                                     ? const Color(
                                                                         0xfff7f4e2)
-                                                                    : tasksheader[index].status! == 'Completed'
-                                                                           // AppLocalizations.of(context)!.completed
+                                                                    : tasksheader[index].status! ==
+                                                                            'Completed'
+                                                                        // AppLocalizations.of(context)!.completed
                                                                         ? const Color(
                                                                             0xffe3f7e2)
                                                                         : Colors
@@ -416,7 +423,15 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                     vertical:
                                                                         3),
                                                                 child: Text(
-                                                                  selectedLocale?.languageCode == "en" ? tasksheader[index].status ?? '' : tasksheader[index].arStatus?? '',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          "en"
+                                                                      ? tasksheader[index]
+                                                                              .status ??
+                                                                          ''
+                                                                      : tasksheader[index]
+                                                                              .arStatus ??
+                                                                          '',
                                                                   //"${tasksheader[index].status}",
                                                                   style: kfontstyle(
                                                                       fontSize:

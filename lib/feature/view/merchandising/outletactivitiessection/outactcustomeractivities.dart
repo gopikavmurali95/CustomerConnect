@@ -37,8 +37,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
     _cusActivitySearchCtrl.clear();
     filterCusActivity = [
       MerchandisingStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
+          statusName: selectedLocale?.languageCode == 'en' ? "All" : "اكل شئ",
           mode: 'AL'),
       MerchandisingStatusFilterModel(
           statusName:
@@ -80,7 +79,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
         ),
         title: Text(
           AppLocalizations.of(context)!.customerActivities,
-         //"Customer Activity",
+          //"Customer Activity",
           style: appHeading(),
         ),
       ),
@@ -250,8 +249,11 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                       itemCount: 10),
                                 )
                               : activityData.isEmpty
-                                  ?  Center(
-                                      child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                                  ? Center(
+                                      child: Text(
+                                        AppLocalizations.of(context)!
+                                            .noDataAvailable,
+                                      ),
                                     )
                                   : Column(
                                       children: [
@@ -264,11 +266,17 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                             children: [
                                               Text(
                                                 selectedcusActivityMode == 'AL'
-                                                    ? AppLocalizations.of(context)!.allActivities
+                                                    ? AppLocalizations.of(
+                                                            context)!
+                                                        .allActivities
                                                     : selectedcusActivityMode ==
                                                             'C'
-                                                        ? AppLocalizations.of(context)!.completedActivities
-                                                        : AppLocalizations.of(context)!.pendingActivities,
+                                                        ? AppLocalizations.of(
+                                                                context)!
+                                                            .completedActivities
+                                                        : AppLocalizations.of(
+                                                                context)!
+                                                            .pendingActivities,
                                                 style: countHeading(),
                                               ),
                                               Padding(
@@ -292,103 +300,116 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 15),
                                           child: ListView.separated(
-                                              itemBuilder: (context, index) =>
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        height: 50,
-                                                        width: 10,
-                                                        decoration: BoxDecoration(
-                                                            color: const Color(
-                                                                0xfffee8e0),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10.w,
-                                                      ),
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              selectedLocale?.languageCode == "en" ? activityData[index].actName ?? '' : activityData[index].actArName?? '',
-                                                               // "${activityData[index].cusCode}-${activityData[index].actName}",
-                                                                style:
-                                                                    blueTextStyle()),
-                                                            Row(
+                                              itemBuilder:
+                                                  (context, index) => Row(
+                                                        children: [
+                                                          Container(
+                                                            height: 50,
+                                                            width: 10,
+                                                            decoration: BoxDecoration(
+                                                                color: const Color(
+                                                                    0xfffee8e0),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20)),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 10.w,
+                                                          ),
+                                                          Expanded(
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Text(
-                                                                  "${activityData[index].cusCode}-",
-                                                                  style:
-                                                                      kfontstyle(
-                                                                    fontSize:
-                                                                        11.sp,
-                                                                    color: const Color(
-                                                                        0xff2C6B9E),
-                                                                  ),
-                                                                ),
-                                                                Expanded(
-                                                                  child: Text(
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                              selectedLocale?.languageCode == "en" ? activityData[index].cusName?? '' : activityData[index].cusrName?? '',
-                                                                      // "${activityData[index].cusName}",
+                                                                    selectedLocale?.languageCode ==
+                                                                            "en"
+                                                                        ? activityData[index].actName ??
+                                                                            ''
+                                                                        : activityData[index].actArName ??
+                                                                            '',
+                                                                    // "${activityData[index].cusCode}-${activityData[index].actName}",
+                                                                    style:
+                                                                        blueTextStyle()),
+                                                                Row(
+                                                                  children: [
+                                                                    Text(
+                                                                      "${activityData[index].cusCode}-",
                                                                       style:
-                                                                          subTitleTextStyle()),
+                                                                          kfontstyle(
+                                                                        fontSize:
+                                                                            11.sp,
+                                                                        color: const Color(
+                                                                            0xff2C6B9E),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          overflow: TextOverflow.ellipsis,
+                                                                          selectedLocale?.languageCode == "en" ? activityData[index].cusName ?? '' : activityData[index].cusrName ?? '',
+                                                                          // "${activityData[index].cusName}",
+                                                                          style: subTitleTextStyle()),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Text(
+                                                                  "${AppLocalizations.of(context)!.dueon}: ${activityData[index].startDate} | ${AppLocalizations.of(context)!.completedon}: ${activityData[index].endDate}4",
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          9.sp,
+                                                                      color: Colors
+                                                                          .grey),
                                                                 ),
                                                               ],
                                                             ),
-                                                            Text(
-                                                              "${AppLocalizations.of(context)!.dueon}: ${activityData[index].startDate} | ${AppLocalizations.of(context)!.completedon}: ${activityData[index].endDate}4",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      9.sp,
-                                                                  color: Colors
-                                                                      .grey),
+                                                          ),
+                                                          Container(
+                                                            // height: 10.h,
+                                                            // width: 10.h,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: activityData[
+                                                                              index]
+                                                                          .status! ==
+                                                                      "Pending"
+                                                                  // AppLocalizations.of(context)!.pending
+                                                                  ? const Color(
+                                                                      0xfff7f4e2)
+                                                                  : const Color(
+                                                                      0xffe3f7e2),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                10,
+                                                              ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          5,
+                                                                      vertical:
+                                                                          3),
+                                                              child: Text(
+                                                                selectedLocale?.languageCode ==
+                                                                        "en"
+                                                                    ? activityData[index]
+                                                                            .status ??
+                                                                        ''
+                                                                    : activityData[index]
+                                                                            .arstatus ??
+                                                                        '',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        8.sp),
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
                                                       ),
-                                                      Container(
-                                                        // height: 10.h,
-                                                        // width: 10.h,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: activityData[
-                                                                          index]
-                                                                      .status! == "Pending"
-                                                                 // AppLocalizations.of(context)!.pending
-                                                              ? const Color(
-                                                                  0xfff7f4e2)
-                                                              : const Color(
-                                                                  0xffe3f7e2),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            10,
-                                                          ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .symmetric(
-                                                                  horizontal: 5,
-                                                                  vertical: 3),
-                                                          child: Text(
-                                                           selectedLocale?.languageCode == "en" ? activityData[index].status ?? '' : activityData[index].arstatus?? '',
-                                                            style: kfontstyle(
-                                                                fontSize: 8.sp),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
                                               separatorBuilder:
                                                   (context, index) => Divider(
                                                         color: Colors.grey[300],
@@ -398,7 +419,9 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                       ],
                                     ),
                       getMerchCustomerActivitiesDataFailed: () => Center(
-                            child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                            child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable,
+                            ),
                           ));
                 },
               ),

@@ -8,7 +8,6 @@ import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
- import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -98,7 +97,9 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                       selectedLocale?.languageCode == 'en'? widget.header.cusName ?? '':widget.header.cusArName??'',
+                                        selectedLocale?.languageCode == 'en'
+                                            ? widget.header.cusName ?? ''
+                                            : widget.header.cusArName ?? '',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -312,8 +313,11 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                                                       Text(
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        selectedLocale?.languageCode == 'en'?details[index].prdName ??
-                                                                            '':details[index].prdArName??'',
+                                                                        selectedLocale?.languageCode == 'en'
+                                                                            ? details[index].prdName ??
+                                                                                ''
+                                                                            : details[index].prdArName ??
+                                                                                '',
                                                                         style: kfontstyle(
                                                                             fontSize: 10
                                                                                 .sp,

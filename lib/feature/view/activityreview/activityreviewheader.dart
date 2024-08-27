@@ -42,36 +42,36 @@ class _ActivityReviewHeaderScreenState
     activityreviewHeaderctrl.clear();
     activtyreview = [
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "All Route Types" : "جميع أنواع الطرق",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "All Route Types"
+              : "جميع أنواع الطرق",
           mode: 'AL'),
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Sales" : "مبيعات",
+          statusName: selectedLocale?.languageCode == 'en' ? "Sales" : "مبيعات",
           mode: 'SL'),
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == "en" ? "Order" : "طلب",
+          statusName: selectedLocale?.languageCode == "en" ? "Order" : "طلب",
           mode: 'OR'),
-          ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "AR" : "AR",
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en' ? "AR" : "AR",
           mode: 'AR'),
-          ApprovalStatusFilterModel(
+      ApprovalStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "Order & AR" : "طلب & AR",
           mode: 'OA'),
-          ApprovalStatusFilterModel(
+      ApprovalStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "Delivery" : "توصيل",
           mode: 'DL'),
-          ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Merchandising" : "عمل في التجارة",
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Merchandising"
+              : "عمل في التجارة",
           mode: 'MER'),
-          ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Field Service" : "الخدمة الميدانية",
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Field Service"
+              : "الخدمة الميدانية",
           mode: 'FS'),
     ];
     context
@@ -107,7 +107,7 @@ class _ActivityReviewHeaderScreenState
           ),
         ),
         title: Text(
-           AppLocalizations.of(context)!.dailyActivityReview,
+          AppLocalizations.of(context)!.dailyActivityReview,
           // "Daily Activity Reviews",
           style: appHeading(),
         ),
@@ -172,7 +172,7 @@ class _ActivityReviewHeaderScreenState
                           size: 14,
                         ),
                       ),
-                      hintText: "${ AppLocalizations.of(context)!.searchHere}..",
+                      hintText: "${AppLocalizations.of(context)!.searchHere}..",
                       hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -294,8 +294,10 @@ class _ActivityReviewHeaderScreenState
                                 ),
                             itemCount: 10)
                         : headers.isEmpty
-                            ?  Center(
-                                child: Text( AppLocalizations.of(context)!.noDataAvailable,),
+                            ? Center(
+                                child: Text(
+                                  AppLocalizations.of(context)!.noDataAvailable,
+                                ),
                               )
                             : ListView.builder(
                                 shrinkWrap: true,
@@ -365,7 +367,7 @@ class _ActivityReviewHeaderScreenState
                                                         child: Text(
                                                           overflow: TextOverflow
                                                               .ellipsis,
-                                                          '${ AppLocalizations.of(context)!.start}: ${headers[index].startTime} | ${ AppLocalizations.of(context)!.end} : ${headers[index].endTime}',
+                                                          '${AppLocalizations.of(context)!.start}: ${headers[index].startTime} | ${AppLocalizations.of(context)!.end} : ${headers[index].endTime}',
                                                           style: kfontstyle(
                                                               fontSize: 9.sp,
                                                               color: const Color(
@@ -375,7 +377,7 @@ class _ActivityReviewHeaderScreenState
                                                     ],
                                                   ),
                                                   Text(
-                                                    "${selectedLocale?.languageCode == "en" ? headers[index].rotType ?? '' : headers[index].rotArType?? ''}  ${AppLocalizations.of(context)!.route}",
+                                                    "${selectedLocale?.languageCode == "en" ? headers[index].rotType ?? '' : headers[index].rotArType ?? ''}  ${AppLocalizations.of(context)!.route}",
                                                     //'${headers[index].rotType} ${AppLocalizations.of(context)!.route}',
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
@@ -394,8 +396,9 @@ class _ActivityReviewHeaderScreenState
                                   ),
                                 ),
                               ),
-                    actvityReviewHeaderFailedState: () =>  Center(
-                      child: Text( AppLocalizations.of(context)!.noDataAvailable),
+                    actvityReviewHeaderFailedState: () => Center(
+                      child:
+                          Text(AppLocalizations.of(context)!.noDataAvailable),
                     ),
                   );
                 },
