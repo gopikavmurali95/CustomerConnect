@@ -889,28 +889,10 @@ class _InventoryReconfirmationDetailScreenState
                                                                   Transform
                                                                       .scale(
                                                                     scale: 0.8,
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          /* activeColor: isselected == true
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            statuslist[index] =
+                                                                    child: InkWell(
+                                                                      onTap: () {
+                                                                        setState(() {
+                                                                          statuslist[index] =
                                                                                 true;
 
                                                                             setState(() {});
@@ -920,42 +902,58 @@ class _InventoryReconfirmationDetailScreenState
                                                                               iadId: details[index].iadId,
                                                                               status: "A",
                                                                             );
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
+                                                                        });
+                                                                      },
+                                                                      child: Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] == true)
+                                                                                  ? Colors.green.shade300
+                                                                                  : Colors.grey;
+                                                                            }),
+                                                                            /* activeColor: isselected == true
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? false
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                true,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              statuslist[index] =
+                                                                                  true;
+                                                                      
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  InventoryReconfirmPrdModel(
+                                                                                reason: "",
+                                                                                iadId: details[index].iadId,
+                                                                                status: "A",
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!
+                                                                                .approve,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Transform
                                                                       .scale(
                                                                     scale: 0.8,
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          /*  activeColor: isselected == false
-                                                                                                                                                                        ? const Color(0xff0075ff)
-                                                                                                                                                                        : Colors.grey, */
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            statuslist[index] =
+                                                                    child: InkWell(
+                                                                      onTap: () {
+                                                                        setState(() {
+                                                                          statuslist[index] =
                                                                                 false;
 
                                                                             setState(() {});
@@ -965,15 +963,49 @@ class _InventoryReconfirmationDetailScreenState
                                                                               iadId: details[index].iadId,
                                                                               status: "R",
                                                                             );
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
+                                                                        });
+                                                                      },
+                                                                      child: Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] != null && !statuslist[index]!)
+                                                                                  ? Colors.red.shade300
+                                                                                  : Colors.grey;
+                                                                            }),
+                                                                            /*  activeColor: isselected == false
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? true
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                false,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              statuslist[index] =
+                                                                                  false;
+                                                                      
+                                                                              setState(() {});
+                                                                              approvedProducts[index] =
+                                                                                  InventoryReconfirmPrdModel(
+                                                                                reason: selectedresons[index],
+                                                                                iadId: details[index].iadId,
+                                                                                status: "R",
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!
+                                                                                .reject,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],

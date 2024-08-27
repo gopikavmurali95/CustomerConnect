@@ -28,7 +28,7 @@ List<ApprovalStatusFilterModel> filterFieldsPartialDelivery = [
 ];
 
 String _selectedeMode = 'P';
-TextEditingController _SearchCtrl = TextEditingController();
+TextEditingController searchCtrl = TextEditingController();
 Timer? debounce;
 
 class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
@@ -93,7 +93,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _SearchCtrl,
+                  controller: searchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -104,8 +104,8 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_SearchCtrl.text.isNotEmpty) {
-                                  _SearchCtrl.clear();
+                                if (searchCtrl.text.isNotEmpty) {
+                                  searchCtrl.clear();
 
                                   context.read<PartialDeliveryHeaderBloc>().add(
                                       GetPartialDeliveryHeaderEvent(
@@ -278,7 +278,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                 builder: (context) =>
                                                     PArtialDeliveryDetails(
                                                   user: widget.user,
-                                                  header: header[index],
+                                                  header: header[index], currentMode: _selectedeMode,
                                                 ),
                                               ),
                                             );

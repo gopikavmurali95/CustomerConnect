@@ -7,7 +7,6 @@ import 'package:customer_connect/feature/view/merchandising/outletactivitiessect
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

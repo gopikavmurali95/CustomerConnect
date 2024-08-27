@@ -611,33 +611,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                 scale: 0.8,
                                                 child: Row(
                                                   children: [
-                                                    Row(
-                                                      children: [
-                                                        Radio(
-                                                          fillColor:
-                                                              MaterialStateProperty
-                                                                  .resolveWith<
-                                                                          Color>(
-                                                                      (states) {
-                                                            return (statuslist[
-                                                                        index] ==
-                                                                    true)
-                                                                ? Colors.green
-                                                                    .shade300
-                                                                : Colors.grey;
-                                                          }),
-                                                          value: statuslist[
-                                                                      index] ==
-                                                                  null
-                                                              ? false
-                                                              : statuslist[
-                                                                          index] ==
-                                                                      true
-                                                                  ? true
-                                                                  : false,
-                                                          groupValue: true,
-                                                          onChanged: (value) {
-                                                            statuslist[index] =
+                                                    InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          statuslist[index] =
                                                                 true;
                                                             loadingCount = 0;
 
@@ -656,49 +633,73 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                       .vvdLQty,
                                                               status: 'A',
                                                             );
-                                                          },
-                                                        ),
-                                                        Text(
-                                                          AppLocalizations.of(
-                                                                  context)!
-                                                              .approve,
-                                                          style: kfontstyle(),
-                                                        )
-                                                      ],
+                                                        });
+                                                      },
+                                                      child: Row(
+                                                        children: [
+                                                          Radio(
+                                                            fillColor:
+                                                                MaterialStateProperty
+                                                                    .resolveWith<
+                                                                            Color>(
+                                                                        (states) {
+                                                              return (statuslist[
+                                                                          index] ==
+                                                                      true)
+                                                                  ? Colors.green
+                                                                      .shade300
+                                                                  : Colors.grey;
+                                                            }),
+                                                            value: statuslist[
+                                                                        index] ==
+                                                                    null
+                                                                ? false
+                                                                : statuslist[
+                                                                            index] ==
+                                                                        true
+                                                                    ? true
+                                                                    : false,
+                                                            groupValue: true,
+                                                            onChanged: (value) {
+                                                              statuslist[index] =
+                                                                  true;
+                                                              loadingCount = 0;
+                                                      
+                                                              setState(() {});
+                                                              approvedProducts[
+                                                                      index] =
+                                                                  VanToVanProductModel(
+                                                                vvdId:
+                                                                    details[index]
+                                                                        .vvdId,
+                                                                hqty:
+                                                                    details[index]
+                                                                        .vvdHQty,
+                                                                lqty:
+                                                                    details[index]
+                                                                        .vvdLQty,
+                                                                status: 'A',
+                                                              );
+                                                            },
+                                                          ),
+                                                          Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .approve,
+                                                            style: kfontstyle(),
+                                                          )
+                                                        ],
+                                                      ),
                                                     )
                                                   ],
                                                 ),
                                               ),
                                               Transform.scale(
                                                 scale: 0.8,
-                                                child: Row(
-                                                  children: [
-                                                    Radio(
-                                                      fillColor:
-                                                          MaterialStateProperty
-                                                              .resolveWith<
-                                                                      Color>(
-                                                                  (states) {
-                                                        return (statuslist[
-                                                                        index] !=
-                                                                    null &&
-                                                                !statuslist[
-                                                                    index]!)
-                                                            ? Colors
-                                                                .red.shade300
-                                                            : Colors.grey;
-                                                      }),
-                                                      value: statuslist[
-                                                                  index] ==
-                                                              null
-                                                          ? true
-                                                          : statuslist[index] ==
-                                                                  true
-                                                              ? true
-                                                              : false,
-                                                      groupValue: false,
-                                                      onChanged: (value) {
-                                                        statuslist[index] =
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      statuslist[index] =
                                                             false;
                                                         loadingCount = 0;
                                                         setState(() {});
@@ -713,15 +714,60 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                               .vvdLQty,
                                                           status: 'R',
                                                         );
-                                                      },
-                                                    ),
-                                                    Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .reject,
-                                                      style: kfontstyle(),
-                                                    )
-                                                  ],
+                                                    });
+                                                  },
+                                                  child: Row(
+                                                    children: [
+                                                      Radio(
+                                                        fillColor:
+                                                            MaterialStateProperty
+                                                                .resolveWith<
+                                                                        Color>(
+                                                                    (states) {
+                                                          return (statuslist[
+                                                                          index] !=
+                                                                      null &&
+                                                                  !statuslist[
+                                                                      index]!)
+                                                              ? Colors
+                                                                  .red.shade300
+                                                              : Colors.grey;
+                                                        }),
+                                                        value: statuslist[
+                                                                    index] ==
+                                                                null
+                                                            ? true
+                                                            : statuslist[index] ==
+                                                                    true
+                                                                ? true
+                                                                : false,
+                                                        groupValue: false,
+                                                        onChanged: (value) {
+                                                          statuslist[index] =
+                                                              false;
+                                                          loadingCount = 0;
+                                                          setState(() {});
+                                                          approvedProducts[
+                                                                  index] =
+                                                              VanToVanProductModel(
+                                                            vvdId: details[index]
+                                                                .vvdId,
+                                                            hqty: details[index]
+                                                                .vvdHQty,
+                                                            lqty: details[index]
+                                                                .vvdLQty,
+                                                            status: 'R',
+                                                          );
+                                                        },
+                                                      ),
+                                                      Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .reject,
+                                                        style: kfontstyle(),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               )
                                             ],

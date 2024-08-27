@@ -41,7 +41,7 @@ class RejectedList extends StatelessWidget {
                       )
                     : ListView.builder(
                         padding: const EdgeInsets.only(
-                          left: 05, right: 05,
+                          
                           top: 10,
                           //  bottom: 10
                         ),

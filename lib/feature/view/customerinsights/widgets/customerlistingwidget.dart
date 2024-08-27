@@ -16,7 +16,7 @@ class CustomersListingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
         builder: (context, state) {
           return state.when(

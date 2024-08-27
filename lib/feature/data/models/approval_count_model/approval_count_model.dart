@@ -40,6 +40,8 @@ class ApprovalCountModel {
   String? settlementApprovalHead;
   @JsonKey(name: 'VoidTransactionHeader')
   String? voidTransactionHead;
+  @JsonKey(name: 'UnschVisit')
+  String? unschVisit;
 
   ApprovalCountModel(
       {this.pendingReturnHeader,

@@ -81,7 +81,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
         bottom: PreferredSize(
           preferredSize: const Size(100, 50),
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 10),
+            padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
             child: Container(
               height: 40,
               decoration: BoxDecoration(
@@ -213,7 +213,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     //SizedBox(width: 05,),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
                         AppLocalizations.of(context)!.not_started,
                         style: countHeading(),
@@ -221,7 +221,7 @@ class _PickHeaderNotStartedState extends State<PickHeaderNotStarted> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                          const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: BlocBuilder<PickingHeaderBloc, PickingHeaderState>(
                         builder: (context, state) {
                           return state.when(

@@ -584,7 +584,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    width: 50.w,
+                                                    width: selectedLocale?.languageCode == 'en'?50.w:70.w,
                                                   ),
                                                   Column(
                                                     children: [
@@ -631,70 +631,10 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     children: [
                                                       Transform.scale(
                                                         scale: 0.8,
-                                                        child: Row(
-                                                          children: [
-                                                            Radio(
-                                                              fillColor: MaterialStateProperty
-                                                                  .resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                return (statuslist[
-                                                                            index] ==
-                                                                        true)
-                                                                    ? Colors
-                                                                        .green
-                                                                        .shade300
-                                                                    : Colors
-                                                                        .grey;
-                                                              }),
-                                                              /* activeColor: isselected == true
-                                                                                                                                                                    ? const Color(0xff0075ff)
-                                                                                                                                                                    : Colors.grey, */
-                                                              value: statuslist[
-                                                                          index] ==
-                                                                      null
-                                                                  ? false
-                                                                  : statuslist[
-                                                                              index] ==
-                                                                          true
-                                                                      ? true
-                                                                      : false,
-                                                              groupValue: true,
-                                                              onChanged:
-                                                                  (value) {
-                                                                /*  showCupertinoDialog(
-                                                                  context: context,
-                                                                  builder: (context) =>
-                                                                      CupertinoAlertDialog(
-                                                                    title: const Text(
-                                                                        'Alert'),
-                                                                    content: const Text(
-                                                                        "Do you Want to Approve this product"),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          setState(
-                                                                              () {});
-                                                                          Navigator.pop(
-                                                                              context);
-                                                                        },
-                                                                        child: const Text(
-                                                                            'Cancel'),
-                                                                      ),
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                         
-                                                                        },
-                                                                        child: const Text(
-                                                                            'Proceed'),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ); */
-                                                                statuslist[
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            setState(() {
+                                                              statuslist[
                                                                         index] =
                                                                     true;
                                                                 loadingCount =
@@ -708,53 +648,104 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                             .ldrId,
                                                                         status:
                                                                             "A");
-                                                              },
-                                                            ),
-                                                            Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .approve,
-                                                              style:
-                                                                  kfontstyle(),
-                                                            )
-                                                          ],
+                                                            });
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              Radio(
+                                                                fillColor: MaterialStateProperty
+                                                                    .resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                  return (statuslist[
+                                                                              index] ==
+                                                                          true)
+                                                                      ? Colors
+                                                                          .green
+                                                                          .shade300
+                                                                      : Colors
+                                                                          .grey;
+                                                                }),
+                                                                /* activeColor: isselected == true
+                                                                                                                                                                      ? const Color(0xff0075ff)
+                                                                                                                                                                      : Colors.grey, */
+                                                                value: statuslist[
+                                                                            index] ==
+                                                                        null
+                                                                    ? false
+                                                                    : statuslist[
+                                                                                index] ==
+                                                                            true
+                                                                        ? true
+                                                                        : false,
+                                                                groupValue: true,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  /*  showCupertinoDialog(
+                                                                    context: context,
+                                                                    builder: (context) =>
+                                                                        CupertinoAlertDialog(
+                                                                      title: const Text(
+                                                                          'Alert'),
+                                                                      content: const Text(
+                                                                          "Do you Want to Approve this product"),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                            setState(
+                                                                                () {});
+                                                                            Navigator.pop(
+                                                                                context);
+                                                                          },
+                                                                          child: const Text(
+                                                                              'Cancel'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed:
+                                                                              () {
+                                                                           
+                                                                          },
+                                                                          child: const Text(
+                                                                              'Proceed'),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ); */
+                                                                  statuslist[
+                                                                          index] =
+                                                                      true;
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _loadprducts[
+                                                                          index] =
+                                                                      LoadTransferPrdModel(
+                                                                          ldrId: details[index]
+                                                                              .ldrId,
+                                                                          status:
+                                                                              "A");
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .approve,
+                                                                style:
+                                                                    kfontstyle(),
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                       Transform.scale(
                                                         scale: 0.8,
-                                                        child: Row(
-                                                          children: [
-                                                            Radio(
-                                                              fillColor: MaterialStateProperty
-                                                                  .resolveWith<
-                                                                      Color>((Set<
-                                                                          MaterialState>
-                                                                      states) {
-                                                                return (statuslist[index] !=
-                                                                            null &&
-                                                                        !statuslist[
-                                                                            index]!)
-                                                                    ? Colors.red
-                                                                        .shade300
-                                                                    : Colors
-                                                                        .grey;
-                                                              }),
-                                                              /*  activeColor: isselected == false
-                                                                                                                                                                    ? const Color(0xff0075ff)
-                                                                                                                                                                    : Colors.grey, */
-                                                              value: statuslist[
-                                                                          index] ==
-                                                                      null
-                                                                  ? true
-                                                                  : statuslist[
-                                                                              index] ==
-                                                                          true
-                                                                      ? true
-                                                                      : false,
-                                                              groupValue: false,
-                                                              onChanged:
-                                                                  (value) {
-                                                                statuslist[
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            setState(() {
+                                                              statuslist[
                                                                         index] =
                                                                     false;
 
@@ -769,16 +760,66 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                             .ldrId,
                                                                         status:
                                                                             "R");
-                                                              },
-                                                            ),
-                                                            Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .reject,
-                                                              style:
-                                                                  kfontstyle(),
-                                                            )
-                                                          ],
+                                                            });
+                                                          },
+                                                          child: Row(
+                                                            children: [
+                                                              Radio(
+                                                                fillColor: MaterialStateProperty
+                                                                    .resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                  return (statuslist[index] !=
+                                                                              null &&
+                                                                          !statuslist[
+                                                                              index]!)
+                                                                      ? Colors.red
+                                                                          .shade300
+                                                                      : Colors
+                                                                          .grey;
+                                                                }),
+                                                                /*  activeColor: isselected == false
+                                                                                                                                                                      ? const Color(0xff0075ff)
+                                                                                                                                                                      : Colors.grey, */
+                                                                value: statuslist[
+                                                                            index] ==
+                                                                        null
+                                                                    ? true
+                                                                    : statuslist[
+                                                                                index] ==
+                                                                            true
+                                                                        ? true
+                                                                        : false,
+                                                                groupValue: false,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  statuslist[
+                                                                          index] =
+                                                                      false;
+                                                          
+                                                                  loadingCount =
+                                                                      0;
+                                                                  setState(() {});
+                                                          
+                                                                  _loadprducts[
+                                                                          index] =
+                                                                      LoadTransferPrdModel(
+                                                                          ldrId: details[index]
+                                                                              .ldrId,
+                                                                          status:
+                                                                              "R");
+                                                                },
+                                                              ),
+                                                              Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .reject,
+                                                                style:
+                                                                    kfontstyle(),
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],

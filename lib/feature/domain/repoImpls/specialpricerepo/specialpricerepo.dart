@@ -10,7 +10,6 @@ import 'package:customer_connect/feature/data/models/special_price_header_model/
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-
 import 'package:http/http.dart' as http;
 
 @LazySingleton(as: ISpecialPriceRepo)

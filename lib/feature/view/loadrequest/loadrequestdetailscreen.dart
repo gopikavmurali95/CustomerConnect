@@ -1268,11 +1268,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                context.read<LoadReqHeaderBloc>().add(
-                                    LoadreqSuccessEvent(
-                                        userId: widget.user.usrId ?? '',
-                                        mode: '',
-                                        searchQuery: ''));
+                                
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },

@@ -627,7 +627,7 @@ class _MaterialRequestDetailScreenState
                                                                             context)
                                                                         .size
                                                                         .width /
-                                                                    2.w,
+                                                                    1.9.w,
                                                                 child: Row(
                                                                   mainAxisAlignment:
                                                                       MainAxisAlignment

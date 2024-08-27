@@ -1702,7 +1702,7 @@ class ApprovalScreen extends StatelessWidget {
                                                   ),
                                                 )
                                               : Text(
-                                                  count.settlementApprovalHead ??
+                                                  count.unschVisit ??
                                                       '0',
                                                   style: kfontstyle(
                                                     fontSize: 11.sp,

@@ -51,14 +51,10 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           mode: 'R'),
     ];
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
-    // context
-    //     .read<LoadReqHeaderBloc>()
-    //     .add(LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+    
     context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
           userId: widget.user.usrId ?? '',
           mode: 'P', searchQuery: '',
-          // mode:'P',
-          // searchQuery:''
         ));
 
     super.initState();
@@ -531,12 +527,13 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
       ),
     );
   }
-}
-
-Future<void> _onRefreshLoadRequestHeaderScreen(
+  Future<void> _onRefreshLoadRequestHeaderScreen(
     BuildContext context, LoginUserModel model) async {
   context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
   context
       .read<LoadReqHeaderBloc>()
-      .add(const LoadreqSuccessEvent(userId: '', mode: '', searchQuery: ''));
+      .add( LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
 }
+
+}
+

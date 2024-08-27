@@ -373,9 +373,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 child: Text(AppLocalizations.of(context)!.uom,
                                     style: boxHeading()),
                               ),
-                              /* SizedBox(
-                                width: 18.w,
-                              ), */
+                              SizedBox(
+                                width: selectedLocale?.languageCode == 'en'?0:18.w,
+                              ),
                               Flexible(
                                 flex: 2,
                                 fit: FlexFit.tight,
@@ -1015,35 +1015,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                               origin:
                                                                   const Offset(
                                                                       -120, 0),
-                                                              child: Row(
-                                                                children: [
-                                                                  Radio(
-                                                                    fillColor: MaterialStateProperty.resolveWith<
-                                                                        Color>((Set<
-                                                                            MaterialState>
-                                                                        states) {
-                                                                      return (statuslist[index] ==
-                                                                              true)
-                                                                          ? Colors
-                                                                              .green
-                                                                              .shade300
-                                                                          : Colors
-                                                                              .grey;
-                                                                    }),
-                                                                    /* activeColor: isselected == true
-                                                                                                             : Colors.grey, */
-                                                                    value: statuslist[index] ==
-                                                                            null
-                                                                        ? false
-                                                                        : statuslist[index] ==
-                                                                                true
-                                                                            ? true
-                                                                            : false,
-                                                                    groupValue:
-                                                                        true,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      statuslist[
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  setState(() {
+                                                                    statuslist[
                                                                               index] =
                                                                           true;
                                                                       loadingCount =
@@ -1062,16 +1037,66 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               index],
                                                                           status:
                                                                               "A");
-                                                                    },
-                                                                  ),
-                                                                  Text(
-                                                                    AppLocalizations.of(
-                                                                            context)!
-                                                                        .approve,
-                                                                    style:
-                                                                        kfontstyle(),
-                                                                  )
-                                                                ],
+                                                                  });
+                                                                },
+                                                                child: Row(
+                                                                  children: [
+                                                                    Radio(
+                                                                      fillColor: MaterialStateProperty.resolveWith<
+                                                                          Color>((Set<
+                                                                              MaterialState>
+                                                                          states) {
+                                                                        return (statuslist[index] ==
+                                                                                true)
+                                                                            ? Colors
+                                                                                .green
+                                                                                .shade300
+                                                                            : Colors
+                                                                                .grey;
+                                                                      }),
+                                                                      /* activeColor: isselected == true
+                                                                                                               : Colors.grey, */
+                                                                      value: statuslist[index] ==
+                                                                              null
+                                                                          ? false
+                                                                          : statuslist[index] ==
+                                                                                  true
+                                                                              ? true
+                                                                              : false,
+                                                                      groupValue:
+                                                                          true,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        statuslist[
+                                                                                index] =
+                                                                            true;
+                                                                        loadingCount =
+                                                                            0;
+                                                                        setState(
+                                                                            () {});
+                                                                
+                                                                        _procechangeapproved[index] = PriceChangePrdModel(
+                                                                            aprvdHprice: pdet[index]
+                                                                                .pcdChangedHPrice,
+                                                                            aprvdLprice: pdet[index]
+                                                                                .pcdChangedLprice,
+                                                                            pcdId: pdet[index]
+                                                                                .pcdId,
+                                                                            reason: selectedresons[
+                                                                                index],
+                                                                            status:
+                                                                                "A");
+                                                                      },
+                                                                    ),
+                                                                    Text(
+                                                                      AppLocalizations.of(
+                                                                              context)!
+                                                                          .approve,
+                                                                      style:
+                                                                          kfontstyle(),
+                                                                    )
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                             Transform.scale(
@@ -1079,66 +1104,92 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                               origin:
                                                                   const Offset(
                                                                       -120, 0),
-                                                              child: Row(
-                                                                children: [
-                                                                  Radio(
-                                                                    fillColor: MaterialStateProperty.resolveWith<
-                                                                        Color>((Set<
-                                                                            MaterialState>
-                                                                        states) {
-                                                                      return (statuslist[index] != null &&
-                                                                              !statuslist[
-                                                                                  index]!)
-                                                                          ? Colors
-                                                                              .red
-                                                                              .shade300
-                                                                          : Colors
-                                                                              .grey;
-                                                                    }),
-                                                                    /*  activeColor: isselected == false
-                                                                                                                                                                                                  ? const Color(0xff0075ff)
-                                                                                                                                                                                                  : Colors.grey, */
-                                                                    value: statuslist[index] ==
-                                                                            null
-                                                                        ? true
-                                                                        : statuslist[index] ==
-                                                                                true
-                                                                            ? true
-                                                                            : false,
-                                                                    groupValue:
-                                                                        false,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      statuslist[
-                                                                              index] =
-                                                                          false;
-
-                                                                      loadingCount =
-                                                                          0;
-                                                                      setState(
-                                                                          () {});
-
-                                                                      _procechangeapproved[index] = PriceChangePrdModel(
-                                                                          aprvdHprice: pdet[index]
-                                                                              .pcdChangedHPrice,
-                                                                          aprvdLprice: pdet[index]
-                                                                              .pcdChangedLprice,
-                                                                          pcdId: pdet[index]
-                                                                              .pcdId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "R");
-                                                                    },
-                                                                  ),
-                                                                  Text(
-                                                                    AppLocalizations.of(
-                                                                            context)!
-                                                                        .reject,
-                                                                    style:
-                                                                        kfontstyle(),
-                                                                  )
-                                                                ],
+                                                              child: InkWell(
+                                                                onTap: (){
+                                                                  setState(() {
+                                                                    statuslist[
+                                                                                index] =
+                                                                            false;
+                                                                
+                                                                        loadingCount =
+                                                                            0;
+                                                                        setState(
+                                                                            () {});
+                                                                
+                                                                        _procechangeapproved[index] = PriceChangePrdModel(
+                                                                            aprvdHprice: pdet[index]
+                                                                                .pcdChangedHPrice,
+                                                                            aprvdLprice: pdet[index]
+                                                                                .pcdChangedLprice,
+                                                                            pcdId: pdet[index]
+                                                                                .pcdId,
+                                                                            reason: selectedresons[
+                                                                                index],
+                                                                            status:
+                                                                                "R");
+                                                                  });
+                                                                },
+                                                                child: Row(
+                                                                  children: [
+                                                                    Radio(
+                                                                      fillColor: MaterialStateProperty.resolveWith<
+                                                                          Color>((Set<
+                                                                              MaterialState>
+                                                                          states) {
+                                                                        return (statuslist[index] != null &&
+                                                                                !statuslist[
+                                                                                    index]!)
+                                                                            ? Colors
+                                                                                .red
+                                                                                .shade300
+                                                                            : Colors
+                                                                                .grey;
+                                                                      }),
+                                                                      /*  activeColor: isselected == false
+                                                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                                                    : Colors.grey, */
+                                                                      value: statuslist[index] ==
+                                                                              null
+                                                                          ? true
+                                                                          : statuslist[index] ==
+                                                                                  true
+                                                                              ? true
+                                                                              : false,
+                                                                      groupValue:
+                                                                          false,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        statuslist[
+                                                                                index] =
+                                                                            false;
+                                                                
+                                                                        loadingCount =
+                                                                            0;
+                                                                        setState(
+                                                                            () {});
+                                                                
+                                                                        _procechangeapproved[index] = PriceChangePrdModel(
+                                                                            aprvdHprice: pdet[index]
+                                                                                .pcdChangedHPrice,
+                                                                            aprvdLprice: pdet[index]
+                                                                                .pcdChangedLprice,
+                                                                            pcdId: pdet[index]
+                                                                                .pcdId,
+                                                                            reason: selectedresons[
+                                                                                index],
+                                                                            status:
+                                                                                "R");
+                                                                      },
+                                                                    ),
+                                                                    Text(
+                                                                      AppLocalizations.of(
+                                                                              context)!
+                                                                          .reject,
+                                                                      style:
+                                                                          kfontstyle(),
+                                                                    )
+                                                                  ],
+                                                                ),
                                                               ),
                                                             )
                                                           ],

@@ -403,7 +403,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                     height: 30.h,
                     width: double.infinity,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

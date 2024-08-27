@@ -463,26 +463,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                       scale:
                                                                           0.8,
                                                                       child:
-                                                                          Row(
-                                                                        children: [
-                                                                          Radio(
-                                                                            fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
-                                                                            }),
-                                                                            /* activeColor: isselected == true
-                                                                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                                                                          : Colors.grey, */
-                                                                            value: statuslist[index] == null
-                                                                                ? false
-                                                                                : statuslist[index] == true
-                                                                                    ? true
-                                                                                    : false,
-                                                                            groupValue:
-                                                                                true,
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              if (_slNoCtrls[index].text.isEmpty) {
+                                                                          InkWell(
+                                                                            onTap: () {
+                                                                              setState(() {
+                                                                                if (_slNoCtrls[index].text.isEmpty) {
                                                                                 showCupertinoDialog(
                                                                                   context: context,
                                                                                   builder: (context) => CupertinoAlertDialog(
@@ -533,41 +517,98 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                   ),
                                                                                 );
                                                                               }
+                                                                              });
                                                                             },
+                                                                            child: Row(
+                                                                                                                                                    children: [
+                                                                            Radio(
+                                                                              fillColor:
+                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                              }),
+                                                                              /* activeColor: isselected == true
+                                                                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                                                                            : Colors.grey, */
+                                                                              value: statuslist[index] == null
+                                                                                  ? false
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue:
+                                                                                  true,
+                                                                              onChanged:
+                                                                                  (value) {
+                                                                                if (_slNoCtrls[index].text.isEmpty) {
+                                                                                  showCupertinoDialog(
+                                                                                    context: context,
+                                                                                    builder: (context) => CupertinoAlertDialog(
+                                                                                      title: Text(AppLocalizations.of(context)!.alert),
+                                                                                      content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            // setState(() {});
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: Text(AppLocalizations.of(context)!.ok),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  );
+                                                                                } else {
+                                                                                  showCupertinoDialog(
+                                                                                    context: context,
+                                                                                    builder: (context) => CupertinoAlertDialog(
+                                                                                      title: Text(AppLocalizations.of(context)!.alert),
+                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            setState(() {});
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                        ),
+                                                                                        TextButton(
+                                                                                          onPressed: () {
+                                                                                            statuslist[index] = true;
+                                                                                            loadingCount = 0;
+                                                                                            setState(() {});
+                                                                                            context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                            context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                                  AssetAddingApproveEvent(
+                                                                                                    approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
+                                                                                                  ),
+                                                                                                );
+                                                                            
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  );
+                                                                                }
+                                                                              },
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.approve,
+                                                                              style:
+                                                                                  kfontstyle(),
+                                                                            )
+                                                                                                                                                    ],
+                                                                                                                                                  ),
                                                                           ),
-                                                                          Text(
-                                                                            AppLocalizations.of(context)!.approve,
-                                                                            style:
-                                                                                kfontstyle(),
-                                                                          )
-                                                                        ],
-                                                                      ),
                                                                     ),
                                                                     Transform
                                                                         .scale(
                                                                       scale:
                                                                           0.8,
                                                                       child:
-                                                                          Row(
-                                                                        children: [
-                                                                          Radio(
-                                                                            fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
-                                                                            }),
-                                                                            /*  activeColor: isselected == false
-                                                                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                                                                          : Colors.grey, */
-                                                                            value: statuslist[index] == null
-                                                                                ? true
-                                                                                : statuslist[index] == true
-                                                                                    ? true
-                                                                                    : false,
-                                                                            groupValue:
-                                                                                false,
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              showCupertinoDialog(
+                                                                          InkWell(
+                                                                            onTap: () {
+                                                                              setState(() {
+                                                                                showCupertinoDialog(
                                                                                 context: context,
                                                                                 builder: (context) => CupertinoAlertDialog(
                                                                                   title: Text(AppLocalizations.of(context)!.alert),
@@ -602,21 +643,78 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                   ],
                                                                                 ),
                                                                               );
-
-                                                                              /* context
-                                                                                                                                                                                            .read<
-                                                                                                                                                                                                AapprovalOrRejectRadioCubit>()
-                                                                                                                                                                                            .changeApprovalStatus(
-                                                                                                                                                                                                statuslist[index]); */
+                                                                              });
                                                                             },
+                                                                            child: Row(
+                                                                                                                                                    children: [
+                                                                            Radio(
+                                                                              fillColor:
+                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                              }),
+                                                                              /*  activeColor: isselected == false
+                                                                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                                                                            : Colors.grey, */
+                                                                              value: statuslist[index] == null
+                                                                                  ? true
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue:
+                                                                                  false,
+                                                                              onChanged:
+                                                                                  (value) {
+                                                                                showCupertinoDialog(
+                                                                                  context: context,
+                                                                                  builder: (context) => CupertinoAlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          setState(() {});
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          statuslist[index] = false;
+                                                                                          loadingCount = 0;
+                                                                                          setState(() {});
+                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                                AssetAddingApproveEvent(
+                                                                                                  approve: AssetAddApprovalInModel(
+                                                                                                    reqId: headers[index].aahId,
+                                                                                                    serialNum: null,
+                                                                                                    userId: widget.user.usrId,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                            
+                                                                                /* context
+                                                                                                                                                                                              .read<
+                                                                                                                                                                                                  AapprovalOrRejectRadioCubit>()
+                                                                                                                                                                                              .changeApprovalStatus(
+                                                                                                                                                                                                  statuslist[index]); */
+                                                                              },
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.reject,
+                                                                              style:
+                                                                                  kfontstyle(),
+                                                                            )
+                                                                                                                                                    ],
+                                                                                                                                                  ),
                                                                           ),
-                                                                          Text(
-                                                                            AppLocalizations.of(context)!.reject,
-                                                                            style:
-                                                                                kfontstyle(),
-                                                                          )
-                                                                        ],
-                                                                      ),
                                                                     )
                                                                   ],
                                                                 );

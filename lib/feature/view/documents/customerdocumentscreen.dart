@@ -68,7 +68,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                       ),
                     )
                   : Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
                         children: [
                           Padding(
