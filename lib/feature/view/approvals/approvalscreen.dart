@@ -71,7 +71,7 @@ class ApprovalScreen extends StatelessWidget {
                       BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
                     builder: (context, state) {
                       return ApprovalDynamicGridWidget(items: [
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -81,7 +81,7 @@ class ApprovalScreen extends StatelessWidget {
                                         )));
                           },
                           child: Container(
-                            // height: 50,
+                           // height: 60,
                             // width: MediaQuery.of(context).size.width / 2,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.white),
@@ -95,65 +95,138 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/pc.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/pc.png",
+                                        height: 15.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) =>
+                                                  count == null
+                                                      ? Text(
+                                                          '0',
+                                                          style: approvalcountStyle()
+                                                        )
+                                                      : Text(
+                                                          count.pendingPriceChangeApproval ??
+                                                              '',
+                                                          style: approvalcountStyle()
+                                                        ),
+                                              getApprovalCountsFailed: () => Text(
+                                                    '0',
+                                                    style: approvalcountStyle()
+                                                  ));
+                                        },
+                                      )
+                                    ],
                                   ),
                                   SizedBox(
-                                    width: 8.w,
+                                        height: 5.w,
+                                      ),
+                                  Text(
+                                    AppLocalizations.of(context)!.price_change,
+                                    style: headTextStyle(),
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .price_change,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  count.pendingPriceChangeApproval ??
-                                                      '',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
-                                              ));
-                                    },
-                                  )
                                 ],
                               ),
                             ),
                           ),
                         ),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //             builder: (context) => PriceChangeHeader(
+                        //                   user: user,
+                        //                 )));
+                        //   },
+                        //   child: Container(
+                        //     // height: 50,
+                        //     // width: MediaQuery.of(context).size.width / 2,
+                        //     decoration: BoxDecoration(
+                        //         border: Border.all(color: Colors.white),
+                        //         borderRadius: BorderRadius.circular(10),
+                        //         color: Colors.white,
+                        //         boxShadow: [
+                        //           BoxShadow(
+                        //               color: Colors.grey.shade300,
+                        //               spreadRadius: 1,
+                        //               blurRadius: 1)
+                        //         ]),
+                        //     child: Padding(
+                        //       padding: const EdgeInsets.symmetric(
+                        //           horizontal: 20, vertical: 15),
+                        //       child: Row(
+                        //         mainAxisAlignment: MainAxisAlignment.start,
+                        //         children: [
+                        //           Padding(
+                        //             padding: const EdgeInsets.only(right: 5),
+                        //             child: Image.asset(
+                        //               "assets/images/pc.png",
+                        //               height: 17.h,
+                        //             ),
+                        //           ),
+                        //           SizedBox(
+                        //             width: 8.w,
+                        //           ),
+                        //           Expanded(
+                        //             child: Text(
+                        //               AppLocalizations.of(context)!
+                        //                   .price_change,
+                        //               style: headTextStyle(),
+                        //             ),
+                        //           ),
+                        //           BlocBuilder<ApprovalCountsBloc,
+                        //               ApprovalCountsState>(
+                        //             builder: (context, state) {
+                        //               return state.when(
+                        //                   getApprovalsCount: (count) => count ==
+                        //                           null
+                        //                       ? Text(
+                        //                           '0',
+                        //                           style: kfontstyle(
+                        //                             fontSize: 11.sp,
+                        //                             fontWeight: FontWeight.w500,
+                        //                             color: Colors.black87,
+                        //                           ),
+                        //                         )
+                        //                       : Text(
+                        //                           count.pendingPriceChangeApproval ??
+                        //                               '',
+                        //                           style: kfontstyle(
+                        //                             fontSize: 11.sp,
+                        //                             fontWeight: FontWeight.w500,
+                        //                             color: Colors.black87,
+                        //                           ),
+                        //                         ),
+                        //                   getApprovalCountsFailed: () => Text(
+                        //                         '0',
+                        //                         style: kfontstyle(
+                        //                           fontSize: 11.sp,
+                        //                           fontWeight: FontWeight.w500,
+                        //                           color: Colors.black87,
+                        //                         ),
+                        //                       ));
+                        //             },
+                        //           )
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -180,30 +253,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 8),
-                                    child: Image.asset(
-                                      "assets/images/pd.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/pd.png",
+                                        height: 17.h,
+                                      ),
+                                      SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .partial_delivery,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
-                                  BlocBuilder<ApprovalCountsBloc,
+                                       BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -211,31 +275,33 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingPartialDeliveryHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                    SizedBox(
+                                    height: 5.w,
+                                  ),
+
+                              
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .partial_delivery,
+                                    style: headTextStyle(),
+                                  ),
+
+                                 
                                 ],
                               ),
                             ),
@@ -268,30 +334,19 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/sr.png",
-                                      height: 17.5.h,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .scheduled_return,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 5.w,
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/sr.png",
+                                        height: 17.5.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
@@ -301,30 +356,32 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.pendingReturnRequestSc!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                   SizedBox(
+                                    height: 5.w,
+                                  ),
+                                  Text(
+                                    maxLines: 2,
+                                    AppLocalizations.of(context)!
+                                        .scheduled_return,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                 
+                                  
                                 ],
                               ),
                             ),
@@ -356,29 +413,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/rtn.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/rtn.png",
+                                        height: 17.h,
+                                      ),
+                                      SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!.ret_urn,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
-                                  BlocBuilder<ApprovalCountsBloc,
+                                       BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -386,30 +435,29 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.pendingReturnHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(height: 5.w,),
+                                  Text(
+                                    maxLines: 2,
+                                    AppLocalizations.of(context)!.ret_urn,
+                                    style: headTextStyle(),
+                                  ),
+
+                                 
                                 ],
                               ),
                             ),
@@ -440,29 +488,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/dr.png",
-                                      height: 17.h,
-                                    ),
-                                  ),
-                                  SizedBox(
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/dr.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
                                     width: 8.w,
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .dispute_request,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -470,31 +510,30 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingDisputeNoteReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    maxLines: 2,
+                                    AppLocalizations.of(context)!
+                                        .dispute_request,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -526,28 +565,20 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/cr.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/cr.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!.credit_memo,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
@@ -556,32 +587,30 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingCreditNoteReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style:approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
-                                ],
+
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!.credit_memo,
+                                    style: headTextStyle(),
+                                  ),
+
+                                                                  ],
                               ),
                             ),
                           ),
@@ -613,26 +642,19 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/aa.png",
-                                      height: 17.2.h,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!.add_assets,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/aa.png",
+                                        height: 17.2.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
@@ -642,31 +664,28 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingAssetAddReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!.add_assets,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                  
                                 ],
                               ),
                             ),
@@ -699,31 +718,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/ar2.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/ar2.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .remove_assets,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -731,31 +740,31 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style:approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingAssetRemovalReqHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style:approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .remove_assets,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+
+                                 
                                 ],
                               ),
                             ),
@@ -792,26 +801,19 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/vv.png",
-                                      height: 17.2.h,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .truck_to_truck,
-                                      style: headTextStyle(),
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/vv.png",
+                                        height: 17.2.h,
+                                      ),
+                                      SizedBox(
+                                    width: 10.w,
                                   ),
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
@@ -821,30 +823,27 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style:approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.pendingVanToVanHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .truck_to_truck,
+                                    style: headTextStyle(),
+                                  ),
+                                  
                                 ],
                               ),
                             ),
@@ -877,29 +876,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/lt.png",
-                                      height: 15.5.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/lt.png",
+                                        height: 15.5.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .load_transfer,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -907,30 +898,28 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.pendingLodTransRequest!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .load_transfer,
+                                    style: headTextStyle(),
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -962,27 +951,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/jp.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/jp.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!.journeyPlan,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -990,31 +973,27 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingJurneyPlanSeqApprvl!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!.journeyPlan,
+                                    style: headTextStyle(),
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -1052,31 +1031,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/fs.png",
-                                      height: 18.3.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/fs.png",
+                                        height: 18.3.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      AppLocalizations.of(context)!
-                                          .fieldServiceInvoice,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -1084,31 +1053,32 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingInvoiceApprovalHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.w,),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    AppLocalizations.of(context)!
+                                        .fieldServiceInvoice,
+                                    style: headTextStyle(),
+                                  ),
+
+                                 
                                 ],
                               ),
                             ),
@@ -1141,26 +1111,19 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/mr.png",
-                                      height: 17.h,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .materialRequest,
-                                      style: headTextStyle(),
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/mr.png",
+                                        height: 17.h,
+                                      ),
+                                      SizedBox(
+                                    width: 10.w,
                                   ),
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
@@ -1170,31 +1133,28 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingMaterialReqApproval!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style:approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.w,),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .materialRequest,
+                                    style: headTextStyle(),
+                                  ),
+                                  
                                 ],
                               ),
                             ),
@@ -1229,29 +1189,20 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/lr.png",
-                                      height: 18.3.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/lr.png",
+                                        height: 18.3.h,
+                                      ),
+                                      SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      AppLocalizations.of(context)!.loadRequest,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
@@ -1260,31 +1211,30 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count
                                                       .pendingLoadRequestHeader!,
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(height: 5.w,),
+                                  Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    AppLocalizations.of(context)!.loadRequest,
+                                    style: headTextStyle(),
+                                  ),
+
+                                  
                                 ],
                               ),
                             ),
@@ -1317,29 +1267,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/incre@2x.png",
-                                      height: 17.h,
-                                    ),
-                                  ),
-                                  SizedBox(
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/incre@2x.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
                                     width: 8.w,
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .inventoryReconfirmation,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -1347,31 +1289,30 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.inventoryReconfirm ??
                                                       '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style:approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                 SizedBox(height: 5.h,),
+                                  Text(
+                                    maxLines: 2,
+                                    AppLocalizations.of(context)!
+                                        .inventoryReconfirmation,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -1404,28 +1345,19 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/vta@2x.png",
-                                      height: 17.h,
-                                    ),
-                                  ),
-                                  SizedBox(
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/vta@2x.png",
+                                        height: 17.h,
+                                      ),
+                                      SizedBox(
                                     width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      AppLocalizations.of(context)!
-                                          .voidTransaction,
-                                      //"Inventory Recon",
-                                      style: headTextStyle(),
-                                    ),
                                   ),
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
@@ -1435,31 +1367,31 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.voidTransactionHead ??
                                                       '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.h,),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    AppLocalizations.of(context)!
+                                        .voidTransaction,
+                                    //"Inventory Recon",
+                                    style: headTextStyle(),
+                                  ),
+                                  
                                 ],
                               ),
                             ),
@@ -1491,29 +1423,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/msa@2x.png",
-                                      height: 17.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/msa@2x.png",
+                                        height: 17.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      AppLocalizations.of(context)!
-                                          .msutSellApproval,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -1521,30 +1445,29 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.mustSellHead ?? '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                 SizedBox(height: 5.h,),
+                                  Text(
+                                    maxLines: 2,
+                                    AppLocalizations.of(context)!
+                                        .msutSellApproval,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: headTextStyle(),
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -1577,30 +1500,20 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/sev@2x.png",
-                                      height: 18.3.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/sev@2x.png",
+                                        height: 18.3.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      AppLocalizations.of(context)!
-                                          .settlementApproval,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
@@ -1609,31 +1522,32 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
                                                   count.settlementApprovalHead ??
                                                       '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.h,),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    AppLocalizations.of(context)!
+                                        .settlementApproval,
+                                    style: headTextStyle(),
+                                  ),
+
+                                  
                                 ],
                               ),
                             ),
@@ -1663,31 +1577,21 @@ class ApprovalScreen extends StatelessWidget {
                                 ]),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Image.asset(
-                                      "assets/images/sev@2x.png",
-                                      height: 18.3.h,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/sev@2x.png",
+                                        height: 18.3.h,
+                                      ),
+                                       SizedBox(
+                                    width: 10.w,
                                   ),
-                                  // fit: BoxFit.scaleDown,),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      AppLocalizations.of(context)!
-                                          .unscheduledVisit ,
-                                      style: headTextStyle(),
-                                    ),
-                                  ),
-
-                                  BlocBuilder<ApprovalCountsBloc,
+                                   BlocBuilder<ApprovalCountsBloc,
                                       ApprovalCountsState>(
                                     builder: (context, state) {
                                       return state.when(
@@ -1695,31 +1599,31 @@ class ApprovalScreen extends StatelessWidget {
                                                   null
                                               ? Text(
                                                   '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  style: approvalcountStyle()
                                                 )
                                               : Text(
-                                                  count.unschVisit ??
-                                                      '0',
-                                                  style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.black87,
-                                                  ),
+                                                  count.unschVisit ?? '0',
+                                                  style: approvalcountStyle()
                                                 ),
                                           getApprovalCountsFailed: () => Text(
                                                 '0',
-                                                style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black87,
-                                                ),
+                                                style: approvalcountStyle()
                                               ));
                                     },
                                   )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                 SizedBox(height: 5.h,),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    AppLocalizations.of(context)!
+                                        .unscheduledVisit,
+                                    style: headTextStyle(),
+                                  ),
+
+                                 
                                 ],
                               ),
                             ),

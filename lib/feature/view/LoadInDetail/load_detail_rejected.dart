@@ -208,8 +208,14 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                     Row(
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 0),
+                                          padding:EdgeInsets.only( right:
+                                          selectedLocale?.languageCode == "en"
+                                              ? 10
+                                              : 0,
+                                              left: selectedLocale?.languageCode=='en'? 15: 0),
+                                         
+                                          //selectedLocale == 'en'? const EdgeInsets.only(left:15): const EdgeInsets.only(right: 10),
+                                              //const EdgeInsets.only(left: 10,right: 0),
                                           child: Text(
                                             AppLocalizations.of(context)!
                                                 .sysQty,
@@ -217,16 +223,16 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: 30.h,
+                                          width: 5.h,
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 0),
-                                          child: Text(
-                                            AppLocalizations.of(context)!.liQty,
-                                            style: boxHeading(),
-                                          ),
-                                        ),
+                                        // Padding(
+                                        //   padding:
+                                        //       const EdgeInsets.only(left: 0),
+                                        //   child: Text(
+                                        //     AppLocalizations.of(context)!.liQty,
+                                        //     style: boxHeading(),
+                                        //   ),
+                                        // ),
                                       ],
                                     )
                                   ],
@@ -279,102 +285,60 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                               ],
                                             ),
                                           ),
-                                          Column(
-                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            // crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Visibility(
-                                                visible:
-                                                    detail[index].liHigherUom ==
-                                                                null ||
-                                                            detail[index]
-                                                                .liHigherUom!
-                                                                .isEmpty
-                                                        ? false
-                                                        : true,
-                                                child: Text(
-                                                  detail[index].liHigherUom ??
-                                                      "",
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              Visibility(
-                                                visible:
-                                                    detail[index].liLowerUom ==
-                                                                null ||
-                                                            detail[index]
-                                                                .liLowerUom!
-                                                                .isEmpty
-                                                        ? false
-                                                        : true,
-                                                child: Text(
-                                                  detail[index].liLowerUom ??
-                                                      "",
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                detail[index].higherQty ?? '',
-                                                style: subTitleTextStyle(),
-                                              ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              Text(
-                                                detail[index].lowerQty ?? "",
-                                                style: subTitleTextStyle(),
-                                              ),
-                                            ],
-                                          ),
+                                          // Column(
+                                          //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          //   // crossAxisAlignment: CrossAxisAlignment.start,
+                                          //   children: [
+                                          //      Text(detail[index].liHigherUom!.isEmpty || detail[index].liHigherUom == null ? 
+                                          //       "-": detail[index].liHigherUom?? "",style:subTitleTextStyle() ,),
+                                              
+                                          //     const SizedBox(
+                                          //       height: 5,
+                                          //     ),
+                                          //      Text(detail[index].liLowerUom!.isEmpty || detail[index].liLowerUom == null ? 
+                                          //       "-": detail[index].liLowerUom?? "",style:subTitleTextStyle() ,),
+                                              
+                                          //   ],
+                                          // ),
+                                          // Column(
+                                          //   mainAxisAlignment:
+                                          //       MainAxisAlignment.start,
+                                          //   children: [
+                                          //       Text(detail[index].higherQty== "0" || detail[index].higherQty == null ? 
+                                          //       "0": detail[index].higherQty?? "",style:subTitleTextStyle() ,),
+                                          //     // Text(
+                                          //     //   detail[index].higherQty ?? '',
+                                          //     //   style: subTitleTextStyle(),
+                                          //     // ),
+                                          //     const SizedBox(
+                                          //       height: 5,
+                                          //     ),
+                                          //       Text(detail[index].lowerQty== "0" || detail[index].lowerQty== null ? 
+                                          //       "0": detail[index].lowerQty?? "",style:subTitleTextStyle() ,),
+                                          //     // Text(
+                                          //     //   detail[index].lowerQty ?? "",
+                                          //     //   style: subTitleTextStyle(),
+                                          //     // ),
+                                          //   ],
+                                          // ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 10.0),
+                                                left: 50.0,),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Visibility(
-                                                  visible:
-                                                      detail[index].higherUom ==
-                                                                  null ||
-                                                              detail[index]
-                                                                  .higherUom!
-                                                                  .isEmpty
-                                                          ? false
-                                                          : true,
-                                                  child: Text(
-                                                    detail[index].higherUom ??
-                                                        "",
-                                                    style: subTitleTextStyle(),
-                                                  ),
-                                                ),
+                                                  Text(detail[index].higherUom!.isEmpty || detail[index].higherUom== null ? 
+                                                "-": detail[index].higherUom?? "",style:subTitleTextStyle() ,),
+                                                // Visibility(
+                                               
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                Visibility(
-                                                  visible:
-                                                      detail[index].lowerUom ==
-                                                                  null ||
-                                                              detail[index]
-                                                                  .lowerUom!
-                                                                  .isEmpty
-                                                          ? false
-                                                          : true,
-                                                  child: Text(
-                                                    detail[index].lowerUom ??
-                                                        '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
-                                                ),
+                                                  Text(detail[index].lowerUom!.isEmpty || detail[index].lowerUom == null ? 
+                                                "-": detail[index].lowerUom?? "",style:subTitleTextStyle() ,),
+                                              
+                                                // ),
                                               ],
                                             ),
                                           ),
@@ -385,17 +349,21 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  detail[index].higherQty ?? "",
-                                                  style: subTitleTextStyle(),
-                                                ),
+                                                  Text(detail[index].higherQty== "0" || detail[index].higherQty== null ? 
+                                                "0": detail[index].higherQty?? "",style:subTitleTextStyle() ,),
+                                                // Text(
+                                                //   detail[index].higherQty ?? "",
+                                                //   style: subTitleTextStyle(),
+                                                // ),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                Text(
-                                                  detail[index].lowerQty ?? "",
-                                                  style: subTitleTextStyle(),
-                                                ),
+                                                  Text(detail[index].lowerQty== "0" || detail[index].lowerQty == null ? 
+                                                "0": detail[index].lowerQty?? "",style:subTitleTextStyle() ,),
+                                                // Text(
+                                                //   detail[index].lowerQty ?? "",
+                                                //   style: subTitleTextStyle(),
+                                                // ),
                                               ],
                                             ),
                                           ),
