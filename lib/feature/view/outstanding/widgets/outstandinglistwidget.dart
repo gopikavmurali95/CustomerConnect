@@ -18,7 +18,8 @@ class OutstandingListWidget extends StatelessWidget {
           BlocBuilder<OutStandingPaginationCubit, OutStandingPaginationState>(
         builder: (context, state) {
           return state.when(
-            getOutStandingHeadersPageState: (headers) => headers == null
+            getOutStandingHeadersPageState: (headers, isLoading) => headers ==
+                    null
                 ? ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -33,139 +34,183 @@ class OutstandingListWidget extends StatelessWidget {
                           style: kfontstyle(),
                         ),
                       )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: const Color(0xffDB95B5),
-                                      child: Image.asset(
-                                        'assets/images/ar_li.png',
-                                        height: 20.h,
-                                        width: 20.w,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                    : Column(
+                        children: [
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) => Column(
+                                    children: [
+                                      Row(
                                         children: [
-                                          Text(
-                                            headers[index].invoiceID ?? '',
-                                            style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff2C6B9E),
-                                              fontWeight: FontWeight.w600,
+                                          CircleAvatar(
+                                            radius: 20,
+                                            backgroundColor:
+                                                const Color(0xffDB95B5),
+                                            child: Image.asset(
+                                              'assets/images/ar_li.png',
+                                              height: 20.h,
+                                              width: 20.w,
                                             ),
                                           ),
-                                          Row(
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  headers[index].invoiceID ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff2C6B9E),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      '${headers[index].cusCode} - ',
+                                                      style: kfontstyle(
+                                                        fontSize: 11.sp,
+                                                        color: const Color(
+                                                            0xff2C6B9E),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                "en"
+                                                            ? headers[index]
+                                                                    .cusName ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .cusArName ??
+                                                                '',
+                                                        // headers[index].cusName ?? '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      '${headers[index].cshCode} - ',
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                "en"
+                                                            ? headers[index]
+                                                                    .cshName ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .cshArName ??
+                                                                '',
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: kfontstyle(
+                                                            fontSize: 11.sp),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Text(
+                                                  '${headers[index].invPayType} | ${headers[index].rotName} |  ${headers[index].createdDate}',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                                Text(
+                                                  headers[index]
+                                                          .invoiceAmount ??
+                                                      '',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Column(
                                             children: [
                                               Text(
-                                                '${headers[index].cusCode} - ',
+                                                headers[index].invoiceBalance ??
+                                                    '',
                                                 style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  color:
-                                                      const Color(0xff2C6B9E),
-                                                ),
+                                                    fontSize: 12.sp,
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ),
-                                              Expanded(
-                                                child: Text(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                      selectedLocale?.languageCode == "en" ? headers[index].cusName ?? '' : headers[index].cusArName ?? '',
-                                                 // headers[index].cusName ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 12.sp,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                              SizedBox(
+                                                height: 5.h,
                                               ),
+                                              Container(
+                                                height: 14.h,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                    color: /*  index % 2 == 0
+                                                  ? const Color(0xffe3f7e2)
+                                                  : */
+                                                        const Color(0xfff7f4e2),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                child: Center(
+                                                  child: Text(
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? headers[index]
+                                                                .status ??
+                                                            ''
+                                                        : headers[index]
+                                                                .arStatus ??
+                                                            '',
+                                                    // headers[index].status ?? '',
+                                                    style: kfontstyle(
+                                                        fontSize: 10.sp,
+                                                        color: const Color(
+                                                            0xff413434)),
+                                                  ),
+                                                ),
+                                              )
                                             ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '${headers[index].cshCode} - ',
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  selectedLocale?.languageCode == "en" ? headers[index].cshName ?? '' : headers[index].cshArName ?? '',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            '${headers[index].invPayType} | ${headers[index].rotName} |  ${headers[index].createdDate}',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: Colors.grey),
-                                          ),
-                                          Text(
-                                            headers[index].invoiceAmount ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: Colors.grey),
-                                          ),
+                                          )
                                         ],
                                       ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          headers[index].invoiceBalance ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        Container(
-                                          height: 14.h,
-                                          width: 50.w,
-                                          decoration: BoxDecoration(
-                                              color: /*  index % 2 == 0
-                                              ? const Color(0xffe3f7e2)
-                                              : */
-                                                  const Color(0xfff7f4e2),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: Center(
-                                            child: Text(
-                                              selectedLocale?.languageCode == "en" ? headers[index].status ?? '' : headers[index].arStatus ?? '',
-                                              // headers[index].status ?? '',
-                                              style: kfontstyle(
-                                                  fontSize: 10.sp,
-                                                  color:
-                                                      const Color(0xff413434)),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Divider(
-                                  color: Colors.grey[300],
-                                ),
-                              ],
-                            ),
-                        itemCount: headers.length),
+                                      Divider(
+                                        color: Colors.grey[300],
+                                      ),
+                                    ],
+                                  ),
+                              itemCount: headers.length),
+                          isLoading == true
+                              ? const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [CircularProgressIndicator()],
+                                )
+                              : const SizedBox(
+                                  height: 10,
+                                )
+                        ],
+                      ),
           );
         },
       ),
