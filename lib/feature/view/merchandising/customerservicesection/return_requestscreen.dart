@@ -38,20 +38,20 @@ class _CreditNoteHeaderScreenState
     _selectedReturnReqMode = 'AL';
     _merchReturnReqSearch.clear();
     filterReturnReqReq = [
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
           mode: 'AL'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
-              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+              selectedLocale?.languageCode == 'en' ? "Approved" : "مصدق عليه",
           mode: 'AP'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
           mode: 'RQ'),
     ];
-    
+
     context
         .read<MerchReturnRequestBloc>()
         .add(const ClearMerchReturnRequestData());
@@ -248,8 +248,9 @@ class _CreditNoteHeaderScreenState
                                     itemCount: 10),
                               )
                             : returnData.isEmpty
-                                ?  Center(
-                                    child: Text(AppLocalizations.of(context)!.noDataAvailable),
+                                ? Center(
+                                    child: Text(AppLocalizations.of(context)!
+                                        .noDataAvailable),
                                   )
                                 : Column(
                                     children: [
@@ -262,11 +263,17 @@ class _CreditNoteHeaderScreenState
                                           children: [
                                             Text(
                                               _selectedReturnReqMode == 'AL'
-                                                  ? AppLocalizations.of(context)!.allRequests
+                                                  ? AppLocalizations.of(
+                                                          context)!
+                                                      .allRequests
                                                   : _selectedReturnReqMode ==
                                                           'AP'
-                                                      ? AppLocalizations.of(context)!.approvedRequests
-                                                      : AppLocalizations.of(context)!.requestedRequest,
+                                                      ? AppLocalizations.of(
+                                                              context)!
+                                                          .approvedRequests
+                                                      : AppLocalizations.of(
+                                                              context)!
+                                                          .requestedRequest,
                                               style: countHeading(),
                                             ),
                                             Text(
@@ -339,8 +346,8 @@ class _CreditNoteHeaderScreenState
                                                                             Expanded(
                                                                               child: Text(
                                                                                 overflow: TextOverflow.ellipsis,
-                                                                                selectedLocale?.languageCode == "en" ? returnData[index].cusName ?? '' : returnData[index].arcusName?? '',
-                                                                               // returnData[index].cusName ?? '',
+                                                                                selectedLocale?.languageCode == "en" ? returnData[index].cusName ?? '' : returnData[index].arcusName ?? '',
+                                                                                // returnData[index].cusName ?? '',
                                                                                 style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                               ),
                                                                             ),
@@ -359,8 +366,9 @@ class _CreditNoteHeaderScreenState
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: returnData[index].status == "Requested"
-                                                                             // AppLocalizations.of(context)!.requested
+                                                                      color: returnData[index].status ==
+                                                                              "Requested"
+                                                                          // AppLocalizations.of(context)!.requested
                                                                           ? const Color(
                                                                               0xfff7f4e2)
                                                                           : const Color(
@@ -381,7 +389,11 @@ class _CreditNoteHeaderScreenState
                                                                               5),
                                                                       child:
                                                                           Text(
-                                                                            selectedLocale?.languageCode == "en" ? returnData[index].status ?? '' : returnData[index].arStatus?? '',
+                                                                        selectedLocale?.languageCode == "en"
+                                                                            ? returnData[index].status ??
+                                                                                ''
+                                                                            : returnData[index].arStatus ??
+                                                                                '',
                                                                         // returnData[index].status ??
                                                                         //     '',
                                                                         style: kfontstyle(
@@ -407,8 +419,10 @@ class _CreditNoteHeaderScreenState
                                       ),
                                     ],
                                   ),
-                    merchReturnRequestDataFailed: () =>  Center(
-                          child: Text(AppLocalizations.of(context)!.noDataAvailable,),
+                    merchReturnRequestDataFailed: () => Center(
+                          child: Text(
+                            AppLocalizations.of(context)!.noDataAvailable,
+                          ),
                         ));
               },
             ),

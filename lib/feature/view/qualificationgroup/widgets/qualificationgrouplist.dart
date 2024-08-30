@@ -67,11 +67,12 @@ class QualificationGroupList extends StatelessWidget {
                                     style: loadTextStyle(),
                                   ),
                                   Text(
-                                    selectedLocale?.languageCode == "en" ? groupdata[index].prdName?? '' : groupdata[index].arprdName ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? groupdata[index].prdName ?? ''
+                                        : groupdata[index].arprdName ?? '',
                                     //groupdata[index].prdName ?? '',
                                     style: subTitleTextStyle(),
                                   ),
-                                  
                                   const Divider()
                                 ],
                               );

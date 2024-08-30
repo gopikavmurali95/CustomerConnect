@@ -60,7 +60,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   radius: 14.sp,
                 ),
                 title: Text(
-                  "${selectedLocale?.languageCode == 'en'?user.firstName:user.arfirstName} ${selectedLocale?.languageCode == 'en'?user.lastName:user.arlastName}",
+                  "${selectedLocale?.languageCode == 'en' ? user.firstName : user.arfirstName} ${selectedLocale?.languageCode == 'en' ? user.lastName : user.arlastName}",
                   style: kfontstyle(
                     fontSize: 11.sp,
                     color: Colors.black87,
@@ -81,9 +81,9 @@ class HomePopUPMenuButton extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
-                    Icons.close,
-                    size: 12.sp,
+                  SvgPicture.asset(
+                    "assets/svg/about.svg",
+                    height: 10.h,
                   ),
                   SizedBox(
                     width: 10.w,
@@ -167,10 +167,10 @@ class HomePopUPMenuButton extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.close,
-                      size: 12.sp,
-                    ),
+                    SvgPicture.asset(
+                    "assets/svg/lang.svg",
+                    height: 10.h,
+                  ),
                     SizedBox(
                       width: 10.w,
                     ),
@@ -193,7 +193,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
-                      title:  Text(AppLocalizations.of(context)!.alert),
+                      title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
                         AppLocalizations.of(context)!.doYouWantToLogout,
                         style: kfontstyle(),
@@ -203,7 +203,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                           onPressed: () async {
                             Navigator.pop(context);
                           },
-                          child:  Text(AppLocalizations.of(context)!.cancel),
+                          child: Text(AppLocalizations.of(context)!.cancel),
                         ),
                         TextButton(
                           onPressed: () async {
@@ -221,7 +221,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                                   (route) => false);
                             });
                           },
-                          child:  Text(AppLocalizations.of(context)!.proceed),
+                          child: Text(AppLocalizations.of(context)!.proceed),
                         ),
                       ],
                     ),
@@ -229,10 +229,10 @@ class HomePopUPMenuButton extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.close,
-                      size: 12.sp,
-                    ),
+                    SvgPicture.asset(
+                    "assets/svg/logout.svg",
+                    height: 10.h,
+                  ),
                     SizedBox(
                       width: 10.w,
                     ),

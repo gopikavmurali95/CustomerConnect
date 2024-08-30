@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -19,7 +20,7 @@ class MerchandiseTaskRepo implements IMerchandiseTaskHeaderRepo {
           Uri.parse(approvalBaseUrl + merchandiseTaskHeaderUrl),
           body: taskdetails.toJson());
       //log("FromDate: ${taskdetails.fromDate}, ToDate: ${taskdetails.toDate}, Status: ${taskdetails.status}");
-      //log(' Task Header  Response: ${response.body}');
+      log(' Task Header  Response: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 

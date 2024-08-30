@@ -12,6 +12,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
+
 @LazySingleton(as: IPromotionHeaderRepo)
 class PromotionHeaderRepo implements IPromotionHeaderRepo {
   @override

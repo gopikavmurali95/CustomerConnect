@@ -97,7 +97,9 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                     children: [
                                       Text(
                                         overflow: TextOverflow.ellipsis,
-                                        selectedLocale?.languageCode == 'en'?widget.header.prdName ?? '':widget.header.prdArName??'',
+                                        selectedLocale?.languageCode == 'en'
+                                            ? widget.header.prdName ?? ''
+                                            : widget.header.prdArName ?? '',
                                         style: kfontstyle(
                                             fontSize: 10.sp,
                                             color: const Color.fromARGB(
@@ -306,8 +308,11 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                                                       Text(
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        selectedLocale?.languageCode == 'en'?details[index].cusName ??
-                                                                            '':details[index].cusArName??'',
+                                                                        selectedLocale?.languageCode == 'en'
+                                                                            ? details[index].cusName ??
+                                                                                ''
+                                                                            : details[index].cusArName ??
+                                                                                '',
                                                                         style: kfontstyle(
                                                                             fontSize: 10
                                                                                 .sp,

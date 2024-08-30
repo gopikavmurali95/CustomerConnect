@@ -58,7 +58,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: Transform.flip(
-           // flipX: selectedLocale?.languageCode == "en" ? true : false,
+          // flipX: selectedLocale?.languageCode == "en" ? true : false,
           child: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -303,7 +303,15 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                   SizedBox(
                                                     width: 200.w,
                                                     child: Text(
-                                                      selectedLocale?.languageCode == "en" ? promoheader[index].prmName ?? '' : promoheader[index].arPrmName ?? '',
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? promoheader[index]
+                                                                  .prmName ??
+                                                              ''
+                                                          : promoheader[index]
+                                                                  .arPrmName ??
+                                                              '',
                                                       //'${promoheader[index].arPname}',
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -316,7 +324,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     style: subTextStyle(),
                                                   ),
                                                   Text(
-                                                    '${selectedLocale?.languageCode == "en" ? promoheader[index].pName ?? '' : promoheader[index].arPname?? ''}| ${promoheader[index].pCode}',
+                                                    '${selectedLocale?.languageCode == "en" ? promoheader[index].pName ?? '' : promoheader[index].arPname ?? ''}| ${promoheader[index].pCode}',
                                                     style: subTextStyle(),
                                                   )
                                                 ],
@@ -364,7 +372,11 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     width: 5.w,
                                                   ),
                                                   Transform.flip(
-                                                     flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                                    flipX: selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? false
+                                                        : true,
                                                     child: const Icon(
                                                       Icons
                                                           .keyboard_arrow_right,

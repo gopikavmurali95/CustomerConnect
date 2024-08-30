@@ -38,16 +38,16 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedDisputeNoteMode = 'AL';
     _merchDisputeNoteSearch.clear();
-    filterDisputeNoteReq= [
-       MerchandisingStatusFilterModel(
+    filterDisputeNoteReq = [
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
           mode: 'AL'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
-              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+              selectedLocale?.languageCode == 'en' ? "Approved" : "مصدق عليه",
           mode: 'AP'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
           mode: 'RQ'),
@@ -81,7 +81,7 @@ class _CreditNoteHeaderScreenState
             ),
           ),
           title: Text(
-           AppLocalizations.of(context)!.disputeNoteRequest,
+            AppLocalizations.of(context)!.disputeNoteRequest,
             style: appHeading(),
           ),
         ),
@@ -243,7 +243,8 @@ class _CreditNoteHeaderScreenState
                           )
                         : dispute.isEmpty
                             ? Center(
-                                child: Text(AppLocalizations.of(context)!.noDataAvailable),
+                                child: Text(AppLocalizations.of(context)!
+                                    .noDataAvailable),
                               )
                             : Column(
                                 children: [
@@ -256,10 +257,15 @@ class _CreditNoteHeaderScreenState
                                       children: [
                                         Text(
                                           _selectedDisputeNoteMode == 'AL'
-                                              ? AppLocalizations.of(context)!.allRequests
+                                              ? AppLocalizations.of(context)!
+                                                  .allRequests
                                               : _selectedDisputeNoteMode == 'AP'
-                                                  ? AppLocalizations.of(context)!.approvedRequests
-                                                  : AppLocalizations.of(context)!.requestedRequest,
+                                                  ? AppLocalizations.of(
+                                                          context)!
+                                                      .approvedRequests
+                                                  : AppLocalizations.of(
+                                                          context)!
+                                                      .requestedRequest,
                                           style: countHeading(),
                                         ),
                                         Text(
@@ -333,7 +339,7 @@ class _CreditNoteHeaderScreenState
                                                                             child:
                                                                                 Text(
                                                                               overflow: TextOverflow.ellipsis,
-                                                                              selectedLocale?.languageCode == 'en'?dispute[index].cusName ?? '':dispute[index].arcusName??'',
+                                                                              selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '',
                                                                               style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                             ),
                                                                           ),
@@ -353,8 +359,9 @@ class _CreditNoteHeaderScreenState
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: dispute[index].status == "Requested"
-                                                                          //  AppLocalizations.of(context)!.requested
+                                                                    color: dispute[index].status ==
+                                                                            "Requested"
+                                                                        //  AppLocalizations.of(context)!.requested
                                                                         ? const Color(
                                                                             0xfff7f4e2)
                                                                         : const Color(
@@ -374,9 +381,11 @@ class _CreditNoteHeaderScreenState
                                                                         vertical:
                                                                             5),
                                                                     child: Text(
-                                                                      selectedLocale?.languageCode == 'en'?dispute[index]
-                                                                              .status ??
-                                                                          '':dispute[index].arstatus??'',
+                                                                      selectedLocale?.languageCode == 'en'
+                                                                          ? dispute[index].status ??
+                                                                              ''
+                                                                          : dispute[index].arstatus ??
+                                                                              '',
                                                                       style: kfontstyle(
                                                                           fontSize: 10
                                                                               .sp,
@@ -401,8 +410,9 @@ class _CreditNoteHeaderScreenState
                                   ),
                                 ],
                               ),
-                    merchDisputeNoteDataFailed: () =>  Center(
-                          child: Text(AppLocalizations.of(context)!.noDataAvailable),
+                    merchDisputeNoteDataFailed: () => Center(
+                          child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable),
                         ));
               },
             ),

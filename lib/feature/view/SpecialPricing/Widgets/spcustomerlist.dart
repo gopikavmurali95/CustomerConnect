@@ -65,27 +65,13 @@ class SPCustomerList extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    //' -${customer[index].cusName}',
-                                   " - ${selectedLocale?.languageCode == "en" ? customer[index].cusName ?? '' : customer[index].arcusName ?? ''}",
+                                      //' -${customer[index].cusName}',
+                                      " - ${selectedLocale?.languageCode == "en" ? customer[index].cusName ?? '' : customer[index].arcusName ?? ''}",
                                       overflow: TextOverflow.ellipsis,
                                       style: subTitleTextStyle()),
                                 )
                               ],
                             ),
-                            /*  subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 250.w,
-                                  child: Text(
-                                    '${customer[index].cusCode} - ${customer[index].cusName}',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: subTitleTextStyle(),
-                                  ),
-                                ),
-
-                              ],
-                            ), */
                             const Divider()
                           ],
                         );

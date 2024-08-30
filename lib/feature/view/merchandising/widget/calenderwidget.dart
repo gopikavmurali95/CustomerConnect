@@ -8,9 +8,12 @@ import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_surve
 import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
+import 'package:customer_connect/main.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
- import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -146,12 +149,20 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      AppLocalizations.of(context)!.from,
-                      style: kfontstyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
+                    Padding(
+                    padding: EdgeInsets.only(
+                                      right:
+                                          selectedLocale?.languageCode == "en"
+                                              ? 0
+                                              : 10,
+                                    ),
+                      child: Text(
+                        AppLocalizations.of(context)!.from,
+                        style: kfontstyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     Text(
@@ -295,12 +306,20 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      AppLocalizations.of(context)!.to,
-                      style: kfontstyle(
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey,
+                    Padding(
+                     padding: EdgeInsets.only(
+                                      right:
+                                          selectedLocale?.languageCode == "en"
+                                              ? 0
+                                              : 10,
+                                    ),
+                      child: Text(
+                        AppLocalizations.of(context)!.to,
+                        style: kfontstyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                     Text(

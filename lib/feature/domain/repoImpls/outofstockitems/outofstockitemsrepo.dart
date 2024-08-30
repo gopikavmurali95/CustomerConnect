@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -19,6 +20,7 @@ class OutOfStockItemsRepo implements IOutOfStockProductsRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
+        log("outofstockitem : ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<OutOfStockItemsModel> headers = headerdata

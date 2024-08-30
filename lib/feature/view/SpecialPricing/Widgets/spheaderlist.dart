@@ -1,19 +1,14 @@
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricingdetails.dart';
 import 'package:customer_connect/feature/view/SpecialPricing/specialpricingcustomer.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../../../constants/fonts.dart';
 
 class SpPrHeaderList extends StatelessWidget {
@@ -45,11 +40,6 @@ class SpPrHeaderList extends StatelessWidget {
               : SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                    // padding: const EdgeInsets.only(
-                    //   left: 20, right: 10,
-                    //   //top: 10,
-                    //   //  bottom: 10
-                    // ),
                     itemCount: spHeader.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
@@ -164,7 +154,10 @@ class SpPrHeaderList extends StatelessWidget {
                                       ),
                                       Transform.flip(
                                         //flipX: selectedLocale?.languageCode == "en" ? true : false,
-                                         flipX: selectedLocale?.languageCode == "en" ? false : true,
+                                        flipX:
+                                            selectedLocale?.languageCode == "en"
+                                                ? false
+                                                : true,
                                         // flipX:
                                         //     selectedLocale?.languageCode == "en"
                                         //         ? false

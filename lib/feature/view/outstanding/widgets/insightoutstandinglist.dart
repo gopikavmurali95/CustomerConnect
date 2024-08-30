@@ -29,7 +29,7 @@ class InsightsOutstandingList extends StatelessWidget {
                 : headers.isEmpty
                     ? Center(
                         child: Text(
-                           AppLocalizations.of(context)!.noDataFound,
+                          AppLocalizations.of(context)!.noDataFound,
                           style: kfontstyle(),
                         ),
                       )
@@ -120,7 +120,7 @@ class InsightsOutstandingList extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
                 child: Text(
-                   AppLocalizations.of(context)!.noDataAvailable,
+                  AppLocalizations.of(context)!.noDataAvailable,
                   style: kfontstyle(),
                 ),
               ),

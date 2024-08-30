@@ -44,14 +44,11 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
           statusName: selectedLocale?.languageCode == 'en' ? "New" : "جديد",
           mode: 'NW'),
       MerchandisingStatusFilterModel(
-          statusName: selectedLocale?.languageCode == "en"
-              ? "Approved"
-              : "مصدق عليه",
+          statusName:
+              selectedLocale?.languageCode == "en" ? "Approved" : "مصدق عليه",
           mode: 'AP'),
       MerchandisingStatusFilterModel(
-          statusName: selectedLocale?.languageCode == "en"
-              ? "Active"
-              : "نشيط",
+          statusName: selectedLocale?.languageCode == "en" ? "Active" : "نشيط",
           mode: 'AC'),
     ];
     context
@@ -385,10 +382,11 @@ class _PriceChangeHeaderState extends State<OutActDisplayAgreementScreen> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: dispData[index]
-                                                                          .status! == "New"
-                                                                      // AppLocalizations.of(
-                                                                      //         context)!
-                                                                      //  .neww
+                                                                          .status! ==
+                                                                      "New"
+                                                                  // AppLocalizations.of(
+                                                                  //         context)!
+                                                                  //  .neww
                                                                   ? const Color(
                                                                       0xfff7f4e2)
                                                                   : const Color(

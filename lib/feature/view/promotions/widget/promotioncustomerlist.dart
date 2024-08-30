@@ -91,7 +91,12 @@ class PromotionCustomerList extends StatelessWidget {
                                           style: subTitleTextStyle(),
                                         ),
                                         Text(
-                                          selectedLocale?.languageCode == "en" ? promocustomer[index].areaName ?? '' : promocustomer[index].arareaName?? '',
+                                          selectedLocale?.languageCode == "en"
+                                              ? promocustomer[index].areaName ??
+                                                  ''
+                                              : promocustomer[index]
+                                                      .arareaName ??
+                                                  '',
                                           // promocustomer[index].areaName ?? '',
                                           style: subTitleTextStyle(),
                                         ),
@@ -100,7 +105,7 @@ class PromotionCustomerList extends StatelessWidget {
                                     Text(
                                       '${promocustomer[index].cusType} | '
                                       '${promocustomer[index].promotionCustomerModelClass} | '
-                                      '${selectedLocale?.languageCode == "en" ? promocustomer[index].areaName ?? '' : promocustomer[index].arareaName?? ''}',
+                                      '${selectedLocale?.languageCode == "en" ? promocustomer[index].areaName ?? '' : promocustomer[index].arareaName ?? ''}',
                                       style: statusTextStyle(),
                                     )
                                   ],

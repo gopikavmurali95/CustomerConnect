@@ -43,7 +43,7 @@ class DailyTargetContainer extends StatelessWidget {
                               Column(
                                 children: [
                                   Text(
-                                       AppLocalizations.of(context)!.totalTarget,
+                                    AppLocalizations.of(context)!.totalTarget,
                                     //'Total Target',
                                     style: TextStyle(
                                         fontSize: 11.sp,
@@ -108,7 +108,8 @@ class DailyTargetContainer extends StatelessWidget {
                                             Column(
                                               children: [
                                                 Text(
-                                                    AppLocalizations.of(context)!.totalworkingDays,
+                                                  AppLocalizations.of(context)!
+                                                      .totalworkingDays,
                                                   style: TextStyle(
                                                       fontSize: 8.sp,
                                                       fontWeight:
@@ -163,7 +164,8 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                           AppLocalizations.of(context)!.proRatedTarget,
+                                          AppLocalizations.of(context)!
+                                              .proRatedTarget,
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,
@@ -283,8 +285,8 @@ class DailyTargetContainer extends StatelessWidget {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                           "${AppLocalizations.of(context)!.sales}/${AppLocalizations.of(context)!.daytoAcieveTarget}",
-                                         // 'Sales/Day to achive target',
+                                          "${AppLocalizations.of(context)!.sales}/${AppLocalizations.of(context)!.daytoAcieveTarget}",
+                                          // 'Sales/Day to achive target',
                                           style: TextStyle(
                                               fontSize: 8.sp,
                                               fontWeight: FontWeight.w300,

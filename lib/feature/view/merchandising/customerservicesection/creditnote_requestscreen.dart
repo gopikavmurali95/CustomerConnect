@@ -35,16 +35,16 @@ class _CreditNoteHeaderScreenState
   void initState() {
     _selectedCreditNoteMode = 'AL';
     _merchCreditNoteSearch.clear();
-   filterCreditNoteReq= [
-       MerchandisingStatusFilterModel(
+    filterCreditNoteReq = [
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
           mode: 'AL'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
-              selectedLocale?.languageCode == 'en' ? "Approved" :  "مصدق عليه",
+              selectedLocale?.languageCode == 'en' ? "Approved" : "مصدق عليه",
           mode: 'AP'),
-       MerchandisingStatusFilterModel(
+      MerchandisingStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == "en" ? "Requested" : "التمس",
           mode: 'RQ'),
@@ -246,7 +246,8 @@ class _CreditNoteHeaderScreenState
                               )
                             : creditNote.isEmpty
                                 ? Center(
-                                    child: Text(AppLocalizations.of(context)!.noDataAvailable),
+                                    child: Text(AppLocalizations.of(context)!
+                                        .noDataAvailable),
                                   )
                                 : Column(
                                     children: [
@@ -259,11 +260,17 @@ class _CreditNoteHeaderScreenState
                                           children: [
                                             Text(
                                               _selectedCreditNoteMode == 'AL'
-                                                  ? AppLocalizations.of(context)!.allRequests
+                                                  ? AppLocalizations.of(
+                                                          context)!
+                                                      .allRequests
                                                   : _selectedCreditNoteMode ==
                                                           'AP'
-                                                      ? AppLocalizations.of(context)!.approvedRequests
-                                                      : AppLocalizations.of(context)!.requestedRequest,
+                                                      ? AppLocalizations.of(
+                                                              context)!
+                                                          .approvedRequests
+                                                      : AppLocalizations.of(
+                                                              context)!
+                                                          .requestedRequest,
                                               style: countHeading(),
                                             ),
                                             Text(
@@ -331,7 +338,7 @@ class _CreditNoteHeaderScreenState
                                                                               Expanded(
                                                                                 child: Text(
                                                                                   overflow: TextOverflow.ellipsis,
-                                                                                  selectedLocale?.languageCode == "en" ? creditNote[index].cusName ?? '' : creditNote[index].arCusName?? '',
+                                                                                  selectedLocale?.languageCode == "en" ? creditNote[index].cusName ?? '' : creditNote[index].arCusName ?? '',
                                                                                   //creditNote[index].cusName ?? '',
                                                                                   style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
                                                                                 ),
@@ -350,8 +357,9 @@ class _CreditNoteHeaderScreenState
                                                                     Container(
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: creditNote[index].status =="Requested"
-                                                                               // AppLocalizations.of(context)!.requested
+                                                                        color: creditNote[index].status ==
+                                                                                "Requested"
+                                                                            // AppLocalizations.of(context)!.requested
                                                                             ? const Color(0xfff7f4e2)
                                                                             : const Color(0xffe3f7e2),
                                                                         borderRadius:
@@ -369,7 +377,9 @@ class _CreditNoteHeaderScreenState
                                                                                 5),
                                                                         child:
                                                                             Text(
-                                                                              selectedLocale?.languageCode == "en" ? creditNote[index].status ?? '' : creditNote[index].arStatus?? '',
+                                                                          selectedLocale?.languageCode == "en"
+                                                                              ? creditNote[index].status ?? ''
+                                                                              : creditNote[index].arStatus ?? '',
                                                                           // creditNote[index].status ??
                                                                           //     '',
                                                                           style: kfontstyle(
@@ -394,8 +404,9 @@ class _CreditNoteHeaderScreenState
                                       ),
                                     ],
                                   ),
-                    merchCreditRequestFailed: () =>  Center(
-                          child: Text(AppLocalizations.of(context)!.noDataAvailable),
+                    merchCreditRequestFailed: () => Center(
+                          child: Text(
+                              AppLocalizations.of(context)!.noDataAvailable),
                         ));
               },
             ),

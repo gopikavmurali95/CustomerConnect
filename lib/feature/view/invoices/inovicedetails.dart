@@ -129,7 +129,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             ],
                           ),
                           Text(
-                            '${widget.invoiceheader.invoiceType} | ${widget.invoiceheader.rotName} | ${widget.invoiceheader.date} | ${widget.invoiceheader.time}',
+                            '${widget.invoiceheader.payType} | ${widget.invoiceheader.rotName} | ${widget.invoiceheader.date} | ${widget.invoiceheader.time}',
                             style:
                                 TextStyle(fontSize: 10.sp, color: Colors.grey),
                           ),

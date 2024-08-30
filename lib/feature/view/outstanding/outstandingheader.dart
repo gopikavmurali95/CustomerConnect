@@ -502,15 +502,15 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 10.0, right: 10, top: 0),
-                          child: BlocBuilder<OutStandingPaginationCubit,
-                              OutStandingPaginationState>(
+                          child: BlocBuilder<OutstandingBloc, OutstandingState>(
                             builder: (context, state) {
                               return Text(
                                 state.when(
-                                  getOutStandingHeadersPageState: (headers) =>
+                                  getOutstandingDataState: (headers) =>
                                       headers == null
                                           ? "0"
-                                          : headers.length.toString(),
+                                          : headers.totCount ?? '0',
+                                  outstandingFailedState: () => "0",
                                 ),
                                 style: countHeading(),
                               );

@@ -32,18 +32,21 @@ TextEditingController _customerReqFilter = TextEditingController();
 class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
   @override
   void initState() {
-    filterFieldsPriceChange= [
+    filterFieldsPriceChange = [
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "All Requests" : "جميع الطلبات",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "All Requests"
+              : "جميع الطلبات",
           mode: 'AL'),
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Responded Requests" : "الطلبات المستجابة",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Responded Requests"
+              : "الطلبات المستجابة",
           mode: 'RS'),
       ApprovalStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == "en" ? "New Requests" : "طلبات جديدة",
+          statusName: selectedLocale?.languageCode == "en"
+              ? "New Requests"
+              : "طلبات جديدة",
           mode: 'OP'),
     ];
     context
@@ -77,7 +80,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
         ),
         title: Text(
           AppLocalizations.of(context)!.customerRequests,
-         // "Customer Request",
+          // "Customer Request",
           style: appHeading(),
         ),
       ),
@@ -249,7 +252,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                               state.when(
                                 getMerchCustomerRequestHeadersState:
                                     (headers) => headers == null
-                                        ? AppLocalizations.of(context)!.allRequests
+                                        ? AppLocalizations.of(context)!
+                                            .allRequests
                                         : _customerReqFilter.text,
                                 merchCustomerRequestsFailedState: () =>
                                     AppLocalizations.of(context)!.allRequests,
@@ -310,7 +314,8 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                   : headers.isEmpty
                                       ? Center(
                                           child: Text(
-                                           AppLocalizations.of(context)!.noDataAvailable,
+                                            AppLocalizations.of(context)!
+                                                .noDataAvailable,
                                             style: kfontstyle(),
                                           ),
                                         )
@@ -363,7 +368,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                         child: Text(
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
-                                                                            ' ${selectedLocale?.languageCode == 'en'?headers[index].cusName:headers[index].arcusName}',
+                                                                            ' ${selectedLocale?.languageCode == 'en' ? headers[index].cusName : headers[index].arcusName}',
                                                                             style: subTitleTextStyle()),
                                                                       ),
                                                                     ],
@@ -397,8 +402,9 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: headers[index]
-                                                                            .status =="Responded"
-                                                                      //  AppLocalizations.of(context)!.responded
+                                                                            .status ==
+                                                                        "Responded"
+                                                                    //  AppLocalizations.of(context)!.responded
                                                                     ? const Color(
                                                                         0xffe3f7e2)
                                                                     : const Color(
@@ -417,9 +423,15 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                     vertical:
                                                                         3),
                                                                 child: Text(
-                                                                  selectedLocale?.languageCode == 'en'?headers[index]
-                                                                          .status ??
-                                                                      '':headers[index].arstatus??'',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? headers[index]
+                                                                              .status ??
+                                                                          ''
+                                                                      : headers[index]
+                                                                              .arstatus ??
+                                                                          '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           8.sp),
@@ -440,7 +452,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                             height: MediaQuery.of(context).size.height - 200,
                             child: Center(
                               child: Text(
-                               AppLocalizations.of(context)!.noDataAvailable,
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),
