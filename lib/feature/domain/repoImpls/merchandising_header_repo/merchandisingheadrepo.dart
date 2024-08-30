@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 // import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
@@ -23,7 +24,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + merchandisingGetOutofStockCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-      // log('outofstockcount: ${response.body}');
+       log('outofstockcount: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final stockcount = GetOutOfStockCountModel.fromJson(json["result"][0]);
