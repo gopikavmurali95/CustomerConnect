@@ -214,8 +214,7 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                               : 0,
                                               left: selectedLocale?.languageCode=='en'? 15: 0),
                                          
-                                          //selectedLocale == 'en'? const EdgeInsets.only(left:15): const EdgeInsets.only(right: 10),
-                                              //const EdgeInsets.only(left: 10,right: 0),
+                                          
                                           child: Text(
                                             AppLocalizations.of(context)!
                                                 .sysQty,
