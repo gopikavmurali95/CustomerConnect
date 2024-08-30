@@ -328,32 +328,37 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                               '${pChange[index].pchReqId}',
                                                               style:
                                                                   blueTextStyle()),
-                                                          Row(
-                                                            children: [
-                                                              Text(
-                                                                '${pChange[index].cusCode} - ',
-                                                                style:
-                                                                    kfontstyle(
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  color: const Color(
-                                                                      0xff2C6B9E),
+                                                          RichText(
+                                                            text: TextSpan(
+                                                              style: DefaultTextStyle
+                                                                      .of(context)
+                                                                  .style,
+                                                              children: [
+                                                                TextSpan(
+                                                                  text:
+                                                                      '${pChange[index].cusCode} - ',
+                                                                  style:
+                                                                      kfontstyle(
+                                                                    fontSize:
+                                                                        11.sp,
+                                                                    color: const Color(
+                                                                        0xff2C6B9E),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Text(
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    selectedLocale?.languageCode ==
-                                                                            'en'
-                                                                        ? "${pChange[index].cusName}"
-                                                                        : pChange[index].arcusName ??
-                                                                            '',
-                                                                    style:
-                                                                        subTitleTextStyle()),
-                                                              ),
-                                                            ],
+                                                                TextSpan(
+                                                                  text: selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? "${pChange[index].cusName}"
+                                                                      : pChange[index]
+                                                                              .arcusName ??
+                                                                          '',
+                                                                  style:
+                                                                      subTitleTextStyle(),
+                                                                  // overflow: TextOverflow.ellipsis,
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                           Text(
                                                             overflow:

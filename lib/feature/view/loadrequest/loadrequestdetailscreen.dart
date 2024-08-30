@@ -80,6 +80,10 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
+            context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
+              userId: widget.loadrequest.userID ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -153,7 +157,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     fit: FlexFit.tight,
                                     child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      "${selectedLocale?.languageCode == 'en'?widget.loadrequest.usrName:widget.loadrequest.usrArabicName}",
+                                      "${selectedLocale?.languageCode == 'en' ? widget.loadrequest.usrName : widget.loadrequest.usrArabicName}",
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           color: const Color(0xff413434)),
@@ -197,7 +201,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           decoration: BoxDecoration(
                             color: widget.loadrequest.status! == "Pending"
                                 ? const Color(0xfff7f4e2)
-                                : widget.loadrequest.status == "Action Taken"
+                                : widget.loadrequest.status == "Approved"
                                     ? const Color(0xffe3f7e2)
                                     : Colors.red[300],
                             borderRadius: BorderRadius.circular(
@@ -745,9 +749,17 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                     width: 80,
                                                                     child:
                                                                         TextFormField(
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .right,
+                                                                      maxLength:
+                                                                          8,
+                                                                      cursorHeight:
+                                                                          12.h,
                                                                       keyboardType:
                                                                           TextInputType
                                                                               .number,
+
                                                                       controller:
                                                                           TextEditingController(
                                                                               text: details[index].lrdHQty),
@@ -770,6 +782,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           fontSize:
                                                                               9),
                                                                       decoration: InputDecoration(
+                                                                          enabled: widget.loadrequest.status == 'Pending' ? true : false,
                                                                           enabledBorder: const OutlineInputBorder(
                                                                             borderSide:
                                                                                 BorderSide(color: Colors.black12, width: 1),
@@ -785,7 +798,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                                 const BorderSide(color: Colors.red, width: 4),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
-                                                                          )),
+                                                                          ),
+                                                                          counterText: ''),
                                                                     ),
                                                                   ),
                                                                   SizedBox(
@@ -799,6 +813,11 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                       keyboardType:
                                                                           TextInputType
                                                                               .number,
+                                                                      maxLength:
+                                                                          8,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .right,
                                                                       controller:
                                                                           TextEditingController(
                                                                               text: details[index].lrdLQty),
@@ -820,6 +839,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           fontSize:
                                                                               9),
                                                                       decoration: InputDecoration(
+                                                                          enabled: widget.loadrequest.status == 'Pending' ? true : false,
                                                                           enabledBorder: const OutlineInputBorder(
                                                                             borderSide:
                                                                                 BorderSide(color: Colors.black12, width: 1),
@@ -835,7 +855,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                                 const BorderSide(color: Colors.red, width: 4),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
-                                                                          )),
+                                                                          ),
+                                                                          counterText: ''),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -845,385 +866,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                         )
                                                       ],
                                                     ),
-                                                    /* Row(
-                                                  children: [
-                                                    BlocConsumer<
-                                                        LoadReqApprovalBloc,
-                                                        LoadReqApprovalState>(
-                                                      listener:
-                                                          (context, state) {
-                                                        state.when(
-                                                          loadReqApprovalSuccessState:
-                                                              (LoadRequestApprovalOutModel?
-                                                                  response) {
-                                                            if (response !=
-                                                                null) {
-                                                              Navigator.pop(
-                                                                  context);
-                                                              // if (isApproval) {
-                                                              showCupertinoDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (context) =>
-                                                                        CupertinoAlertDialog(
-                                                                  title: const Text(
-                                                                      'Alert'),
-                                                                  content: Text(
-                                                                      response.status ??
-                                                                          ''),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        context
-                                                                            .read<LoadReqDetailBloc>()
-                                                                            .add(const GetloadreqdetailEvent(reqId: ''));
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      },
-                                                                      child: const Text(
-                                                                          'Proceed'),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                              // }
-                                                            }
-                                                          },
-                                                          loadReqApprovalFailedState:
-                                                              () {
-                                                            Navigator.pop(
-                                                                context);
-                                                            showCupertinoDialog(
-                                                              context: context,
-                                                              builder: (context) =>
-                                                                  CupertinoAlertDialog(
-                                                                title:
-                                                                    const Text(
-                                                                        'Alert'),
-                                                                content: const Text(
-                                                                    "something went wrong, please try again later"),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed:
-                                                                        () {
-                                                                      context
-                                                                          .read<
-                                                                              LoadReqDetailBloc>()
-                                                                          .add(const GetloadreqdetailEvent(
-                                                                              reqId: ''));
-                                                                      Navigator.pop(
-                                                                          context);
-                                                                    },
-                                                                    child:
-                                                                        const Text(
-                                                                            'Ok'),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            );
-                                                          },
-                                                          loadReqApprovalLoadingState:
-                                                              () {
-                                                            if (loadingCount ==
-                                                                0) {
-                                                              loadingCount = 1;
-                                                              showCupertinoModalPopup(
-                                                                  context:
-                                                                      context,
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  builder:
-                                                                      (context) =>
-                                                                          SizedBox(
-                                                                            height:
-                                                                                MediaQuery.of(context).size.height,
-                                                                            width:
-                                                                                MediaQuery.of(context).size.width,
-                                                                            child:
-                                                                                const PopScope(
-                                                                              canPop: true,
-                                                                              child: CupertinoActivityIndicator(
-                                                                                animating: true,
-                                                                                color: Colors.red,
-                                                                                radius: 30,
-                                                                              ),
-                                                                            ),
-                                                                          ));
-                                                            }
-                                                          },
-                                                        );
-                                                      },
-                                                      builder:
-                                                          (context, state) {
-                                                        return Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            Expanded(
-                                                                // width: MediaQuery.of(
-                                                                //         context)
-                                                                //     .size
-                                                                //     .width,
-                                                                child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Flexible(
-                                                                    flex: 2,
-                                                                    fit: FlexFit
-                                                                        .tight,
-                                                                    child:
-                                                                        TextFormField(
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .number,
-                                                                      controller:
-                                                                          TextEditingController(
-                                                                        text: details[index]
-                                                                            .lrdApvHQty,
-                                                                      ),
-                                                                      style: kfontstyle(
-                                                                          fontSize:
-                                                                              13.sp),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        details[index].lrdApvHQty =
-                                                                            value;
-                                                                        _loadproducts[index] =
-                                                                            LoadReqPrdModel(
-                                                                          lrdHQty:
-                                                                              details[index].lrdHQty,
-                                                                          lrdHuom:
-                                                                              details[index].lrdHUOM,
-                                                                          lrdId:
-                                                                              details[index].lrdID,
-                                                                          lrdLQty:
-                                                                              details[index].lrdLQty,
-                                                                          lrdLuom:
-                                                                              details[index].lrdLUOM,
-                                                                          lrdPrdId:
-                                                                              details[index].lrdPrdID,
-                                                                          lrdTotalQty:
-                                                                              details[index].lrdTotalQty,
-                                                                          txtApvHQty:
-                                                                              details[index].lrdApvHQty,
-                                                                          txtApvLQty:
-                                                                              details[index].lrdApvLQty,
-                                                                        );
-                                                                      },
-                                                                    )),
-                                                                Flexible(
-                                                                  flex: 2,
-                                                                  fit: FlexFit
-                                                                      .tight,
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 20.w,
-                                                                  ),
-                                                                ),
-                                                                Flexible(
-                                                                    flex: 2,
-                                                                    fit: FlexFit
-                                                                        .tight,
-                                                                    child:
-                                                                        TextFormField(
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .number,
-                                                                      controller:
-                                                                          TextEditingController(
-                                                                        text: details[index]
-                                                                            .lrdApvLQty,
-                                                                      ),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        details[index].lrdApvLQty =
-                                                                            value;
-
-                                                                        _loadproducts[index] =
-                                                                            LoadReqPrdModel(
-                                                                          lrdHQty:
-                                                                              details[index].lrdHQty,
-                                                                          lrdHuom:
-                                                                              details[index].lrdHUOM,
-                                                                          lrdId:
-                                                                              details[index].lrdID,
-                                                                          lrdLQty:
-                                                                              details[index].lrdLQty,
-                                                                          lrdLuom:
-                                                                              details[index].lrdLUOM,
-                                                                          lrdPrdId:
-                                                                              details[index].lrdPrdID,
-                                                                          lrdTotalQty:
-                                                                              details[index].lrdTotalQty,
-                                                                          txtApvHQty:
-                                                                              details[index].lrdApvHQty,
-                                                                          txtApvLQty:
-                                                                              details[index].lrdApvLQty,
-                                                                        );
-                                                                      },
-                                                                    )),
-                                                              ],
-                                                            )),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ), */
-                                                    /*  ],
-                                                ) */
-
-                                                    // Row(
-                                                    //   children: [
-                                                    //     Expanded(
-                                                    //       // width: MediaQuery.of(
-                                                    //       //         context)
-                                                    //       //     .size
-                                                    //       //     .width,
-                                                    //       child: Row(
-                                                    //         mainAxisAlignment:
-                                                    //             MainAxisAlignment.end,
-                                                    //         children: [
-                                                    //           Text(
-                                                    //             details[index]
-                                                    //                     .lrdHUOM ??
-                                                    //                 '',
-                                                    //             style: kfontstyle(
-                                                    //                 fontSize: 12.sp,
-                                                    //                 fontWeight:
-                                                    //                     FontWeight.w400,
-                                                    //                 color:
-                                                    //                     Colors.black54),
-                                                    //           ),
-                                                    //           SizedBox(
-                                                    //             width: 10.w,
-                                                    //           ),
-                                                    //           Flexible(
-                                                    //               flex: 2,
-                                                    //               fit: FlexFit.tight,
-                                                    //               child: TextFormField(
-                                                    //                 keyboardType:
-                                                    //                     TextInputType
-                                                    //                         .number,
-                                                    //                 controller:
-                                                    //                     TextEditingController(
-                                                    //                   text: details[
-                                                    //                           index]
-                                                    //                       .lrdApvHQty,
-                                                    //                 ),
-                                                    //                 style: kfontstyle(
-                                                    //                     fontSize:
-                                                    //                         13.sp),
-                                                    //                 onChanged: (value) {
-                                                    //                   details[index]
-                                                    //                           .lrdApvLQty =
-                                                    //                       value;
-                                                    //                   _loadproducts[
-                                                    //                           index] =
-                                                    //                       LoadReqPrdModel(
-                                                    //                     lrdHQty: details[
-                                                    //                             index]
-                                                    //                         .lrdLQty,
-                                                    //                     lrdHuom: details[
-                                                    //                             index]
-                                                    //                         .lrdHUOM,
-                                                    //                     lrdId: details[
-                                                    //                             index]
-                                                    //                         .lrdID,
-                                                    //                     lrdLQty: details[
-                                                    //                             index]
-                                                    //                         .lrdLQty,
-                                                    //                     lrdLuom: details[
-                                                    //                             index]
-                                                    //                         .lrdLUOM,
-                                                    //                     lrdPrdId: details[
-                                                    //                             index]
-                                                    //                         .lrdPrdID,
-                                                    //                     lrdTotalQty: details[
-                                                    //                             index]
-                                                    //                         .lrdTotalQty,
-                                                    //                     txtApvHQty: details[
-                                                    //                             index]
-                                                    //                         .lrdApvHQty,
-                                                    //                     txtApvLQty: details[
-                                                    //                             index]
-                                                    //                         .lrdApvLQty,
-                                                    //                   );
-                                                    //                 },
-                                                    //               )),
-                                                    //           const Spacer(),
-                                                    //           Text(
-                                                    //             details[index]
-                                                    //                     .lrdLUOM ??
-                                                    //                 '',
-                                                    //             style: kfontstyle(
-                                                    //                 fontSize: 12.sp,
-                                                    //                 fontWeight:
-                                                    //                     FontWeight.w400,
-                                                    //                 color:
-                                                    //                     Colors.black54),
-                                                    //           ),
-                                                    //           SizedBox(
-                                                    //             width: 10.w,
-                                                    //           ),
-                                                    //           Flexible(
-                                                    //             flex: 2,
-                                                    //             fit: FlexFit.tight,
-                                                    //             child: TextFormField(
-                                                    //               keyboardType:
-                                                    //                   TextInputType
-                                                    //                       .number,
-                                                    //               controller:
-                                                    //                   TextEditingController(
-                                                    //                 text: details[index]
-                                                    //                     .lrdApvLQty,
-                                                    //               ),
-                                                    //               onChanged: (value) {
-                                                    //                 details[index]
-                                                    //                         .lrdApvLQty =
-                                                    //                     value;
-                                                    //                 _loadproducts[
-                                                    //                         index] =
-                                                    //                     LoadReqPrdModel(
-                                                    //                   lrdHQty:
-                                                    //                       details[index]
-                                                    //                           .lrdLQty,
-                                                    //                   lrdHuom:
-                                                    //                       details[index]
-                                                    //                           .lrdHUOM,
-                                                    //                   lrdId:
-                                                    //                       details[index]
-                                                    //                           .lrdID,
-                                                    //                   lrdLQty:
-                                                    //                       details[index]
-                                                    //                           .lrdLQty,
-                                                    //                   lrdLuom:
-                                                    //                       details[index]
-                                                    //                           .lrdLUOM,
-                                                    //                   lrdPrdId:
-                                                    //                       details[index]
-                                                    //                           .lrdPrdID,
-                                                    //                   lrdTotalQty:
-                                                    //                       details[index]
-                                                    //                           .lrdTotalQty,
-                                                    //                   txtApvHQty:
-                                                    //                       details[index]
-                                                    //                           .lrdApvHQty,
-                                                    //                   txtApvLQty:
-                                                    //                       details[index]
-                                                    //                           .lrdApvLQty,
-                                                    //                 );
-                                                    //               },
-                                                    //             ),
-                                                    //           ),
-                                                    //         ],
-                                                    //       ),
-                                                    //     ),
-                                                    //   ],
-                                                    // )
                                                   ],
                                                 ),
                                               ),
@@ -1268,7 +910,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
@@ -1330,228 +971,231 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: widget.loadrequest.status == 'Pending'
-                                  ? Colors.red.shade300
-                                  : Colors.grey[300],
-                              onPressed: () {
-                                log(jsonEncode(LoadReqInApprovalModel(
-                                    products: _loadproducts,
-                                    reqID: widget.loadrequest.lrhID,
-                                    rotID: widget.loadrequest.rotID,
-                                    userId: widget.user.usrId)));
-                                if (widget.loadrequest.status == 'Pending') {
-                                  if (_loadproducts.contains(null)) {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  } else {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
+                      child: Visibility(
+                        visible: widget.loadrequest.status == 'Pending'
+                            ? true
+                            : false,
+                        child: Row(
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: widget.loadrequest.status == 'Pending'
+                                    ? Colors.red.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  log(jsonEncode(LoadReqInApprovalModel(
+                                      products: _loadproducts,
+                                      reqID: widget.loadrequest.lrhID,
+                                      rotID: widget.loadrequest.rotID,
+                                      userId: widget.user.usrId)));
+                                  if (widget.loadrequest.status == 'Pending') {
+                                    if (_loadproducts.contains(null)) {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
 
-                                              Navigator.pop(context);
+                                                Navigator.pop(context);
 
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                      const ApprovLoadingReqEvent());
+                                                context
+                                                    .read<LoadReqApprovalBloc>()
+                                                    .add(
+                                                        const ApprovLoadingReqEvent());
 
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                    ApprovloadReqEvent(
-                                                      approval:
-                                                          LoadReqInApprovalModel(
-                                                              products:
-                                                                  _loadproducts,
-                                                              reqID: widget
-                                                                  .loadrequest
-                                                                  .lrhID,
-                                                              rotID: widget
-                                                                  .loadrequest
-                                                                  .rotID,
-                                                              userId: widget
-                                                                  .loadrequest
-                                                                  .userID),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                                                context
+                                                    .read<LoadReqApprovalBloc>()
+                                                    .add(
+                                                      ApprovloadReqEvent(
+                                                        approval: LoadReqInApprovalModel(
+                                                            products:
+                                                                _loadproducts,
+                                                            reqID: widget
+                                                                .loadrequest
+                                                                .lrhID,
+                                                            rotID: widget
+                                                                .loadrequest
+                                                                .rotID,
+                                                            userId: widget
+                                                                .loadrequest
+                                                                .userID),
+                                                      ),
+                                                    );
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   }
-                                }
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.reject,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.reject,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: widget.loadrequest.status == 'Pending'
-                                  ? Colors.green.shade300
-                                  : Colors.grey[300],
-                              onPressed: () {
-                                if (widget.loadrequest.status == 'Pending') {
-                                  if (_loadproducts.contains(null)) {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  } else {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-
-                                              Navigator.pop(context);
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                      const ApprovLoadingReqEvent());
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(ApprovloadReqEvent(
-                                                      approval:
-                                                          LoadReqInApprovalModel(
-                                                              products:
-                                                                  _loadproducts,
-                                                              reqID: widget
-                                                                  .loadrequest
-                                                                  .lrhID,
-                                                              rotID: widget
-                                                                  .loadrequest
-                                                                  .rotID,
-                                                              userId: widget
-                                                                  .loadrequest
-                                                                  .userID)));
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                }
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.approve,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
+                            SizedBox(
+                              width: 10.w,
                             ),
-                          )
-                        ],
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: widget.loadrequest.status == 'Pending'
+                                    ? Colors.green.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  if (widget.loadrequest.status == 'Pending') {
+                                    if (_loadproducts.contains(null)) {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
+
+                                                Navigator.pop(context);
+
+                                                context
+                                                    .read<LoadReqApprovalBloc>()
+                                                    .add(
+                                                        const ApprovLoadingReqEvent());
+
+                                                context
+                                                    .read<LoadReqApprovalBloc>()
+                                                    .add(ApprovloadReqEvent(
+                                                        approval: LoadReqInApprovalModel(
+                                                            products:
+                                                                _loadproducts,
+                                                            reqID: widget
+                                                                .loadrequest
+                                                                .lrhID,
+                                                            rotID: widget
+                                                                .loadrequest
+                                                                .rotID,
+                                                            userId: widget
+                                                                .loadrequest
+                                                                .userID)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.approve,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],

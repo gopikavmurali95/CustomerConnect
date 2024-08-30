@@ -36,6 +36,10 @@ class InventoryReconfirmDetailModel {
   String? prdName;
   @JsonKey(name: 'Arprd_Name')
   String? arprdName;
+  @JsonKey(name: 'Status')
+  String? status;
+  @JsonKey(name: 'Reason')
+  String? reason;
 
   InventoryReconfirmDetailModel({
     this.iadId,

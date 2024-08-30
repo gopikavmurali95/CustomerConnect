@@ -42,11 +42,12 @@ class PriceChangeDetailsModel {
   String? maxLowerlimit;
   @JsonKey(name: 'pcd_ApprovalStatus')
   String? pcdApprovalStatus;
-
   @JsonKey(name: 'Arprd_Name')
   String? arprdName;
   @JsonKey(name: 'Arpcd_ApprovalStatus')
   String? arpcdApprovalStatus;
+  @JsonKey(name: 'Reason')
+  String? reason;
 
   PriceChangeDetailsModel({
     this.pcdId,

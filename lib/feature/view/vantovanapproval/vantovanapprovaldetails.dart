@@ -62,13 +62,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            /*   if (_approvedCount != 0 && _approvedCount != _totalcount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else {
-              context.read<NavigatetoBackCubit>().popFromScreen(true);
-            } */
+            context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
+              userID: widget.vanToVanHeader.userID ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
 
             Navigator.pop(context);
           },
@@ -325,6 +322,18 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
 
                       statuslist /* length = details.length; */
                           = List.generate(details.length, (index) => null);
+                      for (int i = 0; i < details.length; i++) {
+                        if (details[i].status!.isNotEmpty) {
+                          approvedCount++;
+                          if (details[i].status == 'Approved') {
+                            statuslist[i] = true;
+                          } else if (details[i].status == 'Rejected') {
+                            statuslist[i] = false;
+                          } else {
+                            statuslist[i] = null;
+                          }
+                        }
+                      }
                     }
                   }),
                   vanToVanDetailFailedState: () {},
@@ -502,37 +511,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                       ],
                                                     ),
                                                   );
-
-                                                  // showCupertinoDialog(
-                                                  //   context: context,
-                                                  //   builder: (context) =>
-                                                  //       CupertinoAlertDialog(
-                                                  //     title: const Text('Alert'),
-                                                  //     content: Text(
-                                                  //         response.status ?? ''),
-                                                  //     actions: [
-                                                  //       TextButton(
-                                                  //         onPressed: () {
-                                                  //           _approvedCount++;
-                                                  //           context
-                                                  //               .read<
-                                                  //                   VanToVanDetailsBloc>()
-                                                  //               .add(
-                                                  //                   const GetVanToVanDetailEvent(
-                                                  //                       reqID:
-                                                  //                           '10'));
-                                                  //           Navigator.pop(context);
-                                                  //         },
-                                                  //         child:
-                                                  //             const Text('Proceed'),
-                                                  //       ),
-                                                  //     ],
-                                                  //   ),
-                                                  // );
                                                 }
-                                                // if (isApproval) {
-
-                                                // }
                                               }
                                             },
                                             vanToVanApprovalFailedstate: () {
@@ -603,175 +582,252 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                           );
                                         },
                                         builder: (context, state) {
-                                          return Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Transform.scale(
-                                                scale: 0.8,
-                                                child: Row(
-                                                  children: [
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          statuslist[index] =
-                                                                true;
-                                                            loadingCount = 0;
+                                          return SizedBox(
+                                              child:
+                                                  widget.vanToVanHeader
+                                                              .approvalStatus ==
+                                                          'Pending'
+                                                      ? Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              child: Row(
+                                                                children: [
+                                                                  InkWell(
+                                                                    onTap: () {
+                                                                      setState(
+                                                                          () {
+                                                                        statuslist[index] =
+                                                                            true;
+                                                                        loadingCount =
+                                                                            0;
 
-                                                            setState(() {});
-                                                            approvedProducts[
-                                                                    index] =
-                                                                VanToVanProductModel(
-                                                              vvdId:
-                                                                  details[index]
-                                                                      .vvdId,
-                                                              hqty:
-                                                                  details[index]
-                                                                      .vvdHQty,
-                                                              lqty:
-                                                                  details[index]
-                                                                      .vvdLQty,
-                                                              status: 'A',
-                                                            );
-                                                        });
-                                                      },
-                                                      child: Row(
-                                                        children: [
-                                                          Radio(
-                                                            fillColor:
-                                                                MaterialStateProperty
-                                                                    .resolveWith<
+                                                                        setState(
+                                                                            () {});
+                                                                        approvedProducts[index] =
+                                                                            VanToVanProductModel(
+                                                                          vvdId:
+                                                                              details[index].vvdId,
+                                                                          hqty:
+                                                                              details[index].vvdHQty,
+                                                                          lqty:
+                                                                              details[index].vvdLQty,
+                                                                          status:
+                                                                              'A',
+                                                                        );
+                                                                      });
+                                                                    },
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? Colors.green.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              true,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            statuslist[index] =
+                                                                                true;
+                                                                            loadingCount =
+                                                                                0;
+
+                                                                            setState(() {});
+                                                                            approvedProducts[index] =
+                                                                                VanToVanProductModel(
+                                                                              vvdId: details[index].vvdId,
+                                                                              hqty: details[index].vvdHQty,
+                                                                              lqty: details[index].vvdLQty,
+                                                                              status: 'A',
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  setState(() {
+                                                                    statuslist[
+                                                                            index] =
+                                                                        false;
+                                                                    loadingCount =
+                                                                        0;
+                                                                    setState(
+                                                                        () {});
+                                                                    approvedProducts[
+                                                                            index] =
+                                                                        VanToVanProductModel(
+                                                                      vvdId: details[
+                                                                              index]
+                                                                          .vvdId,
+                                                                      hqty: details[
+                                                                              index]
+                                                                          .vvdHQty,
+                                                                      lqty: details[
+                                                                              index]
+                                                                          .vvdLQty,
+                                                                      status:
+                                                                          'R',
+                                                                    );
+                                                                  });
+                                                                },
+                                                                child: Row(
+                                                                  children: [
+                                                                    Radio(
+                                                                      fillColor:
+                                                                          MaterialStateProperty.resolveWith<Color>(
+                                                                              (states) {
+                                                                        return (statuslist[index] != null &&
+                                                                                !statuslist[index]!)
+                                                                            ? Colors.red.shade300
+                                                                            : Colors.grey;
+                                                                      }),
+                                                                      value: statuslist[index] ==
+                                                                              null
+                                                                          ? true
+                                                                          : statuslist[index] == true
+                                                                              ? true
+                                                                              : false,
+                                                                      groupValue:
+                                                                          false,
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        statuslist[index] =
+                                                                            false;
+                                                                        loadingCount =
+                                                                            0;
+                                                                        setState(
+                                                                            () {});
+                                                                        approvedProducts[index] =
+                                                                            VanToVanProductModel(
+                                                                          vvdId:
+                                                                              details[index].vvdId,
+                                                                          hqty:
+                                                                              details[index].vvdHQty,
+                                                                          lqty:
+                                                                              details[index].vvdLQty,
+                                                                          status:
+                                                                              'R',
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                    Text(
+                                                                      AppLocalizations.of(
+                                                                              context)!
+                                                                          .reject,
+                                                                      style:
+                                                                          kfontstyle(),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
+                                                      : Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              child: Row(
+                                                                children: [
+                                                                  Row(
+                                                                    children: [
+                                                                      Radio(
+                                                                        fillColor:
+                                                                            MaterialStateProperty.resolveWith<Color>((states) {
+                                                                          return (statuslist[index] == true)
+                                                                              ? Colors.green.shade300
+                                                                              : Colors.grey;
+                                                                        }),
+                                                                        value: statuslist[index] ==
+                                                                                null
+                                                                            ? false
+                                                                            : statuslist[index] == true
+                                                                                ? true
+                                                                                : false,
+                                                                        groupValue:
+                                                                            true,
+                                                                        onChanged:
+                                                                            (value) {},
+                                                                      ),
+                                                                      Text(
+                                                                        AppLocalizations.of(context)!
+                                                                            .approve,
+                                                                        style:
+                                                                            kfontstyle(),
+                                                                      )
+                                                                    ],
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              child: Row(
+                                                                children: [
+                                                                  Radio(
+                                                                    fillColor: MaterialStateProperty.resolveWith<
                                                                             Color>(
                                                                         (states) {
-                                                              return (statuslist[
-                                                                          index] ==
-                                                                      true)
-                                                                  ? Colors.green
-                                                                      .shade300
-                                                                  : Colors.grey;
-                                                            }),
-                                                            value: statuslist[
-                                                                        index] ==
-                                                                    null
-                                                                ? false
-                                                                : statuslist[
-                                                                            index] ==
-                                                                        true
-                                                                    ? true
-                                                                    : false,
-                                                            groupValue: true,
-                                                            onChanged: (value) {
-                                                              statuslist[index] =
-                                                                  true;
-                                                              loadingCount = 0;
-                                                      
-                                                              setState(() {});
-                                                              approvedProducts[
-                                                                      index] =
-                                                                  VanToVanProductModel(
-                                                                vvdId:
-                                                                    details[index]
-                                                                        .vvdId,
-                                                                hqty:
-                                                                    details[index]
-                                                                        .vvdHQty,
-                                                                lqty:
-                                                                    details[index]
-                                                                        .vvdLQty,
-                                                                status: 'A',
-                                                              );
-                                                            },
-                                                          ),
-                                                          Text(
-                                                            AppLocalizations.of(
-                                                                    context)!
-                                                                .approve,
-                                                            style: kfontstyle(),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Transform.scale(
-                                                scale: 0.8,
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      statuslist[index] =
-                                                            false;
-                                                        loadingCount = 0;
-                                                        setState(() {});
-                                                        approvedProducts[
-                                                                index] =
-                                                            VanToVanProductModel(
-                                                          vvdId: details[index]
-                                                              .vvdId,
-                                                          hqty: details[index]
-                                                              .vvdHQty,
-                                                          lqty: details[index]
-                                                              .vvdLQty,
-                                                          status: 'R',
-                                                        );
-                                                    });
-                                                  },
-                                                  child: Row(
-                                                    children: [
-                                                      Radio(
-                                                        fillColor:
-                                                            MaterialStateProperty
-                                                                .resolveWith<
-                                                                        Color>(
-                                                                    (states) {
-                                                          return (statuslist[
-                                                                          index] !=
-                                                                      null &&
-                                                                  !statuslist[
-                                                                      index]!)
-                                                              ? Colors
-                                                                  .red.shade300
-                                                              : Colors.grey;
-                                                        }),
-                                                        value: statuslist[
-                                                                    index] ==
-                                                                null
-                                                            ? true
-                                                            : statuslist[index] ==
-                                                                    true
-                                                                ? true
-                                                                : false,
-                                                        groupValue: false,
-                                                        onChanged: (value) {
-                                                          statuslist[index] =
-                                                              false;
-                                                          loadingCount = 0;
-                                                          setState(() {});
-                                                          approvedProducts[
-                                                                  index] =
-                                                              VanToVanProductModel(
-                                                            vvdId: details[index]
-                                                                .vvdId,
-                                                            hqty: details[index]
-                                                                .vvdHQty,
-                                                            lqty: details[index]
-                                                                .vvdLQty,
-                                                            status: 'R',
-                                                          );
-                                                        },
-                                                      ),
-                                                      Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .reject,
-                                                        style: kfontstyle(),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          );
+                                                                      return (statuslist[index] != null &&
+                                                                              !statuslist[
+                                                                                  index]!)
+                                                                          ? Colors
+                                                                              .red
+                                                                              .shade300
+                                                                          : Colors
+                                                                              .grey;
+                                                                    }),
+                                                                    value: statuslist[index] ==
+                                                                            null
+                                                                        ? true
+                                                                        : statuslist[index] ==
+                                                                                true
+                                                                            ? true
+                                                                            : false,
+                                                                    groupValue:
+                                                                        false,
+                                                                    onChanged:
+                                                                        (value) {},
+                                                                  ),
+                                                                  Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .reject,
+                                                                    style:
+                                                                        kfontstyle(),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ));
                                         },
                                       )
                                     ],
@@ -809,98 +865,102 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            color: widget.vanToVanHeader.approvalStatus ==
-                                    'Pending'
-                                ? Colors.green.shade300
-                                : Colors.grey[300],
-                            onPressed: () {
-                              if (widget.vanToVanHeader.approvalStatus ==
-                                  'Pending') {
-                                if (approvedProducts.contains(null)) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .pleaseMakeSureToApproveAndReject),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .doyouWantToProceed),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            loadingCount = 0;
-                                            setState(() {});
-                                            Navigator.pop(context);
-
-                                            context
-                                                .read<VanToVanApprovalBloc>()
-                                                .add(
-                                                    const VanToVanApprovalLoadingEvent());
-
-                                            context
-                                                .read<VanToVanApprovalBloc>()
-                                                .add(GetVanToVanApprovalEent(
-                                                    approvalIn:
-                                                        VanToVanApprovalInParas(
-                                                            products:
-                                                                approvedProducts,
-                                                            userID: widget
-                                                                .vanToVanHeader
-                                                                .userID,
-                                                            reqID: widget
-                                                                .vanToVanHeader
-                                                                .vvhId)));
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .proceed),
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                          child: Visibility(
+                            visible:  widget.vanToVanHeader.approvalStatus ==
+                                    'Pending'?true:false,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              color: widget.vanToVanHeader.approvalStatus ==
+                                      'Pending'
+                                  ? Colors.green.shade300
+                                  : Colors.grey[300],
+                              onPressed: () {
+                                if (widget.vanToVanHeader.approvalStatus ==
+                                    'Pending') {
+                                  if (approvedProducts.contains(null)) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) => CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!.alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!.ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) => CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!.alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+                                              setState(() {});
+                                              Navigator.pop(context);
+                            
+                                              context
+                                                  .read<VanToVanApprovalBloc>()
+                                                  .add(
+                                                      const VanToVanApprovalLoadingEvent());
+                            
+                                              context
+                                                  .read<VanToVanApprovalBloc>()
+                                                  .add(GetVanToVanApprovalEent(
+                                                      approvalIn:
+                                                          VanToVanApprovalInParas(
+                                                              products:
+                                                                  approvedProducts,
+                                                              userID: widget
+                                                                  .vanToVanHeader
+                                                                  .userID,
+                                                              reqID: widget
+                                                                  .vanToVanHeader
+                                                                  .vvhId)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
                                 }
-                              }
-                            },
-                            child: Text(
-                              AppLocalizations.of(context)!.confirm,
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
+                              },
+                              child: Text(
+                                AppLocalizations.of(context)!.confirm,
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         )

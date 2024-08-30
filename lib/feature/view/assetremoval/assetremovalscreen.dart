@@ -275,7 +275,7 @@ class _AssetRemovalApprovalScreenState
                                                                         .w500,
                                                               ),
                                                             ),
-                                                            Row(
+                                                            /* Row(
                                                               children: [
                                                                 Text(
                                                                   '${headers[index].astCode} - ',
@@ -305,8 +305,44 @@ class _AssetRemovalApprovalScreenState
                                                                   ),
                                                                 ),
                                                               ],
+                                                            ), */
+                                                            RichText(
+                                                            text: TextSpan(
+                                                              style: DefaultTextStyle
+                                                                      .of(context)
+                                                                  .style,
+                                                              children: [
+                                                                TextSpan(
+                                                                  text:
+                                                                      '${headers[index].astCode} - ',
+                                                                  style:
+                                                                    kfontstyle(
+                                                                      fontSize: 12.sp,
+                                                                      color: const Color(
+                                                                        0xff2C6B9E,
+                                                                      ),
+                                                                      fontWeight: FontWeight.w500)
+                                                                ),
+                                                                TextSpan(
+                                                                  text: selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? "${headers[index].astName}"
+                                                                      : headers[index]
+                                                                              .astArName ??
+                                                                          '',
+                                                                  style:
+                                                                      kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  // overflow: TextOverflow.ellipsis,
+                                                                ),
+                                                              ],
                                                             ),
-                                                            Row(
+                                                          ),
+                                                            /* Row(
                                                               children: [
                                                                 Text(
                                                                   '${headers[index].cusCode} - ',
@@ -337,7 +373,43 @@ class _AssetRemovalApprovalScreenState
                                                                   ),
                                                                 ),
                                                               ],
+                                                            ), */
+                                                            RichText(
+                                                            text: TextSpan(
+                                                              style: DefaultTextStyle
+                                                                      .of(context)
+                                                                  .style,
+                                                              children: [
+                                                                TextSpan(
+                                                                  text:
+                                                                      '${headers[index].cusCode} - ',
+                                                                  style:
+                                                                     kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    color: const Color(
+                                                                        0xff2C6B9E),
+                                                                  ),
+                                                                ),
+                                                                TextSpan(
+                                                                  text: selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? "${headers[index].cusName}"
+                                                                      : headers[index]
+                                                                              .cusArName ??
+                                                                          '',
+                                                                  style:
+                                                                      kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  // overflow: TextOverflow.ellipsis,
+                                                                ),
+                                                              ],
                                                             ),
+                                                          ),
                                                             Text(
                                                               '${headers[index].rotCode} |${headers[index].createdDate}',
                                                               style: kfontstyle(

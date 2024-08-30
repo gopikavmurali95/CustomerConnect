@@ -64,6 +64,10 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
+            context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
+              userId: widget.user.usrId ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -198,7 +202,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  Row(
+                                  /* Row(
                                     children: [
                                       Text(
                                         '${widget.creditNote.cusCode} - ',
@@ -220,6 +224,30 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                         ),
                                       ),
                                     ],
+                                  ), */
+                                  RichText(
+                                    text: TextSpan(
+                                        style: DefaultTextStyle.of(context)
+                                            .style
+                                            .copyWith(
+                                              fontWeight: FontWeight.normal,
+                                              decoration: TextDecoration.none,
+                                            ),
+                                        children: [
+                                          TextSpan(
+                                              text:
+                                                  '${widget.creditNote.cusCode} - ',
+                                              style: blueTextStyle()),
+                                          TextSpan(
+                                              text: selectedLocale
+                                                          ?.languageCode ==
+                                                      'en'
+                                                  ? "${widget.creditNote.cusName}"
+                                                  : widget.creditNote
+                                                          .arcusName ??
+                                                      '',
+                                              style: subTitleTextStyle())
+                                        ]),
                                   ),
                                   Text(
                                     widget.creditNote.createdDate ?? '',
@@ -494,7 +522,11 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    width: selectedLocale?.languageCode == 'en'?50.w:70.w,
+                                                    width: selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? 50.w
+                                                        : 70.w,
                                                   ),
                                                   Column(
                                                     children: [
@@ -670,137 +702,152 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                       return state.when(
                         getCreditNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
-                            : SizedBox(
-                                height: 80.h,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                      ),
-                                      child: TextFormField(
-                                        controller: _remarksctrls,
-                                        enabled: widget.creditNote.status ==
-                                                'Pending'
-                                            ? true
-                                            : false,
-                                        decoration: InputDecoration(
-                                          hintText:
-                                              AppLocalizations.of(context)!
-                                                  .remarks,
-                                          hintStyle: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: widget.creditNote.status ==
-                                                    'Pending'
-                                                ? Colors.red.shade300
-                                                : Colors.grey,
-                                          ),
-                                          border: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
-                                          ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
-                                          ),
+                            : Visibility(
+                              visible: widget.creditNote.status ==
+                                                  'Pending'
+                                              ? true
+                                              : false,
+                              child: SizedBox(
+                                  //height: 80.h,
+                                  width: double.infinity,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 20,
                                         ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      child: Row(
-                                        children: [
-                                          Flexible(
-                                            flex: 1,
-                                            fit: FlexFit.tight,
-                                            child: MaterialButton(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
+                                        child: TextFormField(
+                                          controller: _remarksctrls,
+                                          enabled: widget.creditNote.status ==
+                                                  'Pending'
+                                              ? true
+                                              : false,
+                                              style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              
+                                                  
+                                            ),
+                                          maxLength:
+                                              200, 
+                                          maxLines:
+                                              null, 
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                AppLocalizations.of(context)!
+                                                    .remarks,
+                                            hintStyle: kfontstyle(
+                                              fontSize: 12.sp,
                                               color: widget.creditNote.status ==
                                                       'Pending'
                                                   ? Colors.red.shade300
-                                                  : Colors.grey[300],
-                                              onPressed: () {
-                                                if (widget.creditNote.status ==
-                                                    'Pending') {
-                                                  context
-                                                      .read<
-                                                          CreditNoteApprovalLevelStatusCubit>()
-                                                      .addCreditNoteStatusLoaingEvent();
-                                                  context
-                                                      .read<
-                                                          CreditNoteApprovalLevelStatusCubit>()
-                                                      .checkApprovalstatusLevel(
-                                                          widget.user.usrId ??
-                                                              '',
-                                                          false);
-                                                }
-                                              },
-                                              child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .reject,
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.white),
-                                              ),
+                                                  : Colors.grey,
+                                            ),
+                                            border: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
+                                            ),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: 10.w,
-                                          ),
-                                          Flexible(
-                                            flex: 1,
-                                            fit: FlexFit.tight,
-                                            child: MaterialButton(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              color: widget.creditNote.status ==
-                                                      'Pending'
-                                                  ? Colors.green.shade300
-                                                  : Colors.grey[300],
-                                              onPressed: () {
-                                                if (widget.creditNote.status ==
-                                                    'Pending') {
-                                                  context
-                                                      .read<
-                                                          CreditNoteApprovalLevelStatusCubit>()
-                                                      .addCreditNoteStatusLoaingEvent();
-                                                  context
-                                                      .read<
-                                                          CreditNoteApprovalLevelStatusCubit>()
-                                                      .checkApprovalstatusLevel(
-                                                          widget.user.usrId ??
-                                                              '',
-                                                          true);
-                                                }
-                                              },
-                                              child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .approve,
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          )
-                                        ],
+                                        ),
                                       ),
-                                    )
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Row(
+                                          children: [
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: MaterialButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                color: widget.creditNote.status ==
+                                                        'Pending'
+                                                    ? Colors.red.shade300
+                                                    : Colors.grey[300],
+                                                onPressed: () {
+                                                  if (widget.creditNote.status ==
+                                                      'Pending') {
+                                                    context
+                                                        .read<
+                                                            CreditNoteApprovalLevelStatusCubit>()
+                                                        .addCreditNoteStatusLoaingEvent();
+                                                    context
+                                                        .read<
+                                                            CreditNoteApprovalLevelStatusCubit>()
+                                                        .checkApprovalstatusLevel(
+                                                            widget.user.usrId ??
+                                                                '',
+                                                            false);
+                                                  }
+                                                },
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .reject,
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10.w,
+                                            ),
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: MaterialButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                color: widget.creditNote.status ==
+                                                        'Pending'
+                                                    ? Colors.green.shade300
+                                                    : Colors.grey[300],
+                                                onPressed: () {
+                                                  if (widget.creditNote.status ==
+                                                      'Pending') {
+                                                    context
+                                                        .read<
+                                                            CreditNoteApprovalLevelStatusCubit>()
+                                                        .addCreditNoteStatusLoaingEvent();
+                                                    context
+                                                        .read<
+                                                            CreditNoteApprovalLevelStatusCubit>()
+                                                        .checkApprovalstatusLevel(
+                                                            widget.user.usrId ??
+                                                                '',
+                                                            true);
+                                                  }
+                                                },
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .approve,
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
+                            ),
                         creditNoteDetailFailedState: () =>
                             const SizedBox.shrink(),
                       );

@@ -21,6 +21,7 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
           Uri.parse(approvalBaseUrl + journeyPlanApprovalHeaders),
           body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<JourneyPlanHeaderModel> headers = headerdata

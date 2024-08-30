@@ -502,7 +502,7 @@ class _MaterialRequestHeaderScreenState
                                                                       .isEmpty ||
                                                                   headers[index]
                                                                           .status !=
-                                                                      'A'
+                                                                      'Approved'
                                                               ? headers[index]
                                                                           .status !=
                                                                       'AH'

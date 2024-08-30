@@ -48,8 +48,10 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + sheduledrRetunrDetailUrl),
           body: {"ReqID": reqID});
+          log("ReqID: $reqID");
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
         List<SheduledReturnDetailModel> details = detaildata
