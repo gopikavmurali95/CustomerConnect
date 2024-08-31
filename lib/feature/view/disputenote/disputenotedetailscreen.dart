@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
@@ -57,6 +58,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log(widget.disputenote.drhId ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
