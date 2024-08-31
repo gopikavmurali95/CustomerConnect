@@ -113,7 +113,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                 ),
                               ],
                             ),
-                            Row(
+                            /*  Row(
                               children: [
                                 Expanded(
                                   child: Text(
@@ -125,6 +125,33 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                   ),
                                 ),
                               ],
+                            ), */
+
+                            RichText(
+                              text: TextSpan(
+                                style:
+                                    DefaultTextStyle.of(context).style.copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                children: [
+                                  TextSpan(
+                                    text: '${widget.header.cuscode} - ',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff413434)),
+                                  ),
+                                  TextSpan(
+                                    text: selectedLocale?.languageCode == 'en'
+                                        ? widget.header.cusname ?? ''
+                                        : widget.header.cusArName ?? '',
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff413434)),
+                                    // overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
                             ),
                             Text(
                               widget.header.createdDate ?? '',
@@ -339,8 +366,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                               Column(
                                                 children: [
                                                   Text(
-                                                    details[index].huom ??
-                                                            '',
+                                                    details[index].huom ?? '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         fontWeight:
@@ -351,8 +377,7 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                     height: 10.h,
                                                   ),
                                                   Text(
-                                                    details[index].luom ??
-                                                            '',
+                                                    details[index].luom ?? '',
                                                     style: kfontstyle(
                                                         fontSize: 12.sp,
                                                         fontWeight:
@@ -362,7 +387,11 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                 ],
                                               ),
                                               SizedBox(
-                                                width: selectedLocale?.languageCode == 'en'?50.w:70.w,
+                                                width: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? 50.w
+                                                    : 70.w,
                                               ),
                                               Column(
                                                 children: [

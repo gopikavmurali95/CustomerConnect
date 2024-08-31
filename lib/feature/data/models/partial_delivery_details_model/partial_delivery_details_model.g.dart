@@ -25,7 +25,10 @@ PartialDeliveryDetailsModel _$PartialDeliveryDetailsModelFromJson(
       arrsnName: json['Arrsn_Name'] as String?,
       arrsnType: json['Arrsn_Type'] as String?,
       prdArabicDescription: json['prd_ArabicDescription'] as String?,
-    );
+    )
+      ..status = json['Status'] as String?
+      ..detStatus = json['DetStatus'] as String?
+      ..reason = json['Reason'] as String?;
 
 Map<String, dynamic> _$PartialDeliveryDetailsModelToJson(
         PartialDeliveryDetailsModel instance) =>
@@ -46,4 +49,7 @@ Map<String, dynamic> _$PartialDeliveryDetailsModelToJson(
       'Arrsn_Name': instance.arrsnName,
       'prd_ArabicDescription': instance.prdArabicDescription,
       'Arrsn_Type': instance.arrsnType,
+      'Status': instance.status,
+      'DetStatus': instance.detStatus,
+      'Reason': instance.reason,
     };

@@ -25,7 +25,7 @@ class PriceChangeRepo implements IPriceChangeRepo {
           Uri.parse(approvalBaseUrl + pricechangeheaderurl),
           body: {"userID": userId, "Status_Value": mode});
       if (response.statusCode == 200) {
-        // logger.w('response: ${response.body}');
+        // log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> priceChange = json['result'];
         List<PriceChangeHeaderModel> priceList = priceChange

@@ -87,11 +87,11 @@ class _ScheduledReturnDetailScreenState
         leading: IconButton(
           onPressed: () {
             log(_approvedCount.toString());
-            /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
-              Future.delayed(const Duration(microseconds: 100), () {
-                showPopAlert(context);
-              });
-            } else { */
+            context.read<SchduledReturnHeaderBloc>().add(
+                GetAllScheduledReturnHeadersEvent(
+                    userID: widget.user.usrId ?? '',
+                    mode: widget.currentMode,
+                    searchQuery: ''));
             Navigator.pop(context);
             // }
           },
@@ -230,7 +230,7 @@ class _ScheduledReturnDetailScreenState
                                                 .rrhRequestNumber ??
                                             '',
                                         style: blueTextStyle()),
-                                    Row(
+                                    /* Row(
                                       children: [
                                         Text(
                                             '${widget.scheduledreturn.cusCode} - ',
@@ -249,7 +249,31 @@ class _ScheduledReturnDetailScreenState
                                               style: subTitleTextStyle()),
                                         ),
                                       ],
-                                    ),
+                                    ), */
+                                    RichText(
+                            text: TextSpan(
+                                style:
+                                    DefaultTextStyle.of(context).style.copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                children: [
+                                  TextSpan(
+                                      text:
+                                         '${widget.scheduledreturn.cusCode} - ',
+                                            style: blueTextStyle()),
+                                  TextSpan(
+                                      text:  selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? widget.scheduledreturn
+                                                          .cusName ??
+                                                      ''
+                                                  : widget.scheduledreturn
+                                                          .arcusName ??
+                                                      '',
+                                              style: subTitleTextStyle())
+                                ]),
+                          ),
                                     Text(
                                       widget.scheduledreturn.createdDate ?? '',
                                       style: kfontstyle(
@@ -440,8 +464,10 @@ class _ScheduledReturnDetailScreenState
                                 if (details[i].status!.isNotEmpty) {
                                   if (details[i].status == 'A') {
                                     statuslist[i] = true;
+                                  }else if(details[i].status=='R'){
+                                    statuslist[i]=false;
                                   } else {
-                                    statuslist[i] = false;
+                                    statuslist[i] = null;
                                   }
                                 }
                               }
@@ -567,6 +593,7 @@ class _ScheduledReturnDetailScreenState
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
+                                                widget.scheduledreturn.status=='Pending'?
                                                 Transform.scale(
                                                   scale: .9,
                                                   origin: const Offset(450, 0),
@@ -881,7 +908,138 @@ class _ScheduledReturnDetailScreenState
                                                       )
                                                     ],
                                                   ),
-                                                )
+                                                ):
+                                                Transform.scale(
+                                                      scale: .9,
+                                                      origin:
+                                                          const Offset(450, 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Expanded(
+                                                              child: details[index]
+                                                                          .status ==
+                                                                      'R'
+                                                                  ? Transform
+                                                                      .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            30.h,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            border: Border.all(color: Colors.grey.shade200),
+                                                                            borderRadius: BorderRadius.circular(10.0),
+                                                                            boxShadow: const [
+                                                                              BoxShadow(
+                                                                                  // ignore: use_full_hex_values_for_flutter_colors
+                                                                                  color: Color(0xff00000050),
+                                                                                  blurRadius: 0.4,
+                                                                                  spreadRadius: 0.4)
+                                                                            ]),
+                                                                        child: Padding(
+                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
+                                                                          horizontal: 10),
+                                                                          child: Text(details[index].rsnName ??
+                                                                              ''),
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : const SizedBox()),
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? Colors.green.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              true,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] != null && !statuslist[index]!)
+                                                                                ? Colors.red.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          
+                                                                          value: statuslist[index] == null
+                                                                              ? true
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .reject,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
                                               ],
                                             ),
                                           ),
@@ -946,250 +1104,315 @@ class _ScheduledReturnDetailScreenState
                             : /* const SizedBox(height: ,) */ const Spacer(), */
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                fit: FlexFit.tight,
-                                child: BlocConsumer<RouteForScCubit,
-                                    RouteForScState>(
-                                  listener: (context, state) {
-                                    state.when(
-                                      getAllRoutesForScReturnState: (routes) {
-                                        availableroutes.clear();
-
-                                        availableroutes = [
-                                          RouteModel(
-                                              rotId: '-1',
-                                              rotName: selectedLocale?.languageCode == 'en'?'Select a Route':'حدد الطريق')
-                                        ];
-
-                                        if (routes != null) {
-                                          availableroutes.addAll(routes);
-                                        }
-                                      },
-                                      getRoutesFailedState: () {
-                                        availableroutes.clear();
-
-                                        availableroutes = [
-                                          RouteModel(
-                                              rotId: '-1',
-                                              rotName:
-                                                  AppLocalizations.of(context)!
-                                                      .noRoutesAvailable)
-                                        ];
-                                      },
-                                    );
-                                  },
-                                  builder: (context, state) {
-                                    return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 0,
-                                        ),
-                                        child: state.when(
-                                          getAllRoutesForScReturnState:
-                                              (routes) => routes == null ||
-                                                      availableroutes.isEmpty
-                                                  ? const ShimmerContainers(
-                                                      height: 30,
-                                                      width: double.infinity,
-                                                    )
-                                                  : Padding(
-                                                      padding: const EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 0),
-                                                      child: Container(
-                                                        height: 30.h,
-                                                        // width: MediaQuery.of(context)
-                                                        //         .size
-                                                        //         .width /
-                                                        //     3,
-
-                                                        decoration: BoxDecoration(
-                                                            color: Colors.white,
-                                                            border: Border.all(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .shade200),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0),
-                                                            boxShadow: const [
-                                                              BoxShadow(
-                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                  color: Color(
-                                                                      0xff00000050),
-                                                                  blurRadius:
-                                                                      0.4,
-                                                                  spreadRadius:
-                                                                      0.4)
-                                                            ]),
-                                                        child:
-                                                            DropdownButtonFormField(
-                                                          isExpanded: true,
-                                                          elevation: 0,
-                                                          // isExpanded:
-                                                          //     true,
-
-                                                          dropdownColor:
-                                                              Colors.white,
-
-                                                          decoration:
-                                                              InputDecoration(
-                                                            filled: true,
-                                                            fillColor:
+                          child: Visibility(
+                            visible: widget.scheduledreturn.status == 'Pending'?true:false,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: BlocConsumer<RouteForScCubit,
+                                      RouteForScState>(
+                                    listener: (context, state) {
+                                      state.when(
+                                        getAllRoutesForScReturnState: (routes) {
+                                          availableroutes.clear();
+                            
+                                          availableroutes = [
+                                            RouteModel(
+                                                rotId: '-1',
+                                                rotName: selectedLocale?.languageCode == 'en'?'Select a Route':'حدد الطريق')
+                                          ];
+                            
+                                          if (routes != null) {
+                                            availableroutes.addAll(routes);
+                                          }
+                                        },
+                                        getRoutesFailedState: () {
+                                          availableroutes.clear();
+                            
+                                          availableroutes = [
+                                            RouteModel(
+                                                rotId: '-1',
+                                                rotName:
+                                                    AppLocalizations.of(context)!
+                                                        .noRoutesAvailable)
+                                          ];
+                                        },
+                                      );
+                                    },
+                                    builder: (context, state) {
+                                      return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 0,
+                                          ),
+                                          child: state.when(
+                                            getAllRoutesForScReturnState:
+                                                (routes) => routes == null ||
+                                                        availableroutes.isEmpty
+                                                    ? const ShimmerContainers(
+                                                        height: 30,
+                                                        width: double.infinity,
+                                                      )
+                                                    : Padding(
+                                                        padding: const EdgeInsets
+                                                            .symmetric(
+                                                            horizontal: 0),
+                                                        child: Container(
+                                                          height: 30.h,
+                                                          // width: MediaQuery.of(context)
+                                                          //         .size
+                                                          //         .width /
+                                                          //     3,
+                            
+                                                          decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              border: Border.all(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade200),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                              boxShadow: const [
+                                                                BoxShadow(
+                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                    color: Color(
+                                                                        0xff00000050),
+                                                                    blurRadius:
+                                                                        0.4,
+                                                                    spreadRadius:
+                                                                        0.4)
+                                                              ]),
+                                                          child:
+                                                              DropdownButtonFormField(
+                                                            isExpanded: true,
+                                                            elevation: 0,
+                                                            // isExpanded:
+                                                            //     true,
+                            
+                                                            dropdownColor:
                                                                 Colors.white,
-                                                            contentPadding:
-                                                                const EdgeInsets
-                                                                    .symmetric(
-                                                                    horizontal:
-                                                                        8),
-                                                            border:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                              borderSide:
-                                                                  const BorderSide(
-                                                                      color: Colors
-                                                                          .transparent),
-                                                            ),
-                                                            enabledBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                              borderSide:
-                                                                  const BorderSide(
-                                                                      color: Colors
-                                                                          .transparent),
-                                                            ),
-                                                            focusedBorder:
-                                                                OutlineInputBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                              borderSide:
-                                                                  const BorderSide(
-                                                                      color: Colors
-                                                                          .transparent),
-                                                            ),
-                                                          ),
-                                                          value:
-                                                              availableroutes[0]
-                                                                  .rotId,
-                                                          style: kfontstyle(
-                                                              color:
-                                                                  Colors.black),
-                                                          menuMaxHeight:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width,
-
-                                                          items: availableroutes
-                                                              .map((RouteModel
-                                                                  item) {
-                                                            return DropdownMenuItem(
-                                                              value: item.rotId,
-                                                              child: Text(
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                item.rotName ??
-                                                                    '',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        10.sp),
+                            
+                                                            decoration:
+                                                                InputDecoration(
+                                                              filled: true,
+                                                              fillColor:
+                                                                  Colors.white,
+                                                              contentPadding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          8),
+                                                              border:
+                                                                  OutlineInputBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent),
                                                               ),
-                                                            );
-                                                          }).toList(),
-                                                          onChanged: (value) {
-                                                            selectedRoute =
-                                                                value ?? '-1';
-                                                          },
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                        color: Colors
+                                                                            .transparent),
+                                                              ),
+                                                            ),
+                                                            value:
+                                                                availableroutes[0]
+                                                                    .rotId,
+                                                            style: kfontstyle(
+                                                                color:
+                                                                    Colors.black),
+                                                            menuMaxHeight:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                            
+                                                            items: availableroutes
+                                                                .map((RouteModel
+                                                                    item) {
+                                                              return DropdownMenuItem(
+                                                                value: item.rotId,
+                                                                child: Text(
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  item.rotName ??
+                                                                      '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          10.sp),
+                                                                ),
+                                                              );
+                                                            }).toList(),
+                                                            onChanged: (value) {
+                                                              selectedRoute =
+                                                                  value ?? '-1';
+                                                            },
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                          getRoutesFailedState: () =>
-                                              const SizedBox(),
-                                        ));
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                fit: FlexFit.tight,
-                                child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                            getRoutesFailedState: () =>
+                                                const SizedBox(),
+                                          ));
+                                    },
                                   ),
-                                  color:
-                                      widget.scheduledreturn.status == 'Pending'
-                                          ? Colors.green.shade300
-                                          : Colors.grey[300],
-                                  onPressed: () {
-                                    if (widget.scheduledreturn.status ==
-                                        'Pending') {
-                                      if (selectedRoute != '-1') {
-                                        if (approvedProducts.contains(null)) {
-                                          showCupertinoDialog(
-                                            context: context,
-                                            builder: (context) =>
-                                                CupertinoAlertDialog(
-                                              title: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .alert),
-                                              content: Text(AppLocalizations.of(
-                                                      context)!
-                                                  .pleaseMakeSureToApproveAndReject),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    // Navigator.pop(context);
-                                                  },
-                                                  child: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .ok),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        } else if (checkrejectedstatus() ==
-                                            false) {
-                                          showCupertinoDialog(
-                                            context: context,
-                                            builder: (context) =>
-                                                CupertinoAlertDialog(
-                                              title: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .alert),
-                                              content: Text(AppLocalizations.of(
-                                                      context)!
-                                                  .youShouldApproveOrRejectAndSpecifyReason),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    // Navigator.pop(context);
-                                                  },
-                                                  child: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .ok),
-                                                ),
-                                              ],
-                                            ),
-                                          );
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: MaterialButton(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    color:
+                                        widget.scheduledreturn.status == 'Pending'
+                                            ? Colors.green.shade300
+                                            : Colors.grey[300],
+                                    onPressed: () {
+                                      if (widget.scheduledreturn.status ==
+                                          'Pending') {
+                                        if (selectedRoute != '-1') {
+                                          if (approvedProducts.contains(null)) {
+                                            showCupertinoDialog(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoAlertDialog(
+                                                title: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .alert),
+                                                content: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .pleaseMakeSureToApproveAndReject),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          } else if (checkrejectedstatus() ==
+                                              false) {
+                                            showCupertinoDialog(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoAlertDialog(
+                                                title: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .alert),
+                                                content: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .youShouldApproveOrRejectAndSpecifyReason),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          } else {
+                                            showCupertinoDialog(
+                                              context: context,
+                                              builder: (context) =>
+                                                  CupertinoAlertDialog(
+                                                title: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      loadingCount = 0;
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              SchduledReturnApprovalBloc>()
+                                                          .add(
+                                                              const AddScheduledReturnApprovalLoadingEvent());
+                            
+                                                      context
+                                                          .read<
+                                                              SchduledReturnApprovalBloc>()
+                                                          .add(
+                                                            APProveOrRejectScheduledReturnEvent(
+                                                              approve:
+                                                                  ScheduledReturnApprovalInModel(
+                                                                returnId: widget
+                                                                    .scheduledreturn
+                                                                    .rrhId,
+                                                                routeId:
+                                                                    selectedRoute,
+                                                                products:
+                                                                    approvedProducts,
+                                                                userId: widget
+                                                                    .scheduledreturn
+                                                                    .userID,
+                                                              ),
+                                                            ),
+                                                          );
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }
                                         } else {
                                           showCupertinoDialog(
                                             context: context,
@@ -1200,96 +1423,34 @@ class _ScheduledReturnDetailScreenState
                                                       .alert),
                                               content: Text(
                                                   AppLocalizations.of(context)!
-                                                      .doyouWantToProceed),
+                                                      .selectRoute),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () {
-                                                    setState(() {});
                                                     Navigator.pop(context);
+                                                    // Navigator.pop(context);
                                                   },
-                                                  child: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .cancel),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () {
-                                                    loadingCount = 0;
-                                                    setState(() {});
-                                                    Navigator.pop(context);
-                                                    context
-                                                        .read<
-                                                            SchduledReturnApprovalBloc>()
-                                                        .add(
-                                                            const AddScheduledReturnApprovalLoadingEvent());
-
-                                                    context
-                                                        .read<
-                                                            SchduledReturnApprovalBloc>()
-                                                        .add(
-                                                          APProveOrRejectScheduledReturnEvent(
-                                                            approve:
-                                                                ScheduledReturnApprovalInModel(
-                                                              returnId: widget
-                                                                  .scheduledreturn
-                                                                  .rrhId,
-                                                              routeId:
-                                                                  selectedRoute,
-                                                              products:
-                                                                  approvedProducts,
-                                                              userId: widget
-                                                                  .scheduledreturn
-                                                                  .userID,
-                                                            ),
-                                                          ),
-                                                        );
-                                                  },
-                                                  child: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .proceed),
+                                                  child: Text(AppLocalizations.of(
+                                                          context)!
+                                                      .ok),
                                                 ),
                                               ],
                                             ),
                                           );
                                         }
-                                      } else {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(
-                                                AppLocalizations.of(context)!
-                                                    .selectRoute),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                          ),
-                                        );
                                       }
-                                    }
-                                  },
-                                  child: Text(
-                                    AppLocalizations.of(context)!.confirm,
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
+                                    },
+                                    child: Text(
+                                      AppLocalizations.of(context)!.confirm,
+                                      style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
