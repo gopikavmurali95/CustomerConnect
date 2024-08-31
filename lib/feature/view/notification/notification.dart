@@ -287,7 +287,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           separatorBuilder: (context, index) => SizedBox(
                             height: 8.h,
                           ),
-                          itemCount: 3,
+                          itemCount: notifications.length,
                         ),
                       ),
                 getNotificationFailedState: () => Center(

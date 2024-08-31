@@ -28,7 +28,7 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
             .map<JourneyPlanHeaderModel>(
                 (json) => JourneyPlanHeaderModel.fromJson(json))
             .toList();
-        return right(headers);
+        return right(headers.reversed.toList());
       } else {
         return left(
           const MainFailures.networkerror(error: 'Something went Wrong'),

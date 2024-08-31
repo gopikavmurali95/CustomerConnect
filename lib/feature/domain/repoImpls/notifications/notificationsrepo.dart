@@ -26,7 +26,7 @@ class NotificationRepo implements INotificationRepo {
             .map<UserNotificationModel>(
                 (json) => UserNotificationModel.fromJson(json))
             .toList();
-        return right(notilist);
+        return right(notilist.reversed.toList());
       } else {
         return left(
           const MainFailures.networkerror(error: 'Something went Wrong'),
