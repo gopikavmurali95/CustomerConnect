@@ -67,8 +67,8 @@ class _InventoryReconfirmationDetailScreenState
         leading: IconButton(
           onPressed: () {
             context.read<InventoryReconfirmHeaderBloc>().add(
-              GetInventoryReconfirmHeadersEvent(
-                  mode: widget.currentMode, searchQuery: ''));
+                GetInventoryReconfirmHeadersEvent(
+                    mode: widget.currentMode, searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -445,18 +445,17 @@ class _InventoryReconfirmationDetailScreenState
                             selectedresons =
                                 List.generate(details.length, (index) => '-1');
 
-                                for (int i = 0; i < details.length; i++) {
-                                  if (details[i].status!.isNotEmpty) {
-                                    if (details[i].status == 'Approved') {
-                                      statuslist[i] = true;
-                                    } else if (details[i].status ==
-                                        'Rejected') {
-                                      statuslist[i] = false;
-                                    } else {
-                                      statuslist[i] = null;
-                                    }
-                                  }
+                            for (int i = 0; i < details.length; i++) {
+                              if (details[i].status!.isNotEmpty) {
+                                if (details[i].status == 'Approved') {
+                                  statuslist[i] = true;
+                                } else if (details[i].status == 'Rejected') {
+                                  statuslist[i] = false;
+                                } else {
+                                  statuslist[i] = null;
                                 }
+                              }
+                            }
                           }
                         },
                         inventoryReconfirmDetailFailedState: () {},
@@ -568,16 +567,22 @@ class _InventoryReconfirmationDetailScreenState
                                                                   ? false
                                                                   : true, */
                                                               child: Text(
-                                                                details[index].iadPhysicalHuom??
+                                                                details[index].iadPhysicalHuom ==
+                                                                            null ||
+                                                                        details[index]
+                                                                            .iadPhysicalHuom!
+                                                                            .isEmpty
+                                                                    ? '-'
+                                                                    : details[index]
+                                                                            .iadPhysicalHuom ??
                                                                         //.iadHigherUom ??
-                                                                    '',
+                                                                        '',
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                          
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -586,25 +591,30 @@ class _InventoryReconfirmationDetailScreenState
                                                               height: 10.h,
                                                             ),
                                                             Visibility(
-                                                              visible: details[index]
-                                                                              .iadLowerUom ==
-                                                                          null ||
-                                                                      details[index]
-                                                                          .iadLowerUom!
-                                                                          .isEmpty
-                                                                  ? false
-                                                                  : true,
+                                                              // visible: details[index]
+                                                              //                 .iadLowerUom ==
+                                                              //             null ||
+                                                              //         details[index]
+                                                              //             .iadLowerUom!
+                                                              //             .isEmpty
+                                                              //     ? false
+                                                              //     : true,
                                                               child: Text(
-                                                                details[index]
-                                                                        .iadLowerUom ??
-                                                                    '',
+                                                                details[index].iadLowerUom ==
+                                                                            null ||
+                                                                        details[index]
+                                                                            .iadLowerUom!
+                                                                            .isEmpty
+                                                                    ? '-'
+                                                                    : details[index]
+                                                                            .iadLowerUom ??
+                                                                        '-',
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                            
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -617,18 +627,19 @@ class _InventoryReconfirmationDetailScreenState
                                                         Column(
                                                           children: [
                                                             Visibility(
-                                                              visible: details[index]
+                                                              /*  visible: details[index]
                                                                               .iadHigherUom ==
                                                                           null ||
                                                                       details[index]
                                                                           .iadHigherUom!
                                                                           .isEmpty
                                                                   ? false
-                                                                  : true,
+                                                                  : true, */
                                                               child: Text(
                                                                 details[index].iadPhysicalHQty ==
                                                                             null ||
-                                                                        details[index]
+                                                                        details[
+                                                                                index] //iad_PhysicalLQty
                                                                             .iadPhysicalHQty!
                                                                             .isEmpty
                                                                     ? "0"
@@ -641,7 +652,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                           
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -650,14 +660,14 @@ class _InventoryReconfirmationDetailScreenState
                                                               height: 10.h,
                                                             ),
                                                             Visibility(
-                                                              visible: details[index]
-                                                                              .iadLowerUom ==
-                                                                          null ||
-                                                                      details[index]
-                                                                          .iadLowerUom!
-                                                                          .isEmpty
-                                                                  ? false
-                                                                  : true,
+                                                              // visible: details[index]
+                                                              //                 .iadLowerUom ==
+                                                              //             null ||
+                                                              //         details[index]
+                                                              //             .iadLowerUom!
+                                                              //             .isEmpty
+                                                              //     ? false
+                                                              //     : true,
                                                               child: Text(
                                                                 details[index].iadPhysicalLQty ==
                                                                             null ||
@@ -667,14 +677,13 @@ class _InventoryReconfirmationDetailScreenState
                                                                     ? '0'
                                                                     : details[index]
                                                                             .iadPhysicalLQty ??
-                                                                        '',
+                                                                        '0',
                                                                 style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                         
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -711,7 +720,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                           
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -720,14 +728,14 @@ class _InventoryReconfirmationDetailScreenState
                                                               height: 10.h,
                                                             ),
                                                             Visibility(
-                                                              visible: details[index]
+                                                              /*  visible: details[index]
                                                                               .iadLowerUom ==
                                                                           null ||
                                                                       details[index]
                                                                           .iadLowerUom!
                                                                           .isEmpty
                                                                   ? false
-                                                                  : true,
+                                                                  : true, */
                                                               child: Text(
                                                                 details[index].iadDescHuom ==
                                                                             null ||
@@ -744,10 +752,8 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                        
                                                                     color: Colors
-                                                                        .black54
-                                                                        ),
+                                                                        .black54),
                                                               ),
                                                             ),
                                                           ],
@@ -762,457 +768,378 @@ class _InventoryReconfirmationDetailScreenState
                                               ),
                                               Column(
                                                 children: [
-                                                  widget.header.iahStatus == 'Pending'?
-                                                  Transform.scale(
-                                                    scale: 0.9,
-                                                    origin: const Offset(450, 0),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                      children: [
-                                                        Expanded(
-                                                          child: BlocConsumer<
-                                                              InventoryReconfirmReasonsCubit,
-                                                              InventoryReconfirmReasonsState>(
-                                                            listener:
-                                                                (context, state) {
-                                                              state.when(
-                                                                getInventoryReconfirmResonsState:
-                                                                    (resons) {
-                                                                  if (resons !=
-                                                                      null) {
-                                                                    selectedresons
-                                                                        .clear();
-                                                                    _availableresons
-                                                                        .clear();
-                                                                    _availableresons =
-                                                                        [
-                                                                      InventoryReconfirmReasonModel(
-                                                                          rsnId:
-                                                                              '-1',
-                                                                          rsnName:
-                                                                              'Select Reason',
-                                                                          rsnArName:
-                                                                              "اختر السبب")
-                                                                    ];
-                                                    
-                                                                    selectedresons = List.generate(
-                                                                        details
-                                                                            .length,
-                                                                        (index) =>
-                                                                            '-1');
-                                                    
-                                                                    _availableresons
-                                                                        .addAll(
-                                                                            resons);
-                                                                  }
-                                                                },
-                                                                inventoryReconfirmReasonsFailedState:
-                                                                    () {},
-                                                              );
-                                                            },
-                                                            builder:
-                                                                (context, state) {
-                                                              return state.when(
-                                                                getInventoryReconfirmResonsState: (resons) => resons ==
-                                                                            null ||
-                                                                        _availableresons
-                                                                            .isEmpty
-                                                                    ? const ShimmerContainers(
-                                                                        height:
-                                                                            30,
-                                                                        width: 80,
-                                                                      )
-                                                                    : Transform.scale(
-                                                                      scale: 0.8,
-                                                                      child: Container(
-                                                                          height:
-                                                                              30.h,
-                                                                          decoration: BoxDecoration(
-                                                                              color: Colors
-                                                                                  .white,
-                                                                              border:
-                                                                                  Border.all(color: Colors.grey.shade200),
-                                                                              borderRadius: BorderRadius.circular(10.0),
-                                                                              boxShadow: const [
-                                                                                BoxShadow(
-                                                                                    // ignore: use_full_hex_values_for_flutter_colors
-                                                                                    color: Color(0xff00000050),
-                                                                                    blurRadius: 0.4,
-                                                                                    spreadRadius: 0.4)
-                                                                              ]),
-                                                                          child:
-                                                                              DropdownButtonFormField(
-                                                                            value: _availableresons[0]
-                                                                                .rsnId,
-                                                                            elevation:
-                                                                                0,
-                                                                            dropdownColor:
-                                                                                Colors.white,
-                                                                            style: kfontstyle(
-                                                                                color:
-                                                                                    Colors.black),
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              filled:
-                                                                                  true,
-                                                                              fillColor:
-                                                                                  Colors.white,
-                                                                              contentPadding: const EdgeInsets
-                                                                                  .symmetric(
-                                                                                  horizontal: 10),
-                                                                              border:
-                                                                                  OutlineInputBorder(
-                                                                                borderRadius:
-                                                                                    BorderRadius.circular(10),
-                                                                                borderSide:
-                                                                                    const BorderSide(color: Colors.transparent),
-                                                                              ),
-                                                                              enabledBorder:
-                                                                                  OutlineInputBorder(
-                                                                                borderRadius:
-                                                                                    BorderRadius.circular(10),
-                                                                                borderSide:
-                                                                                    const BorderSide(color: Colors.transparent),
-                                                                              ),
-                                                                              focusedBorder:
-                                                                                  OutlineInputBorder(
-                                                                                borderRadius:
-                                                                                    BorderRadius.circular(10),
-                                                                                borderSide:
-                                                                                    const BorderSide(color: Colors.transparent),
-                                                                              ),
-                                                                            ),
-                                                                            items: _availableresons.map((InventoryReconfirmReasonModel
-                                                                                item) {
-                                                                              return DropdownMenuItem(
-                                                                                value:
-                                                                                    item.rsnId,
-                                                                                child:
-                                                                                    Text(
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
-                                                                                  style: kfontstyle(fontSize: 8.sp),
+                                                  widget.header.iahStatus ==
+                                                          'Pending'
+                                                      ? Transform.scale(
+                                                          scale: 0.9,
+                                                          origin: const Offset(
+                                                              450, 0),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Expanded(
+                                                                child: BlocConsumer<
+                                                                    InventoryReconfirmReasonsCubit,
+                                                                    InventoryReconfirmReasonsState>(
+                                                                  listener:
+                                                                      (context,
+                                                                          state) {
+                                                                    state.when(
+                                                                      getInventoryReconfirmResonsState:
+                                                                          (resons) {
+                                                                        if (resons !=
+                                                                            null) {
+                                                                          selectedresons
+                                                                              .clear();
+                                                                          _availableresons
+                                                                              .clear();
+                                                                          _availableresons =
+                                                                              [
+                                                                            InventoryReconfirmReasonModel(
+                                                                                rsnId: '-1',
+                                                                                rsnName: 'Select Reason',
+                                                                                rsnArName: "اختر السبب")
+                                                                          ];
+
+                                                                          selectedresons = List.generate(
+                                                                              details.length,
+                                                                              (index) => '-1');
+
+                                                                          _availableresons
+                                                                              .addAll(resons);
+                                                                        }
+                                                                      },
+                                                                      inventoryReconfirmReasonsFailedState:
+                                                                          () {},
+                                                                    );
+                                                                  },
+                                                                  builder:
+                                                                      (context,
+                                                                          state) {
+                                                                    return state
+                                                                        .when(
+                                                                      getInventoryReconfirmResonsState: (resons) => resons == null ||
+                                                                              _availableresons.isEmpty
+                                                                          ? const ShimmerContainers(
+                                                                              height: 30,
+                                                                              width: 80,
+                                                                            )
+                                                                          : Transform.scale(
+                                                                              scale: 0.8,
+                                                                              child: Container(
+                                                                                height: 30.h,
+                                                                                decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
+                                                                                  BoxShadow(
+                                                                                      // ignore: use_full_hex_values_for_flutter_colors
+                                                                                      color: Color(0xff00000050),
+                                                                                      blurRadius: 0.4,
+                                                                                      spreadRadius: 0.4)
+                                                                                ]),
+                                                                                child: DropdownButtonFormField(
+                                                                                  value: _availableresons[0].rsnId,
+                                                                                  elevation: 0,
+                                                                                  dropdownColor: Colors.white,
+                                                                                  style: kfontstyle(color: Colors.black),
+                                                                                  decoration: InputDecoration(
+                                                                                    filled: true,
+                                                                                    fillColor: Colors.white,
+                                                                                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                                                                                    border: OutlineInputBorder(
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                      borderSide: const BorderSide(color: Colors.transparent),
+                                                                                    ),
+                                                                                    enabledBorder: OutlineInputBorder(
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                      borderSide: const BorderSide(color: Colors.transparent),
+                                                                                    ),
+                                                                                    focusedBorder: OutlineInputBorder(
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                      borderSide: const BorderSide(color: Colors.transparent),
+                                                                                    ),
+                                                                                  ),
+                                                                                  items: _availableresons.map((InventoryReconfirmReasonModel item) {
+                                                                                    return DropdownMenuItem(
+                                                                                      value: item.rsnId,
+                                                                                      child: Text(
+                                                                                        overflow: TextOverflow.ellipsis,
+                                                                                        selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                        style: kfontstyle(fontSize: 8.sp),
+                                                                                      ),
+                                                                                    );
+                                                                                  }).toList(),
+                                                                                  onChanged: (value) {
+                                                                                    selectedresons[index] = value ?? '';
+
+                                                                                    if (statuslist[index] == false) {
+                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                        reason: selectedresons[index],
+                                                                                        iadId: details[index].iadId,
+                                                                                        status: "R",
+                                                                                      );
+                                                                                    } else {
+                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                        reason: "",
+                                                                                        iadId: details[index].iadId,
+                                                                                        status: "A",
+                                                                                      );
+                                                                                    }
+                                                                                  },
                                                                                 ),
-                                                                              );
-                                                                            }).toList(),
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              selectedresons[index] =
-                                                                                  value ?? '';
-                                                                      
-                                                                              if (statuslist[index] ==
-                                                                                  false) {
-                                                                                approvedProducts[index] =
-                                                                                    InventoryReconfirmPrdModel(
-                                                                                  reason: selectedresons[index],
-                                                                                  iadId: details[index].iadId,
-                                                                                  status: "R",
-                                                                                );
-                                                                              } else {
-                                                                                approvedProducts[index] =
-                                                                                    InventoryReconfirmPrdModel(
-                                                                                  reason: "",
-                                                                                  iadId: details[index].iadId,
-                                                                                  status: "A",
-                                                                                );
-                                                                              }
-                                                                            },
+                                                                              ),
+                                                                            ),
+                                                                      inventoryReconfirmReasonsFailedState:
+                                                                          () =>
+                                                                              const SizedBox(),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              // SizedBox(
+                                                              //   width: 10.w,
+                                                              // ),
+
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  BlocBuilder<
+                                                                      AapprovalOrRejectRadioCubit,
+                                                                      AapprovalOrRejectRadioState>(
+                                                                    builder:
+                                                                        (context,
+                                                                            state) {
+                                                                      return Row(
+                                                                        children: [
+                                                                          Transform
+                                                                              .scale(
+                                                                            scale:
+                                                                                0.8,
+                                                                            origin:
+                                                                                const Offset(-120, 0),
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                setState(() {
+                                                                                  statuslist[index] = true;
+
+                                                                                  setState(() {});
+                                                                                  approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                    reason: "",
+                                                                                    iadId: details[index].iadId,
+                                                                                    status: "A",
+                                                                                  );
+                                                                                });
+                                                                              },
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Radio(
+                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                      return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                                    }),
+                                                                                    /* activeColor: isselected == true
+                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                            : Colors.grey, */
+                                                                                    value: statuslist[index] == null
+                                                                                        ? false
+                                                                                        : statuslist[index] == true
+                                                                                            ? true
+                                                                                            : false,
+                                                                                    groupValue: true,
+                                                                                    onChanged: (value) {
+                                                                                      statuslist[index] = true;
+
+                                                                                      setState(() {});
+                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                        reason: "",
+                                                                                        iadId: details[index].iadId,
+                                                                                        status: "A",
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                  Text(
+                                                                                    AppLocalizations.of(context)!.approve,
+                                                                                    style: kfontstyle(),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                    ),
-                                                                inventoryReconfirmReasonsFailedState:
-                                                                    () =>
-                                                                        const SizedBox(),
-                                                              );
-                                                            },
+                                                                          Transform
+                                                                              .scale(
+                                                                            scale:
+                                                                                0.8,
+                                                                            origin:
+                                                                                const Offset(-120, 0),
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                setState(() {
+                                                                                  statuslist[index] = false;
+
+                                                                                  setState(() {});
+                                                                                  approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                    reason: selectedresons[index],
+                                                                                    iadId: details[index].iadId,
+                                                                                    status: "R",
+                                                                                  );
+                                                                                });
+                                                                              },
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Radio(
+                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                      return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                                    }),
+                                                                                    /*  activeColor: isselected == false
+                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                            : Colors.grey, */
+                                                                                    value: statuslist[index] == null
+                                                                                        ? true
+                                                                                        : statuslist[index] == true
+                                                                                            ? true
+                                                                                            : false,
+                                                                                    groupValue: false,
+                                                                                    onChanged: (value) {
+                                                                                      statuslist[index] = false;
+
+                                                                                      setState(() {});
+                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
+                                                                                        reason: selectedresons[index],
+                                                                                        iadId: details[index].iadId,
+                                                                                        status: "R",
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                  Text(
+                                                                                    AppLocalizations.of(context)!.reject,
+                                                                                    style: kfontstyle(),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              )
+                                                            ],
                                                           ),
-                                                        ),
-                                                        // SizedBox(
-                                                        //   width: 10.w,
-                                                        // ),
-                                                    
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            BlocBuilder<
-                                                                AapprovalOrRejectRadioCubit,
-                                                                AapprovalOrRejectRadioState>(
-                                                              builder: (context,
-                                                                  state) {
-                                                                return Row(
-                                                                  children: [
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale: 0.8,
-                                                                      origin: const Offset(-120, 0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () {
-                                                                          setState(
-                                                                              () {
-                                                                            statuslist[index] =
-                                                                                true;
-                                                    
-                                                                            setState(
-                                                                                () {});
-                                                                            approvedProducts[index] =
-                                                                                InventoryReconfirmPrdModel(
-                                                                              reason:
-                                                                                  "",
-                                                                              iadId:
-                                                                                  details[index].iadId,
-                                                                              status:
-                                                                                  "A",
-                                                                            );
-                                                                          });
-                                                                        },
-                                                                        child:
-                                                                            Row(
-                                                                          children: [
-                                                                            Radio(
-                                                                              fillColor:
-                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                                return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
-                                                                              }),
-                                                                              /* activeColor: isselected == true
-                                                                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                                                                            : Colors.grey, */
-                                                                              value: statuslist[index] == null
-                                                                                  ? false
-                                                                                  : statuslist[index] == true
-                                                                                      ? true
-                                                                                      : false,
-                                                                              groupValue:
-                                                                                  true,
-                                                                              onChanged:
-                                                                                  (value) {
-                                                                                statuslist[index] = true;
-                                                    
-                                                                                setState(() {});
-                                                                                approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                  reason: "",
-                                                                                  iadId: details[index].iadId,
-                                                                                  status: "A",
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                            Text(
-                                                                              AppLocalizations.of(context)!.approve,
-                                                                              style:
-                                                                                  kfontstyle(),
-                                                                            )
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale: 0.8,
-                                                                      origin: const Offset(-120, 0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () {
-                                                                          setState(
-                                                                              () {
-                                                                            statuslist[index] =
-                                                                                false;
-                                                    
-                                                                            setState(
-                                                                                () {});
-                                                                            approvedProducts[index] =
-                                                                                InventoryReconfirmPrdModel(
-                                                                              reason:
-                                                                                  selectedresons[index],
-                                                                              iadId:
-                                                                                  details[index].iadId,
-                                                                              status:
-                                                                                  "R",
-                                                                            );
-                                                                          });
-                                                                        },
-                                                                        child:
-                                                                            Row(
-                                                                          children: [
-                                                                            Radio(
-                                                                              fillColor:
-                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
-                                                                              }),
-                                                                              /*  activeColor: isselected == false
-                                                                                                                                                                            ? const Color(0xff0075ff)
-                                                                                                                                                                            : Colors.grey, */
-                                                                              value: statuslist[index] == null
-                                                                                  ? true
-                                                                                  : statuslist[index] == true
-                                                                                      ? true
-                                                                                      : false,
-                                                                              groupValue:
-                                                                                  false,
-                                                                              onChanged:
-                                                                                  (value) {
-                                                                                statuslist[index] = false;
-                                                    
-                                                                                setState(() {});
-                                                                                approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                  reason: selectedresons[index],
-                                                                                  iadId: details[index].iadId,
-                                                                                  status: "R",
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                            Text(
-                                                                              AppLocalizations.of(context)!.reject,
-                                                                              style:
-                                                                                  kfontstyle(),
-                                                                            )
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ),
-                                                          ],
                                                         )
-                                                      ],
-                                                    ),
-                                                  ):
-                                                  Transform.scale(
-                                                      scale: .9,
-                                                      origin:
-                                                          const Offset(450, 0),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Expanded(
-                                                              child: details[index]
-                                                                          .status ==
-                                                                      'Rejected'
-                                                                  ? Transform
-                                                                      .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            30.h,
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(color: Colors.grey.shade200),
-                                                                            borderRadius: BorderRadius.circular(10.0),
-                                                                            boxShadow: const [
+                                                      : Transform.scale(
+                                                          scale: .9,
+                                                          origin: const Offset(
+                                                              450, 0),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Expanded(
+                                                                  child: details[index]
+                                                                              .status ==
+                                                                          'Rejected'
+                                                                      ? Transform
+                                                                          .scale(
+                                                                          scale:
+                                                                              0.8,
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                30.h,
+                                                                            decoration:
+                                                                                BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                               BoxShadow(
                                                                                   // ignore: use_full_hex_values_for_flutter_colors
                                                                                   color: Color(0xff00000050),
                                                                                   blurRadius: 0.4,
                                                                                   spreadRadius: 0.4)
                                                                             ]),
-                                                                        child: Padding(
-                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
-                                                                          horizontal: 10),
-                                                                          child: Text(details[index].reason ??
-                                                                              ''),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                              child: Text(details[index].reason ?? ''),
+                                                                            ),
+                                                                          ),
+                                                                        )
+                                                                      : const SizedBox()),
+                                                              BlocBuilder<
+                                                                  AapprovalOrRejectRadioCubit,
+                                                                  AapprovalOrRejectRadioState>(
+                                                                builder:
+                                                                    (context,
+                                                                        state) {
+                                                                  return Row(
+                                                                    children: [
+                                                                      Transform
+                                                                          .scale(
+                                                                        scale:
+                                                                            0.8,
+                                                                        origin: const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Radio(
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                              }),
+                                                                              value: statuslist[index] == null
+                                                                                  ? false
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue: true,
+                                                                              onChanged: (value) {},
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.approve,
+                                                                              style: kfontstyle(),
+                                                                            )
+                                                                          ],
                                                                         ),
                                                                       ),
-                                                                    )
-                                                                  : const SizedBox()),
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
+                                                                      Transform
+                                                                          .scale(
+                                                                        scale:
+                                                                            0.8,
+                                                                        origin: const Offset(
                                                                             -120,
                                                                             0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Radio(
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                              }),
+                                                                              value: statuslist[index] == null
                                                                                   ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue: false,
+                                                                              onChanged: (value) {},
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.reject,
+                                                                              style: kfontstyle(),
+                                                                            )
+                                                                          ],
                                                                         ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
+                                                                      )
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
                                                 ],
                                               )
                                             ],
@@ -1290,7 +1217,9 @@ class _InventoryReconfirmationDetailScreenState
                               flex: 1,
                               fit: FlexFit.tight,
                               child: Visibility(
-                               visible:  widget.header.iahStatus=="Pending"?true:false,
+                                visible: widget.header.iahStatus == "Pending"
+                                    ? true
+                                    : false,
                                 child: MaterialButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -1317,14 +1246,15 @@ class _InventoryReconfirmationDetailScreenState
                                                   Navigator.pop(context);
                                                   // Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
                                               ),
                                             ],
                                           ),
                                         );
-                                      } else if (checkrejectedstatus() == false) {
+                                      } else if (checkrejectedstatus() ==
+                                          false) {
                                         showCupertinoDialog(
                                           context: context,
                                           builder: (context) =>
@@ -1341,9 +1271,9 @@ class _InventoryReconfirmationDetailScreenState
                                                   Navigator.pop(context);
                                                   // Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
                                               ),
                                             ],
                                           ),
@@ -1365,9 +1295,9 @@ class _InventoryReconfirmationDetailScreenState
                                                   setState(() {});
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .cancel),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .cancel),
                                               ),
                                               TextButton(
                                                 onPressed: () {
@@ -1377,10 +1307,10 @@ class _InventoryReconfirmationDetailScreenState
                                                       InventoryReconfirmApproveInModel(
                                                           products:
                                                               approvedProducts,
-                                                          reqId:
-                                                              widget.header.iahId,
-                                                          userId: widget
-                                                              .header.iahUsrId)));
+                                                          reqId: widget
+                                                              .header.iahId,
+                                                          userId: widget.header
+                                                              .iahUsrId)));
                                                   context
                                                       .read<
                                                           InventoryReconfirmApprovalBloc>()
@@ -1399,9 +1329,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                   .header
                                                                   .iahUsrId)));
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .proceed),
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .proceed),
                                               ),
                                             ],
                                           ),
