@@ -541,8 +541,8 @@ class _InventoryReconfirmationDetailScreenState
                                                                   ? false
                                                                   : true, */
                                                               child: Text(
-                                                                details[index]
-                                                                        .iadHigherUom ??
+                                                                details[index].iadPhysicalHuom??
+                                                                        //.iadHigherUom ??
                                                                     '',
                                                                 style: kfontstyle(
                                                                     fontSize:
@@ -550,6 +550,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                          
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -576,6 +577,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                            
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -612,6 +614,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                           
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -644,6 +647,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                         
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -680,6 +684,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                           
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -712,8 +717,10 @@ class _InventoryReconfirmationDetailScreenState
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
+                                                                        
                                                                     color: Colors
-                                                                        .black54),
+                                                                        .black54
+                                                                        ),
                                                               ),
                                                             ),
                                                           ],
