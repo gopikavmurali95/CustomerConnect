@@ -25,7 +25,7 @@ class InventoryReconfirmationRepo
           Uri.parse(approvalBaseUrl + inventoryReconfirmHeaderUrl),
           body: {"Status_Value": mode});
       if (response.statusCode == 200) {
-        log('response:${response.body}');
+       // log('response:${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<InventoryReconfirmHeaderModel> headers = headerdata
@@ -52,6 +52,7 @@ class InventoryReconfirmationRepo
           Uri.parse(approvalBaseUrl + inventoryReconfirmDetailUrl),
           body: {"ReqID": reqId});
       if (response.statusCode == 200) {
+        log("inventory reconfirmation  ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
         List<InventoryReconfirmDetailModel> details = detaildata
