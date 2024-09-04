@@ -17,21 +17,22 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OutStandingPaginationState {
   List<OutStandOutModel>? get headers => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<OutStandOutModel>? headers)
+    required TResult Function(List<OutStandOutModel>? headers, bool isLoading)
         getOutStandingHeadersPageState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<OutStandOutModel>? headers)?
+    TResult? Function(List<OutStandOutModel>? headers, bool isLoading)?
         getOutStandingHeadersPageState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<OutStandOutModel>? headers)?
+    TResult Function(List<OutStandOutModel>? headers, bool isLoading)?
         getOutStandingHeadersPageState,
     required TResult orElse(),
   }) =>
@@ -68,7 +69,7 @@ abstract class $OutStandingPaginationStateCopyWith<$Res> {
       _$OutStandingPaginationStateCopyWithImpl<$Res,
           OutStandingPaginationState>;
   @useResult
-  $Res call({List<OutStandOutModel>? headers});
+  $Res call({List<OutStandOutModel>? headers, bool isLoading});
 }
 
 /// @nodoc
@@ -86,12 +87,17 @@ class _$OutStandingPaginationStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? headers = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       headers: freezed == headers
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<OutStandOutModel>?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -105,7 +111,7 @@ abstract class _$$GetOutStandingHeadersPageStateImplCopyWith<$Res>
       __$$GetOutStandingHeadersPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<OutStandOutModel>? headers});
+  $Res call({List<OutStandOutModel>? headers, bool isLoading});
 }
 
 /// @nodoc
@@ -122,12 +128,17 @@ class __$$GetOutStandingHeadersPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? headers = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$GetOutStandingHeadersPageStateImpl(
       headers: freezed == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<OutStandOutModel>?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -137,7 +148,7 @@ class __$$GetOutStandingHeadersPageStateImplCopyWithImpl<$Res>
 class _$GetOutStandingHeadersPageStateImpl
     implements GetOutStandingHeadersPageState {
   const _$GetOutStandingHeadersPageStateImpl(
-      {required final List<OutStandOutModel>? headers})
+      {required final List<OutStandOutModel>? headers, required this.isLoading})
       : _headers = headers;
 
   final List<OutStandOutModel>? _headers;
@@ -151,8 +162,11 @@ class _$GetOutStandingHeadersPageStateImpl
   }
 
   @override
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'OutStandingPaginationState.getOutStandingHeadersPageState(headers: $headers)';
+    return 'OutStandingPaginationState.getOutStandingHeadersPageState(headers: $headers, isLoading: $isLoading)';
   }
 
   @override
@@ -160,12 +174,14 @@ class _$GetOutStandingHeadersPageStateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOutStandingHeadersPageStateImpl &&
-            const DeepCollectionEquality().equals(other._headers, _headers));
+            const DeepCollectionEquality().equals(other._headers, _headers) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_headers), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -178,30 +194,30 @@ class _$GetOutStandingHeadersPageStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<OutStandOutModel>? headers)
+    required TResult Function(List<OutStandOutModel>? headers, bool isLoading)
         getOutStandingHeadersPageState,
   }) {
-    return getOutStandingHeadersPageState(headers);
+    return getOutStandingHeadersPageState(headers, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<OutStandOutModel>? headers)?
+    TResult? Function(List<OutStandOutModel>? headers, bool isLoading)?
         getOutStandingHeadersPageState,
   }) {
-    return getOutStandingHeadersPageState?.call(headers);
+    return getOutStandingHeadersPageState?.call(headers, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<OutStandOutModel>? headers)?
+    TResult Function(List<OutStandOutModel>? headers, bool isLoading)?
         getOutStandingHeadersPageState,
     required TResult orElse(),
   }) {
     if (getOutStandingHeadersPageState != null) {
-      return getOutStandingHeadersPageState(headers);
+      return getOutStandingHeadersPageState(headers, isLoading);
     }
     return orElse();
   }
@@ -241,11 +257,13 @@ class _$GetOutStandingHeadersPageStateImpl
 abstract class GetOutStandingHeadersPageState
     implements OutStandingPaginationState {
   const factory GetOutStandingHeadersPageState(
-          {required final List<OutStandOutModel>? headers}) =
-      _$GetOutStandingHeadersPageStateImpl;
+      {required final List<OutStandOutModel>? headers,
+      required final bool isLoading}) = _$GetOutStandingHeadersPageStateImpl;
 
   @override
   List<OutStandOutModel>? get headers;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$GetOutStandingHeadersPageStateImplCopyWith<

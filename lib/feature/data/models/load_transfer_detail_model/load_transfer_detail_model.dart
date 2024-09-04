@@ -40,6 +40,9 @@ class LoadTransferDetailModel {
   String? prdName;
   @JsonKey(name: 'prd_ArName')
   String? prdArName;
+  @JsonKey(name: 'Status')
+  String? status;
+
   LoadTransferDetailModel({
     this.ldrId,
     this.ldrPrdId,

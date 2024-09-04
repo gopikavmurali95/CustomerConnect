@@ -74,12 +74,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            // log(_approvedCount.toString());
-            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
+            context.read<PartialDeliveryHeaderBloc>().add(
+              GetPartialDeliveryHeaderEvent(
+                  userID: widget.user.usrId!, mode: widget.currentMode, searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -131,7 +128,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                       children: [
                         Text('${widget.header.orderId}',
                             style: blueTextStyle()),
-                        Row(
+                        /* Row(
                           children: [
                             Text('${widget.header.cusCode} - ',
                                 style: blueTextStyle()),
@@ -146,7 +143,26 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   style: subTitleTextStyle()),
                             ),
                           ],
-                        ),
+                        ), */
+                        RichText(
+                            text: TextSpan(
+                                style:
+                                    DefaultTextStyle.of(context).style.copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                children: [
+                                  TextSpan(
+                                      text:
+                                          '${widget.header.cusCode} - ',
+                                style: blueTextStyle()),
+                                  TextSpan(
+                                      text:  selectedLocale?.languageCode == 'en'
+                                      ? "${widget.header.cusName}"
+                                      : widget.header.arcusName ?? '',
+                                  style: subTitleTextStyle())
+                                ]),
+                          ),
                         Text(
                           '${widget.header.createdDate} ',
                           style:
@@ -366,16 +382,19 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               statuslist /* length = details.length; */
                                   = List.generate(pdet.length, (index) => null);
 
-                              /* for (int i = 0; i < pdet.length; i++) {
+                              for (int i = 0; i < pdet.length; i++) {
                                 if (widget
                                     .header.dahApprovalStatus!.isNotEmpty) {
-                                  if (widget.header.dahApprovalStatus == 'A') {
+                                  if (pdet[i].detStatus == 'Approved') {
                                     statuslist[i] = true;
-                                  } else {
+                                  }
+                                   else if(pdet[i].detStatus == 'Rejected'){
                                     statuslist[i] = false;
+                                  }else{
+                                    statuslist[i]=null;
                                   }
                                 }
-                              } */
+                              }
                             }
                           },
                           partialDeliveryDetailsFailedState: () {},
@@ -471,6 +490,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                             ),
                                           ],
                                         ),
+                                        widget.header.dahApprovalStatus=='Pending'?
                                         Transform.scale(
                                           scale: .9,
                                                 origin: const Offset(450, 0),
@@ -808,7 +828,138 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                               )
                                             ],
                                           ),
-                                        )
+                                        ):
+                                        Transform.scale(
+                                                      scale: .9,
+                                                      origin:
+                                                          const Offset(450, 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Expanded(
+                                                              child: pdet[index]
+                                                                          .detStatus ==
+                                                                      'Rejected'
+                                                                  ? Transform
+                                                                      .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            30.h,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            border: Border.all(color: Colors.grey.shade200),
+                                                                            borderRadius: BorderRadius.circular(10.0),
+                                                                            boxShadow: const [
+                                                                              BoxShadow(
+                                                                                  // ignore: use_full_hex_values_for_flutter_colors
+                                                                                  color: Color(0xff00000050),
+                                                                                  blurRadius: 0.4,
+                                                                                  spreadRadius: 0.4)
+                                                                            ]),
+                                                                        child: Padding(
+                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
+                                                                          horizontal: 10),
+                                                                          child: Text(pdet[index].reason ??
+                                                                              ''),
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : const SizedBox()),
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? Colors.green.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              true,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] != null && !statuslist[index]!)
+                                                                                ? Colors.red.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          
+                                                                          value: statuslist[index] == null
+                                                                              ? true
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .reject,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
                                       ],
                                     ),
                                   ),
@@ -847,128 +998,132 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            color:
-                                widget.header.dahApprovalStatus == 'Pending' ||
-                                        widget.header.dahApprovalStatus!.isEmpty
-                                    ? Colors.green.shade300
-                                    : Colors.grey[300],
-                            onPressed: () {
-                              if (widget.header.dahApprovalStatus ==
-                                      'Pending' ||
-                                  widget.header.dahApprovalStatus!.isEmpty) {
-                                if (_partialdeliveryapproved.contains(null)) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .pleaseMakeSureToApproveAndReject),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }else 
-                                  if (checkrejectedstatus() == false) {
-                                                                    showCupertinoDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) =>
-                                                                              CupertinoAlertDialog(
-                                                                        title: Text(
-                                                                            AppLocalizations.of(context)!
-                                                                                .alert),
-                                                                        content: Text(
-                                                                            AppLocalizations.of(context)!
-                                                                                .selectReason),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child:
-                                                                                Text(AppLocalizations.of(context)!.ok),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    );
-
+                          child: Visibility(
+                            visible: widget.header.dahApprovalStatus == 'Pending' ||
+                                          widget.header.dahApprovalStatus!.isEmpty?true:false,
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              color:
+                                  widget.header.dahApprovalStatus == 'Pending' ||
+                                          widget.header.dahApprovalStatus!.isEmpty
+                                      ? Colors.green.shade300
+                                      : Colors.grey[300],
+                              onPressed: () {
+                                if (widget.header.dahApprovalStatus ==
+                                        'Pending' ||
+                                    widget.header.dahApprovalStatus!.isEmpty) {
+                                  if (_partialdeliveryapproved.contains(null)) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) => CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!.alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!.ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }else 
+                                    if (checkrejectedstatus() == false) {
+                                                                      showCupertinoDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) =>
+                                                                                CupertinoAlertDialog(
+                                                                          title: Text(
+                                                                              AppLocalizations.of(context)!
+                                                                                  .alert),
+                                                                          content: Text(
+                                                                              AppLocalizations.of(context)!
+                                                                                  .selectReason),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed:
+                                                                                  () {
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child:
+                                                                                  Text(AppLocalizations.of(context)!.ok),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      );
+                            
+                                  }
+                                   else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) => CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!.alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+                                              setState(() {});
+                                              Navigator.pop(context);
+                            
+                                              context
+                                                  .read<
+                                                      PartialDeliveryApprovalBloc>()
+                                                  .add(
+                                                      const PartialDeliveryLoadingEvent());
+                            
+                                              context
+                                                  .read<
+                                                      PartialDeliveryApprovalBloc>()
+                                                  .add(GetPartialDeliveryApprovalEvent(
+                                                      approvalin:
+                                                          PartialDeliveryApprovalModel(
+                                                              products:
+                                                                  _partialdeliveryapproved,
+                                                              returnId: widget
+                                                                  .header.dahId,
+                                                              userId: widget
+                                                                  .user.usrId)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
                                 }
-                                 else {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .doyouWantToProceed),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            loadingCount = 0;
-                                            setState(() {});
-                                            Navigator.pop(context);
-
-                                            context
-                                                .read<
-                                                    PartialDeliveryApprovalBloc>()
-                                                .add(
-                                                    const PartialDeliveryLoadingEvent());
-
-                                            context
-                                                .read<
-                                                    PartialDeliveryApprovalBloc>()
-                                                .add(GetPartialDeliveryApprovalEvent(
-                                                    approvalin:
-                                                        PartialDeliveryApprovalModel(
-                                                            products:
-                                                                _partialdeliveryapproved,
-                                                            returnId: widget
-                                                                .header.dahId,
-                                                            userId: widget
-                                                                .user.usrId)));
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .proceed),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              }
-                            },
-                            child: Text(
-                              AppLocalizations.of(context)!.confirm,
-                              style: kfontstyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
+                              },
+                              child: Text(
+                                AppLocalizations.of(context)!.confirm,
+                                style: kfontstyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         )

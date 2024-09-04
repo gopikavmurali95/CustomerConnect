@@ -24,6 +24,7 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
           body: {"Req_ID": reqID, "Mode": mode});
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> returnheaderdata = json['result'];
         List<ReturnApprovalDetailModel> returns = returnheaderdata
@@ -50,8 +51,9 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + returnApprovalsHeaderUrl),
           body: {"UserID": rotID, "Status_Value": mode});
+          
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> returnheaderdata = json['result'];
         List<ReturnApprovalHeaderModel> returns = returnheaderdata
@@ -78,7 +80,7 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
           Uri.parse(approvalBaseUrl + approvalReasonUrl),
           body: {"rsn_Type": rsnType});
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> returnheaderdata = json['result'];
         List<ApprovalResonModel> reasons = returnheaderdata

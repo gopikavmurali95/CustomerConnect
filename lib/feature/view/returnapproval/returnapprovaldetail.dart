@@ -76,13 +76,11 @@ class _ReturnApprovalDetailScreenState
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            // if (_approvedCount != 0 && _approvedCount != _totalCount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
-            //   context.read<NavigatetoBackCubit>().popFromScreen(true);
-            // }
+           context.read<ReturnApprovalHeaderBloc>().add(
+                GetReturnApprovalHeaders(
+                    rotID: widget.user.usrId ?? '',
+                    mode: widget.currentMode,
+                    searchQuery: ''));
 
             Navigator.pop(context);
           },
@@ -143,7 +141,7 @@ class _ReturnApprovalDetailScreenState
                                     widget.returnApprovel.ithRequestNumber ??
                                         '',
                                     style: blueTextStyle()),
-                                Row(
+                                /* Row(
                                   children: [
                                     Text('${widget.returnApprovel.cusCode} - ',
                                         style: blueTextStyle()),
@@ -159,6 +157,33 @@ class _ReturnApprovalDetailScreenState
                                           style: subTitleTextStyle()),
                                     ),
                                   ],
+                                ), */
+                                RichText(
+                                  text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              '${widget.returnApprovel.cusCode} - ',
+                                          style: blueTextStyle()),
+                                      TextSpan(
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? widget.returnApprovel.cusName ??
+                                                  ''
+                                              : widget.returnApprovel
+                                                      .arcusName ??
+                                                  '',
+                                          style: subTitleTextStyle()
+                                          // overflow: TextOverflow.ellipsis,
+                                          ),
+                                    ],
+                                  ),
                                 ),
                                 Text(
                                   widget.returnApprovel.createdDate ?? '',
@@ -331,8 +356,11 @@ class _ReturnApprovalDetailScreenState
                             approvedCount++;
                             if (details[i].radApprovalStatus == 'A') {
                               statuslist[i] = true;
-                            } else {
+                            } else if(details[i].radApprovalStatus == 'R'){
                               statuslist[i] = false;
+                            }
+                            else{
+                              statuslist[i] =null;
                             }
                           }
                         }
@@ -537,7 +565,11 @@ class _ReturnApprovalDetailScreenState
                                                   ],
                                                 ),
                                                 SizedBox(
-                                                  width: selectedLocale?.languageCode == 'en'?50.w:70.w,
+                                                  width: selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? 50.w
+                                                      : 70.w,
                                                 ),
                                                 Column(
                                                   children: [
@@ -567,6 +599,7 @@ class _ReturnApprovalDetailScreenState
                                             )
                                           ],
                                         ),
+                                        widget.returnApprovel.rahApprovalStatus=='Pending'?
                                         Transform.scale(
                                           scale: .9,
                                           origin: const Offset(450, 0),
@@ -750,21 +783,20 @@ class _ReturnApprovalDetailScreenState
                                                           onTap: () {
                                                             setState(() {
                                                               statuslist[
-                                                                          index] =
-                                                                      true;
-                                                                  loadingCount =
-                                                                      0;
-                                                                  setState(() {});
-                                                          
-                                                                  _returnProducts[
-                                                                          index] =
-                                                                      ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "A");
+                                                                  index] = true;
+                                                              loadingCount = 0;
+                                                              setState(() {});
+
+                                                              _returnProducts[
+                                                                      index] =
+                                                                  ReturnApprovalProductModel(
+                                                                      radID: details[
+                                                                              index]
+                                                                          .radId,
+                                                                      reason: selectedresons[
+                                                                          index],
+                                                                      status:
+                                                                          "A");
                                                             });
                                                           },
                                                           child: Row(
@@ -790,12 +822,12 @@ class _ReturnApprovalDetailScreenState
                                                                             index] ==
                                                                         null
                                                                     ? false
-                                                                    : statuslist[
-                                                                                index] ==
+                                                                    : statuslist[index] ==
                                                                             true
                                                                         ? true
                                                                         : false,
-                                                                groupValue: true,
+                                                                groupValue:
+                                                                    true,
                                                                 onChanged:
                                                                     (value) {
                                                                   statuslist[
@@ -803,17 +835,17 @@ class _ReturnApprovalDetailScreenState
                                                                       true;
                                                                   loadingCount =
                                                                       0;
-                                                                  setState(() {});
-                                                          
-                                                                  _returnProducts[
-                                                                          index] =
-                                                                      ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "A");
+                                                                  setState(
+                                                                      () {});
+
+                                                                  _returnProducts[index] = ReturnApprovalProductModel(
+                                                                      radID: details[
+                                                                              index]
+                                                                          .radId,
+                                                                      reason: selectedresons[
+                                                                          index],
+                                                                      status:
+                                                                          "A");
                                                                 },
                                                               ),
                                                               Text(
@@ -835,22 +867,22 @@ class _ReturnApprovalDetailScreenState
                                                           onTap: () {
                                                             setState(() {
                                                               statuslist[
-                                                                          index] =
-                                                                      false;
-                                                          
-                                                                  loadingCount =
-                                                                      0;
-                                                                  setState(() {});
-                                                          
-                                                                  _returnProducts[
-                                                                          index] =
-                                                                      ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "R");
+                                                                      index] =
+                                                                  false;
+
+                                                              loadingCount = 0;
+                                                              setState(() {});
+
+                                                              _returnProducts[
+                                                                      index] =
+                                                                  ReturnApprovalProductModel(
+                                                                      radID: details[
+                                                                              index]
+                                                                          .radId,
+                                                                      reason: selectedresons[
+                                                                          index],
+                                                                      status:
+                                                                          "R");
                                                             });
                                                           },
                                                           child: Row(
@@ -865,7 +897,8 @@ class _ReturnApprovalDetailScreenState
                                                                               null &&
                                                                           !statuslist[
                                                                               index]!)
-                                                                      ? Colors.red
+                                                                      ? Colors
+                                                                          .red
                                                                           .shade300
                                                                       : Colors
                                                                           .grey;
@@ -877,31 +910,31 @@ class _ReturnApprovalDetailScreenState
                                                                             index] ==
                                                                         null
                                                                     ? true
-                                                                    : statuslist[
-                                                                                index] ==
+                                                                    : statuslist[index] ==
                                                                             true
                                                                         ? true
                                                                         : false,
-                                                                groupValue: false,
+                                                                groupValue:
+                                                                    false,
                                                                 onChanged:
                                                                     (value) {
                                                                   statuslist[
                                                                           index] =
                                                                       false;
-                                                          
+
                                                                   loadingCount =
                                                                       0;
-                                                                  setState(() {});
-                                                          
-                                                                  _returnProducts[
-                                                                          index] =
-                                                                      ReturnApprovalProductModel(
-                                                                          radID: details[index]
-                                                                              .radId,
-                                                                          reason: selectedresons[
-                                                                              index],
-                                                                          status:
-                                                                              "R");
+                                                                  setState(
+                                                                      () {});
+
+                                                                  _returnProducts[index] = ReturnApprovalProductModel(
+                                                                      radID: details[
+                                                                              index]
+                                                                          .radId,
+                                                                      reason: selectedresons[
+                                                                          index],
+                                                                      status:
+                                                                          "R");
                                                                 },
                                                               ),
                                                               Text(
@@ -921,7 +954,138 @@ class _ReturnApprovalDetailScreenState
                                               )
                                             ],
                                           ),
-                                        )
+                                        ):
+                                        Transform.scale(
+                                                      scale: .9,
+                                                      origin:
+                                                          const Offset(450, 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Expanded(
+                                                              child: details[index]
+                                                                          .radApprovalStatus ==
+                                                                      'R'
+                                                                  ? Transform
+                                                                      .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            30.h,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            border: Border.all(color: Colors.grey.shade200),
+                                                                            borderRadius: BorderRadius.circular(10.0),
+                                                                            boxShadow: const [
+                                                                              BoxShadow(
+                                                                                  // ignore: use_full_hex_values_for_flutter_colors
+                                                                                  color: Color(0xff00000050),
+                                                                                  blurRadius: 0.4,
+                                                                                  spreadRadius: 0.4)
+                                                                            ]),
+                                                                        child: Padding(
+                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
+                                                                          horizontal: 10),
+                                                                          child: Text(details[index]. rsnName??
+                                                                              ''),
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : const SizedBox()),
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] == true)
+                                                                                ? Colors.green.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          value: statuslist[index] == null
+                                                                              ? false
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              true,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .approve,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    origin:
+                                                                        const Offset(
+                                                                            -120,
+                                                                            0),
+                                                                    child: Row(
+                                                                      children: [
+                                                                        Radio(
+                                                                          fillColor:
+                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                            return (statuslist[index] != null && !statuslist[index]!)
+                                                                                ? Colors.red.shade300
+                                                                                : Colors.grey;
+                                                                          }),
+                                                                          
+                                                                          value: statuslist[index] == null
+                                                                              ? true
+                                                                              : statuslist[index] == true
+                                                                                  ? true
+                                                                                  : false,
+                                                                          groupValue:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                           
+                                                                          },
+                                                                        ),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .reject,
+                                                                          style:
+                                                                              kfontstyle(),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
                                       ],
                                     ),
                                   ),
@@ -957,129 +1121,133 @@ class _ReturnApprovalDetailScreenState
                           Flexible(
                             flex: 1,
                             fit: FlexFit.tight,
-                            child: MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: widget.returnApprovel.rahApprovalStatus !=
-                                      'Action Taken'
-                                  ? Colors.green.shade300
-                                  : Colors.grey[300],
-                              onPressed: () {
-                                if (widget.returnApprovel.rahApprovalStatus !=
-                                    'Action Taken') {
-                                  if (_returnProducts.contains(null)) {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  } else if (checkrejectedstatus() == false) {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .selectReason),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  } else {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<
-                                                      ApproveReturnProductBloc>()
-                                                  .add(
-                                                      const AddApprovalLoadingEvent());
-
-                                              context
-                                                  .read<
-                                                      ApproveReturnProductBloc>()
-                                                  .add(
-                                                    ApproveProductEvent(
-                                                      approval: ReturnApproveInModel(
-                                                          userID: widget
-                                                              .returnApprovel
-                                                              .userID,
-                                                          returnID: widget
-                                                              .returnApprovel
-                                                              .rahId,
-                                                          products:
-                                                              _returnProducts),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                            child: Visibility(
+                              visible: widget.returnApprovel.rahApprovalStatus !=
+                                        'Action Taken'?true:false,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: widget.returnApprovel.rahApprovalStatus !=
+                                        'Action Taken'
+                                    ? Colors.green.shade300
+                                    : Colors.grey[300],
+                                onPressed: () {
+                                  if (widget.returnApprovel.rahApprovalStatus !=
+                                      'Action Taken') {
+                                    if (_returnProducts.contains(null)) {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else if (checkrejectedstatus() == false) {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .selectReason),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        ApproveReturnProductBloc>()
+                                                    .add(
+                                                        const AddApprovalLoadingEvent());
+                              
+                                                context
+                                                    .read<
+                                                        ApproveReturnProductBloc>()
+                                                    .add(
+                                                      ApproveProductEvent(
+                                                        approval: ReturnApproveInModel(
+                                                            userID: widget
+                                                                .returnApprovel
+                                                                .userID,
+                                                            returnID: widget
+                                                                .returnApprovel
+                                                                .rahId,
+                                                            products:
+                                                                _returnProducts),
+                                                      ),
+                                                    );
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   }
-                                }
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.confirm,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.confirm,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
                               ),
                             ),
                           )

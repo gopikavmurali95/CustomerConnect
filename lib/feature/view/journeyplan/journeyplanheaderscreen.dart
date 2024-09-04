@@ -368,8 +368,21 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                 state.when(
                   getAllJourneyPlanHeadersState: (headers) {
                     if (headers != null) {
+                      
                       statuslist =
                           List.generate(headers.length, (index) => null);
+                          for (int i = 0; i < headers.length; i++) {
+                        if (headers[i].status!.isNotEmpty) {
+                          
+                          if (headers[i].status == 'Approved') {
+                            statuslist[i] = true;
+                          } else if (headers[i].status == 'Rejected') {
+                            statuslist[i] = false;
+                          } else {
+                            statuslist[i] = null;
+                          }
+                        }
+                      }
                     }
                   },
                   journeyPlanHeadersFailedState: () {},
@@ -755,7 +768,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                         .status ==
                                                                     'Rejected'
                                                                 ? Colors
-                                                                    .red[300]
+                                                                    .red.shade300
                                                                 : const Color(
                                                                     0xfff7f4e2)
                                                             : const Color(

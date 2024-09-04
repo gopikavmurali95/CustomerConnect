@@ -21,13 +21,14 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
           Uri.parse(approvalBaseUrl + journeyPlanApprovalHeaders),
           body: {"UserID": userID, "Status_Value": mode});
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<JourneyPlanHeaderModel> headers = headerdata
             .map<JourneyPlanHeaderModel>(
                 (json) => JourneyPlanHeaderModel.fromJson(json))
             .toList();
-        return right(headers);
+        return right(headers.reversed.toList());
       } else {
         return left(
           const MainFailures.networkerror(error: 'Something went Wrong'),

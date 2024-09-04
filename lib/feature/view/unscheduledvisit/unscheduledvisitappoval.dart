@@ -304,10 +304,10 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                             : ListView.separated(
                                 shrinkWrap: true,
                                 // physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) =>
-                                    GestureDetector(
-                                      onTap: () {
-                                        /*      Navigator.push(
+                                itemBuilder:
+                                    (context, index) => GestureDetector(
+                                          onTap: () {
+                                            /*      Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
@@ -316,47 +316,49 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                     header: headers[index],
                                                   )),
                                         ); */
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 50.h,
-                                            width: 10,
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xfffee8e0),
-                                                borderRadius:
-                                                    BorderRadius.circular(20)),
-                                          ),
-                                          SizedBox(
-                                            width: 10.w,
-                                          ),
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Row(
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50.h,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xfffee8e0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
+                                              Expanded(
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  color: const Color(
-                                                                      0xff413434)),
-                                                            ),
+                                                          Row(
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff413434)),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
-                                                      Row(
+                                                          /* Row(
                                                         children: [
                                                           Expanded(
                                                             child: Text(
@@ -372,93 +374,130 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                             ),
                                                           ),
                                                         ],
+                                                      ), */
+                                                          RichText(
+                                                            text: TextSpan(
+                                                                style: DefaultTextStyle.of(
+                                                                        context)
+                                                                    .style
+                                                                    .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .none,
+                                                                    ),
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text:
+                                                                        '${headers[index].cusCode} - ',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? "${headers[index].cusName}"
+                                                                        : headers[index].cusArName ??
+                                                                            '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  )
+                                                                ]),
+                                                          ),
+                                                          Text(
+                                                            headers[index]
+                                                                    .createdDate ??
+                                                                '',
+                                                            style: kfontstyle(
+                                                                fontSize: 10.sp,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      Text(
-                                                        headers[index]
-                                                                .createdDate ??
-                                                            '',
-                                                        style: kfontstyle(
-                                                            fontSize: 10.sp,
-                                                            color: Colors.grey),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                          headers[index].status != 'Pending'
-                                              ? const SizedBox.shrink()
-                                              : IntrinsicHeight(
-                                                  child: Row(
-                                                    children: [
-                                                      VerticalDivider(
-                                                        color: Colors.grey[300],
-                                                        thickness: 1,
-                                                      ),
-                                                      BlocBuilder<
-                                                          UnScheduledVisitSelectionCubit,
-                                                          UnScheduledVisitSelectionState>(
-                                                        builder:
-                                                            (context, state) {
-                                                          return state.when(
-                                                            unSchedledSelectedItemsState:
-                                                                (selected) =>
-                                                                    Checkbox(
-                                                              value: unScheduledJsonstriongList
-                                                                  .where((element) =>
-                                                                      element
-                                                                          .uvaId ==
-                                                                      headers[index]
-                                                                          .uvaId)
-                                                                  .isNotEmpty,
-                                                              side: BorderSide(
-                                                                  color: Colors
-                                                                          .grey[
-                                                                      500]!),
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                              ),
+                                              headers[index].status != 'Pending'
+                                                  ? const SizedBox.shrink()
+                                                  : IntrinsicHeight(
+                                                      child: Row(
+                                                        children: [
+                                                          VerticalDivider(
+                                                            color: Colors
+                                                                .grey[300],
+                                                            thickness: 1,
+                                                          ),
+                                                          BlocBuilder<
+                                                              UnScheduledVisitSelectionCubit,
+                                                              UnScheduledVisitSelectionState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return state.when(
+                                                                unSchedledSelectedItemsState:
+                                                                    (selected) =>
+                                                                        Checkbox(
+                                                                  value: unScheduledJsonstriongList
+                                                                      .where((element) =>
+                                                                          element
+                                                                              .uvaId ==
+                                                                          headers[index]
+                                                                              .uvaId)
+                                                                      .isNotEmpty,
+                                                                  side: BorderSide(
+                                                                      color: Colors
+                                                                              .grey[
+                                                                          500]!),
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               4)),
-                                                              activeColor:
-                                                                  Colors.green
-                                                                      .shade300,
-                                                              onChanged:
-                                                                  (value) {
-                                                                if (unScheduledJsonstriongList
-                                                                    .where((element) =>
-                                                                        element
-                                                                            .uvaId ==
-                                                                        headers[index]
-                                                                            .uvaId)
-                                                                    .isEmpty) {
-                                                                  unScheduledJsonstriongList
-                                                                      .add(
-                                                                          UnScheduledVisitApproveInModel(
-                                                                    uvaId: headers[
-                                                                            index]
-                                                                        .uvaId,
-                                                                  ));
-                                                                } else {
-                                                                  unScheduledJsonstriongList.removeWhere((element) =>
-                                                                      element
-                                                                          .uvaId ==
-                                                                      headers[index]
-                                                                          .uvaId);
-                                                                }
-                                                                setState(() {});
-                                                              },
-                                                            ),
-                                                          );
-                                                        },
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                        ],
-                                      ),
-                                    ),
+                                                                  activeColor:
+                                                                      Colors
+                                                                          .green
+                                                                          .shade300,
+                                                                  onChanged:
+                                                                      (value) {
+                                                                    if (unScheduledJsonstriongList
+                                                                        .where((element) =>
+                                                                            element.uvaId ==
+                                                                            headers[index].uvaId)
+                                                                        .isEmpty) {
+                                                                      unScheduledJsonstriongList
+                                                                          .add(
+                                                                              UnScheduledVisitApproveInModel(
+                                                                        uvaId: headers[index]
+                                                                            .uvaId,
+                                                                      ));
+                                                                    } else {
+                                                                      unScheduledJsonstriongList.removeWhere((element) =>
+                                                                          element
+                                                                              .uvaId ==
+                                                                          headers[index]
+                                                                              .uvaId);
+                                                                    }
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                ),
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                            ],
+                                          ),
+                                        ),
                                 separatorBuilder: (context, index) => Divider(
                                       color: Colors.grey[300],
                                     ),

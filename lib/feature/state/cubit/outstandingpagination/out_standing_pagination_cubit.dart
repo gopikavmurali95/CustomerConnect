@@ -17,6 +17,7 @@ class OutStandingPaginationCubit extends Cubit<OutStandingPaginationState> {
       : super(OutStandingPaginationState.initial());
   void getOutStatndingHeaders(
       OutStandingHeaderModel outIn, String searchQuery) async {
+    emit(state.copyWith(isLoading: true));
     Either<MainFailures, List<OutStandOutModel>> headers =
         await outStandingHeaderRepo.getOutStandingHeaders(outIn);
 
@@ -48,11 +49,12 @@ class OutStandingPaginationCubit extends Cubit<OutStandingPaginationState> {
               : oldproductslist.isEmpty
                   ? r
                   : */
-              oldproductslist);
+              oldproductslist,
+          isLoading: false);
     }));
   }
 
   void clearOutStanding() {
-    emit(const GetOutStandingHeadersPageState(headers: null));
+    emit(const GetOutStandingHeadersPageState(headers: null, isLoading: false));
   }
 }

@@ -35,6 +35,12 @@ class PartialDeliveryDetailsModel {
   String? prdArabicDescription;
   @JsonKey(name: 'Arrsn_Type')
   String? arrsnType;
+  @JsonKey(name: 'Status')
+  String? status;
+  @JsonKey(name: 'DetStatus')
+  String? detStatus;
+  @JsonKey(name: 'Reason')
+  String? reason;
 
   PartialDeliveryDetailsModel({
     this.dadId,

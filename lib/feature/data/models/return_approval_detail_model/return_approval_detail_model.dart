@@ -36,8 +36,8 @@ class ReturnApprovalDetailModel {
   String? excessHQty;
   @JsonKey(name: 'ExcessLQty')
   String? excessLQty;
-  @JsonKey(name: 'zsn_Name')
-  String? zsnName;
+  @JsonKey(name: 'rsn_Name')
+  String? rsnName;
   @JsonKey(name: 'inv_InvoiceID')
   String? invInvoiceId;
   @JsonKey(name: 'rad_ApprovalStatus')
@@ -64,7 +64,7 @@ class ReturnApprovalDetailModel {
     this.adjustedLQty,
     this.excessHQty,
     this.excessLQty,
-    this.zsnName,
+    this.rsnName,
     this.invInvoiceId,
     this.radApprovalStatus,
     this.arprdName,

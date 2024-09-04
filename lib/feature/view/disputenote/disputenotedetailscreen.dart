@@ -65,6 +65,10 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
+            context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
+              userID: widget.user.usrId ?? '',
+              mode: widget.currentMode,
+              searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -119,7 +123,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Row(
+                              /* Row(
                                 children: [
                                   Text(
                                     '${widget.disputenote.cusCode} - ',
@@ -140,7 +144,28 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                     ),
                                   ),
                                 ],
-                              ),
+                              ), */
+                              RichText(
+                            text: TextSpan(
+                                style:
+                                    DefaultTextStyle.of(context).style.copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                children: [
+                                  TextSpan(
+                                      text:
+                                          '${widget.disputenote.cusCode} - ',
+                                      style: blueTextStyle()),
+                                  TextSpan(
+                                      text: selectedLocale?.languageCode == 'en'
+                                          ? "${widget.disputenote.cusName}"
+                                          : widget.disputenote
+                                                  .arcusName ??
+                                              '',
+                                      style: subTitleTextStyle())
+                                ]),
+                          ),
                               Text(
                                 widget.disputenote.transTime ?? '',
                                 style: kfontstyle(
@@ -386,7 +411,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   getDisputeApprovalStatusLevelState:
                       (statuslevel, isApproval) {
                     if (statuslevel != null) {
-                      // if (statuslevel.currentLevel == '1') {
+                      
                       FocusScope.of(context).unfocus();
 
                       Navigator.pop(context);
@@ -581,139 +606,149 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                       return state.when(
                         getDisputeNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
-                            : SizedBox(
-                                height: 90.h,
-                                width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                      ),
-                                      child: TextFormField(
-                                        controller: _remarksctrls,
-                                        enabled: widget.disputenote.status ==
-                                                'Pending'
-                                            ? true
-                                            : false,
-                                        decoration: InputDecoration(
-                                          hintText:
-                                              AppLocalizations.of(context)!
-                                                  .remarks,
-                                          hintStyle: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: widget.disputenote.status ==
-                                                    'Pending'
-                                                ? Colors.red.shade300
-                                                : Colors.grey,
-                                          ),
-                                          border: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
-                                          ),
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.grey[300]!),
+                            : Visibility(
+                              visible:  widget.disputenote.status ==
+                                                  'Pending'
+                                              ? true
+                                              : false,
+                              child: SizedBox(
+                                  // height: 90.h,
+                                  width: double.infinity,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 20,
+                                        ),
+                                        child: TextFormField(
+                                          controller: _remarksctrls,
+                                          enabled: widget.disputenote.status ==
+                                                  'Pending'
+                                              ? true
+                                              : false,
+                                              maxLength:
+                                              200, 
+                                          maxLines:
+                                              null,
+                                          decoration: InputDecoration(
+                                            hintText:
+                                                AppLocalizations.of(context)!
+                                                    .remarks,
+                                            hintStyle: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: widget.disputenote.status ==
+                                                      'Pending'
+                                                  ? Colors.red.shade300
+                                                  : Colors.grey,
+                                            ),
+                                            border: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
+                                            ),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.grey[300]!),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      child: Row(
-                                        children: [
-                                          Flexible(
-                                            flex: 1,
-                                            fit: FlexFit.tight,
-                                            child: MaterialButton(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              color:
-                                                  widget.disputenote.status ==
-                                                          'Pending'
-                                                      ? Colors.red.shade300
-                                                      : Colors.grey[300],
-                                              onPressed: () {
-                                                if (widget.disputenote.status ==
-                                                    'Pending') {
-                                                  context
-                                                      .read<
-                                                          DisputeApprovalStatusLevelCubitCubit>()
-                                                      .addDisputeStatusLoaingEvent();
-                                                  context
-                                                      .read<
-                                                          DisputeApprovalStatusLevelCubitCubit>()
-                                                      .checkApprovalstatusLevel(
-                                                          widget.user.usrId ??
-                                                              '',
-                                                          false);
-                                                }
-                                              },
-                                              child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .reject,
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10.w,
-                                          ),
-                                          Flexible(
-                                            flex: 1,
-                                            fit: FlexFit.tight,
-                                            child: MaterialButton(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              color:
-                                                  widget.disputenote.status ==
-                                                          'Pending'
-                                                      ? Colors.green.shade300
-                                                      : Colors.grey[300],
-                                              onPressed: () {
-                                                if (widget.disputenote.status ==
-                                                    'Pending') {
-                                                  context
-                                                      .read<
-                                                          DisputeApprovalStatusLevelCubitCubit>()
-                                                      .addDisputeStatusLoaingEvent();
-                                                  context
-                                                      .read<
-                                                          DisputeApprovalStatusLevelCubitCubit>()
-                                                      .checkApprovalstatusLevel(
-                                                          widget.user.usrId ??
-                                                              '',
-                                                          true);
-                                                }
-                                              },
-                                              child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .approve,
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.white),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Row(
+                                          children: [
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: MaterialButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                color:
+                                                    widget.disputenote.status ==
+                                                            'Pending'
+                                                        ? Colors.red.shade300
+                                                        : Colors.grey[300],
+                                                onPressed: () {
+                                                  if (widget.disputenote.status ==
+                                                      'Pending') {
+                                                    context
+                                                        .read<
+                                                            DisputeApprovalStatusLevelCubitCubit>()
+                                                        .addDisputeStatusLoaingEvent();
+                                                    context
+                                                        .read<
+                                                            DisputeApprovalStatusLevelCubitCubit>()
+                                                        .checkApprovalstatusLevel(
+                                                            widget.user.usrId ??
+                                                                '',
+                                                            false);
+                                                  }
+                                                },
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .reject,
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
                                               ),
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                            SizedBox(
+                                              width: 10.w,
+                                            ),
+                                            Flexible(
+                                              flex: 1,
+                                              fit: FlexFit.tight,
+                                              child: MaterialButton(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                color:
+                                                    widget.disputenote.status ==
+                                                            'Pending'
+                                                        ? Colors.green.shade300
+                                                        : Colors.grey[300],
+                                                onPressed: () {
+                                                  if (widget.disputenote.status ==
+                                                      'Pending') {
+                                                    context
+                                                        .read<
+                                                            DisputeApprovalStatusLevelCubitCubit>()
+                                                        .addDisputeStatusLoaingEvent();
+                                                    context
+                                                        .read<
+                                                            DisputeApprovalStatusLevelCubitCubit>()
+                                                        .checkApprovalstatusLevel(
+                                                            widget.user.usrId ??
+                                                                '',
+                                                            true);
+                                                  }
+                                                },
+                                                child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .approve,
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
+                            ),
                         getdisputenoteDetailFailedState: () =>
                             const SizedBox.shrink(),
                       );

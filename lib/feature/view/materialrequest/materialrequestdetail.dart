@@ -84,11 +84,10 @@ class _MaterialRequestDetailScreenState
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            // if (_approvedCount != 0 && _approvedCount != _totalcount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
+          context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
+                userId: widget.user.usrId ?? '',
+                mode: widget.currentMode,
+                searchQuery: widget.materialrequest.rotID ?? ''));
             Navigator.pop(context);
             // }
           },
@@ -286,11 +285,11 @@ class _MaterialRequestDetailScreenState
                                                         .status!.isEmpty ||
                                                     widget.materialrequest
                                                             .status !=
-                                                        'A'
+                                                        'Approved'
                                                 ? widget.materialrequest
                                                             .status !=
-                                                        'AH'
-                                                    ? Colors.red[300]
+                                                        'Rejected'
+                                                    ? Colors.red.shade300
                                                     : const Color(0xfff7f4e2)
                                                 : const Color(0xffe3f7e2),
                                             borderRadius: BorderRadius.circular(
@@ -698,6 +697,9 @@ class _MaterialRequestDetailScreenState
                                                                               TextFormField(
                                                                             keyboardType:
                                                                                 TextInputType.number,
+                                                                                textAlign: TextAlign.right,
+                                                                                maxLength: 8,
+                                                                                cursorHeight: 12.h,
                                                                             controller:
                                                                                 TextEditingController(text: details[index].adjustedHQty),
                                                                             onChanged:
@@ -712,6 +714,9 @@ class _MaterialRequestDetailScreenState
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
+                                                                              enabled: /* (details[index].requestedHQty != details[index].reqHUOM) && */ (widget.materialrequest.mrhIntegrationStatus == 'Pending' /* || widget.materialrequest. == 'قيد الانتظار' */)
+                                                                            ? true
+                                                                            : false,
                                                                                 enabledBorder: const OutlineInputBorder(
                                                                                   borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                 ),
@@ -723,7 +728,8 @@ class _MaterialRequestDetailScreenState
                                                                                 border: OutlineInputBorder(
                                                                                   borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                                   borderRadius: BorderRadius.circular(5),
-                                                                                )),
+                                                                                ),
+                                                                                counterText: ''),
                                                                           ),
                                                                         ),
                                                                         SizedBox(
@@ -739,6 +745,9 @@ class _MaterialRequestDetailScreenState
                                                                               TextFormField(
                                                                             keyboardType:
                                                                                 TextInputType.number,
+                                                                                textAlign: TextAlign.right,
+                                                                                maxLength: 8,
+                                                                                cursorHeight: 12.h,
                                                                             controller:
                                                                                 TextEditingController(text: details[index].adjustedLQty),
                                                                             onChanged:
@@ -754,6 +763,7 @@ class _MaterialRequestDetailScreenState
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
+                                                                              enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending'?true:false,
                                                                                 enabledBorder: const OutlineInputBorder(
                                                                                   borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                 ),
@@ -765,7 +775,8 @@ class _MaterialRequestDetailScreenState
                                                                                 border: OutlineInputBorder(
                                                                                   borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                                   borderRadius: BorderRadius.circular(5),
-                                                                                )),
+                                                                                ),
+                                                                                counterText: ''),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -814,160 +825,163 @@ class _MaterialRequestDetailScreenState
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: MaterialButton(
-                              height: 30.h,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: /* widget.materialrequest
-                                          . ==
-                                      'Pending'
-                                  ? */
-                                  Colors.red.shade300 /* : Colors.grey[300] */,
-                              onPressed: () {
-                                log(jsonEncode(_materialreqproducts));
-                                showCupertinoDialog(
-                                  context: context,
-                                  builder: (context) => CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .doYouWantToRejectThisProduct),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .cancel),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          context
-                                              .read<MaterialReqApprovalBloc>()
-                                              .add(
-                                                  const MaterialReqApprovalLoadingEvent());
-                                          context
-                                              .read<MaterialReqApprovalBloc>()
-                                              .add(
-                                                MetarialRequestRejectEvent(
-                                                    reject: MaterialReqRejectionInModel(
-                                                        products:
-                                                            _materialreqproducts,
-                                                        userId: widget
-                                                            .materialrequest
-                                                            .userID,
-                                                        reqID: widget
-                                                            .materialrequest
-                                                            .mrhID,
-                                                        remark: '')),
-                                              );
-
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .proceed),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.reject,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: MaterialButton(
-                              height: 30.h,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: /* widget.materialrequest
-                                          . ==
-                                      'Pending'
-                                  ? */
-                                  Colors
-                                      .green.shade300 /* : Colors.grey[300] */,
-                              onPressed: () {
-                                showCupertinoDialog(
-                                  context: context,
-                                  builder: (context) => CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .doYouWantToApproveThisProduct),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .cancel),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          context
-                                              .read<MaterialReqApprovalBloc>()
-                                              .add(
-                                                  const MaterialReqApprovalLoadingEvent());
-                                          context
-                                              .read<MaterialReqApprovalBloc>()
-                                              .add(
-                                                MaterialReqApprovalSuccessEvent(
-                                                    approvalInModel:
-                                                        MaterialReqApprovalInModel(
-                                                  products:
-                                                      _materialreqproducts,
-                                                  userId: widget
-                                                      .materialrequest.userID,
-                                                  reqID: widget
-                                                      .materialrequest.mrhID,
-                                                  mode: "A",
-                                                  warehouse: widget
-                                                      .materialrequest.mrhWarID,
-                                                )),
-                                              );
-
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .proceed),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.approve,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                      child: Visibility(
+                        visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'?true:false,
+                        child: Row(
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                height: 30.h,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: /* widget.materialrequest
+                                            . ==
+                                        'Pending'
+                                    ? */
+                                    Colors.red.shade300 /* : Colors.grey[300] */,
+                                onPressed: () {
+                                  log(jsonEncode(_materialreqproducts));
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(context)!
+                                          .doYouWantToRejectThisProduct),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            setState(() {});
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .cancel),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            context
+                                                .read<MaterialReqApprovalBloc>()
+                                                .add(
+                                                    const MaterialReqApprovalLoadingEvent());
+                                            context
+                                                .read<MaterialReqApprovalBloc>()
+                                                .add(
+                                                  MetarialRequestRejectEvent(
+                                                      reject: MaterialReqRejectionInModel(
+                                                          products:
+                                                              _materialreqproducts,
+                                                          userId: widget
+                                                              .materialrequest
+                                                              .userID,
+                                                          reqID: widget
+                                                              .materialrequest
+                                                              .mrhID,
+                                                          remark: '')),
+                                                );
+                        
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .proceed),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.reject,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
                               ),
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Flexible(
+                              flex: 1,
+                              fit: FlexFit.tight,
+                              child: MaterialButton(
+                                height: 30.h,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: /* widget.materialrequest
+                                            . ==
+                                        'Pending'
+                                    ? */
+                                    Colors
+                                        .green.shade300 /* : Colors.grey[300] */,
+                                onPressed: () {
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(context)!
+                                          .doYouWantToApproveThisProduct),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            setState(() {});
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .cancel),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            context
+                                                .read<MaterialReqApprovalBloc>()
+                                                .add(
+                                                    const MaterialReqApprovalLoadingEvent());
+                                            context
+                                                .read<MaterialReqApprovalBloc>()
+                                                .add(
+                                                  MaterialReqApprovalSuccessEvent(
+                                                      approvalInModel:
+                                                          MaterialReqApprovalInModel(
+                                                    products:
+                                                        _materialreqproducts,
+                                                    userId: widget
+                                                        .materialrequest.userID,
+                                                    reqID: widget
+                                                        .materialrequest.mrhID,
+                                                    mode: "A",
+                                                    warehouse: widget
+                                                        .materialrequest.mrhWarID,
+                                                  )),
+                                                );
+                        
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .proceed),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.approve,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],

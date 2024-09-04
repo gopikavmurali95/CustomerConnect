@@ -43,15 +43,15 @@ final _loadtransDetailCtrl = TextEditingController();
 Timer? debounce;
 int _responsecount = 0;
 int loadingCount = 0;
-int _approvedCount = 0;
-int _totalCount = 0;
+int approvedCount = 0;
+int totalCount = 0;
 List<LoadTransferPrdModel?> _loadprducts = [];
 
 class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
   @override
   void initState() {
     _loadtransDetailCtrl.clear();
-    _approvedCount = 0;
+    approvedCount = 0;
     _responsecount = 1;
     context
         .read<LoadTransferDetailBloc>()
@@ -71,13 +71,12 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            // if (_approvedCount != 0 && _approvedCount != _totalCount) {
-            //   Future.delayed(const Duration(microseconds: 100), () {
-            //     showPopAlert(context);
-            //   });
-            // } else {
-            //   context.read<NavigatetoBackCubit>().popFromScreen(true);
-            // }
+           context.read<LoadTransferHeaderBloc>().add(
+              GetAllLoadTransferHeadersEvent(
+                  userID: widget.header.userID ?? '',
+                  mode: widget.currentMode,
+                  searchQuery: ""));
+
 
             Navigator.pop(context);
           },
@@ -349,7 +348,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                         state.when(
                           getLoadTransferDetailState: (details) {
                             if (details != null) {
-                              _totalCount = details.length;
+                              totalCount = details.length;
 
                               _loadprducts = List.generate(
                                   details.length, (index) => null);
@@ -362,15 +361,17 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                     details.length, (index) => null);
                               }
 
-                              /* for (int i = 0; i < details.length; i++) {
-                                      if (details[i].ap!.isNotEmpty) {
-                                        if (details[i].radApprovalStatus == 'A') {
+                              for (int i = 0; i < details.length; i++) {
+                                      if (details[i].status!.isNotEmpty) {
+                                        if (details[i].status == 'Approved') {
                                           statuslist[i] = true;
-                                        } else {
+                                        } else if(details[i].status == 'Rejeced'){
                                           statuslist[i] = false;
+                                        }else{
+                                          statuslist[i]=null;
                                         }
                                       }
-                                    } */
+                                    }
                             }
                           },
                           loadTransferDetailFailedState: () {},
@@ -407,7 +408,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                         approveLoadTransferState: (response) {
                                           if (response != null) {
                                             if (_responsecount == 0) {
-                                              _approvedCount += 1;
+                                              approvedCount += 1;
                                               _responsecount = 1;
                                             }
                                             Navigator.pop(context);
@@ -866,106 +867,109 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                           Flexible(
                             flex: 1,
                             fit: FlexFit.tight,
-                            child: MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color:
-                                  widget.header.ltrApprovalStatus == 'Pending'
-                                      ? Colors.green.shade300
-                                      : Colors.grey[300],
-                              onPressed: () {
-                                if (widget.header.ltrApprovalStatus ==
-                                    'Pending') {
-                                  if (_loadprducts.contains(null)) {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  } else {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<
-                                                      LoadTransferApprovalBloc>()
-                                                  .add(
-                                                      const AddLoadTransferLoadingEvent());
-
-                                              context
-                                                  .read<
-                                                      LoadTransferApprovalBloc>()
-                                                  .add(
-                                                    ApproveLoadtransferEvent(
-                                                      approve:
-                                                          LoadTransferApprovalInModel(
-                                                        products: _loadprducts,
-                                                        reqId:
-                                                            widget.header.ltrId,
-                                                        userId: widget.header
-                                                                .userID ??
-                                                            '',
+                            child: Visibility(
+                              visible: widget.header.ltrApprovalStatus == 'Pending'?true:false,
+                              child: MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color:
+                                    widget.header.ltrApprovalStatus == 'Pending'
+                                        ? Colors.green.shade300
+                                        : Colors.grey[300],
+                                onPressed: () {
+                                  if (widget.header.ltrApprovalStatus ==
+                                      'Pending') {
+                                    if (_loadprducts.contains(null)) {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        LoadTransferApprovalBloc>()
+                                                    .add(
+                                                        const AddLoadTransferLoadingEvent());
+                              
+                                                context
+                                                    .read<
+                                                        LoadTransferApprovalBloc>()
+                                                    .add(
+                                                      ApproveLoadtransferEvent(
+                                                        approve:
+                                                            LoadTransferApprovalInModel(
+                                                          products: _loadprducts,
+                                                          reqId:
+                                                              widget.header.ltrId,
+                                                          userId: widget.header
+                                                                  .userID ??
+                                                              '',
+                                                        ),
                                                       ),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
+                                                    );
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   }
-                                }
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)!.confirm,
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.confirm,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
                               ),
                             ),
                           )

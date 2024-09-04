@@ -313,7 +313,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                   '',
                                                               style:
                                                                   blueTextStyle()),
-                                                          Row(
+                                                          /* Row(
                                                             children: [
                                                               Text(
                                                                 '${header[index].cusCode} - ',
@@ -340,6 +340,37 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                         subTitleTextStyle()),
                                                               ),
                                                             ],
+                                                          ), */
+                                                          RichText(
+                                                            text: TextSpan(
+                                                              style: DefaultTextStyle
+                                                                      .of(context)
+                                                                  .style,
+                                                              children: [
+                                                                TextSpan(
+                                                                  text:
+                                                                      '${header[index].cusCode} - ',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      11.sp,
+                                                                  color: const Color(
+                                                                      0xff2C6B9E),
+                                                                ),
+                                                                ),
+                                                                TextSpan(
+                                                                  text: selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? header[index].cusName ??
+                                                                            ''
+                                                                        : header[index].arcusName ??
+                                                                            '',
+                                                                    style:
+                                                                        subTitleTextStyle()
+                                                                  // overflow: TextOverflow.ellipsis,
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                           Text(
                                                             header[index]
