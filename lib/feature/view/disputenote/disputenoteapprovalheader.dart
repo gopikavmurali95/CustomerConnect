@@ -244,7 +244,7 @@ class _DisputeNoteApprovalHEaderScreenState
                               _selectedDisputeMode == "P"
                                   ? AppLocalizations.of(context)!
                                       .pendingApprovals
-                                  : _selectedDisputeMode == "AT"
+                                  : _selectedDisputeMode == "A"
                                       ? AppLocalizations.of(context)!
                                           .approvedRequests
                                       : AppLocalizations.of(context)!
@@ -407,39 +407,42 @@ class _DisputeNoteApprovalHEaderScreenState
                                                           ],
                                                         ), */
                                                         RichText(
-                                                            text: TextSpan(
-                                                              style: DefaultTextStyle
-                                                                      .of(context)
-                                                                  .style,
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                      '${headers[index].cusCode} - ',
-                                                              style: kfontstyle(
-                                                                fontSize: 11.sp,
-                                                                color: const Color(
-                                                                    0xff2C6B9E),
+                                                          text: TextSpan(
+                                                            style: DefaultTextStyle
+                                                                    .of(context)
+                                                                .style,
+                                                            children: [
+                                                              TextSpan(
+                                                                text:
+                                                                    '${headers[index].cusCode} - ',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      11.sp,
+                                                                  color: const Color(
+                                                                      0xff2C6B9E),
+                                                                ),
                                                               ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text:selectedLocale?.languageCode ==
-                                                                        'en'
-                                                                    ? headers[index]
-                                                                            .cusName ??
-                                                                        ''
-                                                                    : headers[index]
-                                                                            .arcusName ??
-                                                                        '',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    color: const Color(
-                                                                        0xff413434))
+                                                              TextSpan(
+                                                                  text: selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? headers[index]
+                                                                              .cusName ??
+                                                                          ''
+                                                                      : headers[index]
+                                                                              .arcusName ??
+                                                                          '',
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff413434))
                                                                   // overflow: TextOverflow.ellipsis,
-                                                                ),
-                                                              ],
-                                                            ),
+                                                                  ),
+                                                            ],
                                                           ),
+                                                        ),
                                                         Text(
                                                           headers[index]
                                                                   .transTime ??

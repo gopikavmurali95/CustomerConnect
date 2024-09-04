@@ -113,17 +113,17 @@ class HomePopUPMenuButton extends StatelessWidget {
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        title: Text(
-                          AppLocalizations.of(context)!.languageSelection,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        title: const Text(
+                          /* AppLocalizations.of(context)!.languageSelection */ "Select Language",
+                          style: TextStyle(fontWeight: FontWeight.w400),
                         ),
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             ListTile(
                               leading: const Icon(Icons.language),
-                              title:
-                                  Text(AppLocalizations.of(context)!.english),
+                              title: const Text(
+                                  /* AppLocalizations.of(context)!.english */ "English"),
                               onTap: () async {
                                 selectedLocale = const Locale('en');
                                 final sharedprefs =
@@ -168,9 +168,9 @@ class HomePopUPMenuButton extends StatelessWidget {
                 child: Row(
                   children: [
                     SvgPicture.asset(
-                    "assets/svg/lang.svg",
-                    height: 10.h,
-                  ),
+                      "assets/svg/lang.svg",
+                      height: 10.h,
+                    ),
                     SizedBox(
                       width: 10.w,
                     ),
@@ -230,9 +230,9 @@ class HomePopUPMenuButton extends StatelessWidget {
                 child: Row(
                   children: [
                     SvgPicture.asset(
-                    "assets/svg/logout.svg",
-                    height: 10.h,
-                  ),
+                      "assets/svg/logout.svg",
+                      height: 10.h,
+                    ),
                     SizedBox(
                       width: 10.w,
                     ),
