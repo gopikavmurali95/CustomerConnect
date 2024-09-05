@@ -273,14 +273,24 @@ class FieldServiceInvoiceDetailsState
                                         children: [
                                           Column(
                                             children: [
-                                              Text(
-                                                details[index].sadUom ?? '',
-                                                textAlign: TextAlign.end,
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
+                                               Text(details[index].sadUom!.isEmpty ||
+                                                               details[index].sadUom== null ? 
+                                                "-": details[index].sadUom ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                              // Text(
+                                              //   details[index].sadUom ?? '',
+                                              //   textAlign: TextAlign.end,
+                                              //   style: kfontstyle(
+                                              //       fontSize: 12.sp,
+                                              //       fontWeight: FontWeight.w400,
+                                              //       color: Colors.black54),
+                                              // ),
                                               /*SizedBox(
                                                           height: 10.h,
                                                         ),
@@ -298,13 +308,23 @@ class FieldServiceInvoiceDetailsState
                                           ),
                                           Column(
                                             children: [
-                                              Text(
-                                                details[index].sadQty ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black54),
-                                              ),
+                                               Text(details[index].sadQty!.isEmpty ||
+                                                               details[index].sadQty== null ? 
+                                                "0": details[index].sadQty?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                              // Text(
+                                              //   details[index].sadQty ?? '',
+                                              //   style: kfontstyle(
+                                              //       fontSize: 12.sp,
+                                              //       fontWeight: FontWeight.w400,
+                                              //       color: Colors.black54),
+                                              // ),
                                               /*SizedBox(
                                                           height: 10.h,
                                                         ),

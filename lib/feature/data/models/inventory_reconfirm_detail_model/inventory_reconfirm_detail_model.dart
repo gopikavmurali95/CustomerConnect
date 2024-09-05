@@ -40,6 +40,8 @@ class InventoryReconfirmDetailModel {
   String? status;
   @JsonKey(name: 'Reason')
   String? reason;
+  @JsonKey(name: 'iad_PhysicalLUOM')
+  String? iadPhysicalLuom;
 
   InventoryReconfirmDetailModel({
     this.iadId,
