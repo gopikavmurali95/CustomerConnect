@@ -157,7 +157,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                       fontWeight: FontWeight.w300),
                                 ),
                                 subtitle: Text(
-                                  selectedLocale?.languageCode == "en" ? notifications[index].rntHeader ?? '' : notifications[index].rntArHeader ?? '',
+                                  selectedLocale?.languageCode == "en"
+                                      ? notifications[index].rntHeader ?? ''
+                                      : notifications[index].rntArHeader ?? '',
                                   //notifications[index].rntHeader ?? '',
                                   style: kfontstyle(
                                       fontSize: 13.sp,
@@ -210,8 +212,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                         replayctrls[index],
                                                     decoration: InputDecoration(
                                                         hintText:
-                                                        "${AppLocalizations.of(context)!.typeyourReply}..",
-                                                            // "Type your reply...",
+                                                            "${AppLocalizations.of(context)!.typeyourReply}..",
+                                                        // "Type your reply...",
                                                         hintStyle:
                                                             const TextStyle(
                                                                 fontSize: 14,
@@ -292,7 +294,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       ),
                 getNotificationFailedState: () => Center(
                   child: Text(
-                     AppLocalizations.of(context)!.noDataAvailable,
+                    AppLocalizations.of(context)!.noDataAvailable,
                     style: kfontstyle(),
                   ),
                 ),

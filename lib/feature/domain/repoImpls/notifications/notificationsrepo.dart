@@ -44,6 +44,7 @@ class NotificationRepo implements INotificationRepo {
       final response = await http.post(
           Uri.parse(baseUrl + notificationReplayUrl),
           body: replay.toJson());
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final replayModel =
@@ -67,6 +68,7 @@ class NotificationRepo implements INotificationRepo {
         Uri.parse(baseUrl + notiReadFlagUpdateUrl),
         body: {"rnt_ID": rntID},
       );
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final readflagModel =

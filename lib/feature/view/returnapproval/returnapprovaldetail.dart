@@ -550,7 +550,7 @@ class _ReturnApprovalDetailScreenState
                                                 Column(
                                                   children: [
                                                     Text(
-                                                        details[index].huom ??
+                                                        details[index].huom!.isEmpty || details[index].huom==null?"-": details[index].huom ??
                                                             '',
                                                         style:
                                                             subTitleTextStyle()),
@@ -558,7 +558,7 @@ class _ReturnApprovalDetailScreenState
                                                       height: 10.h,
                                                     ),
                                                     Text(
-                                                        details[index].luom ??
+                                                        details[index].luom!.isEmpty || details[index].luom==null?"-": details[index].luom ??
                                                             '',
                                                         style:
                                                             subTitleTextStyle()),
@@ -574,18 +574,18 @@ class _ReturnApprovalDetailScreenState
                                                 Column(
                                                   children: [
                                                     Text(
-                                                        details[index]
+                                                         details[index].returnHQty=='0' || details[index].returnHQty==null?"0":details[index]
                                                                 .returnHQty ??
-                                                            '',
+                                                            '0',
                                                         style:
                                                             subTitleTextStyle()),
                                                     SizedBox(
                                                       height: 10.h,
                                                     ),
                                                     Text(
-                                                      details[index]
+                                                       details[index].returnLQty=='0' || details[index].returnLQty==null?"0":details[index]
                                                               .returnLQty ??
-                                                          '',
+                                                          '0',
                                                       style: kfontstyle(
                                                           fontSize: 12.sp,
                                                           fontWeight:
@@ -991,8 +991,8 @@ class _ReturnApprovalDetailScreenState
                                                                         child: Padding(
                                                                           padding: const EdgeInsets.symmetric(vertical: 7,
                                                                           horizontal: 10),
-                                                                          child: Text(details[index]. rsnName??
-                                                                              ''),
+                                                                          child: Text(selectedLocale?.languageCode == 'en'?details[index]. rsnName??
+                                                                              '':details[index].arReason??''),
                                                                         ),
                                                                       ),
                                                                     )

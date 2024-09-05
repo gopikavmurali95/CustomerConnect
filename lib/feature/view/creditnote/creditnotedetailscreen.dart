@@ -497,7 +497,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        details[index].huom ??
+                                                        details[index].huom!.isEmpty || details[index].huom==null?"-": details[index].huom ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
@@ -510,7 +510,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                         height: 10.h,
                                                       ),
                                                       Text(
-                                                        details[index].luom ??
+                                                         details[index].luom!.isEmpty || details[index].luom==null?"-":details[index].luom ??
                                                             '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
@@ -531,9 +531,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        details[index]
+                                                        details[index].crdHQty=='0' || details[index].crdHQty==null?"0": details[index]
                                                                 .crdHQty ??
-                                                            '',
+                                                            '0',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:
@@ -545,9 +545,9 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                         height: 10.h,
                                                       ),
                                                       Text(
-                                                        details[index]
+                                                         details[index].crdLQty=='0' || details[index].crdLQty==null?"0":details[index]
                                                                 .crdLQty ??
-                                                            '',
+                                                            '0',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:

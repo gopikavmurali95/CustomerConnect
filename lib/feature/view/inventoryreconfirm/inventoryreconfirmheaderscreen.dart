@@ -35,6 +35,7 @@ class _InventoryReconfirmHeadersScreenState
   @override
   void initState() {
     _selectedMode = "A";
+     inventoryReConfirmHSearchCtrl.clear();
 
     ddfilterFieldsVanToVan = [
       ApprovalStatusFilterModel(

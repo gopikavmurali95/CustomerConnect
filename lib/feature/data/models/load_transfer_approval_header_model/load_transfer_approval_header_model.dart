@@ -34,6 +34,8 @@ class LoadTransferApprovalHeaderModel {
   String? usrArName;
   @JsonKey(name: 'ltr_ArApprovalStatus')
   String? ltrArApprovalStatus;
+  
+
   LoadTransferApprovalHeaderModel({
     this.ltrId,
     this.ltrReqNo,

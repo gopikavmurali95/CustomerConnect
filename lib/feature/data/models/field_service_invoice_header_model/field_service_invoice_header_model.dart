@@ -40,6 +40,8 @@ class FieldServiceInvoiceHeaderModel {
   String? rotID;
   @JsonKey(name: 'Arcus_Name')
   String? arcusName;
+  @JsonKey(name: 'ArStatus')
+  String? arStatus;
 
   FieldServiceInvoiceHeaderModel(
       {this.sahId,

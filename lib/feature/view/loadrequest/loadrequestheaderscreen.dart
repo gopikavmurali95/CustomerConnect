@@ -475,9 +475,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                   horizontal: 8,
                                                                   vertical: 5),
                                                           child: Text(
-                                                            headers[index]
+                                                           selectedLocale?.languageCode == 'en'? headers[index]
                                                                     .status ??
-                                                                '',
+                                                                '':headers[index].arStatus??'',
                                                             style: kfontstyle(
                                                                 fontSize: 10.sp,
                                                                 fontWeight:

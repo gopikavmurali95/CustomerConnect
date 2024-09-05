@@ -526,9 +526,9 @@ class _MaterialRequestHeaderScreenState
                                                                       10,
                                                                   vertical: 3),
                                                           child: Text(
-                                                            headers[index]
+                                                            selectedLocale?.languageCode == 'en'?headers[index]
                                                                     .status ??
-                                                                "",
+                                                                "":headers[index].arStatus??'',
                                                             style: kfontstyle(
                                                                 fontSize:
                                                                     10.sp),

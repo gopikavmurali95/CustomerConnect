@@ -548,7 +548,7 @@ class _ScheduledReturnDetailScreenState
                                                         Column(
                                                           children: [
                                                             Text(
-                                                                details[index]
+                                                                details[index].rrdHuom!.isEmpty || details[index].rrdHuom==null?"-": details[index]
                                                                         .rrdHuom ??
                                                                     '',
                                                                 style:
@@ -557,7 +557,7 @@ class _ScheduledReturnDetailScreenState
                                                               height: 10.h,
                                                             ),
                                                             Text(
-                                                                details[index]
+                                                                details[index].rrdLuom!.isEmpty || details[index].rrdLuom==null?"-": details[index]
                                                                         .rrdLuom ??
                                                                     '',
                                                                 style:
@@ -570,18 +570,18 @@ class _ScheduledReturnDetailScreenState
                                                         Column(
                                                           children: [
                                                             Text(
-                                                                details[index]
+                                                               details[index].hQty=='0'|| details[index].hQty==null?"0":  details[index]
                                                                         .hQty ??
-                                                                    '',
+                                                                    '0',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
                                                             Text(
-                                                                details[index]
+                                                                 details[index].lQty=='0' || details[index].lQty==null?"0":details[index]
                                                                         .lQty ??
-                                                                    '',
+                                                                    '0',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                           ],
