@@ -67,10 +67,10 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
+           /*  context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
               userID: widget.user.usrId ?? '',
               mode: widget.currentMode,
-              searchQuery: ''));
+              searchQuery: '')); */
             Navigator.pop(context);
           },
           icon: const Icon(

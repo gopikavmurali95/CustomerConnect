@@ -460,12 +460,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  pdet[index].orderedHQty ?? '',
+                                                  pdet[index].orderedHQty!.isEmpty || pdet[index].orderedHQty==null?"-": pdet[index].orderedHQty ?? '',
                                                   style: subTitleTextStyle(),
                                                 ),
                                                 
                                                 Text(
-                                                  pdet[index].deliveringLQty ??
+                                                  pdet[index].orderedLQty!.isEmpty || pdet[index].orderedLQty==null?"-": pdet[index].orderedLQty ??
                                                       '',
                                                   style: subTitleTextStyle(),
                                                 )
@@ -477,13 +477,13 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  pdet[index].deliveringHQty ??
-                                                      '',
+                                                  pdet[index].deliveringHQty=='0' || pdet[index].deliveringHQty==null?"0": pdet[index].deliveringHQty ??
+                                                      '0',
                                                   style:subTitleTextStyle(),
                                                 ),
                                                 Text(
-                                                  pdet[index].deliveringLQty ??
-                                                      '',
+                                                  pdet[index].deliveringLQty=='0'|| pdet[index].deliveringLQty==null?"0": pdet[index].deliveringLQty ??
+                                                      '0',
                                                   style: subTitleTextStyle(),
                                                 )
                                               ],
@@ -865,8 +865,8 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                         child: Padding(
                                                                           padding: const EdgeInsets.symmetric(vertical: 7,
                                                                           horizontal: 10),
-                                                                          child: Text(pdet[index].reason ??
-                                                                              ''),
+                                                                          child: Text(selectedLocale?.languageCode == 'en'?pdet[index].reason ??
+                                                                              '':pdet[index].arReason??''),
                                                                         ),
                                                                       ),
                                                                     )

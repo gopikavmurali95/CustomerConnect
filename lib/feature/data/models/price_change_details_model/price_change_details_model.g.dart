@@ -31,7 +31,11 @@ PriceChangeDetailsModel _$PriceChangeDetailsModelFromJson(
       pcdApprovalStatus: json['pcd_ApprovalStatus'] as String?,
       arpcdApprovalStatus: json['Arpcd_ApprovalStatus'] as String?,
       arprdName: json['Arprd_Name'] as String?,
-    )..reason = json['Reason'] as String?;
+    )
+      ..reason = json['Reason'] as String?
+      ..arReason = json['ArReason'] as String?
+      ..pcdApprovedHPrice = json['pcd_ApprovedHPrice'] as String?
+      ..pcdApprovedLPrice = json['pcd_ApprovedLPrice'] as String?;
 
 Map<String, dynamic> _$PriceChangeDetailsModelToJson(
         PriceChangeDetailsModel instance) =>
@@ -59,4 +63,7 @@ Map<String, dynamic> _$PriceChangeDetailsModelToJson(
       'Arprd_Name': instance.arprdName,
       'Arpcd_ApprovalStatus': instance.arpcdApprovalStatus,
       'Reason': instance.reason,
+      'ArReason': instance.arReason,
+      'pcd_ApprovedHPrice': instance.pcdApprovedHPrice,
+      'pcd_ApprovedLPrice': instance.pcdApprovedLPrice,
     };

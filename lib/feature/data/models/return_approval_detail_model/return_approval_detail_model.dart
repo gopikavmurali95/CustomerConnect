@@ -46,6 +46,8 @@ class ReturnApprovalDetailModel {
   String? arprdName;
   @JsonKey(name: 'Arrsn_NameArprd_Name')
   String? arrsnName;
+  @JsonKey(name: 'ArReason')
+  String? arReason;
 
   ReturnApprovalDetailModel({
     this.radId,

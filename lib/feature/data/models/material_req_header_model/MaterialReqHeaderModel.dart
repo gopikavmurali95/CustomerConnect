@@ -24,6 +24,7 @@ class MaterialReqHeaderModel {
     this.userID,
     this.strArName,
     this.warArName,
+    this.arStatus,
   });
 
   MaterialReqHeaderModel.fromJson(dynamic json) {
@@ -44,6 +45,7 @@ class MaterialReqHeaderModel {
     userID = json['UserID'];
     strArName = json['str_ArName'];
     warArName = json['war_ArName'];
+    arStatus = json['ArStatus'];
   }
   String? mrhID;
   String? mrhNumber;
@@ -62,6 +64,7 @@ class MaterialReqHeaderModel {
   String? rotID;
   String? strArName;
   String? warArName;
+  String? arStatus;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -82,6 +85,7 @@ class MaterialReqHeaderModel {
     map['UserID'] = userID;
     map['str_ArName'] = strArName;
     map['war_ArName'] = warArName;
+    map['ArStatus'] = arStatus;
     return map;
   }
 }

@@ -406,12 +406,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   _hPricecontrollers = List.generate(
                                     pdet.length,
                                     (index) => TextEditingController(
-                                        text: pdet[index].pcdChangedHPrice),
+                                        text: pdet[index].pcdApprovedHPrice),
                                   );
                                   _lPricecontrollers = List.generate(
                                       pdet.length,
                                       (index) => TextEditingController(
-                                            text: pdet[index].pcdChangedLprice,
+                                            text: pdet[index].pcdApprovedLPrice,
                                           ));
                                   selectedresons =
                                       List.generate(pdet.length, (index) => '');
@@ -526,7 +526,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 5.w,
                                                           ),
                                                           Text(
-                                                            pdet[index]
+                                                           pdet[index].pcdHigherUom!.isEmpty || pdet[index].pcdHigherUom==null?"-": pdet[index]
                                                                     .pcdHigherUom ??
                                                                 '',
                                                             style:
@@ -536,7 +536,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 15.w,
                                                           ),
                                                           Text(
-                                                            pdet[index]
+                                                            pdet[index].pcdLowerUom!.isEmpty || pdet[index].pcdLowerUom==null?"-": pdet[index]
                                                                     .pcdLowerUom ??
                                                                 '',
                                                             style:
@@ -557,9 +557,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 5.w,
                                                           ),
                                                           Text(
-                                                            pdet[index]
-                                                                    .pcdStdHPrice ??
-                                                                '',
+                                                            pdet[index].pcdChangedHPrice=='0' || pdet[index].pcdChangedHPrice==null?"0": pdet[index]
+                                                                    .pcdChangedHPrice ??
+                                                                '0',
                                                             style:
                                                                 subTitleTextStyle(),
                                                           ),
@@ -567,9 +567,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 15.w,
                                                           ),
                                                           Text(
-                                                            pdet[index]
-                                                                    .pcdStdLPrice ??
-                                                                '',
+                                                            pdet[index].pcdChangedLprice=='0' || pdet[index].pcdChangedLprice==null?"0": pdet[index]
+                                                                    .pcdChangedLprice ??
+                                                                '0',
+                                                            
                                                             style:
                                                                 subTitleTextStyle(),
                                                           )
@@ -625,7 +626,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                           10.sp),
                                                                   decoration:
                                                                       InputDecoration(
-                                                                    enabled: (pdet[index].pcdStdHPrice != pdet[index].pcdChangedHPrice) &&
+                                                                    enabled: (pdet[index].pcdChangedHPrice != pdet[index].pcdApprovedHPrice) &&
                                                                             (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' ||
                                                                                 widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار')
                                                                         ? true
@@ -694,17 +695,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                   onChanged:
                                                                       (value) {
                                                                     pdet[index]
-                                                                            .pcdChangedHPrice =
+                                                                            .pcdApprovedHPrice =
                                                                         value;
                                                                     _procechangeapproved[
                                                                             index] =
                                                                         PriceChangePrdModel(
                                                                       aprvdHprice:
                                                                           pdet[index]
-                                                                              .pcdChangedHPrice,
+                                                                              .pcdApprovedHPrice,
                                                                       aprvdLprice:
                                                                           pdet[index]
-                                                                              .pcdChangedLprice,
+                                                                              .pcdApprovedLPrice,
                                                                       pcdId: pdet[
                                                                               index]
                                                                           .pcdId,
@@ -758,9 +759,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         10.sp),
                                                                 decoration:
                                                                     InputDecoration(
-                                                                  enabled: (pdet[index].pcdStdLPrice !=
+                                                                  enabled: (pdet[index].pcdChangedLprice !=
                                                                               pdet[index]
-                                                                                  .pcdChangedLprice) &&
+                                                                                  .pcdApprovedLPrice) &&
                                                                           (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' ||
                                                                               widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار')
                                                                       ? true
@@ -831,17 +832,17 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                 onChanged:
                                                                     (value) {
                                                                   pdet[index]
-                                                                          .pcdChangedLprice =
+                                                                          .pcdApprovedLPrice =
                                                                       value;
                                                                   _procechangeapproved[
                                                                           index] =
                                                                       PriceChangePrdModel(
                                                                     aprvdHprice:
                                                                         pdet[index]
-                                                                            .pcdChangedHPrice,
+                                                                            .pcdApprovedHPrice,
                                                                     aprvdLprice:
                                                                         pdet[index]
-                                                                            .pcdChangedLprice,
+                                                                            .pcdApprovedLPrice,
                                                                     pcdId: pdet[
                                                                             index]
                                                                         .pcdId,
@@ -1287,7 +1288,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   ),
                 ),
               ),
-              Visibility(
+              
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Visibility(
                 visible:
                     widget.priceChangeApprovel.pchApprovalStatus == 'Pending'
                         ? true
@@ -1449,10 +1455,6 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

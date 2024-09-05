@@ -8,8 +8,8 @@ class LoadReqApprovalEvent with _$LoadReqApprovalEvent {
   const factory LoadReqApprovalEvent.approvLoadingReqEvent() =
       ApprovLoadingReqEvent;
 
-  const factory LoadReqApprovalEvent.rejectLoadRequestEvent(
-      {required LoadReqInApprovalModel approval}) = RejectLoadRequestEvent;
+  /* const factory LoadReqApprovalEvent.rejectLoadRequestEvent(
+      {required LoadReqInApprovalModel approval}) = RejectLoadRequestEvent; */
 
   const factory LoadReqApprovalEvent.clearLoadReqApprovalEvent() =
       ClearLoadReqApprovalEvent;

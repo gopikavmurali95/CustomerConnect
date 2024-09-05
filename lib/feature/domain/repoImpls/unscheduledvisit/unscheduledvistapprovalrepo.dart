@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -48,6 +49,7 @@ class UnScheduledVisitApprovalRepo implements IUnScheduledVisitApprovalRepo {
       });
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final approve =
             UnScheduledApprovalRespModel.fromJson(json["result"][0]);
@@ -74,6 +76,7 @@ class UnScheduledVisitApprovalRepo implements IUnScheduledVisitApprovalRepo {
       });
 
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final approve =
             UnScheduledApprovalRespModel.fromJson(json["result"][0]);

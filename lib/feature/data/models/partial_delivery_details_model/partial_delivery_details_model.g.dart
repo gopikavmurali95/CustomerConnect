@@ -28,7 +28,8 @@ PartialDeliveryDetailsModel _$PartialDeliveryDetailsModelFromJson(
     )
       ..status = json['Status'] as String?
       ..detStatus = json['DetStatus'] as String?
-      ..reason = json['Reason'] as String?;
+      ..reason = json['Reason'] as String?
+      ..arReason = json['ArReason'] as String?;
 
 Map<String, dynamic> _$PartialDeliveryDetailsModelToJson(
         PartialDeliveryDetailsModel instance) =>
@@ -52,4 +53,5 @@ Map<String, dynamic> _$PartialDeliveryDetailsModelToJson(
       'Status': instance.status,
       'DetStatus': instance.detStatus,
       'Reason': instance.reason,
+      'ArReason': instance.arReason,
     };

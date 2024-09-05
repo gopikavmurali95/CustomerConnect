@@ -391,13 +391,11 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                           // width: 20.h,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: headers[index]
-                                                                    .rahApprovalStatus!
-                                                                    .isEmpty
-                                                                ? Colors
-                                                                    .red[100]
-                                                                : Colors
-                                                                    .green[100],
+                                                            color: _selectedeMode == 'P'
+                                                                ? const Color(
+                                                                      0xfff7f4e2)
+                                                                : const Color(
+                                                                  0xffe3f7e2),
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(

@@ -30,7 +30,7 @@ ReturnApprovalDetailModel _$ReturnApprovalDetailModelFromJson(
       radApprovalStatus: json['rad_ApprovalStatus'] as String?,
       arprdName: json['Arprd_Name'] as String?,
       arrsnName: json['Arrsn_NameArprd_Name'] as String?,
-    );
+    )..arReason = json['ArReason'] as String?;
 
 Map<String, dynamic> _$ReturnApprovalDetailModelToJson(
         ReturnApprovalDetailModel instance) =>
@@ -56,4 +56,5 @@ Map<String, dynamic> _$ReturnApprovalDetailModelToJson(
       'rad_ApprovalStatus': instance.radApprovalStatus,
       'Arprd_Name': instance.arprdName,
       'Arrsn_NameArprd_Name': instance.arrsnName,
+      'ArReason': instance.arReason,
     };

@@ -36,6 +36,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
     _loadqSearchController.clear();
+    _selectedloadrequest = 'P';
     ddfilterLoadRequest = [
       ApprovalStatusFilterModel(
           statusName:
@@ -451,12 +452,10 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                           color: headers[index]
                                                                       .status!
                                                                       .isEmpty ||
-                                                                  headers[index]
-                                                                          .status !=
-                                                                      'Approved'
-                                                              ? headers[index]
-                                                                          .status ==
-                                                                      'Rejected'
+                                                                  _selectedloadrequest !=
+                                                                      'A'
+                                                              ? _selectedloadrequest ==
+                                                                      'R'
                                                                   ? Colors
                                                                       .red[300]
                                                                   : const Color(
@@ -476,9 +475,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                   horizontal: 8,
                                                                   vertical: 5),
                                                           child: Text(
-                                                            headers[index]
+                                                           selectedLocale?.languageCode == 'en'? headers[index]
                                                                     .status ??
-                                                                '',
+                                                                '':headers[index].arStatus??'',
                                                             style: kfontstyle(
                                                                 fontSize: 10.sp,
                                                                 fontWeight:

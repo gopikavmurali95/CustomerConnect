@@ -28,7 +28,7 @@ class UnScheduledApprovalBloc
     on<RejectUnScheduledEvent>((event, emit) async {
       Either<MainFailures, UnScheduledApprovalRespModel> resp =
           await unScheduledVisitApprovalRepo
-              .approveUnscheduledVisit(event.reject);
+              .rejectUnscheduledVisit(event.reject);
 
       emit(resp.fold((l) => const UnScheduledVisitApprovalFailedState(),
           (r) => RejectUnScheduledVisitState(resp: r)));

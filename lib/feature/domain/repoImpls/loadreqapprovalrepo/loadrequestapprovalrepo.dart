@@ -21,13 +21,15 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         "JSONString": jsonEncode(approval.products),
         "UserId": approval.userId,
         "ReqID": approval.reqID,
-        "RotID": approval.rotID
+        "RotID": approval.rotID,
+        "Status": approval.status
       });
       log({
         "JSONString": jsonEncode(approval.products),
         "UserId": approval.userId,
         "ReqID": approval.reqID,
-        "RotID": approval.rotID
+        "RotID": approval.rotID,
+         "Status": approval.status
       }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
@@ -51,7 +53,7 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
     }
   }
 
-  @override
+ /*  @override
   Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
       LoadReqInApprovalModel loadapprove) async {
     try {
@@ -60,13 +62,15 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         "JSONString": jsonEncode(loadapprove.products),
         "UserId": loadapprove.userId,
         "ReqID": loadapprove.reqID,
-        "RotID": loadapprove.rotID
+        "RotID": loadapprove.rotID,
+        "Status":loadapprove.status
       });
       log({
         "JSONString": jsonEncode(loadapprove.products),
         "UserId": loadapprove.userId,
         "ReqID": loadapprove.reqID,
-        "RotID": loadapprove.rotID
+        "RotID": loadapprove.rotID,
+        "Status":loadapprove.status
       }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
@@ -89,4 +93,4 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
       return left(const MainFailures.serverfailure());
     }
   }
-}
+ */}

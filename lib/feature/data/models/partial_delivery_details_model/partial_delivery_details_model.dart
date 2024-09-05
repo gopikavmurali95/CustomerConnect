@@ -41,6 +41,8 @@ class PartialDeliveryDetailsModel {
   String? detStatus;
   @JsonKey(name: 'Reason')
   String? reason;
+  @JsonKey(name: 'ArReason')
+  String? arReason;
 
   PartialDeliveryDetailsModel({
     this.dadId,

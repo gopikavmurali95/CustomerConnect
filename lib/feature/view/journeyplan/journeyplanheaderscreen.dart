@@ -786,9 +786,9 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                 horizontal: 8,
                                                                 vertical: 5),
                                                         child: Text(
-                                                          headers[index]
+                                                          selectedLocale?.languageCode == 'en'?headers[index]
                                                                   .status ??
-                                                              '',
+                                                              '':headers[index].arStatus??'',
                                                           style: kfontstyle(
                                                               fontSize: 8.sp,
                                                               fontWeight:

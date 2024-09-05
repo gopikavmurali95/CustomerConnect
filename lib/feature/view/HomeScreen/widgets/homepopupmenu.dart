@@ -113,17 +113,17 @@ class HomePopUPMenuButton extends StatelessWidget {
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        title: const Text(
-                          /* AppLocalizations.of(context)!.languageSelection */ "Select Language",
-                          style: TextStyle(fontWeight: FontWeight.w400),
+                        title:  Text(
+                          AppLocalizations.of(context)!.languageSelection /* "Select Language" */,
+                          style: const TextStyle(fontWeight: FontWeight.w400),
                         ),
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             ListTile(
                               leading: const Icon(Icons.language),
-                              title: const Text(
-                                  /* AppLocalizations.of(context)!.english */ "English"),
+                              title:  Text(
+                                  AppLocalizations.of(context)!.english /*  "English" */),
                               onTap: () async {
                                 selectedLocale = const Locale('en');
                                 final sharedprefs =

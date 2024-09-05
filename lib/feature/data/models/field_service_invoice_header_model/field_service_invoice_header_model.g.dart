@@ -27,7 +27,7 @@ FieldServiceInvoiceHeaderModel _$FieldServiceInvoiceHeaderModelFromJson(
       rotID: json['rotID'] as String?,
       userID: json['UserID'] as String?,
       arcusName: json['Arcus_Name'] as String?,
-    );
+    )..arStatus = json['ArStatus'] as String?;
 
 Map<String, dynamic> _$FieldServiceInvoiceHeaderModelToJson(
         FieldServiceInvoiceHeaderModel instance) =>
@@ -50,4 +50,5 @@ Map<String, dynamic> _$FieldServiceInvoiceHeaderModelToJson(
       'UserID': instance.userID,
       'rotID': instance.rotID,
       'Arcus_Name': instance.arcusName,
+      'ArStatus': instance.arStatus,
     };
