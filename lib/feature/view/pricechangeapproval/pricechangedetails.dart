@@ -453,122 +453,221 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                             AppLocalizations.of(context)!
                                                 .noDataFound),
                                       )
-                                    : ListView.separated(
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) =>
-                                            Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, right: 10),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Flexible(
-                                                    flex: 3,
-                                                    fit: FlexFit.tight,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
+                                    : Expanded(
+                                        child: ListView.separated(
+                                          physics:
+                                              const AlwaysScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) =>
+                                              Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Flexible(
+                                                      flex: 3,
+                                                      fit: FlexFit.tight,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              pdet[index]
+                                                                      .prdCode ??
+                                                                  '',
+                                                              style:
+                                                                  loadTextStyle()),
+                                                          Text(
+                                                            selectedLocale
+                                                                        ?.languageCode ==
+                                                                    'en'
+                                                                ? pdet[index]
+                                                                        .prdName ??
+                                                                    ''
+                                                                : pdet[index]
+                                                                        .arprdName ??
+                                                                    '',
+                                                            style:
+                                                                subTitleTextStyle(),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    /*  SizedBox(
+                                                  width: 10.w,
+                                                ), */
+                                                    Flexible(
+                                                      flex: 1,
+                                                      fit: FlexFit.tight,
+                                                      child: Column(
+                                                        children: [
+                                                          SizedBox(
+                                                            height: 5.w,
+                                                          ),
+                                                          Text(
                                                             pdet[index]
-                                                                    .prdCode ??
+                                                                    .pcdHigherUom ??
                                                                 '',
                                                             style:
-                                                                loadTextStyle()),
-                                                        Text(
-                                                          selectedLocale
-                                                                      ?.languageCode ==
-                                                                  'en'
-                                                              ? pdet[index]
-                                                                      .prdName ??
-                                                                  ''
-                                                              : pdet[index]
-                                                                      .arprdName ??
-                                                                  '',
-                                                          style:
-                                                              subTitleTextStyle(),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  /*  SizedBox(
-                                                width: 10.w,
-                                              ), */
-                                                  Flexible(
-                                                    flex: 1,
-                                                    fit: FlexFit.tight,
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          height: 5.w,
-                                                        ),
-                                                        Text(
-                                                          pdet[index]
-                                                                  .pcdHigherUom ??
-                                                              '',
-                                                          style:
-                                                              subTitleTextStyle(),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 15.w,
-                                                        ),
-                                                        Text(
-                                                          pdet[index]
-                                                                  .pcdLowerUom ??
-                                                              '',
-                                                          style:
-                                                              subTitleTextStyle(),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  /* SizedBox(
-                                                width: 25.w,
-                                              ), */
-                                                  Flexible(
-                                                    flex: 2,
-                                                    fit: FlexFit.tight,
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          height: 5.w,
-                                                        ),
-                                                        Text(
-                                                          pdet[index]
-                                                                  .pcdStdHPrice ??
-                                                              '',
-                                                          style:
-                                                              subTitleTextStyle(),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 15.w,
-                                                        ),
-                                                        Text(
-                                                          pdet[index]
-                                                                  .pcdStdLPrice ??
-                                                              '',
-                                                          style:
-                                                              subTitleTextStyle(),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  /* SizedBox(
-                                                width: 25.w,
-                                              ), */
-                                                  Column(
-                                                    children: [
-                                                      SizedBox(
-                                                        height: 5.h,
+                                                                subTitleTextStyle(),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 15.w,
+                                                          ),
+                                                          Text(
+                                                            pdet[index]
+                                                                    .pcdLowerUom ??
+                                                                '',
+                                                            style:
+                                                                subTitleTextStyle(),
+                                                          )
+                                                        ],
                                                       ),
-                                                      Flexible(
-                                                        flex: 0,
-                                                        fit: FlexFit.tight,
-                                                        child: Row(
+                                                    ),
+                                                    /* SizedBox(
+                                                  width: 25.w,
+                                                ), */
+                                                    Flexible(
+                                                      flex: 2,
+                                                      fit: FlexFit.tight,
+                                                      child: Column(
+                                                        children: [
+                                                          SizedBox(
+                                                            height: 5.w,
+                                                          ),
+                                                          Text(
+                                                            pdet[index]
+                                                                    .pcdChangedHPrice ??
+                                                                '',
+                                                            style:
+                                                                subTitleTextStyle(),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 15.w,
+                                                          ),
+                                                          Text(
+                                                            pdet[index]
+                                                                    .pcdChangedLprice ??
+                                                                '',
+                                                            style:
+                                                                subTitleTextStyle(),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    /* SizedBox(
+                                                  width: 25.w,
+                                                ), */
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 5.h,
+                                                        ),
+                                                        Flexible(
+                                                          flex: 0,
+                                                          fit: FlexFit.tight,
+                                                          child: Row(
+                                                            children: [
+                                                              Container(
+                                                                width: 70.w,
+                                                                height: 20.h,
+                                                                decoration: BoxDecoration(
+                                                                    color: Colors
+                                                                        .grey
+                                                                        .shade100,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            5),
+                                                                    border: Border.all(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400)),
+                                                                child:
+                                                                    TextFormField(
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .right,
+                                                                  maxLength: 8,
+                                                                  cursorHeight:
+                                                                      12.h,
+                                                                  keyboardType:
+                                                                      TextInputType
+                                                                          .number,
+                                                                  style: kfontstyle(
+                                                                      fontSize:
+                                                                          10.sp),
+                                                                  decoration: InputDecoration(
+                                                                      enabled: (pdet[index].pcdChangedHPrice != pdet[index].pcdApprovedHPrice) && (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' || widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار') ? true : false,
+                                                                      isDense: true,
+                                                                      filled: true,
+                                                                      fillColor: Colors.grey.shade200,
+                                                                      contentPadding: const EdgeInsets.only(top: 8, left: 5),
+                                                                      border: /* InputBorder
+                                                                                  .none  */
+                                                                          OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        borderSide:
+                                                                            const BorderSide(color: Colors.transparent),
+                                                                      ),
+                                                                      enabledBorder: OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        borderSide:
+                                                                            const BorderSide(color: Colors.transparent),
+                                                                      ),
+                                                                      disabledBorder: OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10),
+                                                                        borderSide:
+                                                                            const BorderSide(color: Colors.transparent),
+                                                                      ),
+                                                                      focusedBorder: OutlineInputBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10),
+                                                                        borderSide:
+                                                                            const BorderSide(color: Colors.transparent),
+                                                                      ),
+                                                                      counterText: ''),
+                                                                  controller:
+                                                                      TextEditingController(
+                                                                    text: pdet[
+                                                                            index]
+                                                                        .pcdApprovedHPrice,
+                                                                  ),
+                                                                  onChanged:
+                                                                      (value) {
+                                                                    pdet[index]
+                                                                            .pcdApprovedHPrice =
+                                                                        value;
+                                                                    _procechangeapproved[index] = PriceChangePrdModel(
+                                                                        aprvdHprice:
+                                                                            pdet[index]
+                                                                                .pcdChangedHPrice,
+                                                                        aprvdLprice:
+                                                                            pdet[index]
+                                                                                .pcdChangedLprice,
+                                                                        pcdId: pdet[index]
+                                                                            .pcdId,
+                                                                        reason: selectedresons[
+                                                                            index],
+                                                                        status:
+                                                                            "A");
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 5.h,
+                                                        ),
+                                                        Row(
                                                           children: [
                                                             Container(
                                                               width: 70.w,
@@ -601,7 +700,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         10.sp),
                                                                 decoration:
                                                                     InputDecoration(
-                                                                        enabled: (pdet[index].pcdStdHPrice != pdet[index].pcdChangedHPrice) && (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' || widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار')
+                                                                        enabled: (pdet[index].pcdChangedLprice != pdet[index].pcdApprovedLPrice) && (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' || widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار')
                                                                             ? true
                                                                             : false,
                                                                         isDense:
@@ -618,14 +717,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             left:
                                                                                 5),
                                                                         border: /* InputBorder
-                                                                                .none  */
-                                                                            OutlineInputBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                          borderSide:
-                                                                              const BorderSide(color: Colors.transparent),
-                                                                        ),
-                                                                        enabledBorder:
+                                                                  .none  */
                                                                             OutlineInputBorder(
                                                                           borderRadius:
                                                                               BorderRadius.circular(5),
@@ -636,6 +728,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             OutlineInputBorder(
                                                                           borderRadius:
                                                                               BorderRadius.circular(10),
+                                                                          borderSide:
+                                                                              const BorderSide(color: Colors.transparent),
+                                                                        ),
+                                                                        enabledBorder:
+                                                                            OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(5),
                                                                           borderSide:
                                                                               const BorderSide(color: Colors.transparent),
                                                                         ),
@@ -652,12 +751,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     TextEditingController(
                                                                   text: pdet[
                                                                           index]
-                                                                      .pcdChangedHPrice,
+                                                                      .pcdApprovedLPrice,
                                                                 ),
                                                                 onChanged:
                                                                     (value) {
                                                                   pdet[index]
-                                                                          .pcdChangedHPrice =
+                                                                          .pcdApprovedLPrice =
                                                                       value;
                                                                   _procechangeapproved[index] = PriceChangePrdModel(
                                                                       aprvdHprice:
@@ -672,324 +771,355 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                       reason: selectedresons[
                                                                           index],
                                                                       status:
-                                                                          "A");
+                                                                          'A');
                                                                 },
                                                               ),
                                                             ),
                                                           ],
                                                         ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 8.h,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        '${AppLocalizations.of(context)!.ordQty} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
+                                                        style:
+                                                            subTitleTextStyle(),
                                                       ),
-                                                      SizedBox(
-                                                        height: 5.h,
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Container(
-                                                            width: 70.w,
-                                                            height: 20.h,
-                                                            decoration: BoxDecoration(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .shade100,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade400)),
-                                                            child:
-                                                                TextFormField(
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .right,
-                                                              maxLength: 8,
-                                                              cursorHeight:
-                                                                  12.h,
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      10.sp),
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                      enabled: (pdet[index].pcdStdLPrice != pdet[index].pcdChangedLprice) && (widget.priceChangeApprovel.pchApprovalStatus == 'Pending' || widget.priceChangeApprovel.arpchApprovalStatus == 'قيد الانتظار')
-                                                                          ? true
-                                                                          : false,
-                                                                      isDense:
-                                                                          true,
-                                                                      filled:
-                                                                          true,
-                                                                      fillColor: Colors
-                                                                          .grey
-                                                                          .shade200,
-                                                                      contentPadding: const EdgeInsets
-                                                                          .only(
-                                                                          top:
-                                                                              8,
-                                                                          left:
-                                                                              5),
-                                                                      border: /* InputBorder
-                            .none  */
-                                                                          OutlineInputBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                        borderSide:
-                                                                            const BorderSide(color: Colors.transparent),
-                                                                      ),
-                                                                      disabledBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(10),
-                                                                        borderSide:
-                                                                            const BorderSide(color: Colors.transparent),
-                                                                      ),
-                                                                      enabledBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                        borderSide:
-                                                                            const BorderSide(color: Colors.transparent),
-                                                                      ),
-                                                                      focusedBorder:
-                                                                          OutlineInputBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(10),
-                                                                        borderSide:
-                                                                            const BorderSide(color: Colors.transparent),
-                                                                      ),
-                                                                      counterText:
-                                                                          ''),
-                                                              controller:
-                                                                  TextEditingController(
-                                                                text: pdet[
-                                                                        index]
-                                                                    .pcdChangedLprice,
-                                                              ),
-                                                              onChanged:
-                                                                  (value) {
-                                                                pdet[index]
-                                                                        .pcdChangedLprice =
-                                                                    value;
-                                                                _procechangeapproved[index] = PriceChangePrdModel(
-                                                                    aprvdHprice:
-                                                                        pdet[index]
-                                                                            .pcdChangedHPrice,
-                                                                    aprvdLprice:
-                                                                        pdet[index]
-                                                                            .pcdChangedLprice,
-                                                                    pcdId: pdet[
-                                                                            index]
-                                                                        .pcdId,
-                                                                    reason:
-                                                                        selectedresons[
-                                                                            index],
-                                                                    status:
-                                                                        'A');
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 8.h,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      '${AppLocalizations.of(context)!.ordQty} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdHigherQty} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdLowerQty}',
-                                                      style:
-                                                          subTitleTextStyle(),
                                                     ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Text(
-                                                      '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
-                                                      style:
-                                                          subTitleTextStyle(),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 5.h,
-                                              ),
-                                              widget.priceChangeApprovel
-                                                          .pchApprovalStatus ==
-                                                      'Pending'
-                                                  ? Transform.scale(
-                                                      scale: .9,
-                                                      origin:
-                                                          const Offset(450, 0),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Expanded(
-                                                            child: BlocConsumer<
-                                                                PriceChangeReasonsBloc,
-                                                                PriceChangeReasonsState>(
-                                                              listener:
-                                                                  (context,
-                                                                      state) {
-                                                                state.when(
-                                                                  getPriceChangeReasons:
-                                                                      (resons) {
-                                                                    if (resons !=
-                                                                        null) {
-                                                                      selectedresons
-                                                                          .clear();
-
-                                                                      availableresons
-                                                                          .clear();
-                                                                      availableresons =
-                                                                          [
-                                                                        PriceChangeReasonModel(
-                                                                            rsnId:
-                                                                                '-1',
-                                                                            rsnName: selectedLocale?.languageCode == 'en'
-                                                                                ? 'Select reason'
-                                                                                : AppLocalizations.of(context)!.selectReason,
-                                                                            rsnArName: AppLocalizations.of(context)!.selectReason,
-                                                                            rsnType: 'null')
-                                                                      ];
-
-                                                                      selectedresons = List.generate(
-                                                                          pdet
-                                                                              .length,
-                                                                          (index) =>
-                                                                              '-1');
-                                                                      availableresons
-                                                                          .addAll(
-                                                                              resons);
-                                                                    }
-                                                                  },
-                                                                  priceChangeReasonFailed:
-                                                                      () {},
-                                                                );
-                                                              },
-                                                              builder: (context,
-                                                                  state) {
-                                                                return state
-                                                                    .when(
-                                                                  getPriceChangeReasons: (resons) => resons ==
-                                                                              null ||
-                                                                          availableresons
-                                                                              .isEmpty
-                                                                      ? const ShimmerContainers(
-                                                                          height:
-                                                                              30,
-                                                                          width:
-                                                                              80,
-                                                                        )
-                                                                      : Transform
-                                                                          .scale(
-                                                                          scale:
-                                                                              0.8,
-                                                                          child:
-                                                                              Container(
+                                                    Expanded(
+                                                      child: Text(
+                                                        '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
+                                                        style:
+                                                            subTitleTextStyle(),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 5.h,
+                                                ),
+                                                widget.priceChangeApprovel
+                                                            .pchApprovalStatus ==
+                                                        'Pending'
+                                                    ? Transform.scale(
+                                                        scale: .9,
+                                                        origin: const Offset(
+                                                            450, 0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Expanded(
+                                                              child: BlocConsumer<
+                                                                  PriceChangeReasonsBloc,
+                                                                  PriceChangeReasonsState>(
+                                                                listener:
+                                                                    (context,
+                                                                        state) {
+                                                                  state.when(
+                                                                    getPriceChangeReasons:
+                                                                        (resons) {
+                                                                      if (resons !=
+                                                                          null) {
+                                                                        selectedresons
+                                                                            .clear();
+                                        
+                                                                        availableresons
+                                                                            .clear();
+                                                                        availableresons =
+                                                                            [
+                                                                          PriceChangeReasonModel(
+                                                                              rsnId: '-1',
+                                                                              rsnName: selectedLocale?.languageCode == 'en' ? 'Select reason' : AppLocalizations.of(context)!.selectReason,
+                                                                              rsnArName: AppLocalizations.of(context)!.selectReason,
+                                                                              rsnType: 'null')
+                                                                        ];
+                                        
+                                                                        selectedresons = List.generate(
+                                                                            pdet
+                                                                                .length,
+                                                                            (index) =>
+                                                                                '-1');
+                                                                        availableresons
+                                                                            .addAll(resons);
+                                                                      }
+                                                                    },
+                                                                    priceChangeReasonFailed:
+                                                                        () {},
+                                                                  );
+                                                                },
+                                                                builder:
+                                                                    (context,
+                                                                        state) {
+                                                                  return state
+                                                                      .when(
+                                                                    getPriceChangeReasons: (resons) => resons ==
+                                                                                null ||
+                                                                            availableresons
+                                                                                .isEmpty
+                                                                        ? const ShimmerContainers(
                                                                             height:
-                                                                                30.h,
-                                                                            decoration:
-                                                                                BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
+                                                                                30,
+                                                                            width:
+                                                                                80,
+                                                                          )
+                                                                        : Transform
+                                                                            .scale(
+                                                                            scale:
+                                                                                0.8,
                                                                             child:
-                                                                                DropdownButtonFormField(
-                                                                              elevation: 0,
-                                                                              dropdownColor: Colors.white,
-                                                                              value: availableresons[0].rsnId ?? '',
-                                                                              style: kfontstyle(color: Colors.black),
-                                                                              decoration: InputDecoration(
-                                                                                filled: true,
-                                                                                fillColor: Colors.white,
-                                                                                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                                                                                border: OutlineInputBorder(
-                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                  borderSide: const BorderSide(color: Colors.transparent),
-                                                                                ),
-                                                                                enabledBorder: OutlineInputBorder(
-                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                  borderSide: const BorderSide(color: Colors.transparent),
-                                                                                ),
-                                                                                focusedBorder: OutlineInputBorder(
-                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                  borderSide: const BorderSide(color: Colors.transparent),
-                                                                                ),
-                                                                              ),
-                                                                              items: availableresons.map((PriceChangeReasonModel item) {
-                                                                                return DropdownMenuItem(
-                                                                                  value: item.rsnId,
-                                                                                  child: Text(
-                                                                                    overflow: TextOverflow.ellipsis,
-                                                                                    selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
-                                                                                    style: kfontstyle(fontSize: 10.sp),
+                                                                                Container(
+                                                                              height: 30.h,
+                                                                              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
+                                                                              child: DropdownButtonFormField(
+                                                                                elevation: 0,
+                                                                                dropdownColor: Colors.white,
+                                                                                value: availableresons[0].rsnId ?? '',
+                                                                                style: kfontstyle(color: Colors.black),
+                                                                                decoration: InputDecoration(
+                                                                                  filled: true,
+                                                                                  fillColor: Colors.white,
+                                                                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                                                                                  border: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
                                                                                   ),
-                                                                                );
-                                                                              }).toList(),
-                                                                              onChanged: (value) {
-                                                                                selectedresons[index] = value ?? '';
-                                                                              },
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
+                                                                                  ),
+                                                                                ),
+                                                                                items: availableresons.map((PriceChangeReasonModel item) {
+                                                                                  return DropdownMenuItem(
+                                                                                    value: item.rsnId,
+                                                                                    child: Text(
+                                                                                      overflow: TextOverflow.ellipsis,
+                                                                                      selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                      style: kfontstyle(fontSize: 10.sp),
+                                                                                    ),
+                                                                                  );
+                                                                                }).toList(),
+                                                                                onChanged: (value) {
+                                                                                  selectedresons[index] = value ?? '';
+                                                                                },
+                                                                              ),
                                                                             ),
                                                                           ),
+                                                                    priceChangeReasonFailed:
+                                                                        () =>
+                                                                            const SizedBox(),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                            BlocBuilder<
+                                                                AapprovalOrRejectRadioCubit,
+                                                                AapprovalOrRejectRadioState>(
+                                                              builder: (context,
+                                                                  state) {
+                                                                return Row(
+                                                                  children: [
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
+                                                                      child:
+                                                                          InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            statuslist[index] =
+                                                                                true;
+                                                                            loadingCount =
+                                                                                0;
+                                                                            setState(() {});
+                                        
+                                                                            _procechangeapproved[index] = PriceChangePrdModel(
+                                                                                aprvdHprice: pdet[index].pcdChangedHPrice,
+                                                                                aprvdLprice: pdet[index].pcdChangedLprice,
+                                                                                pcdId: pdet[index].pcdId,
+                                                                                reason: selectedresons[index],
+                                                                                status: "A");
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Radio(
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                              }),
+                                                                              value: statuslist[index] == null
+                                                                                  ? false
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue: true,
+                                                                              onChanged: (value) {
+                                                                                statuslist[index] = true;
+                                                                                loadingCount = 0;
+                                                                                setState(() {});
+                                        
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "A");
+                                                                              },
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.approve,
+                                                                              style: kfontstyle(),
+                                                                            )
+                                                                          ],
                                                                         ),
-                                                                  priceChangeReasonFailed:
-                                                                      () =>
-                                                                          const SizedBox(),
+                                                                      ),
+                                                                    ),
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
+                                                                      child:
+                                                                          InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            statuslist[index] =
+                                                                                false;
+                                        
+                                                                            loadingCount =
+                                                                                0;
+                                                                            setState(() {});
+                                        
+                                                                            _procechangeapproved[index] = PriceChangePrdModel(
+                                                                                aprvdHprice: pdet[index].pcdChangedHPrice,
+                                                                                aprvdLprice: pdet[index].pcdChangedLprice,
+                                                                                pcdId: pdet[index].pcdId,
+                                                                                reason: selectedresons[index],
+                                                                                status: "R");
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Radio(
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                              }),
+                                                                              /*  activeColor: isselected == false
+                                                                                                                                                                                                      ? const Color(0xff0075ff)
+                                                                                                                                                                                                      : Colors.grey, */
+                                                                              value: statuslist[index] == null
+                                                                                  ? true
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue: false,
+                                                                              onChanged: (value) {
+                                                                                statuslist[index] = false;
+                                        
+                                                                                loadingCount = 0;
+                                                                                setState(() {});
+                                        
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "R");
+                                                                              },
+                                                                            ),
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.reject,
+                                                                              style: kfontstyle(),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  ],
                                                                 );
                                                               },
-                                                            ),
-                                                          ),
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child:
-                                                                        InkWell(
-                                                                      onTap:
-                                                                          () {
-                                                                        setState(
-                                                                            () {
-                                                                          statuslist[index] =
-                                                                              true;
-                                                                          loadingCount =
-                                                                              0;
-                                                                          setState(
-                                                                              () {});
-
-                                                                          _procechangeapproved[index] = PriceChangePrdModel(
-                                                                              aprvdHprice: pdet[index].pcdChangedHPrice,
-                                                                              aprvdLprice: pdet[index].pcdChangedLprice,
-                                                                              pcdId: pdet[index].pcdId,
-                                                                              reason: selectedresons[index],
-                                                                              status: "A");
-                                                                        });
-                                                                      },
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Transform.scale(
+                                                        scale: .9,
+                                                        origin: const Offset(
+                                                            450, 0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Expanded(
+                                                                child: pdet[index]
+                                                                            .pcdApprovalStatus ==
+                                                                        'R'
+                                                                    ? Transform
+                                                                        .scale(
+                                                                        scale:
+                                                                            0.8,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              30.h,
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.white,
+                                                                              border: Border.all(color: Colors.grey.shade200),
+                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                              boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                            child:
+                                                                                Text(pdet[index].reason ?? ''),
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                    : const SizedBox()),
+                                                            BlocBuilder<
+                                                                AapprovalOrRejectRadioCubit,
+                                                                AapprovalOrRejectRadioState>(
+                                                              builder: (context,
+                                                                  state) {
+                                                                return Row(
+                                                                  children: [
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
                                                                       child:
                                                                           Row(
                                                                         children: [
@@ -1006,13 +1136,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             groupValue:
                                                                                 true,
                                                                             onChanged:
-                                                                                (value) {
-                                                                              statuslist[index] = true;
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
-
-                                                                              _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "A");
-                                                                            },
+                                                                                (value) {},
                                                                           ),
                                                                           Text(
                                                                             AppLocalizations.of(context)!.approve,
@@ -1022,36 +1146,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child:
-                                                                        InkWell(
-                                                                      onTap:
-                                                                          () {
-                                                                        setState(
-                                                                            () {
-                                                                          statuslist[index] =
-                                                                              false;
-
-                                                                          loadingCount =
-                                                                              0;
-                                                                          setState(
-                                                                              () {});
-
-                                                                          _procechangeapproved[index] = PriceChangePrdModel(
-                                                                              aprvdHprice: pdet[index].pcdChangedHPrice,
-                                                                              aprvdLprice: pdet[index].pcdChangedLprice,
-                                                                              pcdId: pdet[index].pcdId,
-                                                                              reason: selectedresons[index],
-                                                                              status: "R");
-                                                                        });
-                                                                      },
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
                                                                       child:
                                                                           Row(
                                                                         children: [
@@ -1060,9 +1161,6 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                               return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                             }),
-                                                                            /*  activeColor: isselected == false
-                                                                                                                                                                                                    ? const Color(0xff0075ff)
-                                                                                                                                                                                                    : Colors.grey, */
                                                                             value: statuslist[index] == null
                                                                                 ? true
                                                                                 : statuslist[index] == true
@@ -1071,14 +1169,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             groupValue:
                                                                                 false,
                                                                             onChanged:
-                                                                                (value) {
-                                                                              statuslist[index] = false;
-
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
-
-                                                                              _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "R");
-                                                                            },
+                                                                                (value) {},
                                                                           ),
                                                                           Text(
                                                                             AppLocalizations.of(context)!.reject,
@@ -1087,152 +1178,23 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                           )
                                                                         ],
                                                                       ),
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  : Transform.scale(
-                                                      scale: .9,
-                                                      origin:
-                                                          const Offset(450, 0),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Expanded(
-                                                              child: pdet[index]
-                                                                          .pcdApprovalStatus ==
-                                                                      'R'
-                                                                  ? Transform
-                                                                      .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            30.h,
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(color: Colors.grey.shade200),
-                                                                            borderRadius: BorderRadius.circular(10.0),
-                                                                            boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .symmetric(
-                                                                              vertical: 7,
-                                                                              horizontal: 10),
-                                                                          child:
-                                                                              Text(pdet[index].reason ?? ''),
-                                                                        ),
-                                                                      ),
                                                                     )
-                                                                  : const SizedBox()),
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {},
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {},
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                            ],
+                                                                  ],
+                                                                );
+                                                              },
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                              ],
+                                            ),
                                           ),
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                            color: Colors.grey[300],
+                                          ),
+                                          itemCount: pdet.length,
                                         ),
-                                        separatorBuilder: (context, index) =>
-                                            Divider(
-                                          color: Colors.grey[300],
-                                        ),
-                                        itemCount: pdet.length,
                                       ),
                             priceChangedetailsFailed: () => Center(
                               child: Text(
@@ -1247,161 +1209,143 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 40.h,
-                width: double.infinity,
-                child: Column(
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Visibility(
+        visible: widget.priceChangeApprovel.pchApprovalStatus == 'Pending'
+            ? true
+            : false,
+        child: SizedBox(
+          height: 40.h,
+          width: double.infinity,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          const Flexible(
-                              flex: 1, fit: FlexFit.tight, child: SizedBox()),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: Visibility(
-                              visible: widget.priceChangeApprovel
-                                          .pchApprovalStatus ==
-                                      'Pending'
-                                  ? true
-                                  : false,
-                              child: MaterialButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                    const Flexible(
+                        flex: 1, fit: FlexFit.tight, child: SizedBox()),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.green.shade300,
+                        onPressed: () {
+                          if (widget.priceChangeApprovel.pchApprovalStatus ==
+                              'Pending') {
+                            if (_procechangeapproved.contains(null)) {
+                              showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .pleaseMakeSureToApproveAndReject),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        // Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.ok),
+                                    ),
+                                  ],
                                 ),
-                                color: Colors.green.shade300,
-                                onPressed: () {
-                                  if (widget.priceChangeApprovel
-                                          .pchApprovalStatus ==
-                                      'Pending') {
-                                    if (_procechangeapproved.contains(null)) {
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(AppLocalizations.of(
-                                                  context)!
-                                              .pleaseMakeSureToApproveAndReject),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                // Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else if (checkrejectedstatus() == false) {
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .selectReason),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else {
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                loadingCount = 0;
-                                                setState(() {});
-                                                Navigator.pop(context);
-
-                                                context
-                                                    .read<
-                                                        ApprovePriceChangeBloc>()
-                                                    .add(
-                                                        const AddApprovalLoadinEvent());
-
-                                                context
-                                                    .read<
-                                                        ApprovePriceChangeBloc>()
-                                                    .add(
-                                                      GetPricChangeApprovalEvent(
-                                                        approval: ApprovePriceChangeinModel(
-                                                            priceId: widget
-                                                                .priceChangeApprovel
-                                                                .pchId,
-                                                            userId: widget
-                                                                .priceChangeApprovel
-                                                                .userID,
-                                                            products:
-                                                                _procechangeapproved),
-                                                      ),
-                                                    );
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  }
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.confirm,
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
+                              );
+                            } else if (checkrejectedstatus() == false) {
+                              showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .selectReason),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.ok),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ),
-                          )
-                        ],
+                              );
+                            } else {
+                              showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doyouWantToProceed),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        loadingCount = 0;
+                                        setState(() {});
+                                        Navigator.pop(context);
+
+                                        context
+                                            .read<ApprovePriceChangeBloc>()
+                                            .add(
+                                                const AddApprovalLoadinEvent());
+
+                                        context
+                                            .read<ApprovePriceChangeBloc>()
+                                            .add(
+                                              GetPricChangeApprovalEvent(
+                                                approval: ApprovePriceChangeinModel(
+                                                    priceId: widget
+                                                        .priceChangeApprovel
+                                                        .pchId,
+                                                    userId: widget
+                                                        .priceChangeApprovel
+                                                        .userID,
+                                                    products:
+                                                        _procechangeapproved),
+                                              ),
+                                            );
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          }
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)!.confirm,
+                          style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        ),
                       ),
                     )
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

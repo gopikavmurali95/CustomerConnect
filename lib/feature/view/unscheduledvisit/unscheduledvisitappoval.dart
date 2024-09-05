@@ -676,8 +676,8 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                   .read<
                                                       UnScheduledApprovalBloc>()
                                                   .add(
-                                                    ApproveUnScheduledVisitEvent(
-                                                      approve:
+                                                    RejectUnScheduledEvent(
+                                                      reject:
                                                           unScheduledJsonstriongList,
                                                     ),
                                                   );

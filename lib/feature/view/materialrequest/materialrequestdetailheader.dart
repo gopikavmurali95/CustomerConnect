@@ -331,7 +331,7 @@ class _MaterialRequestHeaderScreenState
                                             ? AppLocalizations.of(context)!
                                                 .approvedRequests
                                             : _selectedMaterialReq == "AH"
-                                                ? "Approved and Hold Requests"
+                                                ? AppLocalizations.of(context)!.approvedAndHold
                                                 : AppLocalizations.of(context)!
                                                     .rejectedRequests,
                                 // materialreqheadsuccess: (materialheader) =>,

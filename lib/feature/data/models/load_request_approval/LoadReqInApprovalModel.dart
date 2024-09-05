@@ -22,7 +22,9 @@ class LoadReqInApprovalModel {
       this.userId,
       this.reqID,
       this.rotID,
-      this.products});
+      this.status,
+      this.products,
+      });
 
   LoadReqInApprovalModel.fromJson(dynamic json) {
 /*     lrdPrdID = json['lrd_prd_ID'];
@@ -37,6 +39,7 @@ class LoadReqInApprovalModel {
     userId = json['UserId'];
     reqID = json['ReqID'];
     rotID = json['RotID'];
+    status = json['Status'];
   }
 /*   String? lrdPrdID;
   String? lrdHQty;
@@ -50,6 +53,7 @@ class LoadReqInApprovalModel {
   String? userId;
   String? reqID;
   String? rotID;
+  String? status;
 
   List<LoadReqPrdModel?>? products = [];
 
@@ -67,6 +71,7 @@ class LoadReqInApprovalModel {
     map['UserId'] = userId;
     map['ReqID'] = reqID;
     map['RotID'] = rotID;
+    map['Status'] = status;
     return map;
   }
 }

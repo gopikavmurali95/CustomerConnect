@@ -48,6 +48,12 @@ class PriceChangeDetailsModel {
   String? arpcdApprovalStatus;
   @JsonKey(name: 'Reason')
   String? reason;
+  @JsonKey(name: 'ArReason')
+  String? arReason;
+  @JsonKey(name: 'pcd_ApprovedHPrice')
+  String? pcdApprovedHPrice;
+  @JsonKey(name: 'pcd_ApprovedLPrice')
+  String? pcdApprovedLPrice;
 
   PriceChangeDetailsModel({
     this.pcdId,

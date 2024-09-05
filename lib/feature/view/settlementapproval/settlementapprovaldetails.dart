@@ -275,10 +275,7 @@ class _SettlementApprovalDetailScreenState
                           actions: [
                             TextButton(
                               onPressed: () {
-                                context
-                                    .read<SettlementApprovalRejectBloc>()
-                                    .add(GetRejectApprovalEvent(
-                                        udpID: widget.header.udpId ?? ""));
+                               
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
@@ -398,10 +395,9 @@ class _SettlementApprovalDetailScreenState
                         actions: [
                           TextButton(
                             onPressed: () {
-                              context.read<PostSettlementApprovalBloc>().add(
-                                  GetPostApprovalEvent(
-                                      udpID: widget.header.udpId ?? ""));
+                              
 
+                              Navigator.pop(context);
                               Navigator.pop(context);
                             },
                             child: Text(AppLocalizations.of(context)!.ok),

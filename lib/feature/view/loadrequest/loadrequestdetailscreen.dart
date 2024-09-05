@@ -81,9 +81,9 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
         leading: IconButton(
           onPressed: () {
             context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
-              userId: widget.loadrequest.userID ?? '',
-              mode: widget.currentMode,
-              searchQuery: ''));
+                userId: widget.loadrequest.userID ?? '',
+                mode: widget.currentMode,
+                searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -994,31 +994,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                       rotID: widget.loadrequest.rotID,
                                       userId: widget.user.usrId)));
                                   if (widget.loadrequest.status == 'Pending') {
-                                    if (_loadproducts.contains(null)) {
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(AppLocalizations.of(
-                                                  context)!
-                                              .pleaseMakeSureToApproveAndReject),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                // Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else {
+                                    
                                       showCupertinoDialog(
                                         context: context,
                                         builder: (context) =>
@@ -1065,7 +1041,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                 .rotID,
                                                             userId: widget
                                                                 .loadrequest
-                                                                .userID),
+                                                                .userID,
+                                                            status: "R"),
                                                       ),
                                                     );
                                               },
@@ -1076,7 +1053,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                           ],
                                         ),
                                       );
-                                    }
+                                    
                                   }
                                 },
                                 child: Text(
@@ -1103,31 +1080,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (widget.loadrequest.status == 'Pending') {
-                                    if (_loadproducts.contains(null)) {
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(AppLocalizations.of(
-                                                  context)!
-                                              .pleaseMakeSureToApproveAndReject),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                // Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else {
+                                   
                                       showCupertinoDialog(
                                         context: context,
                                         builder: (context) =>
@@ -1173,7 +1126,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                 .rotID,
                                                             userId: widget
                                                                 .loadrequest
-                                                                .userID)));
+                                                                .userID,
+                                                            status: "A")));
                                               },
                                               child: Text(
                                                   AppLocalizations.of(context)!
@@ -1182,7 +1136,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                           ],
                                         ),
                                       );
-                                    }
+                                    
                                   }
                                 },
                                 child: Text(
