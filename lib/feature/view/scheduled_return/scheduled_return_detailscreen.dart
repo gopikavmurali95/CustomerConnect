@@ -465,9 +465,9 @@ class _ScheduledReturnDetailScreenState
 
                               for (int i = 0; i < details.length; i++) {
                                 if (details[i].status!.isNotEmpty) {
-                                  if (details[i].status == 'A') {
+                                  if (details[i].status == 'Approved') {
                                     statuslist[i] = true;
-                                  } else if (details[i].status == 'R') {
+                                  } else if (details[i].status == 'Rejected') {
                                     statuslist[i] = false;
                                   } else {
                                     statuslist[i] = null;
@@ -950,6 +950,23 @@ class _ScheduledReturnDetailScreenState
                                                                       child:
                                                                           Row(
                                                                         children: [
+                                                                          details[index].status == 'Rejected'
+                                                                              ? Container(
+                                                                                height: 30.h,
+                                                                                width: 110.w,
+                                                                                decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
+                                                                                  BoxShadow(
+                                                                                      // ignore: use_full_hex_values_for_flutter_colors
+                                                                                      color: Color(0xff00000050),
+                                                                                      blurRadius: 0.4,
+                                                                                      spreadRadius: 0.4)
+                                                                                ]),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                                  child: Text(details[index].rsnName ?? ''),
+                                                                                ),
+                                                                              )
+                                                                              : const SizedBox(),
                                                                           Radio(
                                                                             fillColor:
                                                                                 MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
