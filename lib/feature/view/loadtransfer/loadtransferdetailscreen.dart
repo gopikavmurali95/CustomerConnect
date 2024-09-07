@@ -71,12 +71,11 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-           context.read<LoadTransferHeaderBloc>().add(
-              GetAllLoadTransferHeadersEvent(
-                  userID: widget.header.userID ?? '',
-                  mode: widget.currentMode,
-                  searchQuery: ""));
-
+            context.read<LoadTransferHeaderBloc>().add(
+                GetAllLoadTransferHeadersEvent(
+                    userID: widget.header.userID ?? '',
+                    mode: widget.currentMode,
+                    searchQuery: ""));
 
             Navigator.pop(context);
           },
@@ -362,16 +361,16 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                               }
 
                               for (int i = 0; i < details.length; i++) {
-                                      if (details[i].status!.isNotEmpty) {
-                                        if (details[i].status == 'Approved') {
-                                          statuslist[i] = true;
-                                        } else if(details[i].status == 'Rejeced'){
-                                          statuslist[i] = false;
-                                        }else{
-                                          statuslist[i]=null;
-                                        }
-                                      }
-                                    }
+                                if (details[i].status!.isNotEmpty) {
+                                  if (details[i].status == 'Approved') {
+                                    statuslist[i] = true;
+                                  } else if (details[i].status == 'Rejeced') {
+                                    statuslist[i] = false;
+                                  } else {
+                                    statuslist[i] = null;
+                                  }
+                                }
+                              }
                             }
                           },
                           loadTransferDetailFailedState: () {},
@@ -422,7 +421,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                         context)!
                                                     .alert),
                                                 content: Text(
-                                                    "${AppLocalizations.of(context)!.load_transfer}  ${response.status}"),
+                                                    " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
@@ -585,7 +584,11 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    width: selectedLocale?.languageCode == 'en'?50.w:70.w,
+                                                    width: selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? 50.w
+                                                        : 70.w,
                                                   ),
                                                   Column(
                                                     children: [
@@ -636,19 +639,18 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                           onTap: () {
                                                             setState(() {
                                                               statuslist[
-                                                                        index] =
-                                                                    true;
-                                                                loadingCount =
-                                                                    0;
-                                                                setState(() {});
+                                                                  index] = true;
+                                                              loadingCount = 0;
+                                                              setState(() {});
 
-                                                                _loadprducts[
-                                                                        index] =
-                                                                    LoadTransferPrdModel(
-                                                                        ldrId: details[index]
-                                                                            .ldrId,
-                                                                        status:
-                                                                            "A");
+                                                              _loadprducts[
+                                                                      index] =
+                                                                  LoadTransferPrdModel(
+                                                                      ldrId: details[
+                                                                              index]
+                                                                          .ldrId,
+                                                                      status:
+                                                                          "A");
                                                             });
                                                           },
                                                           child: Row(
@@ -675,12 +677,12 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                             index] ==
                                                                         null
                                                                     ? false
-                                                                    : statuslist[
-                                                                                index] ==
+                                                                    : statuslist[index] ==
                                                                             true
                                                                         ? true
                                                                         : false,
-                                                                groupValue: true,
+                                                                groupValue:
+                                                                    true,
                                                                 onChanged:
                                                                     (value) {
                                                                   /*  showCupertinoDialog(
@@ -719,8 +721,9 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                       true;
                                                                   loadingCount =
                                                                       0;
-                                                                  setState(() {});
-                                                          
+                                                                  setState(
+                                                                      () {});
+
                                                                   _loadprducts[
                                                                           index] =
                                                                       LoadTransferPrdModel(
@@ -747,20 +750,20 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                           onTap: () {
                                                             setState(() {
                                                               statuslist[
-                                                                        index] =
-                                                                    false;
+                                                                      index] =
+                                                                  false;
 
-                                                                loadingCount =
-                                                                    0;
-                                                                setState(() {});
+                                                              loadingCount = 0;
+                                                              setState(() {});
 
-                                                                _loadprducts[
-                                                                        index] =
-                                                                    LoadTransferPrdModel(
-                                                                        ldrId: details[index]
-                                                                            .ldrId,
-                                                                        status:
-                                                                            "R");
+                                                              _loadprducts[
+                                                                      index] =
+                                                                  LoadTransferPrdModel(
+                                                                      ldrId: details[
+                                                                              index]
+                                                                          .ldrId,
+                                                                      status:
+                                                                          "R");
                                                             });
                                                           },
                                                           child: Row(
@@ -775,7 +778,8 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                               null &&
                                                                           !statuslist[
                                                                               index]!)
-                                                                      ? Colors.red
+                                                                      ? Colors
+                                                                          .red
                                                                           .shade300
                                                                       : Colors
                                                                           .grey;
@@ -787,22 +791,23 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                             index] ==
                                                                         null
                                                                     ? true
-                                                                    : statuslist[
-                                                                                index] ==
+                                                                    : statuslist[index] ==
                                                                             true
                                                                         ? true
                                                                         : false,
-                                                                groupValue: false,
+                                                                groupValue:
+                                                                    false,
                                                                 onChanged:
                                                                     (value) {
                                                                   statuslist[
                                                                           index] =
                                                                       false;
-                                                          
+
                                                                   loadingCount =
                                                                       0;
-                                                                  setState(() {});
-                                                          
+                                                                  setState(
+                                                                      () {});
+
                                                                   _loadprducts[
                                                                           index] =
                                                                       LoadTransferPrdModel(
@@ -868,7 +873,10 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                             flex: 1,
                             fit: FlexFit.tight,
                             child: Visibility(
-                              visible: widget.header.ltrApprovalStatus == 'Pending'?true:false,
+                              visible:
+                                  widget.header.ltrApprovalStatus == 'Pending'
+                                      ? true
+                                      : false,
                               child: MaterialButton(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -935,7 +943,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                         LoadTransferApprovalBloc>()
                                                     .add(
                                                         const AddLoadTransferLoadingEvent());
-                              
+
                                                 context
                                                     .read<
                                                         LoadTransferApprovalBloc>()
@@ -943,9 +951,10 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                       ApproveLoadtransferEvent(
                                                         approve:
                                                             LoadTransferApprovalInModel(
-                                                          products: _loadprducts,
-                                                          reqId:
-                                                              widget.header.ltrId,
+                                                          products:
+                                                              _loadprducts,
+                                                          reqId: widget
+                                                              .header.ltrId,
                                                           userId: widget.header
                                                                   .userID ??
                                                               '',

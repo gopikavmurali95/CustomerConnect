@@ -260,7 +260,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                         .w500,
                                                               ),
                                                             ),
-                                                           /* Row(
+                                                            /* Row(
                                                               children: [
                                                                 Text(
                                                                   '${headers[index].astCode} - ',
@@ -292,41 +292,37 @@ class _AssetAddingApprovalHeaderScreenState
                                                               ],
                                                             ), */
                                                             RichText(
-                                                            text: TextSpan(
-                                                              style: DefaultTextStyle
-                                                                      .of(context)
-                                                                  .style,
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                      '${headers[index].astCode} - ',
-                                                                  style:
-                                                                   kfontstyle(
-                                                                      fontSize: 12.sp,
-                                                                      color: const Color(
-                                                                        0xff2C6B9E,
-                                                                      ),
-                                                                      fontWeight: FontWeight.w500),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: selectedLocale
-                                                                              ?.languageCode ==
-                                                                          'en'
-                                                                      ? "${headers[index].astName}"
-                                                                      : headers[index]
-                                                                              .astArName ??
-                                                                          '',
-                                                                  style:
-                                                                     kfontstyle(
+                                                              text: TextSpan(
+                                                                style: DefaultTextStyle.of(
+                                                                        context)
+                                                                    .style,
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text:
+                                                                        '${headers[index].astCode} - ',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12.sp,
+                                                                        color: const Color(
+                                                                          0xff2C6B9E,
+                                                                        ),
+                                                                        fontWeight: FontWeight.w500),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? "${headers[index].astName}"
+                                                                        : headers[index].astArName ??
+                                                                            '',
+                                                                    style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
                                                                         color: const Color(
                                                                             0xff413434)),
-                                                                  // overflow: TextOverflow.ellipsis,
-                                                                ),
-                                                              ],
+                                                                    // overflow: TextOverflow.ellipsis,
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
-                                                          ),
                                                             /* Row(
                                                               children: [
                                                                 Text(
@@ -359,42 +355,39 @@ class _AssetAddingApprovalHeaderScreenState
                                                                 ),
                                                               ],
                                                             ), */
-RichText(
-                                                            text: TextSpan(
-                                                              style: DefaultTextStyle
-                                                                      .of(context)
-                                                                  .style,
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                      '${headers[index].cusCode} - ',
-                                                                  style:
-                                                                    kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    color: const Color(
-                                                                        0xff2C6B9E),
+                                                            RichText(
+                                                              text: TextSpan(
+                                                                style: DefaultTextStyle.of(
+                                                                        context)
+                                                                    .style,
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text:
+                                                                        '${headers[index].cusCode} - ',
+                                                                    style:
+                                                                        kfontstyle(
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      color: const Color(
+                                                                          0xff2C6B9E),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: selectedLocale
-                                                                              ?.languageCode ==
-                                                                          'en'
-                                                                      ? "${headers[index].cusName}"
-                                                                      : headers[index]
-                                                                              .cusArName ??
-                                                                          '',
-                                                                  style:
-                                                                      kfontstyle(
+                                                                  TextSpan(
+                                                                    text: selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? "${headers[index].cusName}"
+                                                                        : headers[index].cusArName ??
+                                                                            '',
+                                                                    style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
                                                                         color: const Color(
                                                                             0xff413434)),
-                                                                  // overflow: TextOverflow.ellipsis,
-                                                                ),
-                                                              ],
+                                                                    // overflow: TextOverflow.ellipsis,
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
-                                                          ),
                                                             Text(
                                                               '${headers[index].rotCode} |${headers[index].createdDate}',
                                                               style: kfontstyle(
@@ -536,66 +529,68 @@ RichText(
                                                                           0.8,
                                                                       child:
                                                                           InkWell(
-                                                                            onTap: () {
-                                                                              setState(() {
-                                                                                if (_slNoCtrls[index].text.isEmpty) {
-                                                                                showCupertinoDialog(
-                                                                                  context: context,
-                                                                                  builder: (context) => CupertinoAlertDialog(
-                                                                                    title: Text(AppLocalizations.of(context)!.alert),
-                                                                                    content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
-                                                                                    actions: [
-                                                                                      TextButton(
-                                                                                        onPressed: () {
-                                                                                          // setState(() {});
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Text(AppLocalizations.of(context)!.ok),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                );
-                                                                              } else {
-                                                                                showCupertinoDialog(
-                                                                                  context: context,
-                                                                                  builder: (context) => CupertinoAlertDialog(
-                                                                                    title: Text(AppLocalizations.of(context)!.alert),
-                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                    actions: [
-                                                                                      TextButton(
-                                                                                        onPressed: () {
-                                                                                          setState(() {});
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                      ),
-                                                                                      TextButton(
-                                                                                        onPressed: () {
-                                                                                          statuslist[index] = true;
-                                                                                          loadingCount = 0;
-                                                                                          setState(() {});
-                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                                          context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                                AssetAddingApproveEvent(
-                                                                                                  approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
-                                                                                                ),
-                                                                                              );
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            if (_slNoCtrls[index].text.isEmpty) {
+                                                                              showCupertinoDialog(
+                                                                                context: context,
+                                                                                builder: (context) => CupertinoAlertDialog(
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        // setState(() {});
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Text(AppLocalizations.of(context)!.ok),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              showCupertinoDialog(
+                                                                                context: context,
+                                                                                builder: (context) => CupertinoAlertDialog(
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        setState(() {});
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                    ),
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        statuslist[index] = true;
+                                                                                        loadingCount = 0;
+                                                                                        setState(() {});
+                                                                                        context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                        context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                              AssetAddingApproveEvent(
+                                                                                                approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
+                                                                                              ),
+                                                                                            );
 
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                );
-                                                                              }
-                                                                              });
-                                                                            },
-                                                                            child: Row(
-                                                                                                                                                    children: [
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
                                                                             Radio(
-                                                                              fillColor:
-                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                                 return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                               }),
                                                                               /* activeColor: isselected == true
@@ -606,10 +601,8 @@ RichText(
                                                                                   : statuslist[index] == true
                                                                                       ? true
                                                                                       : false,
-                                                                              groupValue:
-                                                                                  true,
-                                                                              onChanged:
-                                                                                  (value) {
+                                                                              groupValue: true,
+                                                                              onChanged: (value) {
                                                                                 if (_slNoCtrls[index].text.isEmpty) {
                                                                                   showCupertinoDialog(
                                                                                     context: context,
@@ -652,7 +645,7 @@ RichText(
                                                                                                     approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
                                                                                                   ),
                                                                                                 );
-                                                                            
+
                                                                                             Navigator.pop(context);
                                                                                           },
                                                                                           child: Text(AppLocalizations.of(context)!.proceed),
@@ -665,12 +658,11 @@ RichText(
                                                                             ),
                                                                             Text(
                                                                               AppLocalizations.of(context)!.approve,
-                                                                              style:
-                                                                                  kfontstyle(),
+                                                                              style: kfontstyle(),
                                                                             )
-                                                                                                                                                    ],
-                                                                                                                                                  ),
-                                                                          ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                     Transform
                                                                         .scale(
@@ -678,50 +670,52 @@ RichText(
                                                                           0.8,
                                                                       child:
                                                                           InkWell(
-                                                                            onTap: () {
-                                                                              setState(() {
-                                                                                showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: Text(AppLocalizations.of(context)!.alert),
-                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        setState(() {});
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        statuslist[index] = false;
-                                                                                        loadingCount = 0;
-                                                                                        setState(() {});
-                                                                                        context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
-                                                                                        context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
-                                                                                              AssetAddingApproveEvent(
-                                                                                                approve: AssetAddApprovalInModel(
-                                                                                                  reqId: headers[index].aahId,
-                                                                                                  serialNum: null,
-                                                                                                  userId: widget.user.usrId,
-                                                                                                ),
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            showCupertinoDialog(
+                                                                              context: context,
+                                                                              builder: (context) => CupertinoAlertDialog(
+                                                                                title: Text(AppLocalizations.of(context)!.alert),
+                                                                                content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      setState(() {});
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                  ),
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      statuslist[index] = false;
+                                                                                      loadingCount = 0;
+                                                                                      setState(() {});
+                                                                                      context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
+                                                                                      context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
+                                                                                            AssetAddingApproveEvent(
+                                                                                              approve: AssetAddApprovalInModel(
+                                                                                                reqId: headers[index].aahId,
+                                                                                                serialNum: null,
+                                                                                                userId: widget.user.usrId,
                                                                                               ),
-                                                                                            );
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                              });
-                                                                            },
-                                                                            child: Row(
-                                                                                                                                                    children: [
+                                                                                            ),
+                                                                                          );
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
                                                                             Radio(
-                                                                              fillColor:
-                                                                                  MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                                 return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                               }),
                                                                               /*  activeColor: isselected == false
@@ -732,10 +726,8 @@ RichText(
                                                                                   : statuslist[index] == true
                                                                                       ? true
                                                                                       : false,
-                                                                              groupValue:
-                                                                                  false,
-                                                                              onChanged:
-                                                                                  (value) {
+                                                                              groupValue: false,
+                                                                              onChanged: (value) {
                                                                                 showCupertinoDialog(
                                                                                   context: context,
                                                                                   builder: (context) => CupertinoAlertDialog(
@@ -771,7 +763,7 @@ RichText(
                                                                                     ],
                                                                                   ),
                                                                                 );
-                                                                            
+
                                                                                 /* context
                                                                                                                                                                                               .read<
                                                                                                                                                                                                   AapprovalOrRejectRadioCubit>()
@@ -781,12 +773,11 @@ RichText(
                                                                             ),
                                                                             Text(
                                                                               AppLocalizations.of(context)!.reject,
-                                                                              style:
-                                                                                  kfontstyle(),
+                                                                              style: kfontstyle(),
                                                                             )
-                                                                                                                                                    ],
-                                                                                                                                                  ),
-                                                                          ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
                                                                     )
                                                                   ],
                                                                 );

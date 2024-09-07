@@ -38,7 +38,6 @@ class OnGoing extends StatelessWidget {
                     )
                   : ListView.builder(
                       padding: const EdgeInsets.only(
-                        
                         top: 10,
                         //  bottom: 10
                       ),

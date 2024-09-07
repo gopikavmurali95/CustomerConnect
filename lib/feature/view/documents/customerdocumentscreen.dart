@@ -108,7 +108,15 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                                 child: Text(
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? '':widget.customer.arcusName??"",
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? widget.customer
+                                                              .cusName ??
+                                                          ''
+                                                      : widget.customer
+                                                              .arcusName ??
+                                                          "",
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(
@@ -128,8 +136,15 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  selectedLocale?.languageCode == 'en'?widget.customer.headerName ??
-                                                      '':widget.customer.arheaderName??'',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? widget.customer
+                                                              .headerName ??
+                                                          ''
+                                                      : widget.customer
+                                                              .arheaderName ??
+                                                          '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: kfontstyle(
@@ -139,7 +154,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                             ],
                                           ),
                                           Text(
-                                            '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arAreaName} ',
+                                            '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: Colors.grey),
@@ -176,7 +191,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '1) ${selectedLocale?.languageCode == 'en'?docs[0].docName:docs[0].arDocName}',
+                                    '1) ${selectedLocale?.languageCode == 'en' ? docs[0].docName : docs[0].arDocName}',
                                     style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: Colors.black,
@@ -247,7 +262,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '2) ${docs.length > 1 ? selectedLocale?.languageCode == 'en'?docs[1].docName:docs[1].arDocName : ''}',
+                                      '2) ${docs.length > 1 ? selectedLocale?.languageCode == 'en' ? docs[1].docName : docs[1].arDocName : ''}',
                                       style: kfontstyle(
                                         fontSize: 12.sp,
                                         color: Colors.black,
@@ -506,7 +521,7 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${AppLocalizations.of(context)!.attachedDocumentType}: ${docs.length > 2 ? selectedLocale?.languageCode == 'en'?docs[2].docName:docs[2].arDocName : ''}',
+                                          '${AppLocalizations.of(context)!.attachedDocumentType}: ${docs.length > 2 ? selectedLocale?.languageCode == 'en' ? docs[2].docName : docs[2].arDocName : ''}',
                                           style: kfontstyle(
                                             fontSize: 11.sp,
                                             color: Colors.black,

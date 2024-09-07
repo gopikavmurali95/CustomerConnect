@@ -52,10 +52,11 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
           mode: 'R'),
     ];
     context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
-    
+
     context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
           userId: widget.user.usrId ?? '',
-          mode: 'P', searchQuery: '',
+          mode: 'P',
+          searchQuery: '',
         ));
 
     super.initState();
@@ -475,9 +476,15 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                                                   horizontal: 8,
                                                                   vertical: 5),
                                                           child: Text(
-                                                           selectedLocale?.languageCode == 'en'? headers[index]
-                                                                    .status ??
-                                                                '':headers[index].arStatus??'',
+                                                            selectedLocale
+                                                                        ?.languageCode ==
+                                                                    'en'
+                                                                ? headers[index]
+                                                                        .status ??
+                                                                    ''
+                                                                : headers[index]
+                                                                        .arStatus ??
+                                                                    '',
                                                             style: kfontstyle(
                                                                 fontSize: 10.sp,
                                                                 fontWeight:
@@ -526,13 +533,11 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
       ),
     );
   }
+
   Future<void> _onRefreshLoadRequestHeaderScreen(
-    BuildContext context, LoginUserModel model) async {
-  context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
-  context
-      .read<LoadReqHeaderBloc>()
-      .add( LoadreqSuccessEvent(userId: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+      BuildContext context, LoginUserModel model) async {
+    context.read<LoadReqHeaderBloc>().add(const LoadreqClearEvent());
+    context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
+        userId: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+  }
 }
-
-}
-

@@ -64,7 +64,9 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                       color: Colors.grey.shade600),
                                 ),
                                 Text(
-                                  selectedLocale?.languageCode == 'en'?count.month ?? '':count.arMonth??'',
+                                  selectedLocale?.languageCode == 'en'
+                                      ? count.month ?? ''
+                                      : count.arMonth ?? '',
                                   style: kfontstyle(
                                       fontSize: 10.sp,
                                       color: Colors.black,
@@ -86,7 +88,7 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "${ AppLocalizations.of(context)!.working} \n ${ AppLocalizations.of(context)!.days}",
+                                      "${AppLocalizations.of(context)!.working} \n ${AppLocalizations.of(context)!.days}",
                                       //'Working \n   Days',
                                       style: kfontstyle(
                                           fontSize: 9.sp,
@@ -112,7 +114,8 @@ class _RouteTargetDaysWidgetState extends State<RouteTargetDaysWidget> {
                                     Column(
                                       children: [
                                         Text(
-                                           AppLocalizations.of(context)!.completed,
+                                          AppLocalizations.of(context)!
+                                              .completed,
                                           style: kfontstyle(
                                               fontSize: 9.sp,
                                               color: Colors.grey.shade600),

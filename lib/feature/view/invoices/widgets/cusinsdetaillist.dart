@@ -42,7 +42,14 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) => Padding(
-                                  padding:  EdgeInsets.only(left: selectedLocale?.languageCode == 'en'?10:0, right: selectedLocale?.languageCode == 'en'?0:10),
+                                  padding: EdgeInsets.only(
+                                      left: selectedLocale?.languageCode == 'en'
+                                          ? 10
+                                          : 0,
+                                      right:
+                                          selectedLocale?.languageCode == 'en'
+                                              ? 0
+                                              : 10),
                                   child: Column(
                                     children: [
                                       Row(
@@ -62,8 +69,15 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                                         '',
                                                     style: loadTextStyle()),
                                                 Text(
-                                                    selectedLocale?.languageCode == 'en'?details[index].prdName ??
-                                                        '':details[index].arPrdName??'',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? details[index]
+                                                                .prdName ??
+                                                            ''
+                                                        : details[index]
+                                                                .arPrdName ??
+                                                            '',
                                                     style: /* kfontstyle(
                                                 fontSize: 12.sp,
                                                 color: Colors.black,
@@ -77,7 +91,10 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             width: 15.h,
                                           ),
                                           Text(
-                                            selectedLocale?.languageCode == 'en'?details[index].prdtype ?? '':details[index].arPrdType??'',
+                                            selectedLocale?.languageCode == 'en'
+                                                ? details[index].prdtype ?? ''
+                                                : details[index].arPrdType ??
+                                                    '',
                                             style: subTitleTextStyle(),
                                           ),
                                           SizedBox(
@@ -120,7 +137,11 @@ class CusInsInvoiceDetailListWidget extends StatelessWidget {
                                             ],
                                           ),
                                           SizedBox(
-                                            width: selectedLocale?.languageCode == 'en'?30.w:40.w,
+                                            width:
+                                                selectedLocale?.languageCode ==
+                                                        'en'
+                                                    ? 30.w
+                                                    : 40.w,
                                           ),
                                           Column(
                                             children: [

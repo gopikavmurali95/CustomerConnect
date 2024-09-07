@@ -72,7 +72,7 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
                                             style: loadTextStyle(),
                                           ),
                                           Text(
-                                            '${selectedLocale?.languageCode == 'en'?list[index].prdName:list[index].arprdName}  ',
+                                            '${selectedLocale?.languageCode == 'en' ? list[index].prdName : list[index].arprdName}  ',
                                             style: subTitleTextStyle(),
                                           )
                                         ],
@@ -104,8 +104,10 @@ class _TargetPackageListItemsState extends State<TargetPackageListItems> {
                               ),
                             ],
                           )),
-              targetPackageListFailure: () =>  Center(
-                    child: Text( AppLocalizations.of(context)!.noDataAvailable,),
+              targetPackageListFailure: () => Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.noDataAvailable,
+                    ),
                   ));
         },
       ),

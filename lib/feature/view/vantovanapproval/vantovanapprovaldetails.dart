@@ -63,9 +63,9 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
         leading: IconButton(
           onPressed: () {
             context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
-              userID: widget.vanToVanHeader.userID ?? '',
-              mode: widget.currentMode,
-              searchQuery: ''));
+                userID: widget.vanToVanHeader.userID ?? '',
+                mode: widget.currentMode,
+                searchQuery: ''));
 
             Navigator.pop(context);
           },
@@ -866,8 +866,10 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Visibility(
-                            visible:  widget.vanToVanHeader.approvalStatus ==
-                                    'Pending'?true:false,
+                            visible: widget.vanToVanHeader.approvalStatus ==
+                                    'Pending'
+                                ? true
+                                : false,
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -882,9 +884,11 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                   if (approvedProducts.contains(null)) {
                                     showCupertinoDialog(
                                       context: context,
-                                      builder: (context) => CupertinoAlertDialog(
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
                                         title: Text(
-                                            AppLocalizations.of(context)!.alert),
+                                            AppLocalizations.of(context)!
+                                                .alert),
                                         content: Text(AppLocalizations.of(
                                                 context)!
                                             .pleaseMakeSureToApproveAndReject),
@@ -895,7 +899,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                               // Navigator.pop(context);
                                             },
                                             child: Text(
-                                                AppLocalizations.of(context)!.ok),
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
@@ -903,9 +908,11 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                   } else {
                                     showCupertinoDialog(
                                       context: context,
-                                      builder: (context) => CupertinoAlertDialog(
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
                                         title: Text(
-                                            AppLocalizations.of(context)!.alert),
+                                            AppLocalizations.of(context)!
+                                                .alert),
                                         content: Text(
                                             AppLocalizations.of(context)!
                                                 .doyouWantToProceed),
@@ -924,12 +931,12 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                               loadingCount = 0;
                                               setState(() {});
                                               Navigator.pop(context);
-                            
+
                                               context
                                                   .read<VanToVanApprovalBloc>()
                                                   .add(
                                                       const VanToVanApprovalLoadingEvent());
-                            
+
                                               context
                                                   .read<VanToVanApprovalBloc>()
                                                   .add(GetVanToVanApprovalEent(

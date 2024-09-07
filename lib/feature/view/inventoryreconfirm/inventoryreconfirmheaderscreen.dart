@@ -35,7 +35,7 @@ class _InventoryReconfirmHeadersScreenState
   @override
   void initState() {
     _selectedMode = "A";
-     inventoryReConfirmHSearchCtrl.clear();
+    inventoryReConfirmHSearchCtrl.clear();
 
     ddfilterFieldsVanToVan = [
       ApprovalStatusFilterModel(
@@ -387,7 +387,7 @@ class _InventoryReconfirmHeadersScreenState
                                                                             Text(
                                                                           overflow:
                                                                               TextOverflow.ellipsis,
-                                                                          "${selectedLocale?.languageCode == 'en'?inventory[index].usrName:inventory[index].arusrName}",
+                                                                          "${selectedLocale?.languageCode == 'en' ? inventory[index].usrName : inventory[index].arusrName}",
                                                                           style: kfontstyle(
                                                                               fontSize: 12.sp,
                                                                               color: const Color(0xff413434)),
@@ -444,9 +444,15 @@ class _InventoryReconfirmHeadersScreenState
                                                                     vertical:
                                                                         5),
                                                                 child: Text(
-                                                                  selectedLocale?.languageCode == 'en'?inventory[index]
-                                                                          .iahStatus ??
-                                                                      '':inventory[index].ariahStatus??'',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? inventory[index]
+                                                                              .iahStatus ??
+                                                                          ''
+                                                                      : inventory[index]
+                                                                              .ariahStatus ??
+                                                                          '',
                                                                   style: kfontstyle(
                                                                       fontSize:
                                                                           10.sp,

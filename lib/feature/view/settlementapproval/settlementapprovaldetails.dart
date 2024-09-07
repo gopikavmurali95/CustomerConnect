@@ -78,7 +78,7 @@ class _SettlementApprovalDetailScreenState
         child: SizedBox(
           height: double.infinity,
           child: SingleChildScrollView(
-             physics: const NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             //physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
@@ -275,7 +275,6 @@ class _SettlementApprovalDetailScreenState
                           actions: [
                             TextButton(
                               onPressed: () {
-                               
                                 Navigator.pop(context);
                                 Navigator.pop(context);
                               },
@@ -395,8 +394,6 @@ class _SettlementApprovalDetailScreenState
                         actions: [
                           TextButton(
                             onPressed: () {
-                              
-
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },

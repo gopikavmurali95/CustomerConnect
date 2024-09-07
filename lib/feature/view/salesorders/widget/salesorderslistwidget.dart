@@ -84,7 +84,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en'?orders[index].cusName:orders[index].arcusName}",
+                                                "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en' ? orders[index].cusName : orders[index].arcusName}",
                                                 overflow: TextOverflow.ellipsis,
                                                 style:
                                                     kfontstyle(fontSize: 11.sp),
@@ -110,7 +110,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                   BorderRadius.circular(10)),
                                           child: Center(
                                             child: Text(
-                                             orders[index].status ?? '',
+                                              orders[index].status ?? '',
                                               style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434),

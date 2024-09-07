@@ -21,8 +21,11 @@ class GetAllRouteBloc extends Bloc<GetAllRouteEvent, GetAllRouteState> {
       List<CuSInsRotList> availableroutes = [];
       emit(routes.fold((l) => const GetAllRoutesFailedState(), (r) {
         availableroutes.clear();
-        availableroutes
-            .add(CuSInsRotList(rotId: '-1', rotName: selectedLocale?.languageCode == 'en'?'Select Route':'حدد الطريق'));
+        availableroutes.add(CuSInsRotList(
+            rotId: '-1',
+            rotName: selectedLocale?.languageCode == 'en'
+                ? 'Select Route'
+                : 'حدد الطريق'));
 
         availableroutes.addAll(r);
         return GetAllRoutesSuccessState(routes: availableroutes);

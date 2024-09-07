@@ -45,7 +45,6 @@ class SalesOrdersModel {
   @JsonKey(name: 'Arcsh_Name')
   String? arcshName;
 
-
   SalesOrdersModel({
     this.ordId,
     this.orderId,

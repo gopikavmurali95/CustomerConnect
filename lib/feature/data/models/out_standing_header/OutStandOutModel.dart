@@ -6,31 +6,30 @@ String outStandOutModelToJson(OutStandOutModel data) =>
     json.encode(data.toJson());
 
 class OutStandOutModel {
-  OutStandOutModel({
-    this.invoiceID,
-    this.invoicedOn,
-    this.invoiceAmount,
-    this.amountPaid,
-    this.invoiceBalance,
-    this.pDCAmount,
-    this.createdDate,
-    this.cusID,
-    this.cusCode,
-    this.cusName,
-    this.cshID,
-    this.cshCode,
-    this.cshName,
-    this.rotID,
-    this.rotCode,
-    this.rotName,
-    this.status,
-    this.id,
-    this.invPayType,
-    this.arStatus,
-    this.cusArName,
-    this.cshArName,
-    this.rotArName
-  });
+  OutStandOutModel(
+      {this.invoiceID,
+      this.invoicedOn,
+      this.invoiceAmount,
+      this.amountPaid,
+      this.invoiceBalance,
+      this.pDCAmount,
+      this.createdDate,
+      this.cusID,
+      this.cusCode,
+      this.cusName,
+      this.cshID,
+      this.cshCode,
+      this.cshName,
+      this.rotID,
+      this.rotCode,
+      this.rotName,
+      this.status,
+      this.id,
+      this.invPayType,
+      this.arStatus,
+      this.cusArName,
+      this.cshArName,
+      this.rotArName});
 
   OutStandOutModel.fromJson(dynamic json) {
     invoiceID = json['InvoiceID'];
@@ -53,10 +52,9 @@ class OutStandOutModel {
     id = json['ID'];
     invPayType = json['inv_PayType'];
     arStatus = json['ArStatus'];
-    cusArName =json['cus_ArName'];
+    cusArName = json['cus_ArName'];
     cshArName = json['csh_ArName'];
-    rotArName =json['rot_ArName'];
-    
+    rotArName = json['rot_ArName'];
   }
   String? invoiceID;
   String? invoicedOn;
@@ -103,10 +101,10 @@ class OutStandOutModel {
     map['Status'] = status;
     map['ID'] = id;
     map['inv_PayType'] = invPayType;
-    map['ArStatus']=arStatus;
-    map['cus_ArName']= cusArName;
-    map['csh_ArName']=cshArName;
-    map['rot_ArName']= rotArName;
-        return map;
+    map['ArStatus'] = arStatus;
+    map['cus_ArName'] = cusArName;
+    map['csh_ArName'] = cshArName;
+    map['rot_ArName'] = rotArName;
+    return map;
   }
 }

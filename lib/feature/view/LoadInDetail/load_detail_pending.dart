@@ -51,7 +51,7 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
           ),
         ),
         title: Text(
-           "${AppLocalizations.of(context)!.load_in} ${AppLocalizations.of(context)!.details}",
+          "${AppLocalizations.of(context)!.load_in} ${AppLocalizations.of(context)!.details}",
           // "Load In Detail",
           style: appHeading(),
         ),
@@ -240,8 +240,8 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                     Row(
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 0,right: 10),
+                                          padding: const EdgeInsets.only(
+                                              left: 0, right: 10),
                                           child: Text(
                                             AppLocalizations.of(context)!
                                                 .sysQty,
@@ -293,15 +293,13 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                    detail[index].prdCode ??
-                                                        '',
+                                                    detail[index].prdCode ?? '',
                                                     style: loadTextStyle()),
                                                 Text(
                                                   selectedLocale
                                                               ?.languageCode ==
                                                           'en'
-                                                      ? detail[index]
-                                                              .prdName ??
+                                                      ? detail[index].prdName ??
                                                           ""
                                                       : detail[index]
                                                               .arprdname ??
@@ -315,8 +313,18 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             // crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                                Text(detail[index].liHigherUom== "0" || detail[index].liHigherUom == null ? 
-                                                "-": detail[index].liHigherUom ?? "",style:subTitleTextStyle() ,),
+                                              Text(
+                                                detail[index].liHigherUom ==
+                                                            "0" ||
+                                                        detail[index]
+                                                                .liHigherUom ==
+                                                            null
+                                                    ? "-"
+                                                    : detail[index]
+                                                            .liHigherUom ??
+                                                        "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                               // Visibility(
                                               //   visible:
                                               //       detail[index].liHigherUom ==
@@ -335,8 +343,18 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                                Text(detail[index].liLowerUom== "0" || detail[index].liLowerUom == null ? 
-                                                "-": detail[index].liLowerUom ?? "",style:subTitleTextStyle() ,),
+                                              Text(
+                                                detail[index].liLowerUom ==
+                                                            "0" ||
+                                                        detail[index]
+                                                                .liLowerUom ==
+                                                            null
+                                                    ? "-"
+                                                    : detail[index]
+                                                            .liLowerUom ??
+                                                        "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                               // Visibility(
                                               //   visible:
                                               //       detail[index].liLowerUom ==
@@ -378,16 +396,35 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                 Text(detail[index].higherUom!.isEmpty || detail[index].higherUom == null ? 
-                                                "-": detail[index].higherUom ?? "",style:subTitleTextStyle() ,),
-                                                
-                                              
+                                                Text(
+                                                  detail[index]
+                                                              .higherUom!
+                                                              .isEmpty ||
+                                                          detail[index]
+                                                                  .higherUom ==
+                                                              null
+                                                      ? "-"
+                                                      : detail[index]
+                                                              .higherUom ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                 Text(detail[index].lowerUom!.isEmpty || detail[index].lowerUom == null ? 
-                                                "-": detail[index].lowerUom?? "",style:subTitleTextStyle() ,),
-                                               
+                                                Text(
+                                                  detail[index]
+                                                              .lowerUom!
+                                                              .isEmpty ||
+                                                          detail[index]
+                                                                  .lowerUom ==
+                                                              null
+                                                      ? "-"
+                                                      : detail[index]
+                                                              .lowerUom ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                               ],
                                             ),
                                           ),
@@ -398,9 +435,19 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                 Text(detail[index].higherQty== "0" || detail[index].higherQty == null ? 
-                                                "0": detail[index].higherQty?? "",style:subTitleTextStyle() ,),
-                                                
+                                                Text(
+                                                  detail[index].higherQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .higherQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .higherQty ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+
                                                 // Text(
                                                 //   detail[index].higherQty ?? "",
                                                 //   style: subTitleTextStyle(),
@@ -408,8 +455,18 @@ class _LoadDetailPendingState extends State<LoadDetailPending> {
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                Text(detail[index].lowerQty== "0" || detail[index].lowerQty == null ? 
-                                                "0": detail[index].lowerQty?? "",style:subTitleTextStyle() ,),
+                                                Text(
+                                                  detail[index].lowerQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .lowerQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .lowerQty ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 // Text(
                                                 //   detail[index].lowerQty ?? "",
                                                 //   style: subTitleTextStyle(),

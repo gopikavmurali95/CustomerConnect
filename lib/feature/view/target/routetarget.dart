@@ -85,7 +85,8 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: "${AppLocalizations.of(context)!.searchPackages}..",//'Search packages..',
+                    hintText:
+                        "${AppLocalizations.of(context)!.searchPackages}..", //'Search packages..',
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -177,7 +178,7 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                         : details.isEmpty
                             ? Center(
                                 child: Text(
-                                 AppLocalizations.of(context)!.noDataFound,
+                                  AppLocalizations.of(context)!.noDataFound,
                                   style: kfontstyle(),
                                 ),
                               )
@@ -191,8 +192,9 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          AppLocalizations.of(context)!.packageWiseTarget,
-                                         // 'Package Wise Target',
+                                          AppLocalizations.of(context)!
+                                              .packageWiseTarget,
+                                          // 'Package Wise Target',
                                           style: countHeading(),
                                         ),
                                         Text(
@@ -255,9 +257,15 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                  selectedLocale?.languageCode == 'en'?details[index]
-                                                                          .pkgName ??
-                                                                      '':details[index].arpkgName??'',
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
+                                                                          'en'
+                                                                      ? details[index]
+                                                                              .pkgName ??
+                                                                          ''
+                                                                      : details[index]
+                                                                              .arpkgName ??
+                                                                          '',
                                                                   style:
                                                                       blueTextStyle()),
                                                               Row(

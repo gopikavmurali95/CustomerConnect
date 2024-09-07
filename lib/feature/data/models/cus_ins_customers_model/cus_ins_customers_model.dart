@@ -34,7 +34,6 @@ class CusInsCustomersModel {
   String? arrotName;
   @JsonKey(name: 'ArArea_Name')
   String? arAreaName;
-  
 
   CusInsCustomersModel({
     this.cusId,
@@ -53,7 +52,6 @@ class CusInsCustomersModel {
     this.arrotName,
     this.arAreaName,
   });
-
 
   factory CusInsCustomersModel.fromJson(Map<String, dynamic> json) {
     return _$CusInsCustomersModelFromJson(json);

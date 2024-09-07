@@ -13,7 +13,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class TargetHeaderScreen extends StatefulWidget {
   const TargetHeaderScreen({super.key});
 
@@ -87,7 +86,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
-                    hintText: "${AppLocalizations.of(context)!.searchRoutes}...",
+                    hintText:
+                        "${AppLocalizations.of(context)!.searchRoutes}...",
                     suffix: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -191,8 +191,9 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        AppLocalizations.of(context)!.routeWisetargets,
-                                       // "Route Wise Targets",
+                                        AppLocalizations.of(context)!
+                                            .routeWisetargets,
+                                        // "Route Wise Targets",
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -254,7 +255,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                                '${header[index].rotCode} - ${selectedLocale?.languageCode == 'en'?header[index].rotName:header[index].arrotName}',
+                                                                '${header[index].rotCode} - ${selectedLocale?.languageCode == 'en' ? header[index].rotName : header[index].arrotName}',
                                                                 style:
                                                                     blueTextStyle()),
                                                             Row(
@@ -264,8 +265,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                           // "${AppLocalizations.of(context)!.targrtAmount} : header[index].targetAmt}",
-                                                                  '${AppLocalizations.of(context)!.targetAmount} : ${header[index].targetAmt}',
+                                                                    // "${AppLocalizations.of(context)!.targrtAmount} : header[index].targetAmt}",
+                                                                    '${AppLocalizations.of(context)!.targetAmount} : ${header[index].targetAmt}',
                                                                     style:
                                                                         subTitleTextStyle(),
                                                                   ),
@@ -307,7 +308,7 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                             ),
                   targetHeaderItemsFailed: () => Center(
                     child: Text(
-                    AppLocalizations.of(context)!.noDataAvailable,
+                      AppLocalizations.of(context)!.noDataAvailable,
                       style: kfontstyle(),
                     ),
                   ),

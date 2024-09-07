@@ -155,7 +155,9 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            selectedLocale?.languageCode == 'en'?spPriceHeader.prhName ?? '':spPriceHeader.arPrhName??'',
+                            selectedLocale?.languageCode == 'en'
+                                ? spPriceHeader.prhName ?? ''
+                                : spPriceHeader.arPrhName ?? '',
                             style: blueTextStyle(),
                           ),
                           Text(

@@ -368,40 +368,38 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                         ],
                                                       ), */
                                                       RichText(
-                                                            text: TextSpan(
-                                                              style: DefaultTextStyle
-                                                                      .of(context)
-                                                                  .style,
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                      '${headers[index].cuscode} - ',
-                                                                  style:
-                                                                    kfontstyle(
+                                                        text: TextSpan(
+                                                          style: DefaultTextStyle
+                                                                  .of(context)
+                                                              .style,
+                                                          children: [
+                                                            TextSpan(
+                                                              text:
+                                                                  '${headers[index].cuscode} - ',
+                                                              style: kfontstyle(
                                                                   fontSize:
                                                                       12.sp,
                                                                   color: const Color(
                                                                       0xff413434)),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: selectedLocale
-                                                                              ?.languageCode ==
-                                                                          'en'
-                                                                      ? "${headers[index].cusname}"
-                                                                      : headers[index]
-                                                                              .cusArName ??
-                                                                          '',
-                                                                  style:
-                                                                      kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  color: const Color(
-                                                                      0xff413434)),
-                                                                  // overflow: TextOverflow.ellipsis,
-                                                                ),
-                                                              ],
                                                             ),
-                                                          ),
+                                                            TextSpan(
+                                                              text: selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? "${headers[index].cusname}"
+                                                                  : headers[index]
+                                                                          .cusArName ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: const Color(
+                                                                      0xff413434)),
+                                                              // overflow: TextOverflow.ellipsis,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                       Text(
                                                         headers[index]
                                                                 .createdDate ??

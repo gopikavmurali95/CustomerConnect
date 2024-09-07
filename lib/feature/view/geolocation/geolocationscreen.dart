@@ -142,7 +142,9 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
                                       width: 200.w,
                                       child: Text(
                                         overflow: TextOverflow.ellipsis,
-                                        selectedLocale?.languageCode == 'en'?widget.customer.cusName ?? "":widget.customer.arcusName??'',
+                                        selectedLocale?.languageCode == 'en'
+                                            ? widget.customer.cusName ?? ""
+                                            : widget.customer.arcusName ?? '',
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: const Color(0xff413434)),
@@ -161,7 +163,10 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
                                     SizedBox(
                                       width: 150.w,
                                       child: Text(
-                                        selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? "":widget.customer.arheaderName??'',
+                                        selectedLocale?.languageCode == 'en'
+                                            ? widget.customer.headerName ?? ""
+                                            : widget.customer.arheaderName ??
+                                                '',
                                         overflow: TextOverflow.ellipsis,
                                         style: kfontstyle(fontSize: 12.sp),
                                       ),
@@ -169,7 +174,7 @@ class _GeoLocationScreenState extends State<GeoLocationScreen> {
                                   ],
                                 ),
                                 Text(
-                                  '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en'?widget.customer.areaName:widget.customer.arAreaName} ',
+                                  '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
                                   style: kfontstyle(
                                       fontSize: 10.sp, color: Colors.grey),
                                 ),

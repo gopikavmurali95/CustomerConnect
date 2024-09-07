@@ -208,13 +208,17 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                     Row(
                                       children: [
                                         Padding(
-                                          padding:EdgeInsets.only( right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 10
-                                              : 0,
-                                              left: selectedLocale?.languageCode=='en'? 15: 0),
-                                         
-                                          
+                                          padding: EdgeInsets.only(
+                                              right: selectedLocale
+                                                          ?.languageCode ==
+                                                      "en"
+                                                  ? 10
+                                                  : 0,
+                                              left: selectedLocale
+                                                          ?.languageCode ==
+                                                      'en'
+                                                  ? 15
+                                                  : 0),
                                           child: Text(
                                             AppLocalizations.of(context)!
                                                 .sysQty,
@@ -266,15 +270,13 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                    detail[index].prdCode ??
-                                                        '',
+                                                    detail[index].prdCode ?? '',
                                                     style: loadTextStyle()),
                                                 Text(
                                                   selectedLocale
                                                               ?.languageCode ==
                                                           'en'
-                                                      ? detail[index]
-                                                              .prdName ??
+                                                      ? detail[index].prdName ??
                                                           ""
                                                       : detail[index]
                                                               .arprdname ??
@@ -288,22 +290,22 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                           //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           //   // crossAxisAlignment: CrossAxisAlignment.start,
                                           //   children: [
-                                          //      Text(detail[index].liHigherUom!.isEmpty || detail[index].liHigherUom == null ? 
+                                          //      Text(detail[index].liHigherUom!.isEmpty || detail[index].liHigherUom == null ?
                                           //       "-": detail[index].liHigherUom?? "",style:subTitleTextStyle() ,),
-                                              
+
                                           //     const SizedBox(
                                           //       height: 5,
                                           //     ),
-                                          //      Text(detail[index].liLowerUom!.isEmpty || detail[index].liLowerUom == null ? 
+                                          //      Text(detail[index].liLowerUom!.isEmpty || detail[index].liLowerUom == null ?
                                           //       "-": detail[index].liLowerUom?? "",style:subTitleTextStyle() ,),
-                                              
+
                                           //   ],
                                           // ),
                                           // Column(
                                           //   mainAxisAlignment:
                                           //       MainAxisAlignment.start,
                                           //   children: [
-                                          //       Text(detail[index].higherQty== "0" || detail[index].higherQty == null ? 
+                                          //       Text(detail[index].higherQty== "0" || detail[index].higherQty == null ?
                                           //       "0": detail[index].higherQty?? "",style:subTitleTextStyle() ,),
                                           //     // Text(
                                           //     //   detail[index].higherQty ?? '',
@@ -312,7 +314,7 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                           //     const SizedBox(
                                           //       height: 5,
                                           //     ),
-                                          //       Text(detail[index].lowerQty== "0" || detail[index].lowerQty== null ? 
+                                          //       Text(detail[index].lowerQty== "0" || detail[index].lowerQty== null ?
                                           //       "0": detail[index].lowerQty?? "",style:subTitleTextStyle() ,),
                                           //     // Text(
                                           //     //   detail[index].lowerQty ?? "",
@@ -322,21 +324,44 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                           // ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 50.0,),
+                                              left: 50.0,
+                                            ),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                  Text(detail[index].higherUom!.isEmpty || detail[index].higherUom== null ? 
-                                                "-": detail[index].higherUom?? "",style:subTitleTextStyle() ,),
+                                                Text(
+                                                  detail[index]
+                                                              .higherUom!
+                                                              .isEmpty ||
+                                                          detail[index]
+                                                                  .higherUom ==
+                                                              null
+                                                      ? "-"
+                                                      : detail[index]
+                                                              .higherUom ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 // Visibility(
-                                               
+
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                  Text(detail[index].lowerUom!.isEmpty || detail[index].lowerUom == null ? 
-                                                "-": detail[index].lowerUom?? "",style:subTitleTextStyle() ,),
-                                              
+                                                Text(
+                                                  detail[index]
+                                                              .lowerUom!
+                                                              .isEmpty ||
+                                                          detail[index]
+                                                                  .lowerUom ==
+                                                              null
+                                                      ? "-"
+                                                      : detail[index]
+                                                              .lowerUom ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
+
                                                 // ),
                                               ],
                                             ),
@@ -348,8 +373,18 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                  Text(detail[index].higherQty== "0" || detail[index].higherQty== null ? 
-                                                "0": detail[index].higherQty?? "",style:subTitleTextStyle() ,),
+                                                Text(
+                                                  detail[index].higherQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .higherQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .higherQty ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 // Text(
                                                 //   detail[index].higherQty ?? "",
                                                 //   style: subTitleTextStyle(),
@@ -357,8 +392,18 @@ class _LoadDetailRejectedState extends State<LoadDetailRejected> {
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                  Text(detail[index].lowerQty== "0" || detail[index].lowerQty == null ? 
-                                                "0": detail[index].lowerQty?? "",style:subTitleTextStyle() ,),
+                                                Text(
+                                                  detail[index].lowerQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .lowerQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .lowerQty ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 // Text(
                                                 //   detail[index].lowerQty ?? "",
                                                 //   style: subTitleTextStyle(),

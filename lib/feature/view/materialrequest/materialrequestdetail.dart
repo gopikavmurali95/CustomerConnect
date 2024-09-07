@@ -84,7 +84,7 @@ class _MaterialRequestDetailScreenState
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-          context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
+            context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
                 userId: widget.user.usrId ?? '',
                 mode: widget.currentMode,
                 searchQuery: widget.materialrequest.rotID ?? ''));
@@ -697,9 +697,12 @@ class _MaterialRequestDetailScreenState
                                                                               TextFormField(
                                                                             keyboardType:
                                                                                 TextInputType.number,
-                                                                                textAlign: TextAlign.right,
-                                                                                maxLength: 8,
-                                                                                cursorHeight: 12.h,
+                                                                            textAlign:
+                                                                                TextAlign.right,
+                                                                            maxLength:
+                                                                                8,
+                                                                            cursorHeight:
+                                                                                12.h,
                                                                             controller:
                                                                                 TextEditingController(text: details[index].adjustedHQty),
                                                                             onChanged:
@@ -714,9 +717,7 @@ class _MaterialRequestDetailScreenState
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
-                                                                              enabled: /* (details[index].requestedHQty != details[index].reqHUOM) && */ (widget.materialrequest.mrhIntegrationStatus == 'Pending' /* || widget.materialrequest. == 'قيد الانتظار' */)
-                                                                            ? true
-                                                                            : false,
+                                                                                enabled: /* (details[index].requestedHQty != details[index].reqHUOM) && */ (widget.materialrequest.mrhIntegrationStatus == 'Pending' /* || widget.materialrequest. == 'قيد الانتظار' */) ? true : false,
                                                                                 enabledBorder: const OutlineInputBorder(
                                                                                   borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                 ),
@@ -745,9 +746,12 @@ class _MaterialRequestDetailScreenState
                                                                               TextFormField(
                                                                             keyboardType:
                                                                                 TextInputType.number,
-                                                                                textAlign: TextAlign.right,
-                                                                                maxLength: 8,
-                                                                                cursorHeight: 12.h,
+                                                                            textAlign:
+                                                                                TextAlign.right,
+                                                                            maxLength:
+                                                                                8,
+                                                                            cursorHeight:
+                                                                                12.h,
                                                                             controller:
                                                                                 TextEditingController(text: details[index].adjustedLQty),
                                                                             onChanged:
@@ -763,7 +767,7 @@ class _MaterialRequestDetailScreenState
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
-                                                                              enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending'?true:false,
+                                                                                enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
                                                                                 enabledBorder: const OutlineInputBorder(
                                                                                   borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                 ),
@@ -826,7 +830,10 @@ class _MaterialRequestDetailScreenState
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Visibility(
-                        visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'?true:false,
+                        visible: widget.materialrequest.mrhIntegrationStatus ==
+                                'Pending'
+                            ? true
+                            : false,
                         child: Row(
                           children: [
                             Flexible(
@@ -841,7 +848,8 @@ class _MaterialRequestDetailScreenState
                                             . ==
                                         'Pending'
                                     ? */
-                                    Colors.red.shade300 /* : Colors.grey[300] */,
+                                    Colors
+                                        .red.shade300 /* : Colors.grey[300] */,
                                 onPressed: () {
                                   log(jsonEncode(_materialreqproducts));
                                   showCupertinoDialog(
@@ -849,8 +857,9 @@ class _MaterialRequestDetailScreenState
                                     builder: (context) => CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(context)!
-                                          .doYouWantToRejectThisProduct),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .doYouWantToRejectThisProduct),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
@@ -882,7 +891,7 @@ class _MaterialRequestDetailScreenState
                                                               .mrhID,
                                                           remark: '')),
                                                 );
-                        
+
                                             Navigator.pop(context);
                                           },
                                           child: Text(
@@ -917,16 +926,17 @@ class _MaterialRequestDetailScreenState
                                             . ==
                                         'Pending'
                                     ? */
-                                    Colors
-                                        .green.shade300 /* : Colors.grey[300] */,
+                                    Colors.green
+                                        .shade300 /* : Colors.grey[300] */,
                                 onPressed: () {
                                   showCupertinoDialog(
                                     context: context,
                                     builder: (context) => CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(context)!
-                                          .doYouWantToApproveThisProduct),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .doYouWantToApproveThisProduct),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
@@ -957,10 +967,11 @@ class _MaterialRequestDetailScreenState
                                                         .materialrequest.mrhID,
                                                     mode: "A",
                                                     warehouse: widget
-                                                        .materialrequest.mrhWarID,
+                                                        .materialrequest
+                                                        .mrhWarID,
                                                   )),
                                                 );
-                        
+
                                             Navigator.pop(context);
                                           },
                                           child: Text(

@@ -98,8 +98,15 @@ class InsightSpecialPriceList extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    selectedLocale?.languageCode == 'en'?headers[index].prhName ??
-                                                        '':headers[index].arPrhName??'',
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? headers[index]
+                                                                .prhName ??
+                                                            ''
+                                                        : headers[index]
+                                                                .arPrhName ??
+                                                            '',
                                                     style: blueTextStyle(),
                                                   ),
                                                   Text(

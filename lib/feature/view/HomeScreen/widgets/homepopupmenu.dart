@@ -113,8 +113,9 @@ class HomePopUPMenuButton extends StatelessWidget {
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        title:  Text(
-                          AppLocalizations.of(context)!.languageSelection /* "Select Language" */,
+                        title: Text(
+                          AppLocalizations.of(context)!
+                              .languageSelection /* "Select Language" */,
                           style: const TextStyle(fontWeight: FontWeight.w400),
                         ),
                         content: Column(
@@ -122,8 +123,8 @@ class HomePopUPMenuButton extends StatelessWidget {
                           children: <Widget>[
                             ListTile(
                               leading: const Icon(Icons.language),
-                              title:  Text(
-                                  AppLocalizations.of(context)!.english /*  "English" */),
+                              title: Text(AppLocalizations.of(context)!
+                                  .english /*  "English" */),
                               onTap: () async {
                                 selectedLocale = const Locale('en');
                                 final sharedprefs =

@@ -34,8 +34,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
     context.read<SalesOrderDetailsBloc>().add(GetSalesOrderDetailsEvent(
         salesin: SalesOrderDetailsInparasModel(
             userId: widget.user.usrId,
-            fromDate:'01-01-2024',
-                // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            fromDate: '01-01-2024',
+            // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             toDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             area: '',
@@ -115,7 +115,9 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                               Expanded(
                                   child: Text(
                                       overflow: TextOverflow.ellipsis,
-                                      selectedLocale?.languageCode == 'en'?widget.salesorders.cusName ?? '':widget.salesorders.arcusName??'',
+                                      selectedLocale?.languageCode == 'en'
+                                          ? widget.salesorders.cusName ?? ''
+                                          : widget.salesorders.arcusName ?? '',
                                       style: subTitleTextStyle())),
                             ],
                           ),
@@ -135,7 +137,9 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                               ),
                               Expanded(
                                 child: Text(
-                                 selectedLocale?.languageCode == 'en'? widget.salesorders.cshName ?? '':widget.salesorders.arcshName??'',
+                                  selectedLocale?.languageCode == 'en'
+                                      ? widget.salesorders.cshName ?? ''
+                                      : widget.salesorders.arcshName ?? '',
                                   overflow: TextOverflow.ellipsis,
                                   style: kfontstyle(fontSize: 12.sp),
                                 ),
@@ -160,7 +164,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                         widget.salesorders.status ?? '',
+                          widget.salesorders.status ?? '',
                           style: kfontstyle(
                               fontSize: 10.sp, color: const Color(0xff413434)),
                         ),

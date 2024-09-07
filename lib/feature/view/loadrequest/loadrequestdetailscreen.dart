@@ -994,66 +994,65 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                       rotID: widget.loadrequest.rotID,
                                       userId: widget.user.usrId)));
                                   if (widget.loadrequest.status == 'Pending') {
-                                    
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                loadingCount = 0;
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
 
-                                                Navigator.pop(context);
+                                              Navigator.pop(context);
 
-                                                context
-                                                    .read<LoadReqApprovalBloc>()
-                                                    .add(
-                                                        const ApprovLoadingReqEvent());
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                      const ApprovLoadingReqEvent());
 
-                                                context
-                                                    .read<LoadReqApprovalBloc>()
-                                                    .add(
-                                                      ApprovloadReqEvent(
-                                                        approval: LoadReqInApprovalModel(
-                                                            products:
-                                                                _loadproducts,
-                                                            reqID: widget
-                                                                .loadrequest
-                                                                .lrhID,
-                                                            rotID: widget
-                                                                .loadrequest
-                                                                .rotID,
-                                                            userId: widget
-                                                                .loadrequest
-                                                                .userID,
-                                                            status: "R"),
-                                                      ),
-                                                    );
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                    ApprovloadReqEvent(
+                                                      approval:
+                                                          LoadReqInApprovalModel(
+                                                              products:
+                                                                  _loadproducts,
+                                                              reqID: widget
+                                                                  .loadrequest
+                                                                  .lrhID,
+                                                              rotID: widget
+                                                                  .loadrequest
+                                                                  .rotID,
+                                                              userId: widget
+                                                                  .loadrequest
+                                                                  .userID,
+                                                              status: "R"),
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   }
                                 },
                                 child: Text(
@@ -1080,63 +1079,62 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (widget.loadrequest.status == 'Pending') {
-                                   
-                                      showCupertinoDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                loadingCount = 0;
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
 
-                                                Navigator.pop(context);
+                                              Navigator.pop(context);
 
-                                                context
-                                                    .read<LoadReqApprovalBloc>()
-                                                    .add(
-                                                        const ApprovLoadingReqEvent());
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(
+                                                      const ApprovLoadingReqEvent());
 
-                                                context
-                                                    .read<LoadReqApprovalBloc>()
-                                                    .add(ApprovloadReqEvent(
-                                                        approval: LoadReqInApprovalModel(
-                                                            products:
-                                                                _loadproducts,
-                                                            reqID: widget
-                                                                .loadrequest
-                                                                .lrhID,
-                                                            rotID: widget
-                                                                .loadrequest
-                                                                .rotID,
-                                                            userId: widget
-                                                                .loadrequest
-                                                                .userID,
-                                                            status: "A")));
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    
+                                              context
+                                                  .read<LoadReqApprovalBloc>()
+                                                  .add(ApprovloadReqEvent(
+                                                      approval:
+                                                          LoadReqInApprovalModel(
+                                                              products:
+                                                                  _loadproducts,
+                                                              reqID: widget
+                                                                  .loadrequest
+                                                                  .lrhID,
+                                                              rotID: widget
+                                                                  .loadrequest
+                                                                  .rotID,
+                                                              userId: widget
+                                                                  .loadrequest
+                                                                  .userID,
+                                                              status: "A")));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   }
                                 },
                                 child: Text(
