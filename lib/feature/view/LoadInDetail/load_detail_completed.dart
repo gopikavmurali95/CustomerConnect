@@ -421,14 +421,14 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  detail[index].higherQty ==
+                                                  detail[index].liHigherQty ==
                                                               "0" ||
                                                           detail[index]
-                                                                  .higherQty ==
+                                                                  .liHigherQty ==
                                                               null
                                                       ? "0"
                                                       : detail[index]
-                                                              .higherQty ??
+                                                              .liHigherQty ??
                                                           "",
                                                   // detail[index].higherQty ?? "",
                                                   style: subTitleTextStyle(),
@@ -437,14 +437,14 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  detail[index].lowerQty ==
+                                                  detail[index].liLowerQty ==
                                                               "0" ||
                                                           detail[index]
-                                                                  .lowerQty ==
+                                                                  .liLowerQty ==
                                                               null
                                                       ? "0"
                                                       : detail[index]
-                                                              .lowerQty ??
+                                                              .liLowerQty ??
                                                           "",
                                                   //detail[index].lowerQty ?? "",
                                                   style: subTitleTextStyle(),

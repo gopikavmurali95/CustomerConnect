@@ -35,13 +35,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
     context.read<SalesOrderDetailsBloc>().add(GetSalesOrderDetailsEvent(
         salesin: SalesOrderDetailsInparasModel(
             userId: widget.user.usrId,
-            fromDate: '01-01-2024',
-            // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            toDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            area: '',
-            subArea: '',
-            route: '',
+            orderID: widget.salesorders.ordId,
+            route: widget.salesorders.rotId,
             cusId: widget.salesorders.cusId),
         searchQuery: ''));
     super.initState();
@@ -98,7 +93,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                         children: [
                           Text(widget.salesorders.orderId ?? '',
                               style: blueTextStyle()),
-                          Row(
+                          /* Row(
                             children: [
                               Text(
                                 widget.salesorders.cusCode ?? '',
@@ -122,6 +117,32 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                           : widget.salesorders.arcusName ?? '',
                                       style: subTitleTextStyle())),
                             ],
+                          ), */
+                          RichText(
+                            text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: [
+                                TextSpan(
+                                  text:
+                                      '${widget.salesorders.cusCode ?? ''} - ',
+                                  style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff2C6B9E),
+                                    decoration:
+                                        TextDecoration.none, // Add underline
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: selectedLocale?.languageCode == 'en'
+                                      ? widget.salesorders.cusName ?? ''
+                                      : widget.salesorders.arcusName ?? '',
+                                  style: subTitleTextStyle().copyWith(
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
                           ),
                           Row(
                             children: [
@@ -203,13 +224,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 GetSalesOrderDetailsEvent(
                                     salesin: SalesOrderDetailsInparasModel(
                                         userId: widget.user.usrId,
-                                        fromDate:
-                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                        toDate:
-                                            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                        area: '',
-                                        subArea: '',
-                                        route: '',
+                                        orderID: widget.salesorders.ordId,
+                                        route: widget.salesorders.rotId,
                                         cusId: widget.salesorders.cusId),
                                     searchQuery: value.trim()));
                           },
@@ -237,13 +253,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                   GetSalesOrderDetailsEvent(
                                       salesin: SalesOrderDetailsInparasModel(
                                           userId: widget.user.usrId,
-                                          fromDate:
-                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                          toDate:
-                                              '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                          area: '',
-                                          subArea: '',
-                                          route: '',
+                                          orderID: widget.salesorders.ordId,
+                                          route: widget.salesorders.rotId,
                                           cusId: widget.salesorders.cusId),
                                       searchQuery: ''));
                             },

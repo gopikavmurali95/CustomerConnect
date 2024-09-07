@@ -18,6 +18,7 @@ class TrackSalesManRepo implements ITrackSalesManRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + trackSalesManUrl),
           body: {"Date": date, "rotID": rotID});
+      log(response.body);
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

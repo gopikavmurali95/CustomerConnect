@@ -4,9 +4,7 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -70,72 +68,75 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        SizedBox(
-                                          // height: 55.h,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                orders[index].orderId ?? '',
-                                                style: kfontstyle(
-                                                  fontSize: 12.sp,
-                                                  color:
-                                                      const Color(0xff2C6B9E),
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                             /*  Container(
-                                                width: 300,
-                                                child: Text(
-                                                  "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en' ? orders[index].cusName : orders[index].arcusName}",
-                                                  overflow: TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style:
-                                                      kfontstyle(fontSize: 11.sp),
-                                                ),
-                                              ), */
-                                             
-                                              SizedBox(
-                                                width: 300,
-                                                child: RichText(
-                                                  overflow: TextOverflow
-                                                      .ellipsis, // Handle overflow with ellipsis
-                                                  maxLines: 2,
-                                                  text: TextSpan(
-                                                    style: DefaultTextStyle.of(
-                                                            context)
-                                                        .style,
-                                                    children: [
-                                                      TextSpan(
-                                                        text:
-                                                            "${orders[index].cusCode} - ",
-                                                        style: kfontstyle(
-                                                            fontSize: 11.sp),
-                                                      ),
-                                                      TextSpan(
-                                                        text: selectedLocale
-                                                                    ?.languageCode ==
-                                                                'en'
-                                                            ? orders[index]
-                                                                .cusName
-                                                            : orders[index]
-                                                                .arcusName,
-                                                        style: kfontstyle(
-                                                          fontSize: 11.sp,
-                                                        ),
-                                                      ),
-                                                    ],
+                                        Expanded(
+                                          child: SizedBox(
+                                            // height: 55.h,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  orders[index].orderId ?? '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff2C6B9E),
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
-                                              ),
-                                              Text(
-                                                '${orders[index].date} | ${orders[index].time}',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Colors.grey),
-                                              ),
-                                            ],
+                                                /*  Container(
+                                                  width: 300,
+                                                  child: Text(
+                                                    "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en' ? orders[index].cusName : orders[index].arcusName}",
+                                                    overflow: TextOverflow.ellipsis,
+                                                    maxLines: 2,
+                                                    style:
+                                                        kfontstyle(fontSize: 11.sp),
+                                                  ),
+                                                ), */
+
+                                                SizedBox(
+                                                  // width: MediaQuery.of(context).size.qi,
+                                                  child: RichText(
+                                                    overflow: TextOverflow
+                                                        .ellipsis, // Handle overflow with ellipsis
+                                                    maxLines: 2,
+                                                    text: TextSpan(
+                                                      style:
+                                                          DefaultTextStyle.of(
+                                                                  context)
+                                                              .style,
+                                                      children: [
+                                                        TextSpan(
+                                                          text:
+                                                              "${orders[index].cusCode} - ",
+                                                          style: kfontstyle(
+                                                              fontSize: 11.sp),
+                                                        ),
+                                                        TextSpan(
+                                                          text: selectedLocale
+                                                                      ?.languageCode ==
+                                                                  'en'
+                                                              ? orders[index]
+                                                                  .cusName
+                                                              : orders[index]
+                                                                  .arcusName,
+                                                          style: kfontstyle(
+                                                            fontSize: 11.sp,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '${orders[index].date} | ${orders[index].time}',
+                                                  style: kfontstyle(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         Container(

@@ -19,6 +19,8 @@ LoadingDetailModel _$LoadingDetailModelFromJson(Map<String, dynamic> json) =>
       liLowerUom: json['LiLowerUom'] as String?,
       arprddesc: json['Arprd_desc'] as String?,
       arprdname: json['Arprd_name'] as String?,
+      liHigherQty: json['LiHigherQty'] as String?,
+      liLowerQty: json['LiLowerQty'] as String?,
     );
 
 Map<String, dynamic> _$LoadingDetailModelToJson(LoadingDetailModel instance) =>
@@ -31,6 +33,8 @@ Map<String, dynamic> _$LoadingDetailModelToJson(LoadingDetailModel instance) =>
       'LowerQty': instance.lowerQty,
       'HigherQty': instance.higherQty,
       'LiHigherUom': instance.liHigherUom,
+      'LiHigherQty': instance.liHigherQty,
+      'LiLowerQty': instance.liLowerQty,
       'LiLowerUom': instance.liLowerUom,
       'Arprd_name': instance.arprdname,
       'Arprd_desc': instance.arprddesc,

@@ -19,7 +19,7 @@ class LoadinRepo implements ILoadingRepo {
     try {
       final response = await http
           .post(Uri.parse(baseUrl + loadingDetailUrl), body: {"ID": iD});
-
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 

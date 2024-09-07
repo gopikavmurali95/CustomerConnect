@@ -80,7 +80,7 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                         children: [
                                                           Text(
                                                             orderdetails[index]
-                                                                    .cshCode ??
+                                                                    .prdCode ??
                                                                 '',
                                                             style: kfontstyle(
                                                               fontSize: 12.sp,
@@ -97,11 +97,11 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                                     'en'
                                                                 ? orderdetails[
                                                                             index]
-                                                                        .cshName ??
+                                                                        .prdName ??
                                                                     ''
                                                                 : orderdetails[
                                                                             index]
-                                                                        .arcshName ??
+                                                                        .prdNameArabic ??
                                                                     '',
                                                             style: kfontstyle(
                                                               fontSize: 12.sp,
@@ -118,57 +118,59 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                     SizedBox(
                                                       width: 70.h,
                                                     ),
-                                                    /* Column(
-                                                              children: [
-                                                                Visibility(
-                                                                  visible: orderdetails[index].oddHigherUom ==
-                                                                              null ||
-                                                                          orderdetails[index]
-                                                                              .oddHigherUom!
-                                                                              .isEmpty
-                                                                      ? false
-                                                                      : true,
-                                                                  child: Text(
-                                                                      orderdetails[index]
-                                                                              .oddHigherUom ??
-                                                                          ''),
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 5.h,
-                                                                ),
-                                                                Visibility(
-                                                                  visible: orderdetails[index].oddLowerUom ==
-                                                                              null ||
-                                                                          orderdetails[index]
-                                                                              .oddLowerUom!
-                                                                              .isEmpty
-                                                                      ? false
-                                                                      : true,
-                                                                  child: Text(
-                                                                      orderdetails[index]
-                                                                              .oddLowerUom ??
-                                                                          ''),
-                                                                ),
-                                                              ],
-                                                            ), */
+                                                    Column(
+                                                      children: [
+                                                        Visibility(
+                                                          child: Text(orderdetails[
+                                                                              index]
+                                                                          .oddHigherUOM ==
+                                                                      null ||
+                                                                  orderdetails[
+                                                                          index]
+                                                                      .oddHigherUOM!
+                                                                      .isEmpty
+                                                              ? '-'
+                                                              : orderdetails[
+                                                                          index]
+                                                                      .oddHigherUOM ??
+                                                                  ''),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 5.h,
+                                                        ),
+                                                        Visibility(
+                                                          child: Text(orderdetails[
+                                                                              index]
+                                                                          .oddLowerUOM ==
+                                                                      null ||
+                                                                  orderdetails[
+                                                                          index]
+                                                                      .oddLowerUOM!
+                                                                      .isEmpty
+                                                              ? '-'
+                                                              : orderdetails[
+                                                                          index]
+                                                                      .oddLowerUOM ??
+                                                                  ''),
+                                                        ),
+                                                      ],
+                                                    ),
                                                     SizedBox(
                                                       width: 20.h,
                                                     ),
-                                                    /* Column(
-                                                              children: [
-                                                                Text(orderdetails[
-                                                                            index]
-                                                                        .oddHigherQty ??
-                                                                    ''),
-                                                                SizedBox(
-                                                                  height: 5.h,
-                                                                ),
-                                                                Text(orderdetails[
-                                                                            index]
-                                                                        .oddLowerQty ??
-                                                                    ''),
-                                                              ],
-                                                            ), */
+                                                    Column(
+                                                      children: [
+                                                        Text(orderdetails[index]
+                                                                .oddHigherQty ??
+                                                            ''),
+                                                        SizedBox(
+                                                          height: 5.h,
+                                                        ),
+                                                        Text(orderdetails[index]
+                                                                .oddLowerQty ??
+                                                            ''),
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -289,12 +291,7 @@ class SalesOrderDetailsList extends StatelessWidget {
     context.read<SalesOrderDetailsBloc>().add(GetSalesOrderDetailsEvent(
         salesin: SalesOrderDetailsInparasModel(
             userId: user.usrId,
-            fromDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            toDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            area: '',
-            subArea: '',
+            orderID: salesorders.ordId,
             route: '',
             cusId: salesorders.cusId),
         searchQuery: ''));

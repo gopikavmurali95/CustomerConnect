@@ -25,11 +25,11 @@ class SalesOrderDetailsBloc
       emit(details.fold((l) => const SalesOrderDetailsFailed(), (r) {
         searcheditems = r
             .where((element) =>
-                element.cshCode!
+                element.prdCode!
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.cshName!
+                element.prdName!
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))

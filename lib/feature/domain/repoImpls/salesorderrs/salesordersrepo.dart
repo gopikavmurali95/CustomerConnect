@@ -43,10 +43,13 @@ class SalesOrdersRepo implements ISalesOrdersRepo {
       getSalesOrderdetails(SalesOrderDetailsInparasModel salesInparas) async {
     try {
       final response = await http.post(
-          Uri.parse(baseUrl + salesOrderDetailsUrl),
-          body: salesInparas.toJson());
+        Uri.parse(
+            baseUrl + salesOrderDetailsUrl), /* body: salesInparas.toJson() */
+      );
+      // log('salesorder ${response.body}');
+
+      // log(jsonEncode(salesInparas));
       if (response.statusCode == 200) {
-        log('salesorder ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> salesdata = json['result'];
         List<SalesOrderDetailsModel> saleslist = salesdata

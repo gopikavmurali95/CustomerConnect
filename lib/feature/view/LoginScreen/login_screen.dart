@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   final SharedPreferences sharedprefs =
                       await SharedPreferences.getInstance();
                   await sharedprefs.setString(
-                    "user",
+                    "Customer-Connect-Flutter-user",
                     jsonEncode(user),
                   );
                   await sharedprefs.setBool('isLogin', true);
