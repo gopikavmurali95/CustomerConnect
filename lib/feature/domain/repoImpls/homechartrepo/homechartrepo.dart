@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -21,7 +22,9 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartRoutesUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+          log(response.body);
       if (response.statusCode == 200) {
+        
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartRoutesModel.fromJson(json["result"][0]);
         return right(data);
@@ -42,7 +45,9 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartActualVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+           log(response.body);
       if (response.statusCode == 200) {
+        
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartActualVisitModel.fromJson(json["result"][0]);
         return right(data);
@@ -63,7 +68,9 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartNonProductiveVistisUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+          log(response.body);
       if (response.statusCode == 200) {
+         
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartNonProductiveModel.fromJson(json["result"][0]);
         return right(data);
@@ -84,7 +91,9 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartPlannedVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+           log(response.body);
       if (response.statusCode == 200) {
+        
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartPlannedVisitsModel.fromJson(json["result"][0]);
         return right(data);
@@ -105,7 +114,9 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartProductiveVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+          log(response.body);
       if (response.statusCode == 200) {
+         
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartProductiveVisitModel.fromJson(json["result"][0]);
         return right(data);
