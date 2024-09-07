@@ -557,16 +557,26 @@ class _InventoryReconfirmationDetailScreenState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                              Text(details[index].iadPhysicalHuom!.isEmpty ||
-                                                               details[index].iadPhysicalHuom == null ? 
-                                                "-": details[index].iadPhysicalHuom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                            Text(
+                                                              details[index]
+                                                                          .iadPhysicalHuom!
+                                                                          .isEmpty ||
+                                                                      details[index]
+                                                                              .iadPhysicalHuom ==
+                                                                          null
+                                                                  ? "-"
+                                                                  : details[index]
+                                                                          .iadPhysicalHuom ??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
                                                             // Visibility(
                                                             //   /*  visible: details[index]
                                                             //                   .iadDescHuom ==
@@ -600,16 +610,25 @@ class _InventoryReconfirmationDetailScreenState
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
-                                                            Text(details[index].iadPhysicalLuom!.isEmpty ||
-                                                               details[index].iadPhysicalLuom == null ? 
-                                                "-": details[index].iadPhysicalLuom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                            Text(
+                                                              details[index].iadPhysicalLuom ==
+                                                                          null ||
+                                                                      details[index]
+                                                                          .iadPhysicalLuom!
+                                                                          .isEmpty
+                                                                  ? "-"
+                                                                  : details[index]
+                                                                          .iadPhysicalLuom ??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
                                                             // Visibility(
                                                             //   // visible: details[index]
                                                             //   //                 .iadLowerUom ==
