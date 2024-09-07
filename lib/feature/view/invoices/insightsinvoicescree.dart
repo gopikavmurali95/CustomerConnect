@@ -142,7 +142,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                     child: Row(
                       children: [
                         Container(
-                          height: 50,
+                          height: 70,
                           width: 10,
                           decoration: BoxDecoration(
                               color: const Color(0xfffee8e0),
@@ -151,8 +151,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        SizedBox(
-                          // height: 50.h,
+                        Expanded(
+                          
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -165,15 +165,19 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                       color: const Color(0xff2C6B9E),
                                       fontWeight: FontWeight.w500,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 200.w,
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      selectedLocale?.languageCode == 'en'
-                                          ? widget.customer.cusName ?? ""
-                                          : widget.customer.arcusName ?? '',
-                                      style: kfontstyle(
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+                          
+                                                    TextSpan(text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? widget.customer.cusName ??
+                                                          ''
+                                                      : widget.customer.arcusName ??
+                                                          '',
+                                                          style: kfontstyle(
                                           fontSize: 12.sp,
                                           color: const Color(0xff413434)),
                                     ),
