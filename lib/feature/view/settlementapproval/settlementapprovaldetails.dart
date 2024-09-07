@@ -78,7 +78,7 @@ class _SettlementApprovalDetailScreenState
         child: SizedBox(
           height: double.infinity,
           child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
+            //physics: const NeverScrollableScrollPhysics(),
             //physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
@@ -468,6 +468,7 @@ class _SettlementApprovalDetailScreenState
                                     context
                                         .read<PostSettlementApprovalBloc>()
                                         .add(const PostLoadingApprovalEvent());
+                                        
                                     context
                                         .read<PostSettlementApprovalBloc>()
                                         .add(
