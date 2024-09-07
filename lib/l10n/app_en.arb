@@ -341,6 +341,7 @@
   "liQty": "LI Qty",
   "about": "About",
   "doYouWantToLogout": "Do you want to logout",
-  "logout": "Logout"
+  "logout": "Logout",
+  "actionedSuccessfully":"Your request has been successfully actioned"
 }
   

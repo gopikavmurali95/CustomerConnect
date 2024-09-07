@@ -1,7 +1,9 @@
 //Development
 
-const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+// const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+// const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+const baseUrl = "http://93.177.125.163:100/WS/";
+const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 
 //Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";

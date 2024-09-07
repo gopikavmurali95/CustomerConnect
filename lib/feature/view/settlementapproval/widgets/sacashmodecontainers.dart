@@ -28,7 +28,7 @@ class _PaymentModeWidgetsState extends State<PaymentModeWidgets> {
                   : Row(
                       children: [
                         Container(
-                          height: 180,
+                          //height: 180,
                           width: MediaQuery.of(context).size.width / 2.5,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
