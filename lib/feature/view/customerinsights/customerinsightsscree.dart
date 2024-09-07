@@ -87,7 +87,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                 Row(
                   children: [
                     Container(
-                      height: 50,
+                      height: 70,
                       width: 10,
                       decoration: BoxDecoration(
                           color: const Color(0xfffee8e0),
@@ -100,29 +100,58 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                '${widget.customer.cusCode} - ',
-                                style: kfontstyle(
+                          RichText(
+                                            text: TextSpan(
+                                              text: widget.customer.cusCode ??
+                                                      '',
+                                              style:
+                                                  kfontstyle(
                                   fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),
                                   fontWeight: FontWeight.w500,
                                 ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  selectedLocale?.languageCode == 'en'
-                                      ? widget.customer.cusName ?? ""
-                                      : widget.customer.arcusName ?? '',
-                                  style: kfontstyle(
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+
+                                                    TextSpan(text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? widget.customer.cusName??
+                                                          ''
+                                                      :widget.customer.arcusName??
+                                                          '',
+                                                          style:  kfontstyle(
                                       fontSize: 12.sp,
-                                      color: const Color(0xff413434)),
-                                ),
-                              ),
-                            ],
-                          ),
+                                      color: const Color(0xff413434)),),
+                                                
+                                              ],
+                                            ),
+                                          ),
+                          // Row(
+                          //   children: [
+                          //     Text(
+                          //       '${widget.customer.cusCode} - ',
+                          //       style: kfontstyle(
+                          //         fontSize: 12.sp,
+                          //         color: const Color(0xff2C6B9E),
+                          //         fontWeight: FontWeight.w500,
+                          //       ),
+                          //     ),
+                          //     Expanded(
+                          //       child: Text(
+                          //         overflow: TextOverflow.ellipsis,
+                          //         selectedLocale?.languageCode == 'en'
+                          //             ? widget.customer.cusName ?? ""
+                          //             : widget.customer.arcusName ?? '',
+                          //         style: kfontstyle(
+                          //             fontSize: 12.sp,
+                          //             color: const Color(0xff413434)),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           Row(
                             children: [
                               Text(

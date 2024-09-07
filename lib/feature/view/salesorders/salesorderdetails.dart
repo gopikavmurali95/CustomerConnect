@@ -100,6 +100,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 style: kfontstyle(
                                   fontSize: 11.sp,
                                   color: const Color(0xff2C6B9E),
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
