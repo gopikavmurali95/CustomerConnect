@@ -341,6 +341,7 @@
   "liQty": "الكمية الفعلية",
   "about": "عن",
   "doYouWantToLogout": "هل تريد تسجيل الخروج",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "actionedSuccessfully":"لقد تم تنفيذ طلبك بنجاح"
 }
   

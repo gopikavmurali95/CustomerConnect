@@ -36,10 +36,13 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                       )
                     : Column(
                         children: [
-                          ListView.builder(
+                          ListView.separated(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: payment.length,
+                            separatorBuilder: (context, index) => Divider(
+                                  color: Colors.grey[300],
+                                ),
                             itemBuilder: (BuildContext context, int index) {
                               return Column(
                                 children: [
@@ -150,15 +153,15 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 0, right: 0, top: 0
-                                        // top: 10,bottom: 10
-                                        ),
-                                    child: Divider(
-                                      color: Colors.grey.shade300,
-                                    ),
-                                  )
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(
+                                  //       left: 0, right: 0, top: 0
+                                  //       // top: 10,bottom: 10
+                                  //       ),
+                                  //   child: Divider(
+                                  //     color: Colors.grey.shade300,
+                                  //   ),
+                                  // )
                                 ],
                               );
                             },

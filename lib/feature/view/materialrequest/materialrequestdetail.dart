@@ -688,49 +688,58 @@ class _MaterialRequestDetailScreenState
                                                                     ),
                                                                     Column(
                                                                       children: [
-                                                                        SizedBox(
-                                                                          height:
-                                                                              25,
-                                                                          width:
-                                                                              80,
-                                                                          child:
-                                                                              TextFormField(
-                                                                            keyboardType:
-                                                                                TextInputType.number,
-                                                                            textAlign:
-                                                                                TextAlign.right,
-                                                                            maxLength:
-                                                                                8,
-                                                                            cursorHeight:
-                                                                                12.h,
-                                                                            controller:
-                                                                                TextEditingController(text: details[index].adjustedHQty),
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              details[index].adjustedLQty = value;
-                                                                              _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                adjustedHQty: details[index].adjustedHQty,
-                                                                                adjustedLQty: details[index].adjustedLQty,
-                                                                                prdID: details[index].prdID,
-                                                                              );
-                                                                            },
-                                                                            style:
-                                                                                const TextStyle(fontSize: 9),
-                                                                            decoration: InputDecoration(
-                                                                                enabled: /* (details[index].requestedHQty != details[index].reqHUOM) && */ (widget.materialrequest.mrhIntegrationStatus == 'Pending' /* || widget.materialrequest. == 'قيد الانتظار' */) ? true : false,
-                                                                                enabledBorder: const OutlineInputBorder(
-                                                                                  borderSide: BorderSide(color: Colors.black12, width: 1),
-                                                                                ),
-                                                                                focusedBorder: const OutlineInputBorder(
-                                                                                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                                                                                ),
-                                                                                fillColor: const Color(0xfff5f5f5),
-                                                                                filled: true,
-                                                                                border: OutlineInputBorder(
-                                                                                  borderSide: const BorderSide(color: Colors.red, width: 4),
-                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                ),
-                                                                                counterText: ''),
+                                                                        Flexible(
+                                                                          flex: 0,
+                                                                          fit: FlexFit.tight,
+                                                                          child: SizedBox(
+                                                                            height:
+                                                                                25.h,
+                                                                            width:
+                                                                                80.w,
+                                                                            child:
+                                                                                TextFormField(
+                                                                              keyboardType:
+                                                                                  TextInputType.number,
+                                                                              textAlign:
+                                                                                  TextAlign.right,
+                                                                              maxLength:
+                                                                                  8,
+                                                                              cursorHeight:
+                                                                                  12.h,
+                                                                              controller:
+                                                                                  TextEditingController(text: details[index].adjustedHQty),
+                                                                              onChanged:
+                                                                                  (value) {
+                                                                                details[index].adjustedLQty = value;
+                                                                                _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                  adjustedHQty: details[index].adjustedHQty,
+                                                                                  adjustedLQty: details[index].adjustedLQty,
+                                                                                  prdID: details[index].prdID,
+                                                                                );
+                                                                              },
+                                                                              style:
+                                                                                  
+                                                                                  kfontstyle(fontSize:10.sp),
+                                                                              decoration: InputDecoration(
+                                                                                  // enabled: 
+                                                                                  // /* (details[index].requestedHQty != details[index].reqHUOM) && */
+                                                                                    //(widget.materialrequest.mrhIntegrationStatus == "Pending" /* || widget.materialrequest. == 'قيد الانتظار' */) ? true : false,
+                                                                                  enabledBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.black12, width: 1),
+                                                                                  ),
+                                                                                  focusedBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                                                                                  ),
+                                                                                  isDense: true,
+                                                                                  fillColor: const Color(0xfff5f5f5),
+                                                                                  filled: true,
+                                                                                  contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
+                                                                                  border: OutlineInputBorder(
+                                                                                    borderSide: const BorderSide(color: Colors.red, width: 4),
+                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                  ),
+                                                                                  counterText: ''),
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                         SizedBox(
@@ -767,7 +776,7 @@ class _MaterialRequestDetailScreenState
                                                                             style:
                                                                                 const TextStyle(fontSize: 9),
                                                                             decoration: InputDecoration(
-                                                                                enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
+                                                                               // enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
                                                                                 enabledBorder: const OutlineInputBorder(
                                                                                   borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                 ),
@@ -776,6 +785,7 @@ class _MaterialRequestDetailScreenState
                                                                                 ),
                                                                                 fillColor: const Color(0xfff5f5f5),
                                                                                 filled: true,
+                                                                                 contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
                                                                                 border: OutlineInputBorder(
                                                                                   borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                                   borderRadius: BorderRadius.circular(5),

@@ -749,6 +749,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                     width: 80,
                                                                     child:
                                                                         TextFormField(
+                                                                          
+                                                                       // focusNode: null,
                                                                       textAlign:
                                                                           TextAlign
                                                                               .right,
@@ -793,6 +795,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           ),
                                                                           fillColor: const Color(0xfff5f5f5),
                                                                           filled: true,
+                                                                           contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
                                                                           border: OutlineInputBorder(
                                                                             borderSide:
                                                                                 const BorderSide(color: Colors.red, width: 4),
@@ -850,6 +853,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           ),
                                                                           fillColor: const Color(0xfff5f5f5),
                                                                           filled: true,
+                                                                           contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
                                                                           border: OutlineInputBorder(
                                                                             borderSide:
                                                                                 const BorderSide(color: Colors.red, width: 4),

@@ -21,7 +21,7 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
       final response = await http.post(
           Uri.parse(baseUrl + cusInsOutStandingHeaderUrl),
           body: outIn.toJson());
-      log(response.body);
+      log("customer insight${response.body}");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
