@@ -675,35 +675,29 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                             children: [
                                                               Column(
                                                                 children: [
-                                                                  Text(
-                                                                    details[index]
-                                                                            .lrdHUOM ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                                        color: Colors
-                                                                            .black54),
-                                                                  ),
+                                                                   Text(details[index].lrdHUOM!.isEmpty ||
+                                                               details[index].lrdHUOM== null ? 
+                                                "-": details[index].lrdHUOM ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
                                                                   SizedBox(
                                                                     height: 5.h,
                                                                   ),
-                                                                  Text(
-                                                                    details[index]
-                                                                            .lrdLUOM ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                                        color: Colors
-                                                                            .black54),
-                                                                  ),
+                                                                 Text(details[index].lrdLUOM!.isEmpty ||
+                                                               details[index].lrdLUOM== null ? 
+                                                "-": details[index].lrdLUOM ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
                                                                 ],
                                                               ),
                                                               SizedBox(
@@ -711,35 +705,41 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                               ),
                                                               Column(
                                                                 children: [
-                                                                  Text(
-                                                                    details[index]
-                                                                            .lrdHQty ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                                        color: Colors
-                                                                            .black54),
-                                                                  ),
+                                                                 Text(details[index].lrdHQty!.isEmpty ||
+                                                               details[index].lrdHQty== null ? 
+                                                "0": details[index].lrdHQty ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
                                                                   SizedBox(
                                                                     height: 5.h,
                                                                   ),
-                                                                  Text(
-                                                                    details[index]
-                                                                            .lrdLQty ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                                        color: Colors
-                                                                            .black54),
-                                                                  ),
+                                                                   Text(details[index].lrdLQty!.isEmpty ||
+                                                               details[index].lrdLQty== null ? 
+                                                "0": details[index].lrdLQty ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                                                  // Text(
+                                                                  //   details[index]
+                                                                  //           .lrdLQty ??
+                                                                  //       '',
+                                                                  //   style: kfontstyle(
+                                                                  //       fontSize: 12
+                                                                  //           .sp,
+                                                                  //       fontWeight:
+                                                                  //           FontWeight
+                                                                  //               .w400,
+                                                                  //       color: const Color.fromARGB(137, 235, 48, 48)),
+                                                                  // ),
                                                                 ],
                                                               ),
                                                               Column(

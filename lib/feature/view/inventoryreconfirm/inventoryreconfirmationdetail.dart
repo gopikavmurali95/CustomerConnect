@@ -557,68 +557,88 @@ class _InventoryReconfirmationDetailScreenState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                            Visibility(
-                                                              /*  visible: details[index]
-                                                                              .iadDescHuom ==
-                                                                          null ||
-                                                                      details[index]
-                                                                          .iadDescHuom!
-                                                                          .isEmpty
-                                                                  ? false
-                                                                  : true, */
-                                                              child: Text(
-                                                                details[index].iadPhysicalHuom ==
-                                                                            null ||
-                                                                        details[index]
-                                                                            .iadPhysicalHuom!
-                                                                            .isEmpty
-                                                                    ? '-'
-                                                                    : details[index]
-                                                                            .iadPhysicalHuom ??
-                                                                        //.iadHigherUom ??
-                                                                        '',
-                                                                style: kfontstyle(
+                                                              Text(details[index].iadPhysicalHuom!.isEmpty ||
+                                                               details[index].iadPhysicalHuom == null ? 
+                                                "-": details[index].iadPhysicalHuom ?? "",style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
                                                                     color: Colors
-                                                                        .black54),
-                                                              ),
-                                                            ),
+                                                                        .black54) ,),
+                                                            // Visibility(
+                                                            //   /*  visible: details[index]
+                                                            //                   .iadDescHuom ==
+                                                            //               null ||
+                                                            //           details[index]
+                                                            //               .iadDescHuom!
+                                                            //               .isEmpty
+                                                            //       ? false
+                                                            //       : true, */
+                                                            //   child: Text(
+                                                            //     details[index].iadPhysicalHuom ==
+                                                            //                 null ||
+                                                            //             details[index]
+                                                            //                 .iadPhysicalHuom!
+                                                            //                 .isEmpty
+                                                            //         ? '-'
+                                                            //         : details[index]
+                                                            //                 .iadPhysicalHuom ??
+                                                            //             //.iadHigherUom ??
+                                                            //             '',
+                                                            //     style: kfontstyle(
+                                                            //         fontSize:
+                                                            //             12.sp,
+                                                            //         fontWeight:
+                                                            //             FontWeight
+                                                            //                 .w400,
+                                                            //         color: Colors
+                                                            //             .black54),
+                                                            //   ),
+                                                            // ),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
-                                                            Visibility(
-                                                              // visible: details[index]
-                                                              //                 .iadLowerUom ==
-                                                              //             null ||
-                                                              //         details[index]
-                                                              //             .iadLowerUom!
-                                                              //             .isEmpty
-                                                              //     ? false
-                                                              //     : true,
-                                                              child: Text(
-                                                                details[index].iadLowerUom ==
-                                                                            null ||
-                                                                        details[index]
-                                                                            .iadLowerUom!
-                                                                            .isEmpty
-                                                                    ? '-'
-                                                                    : details[index]
-                                                                            .iadLowerUom ??
-                                                                        '-',
-                                                                style: kfontstyle(
+                                                            Text(details[index].iadPhysicalLuom!.isEmpty ||
+                                                               details[index].iadPhysicalLuom == null ? 
+                                                "-": details[index].iadPhysicalLuom ?? "",style: kfontstyle(
                                                                     fontSize:
                                                                         12.sp,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
                                                                     color: Colors
-                                                                        .black54),
-                                                              ),
-                                                            ),
+                                                                        .black54) ,),
+                                                            // Visibility(
+                                                            //   // visible: details[index]
+                                                            //   //                 .iadLowerUom ==
+                                                            //   //             null ||
+                                                            //   //         details[index]
+                                                            //   //             .iadLowerUom!
+                                                            //   //             .isEmpty
+                                                            //   //     ? false
+                                                            //   //     : true,
+                                                            //   child: Text(
+                                                            //     details[index].iadLowerUom ==
+                                                            //                 null ||
+                                                            //             details[index]
+                                                            //                 .iadLowerUom!
+                                                            //                 .isEmpty
+                                                            //         ? '-'
+                                                            //         : details[index]
+                                                            //                 .iadLowerUom ??
+                                                            //             '-',
+                                                            //     style: kfontstyle(
+                                                            //         fontSize:
+                                                            //             12.sp,
+                                                            //         fontWeight:
+                                                            //             FontWeight
+                                                            //                 .w400,
+                                                            //         color: Colors
+                                                            //             .black54),
+                                                            //   ),
+                                                            // ),
                                                           ],
                                                         ),
                                                         /*  SizedBox(
@@ -626,67 +646,47 @@ class _InventoryReconfirmationDetailScreenState
                                                         ), */
                                                         Column(
                                                           children: [
-                                                            Visibility(
-                                                              /*  visible: details[index]
-                                                                              .iadHigherUom ==
+                                                            Text(
+                                                              details[index].iadPhysicalHQty ==
                                                                           null ||
-                                                                      details[index]
-                                                                          .iadHigherUom!
+                                                                      details[
+                                                                              index] //iad_PhysicalLQty
+                                                                          .iadPhysicalHQty!
                                                                           .isEmpty
-                                                                  ? false
-                                                                  : true, */
-                                                              child: Text(
-                                                                details[index].iadPhysicalHQty ==
-                                                                            null ||
-                                                                        details[
-                                                                                index] //iad_PhysicalLQty
-                                                                            .iadPhysicalHQty!
-                                                                            .isEmpty
-                                                                    ? "0"
-                                                                    : details[index]
-                                                                            .iadPhysicalHQty ??
-                                                                        '',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54),
-                                                              ),
+                                                                  ? "0"
+                                                                  : details[index]
+                                                                          .iadPhysicalHQty ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
                                                             ),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
-                                                            Visibility(
-                                                              // visible: details[index]
-                                                              //                 .iadLowerUom ==
-                                                              //             null ||
-                                                              //         details[index]
-                                                              //             .iadLowerUom!
-                                                              //             .isEmpty
-                                                              //     ? false
-                                                              //     : true,
-                                                              child: Text(
-                                                                details[index].iadPhysicalLQty ==
-                                                                            null ||
-                                                                        details[index]
-                                                                            .iadPhysicalLQty!
-                                                                            .isEmpty
-                                                                    ? '0'
-                                                                    : details[index]
-                                                                            .iadPhysicalLQty ??
-                                                                        '0',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54),
-                                                              ),
+                                                            Text(
+                                                              details[index].iadPhysicalLQty ==
+                                                                          null ||
+                                                                      details[index]
+                                                                          .iadPhysicalLQty!
+                                                                          .isEmpty
+                                                                  ? '0'
+                                                                  : details[index]
+                                                                          .iadPhysicalLQty ??
+                                                                      '0',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
                                                             ),
                                                           ],
                                                         ),
@@ -695,66 +695,46 @@ class _InventoryReconfirmationDetailScreenState
                                                         ),
                                                         Column(
                                                           children: [
-                                                            Visibility(
-                                                              /*  visible: details[index]
-                                                                              .iadDescHuom ==
+                                                            Text(
+                                                              details[index].iadDescHQty ==
                                                                           null ||
                                                                       details[index]
-                                                                          .iadDescHuom!
+                                                                          .iadDescHQty!
                                                                           .isEmpty
-                                                                  ? false
-                                                                  : true, */
-                                                              child: Text(
-                                                                details[index].iadDescHQty ==
-                                                                            null ||
-                                                                        details[index]
-                                                                            .iadDescHQty!
-                                                                            .isEmpty
-                                                                    ? "0"
-                                                                    : details[index]
-                                                                            .iadDescHQty ??
-                                                                        '',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54),
-                                                              ),
+                                                                  ? "0"
+                                                                  : details[index]
+                                                                          .iadDescHQty ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
                                                             ),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
-                                                            Visibility(
-                                                              /*  visible: details[index]
-                                                                              .iadLowerUom ==
+                                                            Text(
+                                                              details[index].iadDescHuom ==
                                                                           null ||
                                                                       details[index]
-                                                                          .iadLowerUom!
+                                                                          .iadDescLQty!
                                                                           .isEmpty
-                                                                  ? false
-                                                                  : true, */
-                                                              child: Text(
-                                                                details[index].iadDescHuom ==
-                                                                            null ||
-                                                                        details[index]
-                                                                            .iadDescLQty!
-                                                                            .isEmpty
-                                                                    ? '0'
-                                                                    : details[index]
-                                                                            .iadDescLQty ??
-                                                                        '',
-                                                                style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54),
-                                                              ),
+                                                                  ? '0'
+                                                                  : details[index]
+                                                                          .iadDescLQty ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
                                                             ),
                                                           ],
                                                         ),
