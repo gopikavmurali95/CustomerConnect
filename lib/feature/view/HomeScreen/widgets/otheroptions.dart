@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/activityreview/activityreviewheade
 import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
+import 'package:customer_connect/feature/view/messages/chathomescreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
@@ -615,6 +616,70 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => ChatHomeScreen(
+                          user: user,
+                        ),
+                      ));
+                },
+                child: Container(
+                  height: 65.h,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade300.withOpacity(.4),
+                          spreadRadius: 4,
+                          blurRadius: 10,
+                          offset: const Offset(0, 3)),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Opacity(
+                          opacity: 0.07,
+                          child: Image.asset(
+                            "assets/images/home/mer@2x.png",
+                            height: 30.h,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 2, vertical: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "assets/images/home/mer@2x.png",
+                                height: 23.h,
+                              ),
+                              SizedBox(
+                                height: 8.w,
+                              ),
+                              Text(
+                                AppLocalizations.of(context)!.merchandising,
+                                textAlign: TextAlign.center,
+                                style: headTextStyle(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ], visibility: [
               state.when(
                 getCustomerSettingsState: (settings) =>
@@ -680,6 +745,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         : true,
                 customerSettingsFailedState: () => true,
               ),
+              false
             ]),
           ),
         );
