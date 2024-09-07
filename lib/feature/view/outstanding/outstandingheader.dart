@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -139,6 +141,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log(jsonEncode(_pievalues));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -301,8 +304,9 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                               _pievalues.clear();
                               if (int.parse(counts.dueCount ?? '') > 0) {
                                 _pievalues
-                                    .add(int.parse(counts.overDueCount ?? ''));
+                                    .add(int.parse(counts.dueCount ?? ''));
                               }
+
                               if (int.parse(counts.overDueCount ?? '') > 0) {
                                 _pievalues
                                     .add(int.parse(counts.overDueCount ?? ''));
@@ -375,7 +379,9 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                               ),
                                             )
                                           : _pievalues.isEmpty
-                                              ? const Center()
+                                              ? const Center(
+                                                  child: Text('No Chart Data'),
+                                                )
                                               : Stack(
                                                   children: [
                                                     CircleAvatar(

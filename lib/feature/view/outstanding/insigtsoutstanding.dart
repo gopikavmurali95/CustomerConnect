@@ -49,6 +49,18 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
     pievalues.clear();
     _cusOutstandSearchCtrl.clear();
     context.read<ArScrollCtrlCubit>().onInit();
+    context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
+    context.read<CusOutStandingBloc>().add(GetCusOutstandingEvent(
+          searchQuery: '',
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: widget.customer.rotId,
+              subArea: ''),
+        ));
     _scrollController.addListener(_scrollListener);
   }
 

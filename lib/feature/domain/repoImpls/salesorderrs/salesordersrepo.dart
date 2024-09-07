@@ -46,7 +46,7 @@ class SalesOrdersRepo implements ISalesOrdersRepo {
           Uri.parse(baseUrl + salesOrderDetailsUrl),
           body: salesInparas.toJson());
       if (response.statusCode == 200) {
-        log(response.body);
+        log('salesorder ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> salesdata = json['result'];
         List<SalesOrderDetailsModel> saleslist = salesdata

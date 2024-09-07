@@ -29,7 +29,7 @@ class TrackSalesManScreen extends StatefulWidget {
 
 Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 CameraPosition _kGooglePlex = const CameraPosition(
-  target: LatLng(10.834997935450012, 76.1885081487433),
+  target: LatLng(25.097777514389435, 55.229568505855646),
   zoom: 14.4746,
 );
 List<LatLng> polylineCoordinates = [];

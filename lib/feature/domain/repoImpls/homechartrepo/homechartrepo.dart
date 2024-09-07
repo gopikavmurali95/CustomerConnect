@@ -21,6 +21,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartRoutesUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
+      // log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartRoutesModel.fromJson(json["result"][0]);
