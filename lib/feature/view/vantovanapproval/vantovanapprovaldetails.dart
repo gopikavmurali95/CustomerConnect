@@ -412,27 +412,47 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                             children: [
                                               Column(
                                                 children: [
-                                                  Text(
-                                                    details[index].vvdHuom ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
+                                                   Text(details[index].vvdHuom!.isEmpty ||
+                                                               details[index].vvdHuom == null ? 
+                                                "-": details[index].vvdHuom ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                                  // Text(
+                                                  //   details[index].vvdHuom ??
+                                                  //       '',
+                                                  //   style: kfontstyle(
+                                                  //       fontSize: 12.sp,
+                                                  //       fontWeight:
+                                                  //           FontWeight.w400,
+                                                  //       color: Colors.black54),
+                                                  // ),
                                                   SizedBox(
                                                     height: 10.h,
                                                   ),
-                                                  Text(
-                                                    details[index].vvdLuom ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
+                                                  Text(details[index].vvdLuom!.isEmpty ||
+                                                               details[index].vvdLuom == null ? 
+                                                "-": details[index].vvdLuom ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,), 
+                                                  // Text(
+                                                  //   details[index].vvdLuom ??
+                                                  //       '',
+                                                  //   style: kfontstyle(
+                                                  //       fontSize: 12.sp,
+                                                  //       fontWeight:
+                                                  //           FontWeight.w400,
+                                                  //       color: Colors.black54),
+                                                  // ),
                                                 ],
                                               ),
                                               SizedBox(
@@ -440,27 +460,47 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                               ),
                                               Column(
                                                 children: [
-                                                  Text(
-                                                    details[index].vvdHQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
+                                                  Text(details[index].vvdHQty!.isEmpty ||
+                                                               details[index].vvdHQty == null ? 
+                                                "0": details[index].vvdHQty ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                                  // Text(
+                                                  //   details[index].vvdHQty ??
+                                                  //       '',
+                                                  //   style: kfontstyle(
+                                                  //       fontSize: 12.sp,
+                                                  //       fontWeight:
+                                                  //           FontWeight.w400,
+                                                  //       color: Colors.black54),
+                                                  // ),
                                                   SizedBox(
                                                     height: 10.h,
                                                   ),
-                                                  Text(
-                                                    details[index].vvdLQty ??
-                                                        '',
-                                                    style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black54),
-                                                  ),
+                                                   Text(details[index].vvdLQty!.isEmpty ||
+                                                               details[index].vvdLQty == null ? 
+                                                "0": details[index].vvdLQty ?? "",style: kfontstyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .black54) ,),
+                                                  // Text(
+                                                  //   details[index].vvdLQty ??
+                                                  //       '',
+                                                  //   style: kfontstyle(
+                                                  //       fontSize: 12.sp,
+                                                  //       fontWeight:
+                                                  //           FontWeight.w400,
+                                                  //       color: Colors.black54),
+                                                  // ),
                                                 ],
                                               )
                                             ],
