@@ -96,7 +96,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                         children: [
                           Text(widget.salesorders.orderId ?? '',
                               style: blueTextStyle()),
-                          Row(
+                          /* Row(
                             children: [
                               Text(
                                 widget.salesorders.cusCode ?? '',
@@ -145,7 +145,60 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 ),
                               ),
                             ],
-                          ),
+                          ), */
+                          SizedBox(
+                                width: 300.w,
+                                child: RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context)
+                                          .style
+                                          .copyWith(
+                                            fontWeight: FontWeight.normal,
+                                            decoration: TextDecoration.none,
+                                          ),
+                                      children: [
+                                        TextSpan(
+                                          text:' ${widget.salesorders.cusCode} - ',
+                                style: kfontstyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                                        ),
+                                        TextSpan(
+                                          text: selectedLocale?.languageCode == 'en'
+                                          ? widget.salesorders.cusName ?? ''
+                                          : widget.salesorders.arcusName ?? '',
+                                      style: subTitleTextStyle()
+                                        )
+                                      ]),
+                                ),
+                              ),
+                             
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                              '${widget.salesorders.cshCode} - ',
+                                style: kfontstyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xff413434)),
+                                      ),
+                                      TextSpan(
+                                        text: selectedLocale?.languageCode == 'en'
+                                      ? widget.salesorders.cshName ?? ''
+                                      : widget.salesorders.arcshName ?? '',
+                                  
+                                  style: kfontstyle(fontSize: 12.sp,color: const Color(0xff413434)),
+                                      )
+                                    ]),
+                              ),
                           Text(
                             '${widget.salesorders.rotName} | ${widget.salesorders.date} | ${widget.salesorders.time}',
                             style:

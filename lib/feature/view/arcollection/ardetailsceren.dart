@@ -72,7 +72,7 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                     children: [
                       Text(widget.arheader.arhArNumber ?? '',
                           style: blueTextStyle()),
-                      Row(
+                      /* Row(
                         children: [
                           Text(
                             '${widget.arheader.cshCode} - ',
@@ -106,6 +106,45 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                             ),
                           ),
                         ],
+                      ), */
+                      RichText(
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style.copyWith(
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.none,
+                                ),
+                            children: [
+                              TextSpan(
+                                text: '${widget.arheader.cshCode} - ',
+                                style: TextStyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xff2C6B9E),
+                                ),
+                              ),
+                              TextSpan(
+                                text: widget.arheader.cshName ?? '',
+                                style: subTitleTextStyle(),
+                              )
+                            ]),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style.copyWith(
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.none,
+                                ),
+                            children: [
+                              TextSpan(
+                                text: '${widget.arheader.cusCode} - ',
+                                style: subTitleTextStyle(),
+                              ),
+                              TextSpan(
+                                text: selectedLocale?.languageCode == "en"
+                                    ? widget.arheader.cusName ?? ''
+                                    : widget.arheader.arcusName ?? '',
+                                style: subTitleTextStyle(),
+                              )
+                            ]),
                       ),
                       Text(
                         '${widget.arheader.arhPayType?.trim()} | ${AppLocalizations.of(context)!.route} ${widget.arheader.rotName} | ${widget.arheader.date} | ${widget.arheader.time}',

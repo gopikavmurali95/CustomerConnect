@@ -11,9 +11,7 @@ import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlis
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -140,7 +138,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            /* Row(
                               children: [
                                 Text(
                                   '${widget.customer.cusCode} - ',
@@ -181,7 +179,65 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                   ),
                                 ),
                               ],
-                            ),
+                            ), */
+                             SizedBox(
+                                width: 300.w,
+                                child: RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context)
+                                          .style
+                                          .copyWith(
+                                            fontWeight: FontWeight.normal,
+                                            decoration: TextDecoration.none,
+                                          ),
+                                      children: [
+                                        TextSpan(
+                                          text: '${widget.customer.cusCode} - ',
+                                          style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff2C6B9E),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? widget.customer.cusName ?? ""
+                                              : widget.customer.arcusName ?? '',
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
+                                        )
+                                      ]),
+                                ),
+                              ),
+                             
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                             '${widget.customer.headerCode} - ',
+                                    style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xff413434)),
+                                      ),
+                                      TextSpan(
+                                        text: selectedLocale?.languageCode == 'en'
+                                          ? widget.customer.headerName ?? ""
+                                          : widget.customer.arheaderName ?? '',
+                                      
+                                      style: kfontstyle(fontSize: 12.sp,
+                                       color: const Color(0xff413434)),
+                                      )
+                                    ]),
+                              ),
                             Text(
                               '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
                               style: kfontstyle(

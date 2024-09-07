@@ -126,7 +126,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Row(
+                                         /*Row(
                                             children: [
                                               Text(
                                                   invheader[index].cusOutCode ??
@@ -149,11 +149,40 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                           '',
                                                   overflow:
                                                       TextOverflow.ellipsis,
+                                                      maxLines: 2,
                                                   style: subTitleTextStyle(),
                                                 ),
                                               ),
                                             ],
+                                          ), */
+                                          RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context)
+                                          .style
+                                          .copyWith(
+                                            fontWeight: FontWeight.normal,
+                                            decoration: TextDecoration.none,
                                           ),
+                                      children: [
+                                        TextSpan(
+                                          text:'${invheader[index].cusOutCode} - ',
+                                                  style: subTitleTextStyle()
+                                        ),
+                                        TextSpan(
+                                          text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? invheader[index]
+                                                              .cusOutName ??
+                                                          ''
+                                                      : invheader[index]
+                                                              .arcusOutName ??
+                                                          '',
+                                                  
+                                                  style: subTitleTextStyle(),
+                                        )
+                                      ]),
+                                ),
                                           Text(
                                             '${invheader[index].payType} | ${invheader[index].rotName} | ${invheader[index].date} | ${invheader[index].time}',
                                             style: kfontstyle(

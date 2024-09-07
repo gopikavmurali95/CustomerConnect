@@ -91,7 +91,7 @@ class CustomersListingWidget extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Row(
+                                        /* Row(
                                           children: [
                                             Text(
                                               '${customers[index].cusCode} - ',
@@ -119,8 +119,47 @@ class CustomersListingWidget extends StatelessWidget {
                                               ),
                                             ),
                                           ],
+                                        ), */
+                                        RichText(
+                                          text: TextSpan(
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style
+                                                      .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        decoration:
+                                                            TextDecoration.none,
+                                                      ),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      '${customers[index].cusCode} - ',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color:
+                                                        const Color(0xff2C6B9E),
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? customers[index]
+                                                              .cusName ??
+                                                          ''
+                                                      : customers[index]
+                                                              .arcusName ??
+                                                          '',
+                                                  style: kfontstyle(
+                                                      fontSize: 12.sp,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              ]),
                                         ),
-                                        Row(
+                                        /* Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
@@ -147,6 +186,41 @@ class CustomersListingWidget extends StatelessWidget {
                                               ),
                                             ),
                                           ],
+                                        ), */
+                                        RichText(
+                                          text: TextSpan(
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style
+                                                      .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        decoration:
+                                                            TextDecoration.none,
+                                                      ),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                       '${customers[index].headerCode} - ',
+                                              style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                                ),
+                                                TextSpan(
+                                                  text:selectedLocale?.languageCode ==
+                                                        'en'
+                                                    ? customers[index]
+                                                            .headerName ??
+                                                        ''
+                                                    : customers[index]
+                                                            .arheaderName ??
+                                                        '',
+                                               
+                                                style:
+                                                    kfontstyle(fontSize: 11.sp),
+                                                )
+                                              ]),
                                         ),
                                         Text(
                                           '${customers[index].cusType} | ${selectedLocale?.languageCode == 'en' ? customers[index].rotName : customers[index].arrotName} ',
