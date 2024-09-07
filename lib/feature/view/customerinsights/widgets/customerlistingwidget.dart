@@ -91,35 +91,59 @@ class CustomersListingWidget extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '${customers[index].cusCode} - ',
-                                              style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff2C6B9E),
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                        RichText(
+                                            text: TextSpan(
+                                              text: customers[index].cusCode ??
+                                                      '',
+                                              style:
+                                                  subTitleTextStyle(),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+
+                                                    TextSpan(text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? customers[index]
+                                                              .cusName ??
+                                                          ''
+                                                      : customers[index]
+                                                              .arcusName ??
+                                                          '',),
+                                                
+                                              ],
                                             ),
-                                            Expanded(
-                                              child: Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                selectedLocale?.languageCode ==
-                                                        'en'
-                                                    ? customers[index]
-                                                            .cusName ??
-                                                        ''
-                                                    : customers[index]
-                                                            .arcusName ??
-                                                        '',
-                                                style: kfontstyle(
-                                                    fontSize: 12.sp,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        // Row(
+                                        //   children: [
+                                        //     Text(
+                                        //       '${customers[index].cusCode} - ',
+                                        //       style: kfontstyle(
+                                        //         fontSize: 12.sp,
+                                        //         color: const Color(0xff2C6B9E),
+                                        //         fontWeight: FontWeight.w500,
+                                        //       ),
+                                        //     ),
+                                        //     Expanded(
+                                        //       child: Text(
+                                        //         overflow: TextOverflow.ellipsis,
+                                        //         selectedLocale?.languageCode ==
+                                        //                 'en'
+                                        //             ? customers[index]
+                                        //                     .cusName ??
+                                        //                 ''
+                                        //             : customers[index]
+                                        //                     .arcusName ??
+                                        //                 '',
+                                        //         style: kfontstyle(
+                                        //             fontSize: 12.sp,
+                                        //             color: const Color(
+                                        //                 0xff413434)),
+                                        //       ),
+                                        //     ),
+                                        //   ],
+                                        // ),
                                         Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,

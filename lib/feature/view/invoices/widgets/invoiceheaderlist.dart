@@ -111,6 +111,7 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 child: Text(
+                                                    // maxLines: 2,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     selectedLocale
@@ -126,19 +127,18 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                  invheader[index].cusOutCode ??
+                                          RichText(
+                                            text: TextSpan(
+                                              text: invheader[index].cusOutCode ??
                                                       '',
-                                                  style: subTitleTextStyle()),
-                                              Text(
-                                                ' - ',
-                                                style: subTitleTextStyle(),
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  selectedLocale
+                                              style:
+                                                  subTitleTextStyle(),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+
+                                                    TextSpan(text: selectedLocale
                                                               ?.languageCode ==
                                                           "en"
                                                       ? invheader[index]
@@ -146,14 +146,12 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                           ''
                                                       : invheader[index]
                                                               .arcusOutName ??
-                                                          '',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: subTitleTextStyle(),
-                                                ),
-                                              ),
-                                            ],
+                                                          '',),
+                                                
+                                              ],
+                                            ),
                                           ),
+                                          
                                           Text(
                                             '${invheader[index].payType} | ${invheader[index].rotName} | ${invheader[index].date} | ${invheader[index].time}',
                                             style: kfontstyle(

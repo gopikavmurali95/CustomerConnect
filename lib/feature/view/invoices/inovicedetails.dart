@@ -113,21 +113,45 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Text('${widget.invoiceheader.cusOutCode} - ',
-                                  style: subTitleTextStyle()),
-                              Expanded(
-                                child: Text(
-                                    selectedLocale?.languageCode == "en"
-                                        ? widget.invoiceheader.cusOutName ?? ''
-                                        : widget.invoiceheader.arcusOutName ??
-                                            '',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: subTitleTextStyle()),
-                              ),
-                            ],
-                          ),
+                          RichText(
+                                            text: TextSpan(
+                                              text: widget.invoiceheader.cusOutCode ??
+                                                      '',
+                                              style:
+                                                  subTitleTextStyle(),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+
+                                                    TextSpan(text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? widget.invoiceheader
+                                                              .cusOutName ??
+                                                          ''
+                                                      : widget.invoiceheader
+                                                              .arcusOutName ??
+                                                          '',),
+                                                
+                                              ],
+                                            ),
+                                          ),
+                          // Row(
+                          //   children: [
+                          //     Text('${widget.invoiceheader.cusOutCode} - ',
+                          //         style: subTitleTextStyle()),
+                          //     Expanded(
+                          //       child: Text(
+                          //           selectedLocale?.languageCode == "en"
+                          //               ? widget.invoiceheader.cusOutName ?? ''
+                          //               : widget.invoiceheader.arcusOutName ??
+                          //                   '',
+                          //           overflow: TextOverflow.ellipsis,
+                          //           style: subTitleTextStyle()),
+                          //     ),
+                          //   ],
+                          // ),
                           Text(
                             '${widget.invoiceheader.payType} | ${widget.invoiceheader.rotName} | ${widget.invoiceheader.date} | ${widget.invoiceheader.time}',
                             style:

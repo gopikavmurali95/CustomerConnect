@@ -96,31 +96,36 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                         children: [
                           Text(widget.salesorders.orderId ?? '',
                               style: blueTextStyle()),
-                          Row(
-                            children: [
-                              Text(
-                                widget.salesorders.cusCode ?? '',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
+                              RichText(
+                                            text: TextSpan(
+                                              text: widget.salesorders.cusCode ??
+                                                      '',
+                                              style:
+                                                  kfontstyle(
+                                  fontSize: 12.sp,
                                   color: const Color(0xff2C6B9E),
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ),
-                              Text(
-                                ' - ',
-                                style: kfontstyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xff2C6B9E),
-                                ),
-                              ),
-                              Expanded(
-                                  child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      selectedLocale?.languageCode == 'en'
-                                          ? widget.salesorders.cusName ?? ''
-                                          : widget.salesorders.arcusName ?? '',
-                                      style: subTitleTextStyle())),
-                            ],
-                          ),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: '-',
+                                                    style:subTitleTextStyle()),
+
+                                                    TextSpan(text: selectedLocale
+                                                              ?.languageCode ==
+                                                          "en"
+                                                      ? widget.salesorders.cusName??
+                                                          ''
+                                                      :widget.salesorders.arcusName??
+                                                          '',
+                                                          style:  kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff413434)),),
+                                                
+                                              ],
+                                            ),
+                                          ),
+                          
                           Row(
                             children: [
                               Text(
