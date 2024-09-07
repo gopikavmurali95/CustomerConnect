@@ -826,7 +826,7 @@ class _MaterialRequestDetailScreenState
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Visibility(
-                        visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'?true:false,
+                        //visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'? true:false,
                         child: Row(
                           children: [
                             Flexible(
