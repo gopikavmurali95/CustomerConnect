@@ -4,7 +4,9 @@ import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_ord
 import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -83,11 +85,49 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                              Text(
-                                                "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en' ? orders[index].cusName : orders[index].arcusName}",
-                                                overflow: TextOverflow.ellipsis,
-                                                style:
-                                                    kfontstyle(fontSize: 11.sp),
+                                             /*  Container(
+                                                width: 300,
+                                                child: Text(
+                                                  "${orders[index].cusCode} - ${selectedLocale?.languageCode == 'en' ? orders[index].cusName : orders[index].arcusName}",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style:
+                                                      kfontstyle(fontSize: 11.sp),
+                                                ),
+                                              ), */
+                                             
+                                              SizedBox(
+                                                width: 300,
+                                                child: RichText(
+                                                  overflow: TextOverflow
+                                                      .ellipsis, // Handle overflow with ellipsis
+                                                  maxLines: 2,
+                                                  text: TextSpan(
+                                                    style: DefaultTextStyle.of(
+                                                            context)
+                                                        .style,
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                            "${orders[index].cusCode} - ",
+                                                        style: kfontstyle(
+                                                            fontSize: 11.sp),
+                                                      ),
+                                                      TextSpan(
+                                                        text: selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? orders[index]
+                                                                .cusName
+                                                            : orders[index]
+                                                                .arcusName,
+                                                        style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                               ),
                                               Text(
                                                 '${orders[index].date} | ${orders[index].time}',

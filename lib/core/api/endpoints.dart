@@ -9,6 +9,8 @@ const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
+
+
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
 const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
