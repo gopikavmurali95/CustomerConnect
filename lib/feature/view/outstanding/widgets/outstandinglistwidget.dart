@@ -71,7 +71,7 @@ class OutstandingListWidget extends StatelessWidget {
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
-                                                Row(
+                                                /* Row(
                                                   children: [
                                                     Text(
                                                       '${headers[index].cusCode} - ',
@@ -130,6 +130,89 @@ class OutstandingListWidget extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ],
+                                                ), */
+                                                SizedBox(
+                                                  width: 300.w,
+                                                  child: RichText(
+                                                    text: TextSpan(
+                                                        style:
+                                                            DefaultTextStyle.of(
+                                                                    context)
+                                                                .style
+                                                                .copyWith(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .none,
+                                                                ),
+                                                        children: [
+                                                          TextSpan(
+                                                            text:
+                                                                '${headers[index].cusCode} - ',
+                                                            style: kfontstyle(
+                                                              fontSize: 11.sp,
+                                                              color: const Color(
+                                                                  0xff2C6B9E),
+                                                            ),
+                                                          ),
+                                                          TextSpan(
+                                                            text: selectedLocale
+                                                                        ?.languageCode ==
+                                                                    "en"
+                                                                ? headers[index]
+                                                                        .cusName ??
+                                                                    ''
+                                                                : headers[index]
+                                                                        .cusArName ??
+                                                                    '',
+                                                            // headers[index].cusName ?? '',
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                color: const Color(
+                                                                    0xff413434)),
+                                                          )
+                                                        ]),
+                                                  ),
+                                                ),
+                                                RichText(
+                                                  text: TextSpan(
+                                                      style:
+                                                          DefaultTextStyle.of(
+                                                                  context)
+                                                              .style
+                                                              .copyWith(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none,
+                                                              ),
+                                                      children: [
+                                                        TextSpan(
+                                                          text:
+                                                              '${headers[index].cshCode} - ',
+                                                          style: kfontstyle(
+                                                              fontSize: 11.sp,
+                                                              color: const Color(
+                                                                  0xff413434)),
+                                                        ),
+                                                        TextSpan(
+                                                          text: selectedLocale
+                                                                      ?.languageCode ==
+                                                                  "en"
+                                                              ? headers[index]
+                                                                      .cshName ??
+                                                                  ''
+                                                              : headers[index]
+                                                                      .cshArName ??
+                                                                  '',
+                                                          style: kfontstyle(
+                                                              fontSize: 11.sp),
+                                                        ),
+                                                      ]),
                                                 ),
                                                 Text(
                                                   '${headers[index].invPayType} | ${headers[index].rotName} |  ${headers[index].createdDate}',

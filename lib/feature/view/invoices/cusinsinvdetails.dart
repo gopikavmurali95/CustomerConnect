@@ -88,7 +88,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                         children: [
                           Text(widget.invoice.invoiceNo ?? '',
                               style: blueTextStyle()),
-                          Row(
+                          /* Row(
                             children: [
                               Text(
                                 '${widget.customer.cusCode} ',
@@ -120,7 +120,65 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                                     style: subTitleTextStyle()),
                               ),
                             ],
-                          ),
+                          ), */
+                           SizedBox(
+                                width: 300.w,
+                                child: RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context)
+                                          .style
+                                          .copyWith(
+                                            fontWeight: FontWeight.normal,
+                                            decoration: TextDecoration.none,
+                                          ),
+                                      children: [
+                                        TextSpan(
+                                          text: '${widget.customer.cusCode} - ',
+                                          style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff2C6B9E),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? widget.customer.cusName ?? ""
+                                              : widget.customer.arcusName ?? '',
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
+                                        )
+                                      ]),
+                                ),
+                              ),
+                             
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                             '${widget.customer.headerCode} - ',
+                                    style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xff413434)),
+                                      ),
+                                      TextSpan(
+                                        text: selectedLocale?.languageCode == 'en'
+                                          ? widget.customer.headerName ?? ""
+                                          : widget.customer.arheaderName ?? '',
+                                      
+                                      style: kfontstyle(fontSize: 12.sp,
+                                       color: const Color(0xff413434)),
+                                      )
+                                    ]),
+                              ),
                           Text(
                             '${widget.invoice.invoiceType} | ${selectedLocale?.languageCode == 'en' ? widget.customer.rotName : widget.customer.arAreaName} | ${widget.invoice.date} | ${widget.invoice.time}',
                             style:

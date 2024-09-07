@@ -156,12 +156,11 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              RichText(
-                                            text: TextSpan(
-                                              text: widget.customer.cusCode ??
-                                                      '',
-                                              style:
-                                                   kfontstyle(
+                              /* Row(
+                                children: [
+                                  Text(
+                                    '${widget.customer.cusCode} - ',
+                                    style: kfontstyle(
                                       fontSize: 12.sp,
                                       color: const Color(0xff2C6B9E),
                                       fontWeight: FontWeight.w500,
@@ -181,55 +180,67 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                                           style: kfontstyle(
                                           fontSize: 12.sp,
                                           color: const Color(0xff413434)),
-                                                          ),
-                                                
-                                              ],
-                                            ),
-                                          ),
-                              
-                              // Row(
-                              //   children: [
-                              //     Text(
-                              //       '${widget.customer.cusCode} - ',
-                              //       style: kfontstyle(
-                              //         fontSize: 12.sp,
-                              //         color: const Color(0xff2C6B9E),
-                              //         fontWeight: FontWeight.w500,
-                              //       ),
-                              //     ),
-                              //     SizedBox(
-                              //       width: 200.w,
-                              //       child: Text(
-                              //         overflow: TextOverflow.ellipsis,
-                              //         selectedLocale?.languageCode == 'en'
-                              //             ? widget.customer.cusName ?? ""
-                              //             : widget.customer.arcusName ?? '',
-                              //         style: kfontstyle(
-                              //             fontSize: 12.sp,
-                              //             color: const Color(0xff413434)),
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '${widget.customer.headerCode} - ',
-                                    style: kfontstyle(
-                                        fontSize: 11.sp,
-                                        color: const Color(0xff413434)),
-                                  ),
-                                  SizedBox(
-                                    width: 100.w,
-                                    child: Text(
-                                      selectedLocale?.languageCode == 'en'
-                                          ? widget.customer.headerName ?? ""
-                                          : widget.customer.arheaderName ?? '',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: kfontstyle(fontSize: 12.sp),
                                     ),
                                   ),
                                 ],
+                              ), */
+                              SizedBox(
+                                width: 300.w,
+                                child: RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context)
+                                          .style
+                                          .copyWith(
+                                            fontWeight: FontWeight.normal,
+                                            decoration: TextDecoration.none,
+                                          ),
+                                      children: [
+                                        TextSpan(
+                                          text: '${widget.customer.cusCode} - ',
+                                          style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff2C6B9E),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? widget.customer.cusName ?? ""
+                                              : widget.customer.arcusName ?? '',
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
+                                        )
+                                      ]),
+                                ),
+                              ),
+                             
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                             '${widget.customer.headerCode} - ',
+                                    style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xff413434)),
+                                      ),
+                                      TextSpan(
+                                        text: selectedLocale?.languageCode == 'en'
+                                          ? widget.customer.headerName ?? ""
+                                          : widget.customer.arheaderName ?? '',
+                                      
+                                      style: kfontstyle(fontSize: 12.sp,
+                                       color: const Color(0xff413434)),
+                                      )
+                                    ]),
                               ),
                               Text(
                                 '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
