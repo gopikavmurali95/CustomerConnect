@@ -124,42 +124,80 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               fit: FlexFit.tight,
                                               child: Column(
                                                 children: [
-                                                  Visibility(
-                                                    visible: invdetails[index]
-                                                                    .higherUom ==
-                                                                null ||
-                                                            invdetails[index]
-                                                                .higherUom!
-                                                                .isEmpty
-                                                        ? false
-                                                        : true,
-                                                    child: Text(
-                                                      invdetails[index]
-                                                              .higherUom ??
-                                                          '',
-                                                      style:
-                                                          subTitleTextStyle(),
-                                                    ),
-                                                  ),
+                                                  Text(
+                                                              invdetails[index].higherUom ==
+                                                                          null ||
+                                                                      invdetails[index]
+                                                                          .higherUom!
+                                                                          .isEmpty
+                                                                  ? "-"
+                                                                  : invdetails[index]
+                                                                          .higherUom ??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                  // Visibility(
+                                                  //   visible: invdetails[index]
+                                                  //                   .higherUom ==
+                                                  //               null ||
+                                                  //           invdetails[index]
+                                                  //               .higherUom!
+                                                  //               .isEmpty
+                                                  //       ? false
+                                                  //       : true,
+                                                  //   child: Text(
+                                                  //     invdetails[index]
+                                                  //             .higherUom ??
+                                                  //         '',
+                                                  //     style:
+                                                  //         subTitleTextStyle(),
+                                                  //   ),
+                                                  // ),
                                                   SizedBox(
                                                     height: 5.h,
                                                   ),
-                                                  Visibility(
-                                                    visible: invdetails[index]
-                                                                    .lowerUom ==
-                                                                null ||
-                                                            invdetails[index]
-                                                                .lowerUom!
-                                                                .isEmpty
-                                                        ? false
-                                                        : true,
-                                                    child: Text(
-                                                        invdetails[index]
-                                                                .lowerUom ??
-                                                            '',
-                                                        style:
-                                                            subTitleTextStyle()),
-                                                  ),
+                                                   Text(
+                                                              invdetails[index].lowerUom ==
+                                                                          null ||
+                                                                      invdetails[index]
+                                                                          .lowerUom!
+                                                                          .isEmpty
+                                                                  ? "-"
+                                                                  : invdetails[index]
+                                                                          .lowerUom ??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                  // Visibility(
+                                                  //   visible: invdetails[index]
+                                                  //                   .lowerUom ==
+                                                  //               null ||
+                                                  //           invdetails[index]
+                                                  //               .lowerUom!
+                                                  //               .isEmpty
+                                                  //       ? false
+                                                  //       : true,
+                                                  //   child: Text(
+                                                  //       invdetails[index]
+                                                  //               .lowerUom ??
+                                                  //           '',
+                                                  //       style:
+                                                  //           subTitleTextStyle()),
+                                                  // ),
                                                 ],
                                               ),
                                             ),
@@ -171,21 +209,53 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               fit: FlexFit.tight,
                                               child: Column(
                                                 children: [
-                                                  Text(
-                                                    invdetails[index]
-                                                            .higherQty ??
-                                                        '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
+                                                   Text(
+                                                              invdetails[index].higherQty ==
+                                                                          null ||
+                                                                      invdetails[index]
+                                                                          .higherQty!
+                                                                          .isEmpty
+                                                                  ? "0"
+                                                                  : invdetails[index]
+                                                                          .higherQty ??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                  // Text(
+                                                  //   invdetails[index]
+                                                  //           .higherQty ??
+                                                  //       '',
+                                                  //   style: subTitleTextStyle(),
+                                                  // ),
                                                   SizedBox(
                                                     height: 5.h,
                                                   ),
                                                   Text(
-                                                    invdetails[index]
-                                                            .lowerQty ??
-                                                        '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
+                                                              invdetails[index].lowerQty ==
+                                                                          null ||
+                                                                      invdetails[index]
+                                                                          .lowerQty!
+                                                                          .isEmpty
+                                                                  ? "0"
+                                                                  : invdetails[index]
+                                                                          .lowerQty??
+                                                                      "",
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
                                                 ],
                                               ),
                                             ),

@@ -1,0 +1,15 @@
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo_digits.png
+  branding: assets/images/home/act_man.png
+  color_dark: "#121212"
+  image_dark: assets/images/logo_digits.png
+  branding_dark: assets/images/home/act_man.png
+
+  android_12:
+    image: assets/images/logo_digits.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/logo_digits.png
+    icon_background_color_dark: "#121212"
+
+  web: false

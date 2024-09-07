@@ -20,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 final _usernamectrl = TextEditingController();
 final _passwordctrl = TextEditingController();
 final _formkey = GlobalKey<FormState>();
+bool _passwordVisible = false;
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
@@ -206,6 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: TextFormField(
                                 controller: _passwordctrl,
+                                obscureText: !_passwordVisible,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Password is required';
@@ -249,6 +251,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fit: BoxFit.fill,
                                     ),
                                   ), */
+                                  suffixIcon: Padding(
+                                    padding: EdgeInsets.only(top: 4.h),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.grey,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _passwordVisible = !_passwordVisible;
+                                        });
+                                      },
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

@@ -244,7 +244,8 @@ Locale? selectedLocale;
 Future<LoginUserModel?> getuserdata() async {
   final SharedPreferences sharedprefs = await SharedPreferences.getInstance();
 
-  String userString = sharedprefs.getString('user') ?? '';
+  String userString =
+      sharedprefs.getString('Customer-Connect-Flutter-user') ?? '';
 
   if (userString.isEmpty) {
     return null;

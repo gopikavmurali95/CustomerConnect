@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -48,6 +49,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
 
   @override
   Widget build(BuildContext context) {
+    log(widget.salesorders.ordId ?? '');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
