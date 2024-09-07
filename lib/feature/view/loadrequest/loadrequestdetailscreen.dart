@@ -755,7 +755,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                       maxLength:
                                                                           8,
                                                                       cursorHeight:
-                                                                          12.h,
+                                                                          10.h,
                                                                       keyboardType:
                                                                           TextInputType
                                                                               .number,
